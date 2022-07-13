@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Bluefish 2.2.7" />
+
+
+
+
+<title>evgam</title>
+
+<script src='https://d33wubrfki0l68.cloudfront.net/js/c6f4b3be8d18ff7c6cf56a6216dc31eda080ea95/js/jquery.min.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel='stylesheet' href='https://d33wubrfki0l68.cloudfront.net/css/6161215db717ef1d19a4e9fd19cc07d1451fac5a/site_libs/bootstrap-3.3.5/css/cosmo.min.css'/>
+<script src='https://d33wubrfki0l68.cloudfront.net/js/4c4258ec93f0b8cce3c8e840a63a3a7b74733edd/js/bootstrap.min.js'></script>
+<script src='https://d33wubrfki0l68.cloudfront.net/bundles/4ee9935e5868be3e66b6a2028eb3a4e415cfb9bd.js'></script>
+<link rel='stylesheet' href='https://d33wubrfki0l68.cloudfront.net/css/f780a87bea8035358f4872e18be3595a35cae616/flexdashboard/site_libs/highlightjs-1.1/textmate.css'/>
+<script src='https://d33wubrfki0l68.cloudfront.net/js/96e4f327426225ffb94962120c6734e25885ee43/flexdashboard/site_libs/highlightjs-1.1/highlight.js'></script>
+<link rel='stylesheet' href='https://d33wubrfki0l68.cloudfront.net/css/a33df081b29c34a9180a43bd0ffd405e5ae5ff8f/flexdashboard/site_libs/font-awesome-4.5.0/css/font-awesome.min.css'/>
+
+<script type='text/javascript' charset='utf-8' src='https://d33wubrfki0l68.cloudfront.net/bundles/f3e7f2c55a9afacbe46cdbb1e2c366b83321e2eb.js'></script>
+
+<!-- google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77306155-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='https://d33wubrfki0l68.cloudfront.net/css/2f58285c94b821df51a4041776b09ee508522fa3/flexdashboard/styles.css'/>
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Ben Youngman</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html#start">Home</a>
+</li>
+<li>
+  <a href="index.html#pubs">Publications</a>
+</li>
+<li>
+  <a href="index.html#software">Software</a>
+</li>
+<li>
+  <a href="index.html#teaching">Teaching</a>
+</li>
+     </ul>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+</div>
+
+
+<div id="main-banner" class="row">
+<div class="col-sm-8">
+<ul>
+
+<a id="start"></a>
+
+<h1>evgam</h1>
+
+<h2>generalised additive extreme value models</h2>
+
+<h3>about</h3>
+
+<p>
+This R package allows fitting of various extreme value models in which the parameters have generalised additive model form.
+</p>
+
+<h3>citation</h3>
+
+<p>
+Youngman, B. D. (2018). Generalized additive models for exceedances of high thresholds with an application to return level estimation for US wind gusts. Journal of the American Statistical Association 0 (0) <a href="https://doi.org/10.1080/01621459.2018.1529596">DOI: 10.1080/01621459.2018.1529596</a>.
+</p>
+
+<h3>download</h3>
+
+<p> Here's the latest source code. (I hope to submit the next version to CRAN.)</p>
+
+<p> <a href="./software/evgam_0.0-5.tar.gz">evgam_0.0-5.tar.gz</a></p>
+
+<h3>example 1: spatial generalised extreme value distribution</h3>
+
+<p> Here's an R script with an example of fitting the generalised extreme value (GEV) distribution to annual maximum US wind gust speeds. The GEV's location, scale and shape parameters are allowed to vary over space using thin-plate regression splines. The fitted model is used to produce a map of the 100 year gust speed return level, i.e. the level above which only one exceedance is expected in 100 years</p>
+
+<p> <a href="./software/gev.R">gev.R</a></p>
+
+<h3>example 2: spatial generalised Pareto distribution</h3>
+
+<p> This example fits the generalised Pareto distribution (GPD) to extreme daily US wind gust speeds that exceedance a threshold. Gusts in August, September and October are modelled. The GPD's scale and shape parameters vary over space using thin-plate regression splines. This threshold is estimated by quantile regression, which estimates the 97th percentile, and also varies over space using a thin-plate regression spline. A map of the 100 year gust speeds return level is produced again (specifically, 100 August-October years).</p>
+
+<p> <a href="./software/gpd.R">gpd.R</a></p>
+
+<h3>example 3: spatio-temporal generalised Pareto distribution</h3>
+
+<p> This example follows example 2 and fits spatio-temporal GPD to year-round daily maximum wind gust speeds in south-west US. Spatio-temporal variation is achieved by a tensor product between thin-plate (the `spatio') and cyclic cubic (the `temporal') regression splines. These capture spatial and within-year variation, respectively. The `cyclic' aspect of the latter ensures that estimates join up from year to year, i.e. from 31st December to 1st January. A map of the 100 year gust speed return level (defined as the 99th percentile of the distribution of the annual maximum) is produced.</p>
+
+<p> <a href="./software/gpd2.R">gpd2.R</a></p>
+
+</body>
+</html>
