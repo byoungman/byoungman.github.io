@@ -1,0 +1,12 @@
+---
+title: 'MTH3045: Statistical Computing'
+author: "Ben Youngman"
+date: "13/07/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Lecture notes for MTH3045, Statistical Computing, will appear here.
