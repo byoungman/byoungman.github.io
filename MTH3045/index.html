@@ -322,7 +322,7 @@ Laver 817; ext. 2314</div></em></p>
 <p>All material that will be examined for MTH3045 can be found in the lecture notes and exercises provided. A complete set of lecture notes and exercises with solutions can be found in pdf format on the module’s ELE page</p>
 <p><a href="https://vle.exeter.ac.uk/course/view.php?id=13566" class="uri">https://vle.exeter.ac.uk/course/view.php?id=13566</a></p>
 <p>There is also an identical web-based version of the lecture notes and exercises, which is available at</p>
-<p><a href="https://www.exeter.ac.uk/MTH3045" class="uri">https://www.exeter.ac.uk/MTH3045</a></p>
+<p><a href="https://byoungman.github.io/MTH3045/" class="uri">https://byoungman.github.io/MTH3045/</a></p>
 <p>and may be easier to use for your study.</p>
 <p>However, sometimes you may find it useful to get a different perspective on things. If so, you may want to consult the following books. Specific parts of these books useful for given topics will be highlighted throughout the lecture notes.</p>
 <ul>
@@ -358,11 +358,11 @@ University Press. <a href="https://www.maths.ed.ac.uk/~swood34/core-statistics.p
 <span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
 <span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z1 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> B <span class="sc">%*%</span> y)</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.756   0.674   0.162</code></pre>
-<p>We’re interested in the total time, <code>elapsed</code>, which is 0.162 seconds. However, the next line gives exactly the same answer</p>
+##   1.699   0.861   0.172</code></pre>
+<p>We’re interested in the total time, <code>elapsed</code>, which is 0.172 seconds. However, the next line gives exactly the same answer</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z2 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> (B <span class="sc">%*%</span> y))</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.148   0.103   0.016</code></pre>
+##   0.113   0.137   0.017</code></pre>
 <p>which we can check with <code>all.equal()</code></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(z1, z2)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
