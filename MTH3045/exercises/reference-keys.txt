@@ -1,0 +1,4 @@
+fig:q10b
+fig:q10d
+chapter-1-exercises
+chapter-2-exercises
