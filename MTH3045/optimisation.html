@@ -495,7 +495,7 @@ Of course, we can solve this analytically, which gives a maximum likelihood esti
 <span id="cb367-4"><a href="optimisation.html#cb367-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>      <span class="at">xlab =</span> <span class="fu">expression</span>(mu), <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="sc">-</span><span class="fu">log</span>(<span class="fu">f</span>(<span class="fu">bold</span>(y) <span class="sc">*</span> <span class="st">&quot; | &quot;</span> <span class="sc">*</span>mu))))</span>
 <span id="cb367-5"><a href="optimisation.html#cb367-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">v =</span> mu_hat, <span class="at">col =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb367-6"><a href="optimisation.html#cb367-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">v =</span> mu_i[<span class="fu">seq_len</span>(mu_its)], <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/newton1d3-1.png" width="672" /></p>
+<p><img src="main_files/figure-html/newton1d3-1.png" width="672" /></p>
 <p>We see that Newton’s method has quickly homed in on the true value of <span class="math inline">\(\hat \mu\)</span>. Although this example is simple, and is one in which Newton’s method will typically perform well, Newton’s method is incredibly powerful, and will often perform well in a wide range of scenarios. Next we’ll consider multidimensional <span class="math inline">\(\boldsymbol{\theta}\)</span>.</p>
 <!-- ### Taylor's theorem (univariate) -->
 <!-- ### Golden section search -->
@@ -571,7 +571,7 @@ where</p>
 <p>Use five iterations of Newton’s method to estimate <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span>, assuming the above wind speeds are independent from one day to the next and follow a Weibull distribution.</p>
 <p>We’ll start by plotting the log-likelihood surface. We wouldn’t normally do this, but it can be useful to quickly judge whether the log-likelihood surface is well-behaved, such as being unimodal and approximately quadratic about its maximum.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:weib3"></span>
-<img src="_main_files/figure-html/weib3-1.png" alt="Log-likelihood surface of Weibull distribution model for wind speed data with different $\lambda$ and $k$ values." width="70%" />
+<img src="main_files/figure-html/weib3-1.png" alt="Log-likelihood surface of Weibull distribution model for wind speed data with different $\lambda$ and $k$ values." width="70%" />
 <p class="caption">
 Figure 5.1: Log-likelihood surface of Weibull distribution model for wind speed data with different <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(k\)</span> values.
 </p>
@@ -631,7 +631,7 @@ Figure 5.1: Log-likelihood surface of Weibull distribution model for wind speed 
 ## iter 5 1.890069 0.5375279</code></pre>
 <p>Finally we can plot the course of the iterations, and see visually that Newton’s method quickly homes in on the negative log-likelihood surface’s minimum.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:weib5"></span>
-<img src="_main_files/figure-html/weib5-1.png" alt="Five iterations of Newton's method to find Weibull maximum likelihood estimates." width="80%" />
+<img src="main_files/figure-html/weib5-1.png" alt="Five iterations of Newton's method to find Weibull maximum likelihood estimates." width="80%" />
 <p class="caption">
 Figure 5.2: Five iterations of Newton’s method to find Weibull maximum likelihood estimates.
 </p>
@@ -734,7 +734,7 @@ which means that <span class="math inline">\(\boldsymbol{\Delta} = - \nabla f(\b
 ## iter 30 1.781202 0.5447801</code></pre>
 <p>Above we give the final five iterations for each value of <span class="math inline">\(\alpha\)</span>, and see that convergence to <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span> has not been achieved after 30 iterations for <span class="math inline">\(\alpha = 0.5\)</span> and for <span class="math inline">\(\alpha = 0.1\)</span>, whereas Newton’s method had essentially converged after four or five iterations. Worse still, if we allowed more iterations, we’d see that both eventually diverge away from <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span>, as opposed to converging. The undesirable course of these iterations can be seen in the following plot.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grad1"></span>
-<img src="_main_files/figure-html/grad1-1.png" alt="Iterations of the gradient descent algorithm with $\alpha = 0.5$ and $\alpha = 0.1$." width="80%" />
+<img src="main_files/figure-html/grad1-1.png" alt="Iterations of the gradient descent algorithm with $\alpha = 0.5$ and $\alpha = 0.1$." width="80%" />
 <p class="caption">
 Figure 5.3: Iterations of the gradient descent algorithm with <span class="math inline">\(\alpha = 0.5\)</span> and <span class="math inline">\(\alpha = 0.1\)</span>.
 </p>
@@ -792,7 +792,7 @@ Figure 5.3: Iterations of the gradient descent algorithm with <span class="math 
 ## iter 200 1.888556 0.5374245</code></pre>
 <p>We see that line search does at least bring us convergence of the parameter estimates, but that it’s also very slow, as the following plot shows.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grad3"></span>
-<img src="_main_files/figure-html/grad3-1.png" alt="200 iterations of the gradient descent algorithm using line search." width="80%" />
+<img src="main_files/figure-html/grad3-1.png" alt="200 iterations of the gradient descent algorithm using line search." width="80%" />
 <p class="caption">
 Figure 5.4: 200 iterations of the gradient descent algorithm using line search.
 </p>
@@ -868,8 +868,8 @@ where <span class="math inline">\(\mathbf{s}_i = \boldsymbol{\theta}_{i} - \bold
 ## iter 5 1.890167 0.5374986</code></pre>
 <p>and we see that we need two more iterations than Newton’s method to reach convergence to three decimal places.</p>
 <p>Finally, we’ll plot the course of the iterations</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
-<img src="_main_files/figure-html/unnamed-chunk-73-1.png" alt="Five iterations of the MFGS quasi-Newton method." width="80%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
+<img src="main_files/figure-html/unnamed-chunk-74-1.png" alt="Five iterations of the MFGS quasi-Newton method." width="80%" />
 <p class="caption">
 Figure 5.5: Five iterations of the MFGS quasi-Newton method.
 </p>
@@ -1169,8 +1169,8 @@ for some <em>temperature</em> <span class="math inline">\(T\)</span>. We note th
 <span id="cb394-12"><a href="optimisation.html#cb394-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
 <span id="cb394-13"><a href="optimisation.html#cb394-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(T_vals),</span>
 <span id="cb394-14"><a href="optimisation.html#cb394-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">&quot;t_0 =&quot;</span>, T_vals), <span class="at">bg =</span> <span class="st">&#39;white&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
-<img src="_main_files/figure-html/unnamed-chunk-76-1.png" alt="Iterations of simulated annealing for different temperatures." width="80%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-77"></span>
+<img src="main_files/figure-html/unnamed-chunk-77-1.png" alt="Iterations of simulated annealing for different temperatures." width="80%" />
 <p class="caption">
 Figure 5.6: Iterations of simulated annealing for different temperatures.
 </p>

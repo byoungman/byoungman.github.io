@@ -102,9 +102,9 @@ fig:grad1
 exm:unlabeled-div-94
 fig:grad3
 exm:unlabeled-div-96
-fig:unnamed-chunk-73
+fig:unnamed-chunk-74
 exm:unlabeled-div-97
-fig:unnamed-chunk-76
+fig:unnamed-chunk-77
 exm:unlabeled-div-100
 introduction
 module-outline
