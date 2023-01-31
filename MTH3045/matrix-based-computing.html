@@ -444,7 +444,7 @@ f(\mathbf{y} \mid \boldsymbol{\mu}, \boldsymbol{\Sigma}) = \dfrac{1}{\sqrt{(2 \p
 <h3><span class="header-section-number">3.3.1</span> Diagonal, band-diagonal and triangular matrices<a href="matrix-based-computing.html#diagonal-band-diagonal-and-triangular-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following gives examples of various special types of square matrix, which we sometimes encounter in statistical computing. These are diagonal (as defined above), tridiagonal, block diagonal, band and lower triangular matrices. Instead of defining them formally, we’ll just show schematics of each. These are plotted in Figure <a href="matrix-based-computing.html#fig:matrices">3.1</a> with <code>image()</code>, which plots the rows along the <span class="math inline">\(x\)</span>-axis and columns across the <span class="math inline">\(y\)</span>-axis. Hence, to visualise actually looking at the matrix written down on paper, each plot should be considered rotated clockwise through 90 degrees.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:matrices"></span>
-<img src="book/figs/matrices-1.png" alt="Schematics of diagonal, tridiagonal, block diagonal, band and lower triangular matrices." width="576" />
+<img src="_main_files/figure-html/matrices-1.png" alt="Schematics of diagonal, tridiagonal, block diagonal, band and lower triangular matrices." width="576" />
 <p class="caption">
 Figure 3.1: Schematics of diagonal, tridiagonal, block diagonal, band and lower triangular matrices.
 </p>
@@ -1215,7 +1215,7 @@ Note that <span class="math inline">\(\mathbf{A}^-\)</span> is not unique.</p>
 <div class="example">
 <p><span id="exm:process" class="example"><strong>Example 3.24  (Image processing) </strong></span>Consider the following <span class="math inline">\(n \times m = 338 \times 450\)</span> pixel greyscale image</p>
 </div>
-<p><img src="book/figs/image2-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/image2-1.png" width="336" style="display: block; margin: auto;" /></p>
 <p>which can be represented as a matrix, <span class="math inline">\(\mathbf{A}\)</span>, which we’ll store as <code>A</code>, comprising values on <span class="math inline">\([0, 1]\)</span>, where 0 is white and 1 is black; the bottom left <span class="math inline">\(7 \times 7\)</span> pixels take the following values.</p>
 <div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="matrix-based-computing.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> A[<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div>
 <pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
@@ -1227,7 +1227,7 @@ Note that <span class="math inline">\(\mathbf{A}^-\)</span> is not unique.</p>
 ## [6,] 0.5895425 0.5738562 0.5490196 0.4470588 0.3503268 0.3856209 0.4405229
 ## [7,] 0.5895425 0.5816993 0.5647059 0.5163399 0.4339869 0.4535948 0.4836601</code></pre>
 <p>Suppose that we compute the SVD <span class="math inline">\(\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^\text{T}\)</span>. A finite-rank representation of <span class="math inline">\(\mathbf{A}\)</span> is given by <span class="math inline">\(\mathbf{A}_r = \mathbf{U}_r \mathbf{D}_r \mathbf{V}_r^\text{T}\)</span>, where <span class="math inline">\(\mathbf{U}_r\)</span> is the <span class="math inline">\(n \times r\)</span> matrix comprising the first <span class="math inline">\(r\)</span> columns of <span class="math inline">\(\mathbf{U}\)</span>, <span class="math inline">\(\mathbf{D}_r\)</span> is the <span class="math inline">\(r \times r\)</span> matrix comprising the first <span class="math inline">\(r\)</span> rows and columns of <span class="math inline">\(\mathbf{D}\)</span>, and <span class="math inline">\(\mathbf{V}_r\)</span> is the <span class="math inline">\(m \times r\)</span> matrix comprising the first <span class="math inline">\(r\)</span> columns of <span class="math inline">\(\mathbf{V}\)</span>. The following shows the resulting greyscale images obtained by plotting <span class="math inline">\(\mathbf{A}_r\)</span> for <span class="math inline">\(r = 1,~2,~5,~10,~20\)</span> and <span class="math inline">\(50\)</span>.</p>
-<p><img src="book/figs/image4-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/image4-1.png" width="480" style="display: block; margin: auto;" /></p>
 <div class="remark">
 <p><span id="unlabeled-div-51" class="remark"><em>Remark</em>. </span>You might wonder how SVD has compressed our image. The image itself takes</p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="matrix-based-computing.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">format</span>(<span class="fu">object.size</span>(A), <span class="at">units =</span> <span class="st">&#39;Kb&#39;</span>)</span></code></pre></div>

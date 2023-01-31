@@ -358,15 +358,15 @@ University Press. <a href="https://www.maths.ed.ac.uk/~swood34/core-statistics.p
 <span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
 <span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z1 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> B <span class="sc">%*%</span> y)</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##  17.313   0.044  17.357</code></pre>
-<p>We’re interested in the total time, <code>elapsed</code>, which is 17.357 seconds. However, the next line gives exactly the same answer</p>
+##  17.244   0.020  17.265</code></pre>
+<p>We’re interested in the total time, <code>elapsed</code>, which is 17.265 seconds. However, the next line gives exactly the same answer</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z2 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> (B <span class="sc">%*%</span> y))</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.021   0.000   0.022</code></pre>
+##    0.02    0.00    0.02</code></pre>
 <p>which we can check with <code>all.equal()</code></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(z1, z2)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>yet is about 790 times faster. The point of this example is that, if we understand some of the basics behind computations that we need when fitting statistical models, we can make our fitting much more efficient. Improving efficiency can, for given computational cost, allow us to fit models to more data, for example, from which we should hope to draw more reliable inferences.</p>
+<p>yet is about 865 times faster. The point of this example is that, if we understand some of the basics behind computations that we need when fitting statistical models, we can make our fitting much more efficient. Improving efficiency can, for given computational cost, allow us to fit models to more data, for example, from which we should hope to draw more reliable inferences.</p>
 <p>What’s happened above? In first approach <code>R</code> has essentially calculated <span class="math inline">\(\mathbf{C} = \mathbf{AB}\)</span>, say, and then <span class="math inline">\(\mathbf{Cy}\)</span>, i.e. multiplied two <span class="math inline">\(n \times n\)</span> matrices, and then an <span class="math inline">\(n \times n\)</span> matrix by an <span class="math inline">\(n\)</span>-vector. In the second approach, however, <code>R</code> has essentially calculated <span class="math inline">\(\mathbf{x} = \mathbf{By}\)</span> and then <span class="math inline">\(\mathbf{z} = \mathbf{Ax}\)</span>, say, i.e. two multiplications of <span class="math inline">\(n \times n\)</span> matrices and <span class="math inline">\(n\)</span>-vectors. By considering the <span class="math inline">\(n\)</span>-vector as an <span class="math inline">\(n \times 1\)</span> matrix, we should expect multiplying together two <span class="math inline">\(n \times n\)</span> matrices to require roughly a factor of <span class="math inline">\(n\)</span> times more calculations than multiplying an <span class="math inline">\(n \times n\)</span> matrix by an <span class="math inline">\(n\)</span>-vector. This is a trivial, but illuminating, example, worth bearing in mind when writing matrix-based code.</p>
 </div>
 <div id="exploratory-and-refresher-exercises" class="section level2 hasAnchor" number="1.8">
