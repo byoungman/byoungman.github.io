@@ -1,4 +1,11 @@
 fig:q10b
 fig:q10d
+eq:man1
+eq:man2
+eq:man3
+eq:man4
+eq:man5
 chapter-1-exercises
 chapter-2-exercises
+chapter-3-exercises
+chapter-3-exercises-1
