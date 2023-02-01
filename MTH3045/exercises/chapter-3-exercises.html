@@ -156,17 +156,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Calculate <span class="math inline">\(\mathbf{A}^{\text{T}}\mathbf{B}\)</span> in <code>R</code> where <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times p\)</span> matrix comprising N(0, 1) random variates and <span class="math inline">\(\mathbf{B}\)</span> is a <span class="math inline">\(n \times n\)</span> matrix comprising Uniform([0, 1]) random variates for <span class="math inline">\(n = 1000\)</span> and <span class="math inline">\(p = 500\)</span>, using <code>t(A) %*% B</code> and <code>crossprod(A, B)</code>.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Confirm that both produce the same result.</p>
+<hr />
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<hr />
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="chapter-3-exercises.html#cb101-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> p), n)</span>
 <span id="cb101-2"><a href="chapter-3-exercises.html#cb101-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> n), n)</span>
 <span id="cb101-3"><a href="chapter-3-exercises.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> B, <span class="fu">crossprod</span>(A, B))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<hr />
-</details></li>
+</details>
+<hr /></li>
 <li><p>Then benchmark the time that two commands take to complete.</p>
 <details>
 <summary>
@@ -178,13 +178,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb103-3"><a href="chapter-3-exercises.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">crossprod</span>(A, B)</span>
 <span id="cb103-4"><a href="chapter-3-exercises.html#cb103-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: milliseconds
-##             expr      min       lq     mean   median       uq      max neval
-##       t(A) %*% B 5.753339 6.086220 8.270308 6.835232 8.923976 28.52804   100
-##  crossprod(A, B) 3.479454 3.556347 5.366908 3.947822 6.100458 14.35657   100</code></pre>
+##             expr      min       lq      mean   median       uq      max neval
+##       t(A) %*% B 5.867372 6.246189 10.488245 8.489601 14.58516 40.09570   100
+##  crossprod(A, B) 3.474976 3.969359  7.293101 5.772099 11.10640 19.36657   100</code></pre>
 <hr /></li>
 </ol></li>
 <li><p>Consider the calculation <span class="math inline">\(\mathbf{AD}\)</span> where <span class="math display">\[
-\mathbf{A} = \begin{pmatrix}0.69&amp;0.85&amp;-0.84&amp;0.42 \\1.04&amp;-0.33&amp;0.39&amp;1.01 \\-1.13&amp;-2.25&amp;0.76&amp;1.14 \\-0.20&amp;-0.78&amp;0.60&amp;0.63 \\-1.18&amp;-0.57&amp;1.28&amp;0.43 \\1.86&amp;1.21&amp;-0.43&amp;-0.09 \\\end{pmatrix} \text{  and  }\mathbf{D} = \begin{pmatrix}-2.00&amp;0.00&amp;0.00&amp;0.00 \\0.00&amp;1.13&amp;0.00&amp;0.00 \\0.00&amp;0.00&amp;-0.50&amp;0.00 \\0.00&amp;0.00&amp;0.00&amp;-0.91 \\\end{pmatrix}.
+\mathbf{A} = \begin{pmatrix}0.73&amp;0.91&amp;0.16&amp;0.27 \\0.54&amp;-0.49&amp;-0.71&amp;-0.48 \\-0.22&amp;-1.37&amp;0.03&amp;-0.02 \\0.75&amp;1.14&amp;0.04&amp;2.86 \\-0.75&amp;0.10&amp;0.25&amp;-1.00 \\1.07&amp;-0.03&amp;1.37&amp;0.41 \\\end{pmatrix} \text{  and  }\mathbf{D} = \begin{pmatrix}0.14&amp;0.00&amp;0.00&amp;0.00 \\0.00&amp;-0.88&amp;0.00&amp;0.00 \\0.00&amp;0.00&amp;-0.11&amp;0.00 \\0.00&amp;0.00&amp;0.00&amp;0.70 \\\end{pmatrix}.
 \]</span> Write a function in <code>R</code> that takes a matrix <code>A</code> and a vector <code>d</code> as its arguments and computes <span class="math inline">\(\mathbf{AD}\)</span>, where <span class="math inline">\(\mathbf{A} =\)</span> <code>A</code> and <span class="math inline">\(\text{diag}(\mathbf{D}) =\)</span> <code>d</code>, and where <span class="math inline">\(\text{diag}(\mathbf{D})\)</span> denotes the vector comprising the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span>. Consider whether your function is performing redundant calculations and, if it is, try and avoid them.</p>
 <details>
 <summary>
@@ -210,21 +210,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb106-7"><a href="chapter-3-exercises.html#cb106-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>and the following confirms that both give the same result</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chapter-3-exercises.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
-<pre><code>##       [,1]    [,2]   [,3]    [,4]
-## [1,] -1.38  0.9605  0.420 -0.3822
-## [2,] -2.08 -0.3729 -0.195 -0.9191
-## [3,]  2.26 -2.5425 -0.380 -1.0374
-## [4,]  0.40 -0.8814 -0.300 -0.5733
-## [5,]  2.36 -0.6441 -0.640 -0.3913
-## [6,] -3.72  1.3673  0.215  0.0819</code></pre>
+<pre><code>##         [,1]    [,2]    [,3]   [,4]
+## [1,]  0.1022 -0.8008 -0.0176  0.189
+## [2,]  0.0756  0.4312  0.0781 -0.336
+## [3,] -0.0308  1.2056 -0.0033 -0.014
+## [4,]  0.1050 -1.0032 -0.0044  2.002
+## [5,] -0.1050 -0.0880 -0.0275 -0.700
+## [6,]  0.1498  0.0264 -0.1507  0.287</code></pre>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chapter-3-exercises.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AdiagD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
-<pre><code>##       [,1]    [,2]   [,3]    [,4]
-## [1,] -1.38  0.9605  0.420 -0.3822
-## [2,] -2.08 -0.3729 -0.195 -0.9191
-## [3,]  2.26 -2.5425 -0.380 -1.0374
-## [4,]  0.40 -0.8814 -0.300 -0.5733
-## [5,]  2.36 -0.6441 -0.640 -0.3913
-## [6,] -3.72  1.3673  0.215  0.0819</code></pre>
+<pre><code>##         [,1]    [,2]    [,3]   [,4]
+## [1,]  0.1022 -0.8008 -0.0176  0.189
+## [2,]  0.0756  0.4312  0.0781 -0.336
+## [3,] -0.0308  1.2056 -0.0033 -0.014
+## [4,]  0.1050 -1.0032 -0.0044  2.002
+## [5,] -0.1050 -0.0880 -0.0275 -0.700
+## [6,]  0.1498  0.0264 -0.1507  0.287</code></pre>
 <hr /></li>
 <li><p>The following function generates an arbitrary <span class="math inline">\(n \times n\)</span> positive definite matrix.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="chapter-3-exercises.html#cb111-1" aria-hidden="true" tabindex="-1"></a>pdmatrix <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
@@ -730,18 +730,18 @@ is the Cauchy determinant.</p>
 <span id="cb212-8"><a href="chapter-3-exercises.html#cb212-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fl">1e2</span></span>
 <span id="cb212-9"><a href="chapter-3-exercises.html#cb212-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                           expr      min        lq      mean    median        uq
-##                     chol(H100)  147.195  174.3475  208.8859  192.8850  210.3920
-##  eigen(H100, symmetric = TRUE) 1998.470 2160.4380 2633.0761 2213.1395 2261.2715
-##                    eigen(H100) 2570.155 2782.1520 3176.7175 2866.7990 3004.5390
-##                      svd(H100) 1824.797 1916.5285 2267.7706 1969.8890 2049.3245
-##                       qr(H100)  367.651  400.9755  476.4903  413.5035  427.5645
-##        max neval
-##   1326.652   100
-##  30397.509   100
-##   9459.164   100
-##   8004.791   100
-##   3749.713   100</code></pre>
+##                           expr      min        lq      mean    median       uq
+##                     chol(H100)  152.158  167.2365  193.9609  188.3940  200.061
+##  eigen(H100, symmetric = TRUE) 2004.118 2166.3520 2373.1935 2219.5785 2290.562
+##                    eigen(H100) 2608.036 2767.8625 3005.3931 2821.9585 2896.807
+##                      svd(H100) 1850.721 1927.8015 2168.6040 1958.0055 2026.929
+##                       qr(H100)  365.829  398.8970  466.3423  410.9905  423.889
+##       max neval
+##   542.925   100
+##  4417.142   100
+##  6878.283   100
+##  6579.930   100
+##  3245.132   100</code></pre>
 <p>If we consider median computation times, we see that the Cholesky decomposition is quickest, at nearly six times quicker than the QR decomposition, which is next quickest. The QR decomposition is then about just under three times quicker than the symmetric eigen-decomposition, which takes about the same amount of time as the singular value decomposition. The asymmetric eigen-decomposition is slowest, and demonstrates that <em>if</em> we know the matrix we want an eigen-decomposition of is symmetric, then we should pass this information to <code>R</code>.</p>
 <hr />
 <div class="remark">
@@ -754,11 +754,11 @@ is the Cauchy determinant.</p>
 <span id="cb214-5"><a href="chapter-3-exercises.html#cb214-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                               expr      min       lq     mean
-##                      eigen(H100, symmetric = TRUE) 2050.208 2121.983 2489.177
-##  eigen(H100, symmetric = TRUE, only.values = TRUE)  945.397  995.817 1103.330
-##    median       uq       max neval
-##  2154.108 2208.668 24022.870   100
-##  1016.880 1054.459  3498.758   100</code></pre></li>
+##                      eigen(H100, symmetric = TRUE) 2041.810 2152.141 2304.407
+##  eigen(H100, symmetric = TRUE, only.values = TRUE)  966.547 1015.091 1165.203
+##    median       uq      max neval
+##  2188.703 2242.195 4568.966   100
+##  1039.914 1067.883 6496.771   100</code></pre></li>
 <li><p>Given that <span class="math display">\[\mathbf{A} = \begin{pmatrix}1.23&amp;0.30&amp;2.58 \\0.30&amp;0.43&amp;1.92 \\2.58&amp;1.92&amp;10.33 \\\end{pmatrix},~\mathbf{A}^{-1} = \begin{pmatrix}6.9012&amp;16.9412&amp;-4.8724 \\16.9412&amp;55.2602&amp;-14.5022 \\-4.8724&amp;-14.5022&amp;4.0092 \\\end{pmatrix},\]</span> <span class="math display">\[\mathbf{B} = \begin{pmatrix}1.49&amp;0.40&amp;2.76 \\0.40&amp;0.53&amp;2.16 \\2.76&amp;2.16&amp;11.20 \\\end{pmatrix},\]</span> and that <span class="math inline">\(\mathbf{B} = \mathbf{A} + \mathbf{LL}^{\text{T}}\)</span>, where <span class="math inline">\(\mathbf{L}\)</span> is a lower-triangular matrix, find <span class="math inline">\(\mathbf{B}^{-1}\)</span> using Woodbury’s formula, i.e. using <span class="math display">\[(\mathbf{A} + \mathbf{UV}^{\text{T}})^{-1} = \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{I}_n + \mathbf{V}^{\text{T}} \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^{\text{T}} \mathbf{A}^{-1}. \]</span></p>
 <details>
 <summary>
@@ -799,11 +799,11 @@ is the Cauchy determinant.</p>
 -1.0 \times 10^{-1} &amp; 1.75 \times 10^{-4} &amp; 4.79 \times 10^{-3}
 \end{pmatrix}.
 \]</span></p>
+<hr />
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<hr />
 <p>If we refer to the Sherman-Morrison formula, we take <span class="math inline">\(\mathbf{A}^{-1} = (\mathbf{X}^{\text{T}}\mathbf{X})^{-1}\)</span> and <span class="math inline">\(\mathbf{u}^{\text{T}} = \mathbf{v} = (1, 20, 14)\)</span>. Then we can calculate the updated variance-covariance matrix of the sampling distribution of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> as</p>
 <p><span class="math display">\[\sigma^{-2} (\mathbf{A} + \mathbf{u} \mathbf{v}^{\text{T}})^{-1} = \sigma^{-1} \left[ \mathbf{A}^{-1} - \dfrac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^{\text{T}} \mathbf{A}^{-1}}{1 + \mathbf{v}^{\text{T}}\mathbf{A}^{-1}\mathbf{u}} \right]
 \]</span></p>
