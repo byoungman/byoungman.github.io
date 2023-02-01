@@ -8,4 +8,3 @@ eq:man5
 chapter-1-exercises
 chapter-2-exercises
 chapter-3-exercises
-chapter-3-exercises-1
