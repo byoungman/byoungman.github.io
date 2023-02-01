@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Matrix-based computing | MTH3045: Statistical Computing</title>
+  <meta name="description" content="3 Matrix-based computing | MTH3045: Statistical Computing" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Matrix-based computing | MTH3045: Statistical Computing" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Matrix-based computing | MTH3045: Statistical Computing" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch2.html"/>
+<link rel="next" href="numerical-calculus.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#module-outline"><i class="fa fa-check"></i><b>1.1</b> Module outline</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#lectures-practical-classes"><i class="fa fa-check"></i><b>1.2</b> Lectures / practical classes</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#office-hours"><i class="fa fa-check"></i><b>1.3</b> Office hours</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.4</b> Resources</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i><b>1.6</b> Assessment</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#motivating-example"><i class="fa fa-check"></i><b>1.7</b> Motivating example</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#exploratory-and-refresher-exercises"><i class="fa fa-check"></i><b>1.8</b> Exploratory and refresher exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Statistical computing in <code>R</code></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2.html"><a href="ch2.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="ch2.html"><a href="ch2.html#mathematics-by-computer"><i class="fa fa-check"></i><b>2.2</b> Mathematics by computer</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="ch2.html"><a href="ch2.html#positional-number-systems"><i class="fa fa-check"></i><b>2.2.1</b> Positional number systems</a></li>
+<li class="chapter" data-level="2.2.2" data-path="ch2.html"><a href="ch2.html#a-historical-aside-on-exact-representations-of-integers"><i class="fa fa-check"></i><b>2.2.2</b> A historical aside on exact representations of integers</a></li>
+<li class="chapter" data-level="2.2.3" data-path="ch2.html"><a href="ch2.html#floating-point-representation"><i class="fa fa-check"></i><b>2.2.3</b> Floating point representation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="ch2.html"><a href="ch2.html#single-precision-arithmetic"><i class="fa fa-check"></i><b>2.2.4</b> Single-precision arithmetic</a></li>
+<li class="chapter" data-level="2.2.5" data-path="ch2.html"><a href="ch2.html#double-precision-arithmetic"><i class="fa fa-check"></i><b>2.2.5</b> Double-precision arithmetic</a></li>
+<li class="chapter" data-level="2.2.6" data-path="ch2.html"><a href="ch2.html#flops-floating-point-operations"><i class="fa fa-check"></i><b>2.2.6</b> Flops: floating point operations</a></li>
+<li class="chapter" data-level="2.2.7" data-path="ch2.html"><a href="ch2.html#some-useful-terminology"><i class="fa fa-check"></i><b>2.2.7</b> Some useful terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="ch2.html"><a href="ch2.html#the-history-of-r"><i class="fa fa-check"></i><b>2.3</b> The history of <code>R</code></a></li>
+<li class="chapter" data-level="2.4" data-path="ch2.html"><a href="ch2.html#why-r"><i class="fa fa-check"></i><b>2.4</b> Why <code>R</code>?</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="ch2.html"><a href="ch2.html#basics"><i class="fa fa-check"></i><b>2.4.1</b> Basics</a></li>
+<li class="chapter" data-level="2.4.2" data-path="ch2.html"><a href="ch2.html#data-structures"><i class="fa fa-check"></i><b>2.4.2</b> Data structures</a></li>
+<li class="chapter" data-level="2.4.3" data-path="ch2.html"><a href="ch2.html#some-useful-r-functions"><i class="fa fa-check"></i><b>2.4.3</b> Some useful <code>R</code> functions</a></li>
+<li class="chapter" data-level="2.4.4" data-path="ch2.html"><a href="ch2.html#control-structures"><i class="fa fa-check"></i><b>2.4.4</b> Control structures</a></li>
+<li class="chapter" data-level="2.4.5" data-path="ch2.html"><a href="ch2.html#vectorisation"><i class="fa fa-check"></i><b>2.4.5</b> Vectorisation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="ch2.html"><a href="ch2.html#good-practice"><i class="fa fa-check"></i><b>2.5</b> Good practice</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2.html"><a href="ch2.html#useful-tips-to-remember-when-coding"><i class="fa fa-check"></i><b>2.5.1</b> Useful tips to remember when coding</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2.html"><a href="ch2.html#debugging"><i class="fa fa-check"></i><b>2.5.2</b> Debugging</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2.html"><a href="ch2.html#profiling-and-benchmarking"><i class="fa fa-check"></i><b>2.5.3</b> Profiling and benchmarking</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="ch2.html"><a href="ch2.html#compiled-code-with-rcpp"><i class="fa fa-check"></i><b>2.6</b> Compiled code with <code>Rcpp</code></a></li>
+<li class="chapter" data-level="2.7" data-path="ch2.html"><a href="ch2.html#bibliographic-notes"><i class="fa fa-check"></i><b>2.7</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html"><i class="fa fa-check"></i><b>3</b> Matrix-based computing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#motivation"><i class="fa fa-check"></i><b>3.1</b> Motivation</a></li>
+<li class="chapter" data-level="3.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#matrix-properties"><i class="fa fa-check"></i><b>3.2.1</b> Matrix properties</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#special-matrices"><i class="fa fa-check"></i><b>3.3</b> Special matrices</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#diagonal-band-diagonal-and-triangular-matrices"><i class="fa fa-check"></i><b>3.3.1</b> Diagonal, band-diagonal and triangular matrices</a></li>
+<li class="chapter" data-level="3.3.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sparse-matrices"><i class="fa fa-check"></i><b>3.3.2</b> Sparse matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#systems-of-linear-equations"><i class="fa fa-check"></i><b>3.4</b> Systems of linear equations</a></li>
+<li class="chapter" data-level="3.5" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#matrix-decompositions"><i class="fa fa-check"></i><b>3.5</b> Matrix decompositions</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#cholesky-decomposition"><i class="fa fa-check"></i><b>3.5.1</b> Cholesky decomposition</a></li>
+<li class="chapter" data-level="3.5.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#eigen-decomposition"><i class="fa fa-check"></i><b>3.5.2</b> Eigen-decomposition</a></li>
+<li class="chapter" data-level="3.5.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#singular-value-decomposition"><i class="fa fa-check"></i><b>3.5.3</b> Singular value decomposition</a></li>
+<li class="chapter" data-level="3.5.4" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#qr-decomposition"><i class="fa fa-check"></i><b>3.5.4</b> QR decomposition</a></li>
+<li class="chapter" data-level="3.5.5" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#computational-costs-of-matrix-decompostions"><i class="fa fa-check"></i><b>3.5.5</b> Computational costs of matrix decompostions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-formula-woodbury-matrix-identity"><i class="fa fa-check"></i><b>3.6</b> Sherman-Morrison formula / Woodbury matrix identity</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#woodburys-formula"><i class="fa fa-check"></i><b>3.6.1</b> Woodbury’s formula</a></li>
+<li class="chapter" data-level="3.6.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-woodbury-formula"><i class="fa fa-check"></i><b>3.6.2</b> Sherman-Morrison-Woodbury formula</a></li>
+<li class="chapter" data-level="3.6.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-formula"><i class="fa fa-check"></i><b>3.6.3</b> Sherman-Morrison formula</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#bibliographic-notes-1"><i class="fa fa-check"></i><b>3.7</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="numerical-calculus.html"><a href="numerical-calculus.html"><i class="fa fa-check"></i><b>4</b> Numerical Calculus</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#motivation-1"><i class="fa fa-check"></i><b>4.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#numerical-differentiation"><i class="fa fa-check"></i><b>4.2</b> Numerical Differentiation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#differentiation-definitions"><i class="fa fa-check"></i><b>4.2.1</b> Differentiation definitions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#differentiation-rules"><i class="fa fa-check"></i><b>4.2.2</b> Differentiation rules</a></li>
+<li class="chapter" data-level="4.2.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#finite-differencing"><i class="fa fa-check"></i><b>4.2.3</b> Finite-differencing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#quadrature"><i class="fa fa-check"></i><b>4.3</b> Quadrature</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#midpoint-rule"><i class="fa fa-check"></i><b>4.3.1</b> Midpoint rule</a></li>
+<li class="chapter" data-level="4.3.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#simpsons-rule"><i class="fa fa-check"></i><b>4.3.2</b> Simpson’s rule</a></li>
+<li class="chapter" data-level="4.3.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#gaussian-quadrature"><i class="fa fa-check"></i><b>4.3.3</b> Gaussian quadrature</a></li>
+<li class="chapter" data-level="4.3.4" data-path="numerical-calculus.html"><a href="numerical-calculus.html#one-dimensional-numerical-integration-in-r"><i class="fa fa-check"></i><b>4.3.4</b> One-dimensional numerical integration in <code>R</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="numerical-calculus.html"><a href="numerical-calculus.html#multi-dimensional-quadrature"><i class="fa fa-check"></i><b>4.3.5</b> Multi-dimensional quadrature</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="numerical-calculus.html"><a href="numerical-calculus.html#laplaces-method"><i class="fa fa-check"></i><b>4.4</b> Laplace’s method</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#an-aside-on-taylor-series-in-one-dimension"><i class="fa fa-check"></i><b>4.4.1</b> An aside on Taylor series in one dimension</a></li>
+<li class="chapter" data-level="4.4.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#definition-1"><i class="fa fa-check"></i><b>4.4.2</b> Definition</a></li>
+<li class="chapter" data-level="4.4.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#laplaces-method-for-multiple-dimensions"><i class="fa fa-check"></i><b>4.4.3</b> Laplace’s method for multiple dimensions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="numerical-calculus.html"><a href="numerical-calculus.html#monte-carlo-integration"><i class="fa fa-check"></i><b>4.5</b> Monte Carlo integration</a></li>
+<li class="chapter" data-level="4.6" data-path="numerical-calculus.html"><a href="numerical-calculus.html#bibliographic-notes-2"><i class="fa fa-check"></i><b>4.6</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="optimisation.html"><a href="optimisation.html"><i class="fa fa-check"></i><b>5</b> Optimisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="optimisation.html"><a href="optimisation.html#root-finding"><i class="fa fa-check"></i><b>5.1</b> Root finding</a></li>
+<li class="chapter" data-level="5.2" data-path="optimisation.html"><a href="optimisation.html#one-dimensional-optimisation-in-r"><i class="fa fa-check"></i><b>5.2</b> One-dimensional optimisation in <code>R</code></a></li>
+<li class="chapter" data-level="5.3" data-path="optimisation.html"><a href="optimisation.html#newtons-method-in-one-dimension"><i class="fa fa-check"></i><b>5.3</b> Newton’s method in one-dimension</a></li>
+<li class="chapter" data-level="5.4" data-path="optimisation.html"><a href="optimisation.html#newtons-multi-dimensional-method"><i class="fa fa-check"></i><b>5.4</b> Newton’s multi-dimensional method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="optimisation.html"><a href="optimisation.html#taylors-theorem-multivariate"><i class="fa fa-check"></i><b>5.4.1</b> Taylor’s theorem (multivariate)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="optimisation.html"><a href="optimisation.html#newtons-method-in-r"><i class="fa fa-check"></i><b>5.4.2</b> Newton’s method in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="optimisation.html"><a href="optimisation.html#gradient-descent"><i class="fa fa-check"></i><b>5.4.3</b> Gradient descent</a></li>
+<li class="chapter" data-level="5.4.4" data-path="optimisation.html"><a href="optimisation.html#line-search"><i class="fa fa-check"></i><b>5.4.4</b> Line search</a></li>
+<li class="chapter" data-level="5.4.5" data-path="optimisation.html"><a href="optimisation.html#quasi-newton-methods"><i class="fa fa-check"></i><b>5.4.5</b> Quasi-Newton methods</a></li>
+<li class="chapter" data-level="5.4.6" data-path="optimisation.html"><a href="optimisation.html#quasi-newton-methods-in-r"><i class="fa fa-check"></i><b>5.4.6</b> Quasi-Newton methods in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.7" data-path="optimisation.html"><a href="optimisation.html#sec:nelder"><i class="fa fa-check"></i><b>5.4.7</b> Nelder-Mead polytope method</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="optimisation.html"><a href="optimisation.html#global-optimisation"><i class="fa fa-check"></i><b>5.5</b> Global optimisation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="optimisation.html"><a href="optimisation.html#stochastic-optimisation"><i class="fa fa-check"></i><b>5.5.1</b> Stochastic optimisation</a></li>
+<li class="chapter" data-level="5.5.2" data-path="optimisation.html"><a href="optimisation.html#simulated-annealing"><i class="fa fa-check"></i><b>5.5.2</b> Simulated annealing</a></li>
+<li class="chapter" data-level="5.5.3" data-path="optimisation.html"><a href="optimisation.html#simulated-annealing-in-r"><i class="fa fa-check"></i><b>5.5.3</b> Simulated annealing in <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="optimisation.html"><a href="optimisation.html#bibliographic-notes-3"><i class="fa fa-check"></i><b>5.6</b> Bibliographic notes</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MTH3045: Statistical Computing</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="matrix-based-computing" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Matrix-based computing<a href="matrix-based-computing.html#matrix-based-computing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="motivation" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Motivation<a href="matrix-based-computing.html#motivation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Perhaps surprisingly, much of a computation that we do when fitting a statistical model can be formulated with matrices. The linear model is a prime example. In this chapter we’ll explore some key aspects of matrices and calculations involving them that are important for statistical computing. A particularly useful reference for matrices, especially in the context of statistical computing, is the <a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf">Matrix Cookbook</a> (<span class="citation">Petersen and Pedersen (2012)</span>).</p>
+</div>
+<div id="definitions" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Definitions<a href="matrix-based-computing.html#definitions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="matrix-properties" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Matrix properties<a href="matrix-based-computing.html#matrix-properties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s consider an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\bf A\)</span> and <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\bf B\)</span>. We will let <span class="math inline">\(A_{ij}\)</span>, for <span class="math inline">\(i, j = 1, \ldots, n\)</span> denote the <span class="math inline">\((i, j)\)</span>th element of <span class="math inline">\(\bf A\)</span>, i.e. in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span>. We’ll assume that <span class="math inline">\(\bf A\)</span> is stored in <code>R</code> as <code>A</code>.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="matrix-based-computing.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> A <span class="sc">%*%</span> B <span class="co"># computes AB for matrices A and B</span></span></code></pre></div>
+<div class="definition">
+<p><span id="def:unlabeled-div-5" class="definition"><strong>Definition 3.1  (Real matrix) </strong></span><span class="math inline">\(\bf A\)</span> is <strong>real</strong> if all its elements are real numbers. (We’ll only consider real matrices in MTH3045, so ‘real’ may be taken as given.)</p>
+</div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="matrix-based-computing.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">!</span><span class="fu">is.complex</span>(A) <span class="sc">&amp;&amp;</span> <span class="fu">is.finite</span>(A) <span class="co"># checks whether a matrix A is real</span></span></code></pre></div>
+<div class="definition">
+<p><span id="def:unlabeled-div-6" class="definition"><strong>Definition 3.2  (Matrix transpose) </strong></span>The <strong>transpose</strong> of a matrix, denoted <span class="math inline">\(\mathbf{A}^\text{T}\)</span>, is given by interchanging the rows and columns of <span class="math inline">\(\bf A\)</span>.</p>
+</div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="matrix-based-computing.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">t</span>(A) <span class="co"># computes the transpose of a matrix A</span></span></code></pre></div>
+<div class="definition">
+<p><span id="def:unlabeled-div-7" class="definition"><strong>Definition 3.3  (Cross product) </strong></span>The <strong>cross product</strong> of matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> is <span class="math inline">\(\mathbf{A}^\text{T} \mathbf{B}\)</span>.</p>
+</div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="matrix-based-computing.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">crossprod</span>(A, B) <span class="co"># computes t(A) %*% B</span></span></code></pre></div>
+<div class="remark">
+<p><span id="unlabeled-div-8" class="remark"><em>Remark</em>. </span><code>crossprod(A, B)</code> is more efficient that <code>t(A) %*% B</code> because <code>R</code> recognises that it doesn’t need to transpose <code>A</code> and can instead perform a modified matrix multiplication in which the columns of <code>A</code> are multiplied by the columns of <code>B</code>.</p>
+</div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="matrix-based-computing.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tcrossprod</span>(A, B) <span class="co"># computes A %*% t(B)</span></span></code></pre></div>
+<div class="remark">
+<p><span id="unlabeled-div-9" class="remark"><em>Remark</em>. </span><code>crossprod(A)</code> is equivalent to <code>crossprod(A, A)</code> and <code>tcrossprod(A)</code> to <code>tcrossprod(A, A)</code>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 3.4  (Diagonal matrix) </strong></span>A matrix is <strong>diagonal</strong> if its values are zero everywhere, except for its diagonal, i.e. <span class="math inline">\(A_{ij} = 0\)</span> for <span class="math inline">\(i \neq j\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 3.5  (Square matrix) </strong></span>A matrix is <strong>square</strong> if it has the same numbers of rows and columns.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-12" class="definition"><strong>Definition 3.6  (Rank) </strong></span>The <strong>rank</strong> of <span class="math inline">\(\bf A\)</span>, denoted rank(<span class="math inline">\(\bf A\)</span>), is the dimension of the vector space generated (or spanned) by its columns. This corresponds to the maximal number of linearly independent columns of <span class="math inline">\(\bf A\)</span>. A matrix is of <em>full rank</em> if its rank is equal to its number of rows.</p>
+</div>
+<p>The following apply <em>only</em> to square matrices.</p>
+<ul>
+<li>The <span class="math inline">\(n \times n\)</span> identity matrix, denoted <span class="math inline">\({\bf I}_n\)</span>, is diagonal <em>and</em> all its diagonal elements are one.</li>
+</ul>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="matrix-based-computing.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">diag</span>(n) <span class="co"># creates the n x n identity matrix for integer n</span></span></code></pre></div>
+<ul>
+<li><p><span class="math inline">\(\bf A\)</span> is <strong>orthogonal</strong> if <span class="math inline">\(\mathbf{A}^\text{T}\mathbf{A} = {\bf I}_n\)</span> and <span class="math inline">\(\mathbf{A}\mathbf{A}^\text{T} = {\bf I}_n\)</span>.</p></li>
+<li><p><span class="math inline">\(\bf A\)</span> is <strong>symmetric</strong> if <span class="math inline">\({\bf A} = {\bf A}^\text{T}\)</span>.</p></li>
+<li><p>The <strong>trace</strong> of <span class="math inline">\(\bf A\)</span>, denoted tr(<span class="math inline">\(\bf A\)</span>), is the sum of its diagonal entries, i.e. tr(<span class="math inline">\(\bf A\)</span>) = <span class="math inline">\(\sum_{i = 1}^n A_{ii}\)</span>. In <code>R</code>, <code>diag(A)</code> extracts the diagonal elements of <code>A</code>, and so <code>sum(diag(A))</code> computes the trace of <code>A</code>.</p></li>
+<li><p><span class="math inline">\(\bf A\)</span> is <strong>invertible</strong> is there exists a matrix <span class="math inline">\(\bf B\)</span> such that <span class="math inline">\({\bf A} {\bf B} = {\bf I}_n\)</span>. Note that <span class="math inline">\(\bf B\)</span> must be <span class="math inline">\(n \times n\)</span>.</p></li>
+<li><p>The <strong>inverse</strong> of <span class="math inline">\(\bf A\)</span>, if it exists, is denoted <span class="math inline">\({\bf A}^{-1}\)</span>.</p></li>
+</ul>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="matrix-based-computing.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">solve</span>(A) <span class="co"># computes the inverse of A</span></span></code></pre></div>
+<ul>
+<li>A symmetric matrix <span class="math inline">\(\bf A\)</span> is <a href="https://en.wikipedia.org/wiki/Definite_matrix"><strong>positive definite</strong></a> if <span class="math inline">\({\bf x}^\text{T} {\bf A} {\bf x} &gt; 0\)</span> for all non-zero <span class="math inline">\(\bf x\)</span>, i.e. provided all elements of <span class="math inline">\(\bf x\)</span> aren’t zero. (Changes to the inequality define positive semi-definite (<span class="math inline">\(\geq\)</span>), negative semi-definite (<span class="math inline">\(\leq\)</span>), and negative definite (<span class="math inline">\(&lt;\)</span>) matrices, but in statistical computing it’s usually positive definite matrices that we encounter.)</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 3.1  (Hilbert matrix) </strong></span>The Hilbert matrix, <span class="math inline">\(\mathbf{H}_n\)</span>, is the <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\((i, j)\)</span>th elements <span class="math inline">\(1 / (i + j - 1)\)</span> for <span class="math inline">\(i, j = 1, \ldots, n\)</span>. Write a function to form a Hilbert matrix for arbitrary <span class="math inline">\(n\)</span>. Use this to form <span class="math inline">\(\mathbf{H}_3\)</span> and then check whether the matrix that you have formed is symmetric.</p>
+</div>
+<p>There are many ways that we could write this function. We should, though, avoid a <code>for</code> loop. Here’s one option.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="matrix-based-computing.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb153-2"><a href="matrix-based-computing.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to evaluate n by n Hilbert matrix.</span></span>
+<span id="cb153-3"><a href="matrix-based-computing.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Returns n by n matrix.</span></span>
+<span id="cb153-4"><a href="matrix-based-computing.html#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb153-5"><a href="matrix-based-computing.html#cb153-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="dv">1</span> <span class="sc">/</span> (<span class="fu">outer</span>(ind, ind, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb153-6"><a href="matrix-based-computing.html#cb153-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb153-7"><a href="matrix-based-computing.html#cb153-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> H <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">3</span>)</span>
+<span id="cb153-8"><a href="matrix-based-computing.html#cb153-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> H</span></code></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]
+## [1,] 1.0000000 0.5000000 0.3333333
+## [2,] 0.5000000 0.3333333 0.2500000
+## [3,] 0.3333333 0.2500000 0.2000000</code></pre>
+<p>A matrix is symmetric if it and its transpose are equal. There a various ways we can check this.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="matrix-based-computing.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> H <span class="sc">-</span> <span class="fu">t</span>(H) <span class="co"># should be all zero</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    0    0    0
+## [2,]    0    0    0
+## [3,]    0    0    0</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="matrix-based-computing.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(H, <span class="fu">t</span>(H)) <span class="co"># should be TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Or we can turn to <code>isSymmetric()</code>, which is <code>R</code>’s function for checking matrix symmetry.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="matrix-based-computing.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">isSymmetric</span>(H) <span class="co"># should be TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="example">
+<p><span id="exm:mvn1" class="example"><strong>Example 3.2  (Evaluating the multivariate Normal pdf) </strong></span>Let <span class="math inline">\({\bf Y} \sim MVN_p({\boldsymbol \mu}, {\boldsymbol \Sigma})\)</span> denote a random <span class="math inline">\(p\)</span>-vector with a multivariate Normal (MVN) distribution that has mean vector <span class="math inline">\({\boldsymbol \mu}\)</span> and variance-covariance matrix <span class="math inline">\({\boldsymbol \Sigma}\)</span>. Its probability density function (pdf) is then</p>
+<p><span class="math display" id="eq:dmvn">\[\begin{equation}
+f(\mathbf{y} \mid \boldsymbol{\mu}, \boldsymbol{\Sigma}) = \dfrac{1}{\sqrt{(2 \pi)^p | \boldsymbol{\Sigma} |}} \exp\left\{ -\dfrac{1}{2} (\mathbf{y} - \boldsymbol{\mu})^\text{T} \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu}) \right\}.
+\tag{3.1}
+\end{equation}\]</span></p>
+<p>Thus note that, to compute the MVN pdf, we need to consider both the determinant and inverse of <span class="math inline">\(\boldsymbol \Sigma\)</span>, amongst other calculations.</p>
+<p>Write a function <code>dmvn1()</code> to evaluate its pdf in <code>R</code>, and then evaluate <span class="math inline">\(\log f({\bf y} \mid {\boldsymbol \mu}, {\boldsymbol \Sigma})\)</span> for
+<span class="math display">\[
+{\bf y} =
+\left(
+\begin{array}{c}
+0.7\\
+1.3\\
+2.6
+\end{array}
+\right), \hspace{1cm}
+\boldsymbol{\mu} =
+\left(
+\begin{array}{c}
+1\\
+2\\
+3
+\end{array}
+\right), \hspace{1cm}
+\boldsymbol{\Sigma} =
+\left(
+\begin{array}{rrr}
+4 &amp; 2 &amp; 1\\
+2 &amp; 3 &amp; 2\\
+1 &amp; 2 &amp; 2\\
+\end{array}
+\right).
+\]</span></p>
+<p>The function <code>dmvn1()</code> below evaluates the multivariate Normal pdf</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="matrix-based-computing.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> dmvn1 <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, Sigma, <span class="at">log =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb161-2"><a href="matrix-based-computing.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to evaluate multivariate Normal pdf</span></span>
+<span id="cb161-3"><a href="matrix-based-computing.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y and mu are vectors</span></span>
+<span id="cb161-4"><a href="matrix-based-computing.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Sigma is a square matrix</span></span>
+<span id="cb161-5"><a href="matrix-based-computing.html#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># log is a logical</span></span>
+<span id="cb161-6"><a href="matrix-based-computing.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Returns scalar, on log scale, if log == TRUE.</span></span>
+<span id="cb161-7"><a href="matrix-based-computing.html#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   p <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb161-8"><a href="matrix-based-computing.html#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   res <span class="ot">&lt;-</span> y <span class="sc">-</span> mu</span>
+<span id="cb161-9"><a href="matrix-based-computing.html#cb161-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">determinant</span>(Sigma)<span class="sc">$</span>modulus <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> p <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">-</span></span>
+<span id="cb161-10"><a href="matrix-based-computing.html#cb161-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>              <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">t</span>(res) <span class="sc">%*%</span> <span class="fu">solve</span>(Sigma) <span class="sc">%*%</span> res</span>
+<span id="cb161-11"><a href="matrix-based-computing.html#cb161-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (<span class="sc">!</span>log) </span>
+<span id="cb161-12"><a href="matrix-based-computing.html#cb161-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
+<span id="cb161-13"><a href="matrix-based-computing.html#cb161-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out</span>
+<span id="cb161-14"><a href="matrix-based-computing.html#cb161-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>although we’ll later see that this is a crude attempt. Then the following create <span class="math inline">\({\bf y}\)</span>, <span class="math inline">\(\boldsymbol{\mu}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> as objects <code>y</code>, <code>mu</code> and <code>Sigma</code>, respectively.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="matrix-based-computing.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="fl">1.3</span>, <span class="fl">2.6</span>)</span>
+<span id="cb162-2"><a href="matrix-based-computing.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb162-3"><a href="matrix-based-computing.html#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<p>Then we evaluate <span class="math inline">\(\log f({\bf y} \mid {\boldsymbol \mu}, {\boldsymbol \Sigma})\)</span> with</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="matrix-based-computing.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dmvn1</span>(y, mu, Sigma)</span></code></pre></div>
+<pre><code>##           [,1]
+## [1,] -3.654535
+## attr(,&quot;logarithm&quot;)
+## [1] TRUE</code></pre>
+<p>Note that above <code>determinant()$modulus</code> directly calculates <code>log(det())</code>, and is usually more reliable, so should be used when possible.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-14" class="remark"><em>Remark</em>. </span>In general, it is much more sensible to work with log-likelihoods, and then if the likelihood itself is actually sought, simply exponentiate the log-likelihood at the end. This has been implemented for <code>dmvn1()</code>. This will sometimes avoid underflow.</p>
+</div>
+</div>
+</div>
+<div id="special-matrices" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Special matrices<a href="matrix-based-computing.html#special-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="diagonal-band-diagonal-and-triangular-matrices" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Diagonal, band-diagonal and triangular matrices<a href="matrix-based-computing.html#diagonal-band-diagonal-and-triangular-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following gives examples of various special types of square matrix, which we sometimes encounter in statistical computing. These are diagonal (as defined above), tridiagonal, block diagonal, band and lower triangular matrices. Instead of defining them formally, we’ll just show schematics of each. These are plotted in Figure <a href="matrix-based-computing.html#fig:matrices">3.1</a> with <code>image()</code>, which plots the rows along the <span class="math inline">\(x\)</span>-axis and columns across the <span class="math inline">\(y\)</span>-axis. Hence, to visualise actually looking at the matrix written down on paper, each plot should be considered rotated clockwise through 90 degrees.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:matrices"></span>
+<img src="main_files/figure-html/matrices-1.png" alt="Schematics of diagonal, tridiagonal, block diagonal, band and lower triangular matrices." width="576" />
+<p class="caption">
+Figure 3.1: Schematics of diagonal, tridiagonal, block diagonal, band and lower triangular matrices.
+</p>
+</div>
+</div>
+<div id="sparse-matrices" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Sparse matrices<a href="matrix-based-computing.html#sparse-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-15" class="definition"><strong>Definition 3.7  (Sparse matrix) </strong></span>A matrix is <strong>sparse</strong> if most of its elements are zero.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-16" class="remark"><em>Remark</em>. </span>The definition of a sparse matrix is rather vague. Although no specific criterion exists in terms of the proportion of zeros, some consider that the number of non-zero elements should be similar to the number of rows or columns.</p>
+</div>
+<!-- :::{.example name="Markov chain"} -->
+<!-- e.g. ARMA, AR(1), random walk. See @monahan2011 [Example 4.4] -->
+<!-- ::: -->
+<!-- ## Multiplication and flops -->
+</div>
+</div>
+<div id="systems-of-linear-equations" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Systems of linear equations<a href="matrix-based-computing.html#systems-of-linear-equations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Systems of linear equations of the form
+<span class="math display" id="eq:Axb">\[\begin{equation}
+\mathbf{Ax} =\mathbf{b},
+\tag{3.2}
+\end{equation}\]</span>
+where <span class="math inline">\(\bf A\)</span> is an <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(\bf x\)</span> and <span class="math inline">\(\bf b\)</span> are <span class="math inline">\(n\)</span>-vectors are often encountered in statistical computing. The multivariate Normal pdf of equation <a href="matrix-based-computing.html#eq:dmvn">(3.1)</a> is one example: we don’t need to compute <span class="math inline">\({\boldsymbol \Sigma}^{-1}\)</span> and then calculate <span class="math inline">\({\bf z} = {\boldsymbol \Sigma}^{-1} ({\bf y} - {\boldsymbol \mu})\)</span>; instead, left-multiplying by <span class="math inline">\({\boldsymbol \Sigma}\)</span>, we can recognise that <span class="math inline">\({\bf z}\)</span> is the solution to <span class="math inline">\({\boldsymbol \Sigma} {\bf z} = {\bf y} - {\boldsymbol \mu}\)</span>. <code>R</code>’s <code>solve()</code> function can not only invert a matrix, but can also solve a system of linear equations. Given equation <a href="matrix-based-computing.html#eq:Axb">(3.2)</a>, suppose we have <span class="math inline">\(\bf A\)</span> and <span class="math inline">\(\bf b\)</span> stored as <code>A</code> and <code>b</code>, respectively, then we obtain <span class="math inline">\(\bf x\)</span>, which we’ll store as <code>x</code>, with <code>x &lt;- solve(A, b)</code>.</p>
+<div class="example">
+<p><span id="exm:mvn2" class="example"><strong>Example 3.3  (Evaluating the multivariate Normal pdf by solving systems of linear equations) </strong></span>Modify the function <code>dmvn1()</code> used in Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a> to give a new function <code>dmvn2()</code> in which, instead of inverting <span class="math inline">\(\boldsymbol{\Sigma}\)</span>, the system of linear equations <span class="math inline">\(\boldsymbol{\Sigma}(\mathbf{y} - \boldsymbol{\mu})\)</span> is solved.</p>
+</div>
+<p>We simply need to replace <code>solve(Sigma) %*% res</code> with <code>solve(Sigma, res)</code>, giving <code>dmvn2()</code> as follows</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="matrix-based-computing.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> dmvn2 <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, Sigma, <span class="at">log =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb165-2"><a href="matrix-based-computing.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to evaluate multivariate Normal pdf by solving</span></span>
+<span id="cb165-3"><a href="matrix-based-computing.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># a system of linear equations</span></span>
+<span id="cb165-4"><a href="matrix-based-computing.html#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y and mu are vectors</span></span>
+<span id="cb165-5"><a href="matrix-based-computing.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Sigma is a square matrix</span></span>
+<span id="cb165-6"><a href="matrix-based-computing.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># log is a logical</span></span>
+<span id="cb165-7"><a href="matrix-based-computing.html#cb165-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Returns scalar, on log scale, if log == TRUE.</span></span>
+<span id="cb165-8"><a href="matrix-based-computing.html#cb165-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   p <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb165-9"><a href="matrix-based-computing.html#cb165-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   res <span class="ot">&lt;-</span> y <span class="sc">-</span> mu</span>
+<span id="cb165-10"><a href="matrix-based-computing.html#cb165-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">determinant</span>(Sigma)<span class="sc">$</span>modulus <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> p <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">-</span></span>
+<span id="cb165-11"><a href="matrix-based-computing.html#cb165-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>            <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">t</span>(res) <span class="sc">%*%</span> <span class="fu">solve</span>(Sigma, res)</span>
+<span id="cb165-12"><a href="matrix-based-computing.html#cb165-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (<span class="sc">!</span>log) </span>
+<span id="cb165-13"><a href="matrix-based-computing.html#cb165-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
+<span id="cb165-14"><a href="matrix-based-computing.html#cb165-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out</span>
+<span id="cb165-15"><a href="matrix-based-computing.html#cb165-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>which reassuringly gives the same answer as <code>dmvn1()</code>.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="matrix-based-computing.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dmvn2</span>(y, mu, Sigma)</span></code></pre></div>
+<pre><code>##           [,1]
+## [1,] -3.654535
+## attr(,&quot;logarithm&quot;)
+## [1] TRUE</code></pre>
+<!-- https://www.r-bloggers.com/2015/07/dont-invert-that-matrix-why-and-how/ -->
+<div class="remark">
+<p><span id="unlabeled-div-17" class="remark"><em>Remark</em>. </span>In general, solving a system of linear equations is faster and more numerically stable than inverting and multiplying. The latter is essentially a result of reducing numerical errors, as discussed in Chapter <a href="ch2.html#ch2">2</a>.</p>
+</div>
+<!-- - @press2007 [Sec. 2.0] -->
+<!-- start of elementary row operation definition -->
+<div class="definition">
+<p><span id="def:unlabeled-div-18" class="definition"><strong>Definition 3.8  (Elementary row operation) </strong></span>An <strong>elementary row operation</strong> on a matrix is any one of the following.</p>
+</div>
+<ul>
+<li><p>Type-I: interchange two rows of the matrix;</p></li>
+<li><p>Type-II: multiply a row by a nonzero scalar;</p></li>
+<li><p>Type-III: replace a row by the sum of that row and a scalar multiple of another row.</p></li>
+</ul>
+<!-- end of elementary row operation definition -->
+<!-- start of row echelon for definition -->
+<div class="definition">
+<p><span id="def:unlabeled-div-19" class="definition"><strong>Definition 3.9  (Row echelon form) </strong></span>A <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\bf U\)</span> is said to be in <strong>row echelon form</strong> if the following two conditions hold.</p>
+</div>
+<ul>
+<li><p>If a row <span class="math inline">\(\mathbf{u}_{i*}^\text{T}\)</span> comprises all zeros, i.e. <span class="math inline">\(\mathbf{u}_{i*}^\text{T} = \mathbf{0}^\text{T}\)</span>, then all rows below also comprise all zeros.</p></li>
+<li><p>If the first nonzero element of <span class="math inline">\(\mathbf{u}_{i*}^\text{T}\)</span> is the <span class="math inline">\(j\)</span>th element, then the <span class="math inline">\(j\)</span>th element in all rows below is zero.</p></li>
+</ul>
+<!-- end of row echelon for definition -->
+<div class="example">
+<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 3.4  (Gaussian elimination -- full rank case) </strong></span><strong>Gaussian elimination</strong> is perhaps the best established method for solving systems of linear equations. In MTH3045 you won’t be examined on Gaussian elimination, but it will be useful to be familiar with how it works, so that the virtues of the matrix decompositions that follow will become apparent.</p>
+<p>The system of linear equations <span class="math inline">\(\mathbf{Ax} =\mathbf{b}\)</span> may be verbosely written as</p>
+<p><span class="math display" id="eq:Axb2">\[\begin{equation}
+\begin{array}{c}
+a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n = b_1\\
+a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n = b_2\\  
+\vdots\\
+a_{n1}x_1 + a_{n2}x_2 + \ldots + a_{nn}x_n = b_n.\\  
+\end{array}
+\tag{3.3}
+\end{equation}\]</span></p>
+<p>The aim of Gaussian elimination is to use elementary row operations to transform <a href="matrix-based-computing.html#eq:Axb2">(3.3)</a> into an equivalent but triangular system.</p>
+<p>Instead of algebraically writing the algorithm for Gaussian elimination, it will be simpler to consider a numerical example in which we want to solve the following system of four equations in four variables</p>
+<p><span class="math display">\[
+\begin{array}{rrrrrrrr}
+2x_1 &amp;+&amp; 3x_2  &amp; &amp;      &amp; &amp; &amp;= 1\\
+4x_1 &amp;+&amp; 7x_2  &amp;+&amp; 2x_3 &amp; &amp; &amp;= 2\\  
+-6x_1 &amp;-&amp; 10x_2 &amp;+&amp;  x_4 &amp; &amp; &amp;= 1\\
+4x_1 &amp;+&amp; 6x_2  &amp;+&amp; 4x_3 &amp;+&amp; 5x_4 &amp;= 0\\  
+\end{array}
+\]</span></p>
+<p>and for which we’ll write the coefficients of the <span class="math inline">\(x_i\)</span>s and <span class="math inline">\(\bf b\)</span> in the augmented matrix form</p>
+<p><span class="math display">\[
+\left[
+\begin{array}{rrrr|r}
+2 &amp;   3 &amp; 0 &amp; 0 &amp; 1\\
+4 &amp;   7 &amp; 2 &amp; 0 &amp; 2\\  
+-6 &amp; -10 &amp; 0 &amp; 1 &amp; 1\\
+4 &amp;   6 &amp; 4 &amp; 5 &amp; 0\\  
+\end{array}
+\right]
+\]</span></p>
+<p>for convenience.</p>
+<p>We start by choosing the <strong>pivot</strong>. Our first choice is a coefficient of <span class="math inline">\(x_1\)</span>. We can choose any nonzero coefficient. Anything below this is set to zero through elementary operations. We’ll choose <span class="math inline">\(a_{11}\)</span> as the pivot and then perform the following elementary matrix operations: row 2 <span class="math inline">\(\to\)</span> 2 <span class="math inline">\(\times\)</span> row 1 + - 1 <span class="math inline">\(\times\)</span> row 2; row 3 <span class="math inline">\(\to\)</span> 3 <span class="math inline">\(\times\)</span> row 1 + 1 <span class="math inline">\(\times\)</span> row 3; row 4 <span class="math inline">\(\to\)</span> -2 <span class="math inline">\(\times\)</span> row 1 + row 4, which gives the following transformation of the above augmented matrix.</p>
+<p><span class="math display">\[
+\left[
+\begin{array}{rrrr|r}
+2 &amp;   3 &amp; 0 &amp; 0 &amp; 1\\
+4 &amp;   7 &amp; 2 &amp; 0 &amp; 2\\  
+-6 &amp; -10 &amp; 0 &amp; 1 &amp; 1\\
+4 &amp;   6 &amp; 4 &amp; 5 &amp; 0\\  
+\end{array}
+\right]
+\to
+\left[
+\begin{array}{rrrr|r}
+2 &amp;   3 &amp; 0 &amp; 0 &amp;  1\\
+0 &amp;   1 &amp; 2 &amp; 0 &amp;  0\\  
+0 &amp;  -1 &amp; 0 &amp; 1 &amp;  4\\
+0 &amp;   0 &amp; 4 &amp; 5 &amp; -2\\  
+\end{array}
+\right]
+\]</span></p>
+<p>Repeating this with the element in the position of <span class="math inline">\(a_{22}\)</span> we get</p>
+<p><span class="math display">\[
+\left[
+\begin{array}{rrrr|r}
+2 &amp;   3 &amp; 0 &amp; 0 &amp;  1\\
+0 &amp;   1 &amp; 2 &amp; 0 &amp;  0\\  
+0 &amp;  -1 &amp; 0 &amp; 1 &amp;  4\\
+0 &amp;   0 &amp; 4 &amp; 5 &amp; -2\\  
+\end{array}
+\right]
+\to
+\left[
+\begin{array}{rrrr|r}
+2 &amp;   3 &amp; 0 &amp; 0 &amp;  1\\
+0 &amp;   1 &amp; 2 &amp; 0 &amp;  0\\  
+0 &amp;   0 &amp; 2 &amp; 1 &amp;  4\\
+0 &amp;   0 &amp; 4 &amp; 5 &amp; -2\\  
+\end{array}
+\right]
+\]</span></p>
+<p>and then again with the element in the position of <span class="math inline">\(a_{33}\)</span> we get</p>
+<p><span class="math display">\[
+\left[
+\begin{array}{rrrr|r}
+2 &amp;   3 &amp; 0 &amp; 0 &amp;  1\\
+0 &amp;   1 &amp; 2 &amp; 0 &amp;  0\\  
+0 &amp;  -1 &amp; 0 &amp; 1 &amp;  4\\
+0 &amp;   0 &amp; 4 &amp; 5 &amp; -2\\  
+\end{array}
+\right]
+\to
+\left[
+\begin{array}{rrrr|r}
+2 &amp;   3 &amp; 0 &amp; 0 &amp;   1\\
+0 &amp;   1 &amp; 2 &amp; 0 &amp;   0\\  
+0 &amp;   0 &amp; 2 &amp; 1 &amp;   4\\
+0 &amp;   0 &amp; 0 &amp; 3 &amp; -10\\  
+\end{array}
+\right]
+\]</span></p>
+<p>The above operations have <strong>triangularised</strong> the system of linear equations, i.e. with an augmented matrix of the form</p>
+<p><span class="math display">\[
+\left[
+\begin{array}{rrrr|r}
+u_{11} &amp;  u_{12} &amp; \ldots &amp; u_{1n} &amp; b_1^*\\
+0 &amp;   u_{22} &amp; \ldots &amp; u_{2n} &amp; b_2^*\\  
+\vdots &amp; \vdots \ldots &amp; \vdots &amp; \vdots \\
+0 &amp;  0 &amp; \ldots &amp; u_{nn} &amp; b_n^*\\  
+\end{array}
+\right]
+\]</span></p>
+<p>which can be tidily written as <span class="math inline">\(\mathbf{Ux} = \mathbf{b}^*\)</span>. It is straightforward to find <span class="math inline">\(\bf x\)</span> from such a system, because, if we turn to the above example, <span class="math inline">\(x_4 = -10/3\)</span>, which can be substituted in the above line to give <span class="math inline">\(x_3 = 11/3\)</span>, and so forth gives <span class="math inline">\(x_2 = -22/3\)</span> and <span class="math inline">\(x_1 = 23/2\)</span>, i.e. <span class="math inline">\(\mathbf{x} = (22/3, -22/3, 11/3, -10/3)^\text{T}\)</span>.</p>
+</div>
+<p>The above is an example of <strong>backward substitution</strong>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-21" class="definition"><strong>Definition 3.10  (Backward substitution) </strong></span>Consider the system of linear equations given by <span class="math inline">\(\mathbf{Ux} = \mathbf{b}\)</span>, where <span class="math inline">\(\bf U\)</span> is an <span class="math inline">\(n \times n\)</span> upper triangular matrix. We can find <span class="math inline">\(\bf x\)</span> by <strong>backward substitution</strong> through the following steps.</p>
+</div>
+<ol style="list-style-type: decimal">
+<li><p>Calculate <span class="math inline">\(x_n = b_n / u_{nn}\)</span>.</p></li>
+<li><p>For <span class="math inline">\(i = n - 1, n - 2, \ldots, 2, 1\)</span>, recursively compute
+<span class="math display">\[
+x_i = \dfrac{1}{u_{ii}} \left(b_i - \sum_{j = i + 1}^n u_{ij}x_j\right).
+\]</span></p></li>
+</ol>
+<div class="remark">
+<p><span id="unlabeled-div-22" class="remark"><em>Remark</em>. </span>Note that <strong>forward substitution</strong> is simply the analogous process of backward substitution where we find a lower triangular matrix, and then solve for <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> given <span class="math inline">\(x_1\)</span>, and so forth.</p>
+</div>
+<p>Gaussian elimination is the two-stage process of forming the triangular matrix and then performing backward substitution.</p>
+<div class="remark">
+<p><span id="unlabeled-div-23" class="remark"><em>Remark</em>. </span>If we want to perform backward or forward substitution in <code>R</code> we should use <code>backsolve()</code> and <code>forwardsolve()</code>, respectively. These have usage</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="matrix-based-computing.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   <span class="fu">backsolve</span>(r, x, <span class="at">k =</span> <span class="fu">ncol</span>(r), <span class="at">upper.tri =</span> <span class="cn">TRUE</span>, <span class="at">transpose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb168-2"><a href="matrix-based-computing.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   <span class="fu">forwardsolve</span>(l, x, <span class="at">k =</span> <span class="fu">ncol</span>(l), <span class="at">upper.tri =</span> <span class="cn">FALSE</span>, <span class="at">transpose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>So <code>backsolve()</code> expects a right upper-triangular matrix and <code>forwardsolve()</code> expects a left lower-triangular matrix.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-24" class="example"><strong>Example 3.5  </strong></span>Confirm that <span class="math inline">\(\mathbf{x} = (23/2, -22/3, 11/3, -10/3)^\text{T}\)</span> using <code>backsolve()</code>.</p>
+</div>
+<p>We need to input the upper-triangular matrix <span class="math inline">\(\mathbf{U}\)</span> and <span class="math inline">\(\mathbf{b}^*\)</span>, which we’ll call <code>U</code> and <code>bstar</code>, respectively.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="matrix-based-computing.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> U <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb169-2"><a href="matrix-based-computing.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb169-3"><a href="matrix-based-computing.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>),</span>
+<span id="cb169-4"><a href="matrix-based-computing.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb169-5"><a href="matrix-based-computing.html#cb169-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb169-6"><a href="matrix-based-computing.html#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> )</span>
+<span id="cb169-7"><a href="matrix-based-computing.html#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> bstar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">10</span>)</span>
+<span id="cb169-8"><a href="matrix-based-computing.html#cb169-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">backsolve</span>(U, bstar)</span></code></pre></div>
+<pre><code>## [1] 11.500000 -7.333333  3.666667 -3.333333</code></pre>
+<div class="remark">
+<p><span id="unlabeled-div-25" class="remark"><em>Remark</em>. </span>We may want to solve multiple system of linear equations of the form <span class="math inline">\(\mathbf{Ax}_1 = \mathbf{b}_1\)</span>, <span class="math inline">\(\mathbf{Ax}_2 = \mathbf{b}_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(\mathbf{Ax}_p = \mathbf{b}_p\)</span>, which can be written with matrices as <span class="math inline">\(\mathbf{AX} = \mathbf{B}\)</span> for <span class="math inline">\(n \times p\)</span> matrices <span class="math inline">\(\bf X\)</span> and <span class="math inline">\(\bf B\)</span>. In this situation we can recognise that we only triangularise <span class="math inline">\(\bf A\)</span> once, and then use that triangularisation to go through the back substitution algorithm <span class="math inline">\(p\)</span> times.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-26" class="remark"><em>Remark</em>. </span>We can find the inverse of <span class="math inline">\(\bf A\)</span> by solving <span class="math inline">\(\mathbf{AX} = \mathbf{I}_n\)</span> for <span class="math inline">\(\mathbf{X}\)</span> and then setting <span class="math inline">\(\mathbf{A}^{-1} = \mathbf{X}\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-27" class="definition"><strong>Definition 3.11  (Reduced row echelon form) </strong></span>A <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\bf U\)</span> is said to be in <strong>reduced row echelon form</strong> if the following two conditions hold.</p>
+<ol style="list-style-type: decimal">
+<li><p>It is in row echelon form;</p></li>
+<li><p>The first nonzero element of each row is one;</p></li>
+<li><p>All entries above each pivot are zero.</p></li>
+</ol>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-28" class="example"><strong>Example 3.6  (Gaussian elimination (rank deficient case)) </strong></span>Consider Gaussian elimination of the <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(\bf A\)</span> given by
+<span class="math display">\[
+\mathbf{A} =
+\left[
+\begin{array}{rrr}
+1&amp;2&amp;1\\-2&amp;-3&amp;1\\3&amp;5&amp;0
+\end{array}
+\right]
+\]</span></p>
+<p>We can go through the following steps to transform the matrix to reduced row echelon form.
+<span class="math display">\[
+\left[
+\begin{array}{rrr}
+1&amp;2&amp;1\\-2&amp;-3&amp;1\\3&amp;5&amp;0
+\end{array}
+\right]
+\to
+\left[
+\begin{array}{rrr}
+1&amp;2&amp;1\\0&amp;1&amp;3\\0&amp;-1&amp;-3
+\end{array}
+\right]
+\to
+\left[
+\begin{array}{rrr}
+1&amp;0&amp;-5\\0&amp;1&amp;3\\0&amp;0&amp;0
+\end{array}
+\right]
+\]</span></p>
+<p>We’ve ended up with only two nonzero rows, and hence <span class="math inline">\(\bf A\)</span> has rank 2, and because it has three rows it is therefore <strong>rank deficient</strong>.</p>
+<!-- {\displaystyle A={\begin{bmatrix}1&2&1\\-2&-3&1\\3&5&0\end{bmatrix}}}A=\begin{bmatrix}1&2&1\\-2&-3&1\\3&5&0\end{bmatrix} -->
+<!-- can be put in reduced row-echelon form by using the following elementary row operations: -->
+<!-- {\displaystyle {\begin{aligned}{\begin{bmatrix}1&2&1\\-2&-3&1\\3&5&0\end{bmatrix}}&\xrightarrow {2R_{1}+R_{2}\to R_{2}} {\begin{bmatrix}1&2&1\\0&1&3\\3&5&0\end{bmatrix}}\xrightarrow {-3R_{1}+R_{3}\to R_{3}} {\begin{bmatrix}1&2&1\\0&1&3\\0&-1&-3\end{bmatrix}}\\&\xrightarrow {R_{2}+R_{3}\to R_{3}} \,\,{\begin{bmatrix}1&2&1\\0&1&3\\0&0&0\end{bmatrix}}\xrightarrow {-2R_{2}+R_{1}\to R_{1}} {\begin{bmatrix}1&0&-5\\0&1&3\\0&0&0\end{bmatrix}}~.\end{aligned}}}{\displaystyle {\begin{aligned}{\begin{bmatrix}1&2&1\\-2&-3&1\\3&5&0\end{bmatrix}}&\xrightarrow {2R_{1}+R_{2}\to R_{2}} {\begin{bmatrix}1&2&1\\0&1&3\\3&5&0\end{bmatrix}}\xrightarrow {-3R_{1}+R_{3}\to R_{3}} {\begin{bmatrix}1&2&1\\0&1&3\\0&-1&-3\end{bmatrix}}\\&\xrightarrow {R_{2}+R_{3}\to R_{3}} \,\,{\begin{bmatrix}1&2&1\\0&1&3\\0&0&0\end{bmatrix}}\xrightarrow {-2R_{2}+R_{1}\to R_{1}} {\begin{bmatrix}1&0&-5\\0&1&3\\0&0&0\end{bmatrix}}~.\end{aligned}}} -->
+<!-- The final matrix (in row echelon form) has two non-zero rows and thus the rank of matrix A is 2. -->
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-29" class="example"><strong>Example 3.7  (Triangular, forward and backward solving) </strong></span>Use <code>R</code> to find <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(\mathbf{Dx} = \mathbf{b}\)</span> and <span class="math inline">\(\mathbf{Lx} = \mathbf{b}\)</span> and <span class="math inline">\(\mathbf{Ux} = \mathbf{b}\)</span> where</p>
+</div>
+<p><span class="math display">\[
+\mathbf{D} = \left(\begin{array}{rrr}
+-0.75 &amp; 0.00 &amp; 0.00\\
+0.00 &amp; -0.61 &amp; 0.00\\
+0.00 &amp; 0.00 &amp; -0.28\\
+\end{array}\right),~
+\mathbf{U} = \left(\begin{array}{rrr}
+1.00 &amp; -0.19 &amp; 0.89\\
+0.00 &amp; 0.43 &amp; 0.02\\
+0.00 &amp; 0.00 &amp; -0.20\\
+\end{array}\right),
+\]</span>
+<span class="math display">\[
+\mathbf{L} = \left(\begin{array}{rrr}
+-0.72 &amp; 0.00 &amp; 0.00\\
+0.00 &amp; 2.87 &amp; 0.00\\
+-1.94 &amp; -2.04 &amp; 0.81\\
+\end{array}\right)\text{ and }
+\mathbf{b} = \left(\begin{array}{r}
+-2.98\\
+0.39\\
+0.36\\
+\end{array}\right).
+\]</span></p>
+<p>We’ll start by loading <span class="math inline">\(\mathbf{b}\)</span>, <span class="math inline">\(\mathbf{D}\)</span>, <span class="math inline">\(\mathbf{U}\)</span> and <span class="math inline">\(\mathbf{L}\)</span> and which we’ll store as <code>b</code>, <code>D</code>, <code>U</code> and <code>L</code>, respectively.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="matrix-based-computing.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> D <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.75</span>, <span class="sc">-</span><span class="fl">0.61</span>, <span class="sc">-</span><span class="fl">0.28</span>))</span>
+<span id="cb171-2"><a href="matrix-based-computing.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> L <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.72</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">1.94</span>, <span class="dv">0</span>, <span class="fl">2.87</span>, <span class="sc">-</span><span class="fl">2.04</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.81</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb171-3"><a href="matrix-based-computing.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> U <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.19</span>, <span class="fl">0.43</span>, <span class="dv">0</span>, <span class="fl">0.89</span>, <span class="fl">0.02</span>, <span class="sc">-</span><span class="fl">0.2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb171-4"><a href="matrix-based-computing.html#cb171-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.98</span>, <span class="fl">0.39</span>, <span class="fl">0.36</span>)</span></code></pre></div>
+<p>We can solve <span class="math inline">\(\mathbf{Dx} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{x}\)</span> with the following two lines of code</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="matrix-based-computing.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">solve</span>(D, b)</span></code></pre></div>
+<pre><code>## [1]  3.9733333 -0.6393443 -1.2857143</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="matrix-based-computing.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> b <span class="sc">/</span> <span class="fu">diag</span>(D)</span></code></pre></div>
+<pre><code>## [1]  3.9733333 -0.6393443 -1.2857143</code></pre>
+<p>but should note that the latter uses fewer calculations, and so is more efficient and hence better.</p>
+<p>Then we can solve <span class="math inline">\(\mathbf{Ux} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{x}\)</span> with the following two lines of code</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="matrix-based-computing.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">solve</span>(U, b)</span></code></pre></div>
+<pre><code>## [1] -1.1897674  0.9906977 -1.8000000</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="matrix-based-computing.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">backsolve</span>(U, b)</span></code></pre></div>
+<pre><code>## [1] -1.1897674  0.9906977 -1.8000000</code></pre>
+<p>and <span class="math inline">\(\mathbf{Lx} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{x}\)</span> with the following two lines of code</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="matrix-based-computing.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">solve</span>(L, b)</span></code></pre></div>
+<pre><code>## [1]  4.1388889  0.1358885 10.6995765</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="matrix-based-computing.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">forwardsolve</span>(L, b)</span></code></pre></div>
+<pre><code>## [1]  4.1388889  0.1358885 10.6995765</code></pre>
+<p>and on both these occasions the latter is more efficient because it uses fewer calculations.</p>
+</div>
+<div id="matrix-decompositions" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Matrix decompositions<a href="matrix-based-computing.html#matrix-decompositions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cholesky-decomposition" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Cholesky decomposition<a href="matrix-based-computing.html#cholesky-decomposition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-30" class="definition"><strong>Definition 3.12  (Cholesky decomposition) </strong></span>Any positive definite real matrix <span class="math inline">\(\bf A\)</span> can be factorised as
+<span class="math display" id="eq:chol">\[\begin{equation}
+\mathbf{A} =\mathbf{LL}^\text{T}
+\tag{3.4}
+\end{equation}\]</span>
+where <span class="math inline">\(\mathbf{L}\)</span> is a real lower-triangular matrix of the same dimension as <span class="math inline">\(\mathbf{A}\)</span> with positive diagonal entries. The factorisation in <a href="matrix-based-computing.html#eq:chol">(3.4)</a> is the <strong>Cholesky decomposition</strong><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+</div>
+<p>In general, we won’t be concerned with algorithms for computing matrix decompositions in MTH3045. However, the algorithm for computing the Cholesky decomposition is rather elegant, and so is given below. You won’t, however, be expected to use it. Consider the following matrices <span class="math display">\[
+\mathbf{A} =
+\left[
+\begin{array}{cccc}
+a_{11} &amp; a_{12} &amp; \ldots &amp; a_{1n}\\
+a_{21} &amp; a_{22} &amp; \ldots &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{n1} &amp; a_{n2} &amp; \ldots &amp; a_{nn}\\
+\end{array}
+\right]
+\hspace{1cm}
+\mathbf{L} =
+\left[
+\begin{array}{cccc}
+l_{11} &amp; 0 &amp; \ldots &amp; 0\\
+l_{21} &amp; l_{22} &amp; \ldots &amp; 0\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+l_{n1} &amp; l_{n2} &amp; \ldots &amp; l_{nn}\\
+\end{array}
+\right]
+\]</span>
+where <span class="math inline">\(\bf A\)</span> is symmetric and non-singular. The entries of <span class="math inline">\(\bf L\)</span> are given by
+<span class="math display">\[
+l_{ii} = \sqrt{a_{ii} - \sum_{k = 1}^{i - 1}l_{ik}^2}, \hspace{1cm} l_{ij} = \dfrac{a_{ij} - \sum_{k = 1}^{i - 1}l_{ik}l_{jk}}{l_{ii}}, \text{ for }i &gt; j.
+\]</span></p>
+<!-- You aren't expected to know the algorithm behind calculating the Cholesky decomposition for MTH3045, but details can be found in Appendix XX.X (@wood2015). -->
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="matrix-based-computing.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">chol</span>(A) <span class="co"># computes the Cholesky decomposition of a square matrix A</span></span></code></pre></div>
+<div class="remark">
+<p><span id="unlabeled-div-31" class="remark"><em>Remark</em>. </span>The <code>chol()</code> function in <code>R</code> returns an upper-triangular decomposition, i.e. returns <span class="math inline">\(\bf U\)</span> for <span class="math inline">\(\mathbf{A} = \mathbf{U}^\text{T} \mathbf{U}\)</span>. To obtain <span class="math inline">\(\mathbf{L}\)</span> we just use <code>t(chol())</code>.</p>
+</div>
+<div class="example">
+<p><span id="exm:cholR1" class="example"><strong>Example 3.8  (Cholesky decomposition in R) </strong></span>Compute the Cholesky decomposition of <span class="math inline">\(\boldsymbol{\Sigma}\)</span> from Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a> in upper- and lower-triangular form, and verify that both are Cholesky decompositions of <span class="math inline">\(\boldsymbol{\Sigma}\)</span>.</p>
+</div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="matrix-based-computing.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> U <span class="ot">&lt;-</span> <span class="fu">chol</span>(Sigma) <span class="co"># upper-triangular form</span></span>
+<span id="cb185-2"><a href="matrix-based-computing.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), Sigma)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="matrix-based-computing.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> L <span class="ot">&lt;-</span> <span class="fu">t</span>(U) <span class="co"># lower-triangular form</span></span>
+<span id="cb187-2"><a href="matrix-based-computing.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(<span class="fu">tcrossprod</span>(L), Sigma)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="remark">
+<p><span id="unlabeled-div-32" class="remark"><em>Remark</em>. </span>Above, instead of <code>L &lt;- t(chol(Sigma))</code> we’ve used <code>L &lt;- t(U)</code> to avoid repeated calculation of <code>chol(Sigma)</code>. In this example, where we compute the Cholesky decomposition of a <span class="math inline">\(3 \times 3\)</span> matrix, the calculation is trivial. However, for much larger matrices, calculating the Cholesky decomposition can be expensive, and so we could gain significant time by only calculating it once.</p>
+</div>
+<div id="properties" class="section level4 hasAnchor" number="3.5.1.1">
+<h4><span class="header-section-number">3.5.1.1</span> Properties<a href="matrix-based-computing.html#properties" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Once a Cholesky decomposition has been calculated, it can be used to calculate determinants and inverses.</p>
+<ul>
+<li><p>det(<span class="math inline">\(\bf A\)</span>) = <span class="math inline">\(\left(\prod_{i = 1}^n l_{ii}\right)^2\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathbf{A}^{-1} = \mathbf{L}^\text{-T} \mathbf{L}^{-1}\)</span>, where <span class="math inline">\(\mathbf{L}^\text{-T}\)</span> denotes the inverse of <span class="math inline">\(\mathbf{L}^\text{T}\)</span>.</p></li>
+</ul>
+<div class="example">
+<p><span id="exm:chol1" class="example"><strong>Example 3.9  (Determinant and inverse via the Cholesky decomposition) </strong></span>For <span class="math inline">\(\boldsymbol{\Sigma}\)</span> from Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a>, compute det<span class="math inline">\((\boldsymbol{\Sigma})\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}^{-1}\)</span> based on either Cholesky decomposition computed in Example <a href="matrix-based-computing.html#exm:cholR1">3.8</a>. Verify your results.</p>
+</div>
+<p>We’ll start with the determinant</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="matrix-based-computing.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> det1 <span class="ot">&lt;-</span> <span class="fu">det</span>(Sigma)</span>
+<span id="cb189-2"><a href="matrix-based-computing.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> det2 <span class="ot">&lt;-</span> <span class="fu">prod</span>(<span class="fu">diag</span>(L))<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb189-3"><a href="matrix-based-computing.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(det1, det2)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>and then have various options for the inverse</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="matrix-based-computing.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> inv1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(Sigma)</span>
+<span id="cb191-2"><a href="matrix-based-computing.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> inv2 <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(<span class="fu">solve</span>(L), <span class="fu">solve</span>(L))</span>
+<span id="cb191-3"><a href="matrix-based-computing.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(inv1, inv2)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="matrix-based-computing.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> inv3 <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(<span class="fu">solve</span>(L))</span>
+<span id="cb193-2"><a href="matrix-based-computing.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(inv1, inv3)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="matrix-based-computing.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> inv4 <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(L), <span class="fu">solve</span>(L))</span>
+<span id="cb195-2"><a href="matrix-based-computing.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(inv1, inv4)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="matrix-based-computing.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> inv5 <span class="ot">&lt;-</span> <span class="fu">chol2inv</span>(<span class="fu">t</span>(L))</span>
+<span id="cb197-2"><a href="matrix-based-computing.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(inv1, inv5)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>which all give the same answer, although <code>chol2inv()</code> should be our default.</p>
+</div>
+<div id="solving-systems-of-linear-equations" class="section level4 hasAnchor" number="3.5.1.2">
+<h4><span class="header-section-number">3.5.1.2</span> Solving systems of linear equations<a href="matrix-based-computing.html#solving-systems-of-linear-equations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can also use a Cholesky decomposition to solve a system of linear equations. Solving <span class="math inline">\(\mathbf{Ax} = \mathbf{b}\)</span> is equivalent to solving <span class="math inline">\(\mathbf{Ly} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{y}\)</span> and then <span class="math inline">\(\mathbf{L}^\text{T}\mathbf{x} = \mathbf{y}\)</span> for <span class="math inline">\(\mathbf{x}\)</span>. This might seem inefficient at first glance, because we’re having to solve two systems of linear equations. However, <span class="math inline">\(\mathbf{L}\)</span> being triangular means that forward elimination is efficient for <span class="math inline">\(\mathbf{L}\)</span>, and backward elimination is for <span class="math inline">\(\mathbf{L}^\text{T}\)</span>.</p>
+<div class="example">
+<p><span id="exm:chol2" class="example"><strong>Example 3.10  (Solving linear systems with Cholesky decompositions) </strong></span>Recall the multivariate Normal pdf of Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a> in which we needed <span class="math inline">\(\boldsymbol{\Sigma}^{-1}(\mathbf{y} - \boldsymbol{\mu})\)</span>, with <span class="math inline">\(\mathbf{y}\)</span>, <span class="math inline">\(\boldsymbol{\mu}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> as given in Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a>. Compute <span class="math inline">\(\boldsymbol{\Sigma}^{-1}(\mathbf{y} - \boldsymbol{\mu})\)</span> by solving <span class="math inline">\(\boldsymbol{\Sigma} \mathbf{z} = \mathbf{y} - \boldsymbol{\mu}\)</span> for <span class="math inline">\(\mathbf{z}\)</span> using using the Cholesky decomposition of <span class="math inline">\(\boldsymbol{\Sigma}\)</span> from Example <a href="matrix-based-computing.html#exm:chol1">3.9</a>. Verify your answer.</p>
+</div>
+<p>We’ll first use <code>solve()</code> on <span class="math inline">\(\boldsymbol{\Sigma}\)</span>, as in Example <a href="matrix-based-computing.html#exm:mvn2">3.3</a>,</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="matrix-based-computing.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(Sigma, y <span class="sc">-</span> mu)</span></code></pre></div>
+<p>and then we’ll solve <span class="math inline">\(\mathbf{L}\mathbf{x} = \mathbf{y} - \boldsymbol{\mu}\)</span> for <span class="math inline">\(\mathbf{x}\)</span> followed by <span class="math inline">\(\mathbf{L}^\text{T}\mathbf{z} = \mathbf{x}\)</span> for <span class="math inline">\(\mathbf{z}\)</span>.</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="matrix-based-computing.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">solve</span>(L, y <span class="sc">-</span> mu)</span>
+<span id="cb200-2"><a href="matrix-based-computing.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res2 <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(L), x)</span></code></pre></div>
+<p>which we can confirm gives the same as above, i.e. <code>res1</code>, with <code>all.equal()</code></p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="matrix-based-computing.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(res1, res2)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>We can tell <code>R</code> to use forward substitution, by calling function <code>forwardsolve()</code> instead of <code>solve()</code>, or backward substitution, by calling function <code>backsolve()</code>. Then <code>R</code> knows that one triangle of the supplied matrix comprises zeros, which speeds up solving the system of linear equations. Solving via the Cholesky decomposition is also more stable than without it. Otherwise, if we just used <code>solve()</code>, <code>R</code> performs a lot of needless calculations on zeros, because it doesn’t know that they’re zeros.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-33" class="example"><strong>Example 3.11  (Solving triangular linear systems with Cholesky decompositions) </strong></span>Repeat Example <a href="matrix-based-computing.html#exm:chol2">3.10</a> by recognising that the Cholesky decomposition of <span class="math inline">\(\boldsymbol{\Sigma}\)</span> is triangular.</p>
+</div>
+<p>We want to use <code>forwardsolve()</code> to solve <span class="math inline">\(\mathbf{L}\mathbf{x} = \mathbf{y} - \boldsymbol{\mu}\)</span> and then <code>backsolve()</code> to solve <span class="math inline">\(\mathbf{L}^\text{T}\mathbf{z} = \mathbf{x}\)</span>. However, <code>backsolve()</code> expects an upper-triangular matrix, so we must use <span class="math inline">\(\mathbf{L}^\text{T}\)</span>, hence <code>t(L)</code> below.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="matrix-based-computing.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x2 <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(L, y <span class="sc">-</span> mu)</span>
+<span id="cb203-2"><a href="matrix-based-computing.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res3 <span class="ot">&lt;-</span> <span class="fu">backsolve</span>(<span class="fu">t</span>(L), x2)</span>
+<span id="cb203-3"><a href="matrix-based-computing.html#cb203-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(res1, res3)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>We can avoid the transpose operation by letting <code>backsolve()</code> know the format of Cholesky decomposition that we’re supplying. We’re supplying a lower-triangular matrix, hence <code>upper.tri = FALSE</code>, which needs transposing to be upper-triangular, hence <code>transpose = TRUE</code>.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="matrix-based-computing.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res4 <span class="ot">&lt;-</span> <span class="fu">backsolve</span>(L, <span class="fu">forwardsolve</span>(L, y <span class="sc">-</span> mu), <span class="at">upper.tri =</span> <span class="cn">FALSE</span>, <span class="at">transpose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb205-2"><a href="matrix-based-computing.html#cb205-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(res1, res4)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>If we begin with an upper-triangular matrix, <code>U = t(L)</code>, then we’d want to use either of the following</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="matrix-based-computing.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">forwardsolve</span>(U, <span class="fu">backsolve</span>(U, y <span class="sc">-</span> mu, <span class="at">transpose =</span> <span class="cn">TRUE</span>), <span class="at">upper.tri =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb207-2"><a href="matrix-based-computing.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">backsolve</span>(U, <span class="fu">forwardsolve</span>(U, y <span class="sc">-</span> mu, <span class="at">upper.tri =</span> <span class="cn">TRUE</span>, <span class="at">transpose =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<p>and see that the first gives the required result.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="matrix-based-computing.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res5 <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(U, <span class="fu">backsolve</span>(U, y <span class="sc">-</span> mu, <span class="at">transpose =</span> <span class="cn">TRUE</span>), <span class="at">upper.tri =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb208-2"><a href="matrix-based-computing.html#cb208-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(res1, res5)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="definition">
+<p><span id="def:unlabeled-div-34" class="definition"><strong>Definition 3.13  (Mahalanobis distance) </strong></span>Given the <span class="math inline">\(p\)</span>-vectors <span class="math inline">\({\bf x}\)</span> and <span class="math inline">\({\bf y}\)</span> and a variance-covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span>, the <strong>Mahalanobis distance</strong> is defined as
+<span class="math display">\[
+D_M(\mathbf{x}, \mathbf{y}) = \sqrt{(\mathbf{y} - \mathbf{x})^\text{T} {\boldsymbol \Sigma}^{-1} (\mathbf{y} - \mathbf{x})}.
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:maha" class="example"><strong>Example 3.12  (Mahalanobis distance via Cholesky decomposition) </strong></span>We can efficiently compute the Mahalanobis distance using the Cholesky decomposition. Consider <span class="math inline">\(\boldsymbol{\Sigma} = \mathbf{L}\mathbf{L}^\text{T}\)</span> so that <span class="math inline">\(\boldsymbol{\Sigma}^\text{-1} = \mathbf{L}^{-\text{T}}\mathbf{L}^\text{-1}\)</span>. Then <span class="math display">\[\begin{align*}
+\big[D_M(\mathbf{x}, \mathbf{y})\big]^2
+&amp;= (\mathbf{y} - \mathbf{x})^\text{T} \mathbf{L}^{-\text{T}}\mathbf{L}^\text{-1} (\mathbf{y} - \mathbf{x})\\
+&amp;= [\mathbf{L}^{-1}(\mathbf{y} - \mathbf{x})]^\text{T} \mathbf{L}^\text{-1} (\mathbf{y} - \mathbf{x})\\
+&amp;= \mathbf{z}^\text{T} \mathbf{z}
+\end{align*}\]</span>
+where <span class="math inline">\(\mathbf{z}\)</span> is the solution of <span class="math inline">\(\mathbf{L} \mathbf{z} = \mathbf{y} - \mathbf{x}\)</span>.</p>
+</div>
+<p>If we have <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span> and the lower-triangular Cholesky decomposition of <span class="math inline">\(\boldsymbol{\Sigma}\)</span> stored as <code>x</code>, <code>y</code> and <code>L</code>, respectively, then we can efficiently compute the Mahalanobis distance in <code>R</code> with</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="matrix-based-computing.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sqrt</span>(<span class="fu">crossprod</span>(<span class="fu">forwardsolve</span>(L, y <span class="sc">-</span> x)))</span></code></pre></div>
+<p>but may want to simplify the use of <code>crossprod()</code> and use <code>sqrt(sum(forwardsolve(L, y - x)^2))</code> instead.</p>
+<div class="example">
+<p><span id="exm:mvn3" class="example"><strong>Example 3.13  (Evaluating the multivariate Normal pdf using the Cholesky decomposition) </strong></span>Create a function <code>dmvn3()</code> that evaluates the multivariate Normal pdf, as in examples <a href="matrix-based-computing.html#exm:mvn1">3.2</a> and <a href="matrix-based-computing.html#exm:mvn2">3.3</a>, based on a Cholesky decomposition of the variance-covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span>. Verify your function using <span class="math inline">\(\mathbf{y}\)</span>, <span class="math inline">\(\boldsymbol{\mu}\)</span>, and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> given in Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a>.</p>
+</div>
+<p>We first recognise that, if matrix <span class="math inline">\(\boldsymbol{\Sigma} = \mathbf{L} \mathbf{L}^\text{T}\)</span>, then <span class="math inline">\(\log(\text{det}(\boldsymbol{\Sigma})) = 2 \sum_{i = 1}^n \log(l_{ii})\)</span>, which we’ll incorporate in <code>dmvn3()</code></p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="matrix-based-computing.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> dmvn3 <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, Sigma, <span class="at">log =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb211-2"><a href="matrix-based-computing.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to evaluate multivariate Normal pdf by solving</span></span>
+<span id="cb211-3"><a href="matrix-based-computing.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># a system of linear equations via Cholesky decomposition</span></span>
+<span id="cb211-4"><a href="matrix-based-computing.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y and mu are vectors</span></span>
+<span id="cb211-5"><a href="matrix-based-computing.html#cb211-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Sigma is a square matrix</span></span>
+<span id="cb211-6"><a href="matrix-based-computing.html#cb211-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># log is a logical</span></span>
+<span id="cb211-7"><a href="matrix-based-computing.html#cb211-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Returns scalar, on log scale, if log == TRUE.</span></span>
+<span id="cb211-8"><a href="matrix-based-computing.html#cb211-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   p <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb211-9"><a href="matrix-based-computing.html#cb211-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   res <span class="ot">&lt;-</span> y <span class="sc">-</span> mu</span>
+<span id="cb211-10"><a href="matrix-based-computing.html#cb211-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(Sigma))</span>
+<span id="cb211-11"><a href="matrix-based-computing.html#cb211-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">log</span>(<span class="fu">diag</span>(L))) <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> p <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">-</span></span>
+<span id="cb211-12"><a href="matrix-based-computing.html#cb211-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>            <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">forwardsolve</span>(L, res)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb211-13"><a href="matrix-based-computing.html#cb211-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (<span class="sc">!</span>log) </span>
+<span id="cb211-14"><a href="matrix-based-computing.html#cb211-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
+<span id="cb211-15"><a href="matrix-based-computing.html#cb211-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out</span>
+<span id="cb211-16"><a href="matrix-based-computing.html#cb211-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>along with the result to evaluate the Mahalanobis distance from Example <a href="matrix-based-computing.html#exm:maha">3.12</a>. The following confirms the value seen previously.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="matrix-based-computing.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dmvn3</span>(y, mu, Sigma)</span></code></pre></div>
+<pre><code>## [1] -3.654535</code></pre>
+<div class="example">
+<p><span id="exm:rmvn" class="example"><strong>Example 3.14  (Generating multivariate Normal random vectors) </strong></span>We can generate <span class="math inline">\(\mathbf{Y} \sim MVN_p({\boldsymbol \mu}, {\boldsymbol \Sigma})\)</span>, i.e. multivariate Normal random vectors with mean <span class="math inline">\(\boldsymbol{\mu}\)</span> and variance-covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span>, using the following algorithm.</p>
+<ul>
+<li><p>Step 1. Find some matrix <span class="math inline">\(\bf L\)</span> such that <span class="math inline">\(\mathbf{L} \mathbf{L}^\text{T} = \boldsymbol{\Sigma}\)</span>.</p></li>
+<li><p>Step 2. Generate <span class="math inline">\(\mathbf{Z}^\text{T} = (Z_1, \ldots, Z_p)\)</span>, where <span class="math inline">\(Z_i\)</span>, <span class="math inline">\(i = 1, \ldots, p\)</span>, are independent <span class="math inline">\(N(0, 1)\)</span> random variables.</p></li>
+<li><p>Step 3. Set <span class="math inline">\(\mathbf{Y} = \boldsymbol{\mu} + \mathbf{L} \mathbf{Z}\)</span>.</p></li>
+</ul>
+<p>In <code>R</code>, we can write a function, <code>rmvn()</code>, to implement this.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-35" class="example"><strong>Example 3.15  (Generating multivariate normal random vectors in R) </strong></span>Write a function in <code>R</code> to generate <span class="math inline">\(n\)</span> independent <span class="math inline">\(MVN_p({\boldsymbol \mu}, {\boldsymbol \Sigma})\)</span> random vectors and then generate six vectors with <span class="math inline">\(\boldsymbol{\mu}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> as in Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a>.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-36" class="remark"><em>Remark</em>. </span>The Cholesky decomposition clearly meets the criterion for <span class="math inline">\(\bf L\)</span> in Step 1.</p>
+</div>
+<p>Suppose that <span class="math inline">\(n =\)</span> <code>n</code>, <span class="math inline">\(\boldsymbol{\mu} =\)</span> <code>mu</code> and <span class="math inline">\(\boldsymbol{\Sigma} =\)</span> <code>Sigma</code>, then we can use function <code>rmvn()</code> below.</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="matrix-based-computing.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> rmvn <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mu, Sigma) {</span>
+<span id="cb214-2"><a href="matrix-based-computing.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># Function to generate n MVN random vectors</span></span>
+<span id="cb214-3"><a href="matrix-based-computing.html#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># mean vector mu</span></span>
+<span id="cb214-4"><a href="matrix-based-computing.html#cb214-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># variance-covariance matrix Sigma</span></span>
+<span id="cb214-5"><a href="matrix-based-computing.html#cb214-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># integer n</span></span>
+<span id="cb214-6"><a href="matrix-based-computing.html#cb214-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># returns p x n matrix</span></span>
+<span id="cb214-7"><a href="matrix-based-computing.html#cb214-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> p <span class="ot">&lt;-</span> <span class="fu">length</span>(mu)</span>
+<span id="cb214-8"><a href="matrix-based-computing.html#cb214-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(Sigma))</span>
+<span id="cb214-9"><a href="matrix-based-computing.html#cb214-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> Z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(p <span class="sc">*</span> n), <span class="at">nrow =</span> p)</span>
+<span id="cb214-10"><a href="matrix-based-computing.html#cb214-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fu">as.vector</span>(mu) <span class="sc">+</span> L <span class="sc">%*%</span> Z</span>
+<span id="cb214-11"><a href="matrix-based-computing.html#cb214-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb214-12"><a href="matrix-based-computing.html#cb214-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rmvn</span>(<span class="dv">6</span>, mu, Sigma)</span></code></pre></div>
+<pre><code>##           [,1]       [,2]      [,3]      [,4]       [,5]     [,6]
+## [1,] 0.8457857 -0.6251981 -2.322655 0.8581701 -0.2873112 1.710739
+## [2,] 2.0171233  1.5664917  1.525484 2.6164901  1.5392341 2.640589
+## [3,] 4.2669704  2.5623726  2.376017 4.4479018  2.2114458 3.174201</code></pre>
+<!-- - generating MVN RVs -->
+<!-- - MVN likelihood evaluation -->
+<!-- ```{example} -->
+<!-- We can generate $\mathbf{Y} \sim MVN_p({\boldsymbol \mu}, {\boldsymbol \Sigma})$, i.e. multivariate Normal random vectors with mean $\boldsymbol{\mu}$ and variance-covariance matrix $\boldsymbol{\Sigma}$ using the following algorithm. -->
+<!-- 1. Find some matrix $\bf L$ such that $\mathbf{L} \mathbf{L}^\text{T} = \boldsymbol{\Sigma}$. -->
+<!-- 2. Generate $\mathbf{Z}^\text{T} = (Z_1, \ldots, Z_p)$, where $z_i$, $i = 1, \ldots, p$, are independent $N(0, 1)$ random variables. -->
+<!-- 3. Set $\mathbf{Y} = \boldsymbol{\mu} + \mathbf{L} \mathbf{Z}$. -->
+<!-- In `R`, we can write a function, `rmvn()`, to implement this. -->
+<!-- ``` -->
+<!-- ```{r rmvn2} -->
+<!-- rmvn <- function(n, mu, Sigma) { -->
+<!-- p <- length(mu) -->
+<!-- L <- t(chol(Sigma)) -->
+<!-- Z <- matrix(rnorm(p * n), nrow = p) -->
+<!-- as.vector(mu) + L %*% Z -->
+<!-- } -->
+<!-- ``` -->
+</div>
+</div>
+<div id="eigen-decomposition" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Eigen-decomposition<a href="matrix-based-computing.html#eigen-decomposition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="definition" class="section level4 hasAnchor" number="3.5.2.1">
+<h4><span class="header-section-number">3.5.2.1</span> Definition<a href="matrix-based-computing.html#definition" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="definition">
+<p><span id="def:unlabeled-div-37" class="definition"><strong>Definition 3.14  (Eigen-decomposition) </strong></span>We can write any symmetric matrix <span class="math inline">\(\bf A\)</span> in the form
+<span class="math display" id="eq:eig">\[\begin{equation}
+\mathbf{A} = \mathbf{U} \boldsymbol{\Lambda} \mathbf{U}^\text{T}
+\tag{3.5}
+\end{equation}\]</span>
+where <span class="math inline">\(\mathbf{U}\)</span> is an orthogonal matrix and <span class="math inline">\(\boldsymbol{\Lambda}\)</span> is a diagonal matrix. We will denote the diagonal elements of <span class="math inline">\(\boldsymbol{\Lambda}\)</span> by <span class="math inline">\(\lambda_1 \leq \ldots \leq \lambda_n\)</span>. Post-multiplying
+both sides of the decomposition by <span class="math inline">\(\bf U\)</span> we have <span class="math inline">\(\mathbf{AU} = \mathbf{U}\boldsymbol{\Lambda}\)</span>. Let <span class="math inline">\({\bf u}_i\)</span> denote the <span class="math inline">\(i\)</span>th column of <span class="math inline">\(\bf U\)</span>. Then <span class="math inline">\(\mathbf{Au}_i = \lambda_i \mathbf{u}_i\)</span>. The <span class="math inline">\(\lambda_i\)</span>s are the <strong>eigenvalues</strong> of <span class="math inline">\(\bf A\)</span>, and the columns of <span class="math inline">\(\bf U\)</span> are the corresponding <strong>eigenvectors</strong>. We call the decomposition in <a href="matrix-based-computing.html#eq:eig">(3.5)</a> the <strong>eigen-decomposition</strong> (or sometimes <em>spectral decomposition</em>) of <span class="math inline">\(\bf A\)</span>.</p>
+</div>
+</div>
+<div id="properties-1" class="section level4 hasAnchor" number="3.5.2.2">
+<h4><span class="header-section-number">3.5.2.2</span> Properties<a href="matrix-based-computing.html#properties-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If <span class="math inline">\(\bf A\)</span> is symmetric, the following properties of eigen-decompositions hold.</p>
+<ul>
+<li><p><span class="math inline">\(\mathbf{U}^{-1} = \mathbf{U}^\text{T}\)</span></p></li>
+<li><p><span class="math inline">\({\bf A}^{-1} = \mathbf{U} \boldsymbol{\Lambda}^{-1} \mathbf{U}^{-1}\)</span>, and, because <span class="math inline">\(\boldsymbol{\Lambda}\)</span> is diagonal, so too is <span class="math inline">\(\boldsymbol{\Lambda}^{-1}\)</span> and its elements are <span class="math inline">\((\boldsymbol{\Lambda}^{-1})_{ii} = 1/\lambda_i\)</span>.</p></li>
+<li><p>det(<span class="math inline">\(\bf A\)</span>) = <span class="math inline">\(\prod_{i=1}^n \lambda_i\)</span>.</p></li>
+</ul>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="matrix-based-computing.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">eigen</span>(A) <span class="co"># computes the eigen-decomposition of a matrix A</span></span></code></pre></div>
+<div class="example">
+<p><span id="exm:unlabeled-div-38" class="example"><strong>Example 3.16  (Eigen-decomposition of the Hilbert matrix in R) </strong></span>Use <code>eigen()</code> in <code>R</code> to give the eigen-decomposition of the <span class="math inline">\(3 \times 3\)</span> Hilbert matrix.</p>
+</div>
+<p>We’ve already calculated the <span class="math inline">\(3 \times 3\)</span> Hilbert matrix and stored it as <code>H</code>, so we just need</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="matrix-based-computing.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">eigen</span>(H)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.40831893 0.12232707 0.00268734
+## 
+## $vectors
+##           [,1]       [,2]       [,3]
+## [1,] 0.8270449  0.5474484  0.1276593
+## [2,] 0.4598639 -0.5282902 -0.7137469
+## [3,] 0.3232984 -0.6490067  0.6886715</code></pre>
+<p>Note that <code>eigen()</code> returns a list comprising element <code>values</code>, a vector of the eigenvalues in descending order, and <code>vectors</code>, a matrix of the eigenvectors, in column order corresponding to the eigenvalues. We can ask <code>eigen()</code> to return only the eigenvalues by specifying <code>only.values = TRUE</code>, and stipulate that the supplied matrix is symmetric by specifying <code>symmetric = TRUE</code> (which avoids checking symmetry, and can save a bit of time for large matrices).</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-39" class="example"><strong>Example 3.17  (Orthogonality of the eigen-decomposition in R) </strong></span>Confirm that the eigenvectors of the eigen-decomposition of the <span class="math inline">\(3 \times 3\)</span> Hilbert matrix form an orthogonal matrix.</p>
+<p>If <span class="math inline">\(\mathbf{U}\)</span> denotes the matrix of eigenvectors, then we need to show that <span class="math inline">\(\mathbf{U}^\text{T}\mathbf{U} = \mathbf{I}\)</span>, which the following confirms.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="matrix-based-computing.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> eH <span class="ot">&lt;-</span> <span class="fu">eigen</span>(H)</span>
+<span id="cb219-2"><a href="matrix-based-computing.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> U <span class="ot">&lt;-</span> eH<span class="sc">$</span>vectors</span>
+<span id="cb219-3"><a href="matrix-based-computing.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> crossU <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(U) <span class="co"># should be 3 x 3 identity matrix</span></span>
+<span id="cb219-4"><a href="matrix-based-computing.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(crossU, <span class="fu">diag</span>(<span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div class="theorem">
+<p><span id="thm:quad" class="theorem"><strong>Theorem 3.1  </strong></span>Let <span class="math inline">\(\bf A\)</span> be a positive definite matrix with eigenvalues <span class="math inline">\(\lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_n\)</span> and corresponding eigenvectors <span class="math inline">\(\mathbf{u}_1, \mathbf{u}_2, \ldots \mathbf{u}_n\)</span>. Then <span class="math inline">\(\mathbf{u}_1\)</span> maximises <span class="math inline">\(\mathbf{x}^\text{T} \mathbf{A} \mathbf{x}\)</span> <em>and</em> <span class="math inline">\(\mathbf{u}_1^\text{T} \mathbf{A} \mathbf{u}_1 = \lambda_1\)</span>. Furthermore, for <span class="math inline">\(k = 1, \ldots, p &lt; n\)</span>, given <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k\)</span>, <span class="math inline">\(\mathbf{u}_{k+1}\)</span> maximises <span class="math inline">\(\mathbf{x}^\text{T} \mathbf{A} \mathbf{x}\)</span>, subject to <span class="math inline">\(\mathbf{x}\)</span> being orthogonal to <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k\)</span> <em>and</em> <span class="math inline">\(\mathbf{u}_{k+1}^\text{T} \mathbf{A} \mathbf{u}_{k+1} = \lambda_{k+1}\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-40" class="proof"><em>Proof</em>. </span>For a proof see, e.g. <span class="citation">Johnson and Wichern (2007, 80)</span>, but note that knowledge of the proof is beyond the scope of MTH3045.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-41" class="example"><strong>Example 3.18  (Powers of matrices) </strong></span>Consider <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\bf A\)</span> with eigen-decomposition <span class="math inline">\(\mathbf{A} = \mathbf{U} \boldsymbol{\Lambda} \mathbf{U}^\text{T}\)</span>. The second power of <span class="math inline">\(\bf A\)</span> is <span class="math inline">\(\mathbf{A}^2 = \bf AA\)</span>. Show that the <span class="math inline">\(m\)</span>th power of is given by <span class="math inline">\(\mathbf{A}^m = \mathbf{U} \boldsymbol{\Lambda}^m \mathbf{U}^\text{T}\)</span>.</p>
+<p><span class="math display">\[\mathbf{A}^m = \mathbf{U} \boldsymbol{\Lambda} \mathbf{U}^\text{T} \mathbf{U} \boldsymbol{\Lambda} \mathbf{U}^\text{T} \ldots \mathbf{U} \boldsymbol{\Lambda} \mathbf{U}^\text{T}.\]</span> Because <span class="math inline">\(\mathbf{U}^\text{T} \mathbf{U} = \mathbf{I}_n\)</span> this reduces to <span class="math display">\[\mathbf{A}^m = \mathbf{U} \boldsymbol{\Lambda} \boldsymbol{\Lambda} \ldots \boldsymbol{\Lambda} \mathbf{U}^\text{T} = \mathbf{U} \boldsymbol{\Lambda}^m \mathbf{U}^\text{T}.\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-42" class="example"><strong>Example 3.19  (Principal component analysis) </strong></span>Consider a random vector <span class="math inline">\(\mathbf{Y} = (Y_1, \ldots, Y_n)^\text{T}\)</span> with variance-covariance matrix <span class="math inline">\(\boldsymbol \Sigma\)</span>. Then consider taking linear combinations of <span class="math inline">\(\bf Y\)</span> so that
+<span class="math display">\[
+\begin{array}{ccccc}
+Z_1 &amp;=&amp; \mathbf{a}_1^\text{T} \mathbf{Y} &amp;=&amp; a_{11} Y_1 + a_{12} Y_2 + \ldots + a_{1n} Y_n,\\
+Z_2 &amp;=&amp; \mathbf{a}_2^\text{T} \mathbf{Y} &amp;=&amp; a_{21} Y_1 + a_{22} Y_2 + \ldots + a_{2n} Y_n,\\
+\vdots &amp;=&amp; \vdots &amp;=&amp; \vdots\\
+Z_n &amp;=&amp; \mathbf{a}_n^\text{T} \mathbf{Y} &amp;=&amp; a_{n1} Y_1 + a_{n2} Y_2 + \ldots + a_{nn} Y_n,\\
+\end{array}
+\]</span>
+where <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n\)</span> are coefficient vectors.</p>
+<p>Then <span class="math display">\[
+\begin{array}{rrl}
+\text{Var}(Z_i) &amp;= \mathbf{a}_i^\text{T} \boldsymbol{\Sigma} \mathbf{a}_i&amp; \text{for } i = 1, \ldots, n\\
+\text{Cov}(Z_j, Z_k) &amp;= \mathbf{a}_j^\text{T} \boldsymbol{\Sigma} \mathbf{a}_k&amp; \text{for } j, k = 1, \ldots, n.
+\end{array}
+\]</span></p>
+<p>The <strong>principal components</strong> are the <em>uncorrelated</em> linear combinations of <span class="math inline">\(Y_1, \ldots, Y_n\)</span> that maximise <span class="math inline">\(\text{Var}(\mathbf{a}_i^\text{T} \mathbf{Y})\)</span>, for <span class="math inline">\(i = 1, \ldots, n\)</span>. Hence the first principal component maximises <span class="math inline">\(\text{Var}(\mathbf{a}_1 \mathbf{Y})\)</span> subject to <span class="math inline">\(\mathbf{a}_1^\text{T} \mathbf{a}_1 = 1\)</span>, the second maximises <span class="math inline">\(\text{Var}(\mathbf{a}_2 \mathbf{Y})\)</span> subject to <span class="math inline">\(\mathbf{a}_2^\text{T} \mathbf{a}_2 = 1\)</span> <em>and</em> <span class="math inline">\(\text{Cov}(\mathbf{a}_1^\text{T} \mathbf{Y}, \mathbf{a}_2^\text{T} \mathbf{Y}) = 0\)</span>, and so forth. More generally, the <span class="math inline">\(i\)</span>th principal component, <span class="math inline">\(i &gt; 1\)</span>, maximises <span class="math inline">\(\text{Var}(\mathbf{a}_i^\text{T} \mathbf{Y})\)</span> subject <span class="math inline">\(\mathbf{a}_i^\text{T} \mathbf{a}_i = 1\)</span> <em>and</em> <span class="math inline">\(\text{Cov}(\mathbf{a}_i^\text{T} \mathbf{Y}, \mathbf{a}_j^\text{T} \mathbf{Y}) = 0\)</span> for <span class="math inline">\(j &lt; i\)</span>.</p>
+<p>Now suppose that we form the eigen-decomposition <span class="math inline">\(\boldsymbol{\Sigma} = \mathbf{U}^\text{T} \boldsymbol{\Lambda} \mathbf{U}\)</span>. The eigenvectors of <span class="math inline">\(\boldsymbol{\Sigma}\)</span> therefore meet the criteria described above for principal components, and hence give one definition for principal components.</p>
+</div>
+<div class="example">
+<p><span id="exm:pca" class="example"><strong>Example 3.20  (Principal component analysis of Fisher's iris data) </strong></span>Fisher’s iris data are distributed with <code>R</code> as object <code>iris</code>. From the dataset’s help file the data comprise “the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are <code>Iris setosa</code>, <code>versicolor</code>, and <code>virginica</code>.” Compute the principal components for the variables <code>Sepal.Length</code>, <code>Sepal.Width</code>, <code>Petal.Length</code> and <code>Petal.Width</code>.</p>
+</div>
+<p>To compute the principals components, we’ll load the <code>iris</code> data, which we’ll quickly look at</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="matrix-based-computing.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(iris)</span>
+<span id="cb221-2"><a href="matrix-based-computing.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>and then extract the relevant variables, and then form their empirical correlation matrix.</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="matrix-based-computing.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vbls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Sepal.Length&#39;</span>, <span class="st">&#39;Sepal.Width&#39;</span>, <span class="st">&#39;Petal.Length&#39;</span>, <span class="st">&#39;Petal.Width&#39;</span>)</span>
+<span id="cb223-2"><a href="matrix-based-computing.html#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> species <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(iris<span class="sc">$</span>Species)</span>
+<span id="cb223-3"><a href="matrix-based-computing.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Y <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(iris[, vbls]) <span class="co"># data corresponding to variables under study</span></span>
+<span id="cb223-4"><a href="matrix-based-computing.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> corY <span class="ot">&lt;-</span> <span class="fu">cor</span>(Y) <span class="co"># correlation matrix of variables under study</span></span></code></pre></div>
+<p>We can then use the eigen-decomposition of the correlation matrix to form the eigenvectors, which are also the coefficient vectors, and which we’ll store as <code>A</code>. Note that we use the correlation matrix because we’re measuring different features of the plant, which we don’t necessarily expect to be directly comparable.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="matrix-based-computing.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> A <span class="ot">&lt;-</span> <span class="fu">eigen</span>(corY)<span class="sc">$</span>vectors</span>
+<span id="cb224-2"><a href="matrix-based-computing.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> A</span></code></pre></div>
+<pre><code>##            [,1]        [,2]       [,3]       [,4]
+## [1,]  0.5210659 -0.37741762  0.7195664  0.2612863
+## [2,] -0.2693474 -0.92329566 -0.2443818 -0.1235096
+## [3,]  0.5804131 -0.02449161 -0.1421264 -0.8014492
+## [4,]  0.5648565 -0.06694199 -0.6342727  0.5235971</code></pre>
+<p>The principal components are then obtained by calculating <span class="math inline">\(\mathbf{a}_j^\text{T} \mathbf{y}\)</span> for <span class="math inline">\(j = 1, \ldots, 4\)</span>. We’ll store these as <code>pcs</code> and then use <code>head()</code> to show the first few.</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="matrix-based-computing.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> pcs <span class="ot">&lt;-</span> Y <span class="sc">%*%</span> A</span>
+<span id="cb226-2"><a href="matrix-based-computing.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">colnames</span>(pcs) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&#39;PC&#39;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb226-3"><a href="matrix-based-computing.html#cb226-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(pcs)</span></code></pre></div>
+<pre><code>##           PC1       PC2      PC3        PC4
+## [1,] 2.640270 -5.204041 2.488621 -0.1170332
+## [2,] 2.670730 -4.666910 2.466898 -0.1075356
+## [3,] 2.454606 -4.773636 2.288321 -0.1043499
+## [4,] 2.545517 -4.648463 2.212378 -0.2784174
+## [5,] 2.561228 -5.258629 2.392226 -0.1555127
+## [6,] 2.975946 -5.707321 2.437245 -0.2237665</code></pre>
+<div class="remark">
+<p><span id="unlabeled-div-43" class="remark"><em>Remark</em>. </span>Principal component analysis is a commonly used statistical method, often as a method of <em>dimension reduction</em>, when a finite number of principal components, below the dimension of the data, are used to capture most of what’s in the original data.</p>
+</div>
+<p>In practice, if we want to perform PCA then we’d usually use one of <code>R</code>’s built in functions, such as <code>prcomp()</code> or <code>princomp()</code>. For example</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="matrix-based-computing.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">prcomp</span>(Y, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Standard deviations (1, .., p=4):
+## [1] 1.7083611 0.9560494 0.3830886 0.1439265
+## 
+## Rotation (n x k) = (4 x 4):
+##                     PC1         PC2        PC3        PC4
+## Sepal.Length  0.5210659 -0.37741762  0.7195664  0.2612863
+## Sepal.Width  -0.2693474 -0.92329566 -0.2443818 -0.1235096
+## Petal.Length  0.5804131 -0.02449161 -0.1421264 -0.8014492
+## Petal.Width   0.5648565 -0.06694199 -0.6342727  0.5235971</code></pre>
+<p>gives the same principal component coefficients as we obtained in Example <a href="matrix-based-computing.html#exm:pca">3.20</a>. A benefit of working with <code>prcomp()</code> or <code>princomp()</code> is that <code>R</code> interprets the objects as relating to PCA, and then <code>summary()</code> and <code>plot()</code>, for example, perform useful actions. Principal component regression is a statistical model in which we perform regression on principal components.</p>
+<!-- ```{r princomp} -->
+<!-- # require(graphics) -->
+<!-- #  -->
+<!-- # ## The variances of the variables in the -->
+<!-- # ## USArrests data vary by orders of magnitude, so scaling is appropriate -->
+<!-- # (pc.cr <- princomp(USArrests))  # inappropriate -->
+<!-- # princomp(USArrests, cor = TRUE) # =^= prcomp(USArrests, scale=TRUE) -->
+<!-- # ## Similar, but different: -->
+<!-- # ## The standard deviations differ by a factor of sqrt(49/50) -->
+<!-- #  -->
+<!-- # summary(pc.cr <- princomp(USArrests, cor = TRUE)) -->
+<!-- # loadings(pc.cr)  # note that blank entries are small but not zero -->
+<!-- # ## The signs of the columns of the loadings are arbitrary -->
+<!-- # plot(pc.cr) # shows a screeplot. -->
+<!-- # biplot(pc.cr) -->
+<!-- library("factoextra") -->
+<!-- data(decathlon2) -->
+<!-- decathlon2.active <- decathlon2[1:23, 1:10] -->
+<!-- head(decathlon2.active[, 1:6]) -->
+<!-- ``` -->
+<!-- :::{.example name="Principal component regression"} -->
+<!-- Principal component regression -->
+<!-- ::: -->
+<!-- - PCA (clustering via PCA) -->
+<!-- - Canonical correlation analysis -->
+</div>
+</div>
+<div id="singular-value-decomposition" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Singular value decomposition<a href="matrix-based-computing.html#singular-value-decomposition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<!-- Specifically, the singular value decomposition of an {\displaystyle m\times n}m\times n complex matrix M is a factorization of the form {\displaystyle \mathbf {U\Sigma V^{*}} }{\displaystyle \mathbf {U\Sigma V^{*}} }, where U is an {\displaystyle m\times m}m\times m complex unitary matrix, {\displaystyle \mathbf {\Sigma } }\mathbf{\Sigma} is an {\displaystyle m\times n}m\times n rectangular diagonal matrix with non-negative real numbers on the diagonal, and V is an {\displaystyle n\times n}n\times n complex unitary matrix. If M is real, U and V can also be guaranteed to be real orthogonal matrices. In such contexts, the SVD is often denoted {\displaystyle \mathbf {U\Sigma V^{T}} }{\displaystyle \mathbf {U\Sigma V^{T}} }. -->
+<!-- The diagonal entries {\displaystyle \sigma _{i}=\Sigma _{ii}}{\displaystyle \sigma _{i}=\Sigma _{ii}} of {\displaystyle \mathbf {\Sigma } }\mathbf{\Sigma} are known as the singular values of M. The number of non-zero singular values is equal to the rank of M. The columns of U and the columns of V are called the left-singular vectors and right-singular vectors of M, respectively. -->
+<!-- The SVD is not unique. It is always possible to choose the decomposition so that the singular values {\displaystyle \Sigma _{ii}}{\displaystyle \Sigma _{ii}}are in descending order. In this case, {\displaystyle \mathbf {\Sigma } }\mathbf{\Sigma} (but not always U and V) is uniquely determined by M. -->
+<div class="theorem">
+<p><span id="thm:unlabeled-div-44" class="theorem"><strong>Theorem 3.2  </strong></span>For an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\bf A\)</span> with real elements and <span class="math inline">\(m \geq n\)</span>, there exist orthogonal matrices <span class="math inline">\(\bf U\)</span> and <span class="math inline">\(\bf V\)</span> such that <span class="math display">\[\mathbf{U}^\text{T} \mathbf{A} \mathbf{V} = \mathbf{D},\]</span> where <span class="math inline">\(\mathbf{D}\)</span> is a diagonal matrix with elements <span class="math inline">\(d_1 \geq d_2 \geq \ldots \geq d_m\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-45" class="definition"><strong>Definition 3.15  (Singular value decomposition) </strong></span>The <strong>singular value decomposition</strong> (SVD) of <span class="math inline">\(\mathbf{A}\)</span> is <span class="math display">\[\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^\text{T}.\]</span> The diagonal entries of <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{D}\)</span> are the singular values of <span class="math inline">\(\mathbf{A}\)</span>. We can form a <span class="math inline">\(m \times m\)</span> matrix <span class="math inline">\(\mathbf{U}\)</span> from the eigenvectors of <span class="math inline">\(\mathbf{A}^\text{T}\mathbf{A}\)</span> and a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{V}\)</span> from the eigenvectors of <span class="math inline">\(\mathbf{AA}^\text{T}\)</span>. The singular values are the square roots of the positive eigenvalues of <span class="math inline">\(\mathbf{A}^\text{T}\mathbf{A}\)</span>.</p>
+</div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="matrix-based-computing.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">svd</span>(A) <span class="co"># calculates the SVD of a matrix A</span></span></code></pre></div>
+<!-- #### Properties -->
+<!-- - det($\bf A$) = det($\bf Q$) det($\bf R$) = det($\bf R$) since det($\bf Q$) = 1 as $\bf Q$ is orthogonal. -->
+<!-- - det($\bf R$) = $\prod_{i = 1}^n r_{ii}$, since $\bf R$ is triangular. -->
+<!-- - $\mathbf{A}^{-1} = (\mathbf{Q} \mathbf{R})^{-1} = \mathbf{R}^{-1} \mathbf{Q}^{-1} = \mathbf{R}^{-1} \mathbf{Q}^\text{T}$. -->
+<div class="example">
+<p><span id="exm:unlabeled-div-46" class="example"><strong>Example 3.21  (SVD of the Hilbert matrix in R) </strong></span>Compute a SVD of the <span class="math inline">\(3 \times 3\)</span> Hilbert matrix, <span class="math inline">\(\mathbf{H}_3\)</span>, in <code>R</code> using <code>svd()</code>.</p>
+</div>
+<p>We have <span class="math inline">\(\mathbf{H}_3\)</span> stored as <code>H</code> already, so we’ll now calculate its SVD.</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="matrix-based-computing.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> H.svd <span class="ot">&lt;-</span> <span class="fu">svd</span>(H)</span>
+<span id="cb231-2"><a href="matrix-based-computing.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> H.svd</span></code></pre></div>
+<pre><code>## $d
+## [1] 1.40831893 0.12232707 0.00268734
+## 
+## $u
+##            [,1]       [,2]       [,3]
+## [1,] -0.8270449  0.5474484  0.1276593
+## [2,] -0.4598639 -0.5282902 -0.7137469
+## [3,] -0.3232984 -0.6490067  0.6886715
+## 
+## $v
+##            [,1]       [,2]       [,3]
+## [1,] -0.8270449  0.5474484  0.1276593
+## [2,] -0.4598639 -0.5282902 -0.7137469
+## [3,] -0.3232984 -0.6490067  0.6886715</code></pre>
+<p>From <code>svd()</code> we get a three-element list where <code>d</code> is a vector of the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span>, <code>u</code> is <span class="math inline">\(\mathbf{U}\)</span> and <code>v</code> is <span class="math inline">\(\mathbf{V}\)</span>.</p>
+<p>We can quickly confirm that <span class="math inline">\(\mathbf{H}_3 = \mathbf{UDV}^\text{T}\)</span>.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="matrix-based-computing.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(H, H.svd<span class="sc">$</span>u <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(<span class="fu">diag</span>(H.svd<span class="sc">$</span>d), H.svd<span class="sc">$</span>v))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="remark">
+<p><span id="unlabeled-div-47" class="remark"><em>Remark</em>. </span>One application of the SVD is solving systems of linear equations. Let <span class="math inline">\(\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^\text{T}\)</span> be the SVD of <span class="math inline">\(\mathbf{A}\)</span>. Consider again solving <span class="math inline">\(\mathbf{Ax} = \mathbf{b}\)</span>. Then
+<span class="math display">\[\begin{align}
+\mathbf{U}^\text{T}\mathbf{Ax} &amp;= \mathbf{U}^\text{T}\mathbf{b} \tag{premultiplying by $\mathbf{U}^\text{T}$} \\
+\mathbf{U}^\text{T}\mathbf{U} \mathbf{D} \mathbf{V}^\text{T}\mathbf{x} &amp;= \mathbf{U}^\text{T}\mathbf{b} \tag{substituting $\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^\text{T}$} \\
+\mathbf{D} \mathbf{V}^\text{T}\mathbf{x} &amp;= \mathbf{U}^\text{T}\mathbf{b} \tag{as $\mathbf{U}^\text{T}\mathbf{U} = \mathbf{I}_n$} \\
+\mathbf{D} \tilde{\mathbf{x}} &amp;= \tilde{\mathbf{b}}. \tag{setting $\tilde{\mathbf{x}} = \mathbf{V}^\text{T}\mathbf{x}$ and $\tilde{\mathbf{b}} = \mathbf{U}^\text{T}\mathbf{b}$}
+\end{align}\]</span></p>
+<p>As <span class="math inline">\(\mathbf{D}\)</span> is diagonal, we see that setting <span class="math inline">\(\tilde{\mathbf{x}} = \mathbf{V}^\text{T}\mathbf{x}\)</span> and <span class="math inline">\(\tilde{\mathbf{b}} = \mathbf{U}^\text{T}\mathbf{b}\)</span> results in a diagonal solve, i.e. essentially <span class="math inline">\(n\)</span> divisions.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-48" class="example"><strong>Example 3.22  (Solving systems of linear equations using a SVD in R) </strong></span>Solve <span class="math inline">\(\boldsymbol{\Sigma} \mathbf{z} = \mathbf{y} - \boldsymbol{\mu}\)</span> in <code>R</code> using a SVD with <span class="math inline">\(\mathbf{y}\)</span>, <span class="math inline">\(\boldsymbol{\mu}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> as in Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a>.</p>
+</div>
+<p>Following the above remark, we want to calculate <span class="math inline">\(\tilde{\mathbf{x}} = \mathbf{V}^\text{T}\mathbf{x}\)</span> and <span class="math inline">\(\tilde{\mathbf{b}} = \mathbf{V}^\text{T}(\mathbf{y} - \boldsymbol{\mu})\)</span>. We’ll start by computing the SVD of <span class="math inline">\(\boldsymbol{\Sigma}\)</span>, and then extract <span class="math inline">\(\text{diag}(\mathbf{D})\)</span> and <span class="math inline">\(\mathbf{V}\)</span>, which we’ll call <code>S.d</code> and <code>S.V</code>, respectively.</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="matrix-based-computing.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> S.svd <span class="ot">&lt;-</span> <span class="fu">svd</span>(Sigma)</span>
+<span id="cb235-2"><a href="matrix-based-computing.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> S.d <span class="ot">&lt;-</span> S.svd<span class="sc">$</span>d</span>
+<span id="cb235-3"><a href="matrix-based-computing.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> S.V <span class="ot">&lt;-</span> S.svd<span class="sc">$</span>v</span></code></pre></div>
+<p>Then we obtain <span class="math inline">\(\tilde{\mathbf{b}} = \mathbf{V}^\text{T} (\mathbf{y} - \boldsymbol{\mu})\)</span>, which we’ll call <code>b2</code>.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="matrix-based-computing.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> b2  <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(S.V, y <span class="sc">-</span> mu)</span></code></pre></div>
+<p>Then <span class="math inline">\(\tilde{\mathbf{x}}\)</span> is the solution of <span class="math inline">\(\mathbf{D} \tilde{\mathbf{x}} = \tilde{\mathbf{b}}\)</span>, which we’ll call <code>x2</code>, and can be computed with</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="matrix-based-computing.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x2 <span class="ot">&lt;-</span> b2 <span class="sc">/</span> S.svd<span class="sc">$</span>d</span></code></pre></div>
+<p>since <span class="math inline">\(\mathbf{D}\)</span> is diagonal. Finally, <span class="math inline">\(\mathbf{z}\)</span> is the solution of <span class="math inline">\(\mathbf{V}^T \mathbf{z} = \tilde{\mathbf{x}}\)</span>, which we’ll call <code>res6</code> and can obtain with</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="matrix-based-computing.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> z <span class="ot">&lt;-</span> S.V <span class="sc">%*%</span> x2</span></code></pre></div>
+<p>since <span class="math inline">\(\mathbf{V}^\text{-T} = \mathbf{V}\)</span>. Vectorising this and renaming it to <code>res6</code>, we confirm that we get the same result as in Example <a href="matrix-based-computing.html#exm:chol2">3.10</a>.</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="matrix-based-computing.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res6 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(z)</span>
+<span id="cb239-2"><a href="matrix-based-computing.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(res1, res6)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>So far we have considered systems of linear equations where <span class="math inline">\(\bf A\)</span> is non-singular, which means that <span class="math inline">\({\bf A}^\text{-1}\)</span> is unique. Now we’ll consider the case where <span class="math inline">\(\bf A\)</span> is singular, although this won’t be examined in MTH3045.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-49" class="definition"><strong>Definition 3.16  (Generalised inverse) </strong></span>A <strong>generalized inverse</strong> matrix of the matrix <span class="math inline">\(\bf A\)</span> is any matrix <span class="math inline">\(\mathbf{A}^-\)</span> such that
+<span class="math display">\[\mathbf{AA}^-\mathbf{A} = \mathbf{A}.\]</span>
+Note that <span class="math inline">\(\mathbf{A}^-\)</span> is not unique.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 3.23  (Moore-Penrose pseudo-inverse) </strong></span>The <strong>Moore-Penrose pseudo-inverse</strong><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> of a matrix <span class="math inline">\(\bf A\)</span> is a generalized inverse that is unique by virtue of stipulating that it must satisfy the following four properties.</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbf{AA}^-\mathbf{A} = \mathbf{A}\)</span>.</li>
+<li><span class="math inline">\(\mathbf{A}^-\mathbf{A}\mathbf{A}^- = \mathbf{A}^-\)</span>.</li>
+<li><span class="math inline">\((\mathbf{A}\mathbf{A}^-)^\text{T} = \mathbf{A} \mathbf{A}^-\)</span>.</li>
+<li><span class="math inline">\((\mathbf{A}^-\mathbf{A})^\text{T} = \mathbf{A}^- \mathbf{A}\)</span>.</li>
+</ol>
+<p>We can construct a Moore-Penrose pseudo-inverse via the SVD. Consider <span class="math inline">\(\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^\text{T}\)</span>, the SVD of <span class="math inline">\(\mathbf{A}\)</span>. Let <span class="math inline">\(\mathbf{D}^-\)</span> denote the generalised inverse of <span class="math inline">\(\mathbf{D}\)</span>, which is simply obtained by taking reciprocals of the positive diagonal values, with zeros left as zeros. Then we have <span class="math display">\[\mathbf{A}^- = \mathbf{U} \mathbf{D}^- \mathbf{V}^\text{T}.\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:process" class="example"><strong>Example 3.24  (Image processing) </strong></span>Consider the following <span class="math inline">\(n \times m = 338 \times 450\)</span> pixel greyscale image</p>
+</div>
+<p><img src="main_files/figure-html/image2-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>which can be represented as a matrix, <span class="math inline">\(\mathbf{A}\)</span>, which we’ll store as <code>A</code>, comprising values on <span class="math inline">\([0, 1]\)</span>, where 0 is white and 1 is black; the bottom left <span class="math inline">\(7 \times 7\)</span> pixels take the following values.</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="matrix-based-computing.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> A[<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
+## [1,] 0.3516340 0.4718954 0.4483660 0.2718954 0.2522876 0.2758170 0.2758170
+## [2,] 0.4261438 0.5228758 0.4718954 0.2915033 0.2562092 0.2718954 0.2679739
+## [3,] 0.4915033 0.5464052 0.4875817 0.3032680 0.2444444 0.2601307 0.2562092
+## [4,] 0.5346405 0.5503268 0.4915033 0.3150327 0.2326797 0.2601307 0.2758170
+## [5,] 0.5738562 0.5699346 0.5111111 0.3647059 0.2640523 0.3032680 0.3503268
+## [6,] 0.5895425 0.5738562 0.5490196 0.4470588 0.3503268 0.3856209 0.4405229
+## [7,] 0.5895425 0.5816993 0.5647059 0.5163399 0.4339869 0.4535948 0.4836601</code></pre>
+<p>Suppose that we compute the SVD <span class="math inline">\(\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^\text{T}\)</span>. A finite-rank representation of <span class="math inline">\(\mathbf{A}\)</span> is given by <span class="math inline">\(\mathbf{A}_r = \mathbf{U}_r \mathbf{D}_r \mathbf{V}_r^\text{T}\)</span>, where <span class="math inline">\(\mathbf{U}_r\)</span> is the <span class="math inline">\(n \times r\)</span> matrix comprising the first <span class="math inline">\(r\)</span> columns of <span class="math inline">\(\mathbf{U}\)</span>, <span class="math inline">\(\mathbf{D}_r\)</span> is the <span class="math inline">\(r \times r\)</span> matrix comprising the first <span class="math inline">\(r\)</span> rows and columns of <span class="math inline">\(\mathbf{D}\)</span>, and <span class="math inline">\(\mathbf{V}_r\)</span> is the <span class="math inline">\(m \times r\)</span> matrix comprising the first <span class="math inline">\(r\)</span> columns of <span class="math inline">\(\mathbf{V}\)</span>. The following shows the resulting greyscale images obtained by plotting <span class="math inline">\(\mathbf{A}_r\)</span> for <span class="math inline">\(r = 1,~2,~5,~10,~20\)</span> and <span class="math inline">\(50\)</span>.</p>
+<p><img src="main_files/figure-html/image4-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="remark">
+<p><span id="unlabeled-div-51" class="remark"><em>Remark</em>. </span>You might wonder how SVD has compressed our image. The image itself takes</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="matrix-based-computing.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">format</span>(<span class="fu">object.size</span>(A), <span class="at">units =</span> <span class="st">&#39;Kb&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;1188.5 Kb&quot;</code></pre>
+<p>bytes (and there are eight bits in a byte). However, if we consider the <span class="math inline">\(r = 20\)</span> case of Example <a href="matrix-based-computing.html#exm:process">3.24</a>, then we need to store the <span class="math inline">\(r\)</span> diagonal elements of <span class="math inline">\(\mathbf{D}_r\)</span> and the first <span class="math inline">\(r\)</span> columns of <span class="math inline">\(\mathbf{U}_r\)</span> and <span class="math inline">\(\mathbf{V}_r\)</span>, which we could store in a list</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="matrix-based-computing.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> r <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb245-2"><a href="matrix-based-computing.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>r</span>
+<span id="cb245-3"><a href="matrix-based-computing.html#cb245-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> A_r <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">diag</span>(D[ind, ind]), U[, ind, <span class="at">drop =</span> <span class="cn">FALSE</span>], V[, ind, <span class="at">drop =</span> <span class="cn">FALSE</span>])</span>
+<span id="cb245-4"><a href="matrix-based-computing.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">format</span>(<span class="fu">object.size</span>(A_r), <span class="at">units =</span> <span class="st">&#39;Kb&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;123.8 Kb&quot;</code></pre>
+<p>and takes about 10% of the memory of the original image. Of course, there is computational cost of computing the decomposition, i.e. compressing the image, and then later decompressing the image, which should be taken into account when considering image compression.</p>
+</div>
+</div>
+<div id="qr-decomposition" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> QR decomposition<a href="matrix-based-computing.html#qr-decomposition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>QR decomposition</strong> is often used in the background of functions in <code>R</code>.</p>
+<div class="definition">
+<p><span id="def:qrsq" class="definition"><strong>Definition 3.17  (QR decomposition of a square matrix) </strong></span>Any real square matrix <span class="math inline">\(\bf A\)</span> may be decomposed as <span class="math display">\[\mathbf{A} = \mathbf{QR},\]</span> where <span class="math inline">\(\mathbf{Q}\)</span> is an orthogonal matrix and <span class="math inline">\(\mathbf{R}\)</span> is an upper triangular matrix. This is its <strong>QR decomposition</strong>.</p>
+</div>
+<p>In the above, if <span class="math inline">\(\mathbf{A}\)</span> is non-singular, then the QR decomposition is unique.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="matrix-based-computing.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">qr</span>(A) <span class="co"># computes the QR decomposition of a matrix A</span></span></code></pre></div>
+<div class="remark">
+<p><span id="unlabeled-div-52" class="remark"><em>Remark</em>. </span>When <code>R</code> computes the QR decomposition, <span class="math inline">\(\bf R\)</span> is simply the upper triangle of <code>qr()$qr</code>. However, <span class="math inline">\(\bf Q\)</span> is rather more complicated to obtain, but fortunately <code>qr.Q()</code> does all the calculations for us.</p>
+</div>
+<div id="properties-2" class="section level4 hasAnchor" number="3.5.4.1">
+<h4><span class="header-section-number">3.5.4.1</span> Properties<a href="matrix-based-computing.html#properties-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><span class="math inline">\(|\text{det}(\mathbf{A})| = |\text{det}(\mathbf{Q})| \text{det}(\mathbf{R}) = \text{det}(\mathbf{R})\)</span> since det(<span class="math inline">\(\bf Q\)</span>) = <span class="math inline">\(\pm 1\)</span> as <span class="math inline">\(\bf Q\)</span> is orthogonal.</li>
+<li>det(<span class="math inline">\(\bf R\)</span>) = <span class="math inline">\(\prod_{i = 1}^n |r_{ii}|\)</span>, since <span class="math inline">\(\bf R\)</span> is triangular.</li>
+<li><span class="math inline">\(\mathbf{A}^{-1} = (\mathbf{Q} \mathbf{R})^{-1} = \mathbf{R}^{-1} \mathbf{Q}^{-1} = \mathbf{R}^{-1} \mathbf{Q}^\text{T}\)</span>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 3.25  (QR decomposition of the Hilbert matrix in R) </strong></span>Use <code>qr()</code> in <code>R</code> to compute the QR decomposition of <span class="math inline">\(\mathbf{H}_3\)</span>, the <span class="math inline">\(3 \times 3\)</span> Hilbert matrix. Then use <code>qr.Q()</code> and <code>qr.R()</code> to extract <span class="math inline">\(\bf Q\)</span> and <span class="math inline">\(\bf R\)</span> from the output of <code>qr()</code> to confirm that <span class="math inline">\(\mathbf{QR} = \mathbf{H}_3\)</span>.</p>
+</div>
+<p>We’ll start with the QR decomposition of <span class="math inline">\(\mathbf{H}_3\)</span>, which we’ll store as <code>qr.H</code>.</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="matrix-based-computing.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> qr.H <span class="ot">&lt;-</span> <span class="fu">qr</span>(H)</span>
+<span id="cb248-2"><a href="matrix-based-computing.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> qr.H</span></code></pre></div>
+<pre><code>## $qr
+##            [,1]       [,2]         [,3]
+## [1,] -1.1666667 -0.6428571 -0.450000000
+## [2,]  0.4285714 -0.1017143 -0.105337032
+## [3,]  0.2857143  0.7292564  0.003901372
+## 
+## $rank
+## [1] 3
+## 
+## $qraux
+## [1] 1.857142857 1.684240553 0.003901372
+## 
+## $pivot
+## [1] 1 2 3
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;qr&quot;</code></pre>
+<p>Then <code>qr.Q()</code> and <code>qr.R()</code> will give <span class="math inline">\(\bf Q\)</span> and <span class="math inline">\(\bf R\)</span>, which we’ll store as <code>Q.H</code> and <code>R.H</code>.</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="matrix-based-computing.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Q.H <span class="ot">&lt;-</span> <span class="fu">qr.Q</span>(qr.H)</span>
+<span id="cb250-2"><a href="matrix-based-computing.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Q.H</span></code></pre></div>
+<pre><code>##            [,1]       [,2]       [,3]
+## [1,] -0.8571429  0.5016049  0.1170411
+## [2,] -0.4285714 -0.5684856 -0.7022469
+## [3,] -0.2857143 -0.6520864  0.7022469</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="matrix-based-computing.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> R.H <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qr.H)</span>
+<span id="cb252-2"><a href="matrix-based-computing.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> R.H</span></code></pre></div>
+<pre><code>##           [,1]       [,2]         [,3]
+## [1,] -1.166667 -0.6428571 -0.450000000
+## [2,]  0.000000 -0.1017143 -0.105337032
+## [3,]  0.000000  0.0000000  0.003901372</code></pre>
+<p>And then finally we’ll compute <span class="math inline">\(\bf QR\)</span></p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="matrix-based-computing.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Q.H <span class="sc">%*%</span> R.H</span></code></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]
+## [1,] 1.0000000 0.5000000 0.3333333
+## [2,] 0.5000000 0.3333333 0.2500000
+## [3,] 0.3333333 0.2500000 0.2000000</code></pre>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="matrix-based-computing.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(Q.H <span class="sc">%*%</span> R.H, H)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>which does indeed give <span class="math inline">\(\mathbf{H}_3\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-54" class="example"><strong>Example 3.26  (Solving systems of linear equations via the QR decomposition in R) </strong></span>Solve <span class="math inline">\(\boldsymbol{\Sigma} \mathbf{z} = \mathbf{y} - \boldsymbol{\mu}\)</span> in <code>R</code> using the QR decomposition and with <span class="math inline">\(\mathbf{y}\)</span>, <span class="math inline">\(\boldsymbol{\mu}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> as in Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a>.</p>
+</div>
+<p>Suppose that <span class="math inline">\(\boldsymbol{\Sigma}\)</span> has QR decomposition <span class="math inline">\(\boldsymbol{\Sigma} = \mathbf{QR}\)</span>. The following calculates the QR decomposition of <span class="math inline">\(\boldsymbol{\Sigma}\)</span> as <code>S.qr</code>, and then <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> as <code>S.Q</code> and <code>S.R</code>, respectively.</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="matrix-based-computing.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> S.qr <span class="ot">&lt;-</span> <span class="fu">qr</span>(Sigma)</span>
+<span id="cb258-2"><a href="matrix-based-computing.html#cb258-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> S.Q <span class="ot">&lt;-</span> <span class="fu">qr.Q</span>(S.qr)</span>
+<span id="cb258-3"><a href="matrix-based-computing.html#cb258-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> S.R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(S.qr)</span></code></pre></div>
+<p>From Example <a href="matrix-based-computing.html#exm:mvn1">3.2</a> we have that <span class="math inline">\(\mathbf{z}\)</span> is <code>res1</code>, i.e. </p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="matrix-based-computing.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res1</span></code></pre></div>
+<pre><code>## [1]  0.08 -0.38  0.14</code></pre>
+<p>Solving <span class="math inline">\(\boldsymbol{\Sigma} \mathbf{z} = \mathbf{y} - \boldsymbol{\mu}\)</span> is then equivalent to solving <span class="math inline">\(\mathbf{QR} \mathbf{z} = \mathbf{y} - \boldsymbol{\mu}\)</span>. So we solve <span class="math inline">\(\mathbf{Q} \mathbf{x} = \mathbf{y} - \boldsymbol{\mu}\)</span> for <span class="math inline">\(\mathbf{x}\)</span> with the following</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="matrix-based-computing.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(S.Q, y <span class="sc">-</span> mu)</span></code></pre></div>
+<p>as <span class="math inline">\(\mathbf{Q}^{-1} = \mathbf{Q}^\text{T}\)</span> because <span class="math inline">\(\mathbf{Q}\)</span> is orthogonal, and then solve <span class="math inline">\(\mathbf{Rz} = \mathbf{x}\)</span> for <span class="math inline">\(\mathbf{z}\)</span>,</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="matrix-based-computing.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> z1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(S.R, x)</span></code></pre></div>
+<p>or, because <span class="math inline">\(\mathbf{R}\)</span> is upper triangular,</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="matrix-based-computing.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> z2 <span class="ot">&lt;-</span> <span class="fu">backsolve</span>(S.R, x)</span></code></pre></div>
+<p>which are both the same</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="matrix-based-computing.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(z1, z2)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>We’ll take the second, <code>z2</code>, and convert it from a one-column matrix to a vector called <code>res7</code></p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="matrix-based-computing.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res7 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(z2)</span>
+<span id="cb266-2"><a href="matrix-based-computing.html#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> res7</span></code></pre></div>
+<pre><code>## [1]  0.08 -0.38  0.14</code></pre>
+<p>and see that this gives the same as before</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="matrix-based-computing.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(res1, res7)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="remark">
+<p><span id="unlabeled-div-55" class="remark"><em>Remark</em>. </span>If we have obtained a QR decomposition in <code>R</code> using <code>qr()</code>, then we can use <code>qr.solve(A, b)</code> to solve <span class="math inline">\(\mathbf{Ax} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{x}\)</span>. This avoids having to find <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> with <code>qr.Q()</code> and <code>qr.R()</code>, and requires only one function call in <code>R</code>.</p>
+</div>
+<!-- :::{.example name="Solving systems of linear equations via the QR decomposition in R again"} -->
+<!-- Solve $\boldsymbol{\Sigma} \mathbf{z} = \mathbf{y} - \boldsymbol{\mu}$ in `R` using `qr()` and `qr.solve()` with $\boldsymbol{\Sigma}$, $\mathbf{y}$ and $\boldsymbol{\mu}$ as in Example \@ref(exm:mvn1). -->
+<!-- ::: -->
+<!-- ```{r} -->
+<!-- res7 <- qr.solve(qr(Sigma), y - mu) -->
+<!-- all.equal(res1, res7) -->
+<!-- ``` -->
+<div class="theorem">
+<p><span id="thm:unlabeled-div-56" class="theorem"><strong>Theorem 3.3  (QR decomposition of a rectangular matrix) </strong></span>Theorem <a href="matrix-based-computing.html#def:qrsq">3.17</a> extends to a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\bf A\)</span>, with <span class="math inline">\(m \geq n\)</span>, so that <span class="math display">\[\mathbf{A} = \mathbf{QR} = \mathbf{Q} \begin{bmatrix} \mathbf{R}_{1} \\ \mathbf{0}\end{bmatrix} = \begin{bmatrix} \mathbf{Q}_{1} &amp; \mathbf{Q}_{2} \end{bmatrix} \begin{bmatrix} \mathbf{R}_{1}\\ \mathbf{0} \end{bmatrix} = \mathbf{Q}_{1} \mathbf{R}_{1},\]</span> <span class="math inline">\(\bf Q\)</span> is an <span class="math inline">\(m \times m\)</span> unitary matrix, and <span class="math inline">\(\bf R\)</span> and an <span class="math inline">\(m \times n\)</span> upper triangular matrix; then <span class="math inline">\(\mathbf{Q}_1\)</span> is <span class="math inline">\(m \times n\)</span>, <span class="math inline">\(\mathbf{Q}_2\)</span> is <span class="math inline">\(m \times (m - n)\)</span>, and <span class="math inline">\(\mathbf{Q}_1\)</span> and <span class="math inline">\(\mathbf{Q}_2\)</span> both have orthogonal columns, and <span class="math inline">\(\mathbf{R}_1\)</span> is an <span class="math inline">\(n \times n\)</span> upper triangular matrix, following by <span class="math inline">\((m - n)\)</span> rows of zeros.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 3.27  (Linear modelling via QR decomposition) </strong></span>Consider a linear model with response vector <span class="math inline">\(\bf y\)</span> and design matrix <span class="math inline">\(\bf X\)</span>, where <span class="math inline">\(\mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{e}\)</span> and <span class="math inline">\(\boldsymbol \beta\)</span> is the vector of regression coefficients and <span class="math inline">\(\bf e\)</span> is the observed residual vector. The least squares estimate of <span class="math inline">\(\boldsymbol \beta\)</span>, denoted <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>, satisfies <span class="math inline">\(\mathbf{X}^\text{T}\mathbf{X} \boldsymbol{\beta} = \mathbf{X}^\text{T} \mathbf{y}\)</span>. This is achieved in <code>R</code> by forming the QR decomposition of <span class="math inline">\(\mathbf{X}\)</span>, i.e. <span class="math inline">\(\mathbf{X} = \mathbf{QR}\)</span>. Then <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>, satisfies <span class="math inline">\((\mathbf{QR})^\text{T}\mathbf{QR} \hat{\boldsymbol{\beta}} = (\mathbf{QR})^\text{T} \mathbf{y}\)</span>, which can be re-written as <span class="math inline">\(\mathbf{R}^\text{T}\mathbf{Q}^\text{T}\mathbf{QR} \hat{\boldsymbol{\beta}} = \mathbf{R}^\text{T} \mathbf{Q}^\text{T} \mathbf{y}\)</span>, and, given <span class="math inline">\(\mathbf{Q}\)</span> is orthogonal, simplifies to <span class="math inline">\(\mathbf{R}^\text{T}\mathbf{R} \hat{\boldsymbol{\beta}} = \mathbf{R}^\text{T} \mathbf{Q}^\text{T} \mathbf{y}\)</span>.</p>
+</div>
+<!-- http://madrury.github.io/jekyll/update/statistics/2016/07/20/lm-in-R.html -->
+<div class="example">
+<p><span id="exm:cement" class="example"><strong>Example 3.28  (MTH2006 cement factory data) </strong></span>Recall the cement factory data from MTH2006 and the linear model <span class="math inline">\(Y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \varepsilon_i\)</span> where <span class="math inline">\(Y_i\)</span> denotes the output of the cement factory in month <span class="math inline">\(i\)</span> for <span class="math inline">\(x_{i1}\)</span> days at a temperature of <span class="math inline">\(x_{i2}\)</span> degrees Fahrenheit, and where <span class="math inline">\(\varepsilon_i \sim \text{N}(0, \sigma^2)\)</span> and are i.i.d. Use the QR decomposition to find <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and confirm your answer against that given by <code>lm()</code>.</p>
+</div>
+<p>We’ll first input the data</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="matrix-based-computing.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># operating temperatures</span></span>
+<span id="cb270-2"><a href="matrix-based-computing.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> temp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">35.3</span>, <span class="fl">29.7</span>, <span class="fl">30.8</span>, <span class="fl">58.8</span>, <span class="fl">61.4</span>, <span class="fl">71.3</span>, <span class="fl">74.4</span>, <span class="fl">76.7</span>, <span class="fl">70.7</span>, <span class="fl">57.5</span>, </span>
+<span id="cb270-3"><a href="matrix-based-computing.html#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fl">46.4</span>, <span class="fl">28.9</span>, <span class="fl">28.1</span>, <span class="fl">39.1</span>, <span class="fl">46.8</span>, <span class="fl">48.5</span>, <span class="fl">59.3</span>, <span class="dv">70</span>, <span class="dv">70</span>, <span class="fl">74.5</span>, <span class="fl">72.1</span>, </span>
+<span id="cb270-4"><a href="matrix-based-computing.html#cb270-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fl">58.1</span>, <span class="fl">44.6</span>, <span class="fl">33.4</span>, <span class="fl">28.6</span>)</span>
+<span id="cb270-5"><a href="matrix-based-computing.html#cb270-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># number of operational days</span></span>
+<span id="cb270-6"><a href="matrix-based-computing.html#cb270-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">23</span>, <span class="dv">21</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">23</span>, </span>
+<span id="cb270-7"><a href="matrix-based-computing.html#cb270-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">23</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">22</span>)</span>
+<span id="cb270-8"><a href="matrix-based-computing.html#cb270-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># output from factory</span></span>
+<span id="cb270-9"><a href="matrix-based-computing.html#cb270-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> output <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.98</span>, <span class="fl">11.13</span>, <span class="fl">12.51</span>, <span class="fl">8.4</span>, <span class="fl">9.27</span>, <span class="fl">8.73</span>, <span class="fl">6.36</span>, <span class="fl">8.5</span>, <span class="fl">7.82</span>, <span class="fl">9.14</span>, </span>
+<span id="cb270-10"><a href="matrix-based-computing.html#cb270-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fl">8.24</span>, <span class="fl">12.19</span>, <span class="fl">11.88</span>, <span class="fl">9.57</span>, <span class="fl">10.94</span>, <span class="fl">9.58</span>, <span class="fl">10.09</span>, <span class="fl">8.11</span>, <span class="fl">6.83</span>, <span class="fl">8.88</span>, </span>
+<span id="cb270-11"><a href="matrix-based-computing.html#cb270-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fl">7.68</span>, <span class="fl">8.47</span>, <span class="fl">8.86</span>, <span class="fl">10.36</span>, <span class="fl">11.08</span>)</span></code></pre></div>
+<p>and put them into a <code>data.frame</code> called <code>prod</code> (as in MTH2006).</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="matrix-based-computing.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prod <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">temp =</span> temp, <span class="at">days =</span> days, <span class="at">output =</span> output)</span></code></pre></div>
+<p>Then we’ll fit the linear model with <code>lm()</code>, extract the regression coefficients, and store them as <code>b0</code>.</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="matrix-based-computing.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(output <span class="sc">~</span> days <span class="sc">+</span> temp, <span class="at">data =</span> prod)</span>
+<span id="cb272-2"><a href="matrix-based-computing.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> b0 <span class="ot">&lt;-</span> <span class="fu">coef</span>(m0)</span></code></pre></div>
+<p>Next we’ll store the response data as <code>y</code> and the design matrix as <code>X</code>.</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="matrix-based-computing.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> output</span>
+<span id="cb273-2"><a href="matrix-based-computing.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, days, temp)</span></code></pre></div>
+<p>The QR decomposition of <code>X</code> can be obtained with <code>qr()</code>, which is stored as <code>X.qr</code>, and then <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> of the QR decomposition <span class="math inline">\(\mathbf{X} = \mathbf{QR}\)</span> stored as <code>Q.qr</code> and <code>R.qr</code>, respectively.</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="matrix-based-computing.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> X.qr <span class="ot">&lt;-</span> <span class="fu">qr</span>(X)</span>
+<span id="cb274-2"><a href="matrix-based-computing.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Q.qr <span class="ot">&lt;-</span> <span class="fu">qr.Q</span>(X.qr)</span>
+<span id="cb274-3"><a href="matrix-based-computing.html#cb274-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> R.qr <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(X.qr)</span></code></pre></div>
+<p>Next we’ll compute <span class="math inline">\(\mathbf{w} = \mathbf{R}^\text{T} \mathbf{Q}^\text{T} \mathbf{y}\)</span>, say, then solve <span class="math inline">\(\mathbf{R}^\text{T} \mathbf{z} = \mathbf{w}\)</span> for <span class="math inline">\(\mathbf{z}\)</span> and then solve <span class="math inline">\(\mathbf{R} \hat{\boldsymbol{\beta}} = \mathbf{z}\)</span> for <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>.</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="matrix-based-computing.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> w <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(R.qr, <span class="fu">crossprod</span>(Q.qr, y))</span>
+<span id="cb275-2"><a href="matrix-based-computing.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> z <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(R.qr, w, <span class="at">transpose =</span> <span class="cn">TRUE</span>, <span class="at">upper.tri =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb275-3"><a href="matrix-based-computing.html#cb275-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> b1 <span class="ot">&lt;-</span> <span class="fu">drop</span>(<span class="fu">backsolve</span>(R.qr, z))</span></code></pre></div>
+<p>Finally we’ll check that our regression coefficients calculated through the QR decomposition are the same as those extracted from our call to <code>lm()</code></p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="matrix-based-computing.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(b0, b1, <span class="at">check.attributes =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>which they are.</p>
+<div class="remark">
+<p><span id="unlabeled-div-58" class="remark"><em>Remark</em>. </span>Note two things above. 1: We’ve used <code>drop()</code> because <code>backsolve()</code> will by default return a <span class="math inline">\((p + 1) \times 1\)</span> matrix whereas <code>coef()</code> returns an <span class="math inline">\((p + 1)\)</span>-vector. The two aren’t considered identical by <code>all.equal()</code>, even if their values are the same. Calling <code>drop()</code> will simplify a matrix to a vector <em>if</em> possible, and hence we’re comparing like with like. 2: Setting <code>all.equal(..., check.attributes = FALSE)</code> should check only the supplied objects and not any attributes, such as names. Without this, because <code>b0</code> has names and <code>b1</code> doesn’t, <code>all.equal()</code> wouldn’t consider them identical.</p>
+</div>
+<!-- ### Sparse matrices -->
+<!-- :::{.definition name="Block matrix"} -->
+<!-- The **block matrix** interpretation of a matrix is that obtain by dividing it into blocks. For example, the partition \[\mathbf{A} = \left( \begin{array}{ll} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{A}_{21} & \mathbf{A}_{12} \end{array}\right)\] considers $\mathbf{A}$ as four blocks. Of course, this can be extended to any number of blocks. The **block diagonal matrix** can be written  -->
+<!-- ::: -->
+<!-- :::{.definition name="Sparse matrix"} -->
+<!-- A matrix is **sparse** if most of its elements are zero. -->
+<!-- ::: -->
+<!-- The definition of a sparse matrix slightly unspecific. The opposite of a sparse matrix is a dense matrix. Sparse matrices are a useful programming concept because many matrix-based calculations, such as multiplication, can essentially ignore elements known to be zero. This can dramatically speed up matrix-based calculations if sparsity is recognised. It can also dramatically reduce the memory requirements of storing such objects, helping allow much bigger calculations to be performed. When dealing with Big Data, we often try and work with sparse matrices, where possible. There are a few packages available in `R` to deal with sparse matrices, including `Matrix`, `spam` and `sparseM`. We'll quickly look at `Matrix`, because it's a recommended `R` package, and so arrives with `R` when we download it. -->
+<!-- :::{.example name="Sparse matrix Cholesky"} -->
+<!-- Compare computation times for calculating the Cholesky decomposition of a $1000 \times 1000$ diagonal matrix with Uniform[0, 1] elements if the matrix is assumed dense and sparse. This matrix is sparse because 99.9% of its elements are zero. -->
+<!-- ```{r sparse} -->
+<!-- d <- runif(1e3) -->
+<!-- A1 <- diag(d) # dense -->
+<!-- A2 <- Matrix::Diagonal(x = d) # sparse -->
+<!-- class(A2) -->
+<!-- b <- rnorm(1e3) -->
+<!-- microbenchmark::microbenchmark( -->
+<!--   solve(A1, b), -->
+<!--   solve(A2, b), -->
+<!--   b / d, -->
+<!--   times = 1e1 -->
+<!-- ) -->
+<!-- ``` -->
+<!-- It appears as if `Matrix::Cholesky()` is about eight times faster than `chol()`, if the former recognises that it's dealing with a sparse matrix. -->
+<!-- ::: -->
+</div>
+</div>
+<div id="computational-costs-of-matrix-decompostions" class="section level3 hasAnchor" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> Computational costs of matrix decompostions<a href="matrix-based-computing.html#computational-costs-of-matrix-decompostions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Each of the four matrix decompositions can be used for various purposes, such as calculating the determinant of a matrix, or solving a system of linear equations. Therefore, we might ask ourselves which one we should use. We’ll start by comparing the computational cost of each, i.e. the number of flops each takes. The Cholesky algorithm above requires <span class="math inline">\(n^3/3\)</span> flops (and <span class="math inline">\(n\)</span> square roots). Hence its dominant cost is its <span class="math inline">\(n^3/3\)</span> flops. The dominant cost for the QR decomposition, if computed with householder reflections, is <span class="math inline">\(2n^3/3\)</span>, and is therefore roughly twice as expensive as the Cholesky decomposition. The eigen-decomposition and SVD both require <span class="math inline">\(k n^3\)</span> flops, for some value <span class="math inline">\(k\)</span>, but <span class="math inline">\(k \gg 1/3\)</span>, as in Cholesky algorithm, making them considerably slower for large <span class="math inline">\(n\)</span>.</p>
+</div>
+</div>
+<div id="sherman-morrison-formula-woodbury-matrix-identity" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Sherman-Morrison formula / Woodbury matrix identity<a href="matrix-based-computing.html#sherman-morrison-formula-woodbury-matrix-identity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In general, unless we actually need the inverse of a matrix (such as for standard errors of regression coefficients in a linear model), we should solve systems of linear equations. Sometimes, though, we do need – or might just have – an inverse, and want to calculate something related to it. The following are a set of formulae, which go by various names, that can be useful in this situation.</p>
+<div id="woodburys-formula" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Woodbury’s formula<a href="matrix-based-computing.html#woodburys-formula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider an <span class="math inline">\(m \times m\)</span> matrix <span class="math inline">\(\bf A\)</span>, with <span class="math inline">\(m\)</span> large, and for which we have the inverse, <span class="math inline">\(\mathbf{A}^{-1}\)</span>. Suppose <span class="math inline">\(\bf A\)</span> receives a small update of the form <span class="math inline">\(\mathbf{A} + \mathbf{UV}^\text{T}\)</span>, for <span class="math inline">\(m \times n\)</span> matrices <span class="math inline">\(\bf U\)</span> and <span class="math inline">\(\bf V\)</span> where <span class="math inline">\(n \ll m\)</span>. Then, by <strong>Woodbury’s formula</strong>,
+<span class="math display">\[
+(\mathbf{A} + \mathbf{UV}^\text{T})^{-1} = \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{I}_n + \mathbf{V}^\text{T} \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^\text{T} \mathbf{A}^{-1}.
+\]</span></p>
+<div class="remark">
+<p><span id="unlabeled-div-59" class="remark"><em>Remark</em>. </span>What’s important to note here is that we’re looking to calculate an <span class="math inline">\(m \times m\)</span> inverse with <span class="math inline">\(m\)</span> large, and so in general this will be an <span class="math inline">\(O(m^3)\)</span> calculation based on the LHS. However, in the above, the RHS only requires that we to invert an <span class="math inline">\(n \times n\)</span> matrix, at cost <span class="math inline">\(O(n^3)\)</span>, which is much less that of the LHS.</p>
+</div>
+</div>
+<div id="sherman-morrison-woodbury-formula" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Sherman-Morrison-Woodbury formula<a href="matrix-based-computing.html#sherman-morrison-woodbury-formula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Woodbury’s formula above generalises to the so-called <strong>Sherman-Morrison-Woodbury formula</strong> by introducing the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\bf C\)</span>, so that
+<span class="math display">\[
+(\mathbf{A} + \mathbf{UCV}^\text{T})^{-1} = \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{C}^{-1} + \mathbf{V}^\text{T} \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^\text{T} \mathbf{A}^{-1}.
+\]</span></p>
+</div>
+<div id="sherman-morrison-formula" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Sherman-Morrison formula<a href="matrix-based-computing.html#sherman-morrison-formula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>Sherman-Morrison formula</strong> is the special case of Woodbury’s formula (and hence the Woodbury-Sherman-Morrison formula) in which the update to <span class="math inline">\(\bf A\)</span> can be considered in terms of <span class="math inline">\(m\)</span>-vectors <span class="math inline">\(\bf u\)</span> and <span class="math inline">\(\bf v\)</span>, so that
+<span class="math display">\[
+(\mathbf{A} + \mathbf{uv}^\text{T})^{-1} = \mathbf{A}^{-1} - \dfrac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^\text{T} \mathbf{A}^{-1}}{1 + \mathbf{v}^\text{T}\mathbf{A}^{-1}\mathbf{u}}.
+\]</span></p>
+<div class="remark">
+<p><span id="unlabeled-div-60" class="remark"><em>Remark</em>. </span>The Sherman-Morrison formula is particularly useful because it requires no matrix inversion.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-61" class="example"><strong>Example 3.29  (Bayesian linear regression) </strong></span>Recall from MTH2006 the normal linear model where
+<span class="math display">\[
+Y_i \sim N(\mathbf{x}_i^\text{T} \boldsymbol{\beta}, \sigma^2)
+\]</span>
+with independent errors <span class="math inline">\(\varepsilon_i = Y_i - \mathbf{x}_i^\text{T} \boldsymbol{\beta}\)</span>s, for <span class="math inline">\(i = 1, \ldots, n\)</span>, where <span class="math inline">\(\mathbf{x}_i^\text{T} = (1, x_{i1}, \ldots, x_{ip})\)</span> is the <span class="math inline">\(i\)</span>th row of design matrix <span class="math inline">\(\bf X\)</span> and where <span class="math inline">\(\boldsymbol{\beta} = (\beta_0, \beta_1, \ldots, \beta_p)^\text{T}\)</span>. Hence <span class="math inline">\(\mathbf{Y} \mid \mathbf{X} \boldsymbol{\beta} \sim MVN_n(\mathbf{X}\boldsymbol{\beta}, \sigma^2 \mathbf{I}_n)\)</span>. In Bayesian linear regression, the elements of <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\sigma^2\)</span> are not fixed, unknown parameters: they are random variables, and we must declare <em>a priori</em> our beliefs about their distribution. The conjugate prior is that
+<span class="math display">\[
+\boldsymbol{\beta} \sim MVN_{p+1}(\boldsymbol{\mu}_{\boldsymbol{\beta}}, \boldsymbol{\Sigma}_{\boldsymbol{\beta}}^{-1}).
+\]</span>
+Integrating out <span class="math inline">\(\boldsymbol{\beta}\)</span> gives <span class="math inline">\(\mathbf{Y} \sim MVN_n(\mathbf{X}\boldsymbol{\mu}_{\boldsymbol{\beta}}, \sigma^2 \mathbf{I}_n + \mathbf{X} \boldsymbol{\Sigma}_{\boldsymbol{\beta}}^{-1} \mathbf{X}^\text{T})\)</span>. Now suppose that we want to evaluate the marginal likelihood for an observation, <span class="math inline">\(\bf y\)</span>, say. Recall <a href="matrix-based-computing.html#eq:dmvn">(3.1)</a>. The Mahalanobis distance then involves the term
+<span class="math display">\[
+(\mathbf{y} - \mathbf{X}\boldsymbol{\mu}_{\boldsymbol{\beta}})^\text{T} (\sigma^2\mathbf{I}_n + \mathbf{X} \boldsymbol{\Sigma}_{\boldsymbol{\beta}}^{-1} \mathbf{X}^\text{T})^{-1} (\mathbf{y} - \mathbf{X}\boldsymbol{\mu}_{\boldsymbol{\beta}}).
+\]</span>
+The covariance of the marginal distribution, <span class="math inline">\(\sigma^2 \mathbf{I}_n + \mathbf{X} \boldsymbol{\Sigma}_{\boldsymbol{\beta}}^{-1} \mathbf{X}^\text{T}\)</span>, is typically dense, expensive to form, and leads to expensive solutions to systems of linear equations. Its inverse, however, can be computed through the Sherman-Morrison formula with <span class="math inline">\(\mathbf{A}^{-1} = \sigma^{-2} \mathbf{I}_n\)</span>, <span class="math inline">\(\mathbf{U} = \mathbf{V} = \mathbf{X}\)</span>, and <span class="math inline">\(\mathbf{C} =\boldsymbol{\Sigma}_{\boldsymbol{\beta}}^{-1}\)</span>.</p>
+</div>
+<!-- Discriminant analysis  -->
+<!-- ### Stability and regularisation -->
+</div>
+</div>
+<div id="bibliographic-notes-1" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Bibliographic notes<a href="matrix-based-computing.html#bibliographic-notes-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For more details on matrix decompositions, consider <span class="citation">Wood (2015, Appendix B)</span> for a concise overview. For fuller details consider <span class="citation">Monahan (2011, chaps. 3, 4 and 6)</span> or <span class="citation">Press et al. (2007, chap. 2 and 11)</span>.</p>
+<!-- ## Exercises -->
+<!-- ```{r child = 'ch3ex_child.Rmd'} -->
+<!-- ``` -->
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>André-Louis Cholesky (15 Oct 1875 – 31 Aug 1918) was a French military officer and mathematician. He worked in geodesy and cartography, and was involved in the surveying of Crete and North Africa before World War I. He is primarily remembered for the development of a matrix decomposition known as the Cholesky decomposition which he used in his surveying work.His discovery was published posthumously by his fellow officer Commandant Benoît in the Bulletin Géodésique.<a href="matrix-based-computing.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>The Moore-Penrose pseudoinverse is named after E. H. Moore and Sir Roger Penrose. Moore first worked in abstract algebra, proving in 1893 the classification of the structure of finite fields (also called Galois fields). He then worked on various topics, including the foundations of geometry and algebraic geometry, number theory, and integral equations. Penrose has made contributions to the mathematical physics of general relativity and cosmology. He has received several prizes and awards, including the 1988 Wolf Prize in Physics, which he shared with Stephen Hawking for the Penrose–Hawking singularity theorems, and one half of the 2020 Nobel Prize in Physics “for the discovery that black hole formation is a robust prediction of the general theory of relativity”.<a href="matrix-based-computing.html#fnref6" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="numerical-calculus.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

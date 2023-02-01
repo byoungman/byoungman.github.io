@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Optimisation | MTH3045: Statistical Computing</title>
+  <meta name="description" content="5 Optimisation | MTH3045: Statistical Computing" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Optimisation | MTH3045: Statistical Computing" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Optimisation | MTH3045: Statistical Computing" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="numerical-calculus.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#module-outline"><i class="fa fa-check"></i><b>1.1</b> Module outline</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#lectures-practical-classes"><i class="fa fa-check"></i><b>1.2</b> Lectures / practical classes</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#office-hours"><i class="fa fa-check"></i><b>1.3</b> Office hours</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.4</b> Resources</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i><b>1.6</b> Assessment</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#motivating-example"><i class="fa fa-check"></i><b>1.7</b> Motivating example</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#exploratory-and-refresher-exercises"><i class="fa fa-check"></i><b>1.8</b> Exploratory and refresher exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Statistical computing in <code>R</code></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2.html"><a href="ch2.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="ch2.html"><a href="ch2.html#mathematics-by-computer"><i class="fa fa-check"></i><b>2.2</b> Mathematics by computer</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="ch2.html"><a href="ch2.html#positional-number-systems"><i class="fa fa-check"></i><b>2.2.1</b> Positional number systems</a></li>
+<li class="chapter" data-level="2.2.2" data-path="ch2.html"><a href="ch2.html#a-historical-aside-on-exact-representations-of-integers"><i class="fa fa-check"></i><b>2.2.2</b> A historical aside on exact representations of integers</a></li>
+<li class="chapter" data-level="2.2.3" data-path="ch2.html"><a href="ch2.html#floating-point-representation"><i class="fa fa-check"></i><b>2.2.3</b> Floating point representation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="ch2.html"><a href="ch2.html#single-precision-arithmetic"><i class="fa fa-check"></i><b>2.2.4</b> Single-precision arithmetic</a></li>
+<li class="chapter" data-level="2.2.5" data-path="ch2.html"><a href="ch2.html#double-precision-arithmetic"><i class="fa fa-check"></i><b>2.2.5</b> Double-precision arithmetic</a></li>
+<li class="chapter" data-level="2.2.6" data-path="ch2.html"><a href="ch2.html#flops-floating-point-operations"><i class="fa fa-check"></i><b>2.2.6</b> Flops: floating point operations</a></li>
+<li class="chapter" data-level="2.2.7" data-path="ch2.html"><a href="ch2.html#some-useful-terminology"><i class="fa fa-check"></i><b>2.2.7</b> Some useful terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="ch2.html"><a href="ch2.html#the-history-of-r"><i class="fa fa-check"></i><b>2.3</b> The history of <code>R</code></a></li>
+<li class="chapter" data-level="2.4" data-path="ch2.html"><a href="ch2.html#why-r"><i class="fa fa-check"></i><b>2.4</b> Why <code>R</code>?</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="ch2.html"><a href="ch2.html#basics"><i class="fa fa-check"></i><b>2.4.1</b> Basics</a></li>
+<li class="chapter" data-level="2.4.2" data-path="ch2.html"><a href="ch2.html#data-structures"><i class="fa fa-check"></i><b>2.4.2</b> Data structures</a></li>
+<li class="chapter" data-level="2.4.3" data-path="ch2.html"><a href="ch2.html#some-useful-r-functions"><i class="fa fa-check"></i><b>2.4.3</b> Some useful <code>R</code> functions</a></li>
+<li class="chapter" data-level="2.4.4" data-path="ch2.html"><a href="ch2.html#control-structures"><i class="fa fa-check"></i><b>2.4.4</b> Control structures</a></li>
+<li class="chapter" data-level="2.4.5" data-path="ch2.html"><a href="ch2.html#vectorisation"><i class="fa fa-check"></i><b>2.4.5</b> Vectorisation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="ch2.html"><a href="ch2.html#good-practice"><i class="fa fa-check"></i><b>2.5</b> Good practice</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2.html"><a href="ch2.html#useful-tips-to-remember-when-coding"><i class="fa fa-check"></i><b>2.5.1</b> Useful tips to remember when coding</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2.html"><a href="ch2.html#debugging"><i class="fa fa-check"></i><b>2.5.2</b> Debugging</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2.html"><a href="ch2.html#profiling-and-benchmarking"><i class="fa fa-check"></i><b>2.5.3</b> Profiling and benchmarking</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="ch2.html"><a href="ch2.html#compiled-code-with-rcpp"><i class="fa fa-check"></i><b>2.6</b> Compiled code with <code>Rcpp</code></a></li>
+<li class="chapter" data-level="2.7" data-path="ch2.html"><a href="ch2.html#bibliographic-notes"><i class="fa fa-check"></i><b>2.7</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html"><i class="fa fa-check"></i><b>3</b> Matrix-based computing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#motivation"><i class="fa fa-check"></i><b>3.1</b> Motivation</a></li>
+<li class="chapter" data-level="3.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#matrix-properties"><i class="fa fa-check"></i><b>3.2.1</b> Matrix properties</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#special-matrices"><i class="fa fa-check"></i><b>3.3</b> Special matrices</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#diagonal-band-diagonal-and-triangular-matrices"><i class="fa fa-check"></i><b>3.3.1</b> Diagonal, band-diagonal and triangular matrices</a></li>
+<li class="chapter" data-level="3.3.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sparse-matrices"><i class="fa fa-check"></i><b>3.3.2</b> Sparse matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#systems-of-linear-equations"><i class="fa fa-check"></i><b>3.4</b> Systems of linear equations</a></li>
+<li class="chapter" data-level="3.5" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#matrix-decompositions"><i class="fa fa-check"></i><b>3.5</b> Matrix decompositions</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#cholesky-decomposition"><i class="fa fa-check"></i><b>3.5.1</b> Cholesky decomposition</a></li>
+<li class="chapter" data-level="3.5.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#eigen-decomposition"><i class="fa fa-check"></i><b>3.5.2</b> Eigen-decomposition</a></li>
+<li class="chapter" data-level="3.5.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#singular-value-decomposition"><i class="fa fa-check"></i><b>3.5.3</b> Singular value decomposition</a></li>
+<li class="chapter" data-level="3.5.4" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#qr-decomposition"><i class="fa fa-check"></i><b>3.5.4</b> QR decomposition</a></li>
+<li class="chapter" data-level="3.5.5" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#computational-costs-of-matrix-decompostions"><i class="fa fa-check"></i><b>3.5.5</b> Computational costs of matrix decompostions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-formula-woodbury-matrix-identity"><i class="fa fa-check"></i><b>3.6</b> Sherman-Morrison formula / Woodbury matrix identity</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#woodburys-formula"><i class="fa fa-check"></i><b>3.6.1</b> Woodbury’s formula</a></li>
+<li class="chapter" data-level="3.6.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-woodbury-formula"><i class="fa fa-check"></i><b>3.6.2</b> Sherman-Morrison-Woodbury formula</a></li>
+<li class="chapter" data-level="3.6.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-formula"><i class="fa fa-check"></i><b>3.6.3</b> Sherman-Morrison formula</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#bibliographic-notes-1"><i class="fa fa-check"></i><b>3.7</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="numerical-calculus.html"><a href="numerical-calculus.html"><i class="fa fa-check"></i><b>4</b> Numerical Calculus</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#motivation-1"><i class="fa fa-check"></i><b>4.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#numerical-differentiation"><i class="fa fa-check"></i><b>4.2</b> Numerical Differentiation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#differentiation-definitions"><i class="fa fa-check"></i><b>4.2.1</b> Differentiation definitions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#differentiation-rules"><i class="fa fa-check"></i><b>4.2.2</b> Differentiation rules</a></li>
+<li class="chapter" data-level="4.2.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#finite-differencing"><i class="fa fa-check"></i><b>4.2.3</b> Finite-differencing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#quadrature"><i class="fa fa-check"></i><b>4.3</b> Quadrature</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#midpoint-rule"><i class="fa fa-check"></i><b>4.3.1</b> Midpoint rule</a></li>
+<li class="chapter" data-level="4.3.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#simpsons-rule"><i class="fa fa-check"></i><b>4.3.2</b> Simpson’s rule</a></li>
+<li class="chapter" data-level="4.3.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#gaussian-quadrature"><i class="fa fa-check"></i><b>4.3.3</b> Gaussian quadrature</a></li>
+<li class="chapter" data-level="4.3.4" data-path="numerical-calculus.html"><a href="numerical-calculus.html#one-dimensional-numerical-integration-in-r"><i class="fa fa-check"></i><b>4.3.4</b> One-dimensional numerical integration in <code>R</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="numerical-calculus.html"><a href="numerical-calculus.html#multi-dimensional-quadrature"><i class="fa fa-check"></i><b>4.3.5</b> Multi-dimensional quadrature</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="numerical-calculus.html"><a href="numerical-calculus.html#laplaces-method"><i class="fa fa-check"></i><b>4.4</b> Laplace’s method</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#an-aside-on-taylor-series-in-one-dimension"><i class="fa fa-check"></i><b>4.4.1</b> An aside on Taylor series in one dimension</a></li>
+<li class="chapter" data-level="4.4.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#definition-1"><i class="fa fa-check"></i><b>4.4.2</b> Definition</a></li>
+<li class="chapter" data-level="4.4.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#laplaces-method-for-multiple-dimensions"><i class="fa fa-check"></i><b>4.4.3</b> Laplace’s method for multiple dimensions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="numerical-calculus.html"><a href="numerical-calculus.html#monte-carlo-integration"><i class="fa fa-check"></i><b>4.5</b> Monte Carlo integration</a></li>
+<li class="chapter" data-level="4.6" data-path="numerical-calculus.html"><a href="numerical-calculus.html#bibliographic-notes-2"><i class="fa fa-check"></i><b>4.6</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="optimisation.html"><a href="optimisation.html"><i class="fa fa-check"></i><b>5</b> Optimisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="optimisation.html"><a href="optimisation.html#root-finding"><i class="fa fa-check"></i><b>5.1</b> Root finding</a></li>
+<li class="chapter" data-level="5.2" data-path="optimisation.html"><a href="optimisation.html#one-dimensional-optimisation-in-r"><i class="fa fa-check"></i><b>5.2</b> One-dimensional optimisation in <code>R</code></a></li>
+<li class="chapter" data-level="5.3" data-path="optimisation.html"><a href="optimisation.html#newtons-method-in-one-dimension"><i class="fa fa-check"></i><b>5.3</b> Newton’s method in one-dimension</a></li>
+<li class="chapter" data-level="5.4" data-path="optimisation.html"><a href="optimisation.html#newtons-multi-dimensional-method"><i class="fa fa-check"></i><b>5.4</b> Newton’s multi-dimensional method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="optimisation.html"><a href="optimisation.html#taylors-theorem-multivariate"><i class="fa fa-check"></i><b>5.4.1</b> Taylor’s theorem (multivariate)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="optimisation.html"><a href="optimisation.html#newtons-method-in-r"><i class="fa fa-check"></i><b>5.4.2</b> Newton’s method in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="optimisation.html"><a href="optimisation.html#gradient-descent"><i class="fa fa-check"></i><b>5.4.3</b> Gradient descent</a></li>
+<li class="chapter" data-level="5.4.4" data-path="optimisation.html"><a href="optimisation.html#line-search"><i class="fa fa-check"></i><b>5.4.4</b> Line search</a></li>
+<li class="chapter" data-level="5.4.5" data-path="optimisation.html"><a href="optimisation.html#quasi-newton-methods"><i class="fa fa-check"></i><b>5.4.5</b> Quasi-Newton methods</a></li>
+<li class="chapter" data-level="5.4.6" data-path="optimisation.html"><a href="optimisation.html#quasi-newton-methods-in-r"><i class="fa fa-check"></i><b>5.4.6</b> Quasi-Newton methods in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.7" data-path="optimisation.html"><a href="optimisation.html#sec:nelder"><i class="fa fa-check"></i><b>5.4.7</b> Nelder-Mead polytope method</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="optimisation.html"><a href="optimisation.html#global-optimisation"><i class="fa fa-check"></i><b>5.5</b> Global optimisation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="optimisation.html"><a href="optimisation.html#stochastic-optimisation"><i class="fa fa-check"></i><b>5.5.1</b> Stochastic optimisation</a></li>
+<li class="chapter" data-level="5.5.2" data-path="optimisation.html"><a href="optimisation.html#simulated-annealing"><i class="fa fa-check"></i><b>5.5.2</b> Simulated annealing</a></li>
+<li class="chapter" data-level="5.5.3" data-path="optimisation.html"><a href="optimisation.html#simulated-annealing-in-r"><i class="fa fa-check"></i><b>5.5.3</b> Simulated annealing in <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="optimisation.html"><a href="optimisation.html#bibliographic-notes-3"><i class="fa fa-check"></i><b>5.6</b> Bibliographic notes</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MTH3045: Statistical Computing</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="optimisation" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Optimisation<a href="optimisation.html#optimisation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>When fitting a statistical model we often use maximum likelihood. For this we have some likelihood function <span class="math inline">\(f(\mathbf{y} \mid \boldsymbol{\theta})\)</span>, data <span class="math inline">\(\mathbf{y} = (y_1, \ldots, y_n)\)</span> and unknown but <em>fixed</em> parameters <span class="math inline">\(\boldsymbol{\theta} = (\theta_1, \ldots, \theta_p)\)</span>. We are then required to find
+<span class="math display">\[
+\hat{\boldsymbol{\theta}} = \arg\,\max_{\boldsymbol{\theta}} f(\mathbf{y} \mid \boldsymbol{\theta}).
+\]</span>
+Sometimes, it will be possible to find <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> analytically, but sometimes not. The normal linear model is one example of the former, whereas the gamma distribution is an example of the latter.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-83" class="example"><strong>Example 5.1  (Maximum likelihood estimation with the gamma distribution) </strong></span>Consider an independent sample of data <span class="math inline">\(\mathbf{y} = (y_1, \ldots, y_n)\)</span>, and suppose that these are modelling as Gamma<span class="math inline">\((\alpha, \beta)\)</span> realisations, i.e. with pdf
+<span class="math display">\[
+f(y \mid \alpha, \beta) = \dfrac{\beta^\alpha}{\Gamma(\alpha)} y^{\alpha -1}e^{-\beta y} \quad {\text{ for }}y&gt;0
+\]</span>
+where <span class="math inline">\(\alpha ,\beta &gt;0\)</span> and <span class="math inline">\(\Gamma()\)</span> is the gamma function. The log-likelihood is then
+<span class="math display">\[
+\log f(\mathbf{y} \mid \alpha, \beta) = n \alpha \log \beta - n\log \Gamma(\alpha) + (\alpha - 1) \sum_{i = 1}^n \log y_i - \beta \sum_{i = 1}^n y_i.
+\]</span>
+We can write its derivatives w.r.t. <span class="math inline">\((\alpha, \beta)\)</span> in the vector
+<span class="math display">\[
+\begin{pmatrix}
+\dfrac{\partial \log f(\mathbf{y} \mid \alpha, \beta)}{\partial \alpha}\\[2ex]
+\dfrac{\partial \log f(\mathbf{y} \mid \alpha, \beta)}{\partial \beta}
+\end{pmatrix}
+=
+\begin{pmatrix}
+n \log \beta + \sum_{i = 1}^n \log y_i\\[2ex]
+n \alpha / \beta - \sum_{i = 1}^n y_i
+\end{pmatrix}.
+\]</span>
+Unfortunately, we cannot analytically find both the maximum likelihood estimates, <span class="math inline">\((\hat \alpha, \hat \beta)\)</span>, i.e. we cannot find <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> simultaneously that satisfy that <span class="math inline">\(\partial \log f(\mathbf{y} \mid \alpha, \beta) / \partial \alpha\)</span> and <span class="math inline">\(\partial \log f(\mathbf{y} \mid \alpha, \beta) / \partial \beta\)</span> are both zero. Fortunately, we can still find <span class="math inline">\((\hat \alpha, \hat \beta)\)</span>, but just not analytically.</p>
+</div>
+<p>When we cannot find <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> analytically, our next option is to find it numerically: that is, to adopt some kind of iterative process that we expect will ultimately result in the <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> that we want, as opposed to an estimate that we don’t want.</p>
+<p>Although in maximum likelihood estimation interest lies in finding <span class="math inline">\(\boldsymbol{\theta}\)</span> that <em>maximises</em> <span class="math inline">\(f(\mathbf{y} \mid \boldsymbol{\theta})\)</span>, it is much more common in mathematics to want to <em>minimise</em> a function. Fortunately, maximising <span class="math inline">\(f(\mathbf{y} \mid \boldsymbol{\theta})\)</span> is equivalent to minimising <span class="math inline">\(-f(\mathbf{y} \mid \boldsymbol{\theta})\)</span>, i.e. <span class="math inline">\(f(\mathbf{y} \mid \boldsymbol{\theta})\)</span> negated. Therefore,
+<span class="math display">\[
+\hat{\boldsymbol{\theta}} = \arg\,\min_{\boldsymbol{\theta}} \left\{-f(\mathbf{y} \mid \boldsymbol{\theta})\right\}.
+\]</span>
+So that we can better follow the literature on numerical optimisation, we’ll just consider finding minima.</p>
+<!-- ## Root finding -->
+<!-- ### Inversion, e.g. Gamma cdf -->
+<div id="root-finding" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Root finding<a href="optimisation.html#root-finding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll start this chapter with a brief aside on root finding, because our main concern will be finding values that maximise (or minimise) functions. Consider some function <span class="math inline">\(f(x)\)</span> for <span class="math inline">\(x \in \mathbb{R}\)</span> and wanting to find the value of <span class="math inline">\(x\)</span>, <span class="math inline">\(\tilde x\)</span> say, such that <span class="math inline">\(f(\tilde x) = 0\)</span>. Sometimes we can analytically find <span class="math inline">\(\tilde x\)</span>, but sometimes not. We’ll just consider the latter case where we’ll need to find <span class="math inline">\(\tilde x\)</span> numerically, such as through some iterative process. We won’t go into the details of root-finding algorithms; instead we’ll just look at <code>R</code>’s function <code>uniroot()</code>. This is <code>R</code>’s go-to function for root finding. This chapter will just demonstrate its use by example.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-84" class="example"><strong>Example 5.2  (Root-finding in R) </strong></span>Use <code>uniroot()</code> in <code>R</code> to find the root of
+<span class="math display">\[
+f(x) = (x + 3)(x - 1)^2
+\]</span>
+i.e. to find <span class="math inline">\(\tilde x\)</span>, where <span class="math inline">\(f(\tilde{x}) = 0\)</span>, given that <span class="math inline">\(\tilde x \in [-4, 4/3]\)</span>.</p>
+</div>
+<p>We’ll start by writing a function to evaluate <span class="math inline">\(f()\)</span>, which we’ll call <code>f</code>.</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="optimisation.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (x <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<p>Then we’ll call <code>uniroot()</code></p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="optimisation.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">uniroot</span>(f, <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="fl">4.3</span>))</span></code></pre></div>
+<pre><code>## $root
+## [1] -2.999997
+## 
+## $f.root
+## [1] 4.501378e-05
+## 
+## $iter
+## [1] 7
+## 
+## $init.it
+## [1] NA
+## 
+## $estim.prec
+## [1] 6.103516e-05</code></pre>
+<p>We see that its output includes various details. Most important are <code>root</code>, its estimate of <span class="math inline">\(\tilde x\)</span>, which is <span class="math inline">\(\tilde x \simeq -2.9999972\)</span>, and <code>f.root</code>, the value of <span class="math inline">\(f()\)</span> at the root, i.e. <span class="math inline">\(f(\tilde x)\)</span>, which is <span class="math inline">\(f(\tilde x) \simeq 4.5013782\times 10^{-5}\)</span> and is sufficiently close to zero that we should be confident that we’ve reached a root.</p>
+<div class="remark">
+<p><span id="unlabeled-div-85" class="remark"><em>Remark</em>. </span>We can ask <code>uniroot()</code> to extend the search range for the root through its argument <code>extendInt</code>. Options are <code>'no'</code>, <code>'yes'</code>, <code>'downX'</code> and <code>'upX'</code>, which correspond to not extending the range (the default) or allowing it to be extended to allow upward and downward crossings, just downward or just upward, respectively. (If we want to extend the search interval for the root, <code>extendInt = 'yes'</code> is usually the best option. Otherwise, we need to think about how <span class="math inline">\(f()\)</span> behaves at the roots, i.e. whether it’s increasing or decreasing. See the help file for <code>uniroot()</code> for more details.) If we return to the above example and consider the search range <span class="math inline">\([-2, -1]\)</span> instead, then by issuing</p>
+</div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="optimisation.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">uniroot</span>(f, <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">extendInt =</span> <span class="st">&#39;yes&#39;</span>)</span></code></pre></div>
+<pre><code>## $root
+## [1] -2.999991
+## 
+## $f.root
+## [1] 0.0001449862
+## 
+## $iter
+## [1] 12
+## 
+## $init.it
+## [1] 6
+## 
+## $estim.prec
+## [1] 6.103516e-05</code></pre>
+<p>we do still find the root, even though it’s outside of our specified range.</p>
+</div>
+<div id="one-dimensional-optimisation-in-r" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> One-dimensional optimisation in <code>R</code><a href="optimisation.html#one-dimensional-optimisation-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll only briefly look at how we can perform one-dimensional optimisation in <code>R</code>, which is through its <code>optimize()</code> function. As described by its help file, <code>optimize()</code> uses ‘<em>a combination of golden section search and successive parabolic interpolation, and was designed for use with continuous functions</em>’. We can instead use <code>optimize()</code> by calling <code>optim(..., method = 'Brent')</code>. The two are equivalent. By default <code>optim()</code> uses the Nelder-Mead polytope method, which we’ll cover in Section <a href="optimisation.html#sec:nelder">5.4.7</a>, which doesn’t usually work well in one dimension. The only reason I can see for using <code>optim(..., method = 'Brent')</code> over <code>optimize()</code> is that <code>optim()</code> is <code>R</code>’s preferred numerical optimisation function, and hence users my benefit from familiarity with its output, as opposed to that of <code>optimize()</code>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-86" class="example"><strong>Example 5.3  (Numerical maximum likelihood estimation) </strong></span>Consider a sample of data <span class="math inline">\(y_1, \ldots, y_n\)</span> as independent realisations from the <span class="math inline">\(\text{Exp}(\lambda)\)</span> distribution with pdf
+<span class="math display">\[
+f(y \mid \lambda) = \lambda \text{exp}(-\lambda y) \hspace{1cm} \text{for}~y &gt; 0
+\]</span>
+where <span class="math inline">\(\lambda &gt; 0\)</span> is an unknown parameter that we want to estimate. Its mle is <span class="math inline">\(1 / \bar y\)</span>, where <span class="math inline">\(\bar y = n^{-1} \sum_{i = 1}^n y_i\)</span>. Confirm this numerically in <code>R</code> using <code>optimze()</code> by assuming that the sample of data
+<span class="math display">\[
+0.4, 0.5, 0.8, 1.8, 2.1, 3.7, 8.2, 10.6, 11.6, 12.8
+\]</span>
+are independent <span class="math inline">\(\text{Exp}(\lambda)\)</span> realisations.</p>
+</div>
+<p>By default <code>optimize()</code> will find the minimum, so we want to write a function that will evaluate the exponential distribution’s log-likelihood
+<span class="math display">\[
+\log f(\mathbf{y} \mid \lambda) = n \log \lambda - \lambda \sum_{i = 1}^n y_i
+\]</span>
+and then negate it. We’ll call this <code>negloglik(lambda, y)</code>.</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="optimisation.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> negloglik <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
+<span id="cb359-2"><a href="optimisation.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to evaluate Exp(lambda) neg. log likelihood</span></span>
+<span id="cb359-3"><a href="optimisation.html#cb359-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># lambda is a scalar</span></span>
+<span id="cb359-4"><a href="optimisation.html#cb359-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y can be scalar or vector</span></span>
+<span id="cb359-5"><a href="optimisation.html#cb359-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb359-6"><a href="optimisation.html#cb359-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="sc">-</span>n <span class="sc">*</span> <span class="fu">log</span>(lambda) <span class="sc">+</span> lambda <span class="sc">*</span> <span class="fu">sum</span>(y)</span>
+<span id="cb359-7"><a href="optimisation.html#cb359-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>We then pass this on to <code>optimize()</code> with our sample of data, which we’ll call <code>y</code>.</p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="optimisation.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.8</span>, <span class="fl">2.1</span>, <span class="fl">3.7</span>, <span class="fl">8.2</span>, <span class="fl">10.6</span>, <span class="fl">11.6</span>, <span class="fl">12.8</span>)</span>
+<span id="cb360-2"><a href="optimisation.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">optimize</span>(negloglik, <span class="at">lower =</span> .<span class="dv">1</span>, <span class="at">upper =</span> <span class="dv">10</span>, <span class="at">y =</span> y)</span></code></pre></div>
+<pre><code>## $minimum
+## [1] 0.1904839
+## 
+## $objective
+## [1] 26.58228</code></pre>
+<p>We see that <code>R</code>’s numerical maximum likelihood estimate of <span class="math inline">\(\lambda\)</span> is 0.1904839, and the true value is <span class="math inline">\(1 / 5.25 \simeq 0.1904762\)</span>; so the two agree to five decimal places.</p>
+<div class="remark">
+<p><span id="unlabeled-div-87" class="remark"><em>Remark</em>. </span>We can ask <code>optimize()</code> to be more precise through its <code>tol</code> argument, which has default <code>tol = .Machine$double.eps^0.25</code>. Smaller values of <code>tol</code> will give more accurate numerical estimates.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-88" class="remark"><em>Remark</em>. </span>Calling <code>optimise()</code> is equivalent to calling <code>optimize()</code>, for those that don’t like American spellings of English words.</p>
+</div>
+</div>
+<div id="newtons-method-in-one-dimension" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Newton’s method in one-dimension<a href="optimisation.html#newtons-method-in-one-dimension" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Recall Theorem <a href="numerical-calculus.html#thm:taylor1">4.1</a>. The second-order approximation, if we swap from <span class="math inline">\(x\)</span> to <span class="math inline">\(\theta\)</span>,
+<span class="math display">\[
+f(\theta) \simeq f(\theta_0) + (\theta - \theta_0)f&#39;(\theta_0) + \dfrac{1}{2}(\theta - \theta_0)^2 f&#39;&#39;(\theta_0)
+\]</span>
+can be re-written as
+<span class="math display">\[
+f(\theta + \delta) \simeq f(\theta) + \delta f&#39;(\theta) + \dfrac{1}{2} \delta^2 f&#39;&#39;(\theta)
+\]</span>
+for small <span class="math inline">\(\delta\)</span> if we consider values near <span class="math inline">\(\theta\)</span> for some twice-differentiable function <span class="math inline">\(f()\)</span>. If we’re trying to find <span class="math inline">\(\theta^* = \theta + \delta\)</span> that minimises <span class="math inline">\(f(\theta + \delta)\)</span> iteratively, then we want <span class="math inline">\(\theta^*\)</span> to be an improvement on <span class="math inline">\(\theta\)</span>, i.e. <span class="math inline">\(f(\theta + \delta) &lt; f(\theta)\)</span>. The best value of <span class="math inline">\(\theta + \delta t\)</span> then therefore minimises <span class="math inline">\(f(\theta) + \delta f&#39;(\theta) + \delta^2 f&#39;&#39;(\theta) / 2\)</span>, and if we differentiate this w.r.t. <span class="math inline">\(\delta\)</span> we get
+<span class="math display">\[
+f&#39;(\theta) = - \delta f&#39;&#39;(\theta)
+\]</span>
+so that
+<span class="math display">\[
+\delta = - \dfrac{f&#39;(\theta)}{f&#39;&#39;(\theta)}.
+\]</span>
+The above result is the basis for <strong>Newton’s method</strong> whereby, if we assume we have a value of <span class="math inline">\(\theta\)</span> at iteration <span class="math inline">\(i\)</span>, then we update this at the next iteration so that
+<span class="math display">\[
+\theta_{i + 1} = \theta_i - \dfrac{f&#39;(\theta_i)}{f&#39;&#39;(\theta_i)}.
+\]</span></p>
+<div class="remark">
+<p><span id="unlabeled-div-89" class="remark"><em>Remark</em>. </span>For the one dimensional case of Newton’s method, we will refer to <span class="math inline">\(p_i = - f&#39;(\theta_i) / f&#39;&#39;(\theta_i)\)</span> as the <strong>Newton step</strong>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-90" class="example"><strong>Example 5.4  (Poisson maximum likelihood) </strong></span>Let <span class="math inline">\(Y_i\)</span>, <span class="math inline">\(i = 1, \ldots, n\)</span>, denote the numbers of cars passing the front of the Laver building between 9 and 10am on weekdays during term time. Assume that these are independent from one day to the next, and that <span class="math inline">\(Y_i \sim \text{Poisson}(\mu)\)</span>, for some unknown <span class="math inline">\(\mu\)</span>. The likelihood for a sample of data is given by
+<span class="math display">\[
+f(\mathbf{y} \mid \mu) = \prod_{i = 1}^n \dfrac{\mu^{y_i}\text{e}^{-\mu}}{y_i!}
+\]</span>
+and for which we can write the log-likelihood as
+<span class="math display">\[
+\log f(\mathbf{y} \mid \mu) = -n \mu + \sum_{i = 1}^n y_i \log(\mu) - \sum_{i = 1}^n \log(y_i!).
+\]</span>
+Of course, we can solve this analytically, which gives a maximum likelihood estimate of <span class="math inline">\(\hat \mu = \bar y = \sum_{i = 1}^n y_i / n\)</span>. Given the counts below</p>
+</div>
+<p><span class="math display">\[
+20, 21, 23, 25, 26, 26, 30, 37, 38, 41,
+\]</span></p>
+<p>we find that <span class="math inline">\(\hat \mu = 28.7\)</span>. Use five iterations of Newton’s method to find <span class="math inline">\(\hat \mu\)</span> iteratively, starting with <span class="math inline">\(\mu_0 = 28\)</span>, and comment on how many iterations are required to find <span class="math inline">\(\hat \mu\)</span> to two decimal places.</p>
+<p>We’ll start by reading in the data.</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="optimisation.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">23</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">26</span>, <span class="dv">30</span>, <span class="dv">37</span>, <span class="dv">38</span>, <span class="dv">41</span>)</span></code></pre></div>
+<p>Then we’ll find the first and second derivatives of <span class="math inline">\(-\log f(\mathbf{y} \mid \mu)\)</span> w.r.t. <span class="math inline">\(\mu\)</span>, which are <span class="math inline">\(n - (\sum_{i = 1}^n y_i) / \mu\)</span> and <span class="math inline">\((\sum_{i = 1}^n y_i) / \mu^2\)</span>, respectively. Then we’ll write functions in <code>R</code>, which we’ll call <code>d1</code> and <code>d2</code>, to evaluate these analytical derivatives.</p>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="optimisation.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, y) {</span>
+<span id="cb363-2"><a href="optimisation.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to first derivative w.r.t. lambda of </span></span>
+<span id="cb363-3"><a href="optimisation.html#cb363-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Exp(lambda) neg. log likelihood</span></span>
+<span id="cb363-4"><a href="optimisation.html#cb363-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># lambda is a scalar</span></span>
+<span id="cb363-5"><a href="optimisation.html#cb363-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y can be scalar or vector</span></span>
+<span id="cb363-6"><a href="optimisation.html#cb363-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb363-7"><a href="optimisation.html#cb363-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">length</span>(y) <span class="sc">-</span> <span class="fu">sum</span>(y) <span class="sc">/</span> mu</span>
+<span id="cb363-8"><a href="optimisation.html#cb363-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb363-9"><a href="optimisation.html#cb363-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb363-10"><a href="optimisation.html#cb363-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, y) {</span>
+<span id="cb363-11"><a href="optimisation.html#cb363-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to second derivative w.r.t. lambda of </span></span>
+<span id="cb363-12"><a href="optimisation.html#cb363-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Exp(lambda) neg. log likelihood</span></span>
+<span id="cb363-13"><a href="optimisation.html#cb363-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># lambda is a scalar</span></span>
+<span id="cb363-14"><a href="optimisation.html#cb363-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y can be scalar or vector</span></span>
+<span id="cb363-15"><a href="optimisation.html#cb363-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb363-16"><a href="optimisation.html#cb363-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">sum</span>(y) <span class="sc">/</span> mu<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb363-17"><a href="optimisation.html#cb363-17" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Then we’ll iterate estimates of <span class="math inline">\(\mu\)</span> using Newton’s method.</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="optimisation.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mu_i <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">6</span>)</span>
+<span id="cb364-2"><a href="optimisation.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mu_i[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">28</span></span>
+<span id="cb364-3"><a href="optimisation.html#cb364-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">length</span>(mu_i) <span class="sc">-</span> <span class="dv">1</span>)) </span>
+<span id="cb364-4"><a href="optimisation.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   mu_i[i <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> mu_i[i] <span class="sc">-</span> <span class="fu">d1</span>(mu_i[i], y) <span class="sc">/</span> <span class="fu">d2</span>(mu_i[i], y)</span>
+<span id="cb364-5"><a href="optimisation.html#cb364-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mu_i</span></code></pre></div>
+<pre><code>## [1] 28.00000 28.68293 28.69999 28.70000 28.70000 28.70000</code></pre>
+<p>Finally, we’ll compare our estimate from Newton’s method with the true maximum likelihood estimate</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="optimisation.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mu_its <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">which</span>(<span class="fu">round</span>(<span class="fu">abs</span>(mu_i <span class="sc">-</span> mu_hat), <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">0</span>)) <span class="sc">-</span> <span class="dv">1</span></span></code></pre></div>
+<p>and find that after 2 iterations our iterative estimate matches the true value of <span class="math inline">\(\hat \mu\)</span> to three decimal places.</p>
+<p>Let’s quickly look at how our iterations have gone. We’ll superimpose them on top of a plot of the negative log-likelihood as vertical, dotted red lines, with the true value of <span class="math inline">\(\hat \mu\)</span> shown in green.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="optimisation.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mu_seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(mu_hat <span class="sc">-</span> <span class="dv">1</span>, mu_hat <span class="sc">+</span> <span class="dv">1</span>, <span class="at">l =</span> <span class="fl">1e2</span>)</span>
+<span id="cb367-2"><a href="optimisation.html#cb367-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> f_seq <span class="ot">&lt;-</span> <span class="fu">sapply</span>(mu_seq, <span class="cf">function</span>(z) <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">log</span>(<span class="fu">dpois</span>(y, z))))</span>
+<span id="cb367-3"><a href="optimisation.html#cb367-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(mu_seq, f_seq, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, </span>
+<span id="cb367-4"><a href="optimisation.html#cb367-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>      <span class="at">xlab =</span> <span class="fu">expression</span>(mu), <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="sc">-</span><span class="fu">log</span>(<span class="fu">f</span>(<span class="fu">bold</span>(y) <span class="sc">*</span> <span class="st">&quot; | &quot;</span> <span class="sc">*</span>mu))))</span>
+<span id="cb367-5"><a href="optimisation.html#cb367-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">v =</span> mu_hat, <span class="at">col =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb367-6"><a href="optimisation.html#cb367-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">v =</span> mu_i[<span class="fu">seq_len</span>(mu_its)], <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="main_files/figure-html/newton1d3-1.png" width="672" /></p>
+<p>We see that Newton’s method has quickly homed in on the true value of <span class="math inline">\(\hat \mu\)</span>. Although this example is simple, and is one in which Newton’s method will typically perform well, Newton’s method is incredibly powerful, and will often perform well in a wide range of scenarios. Next we’ll consider multidimensional <span class="math inline">\(\boldsymbol{\theta}\)</span>.</p>
+<!-- ### Taylor's theorem (univariate) -->
+<!-- ### Golden section search -->
+<!-- - \citet[\S10.2]{press2007} -->
+<!-- ### Brent's method -->
+<!-- - \citet[\S10.3]{press2007} -->
+<!-- ### Aside on Taylor's theorem -->
+<!-- ### Newton's method (univariate) -->
+</div>
+<div id="newtons-multi-dimensional-method" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Newton’s multi-dimensional method<a href="optimisation.html#newtons-multi-dimensional-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="taylors-theorem-multivariate" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Taylor’s theorem (multivariate)<a href="optimisation.html#taylors-theorem-multivariate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The above extension to Taylor’s theorem in the univariate case applies to the multivariate case, after swapping <span class="math inline">\(\mathbf{x}\)</span> for <span class="math inline">\(\boldsymbol{\theta}\)</span>, so that
+<span class="math display">\[
+f(\mathbf{\boldsymbol{\theta}}) \simeq f(\boldsymbol{\theta}_0) + \left[\nabla f(\boldsymbol{\theta}_0)\right]^\text{T} (\boldsymbol{\theta} - \boldsymbol{\theta}_0) + \dfrac{1}{2} (\boldsymbol{\theta} - \boldsymbol{\theta}_0)^\text{T} \left[\nabla^2 f(\boldsymbol{\theta}_0)\right] (\boldsymbol{\theta} - \boldsymbol{\theta}_0)
+\]</span>
+can be re-written as</p>
+<p><span class="math display" id="eq:taylor2">\[\begin{equation}
+f(\boldsymbol{\theta} + \boldsymbol{\Delta}) \simeq f(\boldsymbol{\theta}) + \left[\nabla f(\boldsymbol{\theta})\right]^\text{T} \boldsymbol{\Delta} + \dfrac{1}{2} \boldsymbol{\Delta}^\text{T} \left[\nabla^2 f(\boldsymbol{\theta})\right] \boldsymbol{\Delta}.
+\tag{5.1}
+\end{equation}\]</span></p>
+<p>As similar argument to that above, i.e. finding <span class="math inline">\(\boldsymbol{\theta} + \boldsymbol{\Delta}\)</span> that minimises equation <a href="optimisation.html#eq:taylor2">(5.1)</a>, gives
+<span class="math display">\[
+\boldsymbol{\theta}_{i + 1} = \boldsymbol{\theta}_i - \left[\nabla^2 f(\boldsymbol{\theta}_i)\right]^{-1} \nabla f(\boldsymbol{\theta}_i)
+\]</span>
+for which we require that <span class="math inline">\(\nabla^2 f(\boldsymbol{\theta}_i)\)</span> is positive semi-definite in order to ensure that <span class="math inline">\(f(\boldsymbol{\theta}_{i + 1}) \leq f(\boldsymbol{\theta}_i)\)</span>.</p>
+<div class="remark">
+<p><span id="unlabeled-div-91" class="remark"><em>Remark</em>. </span>For the multi-dimensional case of Newton’s method, we will refer to <span class="math inline">\(\mathbf{p}_i = - \left[\nabla^2 f(\boldsymbol{\theta}_i)\right]^{-1} \nabla f(\boldsymbol{\theta}_i)\)</span> as the <strong>Newton step</strong>.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-92" class="remark"><em>Remark</em>. </span>Sometimes it may turn out that <span class="math inline">\(\nabla^2 f(\boldsymbol{\theta}_i)\)</span> is not positive semi-definite. Fortunately, this does not prohibit use of Newton’s method because we can <em>perturb</em> <span class="math inline">\(\nabla^2 f(\boldsymbol{\theta}_i)\)</span> so that it is positive semi-definite, which will then guarantee that <span class="math inline">\(f(\boldsymbol{\theta}_{i + 1}) \leq f(\boldsymbol{\theta}_i)\)</span>. There are various options for perturbation, but a common choice is to use <span class="math inline">\(\nabla^2 f(\boldsymbol{\theta}_i) + \gamma \mathbf{I}_p\)</span>, where <span class="math inline">\(\mathbf{I}_p\)</span> is the <span class="math inline">\(p \times p\)</span> identity matrix, and we choose <span class="math inline">\(\gamma\)</span> very small, and sequentially increase its value until <span class="math inline">\(\nabla^2 f(\boldsymbol{\theta}_i) + \gamma \mathbf{I}_p\)</span> is positive semi-definite. For example, we might proceed through <span class="math inline">\(\gamma = 10^{-12}, 10^{-10}, \ldots\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:weib" class="example"><strong>Example 5.5  (Weibull maximum likelihood: Newton's method) </strong></span>The Weibull distribution is sometimes used to model wind speeds. For a wind speed <span class="math inline">\(y\)</span> its pdf is given by
+<span class="math display">\[
+f(y \mid \lambda,k) = \dfrac{k}{\lambda}\left(\dfrac{y}{\lambda}\right)^{k-1}e^{-(y/\lambda)^{k}} \quad \text{for}~y &gt; 0
+\]</span>
+and where <span class="math inline">\(\lambda, k &gt; 0\)</span> are its parameters. (Note that this is the scale parameterisation of the Weibull distribution.) For observed wind speeds <span class="math inline">\(y_1, \ldots, y_n\)</span> its corresponding log-likelihood is therefore
+<span class="math display">\[
+\log f(\mathbf{y} \mid \lambda, k) = n \log k - nk \log \lambda + (k - 1) \sum_{i = 1}^n \log y_i - \sum_{i = 1}^n \left(\frac{y_i}{\lambda}\right)^k.
+\]</span>
+To implement Newton’s method, we need to find the first and second derivatives of <span class="math inline">\(\log f(\mathbf{y} \mid \lambda, k)\)</span> w.r.t. <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(k\)</span>. The first derivatives are
+<span class="math display">\[
+\begin{pmatrix}
+\dfrac{\partial \log f(\mathbf{y} \mid \lambda, k)}{\partial \lambda}\\[2ex]
+\dfrac{\partial \log f(\mathbf{y} \mid \lambda, k)}{\partial k}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dfrac{k}{\lambda}\left(\sum_{i = 1}^n \left(\dfrac{y_i}{\lambda}\right)^k - n\right)\\[2ex]
+\dfrac{n}{k} - n \log \lambda + \sum_{i = 1}^n \log y_i - \sum_{i = 1}^n \left[\left(\dfrac{y_i}{\lambda}\right)^k \log \left(\dfrac{y_i}{\lambda}\right)\right]
+\end{pmatrix}
+\]</span>
+and the second derivatives are stored in the matrix
+<span class="math display">\[
+\begin{pmatrix}
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda, k)}{\partial \lambda^2} &amp; \dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda, k)}{\partial \lambda \partial k}\\[2ex]
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda, k)}{\partial k \partial \lambda} &amp; \dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda, k)}{\partial k^2}
+\end{pmatrix}
+\]</span>
+where</p>
+</div>
+<p><span class="math display">\[\begin{align*}
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda, k)}{\partial \lambda^2} &amp;= \dfrac{k}{\lambda^2}\left(n - (1 + k) \sum_{i = 1}^n \left(\dfrac{y_i}{\lambda}\right)^k\right) \\
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda, k)}{\partial \lambda \partial k} &amp;= \dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda, k)}{\partial k \partial \lambda} = \dfrac{1}{\lambda} \left(\sum_{i = 1}^n \left(\dfrac{y_i}{\lambda}\right)^k - n + k \sum_{i = 1}^n \left[\left(\dfrac{y_i}{\lambda}\right)^k \log\left(\dfrac{y_i}{\lambda}\right)\right]\right) \\
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda, k)}{\partial k^2} &amp;= -\dfrac{n}{k^2} - \sum_{i = 1}^n \left(\dfrac{y_i}{\lambda}\right)^k \left[\log\left(\dfrac{y_i}{\lambda}\right)\right]^2.
+\end{align*}\]</span></p>
+<p>Consider the following wind speed measurements (in m/s) for the month of March.</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="optimisation.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.52</span>, <span class="fl">1.95</span>, <span class="fl">0.62</span>, <span class="fl">0.02</span>, <span class="fl">5.13</span>, <span class="fl">0.02</span>, <span class="fl">0.01</span>, <span class="fl">0.34</span>, <span class="fl">0.43</span>, <span class="fl">15.5</span>, </span>
+<span id="cb368-2"><a href="optimisation.html#cb368-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="fl">4.99</span>, <span class="fl">6.01</span>, <span class="fl">0.28</span>, <span class="fl">1.83</span>, <span class="fl">0.14</span>, <span class="fl">0.97</span>, <span class="fl">0.22</span>, <span class="fl">0.02</span>, <span class="fl">1.87</span>, <span class="fl">0.13</span>, <span class="fl">0.01</span>, </span>
+<span id="cb368-3"><a href="optimisation.html#cb368-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="fl">4.81</span>, <span class="fl">0.37</span>, <span class="fl">8.61</span>, <span class="fl">3.48</span>, <span class="fl">1.81</span>, <span class="fl">37.21</span>, <span class="fl">1.85</span>, <span class="fl">0.04</span>, <span class="fl">2.32</span>, <span class="fl">1.06</span>)</span></code></pre></div>
+<p>Use five iterations of Newton’s method to estimate <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span>, assuming the above wind speeds are independent from one day to the next and follow a Weibull distribution.</p>
+<p>We’ll start by plotting the log-likelihood surface. We wouldn’t normally do this, but it can be useful to quickly judge whether the log-likelihood surface is well-behaved, such as being unimodal and approximately quadratic about its maximum.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:weib3"></span>
+<img src="main_files/figure-html/weib3-1.png" alt="Log-likelihood surface of Weibull distribution model for wind speed data with different $\lambda$ and $k$ values." width="70%" />
+<p class="caption">
+Figure 5.1: Log-likelihood surface of Weibull distribution model for wind speed data with different <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(k\)</span> values.
+</p>
+</div>
+<p>Then we’ll write functions <code>weib_d1</code> and <code>weib_d2</code> to evaluate the first and second derivatives of the Weibull distribution’s log-likelihood w.r.t. <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(k\)</span>. We’ll create these as functions of <code>pars</code>, the vector of parameters, <code>y</code> the vector of data, and <code>mult</code>, a multiplier of the final log-likelihood, which defaults to <code>1</code>. Introducing <code>mult</code> makes it much simpler when we later need the negative log-likelihood, as we don’t have to write separate functions. Often when calculating derivatives w.r.t. multiple parameters, we find that calculations are repeated. It is worth avoiding repetition, and instead storing the results of any calculations that are used multiple times as objects. We’ll do this in the next few lines of code, storing the re-used objects as <code>z1</code>, <code>z2</code>, etc.</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="optimisation.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> weib_d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, y, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb369-2"><a href="optimisation.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to evaluate first derivative of Weibull log-likelihood</span></span>
+<span id="cb369-3"><a href="optimisation.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># pars is a vector</span></span>
+<span id="cb369-4"><a href="optimisation.html#cb369-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y can be scalar or vector</span></span>
+<span id="cb369-5"><a href="optimisation.html#cb369-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># mult is a scalar defaulting to 1; so -1 returns neg. gradient</span></span>
+<span id="cb369-6"><a href="optimisation.html#cb369-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a vector</span></span>
+<span id="cb369-7"><a href="optimisation.html#cb369-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb369-8"><a href="optimisation.html#cb369-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   z1 <span class="ot">&lt;-</span> y <span class="sc">/</span> pars[<span class="dv">1</span>]</span>
+<span id="cb369-9"><a href="optimisation.html#cb369-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   z2 <span class="ot">&lt;-</span> z1<span class="sc">^</span>pars[<span class="dv">2</span>]</span>
+<span id="cb369-10"><a href="optimisation.html#cb369-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">2</span>)</span>
+<span id="cb369-11"><a href="optimisation.html#cb369-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out[<span class="dv">1</span>] <span class="ot">&lt;-</span> (<span class="fu">sum</span>(z2) <span class="sc">-</span> n) <span class="sc">*</span> pars[<span class="dv">2</span>] <span class="sc">/</span> pars[<span class="dv">1</span>] <span class="co"># derivative w.r.t. lambda</span></span>
+<span id="cb369-12"><a href="optimisation.html#cb369-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out[<span class="dv">2</span>] <span class="ot">&lt;-</span> n <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">/</span> pars[<span class="dv">2</span>] <span class="sc">-</span> <span class="fu">log</span>(pars[<span class="dv">1</span>])) <span class="sc">+</span> </span>
+<span id="cb369-13"><a href="optimisation.html#cb369-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">sum</span>(<span class="fu">log</span>(y)) <span class="sc">-</span> <span class="fu">sum</span>(z2 <span class="sc">*</span> <span class="fu">log</span>(z1)) <span class="co"># w.r.t k</span></span>
+<span id="cb369-14"><a href="optimisation.html#cb369-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   mult <span class="sc">*</span> out</span>
+<span id="cb369-15"><a href="optimisation.html#cb369-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb369-16"><a href="optimisation.html#cb369-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb369-17"><a href="optimisation.html#cb369-17" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> weib_d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, y, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb369-18"><a href="optimisation.html#cb369-18" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to evaluate second derivative of Weibull log-likelihood</span></span>
+<span id="cb369-19"><a href="optimisation.html#cb369-19" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># pars is a vector</span></span>
+<span id="cb369-20"><a href="optimisation.html#cb369-20" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y can be scalar or vector</span></span>
+<span id="cb369-21"><a href="optimisation.html#cb369-21" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># mult is a scalar defaulting to 1; so -1 returns neg. Hessian</span></span>
+<span id="cb369-22"><a href="optimisation.html#cb369-22" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a matrix</span></span>
+<span id="cb369-23"><a href="optimisation.html#cb369-23" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb369-24"><a href="optimisation.html#cb369-24" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   z1 <span class="ot">&lt;-</span> y <span class="sc">/</span> pars[<span class="dv">1</span>]</span>
+<span id="cb369-25"><a href="optimisation.html#cb369-25" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   z2 <span class="ot">&lt;-</span> z1<span class="sc">^</span>pars[<span class="dv">2</span>]</span>
+<span id="cb369-26"><a href="optimisation.html#cb369-26" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   z3 <span class="ot">&lt;-</span> <span class="fu">sum</span>(z2)</span>
+<span id="cb369-27"><a href="optimisation.html#cb369-27" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   z4 <span class="ot">&lt;-</span> <span class="fu">log</span>(z1)</span>
+<span id="cb369-28"><a href="optimisation.html#cb369-28" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb369-29"><a href="optimisation.html#cb369-29" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out[<span class="dv">1</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> (pars[<span class="dv">2</span>] <span class="sc">/</span> pars[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>) <span class="sc">*</span> (n <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">+</span> pars[<span class="dv">2</span>]) <span class="sc">*</span> z3) <span class="co"># w.r.t. (lambda^2)</span></span>
+<span id="cb369-30"><a href="optimisation.html#cb369-30" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> out[<span class="dv">2</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">/</span> pars[<span class="dv">1</span>]) <span class="sc">*</span> ((z3 <span class="sc">-</span> n) <span class="sc">+</span> </span>
+<span id="cb369-31"><a href="optimisation.html#cb369-31" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     pars[<span class="dv">2</span>] <span class="sc">*</span> <span class="fu">sum</span>(z2 <span class="sc">*</span> z4)) <span class="co"># w.r.t. (lambda, k)</span></span>
+<span id="cb369-32"><a href="optimisation.html#cb369-32" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out[<span class="dv">2</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="sc">-</span>n<span class="sc">/</span>pars[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fu">sum</span>(z2 <span class="sc">*</span> z4<span class="sc">^</span><span class="dv">2</span>) <span class="co"># w.r.t. k^2</span></span>
+<span id="cb369-33"><a href="optimisation.html#cb369-33" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   mult <span class="sc">*</span> out</span>
+<span id="cb369-34"><a href="optimisation.html#cb369-34" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Next we’ll perform five iterations of Newton’s method, ensuring that <code>mult = -1</code> so that we negate the log-likelihood in order for minima to be sought, although we see that reasonable convergence is achieved after two or three iterations.</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="optimisation.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iterations <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb370-2"><a href="optimisation.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xx <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, iterations <span class="sc">+</span> <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb370-3"><a href="optimisation.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dimnames</span>(xx) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">&#39;iter&#39;</span>, <span class="dv">0</span><span class="sc">:</span>iterations), <span class="fu">c</span>(<span class="st">&#39;lambda&#39;</span>, <span class="st">&#39;k&#39;</span>))</span>
+<span id="cb370-4"><a href="optimisation.html#cb370-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xx[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>)</span>
+<span id="cb370-5"><a href="optimisation.html#cb370-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(iterations <span class="sc">+</span> <span class="dv">1</span>)) {</span>
+<span id="cb370-6"><a href="optimisation.html#cb370-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   gi <span class="ot">&lt;-</span> <span class="fu">weib_d1</span>(xx[i <span class="sc">-</span> <span class="dv">1</span>, ], y0, <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb370-7"><a href="optimisation.html#cb370-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   Hi <span class="ot">&lt;-</span> <span class="fu">weib_d2</span>(xx[i <span class="sc">-</span> <span class="dv">1</span>, ], y0, <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb370-8"><a href="optimisation.html#cb370-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   xx[i, ] <span class="ot">&lt;-</span> xx[i <span class="sc">-</span> <span class="dv">1</span>,] <span class="sc">-</span> <span class="fu">solve</span>(Hi, gi)</span>
+<span id="cb370-9"><a href="optimisation.html#cb370-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb370-10"><a href="optimisation.html#cb370-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xx</span></code></pre></div>
+<pre><code>##          lambda         k
+## iter 0 1.600000 0.6000000
+## iter 1 1.712945 0.5328618
+## iter 2 1.866832 0.5375491
+## iter 3 1.889573 0.5375304
+## iter 4 1.890069 0.5375279
+## iter 5 1.890069 0.5375279</code></pre>
+<p>Finally we can plot the course of the iterations, and see visually that Newton’s method quickly homes in on the negative log-likelihood surface’s minimum.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:weib5"></span>
+<img src="main_files/figure-html/weib5-1.png" alt="Five iterations of Newton's method to find Weibull maximum likelihood estimates." width="80%" />
+<p class="caption">
+Figure 5.2: Five iterations of Newton’s method to find Weibull maximum likelihood estimates.
+</p>
+</div>
+</div>
+<div id="newtons-method-in-r" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Newton’s method in <code>R</code><a href="optimisation.html#newtons-method-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Above we put together some simple code that implemented Newton’s method. However, there are various ways of performing Newton’s method in <code>R</code>. Here we just take a look at <code>nlminb()</code>, which is described as ‘Unconstrained and box-constrained optimization using PORT routines’.</p>
+<p>We can use our functions <code>weib_d1</code> and <code>weib_d2</code> from earlier for the first and second derivatives of the negative log-likelihood w.r.t. <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(k\)</span>. We now just need a function to evaluate the negative log-likelihood itself. We’ll call this <code>weib_d0</code>. Note, though, that it’s important to ensure that invalid parameters, i.e. <span class="math inline">\(\lambda \leq 0\)</span> and/or <span class="math inline">\(k \leq 0\)</span> are avoided. Below we achieve this by setting the likelihood to be extremely low (<span class="math inline">\(10^{-8}\)</span>) for such parts of parameter space.</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="optimisation.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> weib_d0 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, y, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb372-2"><a href="optimisation.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to evaluate Weibull log-likelihood</span></span>
+<span id="cb372-3"><a href="optimisation.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># pars is a vector</span></span>
+<span id="cb372-4"><a href="optimisation.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># y can be scalar or vector</span></span>
+<span id="cb372-5"><a href="optimisation.html#cb372-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># mult is a scalar defaulting to 1; so -1 returns neg. log likelihood</span></span>
+<span id="cb372-6"><a href="optimisation.html#cb372-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb372-7"><a href="optimisation.html#cb372-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb372-8"><a href="optimisation.html#cb372-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (<span class="fu">min</span>(pars) <span class="sc">&lt;=</span> <span class="dv">0</span>) {</span>
+<span id="cb372-9"><a href="optimisation.html#cb372-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     out <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1e8</span></span>
+<span id="cb372-10"><a href="optimisation.html#cb372-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   } <span class="cf">else</span> {</span>
+<span id="cb372-11"><a href="optimisation.html#cb372-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     out <span class="ot">&lt;-</span> n <span class="sc">*</span> (<span class="fu">log</span>(pars[<span class="dv">2</span>]) <span class="sc">-</span> pars[<span class="dv">2</span>] <span class="sc">*</span> <span class="fu">log</span>(pars[<span class="dv">1</span>])) <span class="sc">+</span> </span>
+<span id="cb372-12"><a href="optimisation.html#cb372-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     (pars[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(y)) <span class="sc">-</span> <span class="fu">sum</span>((y <span class="sc">/</span> pars[<span class="dv">1</span>])<span class="sc">^</span>pars[<span class="dv">2</span>])</span>
+<span id="cb372-13"><a href="optimisation.html#cb372-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb372-14"><a href="optimisation.html#cb372-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   mult <span class="sc">*</span> out</span>
+<span id="cb372-15"><a href="optimisation.html#cb372-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb372-16"><a href="optimisation.html#cb372-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">nlminb</span>(<span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>), weib_d0, weib_d1, weib_d2, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## $par
+## [1] 1.8900689 0.5375279
+## 
+## $objective
+## [1] 54.95316
+## 
+## $convergence
+## [1] 0
+## 
+## $iterations
+## [1] 5
+## 
+## $evaluations
+## function gradient 
+##        6        6 
+## 
+## $message
+## [1] &quot;relative convergence (4)&quot;</code></pre>
+<p>We see that <code>nlminb</code>’s output is a list comprising the parameter estimates (<code>par</code>), the final value of the negative log-likelihood (<code>objective</code>) whether the algorithm has converged (<code>convergence</code>, where <code>0</code> indicates successful convergence), the number of iterations before convergence was achieved (<code>iterations</code>), how many times the function and gradient were evaluated (<code>evaluations</code>), and then <code>message</code> provides further details on the type of convergence achieved.</p>
+</div>
+<div id="gradient-descent" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Gradient descent<a href="optimisation.html#gradient-descent" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If we consider small <span class="math inline">\(\boldsymbol{\Delta}\)</span> in <a href="optimisation.html#eq:taylor2">(5.1)</a> then we get the first order approximation
+<span class="math display" id="eq:taylor3">\[\begin{equation*}
+f(\boldsymbol{\theta} + \boldsymbol{\Delta}) \simeq f(\boldsymbol{\theta}) + \left[\nabla f(\boldsymbol{\theta})\right]^\text{T} \boldsymbol{\Delta},
+\tag{5.2}
+\end{equation*}\]</span>
+which is appropriate for small <span class="math inline">\(\boldsymbol{\Delta}\)</span>. The concept behind gradient descent is simple: we want to minimise <span class="math inline">\(\left[\nabla f(\boldsymbol{\theta})\right]^\text{T} \boldsymbol{\Delta}\)</span>, which requires that we follow the direction of <span class="math inline">\(-\nabla f(\boldsymbol{\theta})\)</span>. To allow for different magnitudes of gradient, we will choose
+<span class="math display">\[
+\boldsymbol{\Delta} = - \dfrac{\nabla f(\boldsymbol{\theta})}{||\nabla f(\boldsymbol{\theta})||}.
+\]</span>
+Now that we know the direction in which we want to head, we need to know how far in that direction we should go. For this we’ll consider some <span class="math inline">\(\alpha &gt; 0\)</span>, so that
+<span class="math display" id="eq:taylor4">\[\begin{align*}
+f(\boldsymbol{\theta} + \boldsymbol{\Delta}) &amp;\simeq f(\boldsymbol{\theta}) - \alpha \dfrac{\left[\nabla f(\boldsymbol{\theta})\right]^\text{T} \left[\nabla f(\boldsymbol{\theta})\right]}{||\nabla f(\boldsymbol{\theta})||},\\
+&amp;= f(\boldsymbol{\theta}) - \alpha ||\nabla f(\boldsymbol{\theta})||,
+\tag{5.3}
+\end{align*}\]</span>
+which means that <span class="math inline">\(\boldsymbol{\Delta} = - \nabla f(\boldsymbol{\theta}) / ||\nabla f(\boldsymbol{\theta})||\)</span> brings a decrease in <span class="math inline">\(f(\boldsymbol{\theta} + \boldsymbol{\Delta})\)</span> that’s proportional to <span class="math inline">\(||\nabla f(\boldsymbol{\theta})||\)</span> for <span class="math inline">\(\alpha &gt; 0\)</span>, and is the fastest possible rate at which <span class="math inline">\(f(\boldsymbol{\theta} + \boldsymbol{\Delta})\)</span> can decrease.</p>
+<div class="example">
+<p><span id="exm:grdescent" class="example"><strong>Example 5.6  (Weibull maximum likelihood: gradient descent) </strong></span>Repeat Example <a href="optimisation.html#exm:weib">5.5</a> using gradient descent with <span class="math inline">\(\alpha = 0.5\)</span> and <span class="math inline">\(\alpha = 0.1\)</span>, using 30 iterations for each. Comment on how these compare to each other, and to Newton’s method.</p>
+</div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="optimisation.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> alpha_seq <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">1</span>)</span>
+<span id="cb374-2"><a href="optimisation.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iterations <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb374-3"><a href="optimisation.html#cb374-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(alpha_seq)) {</span>
+<span id="cb374-4"><a href="optimisation.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   xx2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, iterations <span class="sc">+</span> <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb374-5"><a href="optimisation.html#cb374-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">dimnames</span>(xx2) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">&#39;iter&#39;</span>, <span class="dv">0</span><span class="sc">:</span>iterations), <span class="fu">c</span>(<span class="st">&#39;lambda&#39;</span>, <span class="st">&#39;k&#39;</span>))</span>
+<span id="cb374-6"><a href="optimisation.html#cb374-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   xx2[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>)</span>
+<span id="cb374-7"><a href="optimisation.html#cb374-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(iterations <span class="sc">+</span> <span class="dv">1</span>)) {</span>
+<span id="cb374-8"><a href="optimisation.html#cb374-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     gi <span class="ot">&lt;-</span> <span class="fu">weib_d1</span>(xx2[i <span class="sc">-</span> <span class="dv">1</span>, ], y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb374-9"><a href="optimisation.html#cb374-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     gi <span class="ot">&lt;-</span> gi <span class="sc">/</span> <span class="fu">crossprod</span>(gi)[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb374-10"><a href="optimisation.html#cb374-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     xx2[i, ] <span class="ot">&lt;-</span> xx2[i <span class="sc">-</span> <span class="dv">1</span>,] <span class="sc">-</span> alpha_seq[j] <span class="sc">*</span> gi</span>
+<span id="cb374-11"><a href="optimisation.html#cb374-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb374-12"><a href="optimisation.html#cb374-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">print</span>(<span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">&#39;alpha&#39;</span>, alpha_seq[j], <span class="at">sep =</span> <span class="st">&#39; = &#39;</span>), <span class="fu">tail</span>(xx2, <span class="dv">5</span>)))</span>
+<span id="cb374-13"><a href="optimisation.html#cb374-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;alpha = 0.5&quot;
+## 
+## [[2]]
+##           lambda           k
+## iter 26 2.010166 -0.03896600
+## iter 27 2.010166 -0.03960079
+## iter 28 2.010166 -0.04024614
+## iter 29 2.010166 -0.04090225
+## iter 30 2.010166 -0.04156929
+## 
+## [[1]]
+## [1] &quot;alpha = 0.1&quot;
+## 
+## [[2]]
+##           lambda         k
+## iter 26 1.771195 0.5611662
+## iter 27 1.772881 0.5440336
+## iter 28 1.780112 0.5015718
+## iter 29 1.780158 0.5164447
+## iter 30 1.781202 0.5447801</code></pre>
+<p>Above we give the final five iterations for each value of <span class="math inline">\(\alpha\)</span>, and see that convergence to <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span> has not been achieved after 30 iterations for <span class="math inline">\(\alpha = 0.5\)</span> and for <span class="math inline">\(\alpha = 0.1\)</span>, whereas Newton’s method had essentially converged after four or five iterations. Worse still, if we allowed more iterations, we’d see that both eventually diverge away from <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span>, as opposed to converging. The undesirable course of these iterations can be seen in the following plot.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:grad1"></span>
+<img src="main_files/figure-html/grad1-1.png" alt="Iterations of the gradient descent algorithm with $\alpha = 0.5$ and $\alpha = 0.1$." width="80%" />
+<p class="caption">
+Figure 5.3: Iterations of the gradient descent algorithm with <span class="math inline">\(\alpha = 0.5\)</span> and <span class="math inline">\(\alpha = 0.1\)</span>.
+</p>
+</div>
+</div>
+<div id="line-search" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Line search<a href="optimisation.html#line-search" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Above we see that, for fixed <span class="math inline">\(\alpha\)</span>, gradient descent has diverged, i.e. not homed in on the minimum of <span class="math inline">\(f()\)</span>. This often happens with gradient descent. A solution, which also applies to Newton’s method, is to use a <em>line search</em>. Consider Newton’s method and a search direction of <span class="math inline">\(\mathbf{p}_i = - \left[\nabla^2 f(\boldsymbol{\theta}_i)\right]^{-1} \nabla f(\boldsymbol{\theta}_i)\)</span>. We want <span class="math inline">\(f(\boldsymbol{\theta}_i + \mathbf{p}_i) &lt; f(\boldsymbol{\theta}_i)\)</span> in order for <span class="math inline">\(\boldsymbol{\theta}_i + \mathbf{p}_i\)</span> to be an improvement on <span class="math inline">\(\boldsymbol{\theta}_i\)</span>. If we employ a line search, we instead consider <span class="math inline">\(\boldsymbol{\theta}_i + \alpha \mathbf{p}_i\)</span> for some <span class="math inline">\(\alpha &gt; 0\)</span> and ideally want <span class="math inline">\(\alpha\)</span> to minimise <span class="math inline">\(f(\boldsymbol{\theta}_i + \alpha \mathbf{p}_i)\)</span>. In practice this can be done informally, through the following process.</p>
+<ol style="list-style-type: decimal">
+<li>Choose an initial value for <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\alpha_0\)</span>, say, and set <span class="math inline">\(j = 0\)</span>.</li>
+<li>Evaluate <span class="math inline">\(f(\boldsymbol{\theta}_i + \alpha_j \mathbf{p}_i)\)</span>.</li>
+<li>Set <span class="math inline">\(j = j + 1\)</span>.</li>
+<li>Set <span class="math inline">\(\alpha_j = \rho \alpha_{j - 1}\)</span>, for <span class="math inline">\(0 &lt; \rho &lt; 1\)</span>.</li>
+<li>Evaluate <span class="math inline">\(f(\boldsymbol{\theta}_i + \alpha_j \mathbf{p}_i)\)</span>.</li>
+<li>If <span class="math inline">\(f(\boldsymbol{\theta}_i + \alpha_j \mathbf{p}_i) &lt; f(\boldsymbol{\theta}_i + \alpha_{j - 1} \mathbf{p}_i)\)</span>, repeat steps 3 to 6 until <span class="math inline">\(f(\boldsymbol{\theta}_i + \alpha_j \mathbf{p}_i) \geq f(\boldsymbol{\theta}_i + \alpha_{j - 1} \mathbf{p}_i)\)</span>.</li>
+<li>Choose <span class="math inline">\(\alpha = \alpha_{j - 1}\)</span>.</li>
+</ol>
+<p>We can implement this in <code>R</code>.</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="optimisation.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> line_search <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, p, f, <span class="at">alpha0 =</span> <span class="dv">1</span>, <span class="at">rho =</span> .<span class="dv">5</span>, ...) {</span>
+<span id="cb376-2"><a href="optimisation.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   best <span class="ot">&lt;-</span> <span class="fu">f</span>(theta, ...)</span>
+<span id="cb376-3"><a href="optimisation.html#cb376-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   cond <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb376-4"><a href="optimisation.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">while</span> (cond <span class="sc">&amp;</span> alpha0 <span class="sc">&gt;</span> .Machine<span class="sc">$</span>double.eps) {</span>
+<span id="cb376-5"><a href="optimisation.html#cb376-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     prop <span class="ot">&lt;-</span> <span class="fu">f</span>(theta <span class="sc">+</span> alpha0 <span class="sc">*</span> p, ...)</span>
+<span id="cb376-6"><a href="optimisation.html#cb376-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     cond <span class="ot">&lt;-</span> prop <span class="sc">&gt;=</span> best</span>
+<span id="cb376-7"><a href="optimisation.html#cb376-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="cf">if</span> (<span class="sc">!</span>cond)</span>
+<span id="cb376-8"><a href="optimisation.html#cb376-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       best <span class="ot">&lt;-</span> prop</span>
+<span id="cb376-9"><a href="optimisation.html#cb376-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     alpha0 <span class="ot">&lt;-</span> alpha0 <span class="sc">*</span> rho</span>
+<span id="cb376-10"><a href="optimisation.html#cb376-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb376-11"><a href="optimisation.html#cb376-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   alpha <span class="ot">&lt;-</span> alpha0 <span class="sc">/</span> rho</span>
+<span id="cb376-12"><a href="optimisation.html#cb376-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   alpha</span>
+<span id="cb376-13"><a href="optimisation.html#cb376-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<div class="remark">
+<p><span id="unlabeled-div-93" class="remark"><em>Remark</em>. </span>Notice the use of the <code>...</code> argument here, which passes any extra arguments given to <code>line_search()</code> on to <code>f()</code>, and hence avoids the need to include <code>f()</code>’s arguments in <code>line_search()</code>. This is useful because it makes <code>line_search()</code> applicable to any <code>f()</code>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-94" class="example"><strong>Example 5.7  (Weibull maximum likelihood: gradient descent with line search) </strong></span>Repeat Example <a href="optimisation.html#exm:weib">5.5</a> using gradient descent but with line search and 200 iterations.</p>
+</div>
+<p>The following code repeats Example <a href="optimisation.html#exm:grdescent">5.6</a> with the addition of line search.</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="optimisation.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iterations <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb377-2"><a href="optimisation.html#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xx2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, iterations <span class="sc">+</span> <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb377-3"><a href="optimisation.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dimnames</span>(xx2) <span class="ot">=</span> <span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">&#39;iter&#39;</span>, <span class="dv">0</span><span class="sc">:</span>iterations), <span class="fu">c</span>(<span class="st">&#39;lambda&#39;</span>, <span class="st">&#39;k&#39;</span>))</span>
+<span id="cb377-4"><a href="optimisation.html#cb377-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xx2[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>)</span>
+<span id="cb377-5"><a href="optimisation.html#cb377-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(iterations <span class="sc">+</span> <span class="dv">1</span>)) {</span>
+<span id="cb377-6"><a href="optimisation.html#cb377-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   gi <span class="ot">&lt;-</span> <span class="fu">weib_d1</span>(xx2[i <span class="sc">-</span> <span class="dv">1</span>, ], y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb377-7"><a href="optimisation.html#cb377-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   gi <span class="ot">&lt;-</span> gi <span class="sc">/</span> <span class="fu">crossprod</span>(gi)[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb377-8"><a href="optimisation.html#cb377-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   alpha_i <span class="ot">&lt;-</span> <span class="fu">line_search</span>(xx2[i <span class="sc">-</span> <span class="dv">1</span>, ], <span class="sc">-</span>gi, weib_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb377-9"><a href="optimisation.html#cb377-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   xx2[i, ] <span class="ot">&lt;-</span> xx2[i <span class="sc">-</span> <span class="dv">1</span>,] <span class="sc">-</span> alpha_i <span class="sc">*</span> gi</span>
+<span id="cb377-10"><a href="optimisation.html#cb377-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb377-11"><a href="optimisation.html#cb377-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tail</span>(xx2, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##            lambda         k
+## iter 196 1.888392 0.5374135
+## iter 197 1.888417 0.5374937
+## iter 198 1.888463 0.5374345
+## iter 199 1.888489 0.5374891
+## iter 200 1.888556 0.5374245</code></pre>
+<p>We see that line search does at least bring us convergence of the parameter estimates, but that it’s also very slow, as the following plot shows.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:grad3"></span>
+<img src="main_files/figure-html/grad3-1.png" alt="200 iterations of the gradient descent algorithm using line search." width="80%" />
+<p class="caption">
+Figure 5.4: 200 iterations of the gradient descent algorithm using line search.
+</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-95" class="remark"><em>Remark</em>. </span>Here we’ve adopted an informal approach to line search. A more formal approach is to choose <span class="math inline">\(\alpha\)</span> so that it satisfies the <strong>Wolfe conditions</strong>. A step length <span class="math inline">\(\alpha_k\)</span> is said to satisfy the Wolfe conditions, restricted to the direction <span class="math inline">\(\mathbf{p}_i\)</span>, if the following two inequalities hold:
+<span class="math display">\[\begin{align*}
+\textbf{i)} &amp; \quad f(\boldsymbol{\theta}_i + \alpha_i \mathbf{p}_i) \leq f(\boldsymbol{\theta}_i) + c_1 \alpha_i \mathbf{p}_i^{\mathrm{T}} \nabla f(\boldsymbol{\theta}_i), \\[6pt]
+\textbf{ii)} &amp; \quad -\mathbf{p}_i^{\mathrm{T}} \nabla f(\boldsymbol{\theta}_i + \alpha_i \mathbf{p}_i) \leq -c_2\mathbf{p}_i^{\mathrm{T}} \nabla f(\boldsymbol{\theta}_i),
+\end{align*}\]</span>
+with <span class="math inline">\(0 &lt; c_1 &lt; c_2 &lt; 1\)</span>. <span class="math inline">\(c_1\)</span> is usually chosen to be quite small while <span class="math inline">\(c_2\)</span> is much larger; <span class="citation">Nocedal and Wright (2006, sec. 6.1)</span> give example values of <span class="math inline">\(c_1 = 10^{-4}\)</span> and <span class="math inline">\(c_2 = 0.9\)</span> for Newton or quasi-Newton methods.</p>
+</div>
+<!-- ### Newton’s method -->
+<!-- - Cross-validation, penalised likelihood and B- and P-splines. -->
+</div>
+<div id="quasi-newton-methods" class="section level3 hasAnchor" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> Quasi-Newton methods<a href="optimisation.html#quasi-newton-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Between Newton’s method and steepest descent lie <strong>quasi-Newton</strong> methods. These essentially employ Newton’s method, but with some approximation to the Hessian matrix. Instead of the search direction used in Newton’s method, <span class="math inline">\(\mathbf{p}_i = - \left[\nabla^2 f(\boldsymbol{\theta}_i)\right]^{-1} \nabla f(\boldsymbol{\theta}_i)\)</span>, consider the search direction <span class="math inline">\(\tilde{\mathbf{p}}_i = - \mathbf{H}_i^{-1} \nabla f(\boldsymbol{\theta}_i)\)</span>, where <span class="math inline">\(\mathbf{H}_i\)</span> is an approximation to the Hessian matrix <span class="math inline">\(\nabla^2 f(\boldsymbol{\theta}_i)\)</span> at the <span class="math inline">\(i\)</span>th iteration. We might, for example, want to avoid explicitly calculating <span class="math inline">\(\nabla^2 f(\boldsymbol{\theta}_i)\)</span> because it’s a matrix that’s sufficiently more difficult to calculate than the gradient (e.g. mathematically, or just in terms of time), so that using an approximation to the Hessian matrix (provided it is an adequate approximation) gives a more efficient approach to optimisation than using the Hessian matrix itself. We should typically expect quasi-Newton methods to converge slower than Newton’s method, but provided that convergence isn’t too much slower or less reliable, then we may prefer this over analytically forming the Hessian matrix.</p>
+<p>In MTH3045 we shall consider the so-called <strong>BFGS</strong> (shorthand for Broyden–Fletcher–Goldfarb–Shanno) quasi-Newton algorithm. Put simply, at iteration <span class="math inline">\(i\)</span>, the BFGS algorithm assumes that
+<span class="math display">\[
+\nabla^2 f(\boldsymbol{\theta}_{i}) \simeq \mathbf{H}_{i} = \mathbf{H}_{i - 1} + \dfrac{\mathbf{y}_i \mathbf{y}_i^{\mathrm{T}}}{\mathbf{y}_i^{\mathrm{T}} \mathbf{s}_i} - \dfrac{(\mathbf{H}_{i - 1})^{-1} \mathbf{s}_i \mathbf{s}_i^{\mathrm{T}} (\mathbf{H}_{i - 1})^{-T}}{\mathbf{s}_i^{\mathrm{T}} (\mathbf{H}_{i - 1})^{-1} \mathbf{s}_i},
+\]</span>
+where <span class="math inline">\(\mathbf{s}_i = \boldsymbol{\theta}_{i} - \boldsymbol{\theta}_{i - 1}\)</span> and <span class="math inline">\(\mathbf{y}_i = \nabla f(\boldsymbol{\theta}_{i}) - \nabla f(\boldsymbol{\theta}_{i - 1})\)</span>. Hence the BFGS algorithm uses differences in the gradients of successive iterations to approximate the Hessian matrix. We now note that we use <span class="math inline">\(\mathbf{H}_i\)</span> in <span class="math inline">\(\mathbf{p}_i = -[\mathbf{H}_i]^{-1} \nabla f(\boldsymbol{\theta}_i)\)</span>. We can avoid solving this system of linear equations by instead directly obtaining <span class="math inline">\([\mathbf{H}_i]^{-1}\)</span> through
+<span class="math display">\[
+[\mathbf{H}_{i}]^{-1} = \left(\mathbf{I}_p - \dfrac{\mathbf{s}_i \mathbf{y}_i^\text{T}}{\mathbf{y}_i^\text{T}\mathbf{s}_i}\right) [\mathbf{H}_{i - 1}]^{-1} \left(\mathbf{I}_p - \dfrac{\mathbf{y}_i \mathbf{s}_i^\text{T}}{\mathbf{s}_i^\text{T}\mathbf{y}_i}\right) + \dfrac{\mathbf{s}_i \mathbf{s}_i^\text{T}}{\mathbf{y}_i^\text{T} \mathbf{y}_i}.
+\]</span></p>
+<p>The following <code>R</code> function updates <span class="math inline">\([\mathbf{H}_{i - 1}]^{-1}\)</span> to <span class="math inline">\([\mathbf{H}_{i}]^{-1}\)</span> given <span class="math inline">\(\boldsymbol{\theta}_i\)</span>, <span class="math inline">\(\boldsymbol{\theta}_{i - 1}\)</span>, <span class="math inline">\(\nabla f(\boldsymbol{\theta}_{i - 1})\)</span> and <span class="math inline">\(\nabla f(\boldsymbol{\theta}_i)\)</span>, which are the arguments <code>x0</code>, <code>x1</code>, <code>g0</code> and <code>g1</code>, respectively.</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="optimisation.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iH1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x0, x1, g0, g1, iH0) {</span>
+<span id="cb379-2"><a href="optimisation.html#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to update Hessian matrix</span></span>
+<span id="cb379-3"><a href="optimisation.html#cb379-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x0 and x1 are p-vectors of second to last and last estimates, respectively</span></span>
+<span id="cb379-4"><a href="optimisation.html#cb379-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># g0 and g1 are p-vectors of second to last and last gradients, respectively</span></span>
+<span id="cb379-5"><a href="optimisation.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># iH0 is previous estimate of p x p Hessian matrix</span></span>
+<span id="cb379-6"><a href="optimisation.html#cb379-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a p x p matrix</span></span>
+<span id="cb379-7"><a href="optimisation.html#cb379-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   s0 <span class="ot">&lt;-</span> x1 <span class="sc">-</span> x0</span>
+<span id="cb379-8"><a href="optimisation.html#cb379-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   y0 <span class="ot">&lt;-</span> g1 <span class="sc">-</span> g0</span>
+<span id="cb379-9"><a href="optimisation.html#cb379-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   denom <span class="ot">&lt;-</span> <span class="fu">sum</span>(y0 <span class="sc">*</span> s0)</span>
+<span id="cb379-10"><a href="optimisation.html#cb379-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   I <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb379-11"><a href="optimisation.html#cb379-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   pre <span class="ot">&lt;-</span> I <span class="sc">-</span> <span class="fu">tcrossprod</span>(s0, y0) <span class="sc">/</span> denom</span>
+<span id="cb379-12"><a href="optimisation.html#cb379-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   post <span class="ot">&lt;-</span> I <span class="sc">-</span> <span class="fu">tcrossprod</span>(y0, s0) <span class="sc">/</span> denom</span>
+<span id="cb379-13"><a href="optimisation.html#cb379-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   last <span class="ot">&lt;-</span> <span class="fu">tcrossprod</span>(s0) <span class="sc">/</span> denom</span>
+<span id="cb379-14"><a href="optimisation.html#cb379-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   pre <span class="sc">%*%</span> iH0 <span class="sc">%*%</span> post <span class="sc">+</span> last</span>
+<span id="cb379-15"><a href="optimisation.html#cb379-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<div class="example">
+<p><span id="exm:unlabeled-div-96" class="example"><strong>Example 5.8  (Weibull maximum likelihood: BFGS) </strong></span>Repeat Example <a href="optimisation.html#exm:weib">5.5</a> using the BFGS method. Comment on how it compares to Newton’s method.</p>
+</div>
+<p>The following code implements five iterations of the BFGS method.</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="optimisation.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iterations <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb380-2"><a href="optimisation.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xx <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, iterations <span class="sc">+</span> <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb380-3"><a href="optimisation.html#cb380-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dimnames</span>(xx) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">&#39;iter&#39;</span>, <span class="dv">0</span><span class="sc">:</span>iterations), <span class="fu">c</span>(<span class="st">&#39;lambda&#39;</span>, <span class="st">&#39;k&#39;</span>))</span>
+<span id="cb380-4"><a href="optimisation.html#cb380-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xx[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>)</span>
+<span id="cb380-5"><a href="optimisation.html#cb380-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> g <span class="ot">&lt;-</span> iH <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb380-6"><a href="optimisation.html#cb380-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(iterations <span class="sc">+</span> <span class="dv">1</span>)) {</span>
+<span id="cb380-7"><a href="optimisation.html#cb380-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   g[[i]] <span class="ot">&lt;-</span> <span class="fu">weib_d1</span>(xx[i <span class="sc">-</span> <span class="dv">1</span>, ], y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb380-8"><a href="optimisation.html#cb380-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (<span class="fu">sqrt</span>(<span class="fu">sum</span>(g[[i]]<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">&lt;</span> <span class="fl">1e-6</span>)</span>
+<span id="cb380-9"><a href="optimisation.html#cb380-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="cf">break</span></span>
+<span id="cb380-10"><a href="optimisation.html#cb380-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb380-11"><a href="optimisation.html#cb380-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     iH[[i]] <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb380-12"><a href="optimisation.html#cb380-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   } <span class="cf">else</span> {</span>
+<span id="cb380-13"><a href="optimisation.html#cb380-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     iH[[i]] <span class="ot">&lt;-</span> <span class="fu">iH1</span>(xx[i <span class="sc">-</span> <span class="dv">2</span>, ], xx[i <span class="sc">-</span> <span class="dv">1</span>, ], g[[i <span class="sc">-</span> <span class="dv">1</span>]], g[[i]], iH[[i <span class="sc">-</span> <span class="dv">1</span>]])</span>
+<span id="cb380-14"><a href="optimisation.html#cb380-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb380-15"><a href="optimisation.html#cb380-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   search_dir <span class="ot">&lt;-</span> <span class="sc">-</span>(iH[[i]] <span class="sc">%*%</span> g[[i]])</span>
+<span id="cb380-16"><a href="optimisation.html#cb380-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   alpha <span class="ot">&lt;-</span> <span class="fu">line_search</span>(xx[i <span class="sc">-</span> <span class="dv">1</span>, ], search_dir, weib_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb380-17"><a href="optimisation.html#cb380-17" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   xx[i, ] <span class="ot">&lt;-</span> xx[i <span class="sc">-</span> <span class="dv">1</span>,] <span class="sc">+</span> alpha <span class="sc">*</span> search_dir</span>
+<span id="cb380-18"><a href="optimisation.html#cb380-18" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Our estimates at each iteration are</p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="optimisation.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xx</span></code></pre></div>
+<pre><code>##          lambda         k
+## iter 0 1.600000 0.6000000
+## iter 1 1.615241 0.4736904
+## iter 2 2.097571 0.5295654
+## iter 3 1.918661 0.5356343
+## iter 4 1.881726 0.5375145
+## iter 5 1.890167 0.5374986</code></pre>
+<p>and we see that we need two more iterations than Newton’s method to reach convergence to three decimal places.</p>
+<p>Finally, we’ll plot the course of the iterations</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
+<img src="main_files/figure-html/unnamed-chunk-74-1.png" alt="Five iterations of the MFGS quasi-Newton method." width="80%" />
+<p class="caption">
+Figure 5.5: Five iterations of the MFGS quasi-Newton method.
+</p>
+</div>
+<p>and see that we’ve taken a slightly less direct route to the minimum than Newton’s method.</p>
+</div>
+<div id="quasi-newton-methods-in-r" class="section level3 hasAnchor" number="5.4.6">
+<h3><span class="header-section-number">5.4.6</span> Quasi-Newton methods in <code>R</code><a href="optimisation.html#quasi-newton-methods-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are various options for performing quasi-Newton methods in <code>R</code>. For these, we just need to supply the function to be minimised and its gradient. The first option is to use <code>nlminb()</code> again: if we don’t supply a function to evaluate the Hessian, then <code>nlminb()</code> uses a quasi-Newton approach. The alternative – and possibly preferred – option is to use <code>optim()</code> with option <code>method = 'BFGS'</code>. The following two lines of code repeat the above example that used Newton’s method in <code>R</code>, using <code>nlminb()</code> and then <code>optim()</code>.</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="optimisation.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">nlminb</span>(<span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>), weib_d0, weib_d1, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## $par
+## [1] 1.8900689 0.5375279
+## 
+## $objective
+## [1] 54.95316
+## 
+## $convergence
+## [1] 0
+## 
+## $iterations
+## [1] 7
+## 
+## $evaluations
+## function gradient 
+##        9        8 
+## 
+## $message
+## [1] &quot;relative convergence (4)&quot;</code></pre>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="optimisation.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>), weib_d0, weib_d1, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">method =</span> <span class="st">&#39;BFGS&#39;</span>)</span></code></pre></div>
+<pre><code>## $par
+## [1] 1.8900632 0.5375283
+## 
+## $value
+## [1] 54.95316
+## 
+## $counts
+## function gradient 
+##       14        6 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL</code></pre>
+<p>We see that <code>nlminb()</code> and <code>optim()</code> have essentially given the same value of <code>par</code>, i.e. for <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span>, which is reassuring. Note that <code>nlminb()</code> has used fewer function evaluations than <code>optim()</code>. We won’t go into the details of the cause of this, but it is worth noting that the functions use different stopping criteria, and slightly different variants of the BFGS algorithm. Note also that <code>nlminb()</code> has used three more function evaluations with the BFGS method than with Newton’s method, which is typically the case, and reflects the improved convergence achieved by using the actual Hessian matrix with Newton’s method, as opposed to the approximation that’s used with the BFGS approach.</p>
+<!-- ### Root finding -->
+<!-- ```{r root1} -->
+<!-- find_k <- function(k, y) { -->
+<!--   ly <- log(y) -->
+<!--   ypk <- y^k -->
+<!--   sum(ypk * ly) / sum(ypk) - 1/k - mean(ly) -->
+<!-- } -->
+<!-- weib_fit <- function(y, k_range = c(.1, 1), mult = 1) { -->
+<!-- k <- uniroot(find_k, k_range, y = y)$root -->
+<!-- lambda <- mean(y^k)^(1/k) -->
+<!-- c(lambda, k) -->
+<!-- } -->
+<!-- weib_fit(y0, c(.1, 2)) -->
+<!-- ``` -->
+<!-- ```{r brent} -->
+<!-- brentDekker <- function(fun, a, b, maxiter = 500, tol = 1e-12, ...) -->
+<!-- # Brent and Dekker's root finding method, -->
+<!-- # based on bisection, secant method and quadratic interpolation -->
+<!-- { -->
+<!--     fun <- match.fun(fun) -->
+<!--     f <- function(x) fun(x, ...) -->
+<!--     stopifnot(is.numeric(a), is.numeric(b), -->
+<!--               length(a) == 1, length(b) == 1) -->
+<!--     if (!is.function(f) || is.null(f)) -->
+<!--         stop("Argument 'f' must be a valid R function.") -->
+<!--    x1 <- a; f1 <- f(x1) -->
+<!--    if (f1 == 0) return(list(root = a, f.root = 0, f.calls = 1, estim.prec = 0)) -->
+<!--    x2 <- b; f2 <- f(x2) -->
+<!--    if (f2 == 0) return(list(root = b, f.root = 0, f.calls = 1, estim.prec = 0)) -->
+<!--    if (f1*f2 > 0.0) -->
+<!--        stop("Brent-Dekker: Root is not bracketed in [a, b].") -->
+<!--    x3 <- 0.5*(a+b) -->
+<!--    # Beginning of iterative loop -->
+<!--    niter <- 1 -->
+<!--    while (niter <= maxiter) { -->
+<!--        f3 <- f(x3) -->
+<!--        if (abs(f3) < tol) { -->
+<!--            x0 <- x3 -->
+<!--            break -->
+<!--        } -->
+<!--        # Tighten brackets [a, b] on the root -->
+<!--        if (f1*f3 < 0.0) b <- x3 else a <- x3 -->
+<!--        if ( (b-a) < tol*max(abs(b), 1.0) ) { -->
+<!--            x0 <- 0.5*(a + b) -->
+<!--            break -->
+<!--        } -->
+<!--        # Try quadratic interpolation -->
+<!--        denom <- (f2 - f1)*(f3 - f1)*(f2 - f3) -->
+<!--        numer <- x3*(f1 - f2)*(f2 - f3 + f1) + f2*x1*(f2 - f3) + f1*x2*(f3 - f1) -->
+<!--        # if denom==0, push x out of bracket to force bisection -->
+<!--        if (denom == 0) { -->
+<!--            dx <- b - a -->
+<!--        } else { -->
+<!--            dx <- f3*numer/denom -->
+<!--        } -->
+<!--        x <- x3 + dx -->
+<!--        # If interpolation goes out of bracket, use bisection. -->
+<!--        if ((b - x)*(x - a) < 0.0) { -->
+<!--            dx <- 0.5*(b - a) -->
+<!--            x  <- a + dx; -->
+<!--        } -->
+<!--        # Let x3 <-- x & choose new x1, x2 so that x1 < x3 < x2. -->
+<!--        if (x1 < x3) { -->
+<!--            x2 <- x3; f2 <- f3 -->
+<!--        } else { -->
+<!--            x1 <- x3; f1 <- f3 -->
+<!--        } -->
+<!--        niter <- niter + 1 -->
+<!--        if (abs(x - x3) < tol) { -->
+<!--            x0 <- x -->
+<!--            break -->
+<!--        } -->
+<!--        x3 <- x; -->
+<!--    } -->
+<!--     if (niter > maxiter) -->
+<!--         warning("Maximum numer of iterations, 'maxiter', has been reached.") -->
+<!--     prec <- min(abs(x1-x3), abs(x2-x3)) -->
+<!--     return(list(root = x0, f.root = f(x0), -->
+<!--                 f.calls = niter+2, estim.prec = prec)) -->
+<!-- } -->
+<!-- weib_fit2 <- function(y, k_range = c(.1, 1), mult = 1) { -->
+<!-- k <- brentDekker(find_k, k_range[1], k_range[2], y = y)$root -->
+<!-- lambda <- mean(y^k)^(1/k) -->
+<!-- c(lambda, k) -->
+<!-- } -->
+<!-- weib_fit2(y0, c(.1, 2)) -->
+<!-- ``` -->
+<!-- ### line search, Wolfe conditions -->
+<!-- ### Levenberg–Marquardt algorithm -->
+</div>
+<div id="sec:nelder" class="section level3 hasAnchor" number="5.4.7">
+<h3><span class="header-section-number">5.4.7</span> Nelder-Mead polytope method<a href="optimisation.html#sec:nelder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So far we have considered derivative-based optimisation algorithms. When we cannot analytically calculate derivatives, we can use finite-difference approximations. However, sometimes we may want to find the minimum point of a surface that is not particularly smooth. Then derivative information may not be helpful. Instead, we might want an algorithm that explores a surface differently. The Nelder-Mead polytope algorithm is one such approach (<span class="citation">Nelder and Mead (1965)</span>). In fact, it is <code>R</code>’s default if we use <code>optim()</code>, i.e. if we don’t supply <code>method = '...'</code>.</p>
+<p>For the Nelder-Mead algorithm, consider <span class="math inline">\(\boldsymbol{\theta} \in \mathbb{R}^p\)</span>. The algorithm starts with <span class="math inline">\(p + 1\)</span> test points, <span class="math inline">\(\boldsymbol{\theta}_1, \ldots, \boldsymbol{\theta}_{p + 1}\)</span>, which we call <em>vertices</em>, and then proceeds as follows.</p>
+<ol style="list-style-type: decimal">
+<li><p>Compute the order statistics of <span class="math inline">\(f(\boldsymbol{\theta}_1), \ldots, f(\boldsymbol{\theta}_{p + 1})\)</span> vertices, i.e. find the order
+<span class="math display">\[
+f(\boldsymbol{\theta}^{(1)}) \leq f(\boldsymbol{\theta}^{(2)}) \leq \ldots \leq f(\boldsymbol{\theta}^{(p + 1)})
+\]</span>
+and check whether the termination criteria have been met (which are given later). If not, proceed to Step 2.</p></li>
+<li><p>Calculate the centroid, <span class="math inline">\(\boldsymbol{\theta}_o\)</span>, of <span class="math inline">\(\boldsymbol{\theta}_1, \ldots, \boldsymbol{\theta}_p\)</span>, i.e. omitting <span class="math inline">\(\boldsymbol{\theta}_{p + 1}\)</span>, because <span class="math inline">\(\boldsymbol{\theta}_{p + 1}\)</span> is the worst vertex.</p></li>
+<li><p>Reflection. Compute the reflected point <span class="math inline">\(\boldsymbol{\theta}_r = \boldsymbol{\theta}_o + \alpha (\boldsymbol{\theta}_o - \boldsymbol{\theta}_{p + 1})\)</span>. If <span class="math inline">\(f(\boldsymbol{\theta}_1) \leq f(\boldsymbol{\theta}_r) &lt; f(\boldsymbol{\theta}_p)\)</span>, replace <span class="math inline">\(\boldsymbol{\theta}_{p + 1}\)</span> with <span class="math inline">\(\boldsymbol{\theta}_r\)</span> and return to Step 1. Otherwise, proceed to Step 4.</p></li>
+<li><p>Expansion. If <span class="math inline">\(f(\boldsymbol{\theta}_r) &lt; f(\boldsymbol{\theta}_1)\)</span>, i.e. is the best point so far, compute the expanded point <span class="math inline">\(\boldsymbol{\theta}_e = \boldsymbol{\theta}_o + \gamma (\boldsymbol{\theta}_r - \boldsymbol{\theta}_o)\)</span> for <span class="math inline">\(\gamma &gt; 1\)</span>. If <span class="math inline">\(f(\boldsymbol{\theta}_e) &lt; f(\boldsymbol{\theta}_r)\)</span>, replace <span class="math inline">\(\boldsymbol{\theta}_{p + 1}\)</span> with <span class="math inline">\(\boldsymbol{\theta}_r\)</span> and return to Step 1. Otherwise, replace <span class="math inline">\(\boldsymbol{\theta}_{p + 1}\)</span> with <span class="math inline">\(\boldsymbol{\theta}_r\)</span> and return to Step 1.</p></li>
+<li><p>Contraction. Now <span class="math inline">\(f(\boldsymbol{\theta}_r) \geq f(\boldsymbol{\theta}_p)\)</span>. Compute the contracted point <span class="math inline">\(\boldsymbol{\theta}_c = \boldsymbol{\theta}_o + \rho (\boldsymbol{\theta}_{p + 1} - \boldsymbol{\theta}_o)\)</span> for <span class="math inline">\(0 &lt; \rho \leq 0.5\)</span>. If <span class="math inline">\(f(\boldsymbol{\theta}_c) &lt; f(\boldsymbol{\theta}_{p + 1})\)</span> then replace <span class="math inline">\(\boldsymbol{\theta}_{p + 1}\)</span> with <span class="math inline">\(\boldsymbol{\theta}_c\)</span> and return to Step 1. Otherwise proceed to Step 6.</p></li>
+<li><p>Shrink. For <span class="math inline">\(i = 2, \ldots, p + 1\)</span> set <span class="math inline">\(\boldsymbol{\theta}_i = \boldsymbol{\theta}_1 + \sigma (\boldsymbol{\theta}_i - \boldsymbol{\theta}_1)\)</span> and return to Step 1.</p></li>
+</ol>
+<p>Often the values <span class="math inline">\(\alpha = 1\)</span>, <span class="math inline">\(\gamma = 2\)</span>, <span class="math inline">\(\rho = 0.5\)</span> and <span class="math inline">\(\sigma = 0.5\)</span> are used. In Step 1, termination is defined in terms of tolerances. The main criterion is for <span class="math inline">\(f(\boldsymbol{\theta}_{p + 1}) - f(\boldsymbol{\theta}_1)\)</span> to be sufficiently small, so that <span class="math inline">\(f(\boldsymbol{\theta}_i)\)</span> for <span class="math inline">\(i = 1, \ldots, p + 1\)</span> are close together for all <span class="math inline">\(\theta_i\)</span>, and hence we are hoping that <em>all</em> the <span class="math inline">\(\boldsymbol{\theta}_i\)</span> values are in the region of the true minimum.</p>
+<p>We won’t code the Nelder-Mead algorithm in <code>R</code>; instead we’ll just <code>optim()</code> and look what it does, by requesting a trace with <code>control = list(trace = TRUE)</code>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-97" class="example"><strong>Example 5.9  (Weibull maximum likelihood: Nelder-Mead) </strong></span>Use the Nelder-Mead method and <code>R</code>’s <code>optim()</code> function to find the maximumum likelihood estimates of the Weibull distribution for the data of Example <a href="optimisation.html#exm:weib">5.5</a>.</p>
+</div>
+<p>We’ve got everything we need for this example, i.e. the data, which we stored earlier as <code>y0</code>, and a function to evaluate the Weibull distribution’s log-likelihood, <code>weib_d0()</code>. So we just pass these to <code>optim()</code>, ensuring that <code>mult = -1</code>, so that we find the negative log-likelihood’s minimum.</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="optimisation.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> fit_nelder <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>), weib_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>##   Nelder-Mead direct search function minimizer
+## function value for initial parameters = 55.677933
+##   Scaled convergence tolerance is 8.29666e-07
+## Stepsize computed as 0.160000
+## BUILD              3 60.970799 55.438511
+## LO-REDUCTION       5 55.677933 55.000530
+## REFLECTION         7 55.438511 54.983053
+## HI-REDUCTION       9 55.040918 54.983053
+## HI-REDUCTION      11 55.000530 54.969138
+## REFLECTION        13 54.983053 54.957102
+## HI-REDUCTION      15 54.969138 54.957102
+## HI-REDUCTION      17 54.958325 54.955086
+## HI-REDUCTION      19 54.957102 54.954109
+## HI-REDUCTION      21 54.955086 54.953597
+## HI-REDUCTION      23 54.954109 54.953417
+## LO-REDUCTION      25 54.953597 54.953331
+## HI-REDUCTION      27 54.953417 54.953219
+## HI-REDUCTION      29 54.953331 54.953189
+## LO-REDUCTION      31 54.953219 54.953168
+## HI-REDUCTION      33 54.953189 54.953165
+## HI-REDUCTION      35 54.953168 54.953162
+## HI-REDUCTION      37 54.953165 54.953160
+## HI-REDUCTION      39 54.953162 54.953159
+## HI-REDUCTION      41 54.953160 54.953159
+## Exiting from Nelder Mead minimizer
+##     43 function evaluations used</code></pre>
+<p>The above output is telling us what <code>optim()</code> is doing as it’s going along. Specifically, <code>LO-REDUCTION</code> corresponds to a contraction, <code>HI-REDUCTION</code> to an expansion and <code>REFLECTION</code> to a reflection. On this occasion, there was no need to shrink the simplex, which is identified as <code>SHRINK</code>.</p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="optimisation.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> fit_nelder</span></code></pre></div>
+<pre><code>## $par
+## [1] 1.8900970 0.5374706
+## 
+## $value
+## [1] 54.95316
+## 
+## $counts
+## function gradient 
+##       43       NA 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL</code></pre>
+<p>What <code>optim()</code> returns is essentially the same as we saw before for the BFGS method, i.e. roughly the same parameter estimates and function minimum, except that now there are no gradient evaluations.</p>
+<div class="remark">
+<p><span id="unlabeled-div-98" class="remark"><em>Remark</em>. </span>The Nelder-Mead method is usually great if you’re quickly looking to find a function’s minimum, provided it’s a relatively low-dimensional function, and the function is fairly quick to evaluate. This is probably why it’s <code>R</code>’s default. However, it can be very slow for high-dimensional optimisation problems, and is also typically less reliable than gradient-based methods, except for strangely-behaved surfaces.</p>
+</div>
+</div>
+</div>
+<div id="global-optimisation" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Global optimisation<a href="optimisation.html#global-optimisation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far we have considered optimisation algorithms that usually home in on local minima, given starting points. For multimodal surfaces, this can be undesirable. Here we consider approaches to <strong>global optimisation</strong>, which are designed to find the <em>overall</em> minimum.</p>
+<div id="stochastic-optimisation" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Stochastic optimisation<a href="optimisation.html#stochastic-optimisation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The optimisation algorithms that have been introduced so far have been deterministic: given a set of starting values, they will always return the same final value. Stochastic optimisation algorithms go from one point to another probabilistically, and so will go through different sets of parameters. We should expect them to converge to the same final value, though.</p>
+</div>
+<div id="simulated-annealing" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Simulated annealing<a href="optimisation.html#simulated-annealing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Simulated annealing gains its name from the physical annealing process, which is a heat treatment that alters the physical and sometimes chemical properties of a material to increase its ductility and reduce its hardness, making it more workable. You can of course read more about it on Wikipedia<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p>
+<p>Consider a current parameter value <span class="math inline">\(\boldsymbol{\theta}\)</span> and some function we seek to minimise <span class="math inline">\(f()\)</span>. For example, <span class="math inline">\(f()\)</span> might be a negated log-likelihood. The key to simulated annealing is that a <em>random</em> point is proposed, <span class="math inline">\(\boldsymbol{\theta}^*\)</span>, which is drawn from some proposal density <span class="math inline">\(q(\boldsymbol{\theta}^* \mid \boldsymbol{\theta})\)</span>, and so depends on the current value <span class="math inline">\(\boldsymbol{\theta}\)</span>. The proposal density <span class="math inline">\(q()\)</span> is chosen to be symmetric, but otherwise its choice is arbitrary. The main aspect of simulated annealing is to work with the function
+<span class="math display">\[
+\pi_T(\boldsymbol{\theta}) = \exp\{-f(\boldsymbol{\theta}) / T\}
+\]</span>
+for some <em>temperature</em> <span class="math inline">\(T\)</span>. We note that as <span class="math inline">\(T \searrow 0\)</span>, <span class="math inline">\(\pi_T(\boldsymbol{\theta}) \to \exp\{-f(\boldsymbol{\theta})\}\)</span></p>
+<p>Put algorithmically, simulated annealing works as follows.</p>
+<ol style="list-style-type: decimal">
+<li><p>Propose <span class="math inline">\(\boldsymbol{\theta}^*\)</span> from <span class="math inline">\(q(\boldsymbol{\theta}^* \mid \boldsymbol{\theta})\)</span>.</p></li>
+<li><p>Generate <span class="math inline">\(U \sim \text{Uniform}[0, 1]\)</span>.</p></li>
+<li><p>Calculate
+<span class="math display">\[\begin{align*}
+\alpha(\boldsymbol{\theta}^* \mid \boldsymbol{\theta}) &amp;= \min\left\{\dfrac{\exp\left[-f(\boldsymbol{\theta}^*) / T\right]}{\exp\left[-f(\boldsymbol{\theta}) / T\right]}, 1\right\}\\
+&amp;= \min\left(\exp\left\{-\left[f(\boldsymbol{\theta}^*) - f(\boldsymbol{\theta})\right] / T\right\}, 1\right).
+\end{align*}\]</span></p></li>
+<li><p>Accept <span class="math inline">\(\boldsymbol{\theta}^*\)</span> if <span class="math inline">\(\alpha(\boldsymbol{\theta}^* \mid \boldsymbol{\theta}) &gt; U\)</span>; otherwise keep <span class="math inline">\(\boldsymbol{\theta}\)</span>.</p></li>
+<li><p>Decrease <span class="math inline">\(T\)</span>.</p></li>
+</ol>
+<p>It is worth noting that steps 1 to 4 implement a special case of the Metropolis-Hastings algorithm for symmetric <span class="math inline">\(q()\)</span>. This algorithm is heavily used in statistics, especially Bayesian statistics, to sample from posterior densities that do not have or have unwieldy closed forms, typically as part of Markov chain Monte Carlo (MCMC) sampling.</p>
+<div class="remark">
+<p><span id="unlabeled-div-99" class="remark"><em>Remark</em>. </span><code>R</code>’s default is to use a Gaussian distribution for <span class="math inline">\(q()\)</span> and the temperature at iteration <span class="math inline">\(i\)</span>, <span class="math inline">\(T_i\)</span>, is chosen according to <span class="math inline">\(T_i = T_1 / \log\{t_{\max} \lfloor(i-1) / t_{\max} \rfloor + \exp(1)\}\)</span> with <span class="math inline">\(T_1 = t_{\max} = 10\)</span> the default values.</p>
+</div>
+<div class="example">
+<p><span id="exm:weib:sann" class="example"><strong>(#exm:weib:sann) (Weibull maximum likelihood: Simulated annealing) </strong></span>Write a function to update the simulated annealing temperature according to <code>R</code>’s rule and another function to generate Gaussian proposals with standard deviation 0.1. Then use simulated annealing to repeat Example <a href="optimisation.html#exm:weib">5.5</a> with <span class="math inline">\(N = 1000\)</span> iterations and plot <span class="math inline">\(\lambda_i\)</span> and <span class="math inline">\(k_i\)</span> at each iteration using initial temperatures of <span class="math inline">\(T_1 = 10\)</span>, 1 and 0.1.</p>
+</div>
+<p>The following function, <code>update_T()</code>, updates the temperature according to <code>R</code>’s rule.</p>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="optimisation.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> update_T <span class="ot">&lt;-</span> <span class="cf">function</span>(i, <span class="at">t0 =</span> <span class="dv">10</span>, <span class="at">t1 =</span> <span class="dv">10</span>) {</span>
+<span id="cb391-2"><a href="optimisation.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to update simulated annealing temperature</span></span>
+<span id="cb391-3"><a href="optimisation.html#cb391-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># i is an integer giving the current iteration</span></span>
+<span id="cb391-4"><a href="optimisation.html#cb391-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># t0 is a scalar giving the initial temperature</span></span>
+<span id="cb391-5"><a href="optimisation.html#cb391-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># t1 is a integer giving how many iterations of each temperature to use</span></span>
+<span id="cb391-6"><a href="optimisation.html#cb391-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb391-7"><a href="optimisation.html#cb391-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   t0 <span class="sc">/</span> <span class="fu">log</span>(((i <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%/%</span> t1) <span class="sc">*</span> t1 <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">1</span>))</span>
+<span id="cb391-8"><a href="optimisation.html#cb391-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Then the following function, <code>q_fn()</code>, generates Gaussian proposals with standard deviation 0.1.</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="optimisation.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> q_fn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb392-2"><a href="optimisation.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Function to generate Gaussian proposals with standard deviation 0.1</span></span>
+<span id="cb392-3"><a href="optimisation.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is the Gaussian mean as either a scalar or vector</span></span>
+<span id="cb392-4"><a href="optimisation.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar or vector, as x</span></span>
+<span id="cb392-5"><a href="optimisation.html#cb392-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">rnorm</span>(<span class="fu">length</span>(x), x, .<span class="dv">1</span>)</span>
+<span id="cb392-6"><a href="optimisation.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>The following function can perform simulated annealing. You won’t be asked to write such a function for MTH3045, but it’s illuminating to see how such a function can be written.</p>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="optimisation.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> sa <span class="ot">&lt;-</span> <span class="cf">function</span>(p0, h, N, q, T1, ...) {</span>
+<span id="cb393-2"><a href="optimisation.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># Function to perform simulated annealing</span></span>
+<span id="cb393-3"><a href="optimisation.html#cb393-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># p0 p-vector of initial parameters</span></span>
+<span id="cb393-4"><a href="optimisation.html#cb393-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># h() function to be minimised</span></span>
+<span id="cb393-5"><a href="optimisation.html#cb393-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># N number of iterations</span></span>
+<span id="cb393-6"><a href="optimisation.html#cb393-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># q proposal function</span></span>
+<span id="cb393-7"><a href="optimisation.html#cb393-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># T1 initial temperature</span></span>
+<span id="cb393-8"><a href="optimisation.html#cb393-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># ... arguments to pass to h()</span></span>
+<span id="cb393-9"><a href="optimisation.html#cb393-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="co"># returns p x N matrix of parameter estimates at each iteration</span></span>
+<span id="cb393-10"><a href="optimisation.html#cb393-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> out <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, N, <span class="fu">length</span>(p0)) <span class="co"># matrix to store estimates at each iteration</span></span>
+<span id="cb393-11"><a href="optimisation.html#cb393-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> out[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> p0 <span class="co"># fill first row with initial parameter estimates</span></span>
+<span id="cb393-12"><a href="optimisation.html#cb393-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>N) { <span class="co"># N iterations</span></span>
+<span id="cb393-13"><a href="optimisation.html#cb393-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   T <span class="ot">&lt;-</span> <span class="fu">update_T</span>(i, T1) <span class="co"># update temperature</span></span>
+<span id="cb393-14"><a href="optimisation.html#cb393-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   U <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="co"># generate U</span></span>
+<span id="cb393-15"><a href="optimisation.html#cb393-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   out[i, ] <span class="ot">&lt;-</span> out[i <span class="sc">-</span> <span class="dv">1</span>,] <span class="co"># carry over last parameter estimate, by default</span></span>
+<span id="cb393-16"><a href="optimisation.html#cb393-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   proposal <span class="ot">&lt;-</span> <span class="fu">q</span>(out[i <span class="sc">-</span> <span class="dv">1</span>,]) <span class="co"># generate proposal</span></span>
+<span id="cb393-17"><a href="optimisation.html#cb393-17" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (<span class="fu">min</span>(proposal) <span class="sc">&gt;=</span> <span class="dv">0</span>) { <span class="co"># ensure proposal valid</span></span>
+<span id="cb393-18"><a href="optimisation.html#cb393-18" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     h0 <span class="ot">&lt;-</span> <span class="fu">h</span>(out[i <span class="sc">-</span> <span class="dv">1</span>, ], ...) <span class="co"># evaluate h for current theta</span></span>
+<span id="cb393-19"><a href="optimisation.html#cb393-19" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     h1 <span class="ot">&lt;-</span> <span class="fu">h</span>(proposal, ...) <span class="co"># evaluate h for proposed theta</span></span>
+<span id="cb393-20"><a href="optimisation.html#cb393-20" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     alpha <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">exp</span>(<span class="sc">-</span> (h1 <span class="sc">-</span> h0) <span class="sc">/</span> T), <span class="dv">1</span>) <span class="co"># calculate M-H ratio</span></span>
+<span id="cb393-21"><a href="optimisation.html#cb393-21" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="cf">if</span> (alpha <span class="sc">&gt;=</span> U) <span class="co"># accept if ratio sufficiently high</span></span>
+<span id="cb393-22"><a href="optimisation.html#cb393-22" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       out[i, ] <span class="ot">&lt;-</span> proposal <span class="co"># swap last with proposal</span></span>
+<span id="cb393-23"><a href="optimisation.html#cb393-23" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb393-24"><a href="optimisation.html#cb393-24" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb393-25"><a href="optimisation.html#cb393-25" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> out <span class="co"># return all parameter estimates</span></span>
+<span id="cb393-26"><a href="optimisation.html#cb393-26" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Then we’ll specify out initial temperatures as <code>T_vals</code>, and loop over these with <code>sa()</code>, plotting the resulting parameter estimates for each temperature and each iteration.</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="optimisation.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># values to use for initial temperature</span></span>
+<span id="cb394-2"><a href="optimisation.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> T_vals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">1</span>, .<span class="dv">1</span>)</span>
+<span id="cb394-3"><a href="optimisation.html#cb394-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># loop over values, and plot</span></span>
+<span id="cb394-4"><a href="optimisation.html#cb394-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(T_vals)) {</span>
+<span id="cb394-5"><a href="optimisation.html#cb394-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   T1 <span class="ot">&lt;-</span> T_vals[j]</span>
+<span id="cb394-6"><a href="optimisation.html#cb394-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   sa_result <span class="ot">&lt;-</span> <span class="fu">sa</span>(<span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>), weib_d0, <span class="fl">1e3</span>, q_fn, T1, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb394-7"><a href="optimisation.html#cb394-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (j <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb394-8"><a href="optimisation.html#cb394-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">plot</span>(sa_result, <span class="at">col =</span> j, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">xlab =</span> <span class="st">&#39;lambda&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;k&#39;</span>)</span>
+<span id="cb394-9"><a href="optimisation.html#cb394-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   } <span class="cf">else</span> {</span>
+<span id="cb394-10"><a href="optimisation.html#cb394-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">points</span>(sa_result, <span class="at">col =</span> j, <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb394-11"><a href="optimisation.html#cb394-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb394-12"><a href="optimisation.html#cb394-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb394-13"><a href="optimisation.html#cb394-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(T_vals),</span>
+<span id="cb394-14"><a href="optimisation.html#cb394-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">&quot;t_0 =&quot;</span>, T_vals), <span class="at">bg =</span> <span class="st">&#39;white&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-77"></span>
+<img src="main_files/figure-html/unnamed-chunk-77-1.png" alt="Iterations of simulated annealing for different temperatures." width="80%" />
+<p class="caption">
+Figure 5.6: Iterations of simulated annealing for different temperatures.
+</p>
+</div>
+<p>Note that lower initial temperatures bring smaller clouds of parameter estimates.</p>
+</div>
+<div id="simulated-annealing-in-r" class="section level3 hasAnchor" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Simulated annealing in <code>R</code><a href="optimisation.html#simulated-annealing-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Simulated annealing is built in to <code>R</code>’s <code>optim()</code> function and requires <code>method = 'SANN'</code>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-100" class="example"><strong>Example 5.10  (Weibull maximum likelihood: Simulated annealing with \texttt{optim()}) </strong></span>Repeat Example <a href="optimisation.html#exm:weib:sann"><strong>??</strong></a> using <code>R</code>’s <code>optim()</code> function to perform simulated annealing. Report the best value of the objective function every 100 iterations.</p>
+</div>
+<p>We simply need to issue the following.</p>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="optimisation.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>), weib_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">method =</span> <span class="st">&#39;SANN&#39;</span>, </span>
+<span id="cb395-2"><a href="optimisation.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="dv">1</span>, <span class="at">REPORT =</span> <span class="dv">10</span>, <span class="at">maxit =</span> <span class="fl">1e3</span>))</span></code></pre></div>
+<pre><code>## sann objective function values
+## initial       value 55.677933
+## iter      100 value 55.201564
+## iter      200 value 55.201564
+## iter      300 value 55.129664
+## iter      400 value 55.129664
+## iter      500 value 55.057112
+## iter      600 value 55.057112
+## iter      700 value 54.966591
+## iter      800 value 54.966591
+## iter      900 value 54.953947
+## iter      999 value 54.953947
+## final         value 54.953947
+## sann stopped after 999 iterations</code></pre>
+<pre><code>## $par
+## [1] 1.8687326 0.5383946
+## 
+## $value
+## [1] 54.95395
+## 
+## $counts
+## function gradient 
+##     1000       NA 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL</code></pre>
+<p>We now see that the parameter estimates are some way off those from the deterministic methods. If we allowed simulated annealing more iterations, it would gradually get closer to the true minimum.</p>
+<p>Note that the <code>control$REPORT</code> argument specifies the frequency in terms of how often the temperature changes; so <code>R</code> reports the status of the optimiser each (<code>control$tmax * control$REPORT</code>)th iteration, noting that <code>control$tmax</code> defaults to 10.</p>
+<div class="remark">
+<p><span id="unlabeled-div-101" class="remark"><em>Remark</em>. </span>It’s sometimes a good tactic to use simulated annealing to get close to the minimum, and then to employ one of the previously discussed deterministic optimisation methods to get a more accurate estimate. This is especially useful if we’re unsure whether we’re starting off with sensible initial parameter estimates.</p>
+</div>
+</div>
+</div>
+<div id="bibliographic-notes-3" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Bibliographic notes<a href="optimisation.html#bibliographic-notes-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By far the best resource for reading up on numerical optimisation is <span class="citation">Nocedal and Wright (2006)</span>. In particular, Chapter 3 covers Newton’s method and line search; Chapter 6 covers quasi-Newton methods; and Chapter 8 covers derivative-free optimisation, including the Nelder-Method method in Section 9.5. Optimisation is also covered in <span class="citation">Monahan (2011, chap. 8)</span> and in <span class="citation">Wood (2015, sec. 5.1)</span>. Simulated annealing is covered in <span class="citation">Press et al. (2007, sec. 10.12)</span>. Root-finding is covered in <span class="citation">Monahan (2011, sec. 8.3)</span> and <span class="citation">Press et al. (2007, chap. 9)</span>.</p>
+<!-- ## Exercises -->
+<!-- ```{r child = 'ch5ex_child.Rmd'} -->
+<!-- ``` -->
+
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Davison, A. C. 2003. <em>Statistical Models</em>. Cambridge University Press. <a href="https://encore.exeter.ac.uk/iii/encore/record/C__Rb3441825__SStatistical%20Models__Orightresult__U__X7?lang=eng&amp;suite=cobalt">https://encore.exeter.ac.uk/iii/encore/record/C__Rb3441825__SStatistical%20Models__Orightresult__U__X7?lang=eng&amp;suite=cobalt</a>.
+</div>
+<div class="csl-entry">
+Gillespie, C., and R. Lovelace. 2016. <em>Efficient r Programming: A Practical Guide to Smarter Programming</em>. O’Reilly Media. <a href="https://books.google.co.uk/books?id=YUavDQAAQBAJ">https://books.google.co.uk/books?id=YUavDQAAQBAJ</a>.
+</div>
+<div class="csl-entry">
+Grolemund, G. 2014. <em>Hands-on Programming with r</em>. Safari Books Online. O’Reilly Media, Incorporated. <a href="https://books.google.co.uk/books?id=sRubmwEACAAJ">https://books.google.co.uk/books?id=sRubmwEACAAJ</a>.
+</div>
+<div class="csl-entry">
+Johnson, R. A., and D. W. Wichern. 2007. <em>Applied Multivariate Statistical Analysis</em>. 6th ed. Applied Multivariate Statistical Analysis. Pearson Prentice Hall. <a href="https://books.google.co.uk/books?id=gFWcQgAACAAJ">https://books.google.co.uk/books?id=gFWcQgAACAAJ</a>.
+</div>
+<div class="csl-entry">
+Monahan, John F. 2011. <em><span class="nocase">Numerical Methods of Statistics</span></em>. 2nd ed. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511977176">https://doi.org/10.1017/CBO9780511977176</a>.
+</div>
+<div class="csl-entry">
+Nelder, J. A., and R. Mead. 1965. <span>“<span class="nocase">A Simplex Method for Function Minimization</span>.”</span> <em>The Computer Journal</em> 7 (4): 308–13. <a href="https://doi.org/10.1093/comjnl/7.4.308">https://doi.org/10.1093/comjnl/7.4.308</a>.
+</div>
+<div class="csl-entry">
+Nocedal, J., and S. Wright. 2006. <em>Numerical Optimization</em>. 2nd ed. Springer Series in Operations Research and Financial Engineering. Springer New York. <a href="https://books.google.co.uk/books?id=VbHYoSyelFcC">https://books.google.co.uk/books?id=VbHYoSyelFcC</a>.
+</div>
+<div class="csl-entry">
+Petersen, K. B., and M. S. Pedersen. 2012. <em>The Matrix Cookbook</em>. <a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf">https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf</a>.
+</div>
+<div class="csl-entry">
+Press, W. H., S. A. Teukolsky, W. T. Vetterling, and B. P. Flannery. 2007. <em>Numerical Recipes: The Art of Scientific Computing</em>. 3rd ed. Cambridge University Press. <a href="https://books.google.co.uk/books?id=1aAOdzK3FegC">https://books.google.co.uk/books?id=1aAOdzK3FegC</a>.
+</div>
+<div class="csl-entry">
+W. N. Venables, D. M. Smith, and the R Core Team. 2021. <em>An Introduction to r</em>. 4.1.0 ed.
+</div>
+<div class="csl-entry">
+Wickham, H. 2019. <em>Advanced r</em>. 2nd ed. Chapman &amp; Hall/CRC the r Series. CRC Press/Taylor &amp; Francis Group. <a href="https://books.google.co.uk/books?id=5lVowgEACAAJ">https://books.google.co.uk/books?id=5lVowgEACAAJ</a>.
+</div>
+<div class="csl-entry">
+Wood, Simon N. 2015. <em>Core Statistics</em>. Institute of Mathematical Statistics Textbooks. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781107741973">https://doi.org/10.1017/CBO9781107741973</a>.
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="9">
+<li id="fn9"><p><a href="https://en.wikipedia.org/wiki/Annealing_(materials_science)" class="uri">https://en.wikipedia.org/wiki/Annealing_(materials_science)</a><a href="optimisation.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="numerical-calculus.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
