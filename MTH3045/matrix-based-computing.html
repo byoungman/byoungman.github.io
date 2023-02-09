@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Matrix-based computing | MTH3045: Statistical Computing</title>
   <meta name="description" content="3 Matrix-based computing | MTH3045: Statistical Computing" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Matrix-based computing | MTH3045: Statistical Computing" />
   <meta property="og:type" content="book" />
@@ -663,7 +663,7 @@ x_i = \dfrac{1}{u_{ii}} \left(b_i - \sum_{j = i + 1}^n u_{ij}x_j\right).
 <span id="cb169-8"><a href="matrix-based-computing.html#cb169-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">backsolve</span>(U, bstar)</span></code></pre></div>
 <pre><code>## [1] 11.500000 -7.333333  3.666667 -3.333333</code></pre>
 <div class="remark">
-<p><span id="unlabeled-div-25" class="remark"><em>Remark</em>. </span>We may want to solve multiple system of linear equations of the form <span class="math inline">\(\mathbf{Ax}_1 = \mathbf{b}_1\)</span>, <span class="math inline">\(\mathbf{Ax}_2 = \mathbf{b}_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(\mathbf{Ax}_p = \mathbf{b}_p\)</span>, which can be written with matrices as <span class="math inline">\(\mathbf{AX} = \mathbf{B}\)</span> for <span class="math inline">\(n \times p\)</span> matrices <span class="math inline">\(\bf X\)</span> and <span class="math inline">\(\bf B\)</span>. In this situation we can recognise that we only triangularise <span class="math inline">\(\bf A\)</span> once, and then use that triangularisation to go through the back substitution algorithm <span class="math inline">\(p\)</span> times.</p>
+<p><span id="unlabeled-div-25" class="remark"><em>Remark</em>. </span>We may want to solve multiple systems of linear equations of the form <span class="math inline">\(\mathbf{Ax}_1 = \mathbf{b}_1\)</span>, <span class="math inline">\(\mathbf{Ax}_2 = \mathbf{b}_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(\mathbf{Ax}_p = \mathbf{b}_p\)</span>, which can be written with matrices as <span class="math inline">\(\mathbf{AX} = \mathbf{B}\)</span> for <span class="math inline">\(n \times p\)</span> matrices <span class="math inline">\(\bf X\)</span> and <span class="math inline">\(\bf B\)</span>. In this situation we can recognise that we only triangularise <span class="math inline">\(\bf A\)</span> once, and then use that triangularisation to go through the back substitution algorithm <span class="math inline">\(p\)</span> times.</p>
 </div>
 <div class="remark">
 <p><span id="unlabeled-div-26" class="remark"><em>Remark</em>. </span>We can find the inverse of <span class="math inline">\(\bf A\)</span> by solving <span class="math inline">\(\mathbf{AX} = \mathbf{I}_n\)</span> for <span class="math inline">\(\mathbf{X}\)</span> and then setting <span class="math inline">\(\mathbf{A}^{-1} = \mathbf{X}\)</span>.</p>
