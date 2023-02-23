@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.6 Permutation and randomisation tests | index.knit</title>
+  <meta name="description" content="MTH2006 Topic 5<br />
+Nonparametric statistics</div>" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.6 Permutation and randomisation tests | index.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.6 Permutation and randomisation tests | index.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="indepsamp.html"/>
+<link rel="next" href="depsamp.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="5" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>5</b> Nonparametric statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction.html"><a href="introduction.html#topic-webpage"><i class="fa fa-check"></i><b>5.1.1</b> Topic webpage</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction.html"><a href="introduction.html#proposed-learning-schedule"><i class="fa fa-check"></i><b>5.1.2</b> Proposed learning schedule</a></li>
+<li class="chapter" data-level="5.1.3" data-path="introduction.html"><a href="introduction.html#office-hour"><i class="fa fa-check"></i><b>5.1.3</b> Office hour</a></li>
+<li class="chapter" data-level="5.1.4" data-path="introduction.html"><a href="introduction.html#resources"><i class="fa fa-check"></i><b>5.1.4</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="pcdf.html"><a href="pcdf.html"><i class="fa fa-check"></i><b>5.2</b> Estimating cdfs and pdfs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pcdf.html"><a href="pcdf.html#teignmouth-rainfall"><i class="fa fa-check"></i><b>5.2.1</b> Teignmouth rainfall </a></li>
+<li class="chapter" data-level="5.2.2" data-path="pcdf.html"><a href="pcdf.html#para"><i class="fa fa-check"></i><b>5.2.2</b> Parametric pdf estimation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="pcdf.html"><a href="pcdf.html#ord"><i class="fa fa-check"></i><b>5.2.3</b> Order statistics and ranks</a></li>
+<li class="chapter" data-level="5.2.4" data-path="pcdf.html"><a href="pcdf.html#empirical-cdf-estimation"><i class="fa fa-check"></i><b>5.2.4</b> Empirical cdf estimation</a></li>
+<li class="chapter" data-level="5.2.5" data-path="pcdf.html"><a href="pcdf.html#hist"><i class="fa fa-check"></i><b>5.2.5</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="gof.html"><a href="gof.html"><i class="fa fa-check"></i><b>5.3</b> Goodness of fit</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="gof.html"><a href="gof.html#quantilequantile-plots"><i class="fa fa-check"></i><b>5.3.1</b> Quantile–quantile plots</a></li>
+<li class="chapter" data-level="5.3.2" data-path="gof.html"><a href="gof.html#pearsons-chi-squared-test"><i class="fa fa-check"></i><b>5.3.2</b> Pearson’s chi-squared test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="kde.html"><a href="kde.html"><i class="fa fa-check"></i><b>5.4</b> Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="kde.html"><a href="kde.html#old-faithful-geyser-eruption-times"><i class="fa fa-check"></i><b>5.4.1</b> Old Faithful geyser eruption times</a></li>
+<li class="chapter" data-level="5.4.2" data-path="kde.html"><a href="kde.html#kdedef"><i class="fa fa-check"></i><b>5.4.2</b> Definition</a></li>
+<li class="chapter" data-level="5.4.3" data-path="kde.html"><a href="kde.html#kernel-functions"><i class="fa fa-check"></i><b>5.4.3</b> Kernel functions</a></li>
+<li class="chapter" data-level="5.4.4" data-path="kde.html"><a href="kde.html#kernel-bandwidth"><i class="fa fa-check"></i><b>5.4.4</b> Kernel bandwidth</a></li>
+<li class="chapter" data-level="5.4.5" data-path="kde.html"><a href="kde.html#kernel-density-estimation-in-r"><i class="fa fa-check"></i><b>5.4.5</b> Kernel density estimation in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="kde.html"><a href="kde.html#some-properties-of-hatf_hy"><i class="fa fa-check"></i><b>5.4.6</b> Some properties of <span class="math inline">\(\hat{f}_h(y)\)</span></a></li>
+<li class="chapter" data-level="5.4.7" data-path="kde.html"><a href="kde.html#nkde"><i class="fa fa-check"></i><b>5.4.7</b> Optimal bandwidths by assuming normal <span class="math inline">\(f_Y(y)\)</span></a></li>
+<li class="chapter" data-level="5.4.8" data-path="kde.html"><a href="kde.html#notnkde"><i class="fa fa-check"></i><b>5.4.8</b> Optimal bandwidths for any <span class="math inline">\(f_Y(y)\)</span> by cross-validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="indepsamp.html"><a href="indepsamp.html"><i class="fa fa-check"></i><b>5.5</b> Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="indepsamp.html"><a href="indepsamp.html#welchs-t-test"><i class="fa fa-check"></i><b>5.5.1</b> Welch’s <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="5.5.2" data-path="indepsamp.html"><a href="indepsamp.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>5.5.2</b> Kolmogorov-Smirnov test</a></li>
+<li class="chapter" data-level="5.5.3" data-path="indepsamp.html"><a href="indepsamp.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>5.5.3</b> Mann-Whitney <span class="math inline">\(U\)</span> test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="permrand.html"><a href="permrand.html"><i class="fa fa-check"></i><b>5.6</b> Permutation and randomisation tests</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="permrand.html"><a href="permrand.html#permutation"><i class="fa fa-check"></i><b>5.6.1</b> Permutation tests</a></li>
+<li class="chapter" data-level="5.6.2" data-path="permrand.html"><a href="permrand.html#randomisation-tests"><i class="fa fa-check"></i><b>5.6.2</b> Randomisation tests</a></li>
+<li class="chapter" data-level="5.6.3" data-path="permrand.html"><a href="permrand.html#exspear"><i class="fa fa-check"></i><b>5.6.3</b> Pearson’s correlation coefficient example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="depsamp.html"><a href="depsamp.html"><i class="fa fa-check"></i><b>5.7</b> Nonparametric measures and tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="depsamp.html"><a href="depsamp.html#spear"><i class="fa fa-check"></i><b>5.7.1</b> Spearman’s rank correlation coefficient</a></li>
+<li class="chapter" data-level="5.7.2" data-path="depsamp.html"><a href="depsamp.html#wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>5.7.2</b> Wilcoxon signed rank test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.8</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><div class="line-block">MTH2006 Topic 5<br />
+Nonparametric statistics</div></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="permrand" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Permutation and randomisation tests<a href="permrand.html#permrand" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="permutation" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Permutation tests<a href="permrand.html#permutation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes we might be interested in testing the relationship between one variable and another. For example, are the weights of MTH2006 students related to their heights? This is quite a general question, which we could answer using the normal linear model, but in doing so we’d be making various assumptions, such as the structure of the relationship being linear (in parameters <span class="math inline">\(\bm \beta\)</span>) and that deviations from the regression line are normally distributed and independent. This would be a parametric approach to answering the question of a relationship between weights and heights and, provided the assumptions are reasonable, it is a good approach.</p>
+<p>Consider a more general approach to this problem where we have a test statistic, <span class="math inline">\(T\)</span>, say, that takes large values when weights <em>are</em> related to heights. We might set up a hypothesis test based on the hypotheses <span class="math display">\[\begin{align*}
+H_0:&amp; \text{ weights are not related to heights,}\\
+H_1:&amp; \text{ weights are related to heights.}
+\end{align*}\]</span></p>
+<p>If our observed test statistic, <span class="math inline">\(t_\text{obs}\)</span>, say, is large then this would cast doubt on <span class="math inline">\(H_0\)</span>. In order to know whether <span class="math inline">\(t_\text{obs}\)</span> is large, we need to know the sampling distribution of <span class="math inline">\(T\)</span> when <span class="math inline">\(H_0\)</span> is true.</p>
+<p>A permutation test is one way in which we can use the data that we have to estimate the sampling distribution of <span class="math inline">\(T\)</span> under <span class="math inline">\(H_0\)</span>. Let <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> denote the observed heights as weights of MTH2006 students, for <span class="math inline">\(i = 1, \ldots, n\)</span>. These data have a structure because a given value of <span class="math inline">\(y_i\)</span> corresponds to a given value of <span class="math inline">\(x_i\)</span>. Because the <span class="math inline">\(x_i\)</span>s are independent, we could destroy this structure by reassigning the <span class="math inline">\(y_i\)</span>s to different <span class="math inline">\(x_i\)</span>s; for example put <span class="math inline">\(y_j\)</span> with <span class="math inline">\(x_i\)</span> for <span class="math inline">\(i \neq j\)</span>. More formally, suppose that <span class="math inline">\(y^{(1)}, \ldots, y^{(n)}\)</span> form a new sample, which are a random reordering of <span class="math inline">\(y_1, \ldots, y_n\)</span>. We’ll refer to such a new sample as a <em>resample</em>. In the resample we should expect <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y^{(i)}\)</span> to be unrelated. Hence we have formed a pair consistent with <span class="math inline">\(H_0\)</span>.</p>
+<p>The following <code>R</code> code will plot the weights of MTH2006 students against their heights, and then resample the weights using <code>sample()</code> to produce another plot with random pairings of weights with heights. Recall that <code>sample(4)</code> reorders <span class="math inline">\(1, 2, 3, 4\)</span>.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="permrand.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 1 3 2 4</code></pre>
+<p>We’ll start by loading the MTH2006 heights and weights, and plot them against each other, which is shown on the left of Figure <a href="permrand.html#fig:bioplot">5.21</a>.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="permrand.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;mth2006data.RData&quot;</span>)</span>
+<span id="cb66-2"><a href="permrand.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bio, <span class="fu">aes</span>(<span class="at">x =</span> Height, <span class="at">y =</span> Weight)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p>Then we’ll use sample to reorder <span class="math inline">\(1, \ldots, n\)</span>, which we’ll store as <code>reord</code>,</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="permrand.html#cb67-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(bio)</span>
+<span id="cb67-2"><a href="permrand.html#cb67-2" aria-hidden="true" tabindex="-1"></a>(reord <span class="ot">&lt;-</span> <span class="fu">sample</span>(n))</span></code></pre></div>
+<pre><code>##   [1]  41  61  10 125  59  31 113  47  48  44 122  67 133 141  98  76 106   3
+##  [19]  34  60  22 136 148  14  83   6 103  81  40 126  52  18  92 132 108  75
+##  [37]  33  55 137 112  93  77  80  96  63 149 124  56 147  58 140 102 121  88
+##  [55]  42  71  25 109  29  66 101  82 118  87  72  62 116  45 119  43 127  21
+##  [73]  78 105 117  37  23  28  79   5 104  32 142  26  89  94 100 120 145  39
+##  [91]  97   7 111  70  91  57  64   9  30  36  15 130  84   1   2  90 143 110
+## [109]  53  20  19 115  99  54  46 131  69  38 134 135  35  11  13  85  50  74
+## [127] 123 146 129  68 139 114 144  17 128 138  16  95  12  65  24  73 107  86
+## [145]  27   4  51   8  49</code></pre>
+<p>and then add a new column to the <code>bio</code> data frame called <code>Weight_resample</code>, and plot the result</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="permrand.html#cb69-1" aria-hidden="true" tabindex="-1"></a>bio<span class="sc">$</span>Weight_resample <span class="ot">&lt;-</span> bio<span class="sc">$</span>Weight[reord]</span>
+<span id="cb69-2"><a href="permrand.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bio, <span class="fu">aes</span>(<span class="at">x =</span> Height, <span class="at">y =</span> Weight_resample)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bioplot"></span>
+<img src="index_files/figure-html/bioplot-1.png" alt="Plots of MTH2006 student weights against heights (left) and then reordered weights against heights (right)." width="528" />
+<p class="caption">
+Figure 5.21: Plots of MTH2006 student weights against heights (left) and then reordered weights against heights (right).
+</p>
+</div>
+<p>Note that above we’ve calculated <code>bio$Weight[sample(nrow(bio))]</code> over a couple of lines of code, but could have just issued <code>sample(bio$Weight)</code>, which we’ll use for tidiness in the example of Section <a href="permrand.html#exspear">5.6.3</a>.</p>
+<p>From Figure <a href="permrand.html#fig:bioplot">5.21</a> it does indeed appear that, by reassigning the heights to different weights, the relationship between the two has been destroyed, and hence that our resample is consistent with <span class="math inline">\(H_0\)</span>. We can then calculate test statistics from our resamples in order to approximate the sampling distribution of <span class="math inline">\(T\)</span> under <span class="math inline">\(H_0\)</span>.</p>
+<p>Once we have a resampling mechanism, let <span class="math inline">\(j = 1, \ldots, N\)</span> index the resamples and let <span class="math inline">\(T_{\text{sim}, j}\)</span> denote the test statistic from resample <span class="math inline">\(j\)</span>. The resamples can then be used to give a <span class="math inline">\(p\)</span>-value by calculating <span class="math inline">\(\frac{1}{N} \sum_{j = 1}^N I(|T_{\text{sim}, j}| \geq |t_\text{obs}|)\)</span> for a two-sided test, or for a one-sided test either <span class="math inline">\(\frac{1}{N} \sum_{j = 1}^N I(T_{\text{sim}, j} \geq t_\text{obs})\)</span> or <span class="math inline">\(\frac{1}{N} \sum_{j = 1}^N I(T_{\text{sim}, j} \leq t_\text{obs})\)</span>, depending on the test.</p>
+<p>The defining aspect of a <em>permutation test</em> is that the resamples are not random and instead cover every possible reordering. The resulting test statistics form the <em>permutation null distribution</em>. In this case there are <span class="math inline">\(n!\)</span> possible resamples. Note that there are <span class="math inline">\(10! =\)</span> 3.6288^{6} possible resamples for a sample of size 10. To store the test statistics for each of these <code>R</code> as a vector will use approximately 28Mb of RAM, which is manageable. However, for the MTH2006 heights and weights, we have a sample of size <span class="math inline">\(n =\)</span> 149. Now bare in mind that 149<span class="math inline">\(! \simeq\)</span> 3.8089^{260}. Just computing – let alone storing – such a huge number of test statistics is completely impractical. Hence permutation tests are only practical for fairly small sample sizes.</p>
+</div>
+<div id="randomisation-tests" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Randomisation tests<a href="permrand.html#randomisation-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the above example, instead of covering all <span class="math inline">\(n!\)</span> combinations of reorderings, we could have stipulated that each resample is random and that the number of resamples, <span class="math inline">\(N\)</span>, is fixed. Any resample is drawn with equal probability, even if it has already been drawn. This would be a <em>randomisation test</em>. For large sample sizes <span class="math inline">\(n\)</span>, we can choose <span class="math inline">\(N \ll n!\)</span> and ensure that the number of test statistics we are required to calculate is manageable. This gives an approximation to the sampling distribution of test statistic <span class="math inline">\(T\)</span> under <span class="math inline">\(H_0\)</span>. As <span class="math inline">\(N \nearrow \infty\)</span>, the accuracy of this approximation increases, eventually resulting in the sampling distribution that the permutation test would have given.</p>
+</div>
+<div id="exspear" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> Pearson’s correlation coefficient example<a href="permrand.html#exspear" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Correlation is a word that has reached everyday life. It is a very useful measure of association between variables. For example, in Section <a href="permrand.html#permutation">5.6.1</a> we had <span class="math inline">\(H_0: \text{ weights are not related to heights}\)</span>. If weights and heights are linearly related, then their correlation is non-zero. Hence the correlation coefficient could serve as our test statistic <span class="math inline">\(T\)</span> and large <span class="math inline">\(|T|\)</span> would lead us to doubt <span class="math inline">\(H_0\)</span>.</p>
+<p>We’ll quickly revisit Pearson’s correlation coefficient. Consider the random pair <span class="math inline">\((X, Y)\)</span> for which <span class="math inline">\(\text{E}(X) = \mu_X\)</span>, <span class="math inline">\(\text{Var}(X) = \sigma_X^2\)</span>, <span class="math inline">\(\text{E}(Y) = \mu_Y\)</span> and <span class="math inline">\(\text{Var}(Y) = \sigma_Y^2\)</span>. Pearson’s correlation coefficient is then defined as
+<span class="math display">\[
+\rho_{XY} = \dfrac{\text{E}[(X - \mu_X)(Y - \mu_Y)]}{\sigma_X \sigma_Y}.
+\]</span></p>
+<p>In practice we work with Pearson’s <em>sample</em> correlation coefficient, which is defined for the random sample <span class="math inline">\((x_1, y_1), \ldots, (x_n, y_n)\)</span> as</p>
+<p><span class="math display">\[
+\hat \rho_{xy} = \dfrac{\sum_{i=1}^n (x_i - \overline x)(y_i - \overline y)}{\sqrt{[\sum_{i = 1}^n(x_i - \overline x)^2][\sum_{i = 1}^n(y_i - \overline y)^2]}},
+\]</span></p>
+<p>with <span class="math inline">\(\overline x = \frac{1}{n} \sum_{i = 1}^n x_i\)</span> and <span class="math inline">\(\overline y = \frac{1}{n} \sum_{i = 1}^n y_i\)</span>.</p>
+<p>We’ll use Pearson’s correlation coefficient as an example of a test statistic in the following randomisation test.</p>
+<hr />
+<p><strong>Example 10:</strong> Use a randomisation test to assess
+<span class="math display">\[\begin{align*}
+H_0&amp;: \text{Heights and weights are unrelated},\\
+H_1&amp;: \text{Heights and weights are related},
+\end{align*}\]</span>
+for MTH2006 students.</p>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> denote MTH2006 heights and weights, respectively. We’ll use our observed sample correlation coefficient, <span class="math inline">\(\hat \rho_{XY}\)</span>, as our observed test statistic, henceforth denoted <span class="math inline">\(t_\text{obs}\)</span>. First note that we’re interested in a two-sided alternative hypothesis <span class="math inline">\(H_1\)</span>; so we’re interested in whether <span class="math inline">\(|t_\text{obs}|\)</span> is large relative to its sampling distribution under <span class="math inline">\(H_0\)</span>. We’ll store our observed test statistic as <code>t_obs</code>. Also, recall that <code>cor(x, y)</code> computes Pearson’s sample correlation coefficient for same-length vectors <code>x</code> and <code>y</code>. So we can calculate <span class="math inline">\(t_\text{obs}\)</span> with</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="permrand.html#cb70-1" aria-hidden="true" tabindex="-1"></a>t_obs <span class="ot">&lt;-</span> <span class="fu">cor</span>(bio<span class="sc">$</span>Height, bio<span class="sc">$</span>Weight)</span></code></pre></div>
+<p>which gives <span class="math inline">\(t_\text{obs} =\)</span> 0.6127. We’ll approximate the sampling distribution of our test statistic by repeatedly resampling (without replacement) the weights and calculating their correlation with the heights for each resample. Let <span class="math inline">\(T_{\text{rand},j}\)</span> denote the test statistic for weight resample <span class="math inline">\(j\)</span>, for <span class="math inline">\(j = 1, \ldots, N\)</span>, i.e. for each of <span class="math inline">\(N\)</span> resamples. We’ll choose <span class="math inline">\(N = 10^5\)</span> and store the test statistics in vector <code>T_rand</code>. We could do this rather verbosely in <code>R</code> with a <code>for</code> loop, with the following code.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="permrand.html#cb71-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb71-2"><a href="permrand.html#cb71-2" aria-hidden="true" tabindex="-1"></a>T_rand <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N)</span>
+<span id="cb71-3"><a href="permrand.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb71-4"><a href="permrand.html#cb71-4" aria-hidden="true" tabindex="-1"></a>  T_rand[i] <span class="ot">&lt;-</span> <span class="fu">cor</span>(bio<span class="sc">$</span>Height, <span class="fu">sample</span>(bio<span class="sc">$</span>Weight))</span>
+<span id="cb71-5"><a href="permrand.html#cb71-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>However, <code>R</code>’s <code>replicate()</code> function can do this more compactly, e.g. with the following code.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="permrand.html#cb72-1" aria-hidden="true" tabindex="-1"></a>T_rand <span class="ot">&lt;-</span> <span class="fu">replicate</span>(N, <span class="fu">cor</span>(bio<span class="sc">$</span>Height, <span class="fu">sample</span>(bio<span class="sc">$</span>Weight)))</span></code></pre></div>
+<p>Then we approximate the test’s <span class="math inline">\(p\)</span>-value, <span class="math inline">\(\text{Pr}(|T| &gt; |t_\text{obs}|)\)</span> with <span class="math inline">\(\frac{1}{N}\sum_{j = 1}^N I(|T_{\text{rand}, j}| \geq |t_\text{obs}|)\)</span>. The following does this in <code>R</code> and gives a <span class="math inline">\(p\)</span>-value of 0.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="permrand.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(T_rand) <span class="sc">&gt;</span> <span class="fu">abs</span>(t_obs))</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>Hence, at any non-zero significance level, we reject <span class="math inline">\(H_0\)</span>. This is not surprising given the combination of a fairly clear linear relationship shown in the left-hand plot of Figure <a href="permrand.html#fig:bioplot">5.21</a> and fairly large sample size. <span style="float:right;"> ⬛ </span> </p>
+<hr />
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="indepsamp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="depsamp.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

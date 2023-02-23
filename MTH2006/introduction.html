@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 Introduction | index.knit</title>
+  <meta name="description" content="MTH2006 Topic 5<br />
+Nonparametric statistics</div>" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 Introduction | index.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 Introduction | index.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="pcdf.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="5" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>5</b> Nonparametric statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction.html"><a href="introduction.html#topic-webpage"><i class="fa fa-check"></i><b>5.1.1</b> Topic webpage</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction.html"><a href="introduction.html#proposed-learning-schedule"><i class="fa fa-check"></i><b>5.1.2</b> Proposed learning schedule</a></li>
+<li class="chapter" data-level="5.1.3" data-path="introduction.html"><a href="introduction.html#office-hour"><i class="fa fa-check"></i><b>5.1.3</b> Office hour</a></li>
+<li class="chapter" data-level="5.1.4" data-path="introduction.html"><a href="introduction.html#resources"><i class="fa fa-check"></i><b>5.1.4</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="pcdf.html"><a href="pcdf.html"><i class="fa fa-check"></i><b>5.2</b> Estimating cdfs and pdfs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pcdf.html"><a href="pcdf.html#teignmouth-rainfall"><i class="fa fa-check"></i><b>5.2.1</b> Teignmouth rainfall </a></li>
+<li class="chapter" data-level="5.2.2" data-path="pcdf.html"><a href="pcdf.html#para"><i class="fa fa-check"></i><b>5.2.2</b> Parametric pdf estimation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="pcdf.html"><a href="pcdf.html#ord"><i class="fa fa-check"></i><b>5.2.3</b> Order statistics and ranks</a></li>
+<li class="chapter" data-level="5.2.4" data-path="pcdf.html"><a href="pcdf.html#empirical-cdf-estimation"><i class="fa fa-check"></i><b>5.2.4</b> Empirical cdf estimation</a></li>
+<li class="chapter" data-level="5.2.5" data-path="pcdf.html"><a href="pcdf.html#hist"><i class="fa fa-check"></i><b>5.2.5</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="gof.html"><a href="gof.html"><i class="fa fa-check"></i><b>5.3</b> Goodness of fit</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="gof.html"><a href="gof.html#quantilequantile-plots"><i class="fa fa-check"></i><b>5.3.1</b> Quantile–quantile plots</a></li>
+<li class="chapter" data-level="5.3.2" data-path="gof.html"><a href="gof.html#pearsons-chi-squared-test"><i class="fa fa-check"></i><b>5.3.2</b> Pearson’s chi-squared test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="kde.html"><a href="kde.html"><i class="fa fa-check"></i><b>5.4</b> Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="kde.html"><a href="kde.html#old-faithful-geyser-eruption-times"><i class="fa fa-check"></i><b>5.4.1</b> Old Faithful geyser eruption times</a></li>
+<li class="chapter" data-level="5.4.2" data-path="kde.html"><a href="kde.html#kdedef"><i class="fa fa-check"></i><b>5.4.2</b> Definition</a></li>
+<li class="chapter" data-level="5.4.3" data-path="kde.html"><a href="kde.html#kernel-functions"><i class="fa fa-check"></i><b>5.4.3</b> Kernel functions</a></li>
+<li class="chapter" data-level="5.4.4" data-path="kde.html"><a href="kde.html#kernel-bandwidth"><i class="fa fa-check"></i><b>5.4.4</b> Kernel bandwidth</a></li>
+<li class="chapter" data-level="5.4.5" data-path="kde.html"><a href="kde.html#kernel-density-estimation-in-r"><i class="fa fa-check"></i><b>5.4.5</b> Kernel density estimation in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="kde.html"><a href="kde.html#some-properties-of-hatf_hy"><i class="fa fa-check"></i><b>5.4.6</b> Some properties of <span class="math inline">\(\hat{f}_h(y)\)</span></a></li>
+<li class="chapter" data-level="5.4.7" data-path="kde.html"><a href="kde.html#nkde"><i class="fa fa-check"></i><b>5.4.7</b> Optimal bandwidths by assuming normal <span class="math inline">\(f_Y(y)\)</span></a></li>
+<li class="chapter" data-level="5.4.8" data-path="kde.html"><a href="kde.html#notnkde"><i class="fa fa-check"></i><b>5.4.8</b> Optimal bandwidths for any <span class="math inline">\(f_Y(y)\)</span> by cross-validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="indepsamp.html"><a href="indepsamp.html"><i class="fa fa-check"></i><b>5.5</b> Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="indepsamp.html"><a href="indepsamp.html#welchs-t-test"><i class="fa fa-check"></i><b>5.5.1</b> Welch’s <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="5.5.2" data-path="indepsamp.html"><a href="indepsamp.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>5.5.2</b> Kolmogorov-Smirnov test</a></li>
+<li class="chapter" data-level="5.5.3" data-path="indepsamp.html"><a href="indepsamp.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>5.5.3</b> Mann-Whitney <span class="math inline">\(U\)</span> test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="permrand.html"><a href="permrand.html"><i class="fa fa-check"></i><b>5.6</b> Permutation and randomisation tests</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="permrand.html"><a href="permrand.html#permutation"><i class="fa fa-check"></i><b>5.6.1</b> Permutation tests</a></li>
+<li class="chapter" data-level="5.6.2" data-path="permrand.html"><a href="permrand.html#randomisation-tests"><i class="fa fa-check"></i><b>5.6.2</b> Randomisation tests</a></li>
+<li class="chapter" data-level="5.6.3" data-path="permrand.html"><a href="permrand.html#exspear"><i class="fa fa-check"></i><b>5.6.3</b> Pearson’s correlation coefficient example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="depsamp.html"><a href="depsamp.html"><i class="fa fa-check"></i><b>5.7</b> Nonparametric measures and tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="depsamp.html"><a href="depsamp.html#spear"><i class="fa fa-check"></i><b>5.7.1</b> Spearman’s rank correlation coefficient</a></li>
+<li class="chapter" data-level="5.7.2" data-path="depsamp.html"><a href="depsamp.html#wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>5.7.2</b> Wilcoxon signed rank test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.8</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><div class="line-block">MTH2006 Topic 5<br />
+Nonparametric statistics</div></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The main aim of this topic is to introduce <em>nonparametric statistics</em>. This is a branch of statistics where we aim to understand a process or processes from data without models that rely on parameters. We’ll use various examples along the way with which you’ll be familiar, and that will help make clear the distinction between parametric and nonparametric statistics. In addition to nonparametric statistics, Topic 5 will also introduce you to new aspects of <code>R</code> programming. Programming is both useful in practice, e.g. when we want to analyse data in real life, but is also useful for helping affirm theory taught and for thinking about addressing statistical problems efficiently.</p>
+<p>Before we start on Topic 5, we’ll mostly be using <code>ggplot2</code> for graphics, so make sure that it’s loaded each time you start an <code>R</code> session.
+</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>It’s also worth remembering that <code>R</code>’s help files are usually excellent. So, if you’re ever unsure how to use a function, start by checking its help file. For example, we can get help on the function <code>mean()</code> using
+</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code></pre></div>
+<p>The key pieces of information in a help file are <code>Usage</code>, how to use the function, <code>Arguments</code>, the arguments to the function, and <code>Value</code>, the value(s) that the function returns. Almost all functions’ help files end with an <code>Examples</code> section. These typically give considered demonstrations of how to use functions and what they can do.</p>
+<div id="topic-webpage" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Topic webpage<a href="introduction.html#topic-webpage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A web-style version of this topic’s lecture notes can be found at the following url.</p>
+<p><a href="https://byoungman.github.io/MTH2006/" class="uri">https://byoungman.github.io/MTH2006/</a></p>
+<p>You may find this easier to navigate than the pdf notes if you want to refer to the notes during lectures or practical classes. The content of the web-style and pdf versions of the notes are identical.</p>
+</div>
+<div id="proposed-learning-schedule" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Proposed learning schedule<a href="introduction.html#proposed-learning-schedule" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Topic 5 will be delivered in weeks 7–11. Here is a guide of roughly what material we will be covering and when. All the lecture notes and exercises have been released at once. This gives plenty of opportunity for you to go through the topic’s material prior to in-person lectures and practical classes.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Lecture notes</th>
+<th>Exercises</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>7</td>
+<td>Section 5.1–5.3</td>
+<td>1 - 2</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Section 5.4.1–5.4.5</td>
+<td>3 - 6</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Section 5.4.6–5.4.8</td>
+<td>7 - 12</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Section 5.5</td>
+<td>13 - 18</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Section 5.6–5.8</td>
+<td>19 - 26</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="office-hour" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Office hour<a href="introduction.html#office-hour" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>My office hour is 11am–midday on Mondays. Either drop by my office, Laver 817, or send me an email in advance to <a href="mailto:b.youngman@exeter.ac.uk">b.youngman@exeter.ac.uk</a> to make an appointment to meet online.</p>
+</div>
+<div id="resources" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Resources<a href="introduction.html#resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>These notes and the exercises cover everything on nonparametric statistics that can turn up on your MTH2006 examination. They will introduce various concepts, often by outlining the theory behind them and then showing examples of their application and how they can be implemented in <code>R</code>. Nonetheless, you may wish to supplement your knowledge by considering alternative descriptions. The following resources may be useful; refer to References at the end of this Topic.</p>
+<ul>
+<li><span class="citation">Davison (2003, Ch. 2)</span> covers empirical distribution functions, order statistics and histograms.</li>
+<li><span class="citation">Bowman and Azzalini (1997, Ch. 1 &amp; 2)</span>, <span class="citation">Silverman (1986, Ch. 3)</span> or <span class="citation">Davison (2003, sec. 7.1.2)</span> give good accounts of kernel density estimation.</li>
+<li><span class="citation">Good (2013)</span> covers permutation tests, while <span class="citation">Hart (1997, sec. 6.3)</span> and <span class="citation">Davison (2003, Example 7.35)</span> are useful for snippets.</li>
+<li><span class="citation">Govindarajulu (2007)</span>, <span class="citation">Sprent (2012)</span> and <span class="citation">Sheskin (2000)</span> give comprehensive treatments on nonparametric tests; <span class="citation">Davison (2003, sec. 7.3)</span> outlines most covered here.</li>
+<li>One of the best resources for learning about <code>R</code> is its ‘An Introduction to R’ manual, which is available in <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf">pdf</a> and <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html">html</a> formats from <a href="https://cran.r-project.org/manuals.html" class="uri">https://cran.r-project.org/manuals.html</a>, along with various other useful manuals.</li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pcdf.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
