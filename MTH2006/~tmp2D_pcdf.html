@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.2 Estimating cdfs and pdfs | index.knit</title>
+  <meta name="description" content="MTH2006 Topic 5<br />
+Nonparametric statistics</div>" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.2 Estimating cdfs and pdfs | index.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.2 Estimating cdfs and pdfs | index.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="gof.html"/>
+<script src="assets/header-attrs-2.9/header-attrs.js"></script>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="assets/kePrint-0.0.1/kePrint.js"></script>
+<link href="assets/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="5" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>5</b> Nonparametric statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction.html"><a href="introduction.html#topic-webpage"><i class="fa fa-check"></i><b>5.1.1</b> Topic webpage</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction.html"><a href="introduction.html#proposed-learning-schedule"><i class="fa fa-check"></i><b>5.1.2</b> Proposed learning schedule</a></li>
+<li class="chapter" data-level="5.1.3" data-path="introduction.html"><a href="introduction.html#office-hour"><i class="fa fa-check"></i><b>5.1.3</b> Office hour</a></li>
+<li class="chapter" data-level="5.1.4" data-path="introduction.html"><a href="introduction.html#resources"><i class="fa fa-check"></i><b>5.1.4</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="pcdf.html"><a href="pcdf.html"><i class="fa fa-check"></i><b>5.2</b> Estimating cdfs and pdfs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pcdf.html"><a href="pcdf.html#teignmouth-rainfall"><i class="fa fa-check"></i><b>5.2.1</b> Teignmouth rainfall </a></li>
+<li class="chapter" data-level="5.2.2" data-path="pcdf.html"><a href="pcdf.html#para"><i class="fa fa-check"></i><b>5.2.2</b> Parametric pdf estimation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="pcdf.html"><a href="pcdf.html#ord"><i class="fa fa-check"></i><b>5.2.3</b> Order statistics and ranks</a></li>
+<li class="chapter" data-level="5.2.4" data-path="pcdf.html"><a href="pcdf.html#empirical-cdf-estimation"><i class="fa fa-check"></i><b>5.2.4</b> Empirical cdf estimation</a></li>
+<li class="chapter" data-level="5.2.5" data-path="pcdf.html"><a href="pcdf.html#hist"><i class="fa fa-check"></i><b>5.2.5</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="gof.html"><a href="gof.html"><i class="fa fa-check"></i><b>5.3</b> Goodness of fit</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="gof.html"><a href="gof.html#quantilequantile-plots"><i class="fa fa-check"></i><b>5.3.1</b> Quantile–quantile plots</a></li>
+<li class="chapter" data-level="5.3.2" data-path="gof.html"><a href="gof.html#pearsons-chi-squared-test"><i class="fa fa-check"></i><b>5.3.2</b> Pearson’s chi-squared test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="kde.html"><a href="kde.html"><i class="fa fa-check"></i><b>5.4</b> Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="kde.html"><a href="kde.html#old-faithful-geyser-eruption-times"><i class="fa fa-check"></i><b>5.4.1</b> Old Faithful geyser eruption times</a></li>
+<li class="chapter" data-level="5.4.2" data-path="kde.html"><a href="kde.html#kdedef"><i class="fa fa-check"></i><b>5.4.2</b> Definition</a></li>
+<li class="chapter" data-level="5.4.3" data-path="kde.html"><a href="kde.html#kernel-functions"><i class="fa fa-check"></i><b>5.4.3</b> Kernel functions</a></li>
+<li class="chapter" data-level="5.4.4" data-path="kde.html"><a href="kde.html#kernel-bandwidth"><i class="fa fa-check"></i><b>5.4.4</b> Kernel bandwidth</a></li>
+<li class="chapter" data-level="5.4.5" data-path="kde.html"><a href="kde.html#kernel-density-estimation-in-r"><i class="fa fa-check"></i><b>5.4.5</b> Kernel density estimation in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="kde.html"><a href="kde.html#some-properties-of-hatf_hy"><i class="fa fa-check"></i><b>5.4.6</b> Some properties of <span class="math inline">\(\hat{f}_h(y)\)</span></a></li>
+<li class="chapter" data-level="5.4.7" data-path="kde.html"><a href="kde.html#nkde"><i class="fa fa-check"></i><b>5.4.7</b> Optimal bandwidths by assuming normal <span class="math inline">\(f_Y(y)\)</span></a></li>
+<li class="chapter" data-level="5.4.8" data-path="kde.html"><a href="kde.html#notnkde"><i class="fa fa-check"></i><b>5.4.8</b> Optimal bandwidths for any <span class="math inline">\(f_Y(y)\)</span> by cross-validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="indepsamp.html"><a href="indepsamp.html"><i class="fa fa-check"></i><b>5.5</b> Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="indepsamp.html"><a href="indepsamp.html#welchs-t-test"><i class="fa fa-check"></i><b>5.5.1</b> Welch’s <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="5.5.2" data-path="indepsamp.html"><a href="indepsamp.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>5.5.2</b> Kolmogorov-Smirnov test</a></li>
+<li class="chapter" data-level="5.5.3" data-path="indepsamp.html"><a href="indepsamp.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>5.5.3</b> Mann-Whitney <span class="math inline">\(U\)</span> test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="permrand.html"><a href="permrand.html"><i class="fa fa-check"></i><b>5.6</b> Permutation and randomisation tests</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="permrand.html"><a href="permrand.html#permutation"><i class="fa fa-check"></i><b>5.6.1</b> Permutation tests</a></li>
+<li class="chapter" data-level="5.6.2" data-path="permrand.html"><a href="permrand.html#randomisation-tests"><i class="fa fa-check"></i><b>5.6.2</b> Randomisation tests</a></li>
+<li class="chapter" data-level="5.6.3" data-path="permrand.html"><a href="permrand.html#exspear"><i class="fa fa-check"></i><b>5.6.3</b> Pearson’s correlation coefficient example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="depsamp.html"><a href="depsamp.html"><i class="fa fa-check"></i><b>5.7</b> Nonparametric measures and tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="depsamp.html"><a href="depsamp.html#spear"><i class="fa fa-check"></i><b>5.7.1</b> Spearman’s rank correlation coefficient</a></li>
+<li class="chapter" data-level="5.7.2" data-path="depsamp.html"><a href="depsamp.html#wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>5.7.2</b> Wilcoxon signed rank test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.8</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><div class="line-block">MTH2006 Topic 5<br />
+Nonparametric statistics</div></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="pcdf" class="section level2" number="1.2">
+<h2><span class="header-section-number">5.2</span> Estimating cdfs and pdfs</h2>
+<p>Estimates of cdfs and pdfs can be incredibly useful. Sometimes they might just be a visual tool for seeing how a set of values are distributed. Alternatively, we might want to use derived quantities, such as quantiles, in some decision. For example, when building structures, estimates of extreme quantiles are sometimes used to dictate the strength to which a structure should be built. This is essentially the process behind building flood defences in the UK, for example.</p>
+<p>Throughout we’ll introduce methods by considering a sample of random variables <span class="math inline">\(Y_1, \ldots, Y_n\)</span> and then we’ll look at how we can use <code>R</code> and an actual sample of data, <span class="math inline">\(y_1, \ldots, y_n\)</span>, in order to better understand our sample or the population from which we believe it is drawn.</p>
+<div id="teignmouth-rainfall" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">5.2.1</span> Teignmouth rainfall </h3>
+<p>In this section we’ll consider estimating the distribution of daily rainfall amounts at Teignmouth, Devon<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Figure <a href="pcdf.html#fig:teignplot">5.1</a> shows daily rainfall amounts during the year 2019.</p>
+<p>You can access these data either by loading the <code>teignmouth2019.csv</code> file from the <a href="https://vle.exeter.ac.uk/course/view.php?id=10542">MTH2006 ELE page</a> and then using</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="pcdf.html#cb3-1" aria-hidden="true" tabindex="-1"></a>teignmouth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;teignmouth2019.csv&quot;</span>)</span></code></pre></div>
+<p>or the following is a slightly more direct option.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="pcdf.html#cb4-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;http://empslocal.ex.ac.uk/people/staff/by223/MTH2006/teignmouth2019.csv&quot;</span></span>
+<span id="cb4-2"><a href="pcdf.html#cb4-2" aria-hidden="true" tabindex="-1"></a>teignmouth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span></code></pre></div>
+<p>Then we can have a quick look at what we’ve loaded with <code>head()</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="pcdf.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(teignmouth)</span></code></pre></div>
+<pre><code>##         date prcp
+## 1 2019-01-01    0
+## 2 2019-01-02    0
+## 3 2019-01-03    0
+## 4 2019-01-04    0
+## 5 2019-01-05    0
+## 6 2019-01-06    0</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:teignplot"></span>
+<img src="index_files/figure-html/teignplot-1.png" alt="Daily rainfall amounts (mm) at Teignmouth, Devon, during 2019." width="528" />
+<p class="caption">
+Figure 5.1: Daily rainfall amounts (mm) at Teignmouth, Devon, during 2019.
+</p>
+</div>
+<p>There are some basic analyses we can do on the rainfall amounts, which are the variable <code>prcp</code> in the data frame. Firstly, we might use <code>sum()</code> to calculate on how many days it rained</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="pcdf.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(teignmouth<span class="sc">$</span>prcp <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] 187</code></pre>
+<p>or we might use <code>mean()</code> to directly calculate the proportion of days</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="pcdf.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(teignmouth<span class="sc">$</span>prcp <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5123288</code></pre>
+<p>We’re only going to be interested in days on which it rained, so we’ll filter these out, and create a <code>data.frame</code> with a slightly shorter name.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="pcdf.html#cb11-1" aria-hidden="true" tabindex="-1"></a>rain <span class="ot">&lt;-</span> <span class="fu">subset</span>(teignmouth, prcp <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+</div>
+<div id="para" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">5.2.2</span> Parametric pdf estimation</h3>
+<p>Suppose that we want to estimate the distribution of rainfall amounts on the days that it has rained. We could model these as being exponentially distributed, which would seem a sensible choice since rainfall amounts are non-negative, continuous, and we might expect that large rainfall amounts occur less often.</p>
+<p>More formally we’re proposing to model rainfall amounts with the cumulative distribution function (cdf) <span class="math display">\[F_Y(y ; \theta) = \left\{\begin{array}{ll} 1 - \exp(- \theta y) &amp; \text{if}~~y &gt; 0\\ 0 &amp; \text{otherwise}\end{array}\right.\]</span> or equivalently the probability density function (pdf) <span class="math display">\[f_Y(y ; \theta) = \left\{\begin{array}{ll} \theta \exp(- \theta y) &amp; \text{if}~~y &gt; 0\\ 0 &amp; \text{otherwise}\end{array}\right.\]</span> for <span class="math inline">\(\theta &gt; 0\)</span>. This notation, by writing <span class="math inline">\(f_Y(y;\theta)\)</span> and <span class="math inline">\(F_Y(y;\theta)\)</span> instead of <span class="math inline">\(f_Y(y)\)</span> and <span class="math inline">\(F_Y(y)\)</span>, respectively, makes explicit that the cdf and pdf rely on <span class="math inline">\(\theta\)</span>. By assuming an exponential distribution, our task of estimating <span class="math inline">\(f_Y(y; \theta)\)</span> becomes the task of estimating <span class="math inline">\(\theta\)</span>; we might think that the latter task is simpler. Then, once we’ve estimated <span class="math inline">\(\theta\)</span>, we’ve estimated the pdf. In this approach, <span class="math inline">\(\theta\)</span> is a <em>parameter</em> that we want to estimate. This is one example of <em>parametric statistics</em>, a term used to collect statistical approaches that rely on estimating one or more parameters. The key point here is that we’ve assumed that the exponential distribution is an adequate probability model, and so just need to estimates its parameter, and hence this is a parametric approach to statistical modelling.</p>
+<p>From Topic 2, Likelihood Inference, we know that if rainfall amounts are assumed independent and share the same exponential distribution, then the maximum likelihood estimate (mle) of <span class="math inline">\(\theta\)</span> for a sample <span class="math inline">\(y_1, \ldots, y_n\)</span> is <span class="math inline">\(\hat \theta = 1 / \bar y\)</span> where <span class="math inline">\(\bar y = \sum_{i=1}^n y_i\)</span>, which we can calculate in <code>R</code> using
+</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="pcdf.html#cb12-1" aria-hidden="true" tabindex="-1"></a>theta_hat <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">mean</span>(rain<span class="sc">$</span>prcp)</span></code></pre></div>
+<p>and which gives <span class="math inline">\(\hat \theta =\)</span> 0.194. We can see our estimate of the cdf and pdf of the rainfall amounts in black in Figure <a href="pcdf.html#fig:faithful4">5.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:faithful4"></span>
+<img src="index_files/figure-html/faithful4-1.png" alt="Estimates of the cdf and pdf of Teignmouth rainfall amounts based on exponential and gamma models." width="768" />
+<p class="caption">
+Figure 5.2: Estimates of the cdf and pdf of Teignmouth rainfall amounts based on exponential and gamma models.
+</p>
+</div>
+<p>The exponential distribution is a special case of the gamma distribution, which has pdf
+<span class="math display" id="eq:dgamma">\[\begin{equation}
+f_Y(y ; \alpha, \beta) = \left\{\begin{array}{ll} \dfrac{\beta^\alpha y^{\alpha - 1}}{\Gamma(\alpha)} \exp(-\beta y) &amp; \text{if}~~y &gt; 0\\ 0 &amp; \text{otherwise}\end{array}\right.
+\tag{5.1}
+\end{equation}\]</span>
+for <span class="math inline">\(\alpha, \beta &gt; 0\)</span> and where <span class="math inline">\(\Gamma()\)</span> denotes the gamma function. For the gamma distribution, our task is to estimate <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. (In general the gamma distribution doesn’t have a closed form for <span class="math inline">\(F_Y(y; \alpha, \beta)\)</span>, i.e. we can’t write down an equation for <span class="math inline">\(F_Y(y; \alpha, \beta)\)</span>. However, values of its cdf can be approximated incredibly precisely using numerical methods, which is what <code>R</code>’s function <code>pgamma(y, shape, rate)</code> does, where its arguments <code>y</code>, <code>shape</code> and <code>rate</code> correspond to <span class="math inline">\(u\)</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, respectively, in equation <a href="pcdf.html#eq:dgamma">(5.1)</a>.) The estimated cdf and pdf are also shown in From <a href="pcdf.html#fig:faithful4">5.2</a>.</p>
+<p>From <a href="pcdf.html#fig:faithful4">5.2</a> we can see some difference between the exponential and gamma models. Because the gamma distribution includes the exponential distribution as a special case (with <span class="math inline">\(\alpha = 1\)</span> and <span class="math inline">\(\beta = \theta\)</span>), it is the more flexible model and so we might prefer its estimate. Furthermore, if the exponential model was a good model, we’d expect the gamma model to produce a similar estimate. However, although we might prefer the gamma model for its added flexibility, we still have little evidence for concluding it to be a <em>good</em> model. Therefore, even though we’ve estimated the parameters that we wanted, we still can’t judge whether our estimated cdfs and pdfs are okay.</p>
+<p>So, can we estimate cdfs and/or pdfs without models that rely on parameters? If we turn to <em>nonparametric statistics</em> the answer is ‘<em>yes</em>.’</p>
+<p><strong>Video 2:</strong> <em>Parametric pdf estimates for Teignmouth daily rainfall.</em> (<a href="https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3c4a2560-8cd9-4d56-b3bf-acd101390a8f">video2_parametric-pdf.mp4</a> [13m50s])</p>
+<p>
+<details>
+<summary>
+Click here to see the <code>R</code> code used in the video.
+</summary>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="pcdf.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># in future demo scripts loading ggplot2 will be implicit</span></span>
+<span id="cb13-2"><a href="pcdf.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="pcdf.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll start by loading the Teignmouth rainfall data,</span></span>
+<span id="cb13-4"><a href="pcdf.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># which are introduced in Section 5.2.1 of the notes.</span></span>
+<span id="cb13-5"><a href="pcdf.html#cb13-5" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;http://empslocal.ex.ac.uk/people/staff/by223/MTH2006/teignmouth2019.csv&quot;</span></span>
+<span id="cb13-6"><a href="pcdf.html#cb13-6" aria-hidden="true" tabindex="-1"></a>teignmouth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span>
+<span id="cb13-7"><a href="pcdf.html#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="pcdf.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;re going to model the distribution of rainfall amounts, so we need </span></span>
+<span id="cb13-9"><a href="pcdf.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># to extract just the data for when it rained</span></span>
+<span id="cb13-10"><a href="pcdf.html#cb13-10" aria-hidden="true" tabindex="-1"></a>rain <span class="ot">&lt;-</span> <span class="fu">subset</span>(teignmouth, prcp <span class="sc">&gt;</span> <span class="dv">0</span>)<span class="sc">$</span>prcp</span>
+<span id="cb13-11"><a href="pcdf.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># (which you&#39;ll also need to do for your assessed coursework).</span></span>
+<span id="cb13-12"><a href="pcdf.html#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="pcdf.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Exponential model.</span></span>
+<span id="cb13-14"><a href="pcdf.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># The mle of its rate parameter is</span></span>
+<span id="cb13-15"><a href="pcdf.html#cb13-15" aria-hidden="true" tabindex="-1"></a>theta_hat <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">mean</span>(rain)</span>
+<span id="cb13-16"><a href="pcdf.html#cb13-16" aria-hidden="true" tabindex="-1"></a>theta_hat</span>
+<span id="cb13-17"><a href="pcdf.html#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># we&#39;ll store the arguments for evaluating the exponential pdf in </span></span>
+<span id="cb13-18"><a href="pcdf.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># R with dexp() in a list.</span></span>
+<span id="cb13-19"><a href="pcdf.html#cb13-19" aria-hidden="true" tabindex="-1"></a>exp_args <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">rate =</span> theta_hat)</span>
+<span id="cb13-20"><a href="pcdf.html#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># The we can plot our pdf estimate with</span></span>
+<span id="cb13-21"><a href="pcdf.html#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">stat_function</span>(<span class="at">fun =</span> dexp, <span class="at">args =</span> exp_args, <span class="at">lwd =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb13-22"><a href="pcdf.html#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span>
+<span id="cb13-23"><a href="pcdf.html#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="pcdf.html#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Gamma model, instead.</span></span>
+<span id="cb13-25"><a href="pcdf.html#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co"># We need to fit its mles numerically, and start with a function for</span></span>
+<span id="cb13-26"><a href="pcdf.html#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># its (negative) log likelihood</span></span>
+<span id="cb13-27"><a href="pcdf.html#cb13-27" aria-hidden="true" tabindex="-1"></a>gamma_negloglik <span class="ot">&lt;-</span> <span class="cf">function</span>(p, y) {</span>
+<span id="cb13-28"><a href="pcdf.html#cb13-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(p[<span class="dv">1</span>] <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">|</span> p[<span class="dv">2</span>] <span class="sc">&lt;=</span> <span class="dv">0</span>) {</span>
+<span id="cb13-29"><a href="pcdf.html#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fl">1e6</span>)</span>
+<span id="cb13-30"><a href="pcdf.html#cb13-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-31"><a href="pcdf.html#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dgamma</span>(y, <span class="at">shape =</span> p[<span class="dv">1</span>], <span class="at">rate =</span> p[<span class="dv">2</span>], <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb13-32"><a href="pcdf.html#cb13-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-33"><a href="pcdf.html#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co"># which we them supply to an optimizer (optim in this case) to find the </span></span>
+<span id="cb13-34"><a href="pcdf.html#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters of the gamma distribution that minimise the negative</span></span>
+<span id="cb13-35"><a href="pcdf.html#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="co"># log-likelihood (which is equivalent to maximising the log-likelihood),</span></span>
+<span id="cb13-36"><a href="pcdf.html#cb13-36" aria-hidden="true" tabindex="-1"></a>gamma_fit <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="dv">1</span>, theta_hat), gamma_negloglik, <span class="at">y =</span> rain)</span>
+<span id="cb13-37"><a href="pcdf.html#cb13-37" aria-hidden="true" tabindex="-1"></a>gamma_fit<span class="sc">$</span>par</span>
+<span id="cb13-38"><a href="pcdf.html#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll put our arguments for dgamma(), which evaluates the gamma </span></span>
+<span id="cb13-39"><a href="pcdf.html#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution&#39;s pdf, in another list.</span></span>
+<span id="cb13-40"><a href="pcdf.html#cb13-40" aria-hidden="true" tabindex="-1"></a>gamma_args <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">shape =</span> gamma_fit<span class="sc">$</span>par[<span class="dv">1</span>], <span class="at">rate =</span> gamma_fit<span class="sc">$</span>par[<span class="dv">2</span>])</span>
+<span id="cb13-41"><a href="pcdf.html#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we can plot the pdfs from the exponential and gamma models together</span></span>
+<span id="cb13-42"><a href="pcdf.html#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb13-43"><a href="pcdf.html#cb13-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dexp, <span class="at">args =</span> exp_args, <span class="at">lwd =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb13-44"><a href="pcdf.html#cb13-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dgamma, <span class="at">args =</span> gamma_args, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb13-45"><a href="pcdf.html#cb13-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span>
+<span id="cb13-46"><a href="pcdf.html#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="co"># and they&#39;re quite close, but, as there&#39;s some difference, the gamma </span></span>
+<span id="cb13-47"><a href="pcdf.html#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution&#39;s extra flexibility might mean that it represents</span></span>
+<span id="cb13-48"><a href="pcdf.html#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="co"># the distribution of rainfall amounts better.</span></span></code></pre></div>
+</details>
+</p>
+</div>
+<div id="ord" class="section level3" number="1.2.3">
+<h3><span class="header-section-number">5.2.3</span> Order statistics and ranks</h3>
+<p>The <em>order statistics</em> of random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are the values put into increasing order: <span class="math display">\[Y_{(1)} \leq Y_{(2)} \leq \ldots \leq Y_{(n - 1)} \leq Y_{(n)}.\]</span> Order statistics can be calculated for an observed sample. So, if <span class="math inline">\(y_1 = 4\)</span>, <span class="math inline">\(y_2 = 1\)</span> and <span class="math inline">\(y_3 = 2\)</span> then <span class="math inline">\(y_{(1)} = 1\)</span>, <span class="math inline">\(y_{(2)} = 2\)</span> and <span class="math inline">\(y_{(3)} = 4\)</span>. The order statistics have various uses, such as calculating sample medians and interquartile ranges.</p>
+<p>The <span class="math inline">\(r\)</span>th <em>order statistic</em> of random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span> is <span class="math inline">\(Y_{(r)}\)</span>; it is the <span class="math inline">\(r\)</span>th value in the ordered sample <span class="math inline">\(Y_{(1)} \leq Y_{(2)} \leq \ldots \leq Y_{(n - 1)} \leq Y_{(n)}.\)</span></p>
+<p>There are a few useful functions in <code>R</code> for dealing with order statistics and other related statistics. Let’s start with the <code>sort()</code> function<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="pcdf.html#cb14-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">14</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">18</span>, <span class="dv">19</span>)</span>
+<span id="cb14-2"><a href="pcdf.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y)</span></code></pre></div>
+<pre><code>##  [1]  0  1  4  5  8 10 14 16 18 19</code></pre>
+<p>This gives a vector of the order statistics. So if given vector <span class="math inline">\((y_1, \ldots, y_n)\)</span> it gives <span class="math inline">\((y_{(1)}, \ldots, y_{(n)})\)</span>. Another useful function is <code>order()</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="pcdf.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note that wrapping an assignment (i.e. using &lt;-) in round brackets </span></span>
+<span id="cb16-2"><a href="pcdf.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># both executes and prints the result of the wrapped code</span></span>
+<span id="cb16-3"><a href="pcdf.html#cb16-3" aria-hidden="true" tabindex="-1"></a>(ord <span class="ot">&lt;-</span> <span class="fu">order</span>(y)) </span></code></pre></div>
+<pre><code>##  [1]  3  5  8  4  7  2  6  1  9 10</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="pcdf.html#cb18-1" aria-hidden="true" tabindex="-1"></a>y[ord]</span></code></pre></div>
+<pre><code>##  [1]  0  1  4  5  8 10 14 16 18 19</code></pre>
+<p>So if given vector <span class="math inline">\(y_1, \ldots, y_n\)</span> <code>order()</code> returns the <em>ordering index vector</em> of <span class="math inline">\(y_1, \ldots, y_n\)</span>. So <span class="math inline">\(y_1\)</span> corresponds to <span class="math inline">\(y_{(r)}\)</span> with <span class="math inline">\(r =\)</span> 3 as <code>ord[1]</code> <span class="math inline">\(=\)</span> 3.</p>
+<p>We can also obtain both at once by setting <code>sort()</code>’s argument <code>index.return</code> to <code>TRUE</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="pcdf.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y, <span class="at">index.return =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## $x
+##  [1]  0  1  4  5  8 10 14 16 18 19
+## 
+## $ix
+##  [1]  3  5  8  4  7  2  6  1  9 10</code></pre>
+<p>This is particularly useful if we simultaneously want the order statistics <em>and</em> their ordering index vector; using <code>order()</code> and <code>sort()</code> would essentially be doing two calculations when one would suffice, which becomes increasingly inefficient as <span class="math inline">\(n\)</span> increases.</p>
+<p>A related concept order statistics is <em>rank</em> in which we consider the position of a value <span class="math inline">\(y\)</span> in a sorted vector, which is denoted <span class="math inline">\(\text{rank}(y)\)</span>. Put mathematically, for a random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span>, <span class="math inline">\(\text{rank}(y) = \sum_{i=1}^n I(Y_i \leq y)\)</span> where <span class="math inline">\(I()\)</span> is the <em>indicator function</em>, which is defined as</p>
+<p><span class="math display" id="eq:indicator">\[\begin{equation} 
+I(Y_i \leq x) = \left\{\begin{array}{ll} 1 &amp;\text{if}~~Y_i \leq y,\\ 0 &amp; \text{if}~~Y_i &gt; y, \end{array}\right. \tag{5.2}
+\end{equation}\]</span></p>
+<p>and which we’ll use a few times in Topic 5.</p>
+<p>The function <code>rank()</code> in <code>R</code> calculates ranks for each element of a vector.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="pcdf.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(y)</span></code></pre></div>
+<pre><code>##  [1]  8  6  1  4  2  7  5  3  9 10</code></pre>
+<p>Sometimes we might want to consider sorting in decreasing order. This can be done with both <code>sort()</code> and <code>order()</code> by supplying argument <code>decreasing = TRUE</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="pcdf.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##  [1] 19 18 16 14 10  8  5  4  1  0</code></pre>
+<p>We’ve not yet discussed what happens if we have repeated values – often called <em>ties</em> – in a vector. Suppose that these are three of these, <span class="math inline">\(y_2\)</span>, <span class="math inline">\(y_3\)</span> and <span class="math inline">\(y_5\)</span>, which are <span class="math inline">\(y_{(3)}\)</span>, <span class="math inline">\(y_{(4)}\)</span> and <span class="math inline">\(y_{(5)}\)</span>. With function <code>order()</code> <code>R</code> deals with these in the order that it encounters them: the first of the ties is given order statistic 3, the second 4 and and third 5. By default the function <code>rank()</code> gives the average rank of the ties. (In fact, the function <code>rank()</code> has argument <code>ties.method</code> and <code>"average"</code> is the default; instead the <code>"first"</code> or <code>"last"</code> ranks can be returned, amongst other options.)</p>
+<p><strong>Video 3:</strong> <em>Order statistics and ranks.</em> (<a href="https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4c254b63-7221-423e-833c-acd101390a49">video3_order.mp4</a> [8m09s])</p>
+<p>
+<details>
+<summary>
+Click here to see the <code>R</code> code used in the video.
+</summary>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="pcdf.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll start by generating some uniform data</span></span>
+<span id="cb26-2"><a href="pcdf.html#cb26-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">8</span>)</span>
+<span id="cb26-3"><a href="pcdf.html#cb26-3" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb26-4"><a href="pcdf.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We don&#39;t need that many decimal places, so we&#39;ll just keep two</span></span>
+<span id="cb26-5"><a href="pcdf.html#cb26-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">round</span>(x, <span class="dv">2</span>)</span>
+<span id="cb26-6"><a href="pcdf.html#cb26-6" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb26-7"><a href="pcdf.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s start with sort, which returns the order statistics of y</span></span>
+<span id="cb26-8"><a href="pcdf.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y)</span>
+<span id="cb26-9"><a href="pcdf.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we might want the ordering index vector, which has first</span></span>
+<span id="cb26-10"><a href="pcdf.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># element the position of the smallest y, second element the next</span></span>
+<span id="cb26-11"><a href="pcdf.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># smallest, and so forth</span></span>
+<span id="cb26-12"><a href="pcdf.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(y)</span>
+<span id="cb26-13"><a href="pcdf.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co"># So y[order(y)] is equivalent to sort(y), which we can confirm</span></span>
+<span id="cb26-14"><a href="pcdf.html#cb26-14" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">order</span>(y)]</span>
+<span id="cb26-15"><a href="pcdf.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, we can do both at once</span></span>
+<span id="cb26-16"><a href="pcdf.html#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y, <span class="at">index.return =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-17"><a href="pcdf.html#cb26-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-18"><a href="pcdf.html#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Next we calculate the rank of each element of y, which tells us</span></span>
+<span id="cb26-19"><a href="pcdf.html#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co"># how many elements in y are less than or equal to each element</span></span>
+<span id="cb26-20"><a href="pcdf.html#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="co"># of y</span></span>
+<span id="cb26-21"><a href="pcdf.html#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(y)</span>
+<span id="cb26-22"><a href="pcdf.html#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="pcdf.html#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that rank() gives ties the average of their possible rank by</span></span>
+<span id="cb26-24"><a href="pcdf.html#cb26-24" aria-hidden="true" tabindex="-1"></a><span class="co"># default</span></span>
+<span id="cb26-25"><a href="pcdf.html#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>))</span>
+<span id="cb26-26"><a href="pcdf.html#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="co"># but could give separate ranks in the order they&#39;re encountered</span></span>
+<span id="cb26-27"><a href="pcdf.html#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>), <span class="at">ties.method =</span> <span class="st">&quot;first&quot;</span>)</span>
+<span id="cb26-28"><a href="pcdf.html#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="co"># or as above but in reverse</span></span>
+<span id="cb26-29"><a href="pcdf.html#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>), <span class="at">ties.method =</span> <span class="st">&quot;last&quot;</span>)</span>
+<span id="cb26-30"><a href="pcdf.html#cb26-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-31"><a href="pcdf.html#cb26-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally we can do all of this the other way around, going from</span></span>
+<span id="cb26-32"><a href="pcdf.html#cb26-32" aria-hidden="true" tabindex="-1"></a><span class="co"># largest to smallest</span></span>
+<span id="cb26-33"><a href="pcdf.html#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-34"><a href="pcdf.html#cb26-34" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(y, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-35"><a href="pcdf.html#cb26-35" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(y, <span class="at">index.return =</span> <span class="cn">TRUE</span>, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</details>
+</p>
+</div>
+<div id="empirical-cdf-estimation" class="section level3" number="1.2.4">
+<h3><span class="header-section-number">5.2.4</span> Empirical cdf estimation</h3>
+<p>MTH1004 introduced the empirical distribution function (edf). This is a nonparametric estimate of the cdf <span class="math inline">\(F_Y(y)\)</span>. The edf, <span class="math inline">\(\widehat F_n(y)\)</span>, is defined for the random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span> as</p>
+<p><span class="math display" id="eq:Fn">\[\begin{equation} 
+\widehat F_n(y) = \dfrac{1}{n} \sum_{i = 1}^n I(Y_i \leq y),
+\tag{5.3}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(I()\)</span> is the indicator function, previously defined in equation <a href="pcdf.html#eq:indicator">(5.2)</a>. The edf puts probability <span class="math inline">\(n^{-1}\)</span> at each <span class="math inline">\(Y_i\)</span>, for <span class="math inline">\(i = 1, \ldots, n\)</span>. Notice that the estimate <span class="math inline">\(\widehat F_n(y)\)</span> included no parameters that we need to estimate; hence it is a nonparametric estimate of <span class="math inline">\(F_Y(y)\)</span>.</p>
+<p>Now let’s consider an edf estimate for the Teignmouth rainfall amounts. We can plot an estimate of the edf in <code>R</code>, which is shown in Figure <a href="pcdf.html#fig:edf02">5.3</a>, with</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="pcdf.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rain, <span class="fu">aes</span>(prcp)) <span class="sc">+</span> <span class="fu">stat_ecdf</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:edf02"></span>
+<img src="index_files/figure-html/edf02-1.png" alt="Plot of edf of Teignmouth rainfall amounts using `ggplot()` and `stat_ecdf()`." width="480" />
+<p class="caption">
+Figure 5.3: Plot of edf of Teignmouth rainfall amounts using <code>ggplot()</code> and <code>stat_ecdf()</code>.
+</p>
+</div>
+<p>Perhaps most striking in the edf of Figure <a href="pcdf.html#fig:edf02">5.3</a> is its negative skew: by considering the value of <span class="math inline">\(y\)</span> for which <span class="math inline">\(\widehat{F}_n(y) = 0.5\)</span>, approximately half of the rainfall amounts are below 3mm, yet the other half are between 3mm and 43mm. It is the ability to easily extract such statistics from edfs that makes them such useful tools, especially for quick analyses of how data are distributed. We’ve done this using nonparametric statistics: without specifying any kind of probability model.</p>
+<p><strong>Video 4:</strong> <em>Empirical cdf estimation.</em> (<a href="https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=86cea046-21ec-47c6-952d-acd101390ac6">video4_edf.mp4</a> [8m24s])</p>
+<p>
+<details>
+<summary>
+Click here to see the <code>R</code> code used in the video.
+</summary>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="pcdf.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Empirical cumulative distribution function</span></span>
+<span id="cb28-2"><a href="pcdf.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="do">## An illustration in R</span></span>
+<span id="cb28-3"><a href="pcdf.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="do">## See Section 5.2.4</span></span>
+<span id="cb28-4"><a href="pcdf.html#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="pcdf.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Let&#39;s take a look at how edfs work</span></span>
+<span id="cb28-6"><a href="pcdf.html#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="pcdf.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll start by generating some data</span></span>
+<span id="cb28-8"><a href="pcdf.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># which will be a 10-value Beta(3, 2) sample</span></span>
+<span id="cb28-9"><a href="pcdf.html#cb28-9" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb28-10"><a href="pcdf.html#cb28-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbeta</span>(n, <span class="at">shape1 =</span> <span class="dv">3</span>, <span class="at">shape2 =</span> <span class="dv">2</span>)</span>
+<span id="cb28-11"><a href="pcdf.html#cb28-11" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb28-12"><a href="pcdf.html#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="pcdf.html#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The edf formula eq. (5.2) tells us that the edf places</span></span>
+<span id="cb28-14"><a href="pcdf.html#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="co"># mass of 1/n at each y_i</span></span>
+<span id="cb28-15"><a href="pcdf.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># This is effectively an estimate of a *probability mass function*,</span></span>
+<span id="cb28-16"><a href="pcdf.html#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co"># which looks like</span></span>
+<span id="cb28-17"><a href="pcdf.html#cb28-17" aria-hidden="true" tabindex="-1"></a>pmf_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y, <span class="at">pmf =</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">length</span>(y))</span>
+<span id="cb28-18"><a href="pcdf.html#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pmf_df, <span class="fu">aes</span>(<span class="at">x =</span> y, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> pmf)) <span class="sc">+</span> <span class="fu">geom_linerange</span>(<span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb28-19"><a href="pcdf.html#cb28-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">2</span><span class="sc">/</span>n)</span>
+<span id="cb28-20"><a href="pcdf.html#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="pcdf.html#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we have a estimate of *probability mass function* here and</span></span>
+<span id="cb28-22"><a href="pcdf.html#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co"># not a *pdf* as it sums and doesn&#39;t integrate to 1.</span></span>
+<span id="cb28-23"><a href="pcdf.html#cb28-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-24"><a href="pcdf.html#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Now let&#39;s look at the what the edf formula says.</span></span>
+<span id="cb28-25"><a href="pcdf.html#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-26"><a href="pcdf.html#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="co"># It says that for a given value of y, we count how many y_i&#39;s are</span></span>
+<span id="cb28-27"><a href="pcdf.html#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="co"># less than or equal to y and sum 1/n that many times</span></span>
+<span id="cb28-28"><a href="pcdf.html#cb28-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-29"><a href="pcdf.html#cb28-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s set some y values to visualise this</span></span>
+<span id="cb28-30"><a href="pcdf.html#cb28-30" aria-hidden="true" tabindex="-1"></a>y_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb28-31"><a href="pcdf.html#cb28-31" aria-hidden="true" tabindex="-1"></a><span class="co"># which is 0.00, 0.01, ..., 0.99, 1.00</span></span>
+<span id="cb28-32"><a href="pcdf.html#cb28-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-33"><a href="pcdf.html#cb28-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Now let&#39;s plot this</span></span>
+<span id="cb28-34"><a href="pcdf.html#cb28-34" aria-hidden="true" tabindex="-1"></a>n_plot <span class="ot">&lt;-</span> <span class="fu">length</span>(y_vals)</span>
+<span id="cb28-35"><a href="pcdf.html#cb28-35" aria-hidden="true" tabindex="-1"></a>F_n <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_plot)</span>
+<span id="cb28-36"><a href="pcdf.html#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_plot) {</span>
+<span id="cb28-37"><a href="pcdf.html#cb28-37" aria-hidden="true" tabindex="-1"></a>  F_n[j] <span class="ot">&lt;-</span> <span class="fu">sum</span>(y <span class="sc">&lt;=</span> y_vals[j]) <span class="sc">/</span> n</span>
+<span id="cb28-38"><a href="pcdf.html#cb28-38" aria-hidden="true" tabindex="-1"></a>  plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y_vals[<span class="dv">1</span><span class="sc">:</span>j], <span class="at">F_n =</span> F_n[<span class="dv">1</span><span class="sc">:</span>j])</span>
+<span id="cb28-39"><a href="pcdf.html#cb28-39" aria-hidden="true" tabindex="-1"></a>  gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> y, <span class="at">y =</span> F_n)) <span class="sc">+</span> <span class="fu">geom_step</span>(<span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb28-40"><a href="pcdf.html#cb28-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb28-41"><a href="pcdf.html#cb28-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(gg)</span>
+<span id="cb28-42"><a href="pcdf.html#cb28-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(.<span class="dv">25</span>)</span>
+<span id="cb28-43"><a href="pcdf.html#cb28-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-44"><a href="pcdf.html#cb28-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-45"><a href="pcdf.html#cb28-45" aria-hidden="true" tabindex="-1"></a><span class="co"># We learned about ranks is Section 5.2.3 because they&#39;re useful</span></span>
+<span id="cb28-46"><a href="pcdf.html#cb28-46" aria-hidden="true" tabindex="-1"></a><span class="co"># for estimating edfs</span></span>
+<span id="cb28-47"><a href="pcdf.html#cb28-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-48"><a href="pcdf.html#cb28-48" aria-hidden="true" tabindex="-1"></a><span class="co"># We can estimate the edf at each y_i by dividing their ranks by n</span></span>
+<span id="cb28-49"><a href="pcdf.html#cb28-49" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rank</span>(y)</span>
+<span id="cb28-50"><a href="pcdf.html#cb28-50" aria-hidden="true" tabindex="-1"></a>Fn <span class="ot">&lt;-</span> r <span class="sc">/</span> n</span>
+<span id="cb28-51"><a href="pcdf.html#cb28-51" aria-hidden="true" tabindex="-1"></a><span class="co"># and then plot this at each y_i</span></span>
+<span id="cb28-52"><a href="pcdf.html#cb28-52" aria-hidden="true" tabindex="-1"></a>edf_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y, <span class="at">Fn =</span> Fn)</span>
+<span id="cb28-53"><a href="pcdf.html#cb28-53" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(edf_df, <span class="fu">aes</span>(<span class="at">x =</span> y, <span class="at">y =</span> Fn)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb28-54"><a href="pcdf.html#cb28-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb28-55"><a href="pcdf.html#cb28-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-56"><a href="pcdf.html#cb28-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Or we can create a vector of order statistics with sort()</span></span>
+<span id="cb28-57"><a href="pcdf.html#cb28-57" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">sort</span>(y)</span>
+<span id="cb28-58"><a href="pcdf.html#cb28-58" aria-hidden="true" tabindex="-1"></a>Fn2 <span class="ot">&lt;-</span> <span class="fu">rank</span>(y2) <span class="sc">/</span> n</span>
+<span id="cb28-59"><a href="pcdf.html#cb28-59" aria-hidden="true" tabindex="-1"></a><span class="co"># and then plot the edf for all y as a staircase</span></span>
+<span id="cb28-60"><a href="pcdf.html#cb28-60" aria-hidden="true" tabindex="-1"></a>edf_df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y2, <span class="at">Fn =</span> Fn2)</span>
+<span id="cb28-61"><a href="pcdf.html#cb28-61" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(edf_df2, <span class="fu">aes</span>(<span class="at">x =</span> y, <span class="at">y =</span> Fn)) <span class="sc">+</span> <span class="fu">geom_step</span>(<span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb28-62"><a href="pcdf.html#cb28-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb28-63"><a href="pcdf.html#cb28-63" aria-hidden="true" tabindex="-1"></a><span class="co"># which looks a bit better if we cover [0, 1]</span></span>
+<span id="cb28-64"><a href="pcdf.html#cb28-64" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, y2, <span class="dv">1</span>)</span>
+<span id="cb28-65"><a href="pcdf.html#cb28-65" aria-hidden="true" tabindex="-1"></a>Fn2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, Fn2, <span class="dv">1</span>)</span>
+<span id="cb28-66"><a href="pcdf.html#cb28-66" aria-hidden="true" tabindex="-1"></a>edf_df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y2, <span class="at">Fn =</span> Fn2)</span>
+<span id="cb28-67"><a href="pcdf.html#cb28-67" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(edf_df2, <span class="fu">aes</span>(<span class="at">x =</span> y, <span class="at">y =</span> Fn)) <span class="sc">+</span> <span class="fu">geom_step</span>(<span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb28-68"><a href="pcdf.html#cb28-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-69"><a href="pcdf.html#cb28-69" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot2 will do this for us with stat_ecdf()</span></span>
+<span id="cb28-70"><a href="pcdf.html#cb28-70" aria-hidden="true" tabindex="-1"></a>gg_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> y)</span>
+<span id="cb28-71"><a href="pcdf.html#cb28-71" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gg_df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span> <span class="fu">stat_ecdf</span>(<span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb28-72"><a href="pcdf.html#cb28-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-73"><a href="pcdf.html#cb28-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, it&#39;s useful to know that, as our sample size increases,</span></span>
+<span id="cb28-74"><a href="pcdf.html#cb28-74" aria-hidden="true" tabindex="-1"></a><span class="co"># the edf estimate converges to the true cdf</span></span>
+<span id="cb28-75"><a href="pcdf.html#cb28-75" aria-hidden="true" tabindex="-1"></a><span class="co"># So, let&#39;s plot our edf estimate against the Beta(3, 2) cdf and</span></span>
+<span id="cb28-76"><a href="pcdf.html#cb28-76" aria-hidden="true" tabindex="-1"></a><span class="co"># gradually increase our sample size</span></span>
+<span id="cb28-77"><a href="pcdf.html#cb28-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-78"><a href="pcdf.html#cb28-78" aria-hidden="true" tabindex="-1"></a>new_y <span class="ot">&lt;-</span> y</span>
+<span id="cb28-79"><a href="pcdf.html#cb28-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-80"><a href="pcdf.html#cb28-80" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>) {</span>
+<span id="cb28-81"><a href="pcdf.html#cb28-81" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb28-82"><a href="pcdf.html#cb28-82" aria-hidden="true" tabindex="-1"></a>    new_y <span class="ot">&lt;-</span> <span class="fu">c</span>(new_y, <span class="fu">rbeta</span>(.<span class="dv">5</span> <span class="sc">*</span> <span class="fu">length</span>(new_y), <span class="at">shape1 =</span> <span class="dv">3</span>, <span class="at">shape2 =</span> <span class="dv">2</span>))</span>
+<span id="cb28-83"><a href="pcdf.html#cb28-83" aria-hidden="true" tabindex="-1"></a>  conv_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> new_y)</span>
+<span id="cb28-84"><a href="pcdf.html#cb28-84" aria-hidden="true" tabindex="-1"></a>  gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(conv_df, <span class="fu">aes</span>(<span class="at">x =</span> y)) <span class="sc">+</span> <span class="fu">stat_ecdf</span>(<span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb28-85"><a href="pcdf.html#cb28-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="at">fun =</span> pbeta, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">shape1 =</span> <span class="dv">3</span>, <span class="at">shape2 =</span> <span class="dv">2</span>), </span>
+<span id="cb28-86"><a href="pcdf.html#cb28-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb28-87"><a href="pcdf.html#cb28-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(gg)</span>
+<span id="cb28-88"><a href="pcdf.html#cb28-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">5</span> <span class="sc">*</span> <span class="fu">as.numeric</span>(i <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb28-89"><a href="pcdf.html#cb28-89" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</details>
+</p>
+<p>Note that using <code>geom = "point"</code> in <code>stat_ecdf()</code> changes the default so that the edf estimate is represented at each data point <span class="math inline">\(y_i\)</span>. (The default, which is <code>geom = "step"</code>, estimates <span class="math inline">\(\widehat F_n(y)\)</span> for all <span class="math inline">\(y\)</span> values within the range plotted, which looks like a staircase with steps of regular height but irregular depth.)</p>
+</div>
+<div id="hist" class="section level3" number="1.2.5">
+<h3><span class="header-section-number">5.2.5</span> Histograms</h3>
+<p>We used the edf above to estimate <span class="math inline">\(F_Y(y)\)</span>. Now suppose that we want to estimate the pdf <span class="math inline">\(f_Y(y)\)</span>. The histogram is possibly the best-known tool for estimating <span class="math inline">\(f_Y(y)\)</span>. To construct a histogram we define a set of disjoint <em>bins</em>. Let <span class="math inline">\(B_1, \ldots, B_J\)</span> be <span class="math inline">\(J\)</span> bins of width <span class="math inline">\(h\)</span>, so that bin <span class="math inline">\(B_j\)</span> is given by the interval <span class="math inline">\((L + (j - 1) h, L + j h]\)</span> for <span class="math inline">\(j = 1, \dots, J\)</span>. The values of <span class="math inline">\(L\)</span> and <span class="math inline">\(J\)</span> are chosen so that <span class="math inline">\(y_1, \ldots, y_n\)</span> lie within <span class="math inline">\([L, L + Jh]\)</span>. (Note that bin widths could be specified to vary from one bin to another.) The histogram calculates the number of points <span class="math inline">\(n_j\)</span> in bin <span class="math inline">\(B_j\)</span>, i.e. <span class="math display">\[n_j = \sum_{i = 1}^n I(y_i \in B_j).\]</span> Typically we plot a histogram. In <code>R</code> this can be done for the 2019 Teignmouth rainfall amounts with</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="pcdf.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rain, <span class="fu">aes</span>(prcp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:hist"></span>
+<img src="index_files/figure-html/hist-1.png" alt="\label{geom_hist}Histogram of Teignmouth rainfall amounts using `ggplot()` and `geom_histogram()`." width="480" />
+<p class="caption">
+Figure 5.4: Histogram of Teignmouth rainfall amounts using <code>ggplot()</code> and <code>geom_histogram()</code>.
+</p>
+</div>
+<p>and, as expected, the histogram shows negative skew, as we saw with the edf estimate.</p>
+<p>Our call to <code>geom_histogram()</code> has thrown up a message to tell us that <span class="math inline">\(J = 30\)</span> bins have been used. We can change this either by specifying <span class="math inline">\(h\)</span> with <code>binwidth</code> or <span class="math inline">\(J\)</span> with <code>bins</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="pcdf.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rain, <span class="fu">aes</span>(prcp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span>
+<span id="cb31-2"><a href="pcdf.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rain, <span class="fu">aes</span>(prcp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:hist3"></span>
+<img src="index_files/figure-html/hist3-1.png" alt="\label{geom_hist2}Histograms of Teignmouth rainfall amounts specifying the bin width, $h$, using `binwidth = 5` (left) and then the numbers of bins, $J$, using `bins = 50` (right)." width="864" />
+<p class="caption">
+Figure 5.5: Histograms of Teignmouth rainfall amounts specifying the bin width, <span class="math inline">\(h\)</span>, using <code>binwidth = 5</code> (left) and then the numbers of bins, <span class="math inline">\(J\)</span>, using <code>bins = 50</code> (right).
+</p>
+</div>
+<p>While histograms are visually useful, in general the above form doesn’t give an estimate of <span class="math inline">\(f_Y(y)\)</span>. Let <span class="math inline">\(\hat f_Y(y)\)</span> denote such an estimate. A valid estimate of <span class="math inline">\(f_Y(y)\)</span> must satisfy that <span class="math inline">\(\int_{-\infty}^\infty\hat f_Y(u) du = 1\)</span>. Fortunately, this is relatively easy to address by considering the bin widths. Currently we have that the area of a given bin is <span class="math inline">\(h \sum_{i = 1}^n I(y_i \in B_j)\)</span>. With a simple rescaling we can obtain an estimate of <span class="math inline">\(f_Y(y)\)</span>: <span class="math display">\[ \hat f_Y(y) = \dfrac{1}{nh} \sum_{j = 1}^J I(y \in B_j) \left\{\sum_{i = 1}^n I(y_i \in B_j)\right\}.\]</span></p>
+<p>We can obtain a valid pdf estimate with <code>ggplot()</code> by using <code>geom_freqpoly()</code> instead of <code>geom_histogram()</code>.</p>
+<p><strong>Video 5:</strong> <em>Histograms.</em> (<a href="https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2570d85-26c0-4f5e-adbb-acd101390a61">video5_histogram.mp4</a> [9m10s])</p>
+<p>
+<details>
+<summary>
+Click here to see the <code>R</code> code used in the video.
+</summary>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="pcdf.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Histograms</span></span>
+<span id="cb32-2"><a href="pcdf.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">## An illustration in R</span></span>
+<span id="cb32-3"><a href="pcdf.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="do">## See Section 5.2.5</span></span>
+<span id="cb32-4"><a href="pcdf.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="pcdf.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll start by generating a sample of data from the Beta(3, 2)</span></span>
+<span id="cb32-6"><a href="pcdf.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution</span></span>
+<span id="cb32-7"><a href="pcdf.html#cb32-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb32-8"><a href="pcdf.html#cb32-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbeta</span>(n, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb32-9"><a href="pcdf.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co"># which we&#39;ll quickly plot</span></span>
+<span id="cb32-10"><a href="pcdf.html#cb32-10" aria-hidden="true" tabindex="-1"></a>samp_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y)</span>
+<span id="cb32-11"><a href="pcdf.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(samp_df, <span class="fu">aes</span>(<span class="at">x =</span> y)) <span class="sc">+</span> <span class="fu">geom_rug</span>(<span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb32-12"><a href="pcdf.html#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="pcdf.html#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The first thing we need to do is choose our bins, which we want to be</span></span>
+<span id="cb32-14"><a href="pcdf.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># fairly sure span the sample</span></span>
+<span id="cb32-15"><a href="pcdf.html#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="pcdf.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="co"># So, we use a lower value of 0 and upper value of 1 (because this is</span></span>
+<span id="cb32-17"><a href="pcdf.html#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="co"># the support of the Beta distribution).</span></span>
+<span id="cb32-18"><a href="pcdf.html#cb32-18" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb32-19"><a href="pcdf.html#cb32-19" aria-hidden="true" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> h)</span>
+<span id="cb32-20"><a href="pcdf.html#cb32-20" aria-hidden="true" tabindex="-1"></a>bins</span>
+<span id="cb32-21"><a href="pcdf.html#cb32-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-22"><a href="pcdf.html#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="co"># It will be useful at this stage to store the number of bins</span></span>
+<span id="cb32-23"><a href="pcdf.html#cb32-23" aria-hidden="true" tabindex="-1"></a>J <span class="ot">&lt;-</span> <span class="fu">length</span>(bins) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb32-24"><a href="pcdf.html#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="co"># and to find their midpoints</span></span>
+<span id="cb32-25"><a href="pcdf.html#cb32-25" aria-hidden="true" tabindex="-1"></a>mids <span class="ot">&lt;-</span> <span class="fu">numeric</span>(J)</span>
+<span id="cb32-26"><a href="pcdf.html#cb32-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>J) {</span>
+<span id="cb32-27"><a href="pcdf.html#cb32-27" aria-hidden="true" tabindex="-1"></a>  mids[j] <span class="ot">&lt;-</span> (bins[j] <span class="sc">+</span> bins[j <span class="sc">+</span> <span class="dv">1</span>]) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb32-28"><a href="pcdf.html#cb32-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-29"><a href="pcdf.html#cb32-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-30"><a href="pcdf.html#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll plot these alongside our sample </span></span>
+<span id="cb32-31"><a href="pcdf.html#cb32-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(samp_df, <span class="fu">aes</span>(<span class="at">x =</span> y)) <span class="sc">+</span> <span class="fu">geom_rug</span>(<span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb32-32"><a href="pcdf.html#cb32-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> bins)</span>
+<span id="cb32-33"><a href="pcdf.html#cb32-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-34"><a href="pcdf.html#cb32-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we&#39;ll create a vector to store the counts</span></span>
+<span id="cb32-35"><a href="pcdf.html#cb32-35" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="fu">integer</span>(J)</span>
+<span id="cb32-36"><a href="pcdf.html#cb32-36" aria-hidden="true" tabindex="-1"></a><span class="co"># and count the number of sample members in each bin with a for loop</span></span>
+<span id="cb32-37"><a href="pcdf.html#cb32-37" aria-hidden="true" tabindex="-1"></a><span class="co"># which we&#39;ll plot as we go along</span></span>
+<span id="cb32-38"><a href="pcdf.html#cb32-38" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>J) {</span>
+<span id="cb32-39"><a href="pcdf.html#cb32-39" aria-hidden="true" tabindex="-1"></a>  count[j] <span class="ot">&lt;-</span> <span class="fu">sum</span>(y <span class="sc">&gt;</span> bins[j] <span class="sc">&amp;</span> y <span class="sc">&lt;=</span> bins[j <span class="sc">+</span> <span class="dv">1</span>])</span>
+<span id="cb32-40"><a href="pcdf.html#cb32-40" aria-hidden="true" tabindex="-1"></a>  count_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> mids[<span class="dv">1</span><span class="sc">:</span>j], <span class="at">y =</span> .<span class="dv">5</span>, <span class="at">z =</span> count[<span class="dv">1</span><span class="sc">:</span>j])</span>
+<span id="cb32-41"><a href="pcdf.html#cb32-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># here&#39;s the plotting stuff</span></span>
+<span id="cb32-42"><a href="pcdf.html#cb32-42" aria-hidden="true" tabindex="-1"></a>  gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_rug</span>(<span class="at">data =</span> samp_df, <span class="fu">aes</span>(<span class="at">x =</span> y), <span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb32-43"><a href="pcdf.html#cb32-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> bins) <span class="sc">+</span></span>
+<span id="cb32-44"><a href="pcdf.html#cb32-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data =</span> count_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> z), <span class="at">size =</span> <span class="dv">8</span>)</span>
+<span id="cb32-45"><a href="pcdf.html#cb32-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(gg)</span>
+<span id="cb32-46"><a href="pcdf.html#cb32-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(.<span class="dv">8</span>)</span>
+<span id="cb32-47"><a href="pcdf.html#cb32-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># end of plotting stuff</span></span>
+<span id="cb32-48"><a href="pcdf.html#cb32-48" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-49"><a href="pcdf.html#cb32-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-50"><a href="pcdf.html#cb32-50" aria-hidden="true" tabindex="-1"></a><span class="co"># If we want our histogram to be a pdf estimate, we to scale the counts</span></span>
+<span id="cb32-51"><a href="pcdf.html#cb32-51" aria-hidden="true" tabindex="-1"></a><span class="co"># so that they integrate to 1.</span></span>
+<span id="cb32-52"><a href="pcdf.html#cb32-52" aria-hidden="true" tabindex="-1"></a><span class="co"># They currently integrate to</span></span>
+<span id="cb32-53"><a href="pcdf.html#cb32-53" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(h <span class="sc">*</span> count)</span>
+<span id="cb32-54"><a href="pcdf.html#cb32-54" aria-hidden="true" tabindex="-1"></a><span class="co"># which is </span></span>
+<span id="cb32-55"><a href="pcdf.html#cb32-55" aria-hidden="true" tabindex="-1"></a>n <span class="sc">*</span> h</span>
+<span id="cb32-56"><a href="pcdf.html#cb32-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-57"><a href="pcdf.html#cb32-57" aria-hidden="true" tabindex="-1"></a><span class="co"># So a pdf estimate is given by</span></span>
+<span id="cb32-58"><a href="pcdf.html#cb32-58" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> count <span class="sc">/</span> (n <span class="sc">*</span> h)</span>
+<span id="cb32-59"><a href="pcdf.html#cb32-59" aria-hidden="true" tabindex="-1"></a><span class="co"># which integrates to 1.</span></span>
+<span id="cb32-60"><a href="pcdf.html#cb32-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-61"><a href="pcdf.html#cb32-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, a histogram is usually a *plot* of the (scaled) counts</span></span>
+<span id="cb32-62"><a href="pcdf.html#cb32-62" aria-hidden="true" tabindex="-1"></a><span class="co"># which we can do with</span></span>
+<span id="cb32-63"><a href="pcdf.html#cb32-63" aria-hidden="true" tabindex="-1"></a>hist_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> bins[<span class="dv">1</span><span class="sc">:</span>J], <span class="at">y =</span> f)</span>
+<span id="cb32-64"><a href="pcdf.html#cb32-64" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hist_df, <span class="fu">aes</span>(<span class="at">xmin =</span> x, <span class="at">xmax =</span> x <span class="sc">+</span> h, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> f)) <span class="sc">+</span> <span class="fu">geom_rect</span>()</span>
+<span id="cb32-65"><a href="pcdf.html#cb32-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-66"><a href="pcdf.html#cb32-66" aria-hidden="true" tabindex="-1"></a><span class="co"># If we want ggplot2 to do all this for use we use</span></span>
+<span id="cb32-67"><a href="pcdf.html#cb32-67" aria-hidden="true" tabindex="-1"></a>gg_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> y)</span>
+<span id="cb32-68"><a href="pcdf.html#cb32-68" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gg_df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> h)</span>
+<span id="cb32-69"><a href="pcdf.html#cb32-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-70"><a href="pcdf.html#cb32-70" aria-hidden="true" tabindex="-1"></a><span class="do">## Finally, we could have obtain the counts much more tidily</span></span>
+<span id="cb32-71"><a href="pcdf.html#cb32-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-72"><a href="pcdf.html#cb32-72" aria-hidden="true" tabindex="-1"></a><span class="co"># First, we could have got tidy bins with pretty()</span></span>
+<span id="cb32-73"><a href="pcdf.html#cb32-73" aria-hidden="true" tabindex="-1"></a><span class="fu">pretty</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), J)</span>
+<span id="cb32-74"><a href="pcdf.html#cb32-74" aria-hidden="true" tabindex="-1"></a><span class="co"># which is the same as bins</span></span>
+<span id="cb32-75"><a href="pcdf.html#cb32-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-76"><a href="pcdf.html#cb32-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we could have found which bin a datum falls in with cut()</span></span>
+<span id="cb32-77"><a href="pcdf.html#cb32-77" aria-hidden="true" tabindex="-1"></a>(which_bin <span class="ot">&lt;-</span> <span class="fu">cut</span>(y, bins))</span>
+<span id="cb32-78"><a href="pcdf.html#cb32-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Lastly, table will count these</span></span>
+<span id="cb32-79"><a href="pcdf.html#cb32-79" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(which_bin)</span>
+<span id="cb32-80"><a href="pcdf.html#cb32-80" aria-hidden="true" tabindex="-1"></a><span class="co"># which is the same as count</span></span>
+<span id="cb32-81"><a href="pcdf.html#cb32-81" aria-hidden="true" tabindex="-1"></a>count <span class="sc">-</span> <span class="fu">as.vector</span>(<span class="fu">table</span>(which_bin))</span></code></pre></div>
+</details>
+</p>
+<p>We can see that histograms are useful for estimating of <span class="math inline">\(f_Y(y)\)</span>. There are some situations, however, when they could be seen to have flaws. First, we need to choose the number of bins, and the appearance of <span class="math inline">\(\hat f_Y(y)\)</span> could change dramatically depending on how many bins we choose. If we make a poor choice — and we might not know that we have — then we might poorly understand <span class="math inline">\(f_Y(y)\)</span>; yet the purpose of producing a histogram is to understand <span class="math inline">\(f_Y(y)\)</span>. Second, by construction, our estimate of <span class="math inline">\(f_Y(y)\)</span> jumps from one bin to another. If we don’t think that <span class="math inline">\(f_Y(y)\)</span> contains jumps, then our estimate of it is not consistent with our beliefs; we’ll see one way of addressing this is Section <a href="kde.html#kde">5.4</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>If you ever want to visit the weather station, it can be found by the bowling green: <a href="https://goo.gl/maps/L2oVPiq3GmFFeo7V6">https://goo.gl/maps/L2oVPiq3GmFFeo7V6</a><a href="pcdf.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>There are many algorithms for sorting vectors. <code>R</code>’s default is Radix sort; see <a href="https://en.wikipedia.org/wiki/Radix_sort">https://en.wikipedia.org/wiki/Radix_sort</a>.<a href="pcdf.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gof.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

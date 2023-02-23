@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.4 Kernel density estimation | index.knit</title>
+  <meta name="description" content="MTH2006 Topic 5<br />
+Nonparametric statistics</div>" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.4 Kernel density estimation | index.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.4 Kernel density estimation | index.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="gof.html"/>
+<link rel="next" href="indepsamp.html"/>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="assets/kePrint-0.0.1/kePrint.js"></script>
+<link href="assets/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="5" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>5</b> Nonparametric statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction.html"><a href="introduction.html#topic-webpage"><i class="fa fa-check"></i><b>5.1.1</b> Topic webpage</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction.html"><a href="introduction.html#proposed-learning-schedule"><i class="fa fa-check"></i><b>5.1.2</b> Proposed learning schedule</a></li>
+<li class="chapter" data-level="5.1.3" data-path="introduction.html"><a href="introduction.html#office-hour"><i class="fa fa-check"></i><b>5.1.3</b> Office hour</a></li>
+<li class="chapter" data-level="5.1.4" data-path="introduction.html"><a href="introduction.html#resources"><i class="fa fa-check"></i><b>5.1.4</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="pcdf.html"><a href="pcdf.html"><i class="fa fa-check"></i><b>5.2</b> Estimating cdfs and pdfs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pcdf.html"><a href="pcdf.html#teignmouth-rainfall"><i class="fa fa-check"></i><b>5.2.1</b> Teignmouth rainfall </a></li>
+<li class="chapter" data-level="5.2.2" data-path="pcdf.html"><a href="pcdf.html#para"><i class="fa fa-check"></i><b>5.2.2</b> Parametric pdf estimation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="pcdf.html"><a href="pcdf.html#ord"><i class="fa fa-check"></i><b>5.2.3</b> Order statistics and ranks</a></li>
+<li class="chapter" data-level="5.2.4" data-path="pcdf.html"><a href="pcdf.html#empirical-cdf-estimation"><i class="fa fa-check"></i><b>5.2.4</b> Empirical cdf estimation</a></li>
+<li class="chapter" data-level="5.2.5" data-path="pcdf.html"><a href="pcdf.html#hist"><i class="fa fa-check"></i><b>5.2.5</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="gof.html"><a href="gof.html"><i class="fa fa-check"></i><b>5.3</b> Goodness of fit</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="gof.html"><a href="gof.html#quantilequantile-plots"><i class="fa fa-check"></i><b>5.3.1</b> Quantile–quantile plots</a></li>
+<li class="chapter" data-level="5.3.2" data-path="gof.html"><a href="gof.html#pearsons-chi-squared-test"><i class="fa fa-check"></i><b>5.3.2</b> Pearson’s chi-squared test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="kde.html"><a href="kde.html"><i class="fa fa-check"></i><b>5.4</b> Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="kde.html"><a href="kde.html#old-faithful-geyser-eruption-times"><i class="fa fa-check"></i><b>5.4.1</b> Old Faithful geyser eruption times</a></li>
+<li class="chapter" data-level="5.4.2" data-path="kde.html"><a href="kde.html#kdedef"><i class="fa fa-check"></i><b>5.4.2</b> Definition</a></li>
+<li class="chapter" data-level="5.4.3" data-path="kde.html"><a href="kde.html#kernel-functions"><i class="fa fa-check"></i><b>5.4.3</b> Kernel functions</a></li>
+<li class="chapter" data-level="5.4.4" data-path="kde.html"><a href="kde.html#kernel-bandwidth"><i class="fa fa-check"></i><b>5.4.4</b> Kernel bandwidth</a></li>
+<li class="chapter" data-level="5.4.5" data-path="kde.html"><a href="kde.html#kernel-density-estimation-in-r"><i class="fa fa-check"></i><b>5.4.5</b> Kernel density estimation in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="kde.html"><a href="kde.html#some-properties-of-hatf_hy"><i class="fa fa-check"></i><b>5.4.6</b> Some properties of <span class="math inline">\(\hat{f}_h(y)\)</span></a></li>
+<li class="chapter" data-level="5.4.7" data-path="kde.html"><a href="kde.html#nkde"><i class="fa fa-check"></i><b>5.4.7</b> Optimal bandwidths by assuming normal <span class="math inline">\(f_Y(y)\)</span></a></li>
+<li class="chapter" data-level="5.4.8" data-path="kde.html"><a href="kde.html#notnkde"><i class="fa fa-check"></i><b>5.4.8</b> Optimal bandwidths for any <span class="math inline">\(f_Y(y)\)</span> by cross-validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="indepsamp.html"><a href="indepsamp.html"><i class="fa fa-check"></i><b>5.5</b> Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="indepsamp.html"><a href="indepsamp.html#welchs-t-test"><i class="fa fa-check"></i><b>5.5.1</b> Welch’s <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="5.5.2" data-path="indepsamp.html"><a href="indepsamp.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>5.5.2</b> Kolmogorov-Smirnov test</a></li>
+<li class="chapter" data-level="5.5.3" data-path="indepsamp.html"><a href="indepsamp.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>5.5.3</b> Mann-Whitney <span class="math inline">\(U\)</span> test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="permrand.html"><a href="permrand.html"><i class="fa fa-check"></i><b>5.6</b> Permutation and randomisation tests</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="permrand.html"><a href="permrand.html#permutation"><i class="fa fa-check"></i><b>5.6.1</b> Permutation tests</a></li>
+<li class="chapter" data-level="5.6.2" data-path="permrand.html"><a href="permrand.html#randomisation-tests"><i class="fa fa-check"></i><b>5.6.2</b> Randomisation tests</a></li>
+<li class="chapter" data-level="5.6.3" data-path="permrand.html"><a href="permrand.html#exspear"><i class="fa fa-check"></i><b>5.6.3</b> Pearson’s correlation coefficient example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="depsamp.html"><a href="depsamp.html"><i class="fa fa-check"></i><b>5.7</b> Nonparametric measures and tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="depsamp.html"><a href="depsamp.html#spear"><i class="fa fa-check"></i><b>5.7.1</b> Spearman’s rank correlation coefficient</a></li>
+<li class="chapter" data-level="5.7.2" data-path="depsamp.html"><a href="depsamp.html#wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>5.7.2</b> Wilcoxon signed rank test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.8</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><div class="line-block">MTH2006 Topic 5<br />
+Nonparametric statistics</div></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kde" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Kernel density estimation<a href="kde.html#kde" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section will introduce kernel density estimation of a pdf, including its definition, options and properties of estimates, and implementation in <code>R</code>.</p>
+<div id="old-faithful-geyser-eruption-times" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Old Faithful geyser eruption times<a href="kde.html#old-faithful-geyser-eruption-times" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Old Faithful is a geyser<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> in Yellowstone National Park, Wyoming, US. Figure <a href="kde.html#fig:faithfulfig">5.9</a> shows the geyser during an eruption. Times between eruptions have attracted much interest, but also form an interesting statistical study. This is perhaps why <code>R</code> arrives with dataset <code>faithful</code>, which includes data on times between eruptions.</p>
+<!-- \begin{figure}[h!] -->
+<!-- \begin{center} -->
+<!-- \includegraphics[height = 2.5in]{geyser3} -->
+<!-- \caption{\label{faithful} An eruption of Old Faithful geyser, Yellowstone National Park, Wyoming, US.} -->
+<!-- \end{center} -->
+<!-- \end{figure} -->
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:faithfulfig"></span>
+<img src="geyser3.jpg" alt="An eruption of Old Faithful geyser, Yellowstone National Park, Wyoming, US." width="99%" />
+<p class="caption">
+Figure 5.9: An eruption of Old Faithful geyser, Yellowstone National Park, Wyoming, US.
+</p>
+</div>
+<p>The data include eruptions times, <code>eruptions</code>, waiting times between eruptions, <code>waiting</code>; both are measured in minutes. We can have a quick glimpse of the data using <code>head()</code>.
+</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="kde.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code></pre></div>
+<pre><code>##   eruptions waiting
+## 1     3.600      79
+## 2     1.800      54
+## 3     3.333      74
+## 4     2.283      62
+## 5     4.533      85
+## 6     2.883      55</code></pre>
+<p>Let <span class="math inline">\(Y_1, \ldots, Y_n\)</span> denote a random sample of eruption times from the geyser, which we’ll assume come from some cdf <span class="math inline">\(F_Y(y)\)</span> with corresponding pdf <span class="math inline">\(f_Y(y)\)</span>. The data frame <code>faithful</code> gives a sample of <span class="math inline">\(n =\)</span> 272 eruption times, <span class="math inline">\(y_1, \ldots, y_n\)</span>.</p>
+<p>In this section we’ll be looking at kernel density estimation. The following gives a kernel density estimate of the pdf of the eruption times of the Old Faithful geyser.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="kde.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(eruptions)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:faithfulkde"></span>
+<img src="index_files/figure-html/faithfulkde-1.png" alt="Kernel density estimate of Old Faithful geyser eruption times using `ggplot()` and `geom_density()`, which uses \texttt{R}'s default values." width="480" />
+<p class="caption">
+Figure 5.10: Kernel density estimate of Old Faithful geyser eruption times using <code>ggplot()</code> and <code>geom_density()</code>, which uses ’s default values.
+</p>
+</div>
+<p>If we believe the kernel density estimate, we immediately see that <span class="math inline">\(f_Y(y)\)</span> has two prominent peaks, or <em>modes</em>. Such a pdf is <em>bimodal</em>. More generally, a pdf with multiple modes is <em>multimodal</em>. Note that the kernel density estimate is nonparametric, because no form of parameter-based probability model has been assumed for <span class="math inline">\(f_Y(y)\)</span>. In Section <a href="pcdf.html#para">5.2.2</a>, we assumed exponential or gamma probability models. Hence one of our implicit assumptions was that the pdf had one mode. This would have been a bad assumption for the Old Faithful eruption times<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+<!-- \begin{video}[video\thevideo\_geyser.mp4 {[}MMmSSs{]}] -->
+<!-- Geyser eruption times and a preview of kernel density estimation. -->
+<!-- \end{video} -->
+</div>
+<div id="kdedef" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Definition<a href="kde.html#kdedef" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Kernel density estimation is another method for estimating a pdf. If we consider a sample of data <span class="math inline">\(y_1, \ldots, y_n\)</span>, the <strong>kernel density estimate</strong> is</p>
+<p><span class="math display" id="eq:kerneq">\[\begin{equation}
+\widehat f_h(y) = \dfrac{1}{nh} \sum_{i = 1}^n w\left(\dfrac{y - y_i}{h}\right). \tag{5.6}
+\end{equation}\]</span></p>
+<p>Equation <a href="kde.html#eq:kerneq">(5.6)</a> has two key parts: <span class="math inline">\(h &gt; 0\)</span>, the <em>bandwidth</em>, and <span class="math inline">\(w()\)</span>, the <em>kernel function</em>. The kernel function, <span class="math inline">\(w(u)\)</span>, will be assumed to satisfy <span class="math display">\[\int_{-\infty}^\infty w(u) du = 1,~~\int_{-\infty}^\infty u w(u) du = 0~~~\text{and}~~~\int_{-\infty}^\infty u^2 w(u) du = \sigma_w^2.\]</span> So <span class="math inline">\(w(u)\)</span> is itself a pdf. Therefore if a random variable, <span class="math inline">\(U\)</span>, say, has pdf <span class="math inline">\(w(u)\)</span>, then <span class="math inline">\(E(U) = 0\)</span> and <span class="math inline">\(Var(U) = \sigma_w^2\)</span>. The zero-mean normal distribution is one example of such a pdf.</p>
+<p>Let’s take a look at how kernel density estimation works by choosing the standard normal pdf for <span class="math inline">\(w()\)</span>. We’ll use the following data <code>y</code> for illustration.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="kde.html#cb47-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">15.92</span>, <span class="fl">0.76</span>, <span class="fl">13.06</span>, <span class="fl">5.17</span>, <span class="fl">1.35</span>, <span class="fl">5.78</span>, <span class="fl">3.83</span>, <span class="fl">2.53</span>, <span class="fl">13.67</span>, <span class="fl">1.71</span>, </span>
+<span id="cb47-2"><a href="kde.html#cb47-2" aria-hidden="true" tabindex="-1"></a>       <span class="fl">10.62</span>, <span class="fl">3.55</span>, <span class="fl">1.38</span>, <span class="fl">4.4</span>, <span class="fl">0.73</span>, <span class="fl">7.51</span>, <span class="fl">5.46</span>, <span class="fl">1.96</span>, <span class="fl">9.52</span>, <span class="fl">9.53</span>)</span></code></pre></div>
+<p>An important part of equation <a href="kde.html#eq:kerneq">(5.6)</a> is <span class="math inline">\(w((y - y_i) / h)\)</span> for <span class="math inline">\(i = 1, \ldots, n\)</span>. Figure <a href="kde.html#fig:bumps">5.11</a> plots this for each <span class="math inline">\(y_i\)</span> with <span class="math inline">\(h = 1\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bumps"></span>
+<img src="index_files/figure-html/bumps-1.png" alt="Plots of $w([y - y_i] / h)$ for $i = 1, \ldots, n$ and $h = 1$, where $w()$ is the standard normal pdf." width="576" />
+<p class="caption">
+Figure 5.11: Plots of <span class="math inline">\(w([y - y_i] / h)\)</span> for <span class="math inline">\(i = 1, \ldots, n\)</span> and <span class="math inline">\(h = 1\)</span>, where <span class="math inline">\(w()\)</span> is the standard normal pdf.
+</p>
+</div>
+<p>The formula from equation <a href="kde.html#eq:kerneq">(5.6)</a> then says that we get <span class="math inline">\(\widehat f_h(y)\)</span> by summing over <span class="math inline">\(i\)</span>, for <span class="math inline">\(i = 1, \ldots, n\)</span>, and dividing by <span class="math inline">\(nh\)</span>; equivalently, we can sum <span class="math inline">\(w((y - y_i) / h) / (nh)\)</span> over <span class="math inline">\(i = 1, \ldots, n\)</span>. Hence Figure <a href="kde.html#fig:kde4">5.12</a> plots <span class="math inline">\(w((y - Y_i) / h) / (nh)\)</span> and their sum for each <span class="math inline">\(y\)</span> value.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:kde4"></span>
+<img src="index_files/figure-html/kde4-1.png" alt="Kernel density estimate $\widehat f_h(y)$ for data `y` with $w()$ and $h$ as in Figure \@ref(fig:bumps)." width="480" />
+<p class="caption">
+Figure 5.12: Kernel density estimate <span class="math inline">\(\widehat f_h(y)\)</span> for data <code>y</code> with <span class="math inline">\(w()\)</span> and <span class="math inline">\(h\)</span> as in Figure <a href="kde.html#fig:bumps">5.11</a>.
+</p>
+</div>
+<p>Our resulting pdf estimate, <span class="math inline">\(\widehat f_h(y)\)</span>, might already be seen as an improvement over the histogram if we believe the true pdf of eruption times is continuous.</p>
+<p>When we fit a histogram, we choose the bins. In producing the kernel density estimate shown in black in Figure <a href="kde.html#fig:kde4">5.12</a> we’ve made two choices: the first is that we’ve chosen the kernel function <span class="math inline">\(w()\)</span> to be the standard normal density function; the second is that we’ve chosen the bandwidth as <span class="math inline">\(h = 1\)</span>. We could have made different choices.</p>
+<!-- \begin{video}[video\thevideo-kde\_definition.mp4 {[}MMmSSs{]}] -->
+<!-- Kernel density estimation: definition. -->
+<!-- \end{video} -->
+</div>
+<div id="kernel-functions" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Kernel functions<a href="kde.html#kernel-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As stated above, the kernel function can be any symmetric, zero mean pdf. Table <a href="kde.html#tab:kernels">5.2</a> gives some examples, which are plotted in Figure <a href="kde.html#fig:kde5">5.13</a>.</p>
+<!-- \begin{table}[h!] -->
+<!-- \begin{center} -->
+<!-- \begin{tabular}{p{4cm}lccc} -->
+<!-- Name \newline (alternative name(s))& \texttt{kernel = "..."} & $w(u)$ & $\int u^2 w(u) du$ & Support\\[1ex] -->
+<!-- \hline\\[-1ex] -->
+<!-- Normal \newline(Gaussian) & \texttt{gaussian} & $\dfrac{1}{\sqrt{2\pi}} \exp\left(-\dfrac{u^2}{2}\right)$ & 1 & $-\infty < u < \infty$\\[2ex] -->
+<!-- Epanechnikov \newline (parabolic) & \texttt{epanechnikov} & $\dfrac{3}{4}(1 - u^2)$ & $\dfrac{1}{5}$ & $-1 \leq u \leq 1$\\[2ex] -->
+<!-- Rectangular \newline (uniform / `boxcar') & \texttt{rectangular} & $\dfrac{1}{2}$ & $\dfrac{1}{3}$ & $-1 \leq u \leq 1$\\[2ex] -->
+<!-- Triangular \newline (`tent') & \texttt{triangular} & $(1 - |u|)$ & $\dfrac{1}{6}$ & $-1 \leq u \leq 1$\\[2ex] -->
+<!-- Quartic \newline (biweight) & \texttt{biweight} & $\dfrac{15}{16}(1 - u^2)^2$ & $\dfrac{1}{7}$ & $-1 \leq u \leq 1$\\[2ex] -->
+<!-- Cosine & \texttt{optcosine} & $\dfrac{\pi}{4} \cos\Big(\dfrac{\pi}{2}u\Big)$ & $1 - \dfrac{8}{\pi^2}$ & $-1 \leq u \leq 1$\\[2ex] -->
+<!-- Optimal cosine & \texttt{cosine} & $\dfrac{1 + \cos(\pi u)}{2}$ & $\dfrac{1}{3} - \dfrac{2}{\pi^2}$ & $-1 \leq u \leq 1$\\[1.5ex] -->
+<!-- \hline -->
+<!-- \end{tabular} -->
+<!-- Table: (\#tab:kernels) Some commonly used kernels. For a longer list see, e.g., @silverman1986. Note that \texttt{kernel = "..."} refers to how functions are implemented in `R` using \texttt{ggplot() + geom\_density()} or \texttt{density()}. -->
+<!-- \end{center} -->
+<!-- \end{table} -->
+<!-- ```{r kerntab, echo = FALSE} -->
+<!-- tab3 <- cbind( -->
+<!-- c("Normal \n (Gaussian)", "Epanechnikov \n (parabolic)", "Rectangular \n (uniform, 'boxcar')", -->
+<!--   "Triangular \n ('tent')", "Quartic", "Cosine", "Optimal cosine"), -->
+<!-- c("gaussian", "epanechnikov", "rectangular", "triangular", "biweight", "optcosine", "cosine") -->
+<!-- ) -->
+<!-- kbl(tab3, caption = "Synchronous session topics", booktabs = TRUE) %>% -->
+<!-- kable_styling(latex_options = c("striped", "hold_position")) -->
+<!-- ``` -->
+<!-- col a | col b -->
+<!-- --|-- -->
+<!-- $P(A|B)$ | foo -->
+<table>
+<caption><span id="tab:kernels">Table 5.2: </span> Some commonly used kernels. For a longer list see, e.g., <span class="citation">Silverman (1986, 48)</span>. Note that <code>kernel = "..."</code> refers to how functions are implemented in <code>R</code> using <code>ggplot() + geom_density()</code> or <code>density()</code>.</caption>
+<colgroup>
+<col width="25%" />
+<col width="21%" />
+<col width="22%" />
+<col width="13%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Name(s)</th>
+<th align="center"><code>kernel = "..."</code></th>
+<th align="center"><span class="math inline">\(w(u)\)</span></th>
+<th align="center"><span class="math inline">\(\int u^2 w(u) du\)</span></th>
+<th align="center">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Normal (Gaussian)</td>
+<td align="center"><code>gaussian</code></td>
+<td align="center"><span class="math inline">\(\dfrac{1}{\sqrt{2\pi}} \exp\left(-\dfrac{u^2}{2}\right)\)</span></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(-\infty &lt; u &lt; \infty\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Epanechnikov (parabolic)</td>
+<td align="center"><code>epanechnikov</code></td>
+<td align="center"><span class="math inline">\(\dfrac{3}{4}(1 - u^2)\)</span></td>
+<td align="center"><span class="math inline">\(\dfrac{1}{5}\)</span></td>
+<td align="center"><span class="math inline">\(-1 \leq u \leq 1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Rectangular (uniform, ‘boxcar’)</td>
+<td align="center"><code>rectangular</code></td>
+<td align="center"><span class="math inline">\(\dfrac{1}{2}\)</span></td>
+<td align="center"><span class="math inline">\(\dfrac{1}{3}\)</span></td>
+<td align="center"><span class="math inline">\(-1 \leq u \leq 1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Triangular (‘tent’)</td>
+<td align="center"><code>triangular</code></td>
+<td align="center"><span class="math inline">\((1 - |u|)\)</span></td>
+<td align="center"><span class="math inline">\(\dfrac{1}{6}\)</span></td>
+<td align="center"><span class="math inline">\(-1 \leq u \leq 1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Quartic (biweight)</td>
+<td align="center"><code>biweight</code></td>
+<td align="center"><span class="math inline">\(\dfrac{15}{16}(1 - u^2)^2\)</span></td>
+<td align="center"><span class="math inline">\(\dfrac{1}{7}\)</span></td>
+<td align="center"><span class="math inline">\(-1 \leq u \leq 1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Cosine</td>
+<td align="center"><code>optcosine</code></td>
+<td align="center"><span class="math inline">\(\dfrac{\pi}{4} \cos\Big(\dfrac{\pi}{2}u\Big)\)</span></td>
+<td align="center"><span class="math inline">\(1 - \dfrac{8}{\pi^2}\)</span></td>
+<td align="center"><span class="math inline">\(-1 \leq u \leq 1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Optimal cosine</td>
+<td align="center"><code>cosine</code></td>
+<td align="center"><span class="math inline">\(\dfrac{1 + \cos(\pi u)}{2}\)</span></td>
+<td align="center"><span class="math inline">\(\dfrac{1}{3} - \dfrac{2}{\pi^2}\)</span></td>
+<td align="center"><span class="math inline">\(-1 \leq u \leq 1\)</span></td>
+</tr>
+</tbody>
+</table>
+<!-- Table (\#tab:kernels): Some commonly used kernels. For a longer list see, e.g., @silverman1986. Note that `kernel = "..."` refers to how functions are implemented in `R` using `ggplot() + geom\_density()` or `density()`. -->
+<!-- \caption{\label{tab_kernels}Some commonly used kernels. For a longer list see, e.g., @silverman1986. Note that \texttt{kernel = "..."} refers to how functions are implemented in `R` using \texttt{ggplot() + geom\_density()} or \texttt{density()}.} -->
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:kde5"></span>
+<img src="index_files/figure-html/kde5-1.png" alt="Comparison of kernel functions $w(u)$ with bandwidth $h = 1$." width="624" />
+<p class="caption">
+Figure 5.13: Comparison of kernel functions <span class="math inline">\(w(u)\)</span> with bandwidth <span class="math inline">\(h = 1\)</span>.
+</p>
+</div>
+<!-- \begin{video}[video\thevideo-kde\_kernels.mp4 {[}MMmSSs{]}] -->
+<!-- Kernel functions for kernel density estimation. -->
+<!-- \end{video} -->
+<hr />
+<p><strong>Example 2:</strong> In <code>R</code> kernel functions are scaled to have unit variance. Consider the Epanechnikov kernel function <span class="math display">\[w(u) = \left\{\begin{array}{ll} \dfrac{3}{4} (1 - u^2) &amp; \text{if}~|u| \leq 1,\\[1em] 0 &amp; \text{otherwise.}\end{array}\right. \]</span> Show that if a variable <span class="math inline">\(U\)</span> has pdf <span class="math inline">\(f_U(u) = w(u)\)</span>, then <span class="math inline">\(\text{Var}(U) = \frac{1}{5}\)</span>. Find <span class="math inline">\(a\)</span> such that <span class="math inline">\(\text{Var}(aU) = 1\)</span>, where <span class="math inline">\(a\)</span> is a constant, and hence propose a kernel function with the same shape as the Epanechnikov kernel function with unit variance.</p>
+<p>If a random variable <span class="math inline">\(U\)</span> has pdf <span class="math inline">\(f_U(u) = w(u)\)</span>, first note that <span class="math inline">\(\text{Var}(U) = \text{E}(U^2) - [\text{E}(U)]^2\)</span>. So <span class="math display">\[\begin{align*} \text{E}(U) &amp;= \dfrac{3}{4} \int_{-1}^1 t (1 - t^2) \text{d}t = \dfrac{3}{4} \int_{-1}^1 (t - t^3) \text{d}t\\ &amp;= \dfrac{3}{4} \left[\dfrac{t^2}{2} - \dfrac{t^4}{4}\right]_{-1}^1 = \dfrac{3}{4} \left[\left(\dfrac{1}{2} - \dfrac{1}{4}\right) -  \left(\dfrac{1}{2} - \dfrac{1}{4}\right)\right] = \dfrac{3}{4} \left[\dfrac{1}{4} - \dfrac{1}{4}\right] = 0\end{align*}\]</span> and <span class="math display">\[\begin{align*} \text{E}(U^2) &amp;= \dfrac{3}{4} \int_{-1}^1 t^2 (1 - t^2) \text{d}t = \dfrac{3}{4} \int_{-1}^1 (t^2 - t^4) \text{d}t\\ &amp;= \dfrac{3}{4} \left[\dfrac{t^3}{3} - \dfrac{t^5}{5}\right]_{-1}^1 = \dfrac{3}{4} \left[\left(\dfrac{1}{3} - \dfrac{1}{5}\right) -  \left(\dfrac{-1}{3} - \dfrac{-1}{5}\right)\right] = \dfrac{3}{4} \left[\dfrac{2}{15} - \dfrac{-2}{15}\right] = \dfrac{1}{5}\end{align*}\]</span> Hence <span class="math inline">\(\text{Var}(U) = \text{E}(U^2) = \frac{1}{5}\)</span>. As <span class="math inline">\(\text{Var}(aU) = a^2 \text{Var}(U)\)</span>, we need <span class="math inline">\(\frac{a^2}{5} = 1\)</span>. So we need <span class="math inline">\(a = \sqrt 5\)</span>. From MTH1004, we can write <span class="math inline">\(V = g(U)\)</span>, where <span class="math inline">\(g(U) = aU\)</span> is monotonic. Hence the pdf of <span class="math inline">\(V\)</span> is <span class="math display">\[ f_V(v) = \left\vert \dfrac{\text{d}}{\text{d}u}(g^{-1}(u)) \right\vert f_U\big(g(u)\big)\\ = a f_U\big(au\big) \]</span> for <span class="math inline">\(|av| \leq 1\)</span> and 0 otherwise, and so <span class="math display">\[f_V(v) = \left\{\begin{array}{ll} \dfrac{3\sqrt{5}}{4}(1 - 5u^2) &amp; \text{if}~u \in [-\frac{1}{\sqrt{5}}, \frac{1}{\sqrt{5}}],\\ 0 &amp; \text{otherwise,}\end{array}\right.\]</span> is a unit variance kernel function with the same shape as the Epanechnikov kernel function. (Note that to find <span class="math inline">\(f_V(v)\)</span> we could instead have integrated <span class="math inline">\(k f_U(u/a)\)</span> over <span class="math inline">\([-a, a]\)</span> and found <span class="math inline">\(k\)</span> to ensure the integral equalled unity.) <span style="float:right;"> ⬛ </span> </p>
+<hr />
+<!-- ```{example rscale}  -->
+<!-- In `R` kernel functions are scaled to have unit variance. Consider the Epanechnikov kernel function \[w(u) = \left\{\begin{array}{ll} \dfrac{3}{4} (1 - u^2) & \text{if}~|u| \leq 1,\\[1em] 0 & \text{otherwise.}\end{array}\right. \] Show that if a variable $U$ has pdf $f_U(u) = w(u)$, then $\text{Var}(U) = \frac{1}{5}$. Find $a$ such that $\text{Var}(aU) = 1$, where $a$ is a constant, and hence propose a kernel function with the same shape as the Epanechnikov kernel function with unit variance. -->
+<!-- If a random variable $U$ has pdf $f_U(u) = w(u)$, first note that $\text{Var}(U) = \text{E}(U^2) - [\text{E}(U)]^2$. So \begin{align*} \text{E}(U) &= \dfrac{3}{4} \int_{-1}^1 t (1 - t^2) \text{d}t = \dfrac{3}{4} \int_{-1}^1 (t - t^3) \text{d}t\\ &= \dfrac{3}{4} \left[\dfrac{t^2}{2} - \dfrac{t^4}{4}\right]_{-1}^1 = \dfrac{3}{4} \left[\left(\dfrac{1}{2} - \dfrac{1}{4}\right) -  \left(\dfrac{1}{2} - \dfrac{1}{4}\right)\right] = \dfrac{3}{4} \left[\dfrac{1}{4} - \dfrac{1}{4}\right] = 0\end{align*} and \begin{align*} \text{E}(U^2) &= \dfrac{3}{4} \int_{-1}^1 t^2 (1 - t^2) \text{d}t = \dfrac{3}{4} \int_{-1}^1 (t^2 - t^4) \text{d}t\\ &= \dfrac{3}{4} \left[\dfrac{t^3}{3} - \dfrac{t^5}{5}\right]_{-1}^1 = \dfrac{3}{4} \left[\left(\dfrac{1}{3} - \dfrac{1}{5}\right) -  \left(\dfrac{-1}{3} - \dfrac{-1}{5}\right)\right] = \dfrac{3}{4} \left[\dfrac{2}{15} - \dfrac{-2}{15}\right] = \dfrac{1}{5}\end{align*} Hence $\text{Var}(U) = \text{E}(U^2) = \frac{1}{5}$. As $\text{Var}(aU) = a^2 \text{Var}(U)$, we need $\frac{a^2}{5} = 1$. So we need $a = \sqrt 5$. From MTH1004, we can write $V = g(U)$, where $g(U) = aU$ is monotonic. Hence the pdf of $V$ is \[ f_V(v) = \left\vert \dfrac{\text{d}}{\text{d}u}(g^{-1}(u)) \right\vert f_U\big(g(u)\big)\\ = a f_U\big(au\big) \] for $|av| \leq 1$ and 0 otherwise, and so \[f_V(v) = \left\{\begin{array}{ll} \dfrac{3\sqrt{5}}{4}(1 - 5u^2) & \text{if}~u \in [-\frac{1}{\sqrt{5}}, \frac{1}{\sqrt{5}}],\\ 0 & \text{otherwise,}\end{array}\right.\] is a unit variance kernel function with the same shape as the Epanechnikov kernel function. (Note that to find $f_V(v)$ we could instead have integrated $k f_U(u/a)$ over $[-a, a]$ and found $k$ to ensure the integral equalled unity.) -->
+<!-- ``` -->
+</div>
+<div id="kernel-bandwidth" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Kernel bandwidth<a href="kde.html#kernel-bandwidth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A critical part of a good kernel density estimate is the choice of bandwidth <span class="math inline">\(h\)</span>. There is no `right’ choice of bandwidth: <span class="math inline">\(h\)</span> cannot always be found so that <span class="math inline">\(\widehat f_h(y)\)</span> and the true pdf <span class="math inline">\(f_Y(y)\)</span> are identical. However, as we want information about <span class="math inline">\(f_Y(y)\)</span>, we can follow some principles to avoid our kernel density estimate being uninformative.</p>
+<p>We’ll use the Epanechnikov kernel function to demonstrate this. Figure <a href="kde.html#fig:kde8">5.14</a> shows some examples of different kernel density estimates for different bandwidths <span class="math inline">\(h\)</span>. All estimates use data <code>y</code> from Section <a href="kde.html#kdedef">5.4.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:kde8"></span>
+<img src="index_files/figure-html/kde8-1.png" alt="Comparison of kernel bandwidths $h$." width="480" />
+<p class="caption">
+Figure 5.14: Comparison of kernel bandwidths <span class="math inline">\(h\)</span>.
+</p>
+</div>
+<p>We see from Figure <a href="kde.html#fig:kde8">5.14</a> that a very small bandwidth, e.g. <span class="math inline">\(h = 0.1\)</span>, essentially puts a very narrow bump at each data point <span class="math inline">\(y_i\)</span>. The resulting estimate <span class="math inline">\(\widehat f_{h}(y)\)</span> essentially looks likes a series of bumps. Unless we believe <span class="math inline">\(f_Y(y)\)</span> will look like this, which is very unlikely, bandwidths that cause this should be dismissed. On the other hand, a very large bandwidth, e.g. <span class="math inline">\(h = 100\)</span>, gives a single bump. As <span class="math inline">\(h \to \infty\)</span> this will actually converge to the shape of the chosen kernel function. So if our kernel density estimate reproduces its kernel function, the bandwidth <span class="math inline">\(h\)</span> is probably too large. Typically the sweet spot between a too small or a too large bandwidth <span class="math inline">\(h\)</span> is achieved by striking a balance between a kernel density estimate being too wiggly and too smooth. Therefore, for Figure <a href="kde.html#fig:kde8">5.14</a>, we’d probably choose <span class="math inline">\(h=5\)</span> or <span class="math inline">\(h=10\)</span>.</p>
+<p>Before we consider how we might formally choose <span class="math inline">\(h\)</span>, we consider how the bandwidth relates to the sample size. To do this we’ll simulate some samples of different sizes from a known distribution.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:kde9"></span>
+<img src="index_files/figure-html/kde9-1.png" alt="Comparison of fixed bandwidth kernel density estimates with sample size $n$." width="480" />
+<p class="caption">
+Figure 5.15: Comparison of fixed bandwidth kernel density estimates with sample size <span class="math inline">\(n\)</span>.
+</p>
+</div>
+<p>We see from Figure <a href="kde.html#fig:kde9">5.15</a> that a given bandwidth <span class="math inline">\(h\)</span> produces a different quality of the kernel density estimate for different sample sizes. Hence, a good choice of bandwidth does not just depend on the <span class="math inline">\(y_i\)</span> values, but also the now many <span class="math inline">\(y_i\)</span> values there are.</p>
+<!-- \begin{video}[video\thevideo\_kde-bandwidth.mp4 {[}MMmSSs{]}] -->
+<!-- Bandwidth for kernel density estimates. -->
+<!-- \end{video} -->
+</div>
+<div id="kernel-density-estimation-in-r" class="section level3 hasAnchor" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> Kernel density estimation in <code>R</code><a href="kde.html#kernel-density-estimation-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are two main ways of producing and plotting kernel density estimates in <code>R</code>. The first is through <code>ggplot2</code>. In the first plot below, we’ve not specified the kernel function <span class="math inline">\(w()\)</span> or the bandwidth <span class="math inline">\(h\)</span>. The default <span class="math inline">\(w()\)</span> for <code>geom_density()</code> is the normal kernel; see Table <a href="kde.html#tab:kernels">5.2</a>. In the second plot, the Epanechnikov kernel is used and the bandwidth specified as 1, but note that this actually corresponds to <span class="math inline">\(h = \sqrt{5}\)</span> as <code>R</code> rescales all of its kernel functions to have unit variance; recall Example 2.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="kde.html#cb48-1" aria-hidden="true" tabindex="-1"></a>kde_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y)</span>
+<span id="cb48-2"><a href="kde.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kde_df, <span class="fu">aes</span>(y)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span>
+<span id="cb48-3"><a href="kde.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kde_df, <span class="fu">aes</span>(y)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">kernel =</span> <span class="st">&quot;epanechnikov&quot;</span>, <span class="at">bw =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:kde11"></span>
+<img src="index_files/figure-html/kde11-1.png" alt="Kernel density estimates using `ggplot()` and `geom_density()`. Left: default kernel (normal) and bandwidth. Right: Epanechnikov kernel with bandwidth specified as 1, i.e. $h = \sqrt{5}$." width="576" />
+<p class="caption">
+Figure 5.16: Kernel density estimates using <code>ggplot()</code> and <code>geom_density()</code>. Left: default kernel (normal) and bandwidth. Right: Epanechnikov kernel with bandwidth specified as 1, i.e. <span class="math inline">\(h = \sqrt{5}\)</span>.
+</p>
+</div>
+<p>Alternatively, we can use <code>R</code>’s <code>density()</code> function and its base graphics through <code>plot()</code>. This works similarly to using <code>ggplot2</code>, with kernel functions and bandwidths changed in essentially the same way.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="kde.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y))</span>
+<span id="cb49-2"><a href="kde.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y, <span class="at">kernel =</span> <span class="st">&quot;epanechnikov&quot;</span>, <span class="at">bw =</span> <span class="dv">1</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:kde13"></span>
+<img src="index_files/figure-html/kde13-1.png" alt="Kernel density estimates using `density()` instead of `ggplot()` and `geom_density()`. Left and right as Figure \@ref(fig:kde11)." width="672" />
+<p class="caption">
+Figure 5.17: Kernel density estimates using <code>density()</code> instead of <code>ggplot()</code> and <code>geom_density()</code>. Left and right as Figure <a href="kde.html#fig:kde11">5.16</a>.
+</p>
+</div>
+<p>The results from <code>geom_density()</code> and <code>density()</code> look slightly different because the range of values plotted in the former differs from the latter.</p>
+<p>Without specifying the bandwidth through argument <code>bw</code>, the default of <code>bw = "nrd0"</code> is used. This calls <code>R</code>’s <code>nrd0()</code> function to calculate a bandwidth to use. We’ll cover this in Section <a href="kde.html#nkde">5.4.7</a>.</p>
+<!-- \begin{video}[video\thevideo\_kde-in-R.mp4 {[}MMmSSs{]}] -->
+<!-- Kernel density estimation in \texttt{R}. -->
+<!-- \end{video} -->
+</div>
+<div id="some-properties-of-hatf_hy" class="section level3 hasAnchor" number="5.4.6">
+<h3><span class="header-section-number">5.4.6</span> Some properties of <span class="math inline">\(\hat{f}_h(y)\)</span><a href="kde.html#some-properties-of-hatf_hy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can consider some statistical properties of the kernel density <em>estimate</em> by studying its corresponding <em>estimator</em>. For this we study the random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span> so that the <em>kernel density estimator</em> is <span class="math display">\[\begin{equation*} \label{kde_estimator} \widehat f_h(y) = \dfrac{1}{nh} \sum_{i = 1}^n w\left(\dfrac{y - Y_i}{h}\right). \end{equation*}\]</span> The kernel density estimator is random because it is a function of random variables. In this section we’ll discover a few useful properties of the kernel density estimator. Their derivations will sometimes be beyond the scope of MTH2006, which will be made clear. Use of the properties, however, is not beyond the scope of MTH2006.</p>
+<p>To consider the bias of the estimator, we need to consider its expectation for given <span class="math inline">\(y\)</span>. That is we need to consider <span class="math display">\[\begin{equation*} \text{E}\left[\dfrac{1}{nh} \sum_{i = 1}^n w\left(\dfrac{y - Y_i}{h}\right)\right] = \text{E}\left[\dfrac{1}{h} w\left(\dfrac{y - Y}{h}\right)\right],\end{equation*}\]</span> which results from each of the <span class="math inline">\(Y_i\)</span>s having the the same distribution and so we simply consider <span class="math inline">\(Y\)</span> with pdf <span class="math inline">\(f_Y(y)\)</span>. Then <span class="math display">\[\begin{align*} \text{E}\left[\dfrac{1}{h} w\left(\dfrac{y - Y}{h}\right)\right] &amp;= \dfrac{1}{h} \int w\left(\dfrac{y - x}{h}\right) f_Y(x) dx\\ &amp;= \dfrac{1}{h} \int w\left(\dfrac{x - y}{h}\right) f_Y(x) dx\\ &amp;= \int w(u) f_Y(y + hu) du.\end{align*}\]</span> A Taylor series expansion<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> for small <span class="math inline">\(h\)</span> then gives that</p>
+<p><span class="math display" id="eq:kdebias">\[\begin{equation}
+\widehat f_h(y) \simeq f_Y(y) + \dfrac{h^2 \sigma_w^2}{2} f&#39;&#39;_Y(y), \tag{5.7}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(f&#39;&#39;_Y(y)\)</span> denotes the second derivative of <span class="math inline">\(f_Y(y)\)</span> with respect to <span class="math inline">\(y\)</span>. The term <span class="math inline">\(h^2 \sigma_w^2 f&#39;&#39;_Y(y) / 2\)</span> in equation <a href="kde.html#eq:kdebias">(5.7)</a> is an approximation to the bias in <span class="math inline">\(\widehat f_h(y)\)</span> based on a Taylor series expansion. Note that <span class="math inline">\(f_Y&#39;&#39;(y)\)</span> represents the rate of curvature of <span class="math inline">\(f_Y(y)\)</span>. At <em>peaks</em> of <span class="math inline">\(f_Y(y)\)</span>, since <span class="math inline">\(f_Y&#39;&#39;(y) &lt; 0\)</span>, <span class="math inline">\(\widehat f_h(y)\)</span> underestimates <span class="math inline">\(f_Y(y)\)</span>, and at <em>troughs</em>, since <span class="math inline">\(f_Y&#39;&#39;(y) &lt; 0\)</span>, <span class="math inline">\(\widehat f_h(y)\)</span> overestimates <span class="math inline">\(f_Y(y)\)</span>. We also see that smaller <span class="math inline">\(h\)</span> reduces bias.</p>
+<hr />
+<p><strong>Example 3:</strong> Consider an independent random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span> from the <span class="math inline">\(\text{Exp}(\theta)\)</span> distribution. Show that, based on a Taylor expansion, and for kernel function <span class="math inline">\(w(\,)\)</span> with variance <span class="math inline">\(\sigma_w^2\)</span>, the bias in a kernel density estimate with bandwidth <span class="math inline">\(h\)</span> is approximately <span class="math display">\[\dfrac{h^2}{2} \sigma_w^2 \theta^3 \exp(-\theta y)\]</span> for <span class="math inline">\(y &gt; 0\)</span> and 0 otherwise. .</p>
+<p>The <span class="math inline">\(\text{Exp}(\theta)\)</span> distribution has pdf <span class="math inline">\(f_Y(y) = \theta \exp(-\theta y)\)</span> for <span class="math inline">\(y &gt; 0\)</span> and so, again for <span class="math inline">\(y &gt; 0\)</span>, <span class="math inline">\(f_Y&#39;(y) = -\theta^2 \exp(-\theta y)\)</span> and <span class="math inline">\(f_Y&#39;&#39;(y) = \theta^3 \exp(-\theta y)\)</span>. The bias is <span class="math display">\[\dfrac{h^2 \sigma_w^2}{2} f_Y&#39;&#39;(y)\]</span> and substituting <span class="math inline">\(f_Y&#39;&#39;(y) = \theta^3 \exp(-\theta y)\)</span> gives that the bias is <span class="math display">\[\dfrac{h^2 \sigma_w^2}{2} \theta^3 \exp(-\theta y)\]</span> for <span class="math inline">\(y &gt; 0\)</span> and, as <span class="math inline">\(f_Y(y) = f_Y&#39;(y) = f_Y&#39;&#39;(y) = 0\)</span> for <span class="math inline">\(y \leq 0\)</span>, the bias is zero otherwise. <span style="float:right;"> ⬛ </span> </p>
+<hr />
+<!-- ```{example} -->
+<!-- Consider an independent random sample $Y_1, \ldots, Y_n$ from the $\text{Exp}(\theta)$ distribution. Show that, based on a Taylor expansion, and for kernel function $w(\,)$ with variance $\sigma_w^2$, the bias in a kernel density estimate with bandwidth $h$ is approximately \[\dfrac{h^2}{2} \sigma_w^2 \theta^2 \exp(-\theta y)\] for $y > 0$ and 0 otherwise. -->
+<!-- The $\text{Exp}(\theta)$ distribution has pdf $f_Y(y) = \exp(-\theta y)$ for $y > 0$ and so, again for $y > 0$, $f_Y'(y) = -\theta \exp(-\theta y)$ and $f_Y''(y) = \theta^2 \exp(-\theta y)$. The bias is \[\dfrac{h^2 \sigma_w^2}{2} f_Y''(y)\] and substituting $f_Y''(y) = \theta^2 \exp(-\theta y)$ gives that the bias is \[\dfrac{h^2 \sigma_w^2}{2} \theta^2 \exp(-\theta y)\] for $y > 0$ and, as $f_Y(y) = f_Y'(y) = f_Y''(y) = 0$ for $y \leq 0$, the bias is zero otherwise. \hfill \qed -->
+<!-- ``` -->
+<p>We know from MTH1004 that when we judge estimators, we need to consider their variance as well as their bias. So, reusing some earlier arguments, we have <span class="math display">\[\begin{align*} \text{Var}[\widehat f_h(y)]
+&amp;= \dfrac{1}{n} \text{Var}\left[\dfrac{1}{h} w\left(\dfrac{y - Y}{h}\right)\right]\\
+&amp;= \dfrac{1}{nh^2} \text{Var} \left[w\left(\dfrac{y - Y}{h}\right)\right]\\
+&amp;= \dfrac{1}{nh^2} \left\{\text{E}\left[w\left(\dfrac{Y - y}{h}\right)^2\right] - \text{E}\left[w\left(\dfrac{Y - y}{h}\right)\right]^2\right\} \end{align*}\]</span> and if we use Taylor expansions as above (which are again beyond the scope of MTH2006) we get</p>
+<p><span class="math display" id="eq:kdevar">\[\begin{equation}
+\text{Var}[\widehat f_h(y)]  \simeq \dfrac{1}{nh} f_Y(y) \int w^2(u) du. \tag{5.8}
+\end{equation}\]</span></p>
+<p>We may think of equation <a href="kde.html#eq:kdevar">(5.8)</a> as an approximation to the variance of <span class="math inline">\(\widehat f_h(y)\)</span> based on a Taylor series expansion.</p>
+<p>We can then combine what we’ve learned about the bias and variance of <span class="math inline">\(\widehat f_h(y)\)</span>: if <span class="math inline">\(h\)</span> decreases, bias decreases and variance increases; if <span class="math inline">\(h\)</span> increases, bias increases and variance decreases. An objective approach to a good choice of <span class="math inline">\(h\)</span> is an optimal bias-variance trade-off, which we’ll address in sections <a href="kde.html#nkde">5.4.7</a> and <a href="kde.html#notnkde">5.4.8</a>.</p>
+<hr />
+<p><strong>Example 4:</strong> Consider an independent random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span> from the <span class="math inline">\(\text{Exp}(\theta)\)</span> distribution. Show that, based on a Taylor expansion, the variance in a kernel density estimate with bandwidth <span class="math inline">\(h\)</span> and Epanechnikov kernel is approximately <span class="math display">\[\text{Var}[\widehat f_h(y)] \simeq \left\{\begin{array}{ll} \frac{3\theta}{5nh} \exp(-\theta y) &amp; \text{for}~~y &gt; 0,\\ 0 &amp;\text{otherwise.}\end{array}\right.\]</span></p>
+<p>The variance of the kernel density estimate is approximately <span class="math display">\[\text{Var}[\widehat f_h(y)]  \simeq \dfrac{1}{nh} f_Y(y) \int w^2(u) du.\]</span> Substituting <span class="math inline">\(w(u)\)</span> for the Epanechnikov kernel, we are interested in <span class="math display">\[\begin{align*} \int_{-\infty}^\infty w^2(u) du &amp; = \int_{-1}^1 \left[\frac{3}{4} 1 - u^2\right]^2 du = \frac{9}{16} \int_{-1}^1 [1 - 2u^2 + u^4] du = \frac{9}{16} \left[u - \frac{2u^3}{3} + \frac{u^5}{5}\right]_{-1}^1\\ &amp;= \frac{9}{16} \left[\left(1 - \frac{2}{3} + \frac{1}{5}\right) - \left(-1 - \frac{-2}{3} - \frac{1}{5}\right)\right] = \frac{9}{16}\left[\frac{8}{15} - \frac{-8}{15}\right] = \frac{9}{16}\frac{16}{15} = \frac{3}{5}.\end{align*}\]</span> Then as <span class="math inline">\(f_Y(y) = \theta \exp(-\theta y)\)</span> for <span class="math inline">\(y &gt; 0\)</span> and 0 otherwise, we get <span class="math inline">\(\text{Var}[\widehat f_h(y)] \simeq \frac{3\theta}{5nh} \exp(-\theta y)\)</span> for <span class="math inline">\(y &gt; 0\)</span> and 0 otherwise, as required. <span style="float:right;"> ⬛ </span> </p>
+<hr />
+<!-- ```{example} -->
+<!-- Consider an independent random sample $Y_1, \ldots, Y_n$ from the $\text{Exp}(\theta)$ distribution. Show that, based on a Taylor expansion, the variance in a kernel density estimate with bandwidth $h$ and Epanechnikov kernel is approximately \[\text{Var}[\widehat f_h(y)] \simeq \left\{\begin{array}{ll} \frac{3\theta}{5nh} \exp(-\theta y) & \text{for}~~y > 0,\\ 0 &\text{otherwise.}\end{array}\right.\] -->
+<!-- The variance of the kernel density estimate is approximately \[\text{Var}[\widehat f_h(y)]  \simeq \dfrac{1}{nh} f_Y(y) \int w^2(u) du.\] Substituting $w(u)$ for the Epanechnikov kernel, we are interested in \begin{align*} \int_{-\infty}^\infty w(u) du & = \int_{-1}^1 \left[\frac{3}{4} 1 - u^2\right]^2 du\\ &= \frac{9}{16} \int_{-1}^1 [1 - 2u^2 + u^4] du \\ &= \frac{9}{16} \left[u - \frac{2u^3}{3} + \frac{u^5}{5}\right]_{-1}^1\\ &= \frac{9}{16} \left[\left(1 - \frac{2}{3} + \frac{1}{5}\right) - \left(-1 - \frac{-2}{3} - \frac{1}{5}\right)\right] = \frac{9}{16}\left[\frac{8}{15} - \frac{-8}{15}\right] = \frac{9}{16}\frac{16}{15} = \frac{3}{5}.\end{align*} Then as $f_Y(y) = \theta \exp(-\theta y)$ for $y > 0$ and 0 otherwise, we get $\text{Var}[\widehat f_h(y)] \simeq \frac{3\theta}{5nh} \exp(-\theta y)$ for $y > 0$ and 0 otherwise, as required. -->
+<!-- ``` -->
+<p>A simple choice for quantifying the quality of <span class="math inline">\(\widehat f_h(y)\)</span> is the mean integrated squared error (MISE). This integrates the mean squared error (introduced in MTH1004) over all possible values of <span class="math inline">\(y\)</span> and is defined as <span class="math display">\[\begin{align*} MISE(\widehat f_h)
+&amp;= \text{E}\left\{\int\left[\widehat f_h(y) - f_Y(y)\right]^2 dy\right\}\\
+&amp;= \int \left[\text{E}\left\{\widehat f_h(y)\right\} - f_Y(y)\right]^2 dy + \int \text{Var} \left\{\widehat f_h(y)\right\} dy. \end{align*}\]</span> Substitution of the above approximations then gives</p>
+<p><span class="math display" id="eq:kdemise">\[\begin{equation}
+MISE(\widehat f_h) \simeq \dfrac{h^4 \sigma_w^4}{4} \int f&#39;&#39;_Y(y)^2 dy + \dfrac{1}{nh} \int w^2(u) du, \tag{5.9}
+\end{equation}\]</span></p>
+<p>and so equation <a href="kde.html#eq:kdemise">(5.9)</a> is an approximation to the MISE of <span class="math inline">\(\widehat f_h(y)\)</span> over <span class="math inline">\(y\)</span> based on a Taylor series expansion.</p>
+<hr />
+<p><strong>Example 5:</strong> Consider an independent random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span> from the <span class="math inline">\(\text{Exp}(\theta)\)</span> distribution. Based on a Taylor expansion, find the MISE of a kernel density estimate with bandwidth <span class="math inline">\(h\)</span> and Epanechnikov kernel function.</p>
+<p>The MISE is based on the first-order Taylor approximation is
+<span class="math display">\[
+\text{MISE}[\widehat f_h] \simeq \dfrac{h^4 \sigma_w^4}{4} \int [f_Y&#39;&#39;(y)]^2 \text{d}y + \dfrac{1}{nh} \int [w(u)]^2\text{d}u.
+\]</span>
+From Example 3 <span class="math inline">\(f_Y&#39;&#39;(y) = \theta^3 \exp(-\theta y)\)</span> for <span class="math inline">\(y &gt; 0\)</span> and is zero otherwise. Hence <span class="math inline">\([f_Y&#39;&#39;(y)]^2 = \theta^6 \exp(-2\theta y)\)</span>. Then
+<span class="math display">\[
+\int [f_Y&#39;&#39;(y)]^2 \text{d}y = \int_0^\infty \theta^6 \exp(-2\theta y) \text{d}y = \theta^6 \left[-\dfrac{\theta \exp(-2\theta y)}{2}\right]_0^\infty = \dfrac{\theta^6}{2}.
+\]</span>
+Substituting this, that <span class="math inline">\(\sigma_w^2 = \frac{1}{5}\)</span> from Table <a href="kde.html#tab:kernels">5.2</a>, and that <span class="math inline">\(\int [w(u)]^2\text{d}u = \frac{3}{5}\)</span> from Example 4, we get
+<span class="math display">\[
+\text{MISE}[\widehat f_h] \simeq \dfrac{h^4 3^4}{4(5^4)} \dfrac{\theta^6}{2} + \dfrac{1}{nh} \dfrac{3}{5} = \dfrac{h^4 \theta^6 81}{5000} + \dfrac{3}{5nh}.
+\]</span></p>
+<hr />
+<!-- --- -->
+<!-- **Example 5:** \sf Consider a random sample $Y_1, \ldots, Y_n$ with $n = 100$ from the pdf \[f_Y(y) = \ldots\] If \[w(u) = \ldots\] is used with bandwidth $h$ to form a kernel density estimate for the sample, show that $MISE(\widehat f_h) = \ldots$. <span style='float:right;'> &#11035; </span> \rm  -->
+<!-- --- -->
+<!-- ```{example}  -->
+<!-- Consider a random sample $Y_1, \ldots, Y_n$ with $n = 100$ from the pdf \[f_Y(y) = \ldots\] If \[w(u) = \ldots\] is used with bandwidth $h$ to form a kernel density estimate for the sample, show that $MISE(\widehat f_h) = \ldots$. -->
+<!-- ``` -->
+<!-- \begin{video}[video\thevideo\_kde-properties.mp4 {[}MMmSSs{]}] -->
+<!-- Properties of kernel density estimates. -->
+<!-- \end{video} -->
+</div>
+<div id="nkde" class="section level3 hasAnchor" number="5.4.7">
+<h3><span class="header-section-number">5.4.7</span> Optimal bandwidths by assuming normal <span class="math inline">\(f_Y(y)\)</span><a href="kde.html#nkde" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let <span class="math inline">\(h_\text{opt}\)</span> denote an optimal value for bandwidth <span class="math inline">\(h\)</span>. We could define <span class="math inline">\(h_\text{opt}\)</span> as minimising <span class="math inline">\(MISE(\widehat f_h)\)</span> and, after differentiating equation <a href="kde.html#eq:kdemise">(5.9)</a> w.r.t. <span class="math inline">\(h\)</span>, we get</p>
+<p><span class="math display" id="eq:hopt">\[\begin{equation}
+h_\text{opt} = \left[\dfrac{\int w^2(u) du}{n \sigma_w^4 \int f_Y&#39;&#39;(y)^2 dy}\right]^{1/5}.
+\tag{5.10}
+\end{equation}\]</span></p>
+<hr />
+<p><strong>Example 6:</strong> Consider an independent random sample <span class="math inline">\(Y_1, \ldots, Y_n\)</span> from the <span class="math inline">\(\text{Exp}(\theta)\)</span> distribution. Find an expression in terms of <span class="math inline">\(n\)</span> and <span class="math inline">\(\theta\)</span> for the value of <span class="math inline">\(h\)</span>, <span class="math inline">\(h_\textrm{opt}\)</span>, that minimises <span class="math inline">\(\text{MISE}[\widehat f_h]\)</span>.</p>
+<p>From Example 5 we have that
+<span class="math display">\[
+\text{MISE}[\widehat f_h] \simeq \dfrac{h^4 3^4}{4(5^4)} \dfrac{\theta^6}{2} + \dfrac{1}{nh} \dfrac{3}{5} = \dfrac{h^4 \theta^6 81}{5000} + \dfrac{3}{5nh}.
+\]</span>
+Differentiating this w.r.t <span class="math inline">\(h\)</span> we get
+<span class="math display">\[
+\dfrac{\partial \text{MISE}[\widehat f_h]}{\partial h} = \dfrac{4h^3 \theta^6 81}{5000} - \dfrac{3}{5nh^2}
+\]</span>
+and setting <span class="math inline">\(\partial \text{MISE}[\widehat f_h] / \partial h = 0\)</span> at <span class="math inline">\(h = h_\text{opt}\)</span> gives that
+<span class="math display">\[
+\dfrac{4h_\text{opt}^3 \theta^6 81}{5000} = \dfrac{3}{5nh_\text{opt}^2}
+\]</span>
+i.e. that
+<span class="math display">\[
+\dfrac{h_\text{opt}^5 \theta^6 81}{1250} = \dfrac{250}{27n\theta^6}
+\]</span>
+and hence <span class="math inline">\(h_\text{opt} = [250 / (27n\theta^6)]^{1/5}\)</span>. Differentiating <span class="math inline">\(\text{MISE}[\widehat f_h]\)</span> w.r.t. <span class="math inline">\(h\)</span> twice gives
+<span class="math display">\[
+\dfrac{\partial^2 \text{MISE}[\widehat f_h]}{\partial h^2} = \dfrac{243 h^2 \theta^6}{1250} + \dfrac{6}{5nh^2},
+\]</span>
+which is positive for all <span class="math inline">\(h\)</span>, and hence <span class="math inline">\(h_\text{opt}\)</span> is a minimum.</p>
+<p><span style="float:right;"> ⬛ </span> </p>
+<hr />
+<p>In practice we won’t know <span class="math inline">\(f_Y(y)\)</span> and hence can’t find the optimal bandwidth through equation <a href="kde.html#eq:hopt">(5.10)</a>. There are various options for finding <span class="math inline">\(h_\text{opt}\)</span> that make sensible use of <span class="math inline">\(MISE(\widehat f_h)\)</span> even though <span class="math inline">\(f_Y(y)\)</span> is unknown.</p>
+<p>Option 1 is to proceed as if <span class="math inline">\(f_Y(y)\)</span> is known. If <span class="math inline">\(f_Y(y)\)</span> is assumed to be normal with variance <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(w()\)</span> is also normal then</p>
+<p><span class="math display">\[\begin{equation}
+h_\text{opt}^\text{N} = 1.06 \sigma n^{-1/5}.
+\end{equation}\]</span></p>
+<p>In practice we substitute <span class="math inline">\(s\)</span>, the sample standard deviation, for <span class="math inline">\(\sigma\)</span>, where <span class="math inline">\(s^2 = \sum_{i = 1}^n (y_i - \bar y)^2 / (n - 1)\)</span> with <span class="math inline">\(\bar y = \sum_{i = 1}^n y_i / n\)</span>. This is implemented in <code>R</code> with argument <code>bw = "nrd"</code>, for <code>geom_density()</code> and <code>density()</code>. Alternatively, it can be calculated with the following function for a vector <code>y</code>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="kde.html#cb50-1" aria-hidden="true" tabindex="-1"></a>h_N <span class="ot">&lt;-</span> <span class="cf">function</span>(y) <span class="fl">1.06</span> <span class="sc">*</span> <span class="fu">sd</span>(y) <span class="sc">*</span> <span class="fu">length</span>(y)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span></code></pre></div>
+<p>Unfortunately <span class="math inline">\(s\)</span> can be sensitive to outliers, and so a rule of thumb from <span class="citation">Silverman (1986, 48)</span>, henceforth <em>Silverman’s rule of thumb</em>, is used to motivate</p>
+<p><span class="math display">\[\begin{equation}
+h_\text{opt}^\text{S} = 0.9 \min\{s, \text{IQR} / 1.34\} n^{-1/5},
+\end{equation}\]</span></p>
+<p>where IQR is the interquartile range of <span class="math inline">\(y_1, \ldots, y_n\)</span>. This is implemented in <code>R</code> with argument <code>bw = "nrd0"</code>, and is <code>R</code>’s default, or could be calculated, with <code>y</code> as above, using the following function.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="kde.html#cb51-1" aria-hidden="true" tabindex="-1"></a>h_S <span class="ot">&lt;-</span> <span class="cf">function</span>(y) <span class="fl">0.9</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">sd</span>(y), <span class="fu">IQR</span>(y) <span class="sc">/</span> <span class="fl">1.34</span>) <span class="sc">*</span> <span class="fu">length</span>(y)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span></code></pre></div>
+<p>Although Silverman’s rule of thumb can avoid outliers causing too large <span class="math inline">\(h\)</span>, poor choice of <span class="math inline">\(h\)</span> can still sometimes occur if data are clearly not consistent with a sample of normal data.</p>
+<!-- \begin{video}[video\thevideo\_kde-optimal1.mp4 {[}MMmSSs{]}] -->
+<!-- Optimal bandwidths for kernel density estimates if $f_Y(y)$ is normal. -->
+<!-- \end{video} -->
+</div>
+<div id="notnkde" class="section level3 hasAnchor" number="5.4.8">
+<h3><span class="header-section-number">5.4.8</span> Optimal bandwidths for any <span class="math inline">\(f_Y(y)\)</span> by cross-validation<a href="kde.html#notnkde" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The above optimal bandwidth estimates work well if <span class="math inline">\(f_Y(y)\)</span> being normal is a fair assumption. Sometimes it is not a fair assumption, and we need a more robust approach. So Option 2 is to approximate <span class="math inline">\(MISE(\widehat f_h)\)</span>. This can be achieved through cross-validation, which is briefly outlined next; then we’ll see how this can be used to give optimal bandwidths for kernel density estimates.</p>
+<div id="cross-validation" class="section level4 hasAnchor" number="5.4.8.1">
+<h4><span class="header-section-number">5.4.8.1</span> Cross-validation<a href="kde.html#cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Cross-validation encapsulates a variety of statistical methods. It is a particularly intuitive approach to estimation that has become more applicable as computers have become more powerful and datasets have become larger. Previously, we might have had a small dataset, and would want to use <em>all</em> the available data when estimating a statistical model. Sometimes this process is referred to as <em>training</em>: a statistical model is being trained on some data.</p>
+<p>While there are various specific approaches to cross-validation, the essence of each is typically the same. We consider a dataset, and separate it into a training set and a <em>validation</em> set. The former is used to train a statistical model and the latter is used to assess the statistical model. The idea is that we want the statistical model to represent the behaviour of a population through a sample. A good model should provide a good representation of any sample drawn from the population. The validation set aims to mimic such a sample, while the training set is intended to give the best model fit possible. Typically the size of the training set will be a few multiples that of the validation set. For example, 80% of the original dataset might be used as the training set, leaving the remaining 20% as the validation set. Obviously the ratio of training to validation data is a decision that needs to be made.</p>
+<p>Even if the ratio of training to validation data is given, the problem still remains of which of the original dataset form the training set, or equivalently which form the validation set. It is unlikely that our original dataset will be homogeneous, and so the choice does matter. What we’d like, though, is that it doesn’t matter too much: we want our choice to be robust. One option for this is <span class="math inline">\(k\)</span>-fold cross-validation.</p>
+</div>
+<div id="k-fold-cross-validation" class="section level4 hasAnchor" number="5.4.8.2">
+<h4><span class="header-section-number">5.4.8.2</span> <span class="math inline">\(k\)</span>-fold cross-validation<a href="kde.html#k-fold-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Consider a sample of size <span class="math inline">\(n = n_k k\)</span>, for integers <span class="math inline">\(k\)</span> and <span class="math inline">\(n_k\)</span>. In <span class="math inline">\(k\)</span>-fold cross-validation we use a validation set of size <span class="math inline">\(n_k\)</span>, and hence the training set is of size <span class="math inline">\(n_k (k - 1)\)</span>. Ideally we might like any member of our sample to appear in both the validation set <em>and</em> the training set. If we partition our sample once, this isn’t possible. However, if we partition our sample multiple times, this is possible, and this is how <span class="math inline">\(k\)</span>-fold cross-validation works. We divide our sample into <span class="math inline">\(k\)</span> subsamples. Each forms the validation set once and the training set <span class="math inline">\(k - 1\)</span> times. The idea of this approach is to try and iron out any variation caused by our decision as to which <span class="math inline">\(n_k\)</span> members form the validation set and which <span class="math inline">\(n_k(k - 1)\)</span> form the training set. It is important to note, though, that some variation still remains as a consequence of how we partition our original sample of size <span class="math inline">\(n = k n_k\)</span> into <span class="math inline">\(k\)</span> samples of size <span class="math inline">\(n_k\)</span>. If we have concerns over the <span class="math inline">\(k\)</span> samples that we’ve chosen, we could repeat that process too, and over allocations; in practice, this tends not to be necessary. The choice of <span class="math inline">\(k\)</span> is arbitrary, but perhaps the most common choice is <span class="math inline">\(k = 10\)</span>, which gives 10-fold cross-validation.</p>
+</div>
+<div id="leave-one-out-cross-validation" class="section level4 hasAnchor" number="5.4.8.3">
+<h4><span class="header-section-number">5.4.8.3</span> Leave-one-out cross-validation<a href="kde.html#leave-one-out-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If we choose <span class="math inline">\(k = n\)</span> this gives so-called <em>leave-one-out</em> cross-validation in which only one observation is left out each time, and each observation is left out precisely once. We’ve seen this idea before in Topic 3 with Cook’s distance.</p>
+<!-- \begin{video}[video\thevideo\_crossval.mp4 {[}MMmSSs{]}] -->
+<!-- Cross-validation: a recap. -->
+<!-- \end{video} -->
+</div>
+<div id="optimal-bandwidths-for-kernel-density-estimates" class="section level4 hasAnchor" number="5.4.8.4">
+<h4><span class="header-section-number">5.4.8.4</span> Optimal bandwidths for kernel density estimates<a href="kde.html#optimal-bandwidths-for-kernel-density-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We’ll now return to kernel density estimate bandwidth selection. A more robust approach to assuming that <span class="math inline">\(f_Y(y)\)</span> is normal, even if allowance is made for outliers, is to approximate the integrated squared error (ISE)</p>
+<p><span class="math display">\[
+\int \left\{ \widehat f_h(y) - f_Y(y)\right\}^2 dy = \int \{\widehat f_h(y)\}^2 dy - 2 \int f_Y(y) \widehat f_h(y) dy + \int \{f_Y(y)\}^2dy.
+\]</span></p>
+<p>Since we’re interested in choosing <span class="math inline">\(h\)</span>, we can ignore the last term above because it doesn’t depend on <span class="math inline">\(h\)</span>. However, we still can’t minimise this simplified equation because don’t know know <span class="math inline">\(f_Y(y)\)</span>. An alternative approach is to considering the squared difference between the true pdf and the kernel density estimate, is to consider the squared difference between the kernel density estimate and its counterpart with the <span class="math inline">\(i\)</span>th observation omitted, which we’ll denote by <span class="math inline">\(\widehat f_{h, -i}\)</span>. Therefore <span class="math inline">\(\widehat f_{h, -i}\)</span> is an estimate based on <span class="math inline">\(y_1, \ldots, y_n\)</span> without <span class="math inline">\(y_i\)</span>. We can then use leave-one-out cross-validation, leaving out each observation precisely once, so that our results are less sensitive to the observation that we’ve omitted. Using this approximation, instead of minimising the ISE w.r.t to <span class="math inline">\(h\)</span>, means that we can minimise</p>
+<!-- We can therefore aim to minimise -->
+<!-- \[ -->
+<!-- \int \left\{ \widehat f_{h, -i}(y) - \widehat f_h(y)\right\}^2 dy = \int \{\widehat f_h(y)\}^2 dy - 2 \int f_Y(y) \widehat f_h(y) dy + \int \{f_Y(y)\}^2dy.  -->
+<!-- \] -->
+<!-- Using leave-one-out cross-validation, i.e. $n$ substituting kernel density estimates in which each observation is excluded precisely once, we obtain an unbiased optimal bandwidth that minimises the ISE by minimising -->
+<p><span class="math display">\[
+CV(h) = \dfrac{1}{n} \sum_{i = 1}^n \int \{\widehat f_{h, -i}(y)\}^2dy - \dfrac{2}{n} \sum_{i = 1}^n \widehat f_{h, -i}(y_i).
+\]</span></p>
+<!-- w.r.t $h$, where $\widehat f_{h, -i}(y)$ denotes the estimate of \@ref(eq:kerneq) constructed from data $y_1, \ldots, y_n$ with observation $y_i$ omitted. The notation $CV(h)$ is used by virtue of the reliance on cross-validation. -->
+<p>The notation <span class="math inline">\(CV(h)\)</span> is used by virtue of the reliance on cross-validation.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cvplot"></span>
+<img src="index_files/figure-html/cvplot-1.png" alt="The cross-validation estimator $CV(h)$ plotted against bandwidth $h$ for a kernel density estimate of the Old Faithful eruption times using the normal kernel function." width="480" />
+<p class="caption">
+Figure 5.18: The cross-validation estimator <span class="math inline">\(CV(h)\)</span> plotted against bandwidth <span class="math inline">\(h\)</span> for a kernel density estimate of the Old Faithful eruption times using the normal kernel function.
+</p>
+</div>
+<p>A plot of <span class="math inline">\(CV(h)\)</span> against <span class="math inline">\(h\)</span> can be seen in Figure <a href="kde.html#fig:cvplot">5.18</a> for the Old Faithful eruption times using the normal kernel function. We see that <span class="math inline">\(CV(h)\)</span> varies with <span class="math inline">\(h\)</span>. The value that minimises <span class="math inline">\(CV(h)\)</span> is the optimal value of <span class="math inline">\(h\)</span>, which we’ll call <span class="math inline">\(h_\text{opt}^\text{CV}\)</span>. From Figure <a href="kde.html#fig:cvplot">5.18</a> we see that <span class="math inline">\(h_\text{opt}^\text{CV} \simeq 0.1\)</span>.</p>
+<p>We end this section by comparing <span class="math inline">\(h_\text{opt}^\text{N}\)</span>, <span class="math inline">\(h_\text{opt}^\text{S}\)</span> and <span class="math inline">\(h_\text{opt}^\text{CV}\)</span> for the Old Faithful eruption times. Having chosen <span class="math inline">\(w()\)</span> to be the standard normal pdf, we get <span class="math inline">\(h_\text{opt}^N =\)</span> 0.394, <span class="math inline">\(h_\text{opt}^S =\)</span> 0.335 and <span class="math inline">\(h_\text{opt}^\text{CV} =\)</span> 0.102. Plots of the resulting kernel density estimates are shown in Figure <a href="kde.html#fig:hopt1">5.19</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hopt1"></span>
+<img src="index_files/figure-html/hopt1-1.png" alt="Optimal bandwidth estimates based on three different critera for kernel density estimates of the Old Faithful eruption times." width="480" />
+<p class="caption">
+Figure 5.19: Optimal bandwidth estimates based on three different critera for kernel density estimates of the Old Faithful eruption times.
+</p>
+</div>
+<p>We can see visually different kernel density estimates in Figure <a href="kde.html#fig:hopt1">5.19</a> as a result of different ‘optimal’ bandwidths. Hence, although the bandwidths are optimal given the optimality that criteria we’ve chosen, our choice of criteria can make a difference to the resulting kernel density estimate. We see that the kernel density estimate that uses <span class="math inline">\(h_\text{opt}^N\)</span> is smoother than the estimate that uses <span class="math inline">\(h_\text{opt}^S\)</span>, which is smoother than the estimate that uses <span class="math inline">\(h_\text{opt}^\text{CV}\)</span>. This hierarchy in smoothness directly results from <span class="math inline">\(h_\text{opt}^N &gt; h_\text{opt}^S &gt; h_\text{opt}^\text{CV}\)</span>.</p>
+<!-- \begin{video}[video\thevideo\_kde-optimal2.mp4 {[}MMmSSs{]}] -->
+<!-- Optimal bandwidths for kernel density estimates for any $f_Y(y)$. -->
+<!-- \end{video} -->
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p><em>geyser</em> (gai·zr), . a pool of hot water that sends a column of water and steam into the air on a regular or irregular schedule.<a href="kde.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>When we want to fit multimodal pdfs using probability models, we often consider <em>mixture distributions</em>. For more information see <span class="citation">Davison (2003, Example 5.36)</span> or even <a href="https://en.wikipedia.org/wiki/Mixture_distribution">https://en.wikipedia.org/wiki/Mixture_distribution</a>.<a href="kde.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Deriving Taylor series expansions is beyond the scope of MTH2006, but using the results of them given in the lecture notes is not. The interested reader can, however, refer back their MTH2001 notes, or see, e.g., <span class="citation">Silverman (1986, sec. 3.3)</span>, for a fuller derivation of approximation <a href="kde.html#eq:kdebias">(5.7)</a>.<a href="kde.html#fnref6" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gof.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="indepsamp.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
