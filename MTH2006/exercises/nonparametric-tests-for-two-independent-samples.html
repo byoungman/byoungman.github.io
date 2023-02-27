@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Nonparametric tests for two independent samples | Topic 5: Nonparametric statistics</title>
+  <meta name="description" content="Nonparametric tests for two independent samples | Topic 5: Nonparametric statistics" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Nonparametric tests for two independent samples | Topic 5: Nonparametric statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Nonparametric tests for two independent samples | Topic 5: Nonparametric statistics" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="kernel-density-estimation.html"/>
+<link rel="next" href="nonparametric-tests-for-two-dependent-samples.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-4"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-6"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-7"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-8"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-9"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-10"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-11"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-12"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-13"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-14"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-15"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-16"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-18"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-19"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-20"><i class="fa fa-check"></i>Question 20</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-21"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-22"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-23"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-24"><i class="fa fa-check"></i>Question 24</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-25"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-26"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-13-1"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-14-1"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-15-1"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-16-1"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-18-1"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-13-2"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-14-2"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-15-2"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-16-2"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-18-2"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-19-1"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-20-1"><i class="fa fa-check"></i>Question 20</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-21-1"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-22-1"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-23-1"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-24-1"><i class="fa fa-check"></i>Question 24</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-25-1"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-26-1"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-19-2"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-21-2"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-22-2"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-23-2"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-25-2"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-26-2"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html#question-2-1"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html#question-2-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-3-1"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-4-1"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-5-1"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-6-1"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-8-1"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-9-1"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-10-1"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-11-1"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-12-1"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-3-2"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-4-2"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-5-2"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-6-2"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-7-2"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-8-2"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-9-2"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-10-2"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-11-2"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-12-2"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Topic 5: Nonparametric statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nonparametric-tests-for-two-independent-samples" class="section level1 hasAnchor">
+<h1>Nonparametric tests for two independent samples<a href="nonparametric-tests-for-two-independent-samples.html#nonparametric-tests-for-two-independent-samples" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="question-13" class="section level2 hasAnchor">
+<h2>Question 13<a href="nonparametric-tests-for-two-independent-samples.html#question-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p> (5.5.1) Use Welch’s <span class="math inline">\(t\)</span>-test to assess whether the mean heights of MTH2006 students are different between females and males. Perform the test by hand, and then confirm the result using <code>t.test()</code>. Use a 1% significance level and state any hypotheses that you use.</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We're testing the hypotheses \begin{align*} H_0:& \text{ mean heights of females and males are the same,}\\ H_1: & \text{ mean heights of females and males are different.}\end{align*} We'll start by loading the data, storing the heights of females as `females` and males as `males`. -->
+<!-- Let $X$ denote the height of a female and $Y$ denote the height of a male. The sample variance for females is $s_X^2 = 55.846$ and for males is $s_Y^2 = 77.362$. From the lecture notes, we now need to calculate  -->
+<!-- \[  -->
+<!-- s_{XY} = \sqrt{\dfrac{s_X^2}{m} + \dfrac{s_Y^2}{n}} \simeq \sqrt{\dfrac{55.846}{22} + \dfrac{77.362}{32}} \simeq 2.226 -->
+<!-- \] and \begin{align*} -->
+<!-- \nu &= s_{XY}^4 / \left(\dfrac{(s_X^2 / m)^2}{m - 1} + \dfrac{(s_Y^2 / n)^2}{n - 1}\right) \simeq 2.226^4 / \left(\dfrac{(55.85 / 22)^2}{21} + \dfrac{(77.36 / 32)^2}{31}\right)\\ &\simeq 24.562 / \left(\dfrac{2.538^2}{21} + \dfrac{2.418^2}{31}\right) \simeq \dfrac{24.562}{0.307 + 0.189} \simeq \dfrac{24.562}{0.495} \simeq 49.582. -->
+<!-- \end{align*} -->
+<!-- Noting that the sample mean height for females is $\bar x = 165.32$ and for males is $\bar y = 177.84$, the observed test statistic is then $t_{obs} = (165.32 - 177.84) / 2.226 = -5.626,$ which we compare with the $t_{49.58}$ distribution. The $p$-value for the test is then $2 \text{Pr}(|T| > |t_{obs}|) = 2 \times 4.239\times 10^{-7} \simeq 0.$ And hence we reject $H_0$ in favour of the overwhelming evidence that the mean heights of MTH2006 females and males are different. -->
+<!-- This is confirmed by the output from `t.test()`, which gives the same observed test statistic, $t_{obs}$, and degrees of freedom, $\nu$, and hence the same $p$-value. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-14" class="section level2 hasAnchor">
+<h2>Question 14<a href="nonparametric-tests-for-two-independent-samples.html#question-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(5.5.2) Since 1900 there have been 14 eruptions of the Mauna Loa volcano in Hawaii, US, which occurred in <span class="math display">\[1903,~1907,~1914,~1916,~1919,~1926,~1933,~1935,~1940,~1942,~1949,~1950,~1975,~1984.\]</span></p>
+<p>Use the Kolmogorov-Smirnov test with <code>ks.test()</code> in <code>R</code> to assess at the 1% significance level whether these are uniformly distributed between 1900 and 2020. State the hypotheses that you use. (Recall that <code>punif(x, min = a, max = b)</code> evaluates the Unif<span class="math inline">\(([a, b])\)</span> cdf in <code>R</code>).</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- Let $\widehat F_n(y)$ denote the edf of eruption times. We'll use a two-sided test based on the hypotheses \begin{align*} H_0: & \widehat F_n(y) = F_{\textrm{unif}}(y; 1900, 2020),\\ H_1: & \widehat F_n(y) \neq F_{\textrm{unif}}(y; 1900, 2020), \end{align*} where $F_{\textrm{unif}}(y; a, b)$ denotes the Unif$([a,b])$ cdf. We'll start by loading the data. -->
+<!-- There are a few ways that we can implement this test in `R` using `ks.test()`. Here are two examples -->
+<!-- which both give identical results, i.e. the following output. -->
+<!-- The `R` output shows a test statistic of $D_n =$ 0.440, which gives a $p$-value of 0.0054. Hence at the 1\% significance level we reject $H_0$ that the volcano has erupted uniformly between 1900 and 2020 in favour of a different cdf.  -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-15" class="section level2 hasAnchor">
+<h2>Question 15<a href="nonparametric-tests-for-two-independent-samples.html#question-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(5.5.3) Consider the Kolmogorov-Smirnov (K-S) test for assessing the null hypothesis that the samples of female and male heights for MTH2006 students are drawn from the same distribution. Plot the edfs of female and male heights (preferably on one plot, for which <code>ggplot(..., aes(x = ..., color = ...)</code> might be useful). Use the edfs to estimate by eye the K-S test statistic, and comment on whether you expect this to support the null hypothesis. Then perform the K-S test in <code>R</code> using <code>ks.test()</code>, stating the hypotheses that you are testing.</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- The following plots edf estimates for female and male heights together (but there are various other ways). -->
+<!-- ```{r, fig.cap = "Separate plots of edfs of heights of MTH2006 students for females and males."} -->
+<!-- ggplot(bio, aes(x = Height, colour = Sex)) + stat_ecdf(geom = "point") -->
+<!-- ``` -->
+<!-- It's quite difficult to judge, but the edfs appear furthest apart at a height of $172$cm, for which $|\widehat F_{X, m}(y) - \widehat F_{Y, n}(y)| \simeq |0.9 - 0.1| = 0.8$, where $\widehat F_{X, m}(y)$ denotes the edf of female heights and $\widehat F_{Y, n}(y)$ denotes the edf of male heights. Hence we might expect to observe a K-S test statistic between 0.7 and 0.9 (and we're probably not able to be any more accurate than this by eye). Given that the K-S test statistic's maximum value is 1, and the sample sizes are reasonably large (22 females and 32 males), we might expect to see the null hypothesis rejected. We'll check this with `ks.test()`. -->
+<!-- The actual observed test statistic is $d_{n, \text{obs}}^{KS} \simeq 0.554$, and so our by-eye expectations were reasonable. The resulting $p$-value is negligibly different from zero, and hence there is very strong evidence to reject $H_0$ that the samples of female and male heights are drawn from the same distribution, and instead conclude that they're drawn from different distributions.  -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-16" class="section level2 hasAnchor">
+<h2>Question 16<a href="nonparametric-tests-for-two-independent-samples.html#question-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(5.5.4) Load the <code>kickstarter.csv</code> data, which give details on a sample of successful UK Kickstarter campaigns that requested funding under the categories of <code>Film &amp; Video</code> and <code>Music</code>. Amounts pledged for each campaign in USD are stored as <code>usd.pledged</code>. Use the Mann-Whitney <span class="math inline">\(U\)</span> test to assess whether more money tended to be pledged for one type of campaign than the other. State the hypotheses that you are testing.</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- The following loads the Kickstarter data in, and then stores the amounts pledged in USD for category `Film & Video` as `film` and for category `Music` as `music`. -->
+<!-- We're interested in a two-sided test, with hypotheses \begin{align*} H_0: & \text{ Pr}(X > Y) = \text{Pr}(Y > X),\\ H_1: & \text{ Pr}(X > Y) \neq \text{Pr}(Y > X), \end{align*} where $X$ and $Y$ denote amounts pledged for `Film & Video` and `Music`, respectively. A two-sided Mann-Whitney $U$ test can then be performed in `R` with -->
+<!-- which has a test statistic of $u_{\textrm{obs}} = 2055$ and a resulting $p$-value of 0.8009. Hence there is far too little evidence to suggest a difference in amounts pledged, based on a two-sided Mann-Whitney $U$ test.  -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="happy" class="section level2 hasAnchor">
+<h2>Question 17<a href="nonparametric-tests-for-two-independent-samples.html#happy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The World Happiness Report surveys global happiness. The file <code>happy.csv</code> contains happiness scores from various countries for the years 2016 (<code>score2016</code>) and 2019 (<code>score2019</code>). Use the Mann-Whitney <span class="math inline">\(U\)</span> test to assess whether people were happier in 2019 than in 2016.</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- Let's load the data. -->
+<!-- We're now interested in a one-sided test, with hypotheses \begin{align*} H_0: & \text{ Pr}(X > Y) = \text{Pr}(Y > X),\\ H_1: & \text{ Pr}(X > Y) < \text{Pr}(Y > X), \end{align*} where $X$ and $Y$ denote happiness scores in the years 2016 and 2019, respectively. We can perform the appropriate one-sided Mann-Whitney $U$ test in `R` with  -->
+<!-- noting that we use `alternative = "less"` because we're interested in whether $X < Y$. The resulting test statistic is $u_{\textrm{obs}} = 12014$ and $p$-value is 0.3865. There's insufficient evidence to reject $H_0$ at the 10% significance level (the highest we'd ever consider), i.e. that people in 2019 and 2016 were equally happy, as opposed to being happier in 2019. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-18" class="section level2 hasAnchor">
+<h2>Question 18<a href="nonparametric-tests-for-two-independent-samples.html#question-18" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p> Alongside each track on Spotify is a measure of its ‘energy’, a value between 0 and 1 that captures a song’s speed, loudness, and noisiness, where higher values are more energetic tracks. Let <span class="math inline">\(x_1, \ldots, x_{51}\)</span> denote the energies of the 51 most popular songs of 2010 and <span class="math inline">\(y_1, \ldots, y_{31}\)</span> the 31 most popular songs of 2019, where popularity is defined in terms of number of listens. Use the Mann-Whitney <span class="math inline">\(U\)</span> test – and state any hypotheses that you use – to assess whether the most popular songs in 2010 were more energetic than in 2019, given that <span class="math display">\[\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i &gt; y_j) = 1147,~~\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i = y_j) = 0~~~\text{and}~~~\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i &lt; y_j) = 434.\]</span></p>
+<p>[Note that the raw data used to give the above numbers can be found at .]</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- Let $X$ denote the energy of a song from 2010 and $Y$ the energy of a song from 2019. We're using the hypotheses \begin{align*} H_0: & \text{ Pr}(X > Y) = \text{Pr}(Y > X), \\ H_1: & \text{ Pr}(X > Y) > \text{Pr}(Y > X). \end{align*} -->
+<!-- From the information we're given, the observed Mann-Whitney $U$ test statistic is $u_{\textrm{obs}} = 1 \times 1147 + 0.5 \times 0 + 0 \times 434 = 1147$. The sample sizes ($m = 51$ and $n = 31$) are sufficiently large that we can use a normal approximation to the sampling distribution of the test statistic, which has mean $mn / 2 = 51 \times 31 / 2 = 790.5$ and variance $mn(m + n + 1) / 12 = 51 \times 31 \times (51 + 31 + 1) / 12 \simeq 10935.25$. Therefore $z_{\textrm{obs}} \simeq (1147 - 790.5) / \sqrt{10935.25} \simeq 3.4091$. For the one-sided test large values of $u_{\textrm{obs}}$ will cast doubt on $H_0$ and so, as the test's $p$-value is $1 - \Phi(3.4091) \simeq 0.000326$, we reject $H_0$ at the 1\% significance level in favour of concluding that the most popular songs were more energetic in 2010 than in 2019. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="kernel-density-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nonparametric-tests-for-two-dependent-samples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Nonparametric tests for two dependent samples | Topic 5: Nonparametric statistics</title>
+  <meta name="description" content="Nonparametric tests for two dependent samples | Topic 5: Nonparametric statistics" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Nonparametric tests for two dependent samples | Topic 5: Nonparametric statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Nonparametric tests for two dependent samples | Topic 5: Nonparametric statistics" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="nonparametric-tests-for-two-independent-samples.html"/>
+<link rel="next" href="exercises-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-4"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-6"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-7"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-8"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-9"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-10"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-11"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-12"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-13"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-14"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-15"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-16"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-18"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-19"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-20"><i class="fa fa-check"></i>Question 20</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-21"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-22"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-23"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-24"><i class="fa fa-check"></i>Question 24</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-25"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-26"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-13-1"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-14-1"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-15-1"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-16-1"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-18-1"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-13-2"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-14-2"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-15-2"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-16-2"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-18-2"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-19-1"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-20-1"><i class="fa fa-check"></i>Question 20</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-21-1"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-22-1"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-23-1"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-24-1"><i class="fa fa-check"></i>Question 24</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-25-1"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-26-1"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-19-2"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-21-2"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-22-2"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-23-2"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-25-2"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-26-2"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html#question-2-1"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html#question-2-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-3-1"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-4-1"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-5-1"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-6-1"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-8-1"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-9-1"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-10-1"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-11-1"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-12-1"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-3-2"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-4-2"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-5-2"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-6-2"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-7-2"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-8-2"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-9-2"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-10-2"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-11-2"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-12-2"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Topic 5: Nonparametric statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nonparametric-tests-for-two-dependent-samples" class="section level1 hasAnchor">
+<h1>Nonparametric tests for two dependent samples<a href="nonparametric-tests-for-two-dependent-samples.html#nonparametric-tests-for-two-dependent-samples" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="question-19" class="section level2 hasAnchor">
+<h2>Question 19<a href="nonparametric-tests-for-two-dependent-samples.html#question-19" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p> (5.6.1) A lepidopterist wants to know whether the mean wingspans of female and male gatekeeper butterflies (Pyronia tithonus) differ. They catch 5 females with wingspans of 37, 39, 39, 41 and 43mm and 6 males with wingspans of 42, 42, 44, 46, 47 and 48mm. (All are released unharmed.) Use a permutation test with a 5% significance level to answer the lepidopterist’s question.</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- Let's load the data. -->
+<!-- Our test statistic should be the difference in sample means between females and males. -->
+<!-- We then combine the female and male wingspans, use every permutation of allocations to samples representing females and males, i.e. 462 permutations, and then calculate a test statistic for each permutation. -->
+<!-- The test statistics for the permutations represent the permutation null distribution. The test's $p$-value is the proportion of the permutation null distribution that is as extreme or more extreme than the observed test statistic, i.e. -->
+<!-- As the permutation test's $p$-value of 0.015 is below 0.05, we reject the null hypothesis at the 5% significance level, and conclude that *of those sampled* female and male gatekeeper butterflies do have different mean wingspans. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-20" class="section level2 hasAnchor">
+<h2>Question 20<a href="nonparametric-tests-for-two-dependent-samples.html#question-20" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A shoe manufacturer considers two different rubber compositions, A and B, for the soles of children’s shoes. They recruit ten boys, and give each a pair of shoes with one shoe made from composition A and the other shoe made from composition B. Whether the left or right shoe is composition A or B is chosen at random and indicated by ‘L’ or ‘R’, respectively. They record the following amounts of wear for each boy.</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="8%" />
+<col width="7%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Boy</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+<th align="right">5</th>
+<th align="right">6</th>
+<th align="right">7</th>
+<th align="right">8</th>
+<th align="right">9</th>
+<th align="right">10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{Composition A}\)</span></td>
+<td align="right">13.2 (L)</td>
+<td align="right">8.2 (L)</td>
+<td align="right">10.9 (R)</td>
+<td align="right">14.3 (L)</td>
+<td align="right">10.7 (R)</td>
+<td align="right">6.6 (L)</td>
+<td align="right">9.5 (L)</td>
+<td align="right">10.8 (L)</td>
+<td align="right">8.8 (R)</td>
+<td align="right">13.3 (L)</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{Composition B}\)</span></td>
+<td align="right">14.0 (R)</td>
+<td align="right">8.8 (R)</td>
+<td align="right">11.2 (L)</td>
+<td align="right">14.2 (R)</td>
+<td align="right">11.8 (L)</td>
+<td align="right">6.4 (R)</td>
+<td align="right">9.8 (R)</td>
+<td align="right">11.3 (R)</td>
+<td align="right">9.3 (L)</td>
+<td align="right">13.6 (R)</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{Difference (B - A)  }\)</span></td>
+<td align="right">0.8</td>
+<td align="right">0.6</td>
+<td align="right">0.3</td>
+<td align="right">-0.1</td>
+<td align="right">1.1</td>
+<td align="right">-0.2</td>
+<td align="right">0.3</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.3</td>
+</tr>
+</tbody>
+</table>
+<p>Composition A is currently being used, but Composition B is cheaper. Use a permutation test based on the difference in mean wear between the compositions to assess whether composition B is less durable than composition A.</p>
+<p>[Hint: consider finding by inspection the combinations of compositions that give test statistics that are as or more extreme than that of the above data. Calculation in <code>R</code> is much trickier, do doable: if you take this route, modifying <code>expand.grid(c(-1, 1), c(-1, 1))</code> to have ten <code>c(-1, 1)</code> vectors might help.]</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We first notice that variation in amounts of wear between boys is fairly large compared to that between the left and right feet of each boy. Hence we can and should treat our data as *paired*. Our hypotheses are that for the ten boys \begin{align*} H_0&:\text{there is no difference in mean wear between compositions A and B,}\\ H_1&:\text{composition B's mean wear is greater than composition A's.} \end{align*} So we are interested in a one-sided test.  -->
+<!-- We'll start by reading in our data and calculating their observed test statistic, which is the mean difference in wear. -->
+<!-- Our observed test statistic is then $t_{\text{obs}} = 0.41$. Under $H_0$, if we re-label the shoes of a given boy as compositions A and B at random, ensuring one of each, then we should be creating labels consistent with $H_0$. There are $2^{10} = 1024$ unique arrangements of the ten pairs that we can then create. Hence our test statistics under the permutation null distribution are given by \[T = \dfrac{\pm 0.8\pm0.6\pm0.3\pm0.1\pm1.1\pm0.2\pm0.3\pm0.5\pm0.5\pm0.3}{10}.\]  -->
+<!-- Large values of $T$ will cast doubt on $H_0$ given $H_1$. By inspection, we note that more extreme (i.e. larger) test statistics will arise in the permutation null distribution if compositions A and B are swapped for boys 4 or 6, or both. Hence in the permutation null distribution there are *three* test statistics that are larger than our observed test statistic and so $\text{Pr}(T > t_{\text{obs}}) = 3/1024$. If the compositions for boys 4 and 6 are both swapped, then we can swap those of boy 3, 7 or 10, and we get a test statistic equal to that we observed. So in the permutation null distribution there are *four* test statistics that are as large as our observed test statistic, as we must include the observed test statistic. Hence $\text{Pr}(T = t_{\text{obs}}) = 4/1024$ and so the test's $p$-value is $\text{Pr}(T \geq t_{\text{obs}}) = 7/1024 \simeq 0.007$. -->
+<!-- Alternatively, we could do this by brute force in `R`. We first need to calculate the 1024 test statistics in the permutation null distribution. Here's one option for doing this, which stores the test statistics in `T_perm`. -->
+<!-- Then we can calculate the $p$-value for the test, which is the proportion of test statistics as or more extreme than that observed. -->
+<!-- The test's $p$-value is 0.007, as before. We reject $H_0$ at the 1% significance level in favour of composition B having greater mean wear than composition A. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-21" class="section level2 hasAnchor">
+<h2>Question 21<a href="nonparametric-tests-for-two-dependent-samples.html#question-21" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(5.6.2) The following data are mandible lengths (mm) of ten male and ten female golden jackals (Canis aureus) in the collection at the British Natural History Museum. The two samples are independent.</p>
+<p>Use a randomisation test at the 5% significance level to assess whether or not there is evidence of a difference in mean mandible length between the females and males in this sample.</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We'll start by stating our hypotheses, which are that between females and males and *within this sample* \begin{align*} H_0&:\text{there is no difference between mean mandible lengths,}\\ H_1&:\text{there is a difference between mean mandible lengths.} \end{align*} -->
+<!-- Then we'll load the data and calculate our observed test statistic, `test_stat`, -->
+<!-- which is $t_{\text{obs}} = -4.80$.  -->
+<!-- Next we'll concatenate the vectors of female and male mandible lengths into vector `both`. -->
+<!-- For the randomisation test, we'll randomly select ten of the 20 mandible lengths, label these as "female", and repeat this 10000 times. So, we'll create a vector, `T_rand`, to store the test statistics calculated for each resample, and will use a `for` loop to perform the randomisations. -->
+<!-- The randomisation test's $p$-value is the then the proportion of resampled test statistics that are as extreme or more extreme than that observed. Given that we have a two-sided test, the $p$-value can be calculated with -->
+<!-- which gives a $p$-value of 0.004, and hence we reject $H_0$ at the 5% significance level, and conclude that *in this sample* there is evidence to favour a mean difference in mandible lengths between females and males, compared with no difference. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-22" class="section level2 hasAnchor">
+<h2>Question 22<a href="nonparametric-tests-for-two-dependent-samples.html#question-22" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The data <code>Nile</code>, which are built in to <code>R</code>, give annual flows of the river Nile, measured in <span class="math inline">\(10^8\text{m}^3\)</span>, at Aswan, Egypt, for each year from 1871 to 1970. Use a randomisation test to assess whether flows have changed monotonically between 1900 and 1970. State the hypotheses that you are testing. Plot the annual flows between 1900 and 1970, and comment on whether visual inspection supports the results of your hypothesis test. [Note that <code>Nile</code> is a time series object, i.e. of class <code>ts</code>, and you may want to coerce it be of class <code>numeric</code> with <code>as.numeric()</code>. Also note that, to study 1900 to 1970, you will need to somehow remove the first 30 annual flows.]</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- To assess whether flows have changed monotonically, we can consider whether there is a relationship between year and annual flow. Our hypotheses are -->
+<!-- \begin{align*} H_0&:\text{years and annual flows are not monotonically related,}\\ H_1&:\text{years and annual flows are momotonically related.} \end{align*} We'll use Spearman's rank correlation coefficient as our test statistic. We first need to extract the relevant data, i.e. the annual flows between 1900 and 1970 and their years. -->
+<!-- Then our observed test statistic is -->
+<!-- i.e. $t_{\text{obs}} = 0.094$. We approximate the test statistic's sampling distribution by randomly pairing the years and annual flows, which we repeat 10000 times, storing each test statistic in `T_rand`.  -->
+<!-- Our $p$-value for the test is the proportion of sampled test statistics that are as or more extreme than that observed, i.e. with absolute values at least as large as $|t_{\text{obs}}|$. We can calculate this with -->
+<!-- which gives a $p$-value of $0.436$. Hence we don't reject $H_0$, i.e. don't reject that flows haven't monotonically increased or decreased between 1900 and 1970. -->
+<!-- We can plot the annual flows between 1900 and 1970 with -->
+<!-- ```{r, fig.cap = "Annual flows of river Nile between 1900 and 1970."} -->
+<!-- ggplot() + geom_line(aes(x = years_20C, y = Nile_20C)) + -->
+<!--   xlab("Year") + ylab("Annual flow (10^8 m^3)") -->
+<!-- ``` -->
+<!-- which shows little visual evidence that flows have changed in a monotonic way over time. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-23" class="section level2 hasAnchor">
+<h2>Question 23<a href="nonparametric-tests-for-two-dependent-samples.html#question-23" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(5.6.1, 5.6.2, 5.6.3, 5.7.1) The <code>gapminder.csv</code> data from the Gapminder website give the populations, <code>population</code>, average incomes, <code>income</code> (US dollars), and life expectancies, <code>life</code>, for 184 countries, <code>country</code>. Use a permutation or randomisation test at the 5% significance level to assess whether wealthier people from the 12 most populated countries have longer life expectancies. State your hypotheses and test statistics.</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We'll start by loading a taking a small look at the data. -->
+<!-- We then need to extract the 12 most populated countries. There are various ways of achieving this; here is one example -->
+<!-- which puts `population` in decreasing order, finds the top 12, extracts their corresponding rows from `gapminder` and then stores them as `gapminder2`. Let's start by plotting the life expectancies for these 12 countries against average incomes. -->
+<!-- ```{r, fig.cap = "Life expectancy against average income for 12 most populated countries."} -->
+<!-- ggplot(gapminder2, aes(x = income, y = life)) + geom_point() -->
+<!-- ``` -->
+<!-- There are signs of a relationship, but possibly not a linear one. Hence we'll consider whether there's a monotonic relationship in our hypotheses. -->
+<!-- Our hypotheses are that *for these 12 countries* \begin{align*} H_0&:\text{there is no monotonic relationship between income and life expectancy,}\\ H_1&:\text{income and life expectancy have an increasing monotonic relationship.} \end{align*} -->
+<!-- Because our hypotheses centre on an increasing monotonic relationship, we're interested in large values of Spearman's rank correlation coefficient as our test statistic. -->
+<!-- We'll start by calculating our observed test statistic, which we'll store as `test_stat` -->
+<!-- i.e. the sample's Spearman's rank correlation coefficient is 0.771.  -->
+<!-- We then note that there are $12! = 479001600$ ways in which we can reallocate the life expectancies to the incomes. It is impractical to use all of them, so we should prefer a randomisation test over a permutation test. For the randomisation test we'll use 10^{5} resamples, calculate the test statistic for each resample, and store them in `T_rand`.  -->
+<!-- If our observed test statistic is extreme relative to the sample that's representative of the null hypothesis then we'll reject the null hypothesis. We can quantify this through the test's $p$-value, which is the proportion of resample test statistics that are as or more extreme than the one we've observed, i.e. as large or larger test statistics. -->
+<!-- The test's $p$-value is 0.002. Hence we reject the null hypothesis at the 1% significance level in favour of life expectancies increasing monotonically with average income for the 12 most populated countries. -->
+<!-- [Note that had we considered hypotheses based on a *linear* relationship and used Pearson's correlation coefficient, our test would have had a $p$-value of 0.003, and so wouldn't have changed our conclusion.] -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-24" class="section level2 hasAnchor">
+<h2>Question 24<a href="nonparametric-tests-for-two-dependent-samples.html#question-24" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(5.7.2) An experiment was conducted into whether certain numbers presented in random order were perceived
+more rapidly in the right (RVF) or left visual fields (LVF) of humans, or
+whether there was no difference. For each of 12 subjects the mean response times (ms) to digital
+information in each field was measured.</p>
+<p>Use the Wilcoxon signed rank test at the 1% significance level to assess whether there is a difference in perception times between the LVF and RVF. Perform the test by hand.</p>
+<!-- *** -->
+<!--   <details><summary> -->
+<!--   **Solution** -->
+<!--   </summary> -->
+<!--   Let $x_i$ and $y_i$ denote LVF and RVF perception times of subject $i$, $i = 1, \ldots, 12$, respectively. We suppose that differences in times $d_i = y_i - x_i$ are drawn from a symmetric pdf, $f_D(d - \mu)$, and test \begin{align*} H_0: \mu = 0, \\ H_0: \mu \neq 0,\end{align*} since we're interested in perception being more rapid in either visual field. It's then useful to add four rows to the table, which are $I(x_i > y_i)$, $I(y_i > x_i)$, $|y_i - x_i|$ and $r_i = \text{rank}(|y_i - x_i|)$. -->
+<!-- \begin{tabular}{c|rrrrrrrrrrrr} -->
+<!-- Subject & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline -->
+<!-- $I(x_i > y_i)$ & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1\\ -->
+<!-- $I(y_i > x_i)$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\ -->
+<!-- $|y_i - x_i|$ & 7 & 16 & 30 & 2 & 16 & 33 & 14 & 20 & 20 & 1 & 19 & 22\\ -->
+<!-- $r_i$ & 3 & 5.5 & 11 & 2 & 5.5 & 12 & 4 & 8.5 & 8.5 & 1 & 7 & 10 -->
+<!-- \end{tabular} -->
+<!-- Then $t_{\text{obs}} = \min(3 + 5.5 + 11 + 2 + 5.5 + 12 + 4 + 8.5 + 8.5 + 7 + 10, 1)$ and so $t_{\text{obs}} = \min(77, 1) = 1$. The $p$-value for the test is therefore $\text{Pr}(|T| \geq |t_{\text{obs}}|) = 2 \text{Pr}(T \leq t_{\text{obs}})$, which we can evaluate in \texttt{R} with -->
+<!-- and gives an approximate $p$-value of 0.0020. As $p$-value $< 0.01$, there is strong evidence to reject $H_0$ in favour of perception times in one visual field being more rapid than the other.  -->
+<!-- [Note that a normal approximation (which we'd usually do for $n \geq 20$) would have had mean $n(n + 1) / 4 = 39$ and variance $n(n + 1)(2n + 2) / 24 = 162.5$. This would have led to a test statistic of $z_{\text{obs}} = -2.981$, and in turn a $p$-value of $\text{Pr}(|Z| \geq |z_{\text{obs}}|) = 2 \text{Pr}(Z \leq z_{\text{obs}}) = 0.0029$, and hence the same conclusion as reached above.] -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-25" class="section level2 hasAnchor">
+<h2>Question 25<a href="nonparametric-tests-for-two-dependent-samples.html#question-25" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Recall the happiness data of Question 17. We can consider the scores for 2016 and 2019 as <em>paired</em> scores for each country. For the <span class="math inline">\(n = 148\)</span> countries, let <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> denote the happiness scores in 2016 and 2019, respectively, for country <span class="math inline">\(i\)</span>, <span class="math inline">\(i = 1, \ldots, n\)</span>. Then let <span class="math inline">\(r_i\)</span> denote the rank of <span class="math inline">\(|y_i - x_i|\)</span>. Suppose that the differences <span class="math inline">\(y_i - x_i\)</span> are drawn from a symmetric pdf. Given that <span class="math display">\[ \sum_{i = 1}^n I(x_i &gt; y_i) r_i = 4329.5\hspace{.8cm}\text{and}\hspace{.8cm}\sum_{i = 1}^n I(y_i &gt; x_i) r_i = 6696.5,\]</span></p>
+<p>use the Wilcoxon signed rank test at the 5% significance level to assess whether happiness scores in 2019 were higher than in 2016. State the hypotheses that you are testing.</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We assume that the differences in scores, $d$, for each country are drawn from the symmetric pdf $f_D(d - \mu)$ and test \begin{align*} H_0 : \mu = 0,\\  H_1 : \mu > 0.\end{align*} For the one-sided Wilcoxon signed rank test we use the observed test statistic $t_{\text{obs}, X} = 4329.5$. Our sample size, $n = 148$, is sufficiently large, i.e. $\geq 20$, that we can use a normal approximation to the sampling distribution of our test statistic under the null hypothesis. This normal distribution has mean $n(n + 1)/4 = 5513$  and variance $n(n + 1)(2n + 1)/24 \simeq 272893.5$. Hence our test statistic for the normal approximation is $z_{\text{obs}} \simeq (4329.5 - 5513) / \sqrt{272893.5} \simeq -2.266$. For the one-sided test, where $Z$ is a standard normal random variable, the $p$-value is $\text{Pr}(Z \leq z_{\text{obs}}) = \text{Pr}(Z \leq -2.266) \simeq 0.012$. Hence we reject $H_0$ in favour of happiness scores being greater in 2019 than in 2016 at the 5% level. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+<div id="question-26" class="section level2 hasAnchor">
+<h2>Question 26<a href="nonparametric-tests-for-two-dependent-samples.html#question-26" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p> The <code>sleep</code> data, which are built in to <code>R</code>, quantify the extra sleep of ten patients caused by two different soporific drugs, compared to a control setting. In the <code>sleep</code> data, the amount of extra sleep compared to control is identified by <code>extra</code>, patients are identified by variable <code>ID</code> and their drug given by <code>group</code> (which takes value <code>1</code> or <code>2</code>). Consider the Wilcoxon signed rank test for assessing whether sleep amount differs between drug given. State the hypotheses that you are testing, and any assumptions made. You may use <code>wilcox.test()</code> in <code>R</code> or perform calculations by hand (or both!).</p>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- First, we note that for the Wilcoxon signed rank test to be appropriate, the differences need to be symmetrically distributed. We'll start by finding the differences. -->
+<!--                                    There are only ten differences, but a plot can still be informative. We'll use a rug plot. -->
+<!-- ```{r, fig.cap = "Plot of differences in extra sleep between patient groups (drug 2 - drug 1).", fig.height = 2} -->
+<!-- ggplot() + geom_rug(aes(x = d), length = unit(0.1, "npc"), size = 1) -->
+<!-- ``` -->
+<!-- When interpreting such a plot from such a small sample of data, we're looking for clear evidence of asymmetry, which there isn't. We can proceed with the Wilcoxon signed rank test. Our hypotheses are that differences in extra sleep amounts, $d$, are drawn from a symmetric pdf $f_D(d - \mu)$ with \begin{align*} H_0&:\mu = 0,\\ H_1&:\mu \neq 0. \end{align*} -->
+<!-- The following performs the two-sided Wilcoxon signed rank test in `R`. -->
+<!-- We see that the resulting observed test statistic is $t_{\text{obs}} = 0.000$, which gives a $p$-value of 0.009. Hence we reject $H_0$ in favour of $H_1$ at the 1% significance level, and conclude that there is evidence that amounts of extra sleep *do* differ between soporific drug given. Note the warnings that `R` flags, and so we should treat the $p$-value as approximate. -->
+<!-- The following performs the calculation by hand. -->
+<!-- The above calculations remove any zero differences to give a $p$-value, `p_value`, of 0.004. (Note that this differs slightly from `R`'s $p$-value with `wilcox.test()` because `R` makes an extra adjustment for ties in the ranks of the absolute differences, but the conclusion doesn't change here.) -->
+<!-- </details> -->
+<!-- *** -->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="nonparametric-tests-for-two-independent-samples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

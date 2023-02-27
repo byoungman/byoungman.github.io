@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Estimating cdfs and pdfs, and testing their goodness of fit | Topic 5: Nonparametric statistics</title>
+  <meta name="description" content="Estimating cdfs and pdfs, and testing their goodness of fit | Topic 5: Nonparametric statistics" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Estimating cdfs and pdfs, and testing their goodness of fit | Topic 5: Nonparametric statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estimating cdfs and pdfs, and testing their goodness of fit | Topic 5: Nonparametric statistics" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="kernel-density-estimation.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-4"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-6"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-7"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-8"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-9"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-10"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-11"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation.html"><a href="kernel-density-estimation.html#question-12"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-13"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-14"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-15"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-16"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#question-18"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-19"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-20"><i class="fa fa-check"></i>Question 20</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-21"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-22"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-23"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-24"><i class="fa fa-check"></i>Question 24</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-25"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples.html"><a href="nonparametric-tests-for-two-dependent-samples.html#question-26"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-13-1"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-14-1"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-15-1"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-16-1"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-1.html"><a href="nonparametric-tests-for-two-independent-samples-1.html#question-18-1"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html"><i class="fa fa-check"></i>Nonparametric tests for two independent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-13-2"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-14-2"><i class="fa fa-check"></i>Question 14</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-15-2"><i class="fa fa-check"></i>Question 15</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-16-2"><i class="fa fa-check"></i>Question 16</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples.html"><a href="nonparametric-tests-for-two-independent-samples.html#happy"><i class="fa fa-check"></i>Question 17</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-independent-samples-2.html"><a href="nonparametric-tests-for-two-independent-samples-2.html#question-18-2"><i class="fa fa-check"></i>Question 18</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-19-1"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-20-1"><i class="fa fa-check"></i>Question 20</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-21-1"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-22-1"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-23-1"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-24-1"><i class="fa fa-check"></i>Question 24</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-25-1"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-1.html"><a href="nonparametric-tests-for-two-dependent-samples-1.html#question-26-1"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html"><i class="fa fa-check"></i>Nonparametric tests for two dependent samples</a>
+<ul>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-19-2"><i class="fa fa-check"></i>Question 19</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-21-2"><i class="fa fa-check"></i>Question 21</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-22-2"><i class="fa fa-check"></i>Question 22</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-23-2"><i class="fa fa-check"></i>Question 23</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-25-2"><i class="fa fa-check"></i>Question 25</a></li>
+<li class="chapter" data-level="" data-path="nonparametric-tests-for-two-dependent-samples-2.html"><a href="nonparametric-tests-for-two-dependent-samples-2.html#question-26-2"><i class="fa fa-check"></i>Question 26</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-1.html#question-2-1"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><i class="fa fa-check"></i>Estimating cdfs and pdfs, and testing their goodness of fit</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html"><a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit-2.html#question-2-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-3-1"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-4-1"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-5-1"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-6-1"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-8-1"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-9-1"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-10-1"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-11-1"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-1.html"><a href="kernel-density-estimation-1.html#question-12-1"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html"><i class="fa fa-check"></i>Kernel density estimation</a>
+<ul>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-3-2"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-4-2"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-5-2"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-6-2"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-7-2"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-8-2"><i class="fa fa-check"></i>Question 8</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-9-2"><i class="fa fa-check"></i>Question 9</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-10-2"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-11-2"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="kernel-density-estimation-2.html"><a href="kernel-density-estimation-2.html#question-12-2"><i class="fa fa-check"></i>Question 12</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Topic 5: Nonparametric statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit" class="section level1 hasAnchor">
+<h1>Estimating cdfs and pdfs, and testing their goodness of fit<a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="question-1" class="section level2 hasAnchor">
+<h2>Question 1<a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#question-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let <span class="math inline">\(y_1, \ldots, y_n\)</span> denote the Old Faithful geyser eruption times and assume that these are independent. These are available in as variable <code>eruptions</code> within dataset <code>faithful</code>, which is built in to <code>R</code>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>(5.2.2) Suppose that the eruption times are normally distributed with unknown mean and unknown variance. Use unbiased method-of-moments estimators to estimate this normal distribution.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We'll start by checking we have access to the data. -->
+<!-- ```{r} -->
+<!-- head(faithful) -->
+<!-- ``` -->
+<!-- We'll use the sample mean as an estimate of $\mu$, so $\hat \mu =$ 3.4878, and the sample variance as an unbiased estimate of $\sigma^2$, so $\hat \sigma^2 =$ 1.3027, which we'll store in `R` for later use. -->
+<!-- Hence our parametric estimate of the distribution of eruption times, assuming times are normally distributed, is $Y \sim N(3.488, 1.141^2)$, where $Y$ denotes a random eruption time. -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="2" style="list-style-type: lower-alpha">
+<li>(5.2.4) Plot the edf of the eruption times alongside your parametric estimate of their normal cdf. Compare the two cdfs.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- The following plots the edf and superimposes the $N(3.488, 1.141^2)$ cdf. -->
+<!-- ```{r, fig.cap = "Fitted normal cdf alongside edf for Old Faithful eruption times."} -->
+<!-- ggplot(faithful, aes(x = eruptions)) + stat_ecdf(geom = "point") + -->
+<!--   stat_function(fun = pnorm, args = list(mean = mu_hat, sd = sigma_hat)) -->
+<!-- ``` -->
+<!-- There is a clear difference between the two cdfs. The edf plateaus around 3 minutes (which is consistent with two modes being visible in the pdf), whereas the parametric normal estimate shows are fairly regularly increasing form (which suggests one mode).  -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="3" style="list-style-type: lower-alpha">
+<li>(5.2.5) Plot a histogram of the eruption times. Comment on the histogram.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- The following plots a histogram and specifies 20 bins. -->
+<!-- ```{r, fig.cap = "Histogram of Old Faithful eruption times."} -->
+<!-- ggplot(faithful, aes(x = eruptions)) + geom_histogram(bins = 20) -->
+<!-- ``` -->
+<!-- The histograms shows two bumps, which suggests that distribution of eruption times has two modes (one around 2 minutes and one around 4.5 minutes). -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="4" style="list-style-type: lower-alpha">
+<li>(5.3.1) Produce a quantile-quantile plot to compare the eruption times with your parametric normal distribution fit. Comment on how this corresponds to your comments from parts (b) and (c).</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- There are various ways of producing quantile--quantile plots. I've opted for this one. -->
+<!-- ```{r, fig.cap = "\\label{F:qq1}Quantile-quantile plot for normal distribution fit to Old Faithful eruption times."} -->
+<!-- ggplot(faithful, aes(sample = eruptions)) + geom_abline() + -->
+<!--   stat_qq(distribution = qnorm, dparams = list(mean = mu_hat, sd = sigma_hat)) -->
+<!-- ``` -->
+<!-- Were the normal distribution an adequate fit, the points should roughly follow the superimposed line, which has intercept zero and slope 1, but they don't. Deviating from the line by starting above, going below, going above, and then ending below, is consistent with the assumed distribution (normal) having the wrong number of modes. -->
+<!-- Note that we could have produced the quantile-quantile plot slightly more 'manually', i.e. by creating the plotting data ourselves. The following does this, but the resulting plot is suppressed because it's identical to Figure \ref{F:qq1}. -->
+<!-- ```{r, echo = solv[1], eval = FALSE} -->
+<!-- n <- length(faithful$eruptions) -->
+<!-- qq_df <- data.frame(y = sort(faithful$eruptions)) -->
+<!-- qq_df$x <- qnorm((1:n)/(n + 1), mu_hat, sigma_hat) -->
+<!-- ggplot(qq_df, aes(x = x, y = y)) + geom_point() + geom_abline() + -->
+<!--   labs(x = "theoretical", y = "sample") -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="5" style="list-style-type: lower-alpha">
+<li>(5.3.2) Use Pearson’s chi-squared test to assess the normal distribution fit to the eruption times using the following bins <span class="math display">\[(-\infty, 2.0), [2.0, 2.5), [2.5, 3.0), [3.0, 3.5), [3.5, 4.0), [4.0, 4.5), [4.5, 5.0), [5.0, \infty)\]</span> and state the hypotheses that you are testing.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- Let $Y$ denote a random eruption time. The hypotheses are $H_0: Y$ distributed $N(3.488, 1.141^2)$ versus $H_1: Y$ \emph{not} distributed $N(3.488, 1.141^2)$. -->
+<!-- Let's start by specifying the bins in \texttt{R}, which we'll do by defining their unique boundaries. -->
+<!-- Next we'll count how many eruption times fall within each bin. There are various ways of doing this in \texttt{R}. Using \texttt{cut()} and then \texttt{table()} seems one of the tidiest. -->
+<!-- Let $\Phi(\,; \mu, \sigma^2)$ denote the $N(\mu, \sigma^2)$ cdf. Under a $N(\mu, \sigma^2)$ model the expected number of eruption times in a bin with boundary $(a, b]$ is then $n[\Phi(b; \mu, \sigma^2)$ - $\Phi(a; \mu, \sigma^2)]$, for sample size $n$. Hence we need to evaluate $\Phi(-\infty; \mu, \sigma^2), \Phi(2.0; \mu, \sigma^2), \ldots, \Phi(5.0; \mu, \sigma^2), \Phi(\infty; \mu, \sigma^2)$. The following command does this. -->
+<!-- Then we can calculate the expected number of eruption times per bin with -->
+<!-- and put the observed and expected times into a tidy contingency table. -->
+<!-- The observed test statistic for Pearson's chi-squared test is then -->
+<!-- \begin{align*} x_{obs}^2 = \sum_{j=1}^J \dfrac{(O_j - E_j)^2}{E_j} &= \dfrac{(51 - 26.167)^2}{26.167} + \dfrac{(41 - 26.438)^2}{26.438} + \ldots + \dfrac{(4 - 25.187)^2}{25.187} \\ &= 197.678,\end{align*} -->
+<!-- which we compare against the chi-squared distribution with 5 degrees of freedom. As $\text{Pr}(\chi_{5}^2 > x_{obs}^2) \simeq 0.0000$, there is incredibly strong evidence to reject $H_0$, i.e. to reject that eruption times are $N(3.488, 1.141^2)$ distributed.  -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Summarise your findings from parts (a)–(e) above in terms of whether the eruption times are normally distributed.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We fit the 'best' normal distribution based on method-of-moments. The edf doesn't match the parametric cdf estimate, the histogram has two modes, which the normal distribution doesn't, the quantile-quantile plot points systematically and considerably deviate from the zero intercept unit slope line, and there's overwhelming evidence to reject that eruption times are $N(3.488, 1.141^2)$ distributed from Pearson's chi-squared test. All the findings support each other, which is that the $N(3.488, 1.141^2)$ distribution provides a bad representation of eruption times.  -->
+<!-- *** -->
+</div>
+<div id="question-2" class="section level2 hasAnchor">
+<h2>Question 2<a href="estimating-cdfs-and-pdfs-and-testing-their-goodness-of-fit.html#question-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The file <code>exeter2019.csv</code> contains daily mean wind speed measurements in knots recorded at Exeter Airport during 2019. Daily mean wind speeds, given by <code>wind_speed</code>, are measured on given dates, given by <code>date</code>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Consider a parametric model for wind speeds that assumes they are normally distributed. Find the normal distribution that fits the wind speeds ‘best’, stating your criteria for best.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We'll start by loading the data -->
+<!-- We can find the best normal distribution fit either by maximum likelihood or moment-based estimates. Except for scaling by $n$, where $n$ is the sample size, as opposed to $n - 1$ when calculating the sample variance, both are identical. -->
+<!-- and so our sample mean is $\hat \mu = 6.799$ and sample variance is $s^2 = 3.515^2$, which means that the $N(6.799, 3.515^2)$ is our best normal distribution estimate. -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Plot the edf of the wind speeds against your parametric distribution estimate and comment on the level of agreement.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- The following plots the edf and parametric cdf estimate. -->
+<!-- ```{r, fig.cap = "Fitted Normal cdf alongside edf for Exeter wind speeds."} -->
+<!-- ggplot(exeter2019, aes(x = wind_speed)) + stat_ecdf(geom = "point") + -->
+<!--   stat_function(fun = pnorm, args = list(mean = mu_hat, sd = sigma_hat)) -->
+<!-- ``` -->
+<!-- Agreement doesn't look particularly good, as there's a systematic difference between the edf and parametric cdf: in comparison to the edf the normal model gives too many low wind speeds ($<$ approx. 9 knots) and too few high wind speeds ($>$ approx. 9 knots). -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Use a quantile-quantile plot to assess the fit of the distribution.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- The following produces a quantile-quantile plot with theoretical plotting positions from the $N(6.799, 3.515^2)$ distribution. -->
+<!-- ```{r, fig.cap = "Quantile-quantile plot for normal distribution fit to Exeter wind speeds."} -->
+<!-- ggplot(exeter2019, aes(sample = wind_speed)) + geom_abline() + -->
+<!--   stat_qq(distribution = qnorm, dparams = list(mean = mu_hat, sd = sigma_hat)) -->
+<!-- ``` -->
+<!-- The quantile-quantile plot does not look good: the points systematically and strongly deviate from the line with zero intercept and unit slope. The sample wind speeds start above the line and then drop below and stay below at about 9 knots, which again is consistent with the normal distribution having too little mass below 9 knots and too much above 9 knots. Perhaps most useful for the quantile-quantile plot is that the theoretical wind speeds reach approximately 60 knots, whereas those observed don't go above 30 knots. -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Use Pearson’s chi-squared test to formally quantify how unlikely wind speeds are to be normally distributed.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- This can either be done with `R`'s `chisq.test()` function, or by hand. Here's the first. -->
+<!-- First we need to choose some bins. We'll use about 15, and let `pretty()` sort these for us -->
+<!-- and end up with -->
+<!-- $J = 19$ bins (noting that `pretty()` doesn't necessarily use the value that we specify, in order to return some 'pretty' values). -->
+<!-- Then we need to count how many data points fall in each bin, which we'll call `O`, short for 'observed'. -->
+<!-- Next we need to find how many points there should be in each bin, if the exponential model is correct, which we'll call `E`, short for 'expected'. -->
+<!-- This gives the contingency table -->
+<!-- We can calculate our test statistic for Pearson's chi-squared test with -->
+<!-- which gives $x_{\text{obs}}^2 = 115.81$. We have $J = 19$ bins and have estimated two parameters; so we compare against the chi-squared distribution with $\nu = 16$ degrees of freedom. The test's $p$-value is Pr$(\chi_{16}^2 > x_{\text{obs}})$, which we can evaluate with -->
+<!-- giving a $p$-value of Pr$(\chi_{16}^2 > x_{\text{obs}}) \simeq 0$, and so there's overwhelming evidence against the N$(6.799, 3.515^2)$ being a good fit to the wind speeds. -->
+<!-- </details> -->
+<!-- *** -->
+<ol start="5" style="list-style-type: lower-alpha">
+<li> Consider the log-Normal distribution as an alternative parametric model for the wind speeds. Note that if <span class="math inline">\(X \sim \text{log-Normal}(\mu, \sigma^2)\)</span> then <span class="math inline">\(\log X \sim N(\mu, \sigma^2)\)</span>. Find the best fitting log-Normal distribution. Then repeat parts (b)–(d). Compare your normal and log-Normal fits.</li>
+</ol>
+<!-- *** -->
+<!-- <details><summary> -->
+<!-- **Solution** -->
+<!-- </summary> -->
+<!-- We'll start by log-transforming the wind speeds, which we'll add to the data frame as `log_wind_speed`, -->
+<!-- and then we'll compute the moment-based estimates, assuming the log-transformed wind speeds are normally distributed,  -->
+<!-- which gives an estimated model of log-N$(1.784, 0.527^2)$. The following then plots the estimated log-Normal cdf against the edf -->
+<!-- ```{r, fig.cap = "Fitted log-Normal cdf alongside edf for Exeter wind speeds."} -->
+<!-- ggplot(exeter2019, aes(x = wind_speed)) + stat_ecdf(geom = "point") + -->
+<!--   stat_function(fun = function(x) pnorm(log(x), mu_hat2, sigma_hat2)) -->
+<!-- ``` -->
+<!-- which looks much better than the normal model. A quantile-quantile plot can be produced with -->
+<!-- ```{r, fig.cap = "Quantile-quantile plot for log-Normal fit to Exeter wind speeds."} -->
+<!-- qlognorm <- function(p, mu, sigma) exp(qnorm(p, mu, sigma)) -->
+<!-- ggplot(exeter2019, aes(sample = wind_speed)) + geom_abline() + -->
+<!--   stat_qq(distribution = qlognorm, dparams = list(mu = mu_hat2, sigma = sigma_hat2)) -->
+<!-- ``` -->
+<!-- which looks okay, but we do see some signs of systematic deviation from the zero intercept unit slope line for large wind speeds: theoretical values tending to be larger than those observed suggests the log-Normal model has too much mass in its tail, or we might say that its tail is too heavy. It's a big improvement over the normal model, though. Finally we'll test the fit of the log-Normal model with Pearson's chi-squared test, using similar calculations to the normal model, and re-using objects where possible. -->
+<!-- Now we have a much larger $p$-value and wouldn't reject the log-Normal$(1.784, 0.527^2)$ model at the 10\% significance level. We conclude that the log-Normal model is better, but still might try a different distribution with a lighter tail. -->
+<!-- </details> -->
+<!-- *** -->
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kernel-density-estimation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
