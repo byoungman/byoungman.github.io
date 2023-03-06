@@ -251,21 +251,21 @@ For each of the above, consider whether your code could be simpler.</p>
 <span id="cb33-6"><a href="chapter-2-exercises.html#cb33-6" aria-hidden="true" tabindex="-1"></a>arr</span></code></pre></div>
 <pre><code>## , , 1
 ## 
-##             [,1]      [,2]       [,3]
-## [1,]  0.01852829 1.0473056 -0.2592206
-## [2,]  0.86081277 0.5086745 -0.3401748
-## [3,]  1.21896401 0.3112035  1.0867826
-## [4,]  1.49584188 1.0007318 -1.6711195
-## [5,] -1.34071218 0.5619797  0.4249433
+##            [,1]       [,2]       [,3]
+## [1,]  0.8218931 -0.9688403 -2.3879345
+## [2,] -1.7921341 -1.6024820  0.2655464
+## [3,]  0.2512576 -0.8949077  0.9172918
+## [4,] -0.3964478 -0.7741494  0.6051076
+## [5,]  1.8004408 -0.7365946 -1.0907391
 ## 
 ## , , 2
 ## 
-##            [,1]       [,2]        [,3]
-## [1,]  2.3299861 -1.6837786 -0.13343698
-## [2,] -0.9998456 -0.3519442  0.06837607
-## [3,] -1.2131911 -0.1470274 -1.66338642
-## [4,] -0.7326111 -0.3669890 -0.32988380
-## [5,] -0.8555092  1.9068747 -0.35500867
+##            [,1]       [,2]       [,3]
+## [1,]  1.1673102 -0.7915397  1.2678849
+## [2,]  0.7645593  1.6012534 -0.4407130
+## [3,]  1.2354591 -1.8336456 -0.1260983
+## [4,] -0.2199513  0.2592462  0.7894997
+## [5,] -2.2831242 -0.8841134 -0.4394766
 ## 
 ## attr(,&quot;name&quot;)
 ## [1] &quot;array1&quot;</code></pre>
@@ -277,22 +277,22 @@ For each of the above, consider whether your code could be simpler.</p>
 <span id="cb35-2"><a href="chapter-2-exercises.html#cb35-2" aria-hidden="true" tabindex="-1"></a>arr[] <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fu">prod</span>(<span class="fu">dim</span>(arr))) <span class="co"># saves names to get the number right</span></span>
 <span id="cb35-3"><a href="chapter-2-exercises.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(arr, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, mean)</span></code></pre></div>
 <pre><code>##           [,1]      [,2]      [,3]      [,4]
-## [1,] 0.3121466 0.4871956 0.4947928 0.5761653
-## [2,] 0.5495020 0.6043454 0.4239962 0.3823278
-## [3,] 0.5578817 0.3790131 0.4533884 0.3233006
-## [4,] 0.3761328 0.6195827 0.3963842 0.6532125</code></pre>
+## [1,] 0.3477707 0.2940597 0.2881157 0.2972613
+## [2,] 0.5562827 0.4840953 0.5090231 0.6291779
+## [3,] 0.4588537 0.7789280 0.5810266 0.6020670
+## [4,] 0.4341657 0.4918228 0.4923778 0.4456080</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="chapter-2-exercises.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(<span class="fu">aperm</span>(arr, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)), <span class="at">dims =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##           [,1]      [,2]      [,3]      [,4]
-## [1,] 0.3121466 0.4871956 0.4947928 0.5761653
-## [2,] 0.5495020 0.6043454 0.4239962 0.3823278
-## [3,] 0.5578817 0.3790131 0.4533884 0.3233006
-## [4,] 0.3761328 0.6195827 0.3963842 0.6532125</code></pre>
+## [1,] 0.3477707 0.2940597 0.2881157 0.2972613
+## [2,] 0.5562827 0.4840953 0.5090231 0.6291779
+## [3,] 0.4588537 0.7789280 0.5810266 0.6020670
+## [4,] 0.4341657 0.4918228 0.4923778 0.4456080</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="chapter-2-exercises.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(<span class="fu">aperm</span>(arr, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)), <span class="at">dims =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##           [,1]      [,2]      [,3]      [,4]
-## [1,] 0.3121466 0.4871956 0.4947928 0.5761653
-## [2,] 0.5495020 0.6043454 0.4239962 0.3823278
-## [3,] 0.5578817 0.3790131 0.4533884 0.3233006
-## [4,] 0.3761328 0.6195827 0.3963842 0.6532125</code></pre>
+## [1,] 0.3477707 0.2940597 0.2881157 0.2972613
+## [2,] 0.5562827 0.4840953 0.5090231 0.6291779
+## [3,] 0.4588537 0.7789280 0.5810266 0.6020670
+## [4,] 0.4341657 0.4918228 0.4923778 0.4456080</code></pre>
 <hr /></li>
 <li><ol style="list-style-type: lower-alpha">
 <li><p>Create a 3-element <code>list</code> of vectors comprising Uniform(0, 1) variates of length 3, 5 and 7, respectively.</p>
@@ -309,9 +309,9 @@ For each of the above, consider whether your code could be simpler.</p>
 <hr />
 <p><strong>Solution</strong></p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="chapter-2-exercises.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(lst, min)</span></code></pre></div>
-<pre><code>## [1] 0.270797176 0.070087912 0.002289944</code></pre>
+<pre><code>## [1] 0.22968523 0.52766822 0.04275739</code></pre>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="chapter-2-exercises.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(lst, which.min)</span></code></pre></div>
-<pre><code>## [1] 1 4 4</code></pre>
+<pre><code>## [1] 2 4 7</code></pre>
 <hr /></li>
 </ol></li>
 <li><p>Use a <code>for()</code> loop to produce the following. [Hint: the function <code>paste()</code> might be useful.]</p>
@@ -404,14 +404,14 @@ Use a <code>while()</code> loop to find which converges to <code>pi</code> in <c
 <p>We see that both perform the same calculation.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="chapter-2-exercises.html#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
 <span id="cb55-2"><a href="chapter-2-exercises.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x)</span></code></pre></div>
-<pre><code>##  [1] 0.4570628 0.9847587 1.4133758 2.2759485 2.8532010 3.1866899 3.5853503
-##  [8] 4.0218177 4.4671381 5.2026190</code></pre>
+<pre><code>##  [1] 0.4283883 1.0062751 1.8371569 2.0998031 2.5382244 2.7096658 2.9770963
+##  [8] 3.8756127 4.5375714 5.0659235</code></pre>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="chapter-2-exercises.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_cumsum</span>(x)</span></code></pre></div>
-<pre><code>##  [1] 0.4570628 0.9847587 1.4133758 2.2759485 2.8532010 3.1866899 3.5853503
-##  [8] 4.0218177 4.4671381 5.2026190</code></pre>
+<pre><code>##  [1] 0.4283883 1.0062751 1.8371569 2.0998031 2.5382244 2.7096658 2.9770963
+##  [8] 3.8756127 4.5375714 5.0659235</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="chapter-2-exercises.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_cumsum2</span>(x)</span></code></pre></div>
-<pre><code>##  [1] 0.4570628 0.9847587 1.4133758 2.2759485 2.8532010 3.1866899 3.5853503
-##  [8] 4.0218177 4.4671381 5.2026190</code></pre>
+<pre><code>##  [1] 0.4283883 1.0062751 1.8371569 2.0998031 2.5382244 2.7096658 2.9770963
+##  [8] 3.8756127 4.5375714 5.0659235</code></pre>
 <hr /></li>
 <li><p>Then benchmark its execution time against <code>R</code>’s vectorised function <code>cumsum()</code> for summing 1000 iid <span class="math inline">\(Uniform[0, 1]\)</span> random variables.</p>
 <hr />
@@ -423,10 +423,10 @@ Use a <code>while()</code> loop to find which converges to <code>pi</code> in <c
 <span id="cb61-5"><a href="chapter-2-exercises.html#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">my_cumsum2</span>(x)</span>
 <span id="cb61-6"><a href="chapter-2-exercises.html#cb61-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
-##           expr     min      lq       mean    median        uq     max neval
-##      cumsum(x)     788     898    1641.16    1159.5    1608.5   19174   100
-##   my_cumsum(x) 1800114 1866240 2540822.60 1902709.0 2637711.5 9525957   100
-##  my_cumsum2(x)   59971   63022   71672.38   64569.0   68011.5  113684   100</code></pre>
+##           expr     min      lq       mean  median      uq      max neval
+##      cumsum(x)     807     919    2131.76    1239    1668    75835   100
+##   my_cumsum(x) 1807107 1888532 2929695.80 2216819 3225058 10690942   100
+##  my_cumsum2(x)   64589   66120  114470.16   67345   81467  3635846   100</code></pre>
 <hr /></li>
 </ol></li>
 <li><ol style="list-style-type: lower-alpha">
@@ -452,9 +452,9 @@ Use a <code>while()</code> loop to find which converges to <code>pi</code> in <c
 <span id="cb64-2"><a href="chapter-2-exercises.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(samp1)</span></code></pre></div>
 <pre><code>## samp1
 ##  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 
-##  3  8 23 28 32 36 46 42 55 56 42 52 40 47 28 44 36 31 40 35 34 34 14 19 20 24 
-## 29 30 31 32 33 34 35 36 37 38 39 40 41 43 44 45 46 47 48 49 52 53 54 57 64 
-## 18 15  5 18  8  9  8 11  9  3  2  1  1  5  2  2  2  1  3  1  1  2  1  2  1</code></pre>
+##  4 14 15 28 29 48 34 52 48 56 38 42 56 42 53 45 50 31 34 28 37 20 26 21 22 13 
+## 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 47 48 49 50 52 56 61 68 78 
+##  7 13 11 12 11  8  5  2  7  3  8  2  5  2  3  1  1  1  3  1  2  1  1  2  1  1</code></pre>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="chapter-2-exercises.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(samp1, <span class="at">xlab =</span> <span class="st">&#39;Number of throws&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Histogram of number of throws&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:q10b"></span>
 <img src="main_files/figure-html/q10b-1.png" alt="Histogram of empirical distribution of number of throws for starting method 1." width="672" />
@@ -483,7 +483,7 @@ Figure 2.1: Histogram of empirical distribution of number of throws for starting
 <span id="cb67-15"><a href="chapter-2-exercises.html#cb67-15" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(<span class="fu">length</span>(out))</span>
 <span id="cb67-16"><a href="chapter-2-exercises.html#cb67-16" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb67-17"><a href="chapter-2-exercises.html#cb67-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sixes2</span>()</span></code></pre></div>
-<pre><code>## [1] 33</code></pre>
+<pre><code>## [1] 51</code></pre>
 <hr /></li>
 <li><p>Then use 1000 simulations to empirically estimate the distribution of the number of throws needed.</p>
 <hr />
@@ -492,21 +492,21 @@ Figure 2.1: Histogram of empirical distribution of number of throws for starting
 <span id="cb69-2"><a href="chapter-2-exercises.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(samp2)</span></code></pre></div>
 <pre><code>## samp2
 ##   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21 
-##  32  22  26  26  22  15  17  24  19  14  15  17  19  15  16  18  20  15  22  15 
+##  26  19  24  26  20  25  21  16  14  24  19  24  15  20  14  20  22  11   8  14 
 ##  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41 
-##  12  13  13   9  12  12   9  18  12   8  17  20   8  10   9   3  16   6   8  11 
+##   7  15  16  14  19  17  14  12  14  18  13  10   6   8  10  14  10  11  12   8 
 ##  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61 
-##  11   4  10   5   4   5   8  10   8  10  12   8   7   3  14   5   5   8   9   6 
-##  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80  81 
-##   9   3   3   5   3   7   5   4   6   5   4   3   8   4   4   1   3   4   5   4 
-##  82  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 102 103 
-##   4   4   1   4   4   3   4   1   2   6   6   2   3   1   2   1   3   7   4   1 
-## 104 105 106 107 108 109 110 111 112 113 114 115 116 117 119 123 124 126 129 131 
-##   2   5   3   2   2   1   1   2   2   2   2   1   3   1   2   2   2   2   1   2 
-## 133 134 135 136 138 140 146 147 149 150 152 153 156 157 161 162 166 168 170 173 
-##   2   1   1   1   1   1   2   2   1   1   1   2   1   1   1   1   1   1   1   1 
-## 176 179 182 191 198 199 201 212 221 235 244 246 252 268 397 
-##   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1</code></pre>
+##  10   9   7   7   3   9  12  10   4  12   7   9   5   3   7   3   3   3   4   8 
+##  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  78  79  80  81  82 
+##   3   8   6   3   3   3   7   7   3   6   6   7   5   2   2   1   4   6   4   5 
+##  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 
+##   6   4   1   6   5   2   5   1   2   2   3   3   2   4   2   2   1   3   1   2 
+## 103 104 105 106 107 108 109 110 111 112 115 116 117 118 119 120 121 122 123 124 
+##   1   3   1   1   2   1   2   4   1   2   2   1   1   1   1   1   1   2   3   1 
+## 125 126 127 130 133 134 135 138 139 144 146 148 150 151 153 154 159 160 164 166 
+##   1   3   3   5   3   1   1   1   1   1   3   1   2   1   1   1   1   1   1   3 
+## 170 171 173 176 177 181 184 186 192 195 222 235 238 246 259 286 
+##   1   1   3   2   1   1   2   1   1   1   1   1   1   1   1   1</code></pre>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="chapter-2-exercises.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(samp2, <span class="at">xlab =</span> <span class="st">&#39;Number of throws&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Histogram of number of throws&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:q10d"></span>
 <img src="main_files/figure-html/q10d-1.png" alt="Histogram of empirical distribution of number of throws for starting method 2." width="672" />
@@ -519,7 +519,7 @@ Figure 2.2: Histogram of empirical distribution of number of throws for starting
 <hr />
 <p><strong>Solution</strong></p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="chapter-2-exercises.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp1) <span class="sc">-</span> <span class="fu">mean</span>(samp2)</span></code></pre></div>
-<pre><code>## [1] -24.819</code></pre>
+<pre><code>## [1] -24.859</code></pre>
 <p>So the second approach, by comparing means, takes more throws before the game can begin.</p>
 <hr /></li>
 </ol></li>
@@ -554,9 +554,9 @@ where <span class="math inline">\({\bf x}&#39; = (x_1, \ldots, x_n)\)</span>.</p
 <span id="cb76-4"><a href="chapter-2-exercises.html#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diff2</span>(x)</span>
 <span id="cb76-5"><a href="chapter-2-exercises.html#cb76-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##      expr    min      lq      mean  median       uq      max neval
-##  diff1(x) 62.938 64.9345 130.10940 98.6425 109.9055 3692.486   100
-##  diff2(x)  8.763  9.1185  32.05655 12.5700  13.5670 1991.566   100</code></pre>
+##      expr    min      lq      mean  median      uq      max neval
+##  diff1(x) 64.118 66.9350 114.13696 67.7935 95.2915 3340.227   100
+##  diff2(x)  8.349  8.9065  35.38799  9.3945 13.3100 2430.786   100</code></pre>
 <hr /></li>
 <li><p>The following function assesses whether all elements is a logical vector are <code>TRUE</code>.</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="chapter-2-exercises.html#cb78-1" aria-hidden="true" tabindex="-1"></a>all2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
@@ -580,9 +580,9 @@ where <span class="math inline">\({\bf x}&#39; = (x_1, \ldots, x_n)\)</span>.</p
 <span id="cb84-3"><a href="chapter-2-exercises.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(x1)</span>
 <span id="cb84-4"><a href="chapter-2-exercises.html#cb84-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##      expr    min      lq     mean  median      uq      max neval
-##  all2(x1)  4.746  4.8620 17.70365  4.9025  4.9525 1283.273   100
-##   all(x1) 10.864 10.8925 11.26671 10.9040 10.9270   13.406   100</code></pre>
+##      expr    min      lq     mean  median     uq      max neval
+##  all2(x1)  5.934  7.5525 28.94832  8.6805  8.868 2046.709   100
+##   all(x1) 13.147 20.2860 22.78578 22.4150 23.293   43.318   100</code></pre>
 <p>We see that both take a similar amount of time.</p>
 <hr /></li>
 <li><p>Now swap the first element of <code>x1</code> so that it’s <code>FALSE</code> and repeat the benchmarking.</p>
@@ -598,9 +598,9 @@ where <span class="math inline">\({\bf x}&#39; = (x_1, \ldots, x_n)\)</span>.</p
 <span id="cb90-3"><a href="chapter-2-exercises.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(x1)</span>
 <span id="cb90-4"><a href="chapter-2-exercises.html#cb90-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
-##      expr   min      lq     mean  median      uq   max neval
-##  all2(x1) 15239 15435.5 18731.84 18713.5 19336.5 34552   100
-##   all(x1)   324   423.5   576.20   481.5   578.0  7649   100</code></pre>
+##      expr  min     lq     mean median     uq   max neval
+##  all2(x1) 8370 8693.0 10150.94 8822.0 9354.0 25734   100
+##   all(x1)  189  201.5   282.53  270.5  285.5  1237   100</code></pre>
 <p>Now <code>all2()</code> is much slower. This is because it’s performed a calculation on the entire <code>x1</code> vector, whereas <code>all()</code> has stopped as soon as it’s found a <code>FALSE</code>.</p>
 <hr /></li>
 <li><p>Evaluate the function <code>any2()</code> below against <code>R</code>’s built-in function <code>any()</code> similarly.</p>
@@ -623,8 +623,8 @@ where <span class="math inline">\({\bf x}&#39; = (x_1, \ldots, x_n)\)</span>.</p
 <span id="cb97-4"><a href="chapter-2-exercises.html#cb97-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##      expr    min      lq     mean  median      uq      max neval
-##  any2(x2)  4.735  4.9955 16.20246  5.0960  5.1955 1116.321   100
-##   any(x2) 12.973 13.0940 13.61734 13.5885 13.6110   23.670   100</code></pre>
+##  any2(x2)  7.414  8.5970 28.04956  8.6960 10.0515 1785.789   100
+##   any(x2) 19.438 22.6325 24.89460 22.9905 25.4855   53.715   100</code></pre>
 <p>We again see that both take a similar amount of time.</p>
 <hr /></li>
 <li><p>Now swap the first element of <code>x2</code> so that it’s <code>FALSE</code> and repeat the benchmarking.</p>
@@ -636,9 +636,9 @@ where <span class="math inline">\({\bf x}&#39; = (x_1, \ldots, x_n)\)</span>.</p
 <span id="cb99-4"><a href="chapter-2-exercises.html#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">any</span>(x2)</span>
 <span id="cb99-5"><a href="chapter-2-exercises.html#cb99-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
-##      expr  min     lq    mean median     uq   max neval
-##  any2(x2) 8084 8340.5 8679.47 8530.5 8785.0 16723   100
-##   any(x2)  146  162.5  304.92  257.0  316.5  1103   100</code></pre>
+##      expr  min     lq     mean median      uq   max neval
+##  any2(x2) 9587 9864.5 10430.02  10172 10565.5 22359   100
+##   any(x2)  179  297.5   344.88    340   380.0   794   100</code></pre>
 <p>This time <code>any2()</code> is much slower, for similar reasoning to <code>all2()</code> being much slower than <code>all()</code>, except that <code>any()</code> is stopped when it reaches a <code>TRUE</code>.</p>
 <hr /></li>
 </ol></li>
