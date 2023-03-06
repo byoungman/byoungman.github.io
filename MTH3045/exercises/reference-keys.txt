@@ -8,3 +8,9 @@ eq:man5
 chapter-1-exercises
 chapter-2-exercises
 chapter-3-exercises
+fig:unnamed-chunk-101
+eq:gam1
+eq:negbin
+fig:unnamed-chunk-158
+fig:unnamed-chunk-186
+chapter-4-exercises

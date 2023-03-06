@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Chapter 4 exercises | MTH3045: Statistical Computing: Exercises</title>
+  <meta name="description" content="4 Chapter 4 exercises | MTH3045: Statistical Computing: Exercises" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Chapter 4 exercises | MTH3045: Statistical Computing: Exercises" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Chapter 4 exercises | MTH3045: Statistical Computing: Exercises" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter-3-exercises.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Chapter 1 exercises</a></li>
+<li class="chapter" data-level="2" data-path="chapter-2-exercises.html"><a href="chapter-2-exercises.html"><i class="fa fa-check"></i><b>2</b> Chapter 2 exercises</a></li>
+<li class="chapter" data-level="3" data-path="chapter-3-exercises.html"><a href="chapter-3-exercises.html"><i class="fa fa-check"></i><b>3</b> Chapter 3 exercises</a></li>
+<li class="chapter" data-level="4" data-path="chapter-4-exercises.html"><a href="chapter-4-exercises.html"><i class="fa fa-check"></i><b>4</b> Chapter 4 exercises</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MTH3045: Statistical Computing: Exercises</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter-4-exercises" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Chapter 4 exercises<a href="chapter-4-exercises.html#chapter-4-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol style="list-style-type: decimal">
+<li><p>For <span class="math inline">\(f(x) = \text{e}^{2x}\)</span> approximate <span class="math inline">\(f&#39;(x)\)</span> by finite-differencing with <span class="math inline">\(\delta = 10^{-6}\)</span>. Use <span class="math inline">\(x = -1.0, -0.9, \ldots, 0.9, 1.0\)</span> and find the difference between your approximations and the true derivatives.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>The following calculates the finite-difference approximation to the derivative for <span class="math inline">\(x = -1.0, -0.9, \ldots, 0.9, 1.0\)</span> and <span class="math inline">\(\delta = 10^{-6}\)</span>.</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="chapter-4-exercises.html#cb221-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
+<span id="cb221-2"><a href="chapter-4-exercises.html#cb221-2" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fl">1e-6</span></span>
+<span id="cb221-3"><a href="chapter-4-exercises.html#cb221-3" aria-hidden="true" tabindex="-1"></a>fd <span class="ot">&lt;-</span> (<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> (x <span class="sc">+</span> delta)) <span class="sc">-</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> x)) <span class="sc">/</span> delta</span></code></pre></div>
+<p>Then the following calculates the true derivative for the stated <span class="math inline">\(x\)</span> values as <code>true</code> and calculates its difference from the finite-difference approximations.</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="chapter-4-exercises.html#cb222-1" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> x)</span>
+<span id="cb222-2"><a href="chapter-4-exercises.html#cb222-2" aria-hidden="true" tabindex="-1"></a>fd <span class="sc">-</span> true</span></code></pre></div>
+<pre><code>##  [1] 2.706593e-07 3.306135e-07 4.038067e-07 4.932252e-07 6.023919e-07
+##  [6] 7.357217e-07 8.986189e-07 1.097651e-06 1.340685e-06 1.637477e-06
+## [11] 2.000013e-06 2.442704e-06 2.983658e-06 3.644212e-06 4.450992e-06
+## [16] 5.436657e-06 6.640438e-06 8.110137e-06 9.906360e-06 1.210034e-05
+## [21] 1.477673e-05</code></pre>
+<p>Looking at the range of the differences</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="chapter-4-exercises.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(fd <span class="sc">-</span> true)</span></code></pre></div>
+<pre><code>## [1] 2.706593e-07 1.477673e-05</code></pre>
+<p>we see that finite-differencing overestimates the true derivative for all the <span class="math inline">\(x\)</span> values, but at most only by a small amount, i.e. <span class="math inline">\(&lt; 2 \times 10^{-5}\)</span>.</p>
+<hr /></li>
+<li><p>The normal pdf, denoted <span class="math inline">\(\phi(y; \mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> is its mean and <span class="math inline">\(\sigma^2\)</span> is its variance, is defined as <span class="math display">\[
+\phi(y; \mu, \sigma^2) = \dfrac{\text{d} \Phi(y; \mu, \sigma^2)}{\text{d} y}\]</span> where <span class="math inline">\(\Phi(y; \mu, \sigma^2)\)</span> denotes its corresponding cdf. Confirm this result by finite-differencing for <span class="math inline">\(y = -2, -1, 0, 1, 2\)</span>, <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma^2 = 1\)</span> using <code>pnorm()</code> to evaluate <span class="math inline">\(\Phi(y; \mu, \sigma^2)\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll start by defining the <span class="math inline">\(y\)</span> values</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="chapter-4-exercises.html#cb226-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
+<p>Then we’ll evaluate <span class="math inline">\(\Phi(y; \mu, \sigma^2)\)</span> and <span class="math inline">\(\Phi(y + \delta; \mu, \sigma^2)\)</span> for these <span class="math inline">\(y\)</span> values, choosing <span class="math inline">\(\delta = 10^{-6}\)</span>.</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="chapter-4-exercises.html#cb227-1" aria-hidden="true" tabindex="-1"></a>Fy <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(y)</span>
+<span id="cb227-2"><a href="chapter-4-exercises.html#cb227-2" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fl">1e-6</span></span>
+<span id="cb227-3"><a href="chapter-4-exercises.html#cb227-3" aria-hidden="true" tabindex="-1"></a>Fy2 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(y <span class="sc">+</span> delta)</span></code></pre></div>
+<p>The finite-difference approximation is then given by <span class="math inline">\([\Phi(y + \delta; \mu, \sigma^2) - \Phi(y; \mu, \sigma^2)] / \delta\)</span>, which we can calculate in <code>R</code> with the following.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="chapter-4-exercises.html#cb228-1" aria-hidden="true" tabindex="-1"></a>fy_fd <span class="ot">&lt;-</span> (Fy2 <span class="sc">-</span> Fy) <span class="sc">/</span> delta</span>
+<span id="cb228-2"><a href="chapter-4-exercises.html#cb228-2" aria-hidden="true" tabindex="-1"></a>fy_fd</span></code></pre></div>
+<pre><code>## [1] 0.05399102 0.24197085 0.39894228 0.24197060 0.05399091</code></pre>
+<p>We can then compare this to <code>R</code>’s <code>dnorm()</code> function</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="chapter-4-exercises.html#cb230-1" aria-hidden="true" tabindex="-1"></a>fy <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y)</span>
+<span id="cb230-2"><a href="chapter-4-exercises.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(fy, fy_fd)</span></code></pre></div>
+<pre><code>## [1] &quot;Mean relative difference: 3.53179e-07&quot;</code></pre>
+<p>and see that the two are approximately equal. (We shouldn’t expect exact equality because <code>pnorm()</code> is only an approximation to <span class="math inline">\(\Phi(y; \mu, \sigma^2)\)</span>, since the normal distribution’s cdf doesn’t have closed form, and because finite-differencing is only an approximation.)</p>
+<hr /></li>
+<li><p>The Rosenbrock function (sometimes called the banana function) is given by <span class="math display">\[f(\mathbf{x})=(a - x_1)^2 + b (x_2 - x_1^2)^2,\]</span> where <span class="math inline">\(\mathbf{x} = (x_1, x_2)^{\text{T}}\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Write a function, <code>rosenbrock(x, a, b)</code>, to evaluate the Rosenbrock function in <code>R</code> for vector <span class="math inline">\(\mathbf{x} =\)</span> <code>x</code> and scalars <span class="math inline">\(a =\)</span> <code>a</code> and <span class="math inline">\(b =\)</span> <code>b</code>, with default values <code>a = 1</code> and <code>b = 100</code>, and evaluate the function at <span class="math inline">\(\mathbf{x}_0 = (1, 2)^{\text{T}}\)</span> with the default values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="chapter-4-exercises.html#cb232-1" aria-hidden="true" tabindex="-1"></a>rosenbrock <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">100</span>) {</span>
+<span id="cb232-2"><a href="chapter-4-exercises.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to evaluate Rosenbrock&#39;s banana function</span></span>
+<span id="cb232-3"><a href="chapter-4-exercises.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x, a and b are scalars</span></span>
+<span id="cb232-4"><a href="chapter-4-exercises.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
+<span id="cb232-5"><a href="chapter-4-exercises.html#cb232-5" aria-hidden="true" tabindex="-1"></a>(a <span class="sc">-</span> x[<span class="dv">1</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> b <span class="sc">*</span> (x[<span class="dv">2</span>] <span class="sc">-</span> x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb232-6"><a href="chapter-4-exercises.html#cb232-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb232-7"><a href="chapter-4-exercises.html#cb232-7" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb232-8"><a href="chapter-4-exercises.html#cb232-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rosenbrock</span>(x0)</span></code></pre></div>
+<pre><code>## [1] 100</code></pre>
+<p>It’s also useful to plot the function, so that we know what we’re dealing with. The following gives a contour plot and coloured surface plot.</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="chapter-4-exercises.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb234-2"><a href="chapter-4-exercises.html#cb234-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
+<span id="cb234-3"><a href="chapter-4-exercises.html#cb234-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="fl">1.5</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
+<span id="cb234-4"><a href="chapter-4-exercises.html#cb234-4" aria-hidden="true" tabindex="-1"></a>x12_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> x1, <span class="at">x2 =</span> x2)</span>
+<span id="cb234-5"><a href="chapter-4-exercises.html#cb234-5" aria-hidden="true" tabindex="-1"></a>f12 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">apply</span>(x12_grid, <span class="dv">1</span>, rosenbrock), <span class="fu">length</span>(x1))</span>
+<span id="cb234-6"><a href="chapter-4-exercises.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(x1, x2, f12, <span class="at">nlevels =</span> <span class="dv">20</span>)</span>
+<span id="cb234-7"><a href="chapter-4-exercises.html#cb234-7" aria-hidden="true" tabindex="-1"></a>x1_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x12_grid<span class="sc">$</span>x1, <span class="fu">length</span>(x1))</span>
+<span id="cb234-8"><a href="chapter-4-exercises.html#cb234-8" aria-hidden="true" tabindex="-1"></a>x2_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x12_grid<span class="sc">$</span>x2, <span class="fu">length</span>(x1))</span>
+<span id="cb234-9"><a href="chapter-4-exercises.html#cb234-9" aria-hidden="true" tabindex="-1"></a>plot3D<span class="sc">::</span><span class="fu">surf3D</span>(x1_mat, x2_mat, f12, <span class="at">colvar =</span> f12, <span class="at">colkey =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb234-10"><a href="chapter-4-exercises.html#cb234-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">box =</span> <span class="cn">TRUE</span>, <span class="at">bty =</span> <span class="st">&quot;b&quot;</span>, <span class="at">phi =</span> <span class="dv">20</span>, <span class="at">theta =</span> <span class="dv">15</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-101"></span>
+<img src="main_files/figure-html/unnamed-chunk-101-1.png" alt="Rosenbrock's function as a contour plot (left) and surface plot (right)." width="960" />
+<p class="caption">
+Figure 4.1: Rosenbrock’s function as a contour plot (left) and surface plot (right).
+</p>
+</div>
+<p>As we see, Rosenbrock’s function is a rather complicated function.</p>
+<hr /></li>
+<li><p>Find <span class="math inline">\(\partial f(\mathbf{x}) / \partial x_1\)</span> and <span class="math inline">\(\partial f(\mathbf{x}) / \partial x_2\)</span> and then write a function in <code>R</code>, <code>rosenbrock_d1(x, a, b)</code>, that returns the vector <span class="math inline">\((\partial f(\mathbf{x}) / \partial x_1, \partial f(\mathbf{x}) / \partial x_2)^{\text{T}}\)</span> and has the same default values as <code>rosenbrock()</code>, and then evaluate this gradient operator for <span class="math inline">\(\mathbf{x}_0 = (1, 2)^{\text{T}}\)</span> and the default values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>The partial derivatives are <span class="math display">\[\dfrac{\partial f(\mathbf{x})}{\partial x_1} = -2(a - x_1) - 4bx_1(x_2 - x_1^2) \text{ and } \dfrac{\partial f(\mathbf{x})}{\partial x_2} = 2b(x_2 - x_1^2),\]</span>
+which can be evaluated in <code>R</code> with</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="chapter-4-exercises.html#cb235-1" aria-hidden="true" tabindex="-1"></a>rosenbrock_d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">100</span>) {</span>
+<span id="cb235-2"><a href="chapter-4-exercises.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to evaluate first partial derivatives</span></span>
+<span id="cb235-3"><a href="chapter-4-exercises.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="co"># of Rosenbrock&#39;s banana function</span></span>
+<span id="cb235-4"><a href="chapter-4-exercises.html#cb235-4" aria-hidden="true" tabindex="-1"></a><span class="co"># x, a and b are scalars</span></span>
+<span id="cb235-5"><a href="chapter-4-exercises.html#cb235-5" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a 2-vector</span></span>
+<span id="cb235-6"><a href="chapter-4-exercises.html#cb235-6" aria-hidden="true" tabindex="-1"></a>d_x2 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> b <span class="sc">*</span> (x[<span class="dv">2</span>] <span class="sc">-</span> x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb235-7"><a href="chapter-4-exercises.html#cb235-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> (a <span class="sc">-</span> x[<span class="dv">1</span>]) <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> x[<span class="dv">1</span>] <span class="sc">*</span> d_x2, d_x2)</span>
+<span id="cb235-8"><a href="chapter-4-exercises.html#cb235-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>and for <span class="math inline">\(\mathbf{x}_0\)</span> and the default values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> we get</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="chapter-4-exercises.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rosenbrock_d1</span>(x0)</span></code></pre></div>
+<pre><code>## [1] -400  200</code></pre>
+<hr /></li>
+<li><p>Find <span class="math inline">\(\partial^2 f(\mathbf{x}) / \partial x_1^2\)</span>, <span class="math inline">\(\partial^2 f(\mathbf{x}) / \partial x_1 \partial x_2\)</span> and <span class="math inline">\(\partial^2 f(\mathbf{x}) / \partial x_2^2\)</span> and then write a function in <code>R</code>, <code>rosenbrock_d2(x, a, b)</code>, that returns the <span class="math inline">\(2 \times 2\)</span> Hessian matrix of <span class="math inline">\(f(\mathbf{x})\)</span> and has the same default values as <code>rosenbrock()</code>, and then evaluate this Hessian matrix for <span class="math inline">\(\mathbf{x}_0 = (1, 2)^{\text{T}}\)</span> and the default values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>The second partial derivatives are <span class="math display">\[\dfrac{\partial f(\mathbf{x})}{\partial^2 x_1^2} = 2 - 4b(x_2 - 3x_1^2),~\dfrac{\partial f(\mathbf{x})}{\partial x_1 \partial x_2} = - 4bx_1 \text{ and } \dfrac{\partial^2 f(\mathbf{x})}{\partial x_2^2} = 2b,\]</span> which can be evaluated in <code>R</code> with</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="chapter-4-exercises.html#cb238-1" aria-hidden="true" tabindex="-1"></a>rosenbrock_d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">100</span>) {</span>
+<span id="cb238-2"><a href="chapter-4-exercises.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to evaluate second partial derivatives</span></span>
+<span id="cb238-3"><a href="chapter-4-exercises.html#cb238-3" aria-hidden="true" tabindex="-1"></a><span class="co"># of Rosenbrock&#39;s banana function</span></span>
+<span id="cb238-4"><a href="chapter-4-exercises.html#cb238-4" aria-hidden="true" tabindex="-1"></a><span class="co"># x, a and b are scalars</span></span>
+<span id="cb238-5"><a href="chapter-4-exercises.html#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a 2 x 2 matrix</span></span>
+<span id="cb238-6"><a href="chapter-4-exercises.html#cb238-6" aria-hidden="true" tabindex="-1"></a>d_x1x1 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> b <span class="sc">*</span> (x[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb238-7"><a href="chapter-4-exercises.html#cb238-7" aria-hidden="true" tabindex="-1"></a>d_x1x2 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">4</span> <span class="sc">*</span> b <span class="sc">*</span> x[<span class="dv">1</span>]</span>
+<span id="cb238-8"><a href="chapter-4-exercises.html#cb238-8" aria-hidden="true" tabindex="-1"></a>d_x2x2 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> b</span>
+<span id="cb238-9"><a href="chapter-4-exercises.html#cb238-9" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(d_x1x1, d_x1x2, d_x1x2, d_x2x2), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb238-10"><a href="chapter-4-exercises.html#cb238-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>and for <span class="math inline">\(\mathbf{x}_0\)</span> and the default values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> we get</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="chapter-4-exercises.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rosenbrock_d2</span>(x0)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]  402 -400
+## [2,] -400  200</code></pre>
+<hr /></li>
+<li><p>Use <code>rosenbrock_d1()</code> to confirm that <span class="math inline">\(\tilde{\mathbf{x}} = (1, 1)^{\text{T}}\)</span> is a minimum of <span class="math inline">\(f(\mathbf{x})\)</span>, i.e. that gradient operator is approximately a vector of zeros at <span class="math inline">\(\tilde{\mathbf{x}} = (1, 1)^{\text{T}}\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll call <span class="math inline">\(\tilde{\mathbf{x}}\)</span>, <code>x_tilde</code>,</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="chapter-4-exercises.html#cb241-1" aria-hidden="true" tabindex="-1"></a>x_tilde <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span></code></pre></div>
+<p>and then evaluating the first derivatives</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="chapter-4-exercises.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rosenbrock_d1</span>(x_tilde)</span></code></pre></div>
+<pre><code>## [1] 0 0</code></pre>
+<p>we see that these are zero, and to confirm that the Hessian matrix is positive definite, we can confirm that all its eigenvalues are positive</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="chapter-4-exercises.html#cb244-1" aria-hidden="true" tabindex="-1"></a>H <span class="ot">&lt;-</span> <span class="fu">rosenbrock_d2</span>(x_tilde) <span class="co"># Hessian matrix</span></span>
+<span id="cb244-2"><a href="chapter-4-exercises.html#cb244-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">eigen</span>(H, <span class="at">only.values =</span> <span class="cn">TRUE</span>, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>values</span>
+<span id="cb244-3"><a href="chapter-4-exercises.html#cb244-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(lambda <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>which they are, and so <span class="math inline">\(\tilde{\mathbf{x}}\)</span> is a minimum (although we don’t know whether it’s a local or global minimum from these two calculations).</p>
+<hr /></li>
+</ol></li>
+<li><p>Recall the <span class="math inline">\(MVN_p(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span> log-likelihood, e.g. from Example 3.2.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find <span class="math inline">\(\partial \log f(\mathbf{y} \mid \boldsymbol{\mu}, \boldsymbol{\Sigma}) / \partial \boldsymbol{\mu}\)</span> analytically and evaluate this for <span class="math inline">\(\mathbf{y}\)</span>, <span class="math inline">\(\boldsymbol{\mu}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> as given in Example 3.2.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p><span class="math display">\[\dfrac{\partial \log f(\mathbf{y} \mid \boldsymbol{\mu}, \boldsymbol{\Sigma})}{\partial \boldsymbol{\mu}} = \boldsymbol{\Sigma}^{-1} ({\bf y} - {\boldsymbol \mu}).\]</span></p>
+<p>Evaluating this for <span class="math inline">\(\mathbf{y}\)</span>, <span class="math inline">\(\boldsymbol{\mu}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> as given can be done with the following code</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="chapter-4-exercises.html#cb246-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="fl">1.3</span>, <span class="fl">2.6</span>)</span>
+<span id="cb246-2"><a href="chapter-4-exercises.html#cb246-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb246-3"><a href="chapter-4-exercises.html#cb246-3" aria-hidden="true" tabindex="-1"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb246-4"><a href="chapter-4-exercises.html#cb246-4" aria-hidden="true" tabindex="-1"></a>(d_mu <span class="ot">&lt;-</span> <span class="fu">solve</span>(Sigma, y <span class="sc">-</span> mu))</span></code></pre></div>
+<pre><code>## [1]  0.08 -0.38  0.14</code></pre>
+<p>so that <span class="math display">\[\dfrac{\partial \log f(\mathbf{y} \mid \boldsymbol{\mu}, \boldsymbol{\Sigma})}{\partial \boldsymbol{\mu}} \simeq \begin{pmatrix}0.08 \\-0.38 \\0.14 \\\end{pmatrix}.\]</span></p>
+<hr /></li>
+<li><p>Confirm the above result by finite-differencing.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll use function <code>fd()</code> again from Example 4.4 of the notes.</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="chapter-4-exercises.html#cb248-1" aria-hidden="true" tabindex="-1"></a>fd <span class="ot">&lt;-</span> <span class="cf">function</span>(x, f, <span class="at">delta =</span> <span class="fl">1e-6</span>, ...) {</span>
+<span id="cb248-2"><a href="chapter-4-exercises.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to evaluate derivative by finite-differencing</span></span>
+<span id="cb248-3"><a href="chapter-4-exercises.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x is a p-vector</span></span>
+<span id="cb248-4"><a href="chapter-4-exercises.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fn is the function for which the derivative is being calculated</span></span>
+<span id="cb248-5"><a href="chapter-4-exercises.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="co"># delta is the finite-differencing step, which defaults to 10^{-6}</span></span>
+<span id="cb248-6"><a href="chapter-4-exercises.html#cb248-6" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a vector of length x</span></span>
+<span id="cb248-7"><a href="chapter-4-exercises.html#cb248-7" aria-hidden="true" tabindex="-1"></a>f0 <span class="ot">&lt;-</span> <span class="fu">f</span>(x, ...)</span>
+<span id="cb248-8"><a href="chapter-4-exercises.html#cb248-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb248-9"><a href="chapter-4-exercises.html#cb248-9" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(p)</span>
+<span id="cb248-10"><a href="chapter-4-exercises.html#cb248-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>p) {</span>
+<span id="cb248-11"><a href="chapter-4-exercises.html#cb248-11" aria-hidden="true" tabindex="-1"></a>  x1 <span class="ot">&lt;-</span> x</span>
+<span id="cb248-12"><a href="chapter-4-exercises.html#cb248-12" aria-hidden="true" tabindex="-1"></a>  x1[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> delta</span>
+<span id="cb248-13"><a href="chapter-4-exercises.html#cb248-13" aria-hidden="true" tabindex="-1"></a>  f1[i] <span class="ot">&lt;-</span> <span class="fu">f</span>(x1, ...)</span>
+<span id="cb248-14"><a href="chapter-4-exercises.html#cb248-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb248-15"><a href="chapter-4-exercises.html#cb248-15" aria-hidden="true" tabindex="-1"></a>(f1 <span class="sc">-</span> f0) <span class="sc">/</span> delta</span>
+<span id="cb248-16"><a href="chapter-4-exercises.html#cb248-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>We’ll also need function <code>dmvn3()</code> from Example 3.13.</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="chapter-4-exercises.html#cb249-1" aria-hidden="true" tabindex="-1"></a>dmvn3 <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, Sigma, <span class="at">log =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb249-2"><a href="chapter-4-exercises.html#cb249-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate multivariate Normal pdf by solving</span></span>
+<span id="cb249-3"><a href="chapter-4-exercises.html#cb249-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a system of linear equations via Cholesky decomposition</span></span>
+<span id="cb249-4"><a href="chapter-4-exercises.html#cb249-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y and mu are vectors</span></span>
+<span id="cb249-5"><a href="chapter-4-exercises.html#cb249-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sigma is a square matrix</span></span>
+<span id="cb249-6"><a href="chapter-4-exercises.html#cb249-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># log is a logical</span></span>
+<span id="cb249-7"><a href="chapter-4-exercises.html#cb249-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns scalar, on log scale, if log == TRUE.</span></span>
+<span id="cb249-8"><a href="chapter-4-exercises.html#cb249-8" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb249-9"><a href="chapter-4-exercises.html#cb249-9" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> y <span class="sc">-</span> mu</span>
+<span id="cb249-10"><a href="chapter-4-exercises.html#cb249-10" aria-hidden="true" tabindex="-1"></a>  L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(Sigma))</span>
+<span id="cb249-11"><a href="chapter-4-exercises.html#cb249-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">log</span>(<span class="fu">diag</span>(L))) <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> p <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">-</span></span>
+<span id="cb249-12"><a href="chapter-4-exercises.html#cb249-12" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">forwardsolve</span>(L, res)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb249-13"><a href="chapter-4-exercises.html#cb249-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>log) </span>
+<span id="cb249-14"><a href="chapter-4-exercises.html#cb249-14" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
+<span id="cb249-15"><a href="chapter-4-exercises.html#cb249-15" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb249-16"><a href="chapter-4-exercises.html#cb249-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Then the following approximates <span class="math inline">\(\partial \log f(\mathbf{y} \mid \boldsymbol{\mu}, \boldsymbol{\Sigma}) / \partial \boldsymbol{\mu}\)</span> by finite-differencing</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="chapter-4-exercises.html#cb250-1" aria-hidden="true" tabindex="-1"></a>d_mu_fd <span class="ot">&lt;-</span> <span class="fu">fd</span>(mu, dmvn3, <span class="at">y =</span> y, <span class="at">Sigma =</span> Sigma)</span></code></pre></div>
+<p>Note above that we’ve given <code>y = y</code> and <code>Sigma = Sigma</code>, then the first free argument to <code>dmvn3()</code> is <code>mu</code>, and hence <code>fd()</code> takes this as <code>x</code>. The finite-differencing approximation is</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="chapter-4-exercises.html#cb251-1" aria-hidden="true" tabindex="-1"></a>d_mu_fd</span></code></pre></div>
+<pre><code>## [1]  0.0799998 -0.3800007  0.1399992</code></pre>
+<p>and is the same as the analytical result</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="chapter-4-exercises.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(d_mu, d_mu_fd)</span></code></pre></div>
+<pre><code>## [1] &quot;Mean relative difference: 2.833149e-06&quot;</code></pre>
+<p>once we allow for error in the finite-difference approximation.</p>
+<hr /></li>
+</ol></li>
+<li><p>The Gamma(<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>) pdf is given by
+<span class="math display" id="eq:gam1">\[\begin{equation}
+f(y \mid \alpha, \beta) = \dfrac{\beta^\alpha}{\Gamma(\alpha)} y^{\alpha - 1} \exp(-\beta y) \quad {\text{ for }}y&gt;0,
+\tag{4.1}
+\end{equation}\]</span>
+with <span class="math inline">\(\alpha,\beta &gt; 0\)</span>. The gamma distribution’s cdf, however, has no closed form. Approximate its cdf <span class="math inline">\(F(y \mid \alpha, \beta)\)</span> for <span class="math inline">\(y = 1.5\)</span>, <span class="math inline">\(\alpha = 1\)</span> and <span class="math inline">\(\beta = 2\)</span> using the midpoint rule with <span class="math inline">\(N = 14\)</span> and compare your result to <code>R</code>’s <code>pgamma(y, alpha, beta)</code> function.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We can use <code>dgamma(y, alpha, beta)</code> to evaluate the Gamma(<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>) pdf (although it’s fine to explicitly write a function in <code>R</code> to evaluate <span class="math inline">\(f(y \mid \alpha, \beta)\)</span>). Then we want to specify the integration nodes for <span class="math inline">\(N = 14\)</span>. These will be <span class="math inline">\(0.05, 0.15, \ldots, 1.35, 1.45\)</span>, if they’re equally spaced, and hence <span class="math inline">\(h = 0.1\)</span>.</p>
+<p>The following then approximates the integral as <code>I_midpoint</code>.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="chapter-4-exercises.html#cb255-1" aria-hidden="true" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> <span class="fu">seq</span>(.<span class="dv">05</span>, <span class="fl">1.45</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
+<span id="cb255-2"><a href="chapter-4-exercises.html#cb255-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
+<span id="cb255-3"><a href="chapter-4-exercises.html#cb255-3" aria-hidden="true" tabindex="-1"></a>I_midpoint <span class="ot">&lt;-</span> h <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">dgamma</span>(nodes, <span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb255-4"><a href="chapter-4-exercises.html#cb255-4" aria-hidden="true" tabindex="-1"></a>I_midpoint</span></code></pre></div>
+<pre><code>## [1] 0.9486311</code></pre>
+<p>Using <code>R</code>’s <code>pgamma()</code> function we get</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="chapter-4-exercises.html#cb257-1" aria-hidden="true" tabindex="-1"></a>I_pgamma <span class="ot">&lt;-</span> <span class="fu">pgamma</span>(<span class="fl">1.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb257-2"><a href="chapter-4-exercises.html#cb257-2" aria-hidden="true" tabindex="-1"></a>I_pgamma</span></code></pre></div>
+<pre><code>## [1] 0.9502129</code></pre>
+<p>Assuming <code>R</code>’s approximation to be the more accurate (which we’ll assume in MTH3045 is always a good assumption for <code>R</code>’s functions for evaluating cdfs), we’ll compares the relative absolute error of the midpoint approximation to <code>pgamma()</code>, which we’ll call <code>rel_err</code></p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="chapter-4-exercises.html#cb259-1" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((I_pgamma <span class="sc">-</span> I_midpoint) <span class="sc">/</span> I_pgamma)</span>
+<span id="cb259-2"><a href="chapter-4-exercises.html#cb259-2" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 0.001664724</code></pre>
+<p>and we see is about 0.17%.</p>
+<hr /></li>
+<li><p> Consider integrating a function <span class="math inline">\(f(x)\)</span> over and arbitrary interval <span class="math inline">\([a, b]\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Write a function to integrate <span class="math inline">\(f(x)\)</span> over <span class="math inline">\([a, b]\)</span> using the midpoint rule with <span class="math inline">\(N\)</span> midpoints.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>The following function, <code>integrate_midpoint()</code>, integrates a function over <span class="math inline">\([a, b]\)</span> using the midpoint rule with <span class="math inline">\(N\)</span> midpoints.</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="chapter-4-exercises.html#cb261-1" aria-hidden="true" tabindex="-1"></a>integrate_midpoint <span class="ot">&lt;-</span> <span class="cf">function</span>(f, a, b, N) {</span>
+<span id="cb261-2"><a href="chapter-4-exercises.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to approximate integral of f by midpoint rule over [a, b]</span></span>
+<span id="cb261-3"><a href="chapter-4-exercises.html#cb261-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># f is a function</span></span>
+<span id="cb261-4"><a href="chapter-4-exercises.html#cb261-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a and b are scalars</span></span>
+<span id="cb261-5"><a href="chapter-4-exercises.html#cb261-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># N is integer number of midpoints</span></span>
+<span id="cb261-6"><a href="chapter-4-exercises.html#cb261-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns scalar</span></span>
+<span id="cb261-7"><a href="chapter-4-exercises.html#cb261-7" aria-hidden="true" tabindex="-1"></a>  ends <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">l =</span> N <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb261-8"><a href="chapter-4-exercises.html#cb261-8" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> ends[<span class="dv">2</span>] <span class="sc">-</span> ends[<span class="dv">1</span>]</span>
+<span id="cb261-9"><a href="chapter-4-exercises.html#cb261-9" aria-hidden="true" tabindex="-1"></a>  mids <span class="ot">&lt;-</span> ends[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">-</span> .<span class="dv">5</span> <span class="sc">*</span> h</span>
+<span id="cb261-10"><a href="chapter-4-exercises.html#cb261-10" aria-hidden="true" tabindex="-1"></a>  h <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(mids))</span>
+<span id="cb261-11"><a href="chapter-4-exercises.html#cb261-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<hr /></li>
+<li><p> Then use this to approximate <span class="math inline">\(\int_0^1 f(x) \text{d} x\)</span>, where <span class="math display">\[f(x) = 1 + 2 \cos(2 x) + 2 \sin(2 x)\]</span> using the midpoint rule with <span class="math inline">\(N = 8\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll first create function <span class="math inline">\(f(x)\)</span>, which we’ll call <code>f</code>,</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="chapter-4-exercises.html#cb262-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> x) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> x)</span></code></pre></div>
+<p>and then we’ll use <code>integrate_midpoint()</code> to approximate its integral over <span class="math inline">\([0, 1]\)</span> with <span class="math inline">\(N = 8\)</span>.</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="chapter-4-exercises.html#cb263-1" aria-hidden="true" tabindex="-1"></a>midpoint <span class="ot">&lt;-</span> <span class="fu">integrate_midpoint</span>(f, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">8</span>)</span>
+<span id="cb263-2"><a href="chapter-4-exercises.html#cb263-2" aria-hidden="true" tabindex="-1"></a>midpoint</span></code></pre></div>
+<pre><code>## [1] 3.331511</code></pre>
+<hr /></li>
+<li><p>Compare your integral approximation to the exact result in terms of its relative absolute error.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>As <span class="math display">\[\begin{align*} \int_0^1 1 + 2 \cos(2 x) + 2 \sin(2 x)\text{d}x &amp;= \left[x + \sin(2 x) - \cos(2 x)\right]_0^1 \\ &amp;= \left[1 + \sin(2) - \cos(2)\right] - \left[\sin(0) - \cos(0) \right]\\ &amp;= 2 + \sin(2) - \cos(2),\end{align*}\]</span></p>
+<p>then the true integral is <span class="math inline">\(2 + \sin(2) - \cos(2) \simeq 3.3254\)</span>, which we’ll store as <code>true</code>. The relative absolute error, <code>rel_err</code>, is then</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="chapter-4-exercises.html#cb265-1" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">sin</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">cos</span>(<span class="dv">2</span>)</span>
+<span id="cb265-2"><a href="chapter-4-exercises.html#cb265-2" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> midpoint) <span class="sc">/</span> true)</span>
+<span id="cb265-3"><a href="chapter-4-exercises.html#cb265-3" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 0.001824388</code></pre>
+<p>and on this occasion we see a relative absolute error of approximately 0.18%, for just <span class="math inline">\(N = 8\)</span>.</p>
+<hr /></li>
+</ol></li>
+<li><p>The composite trapezium rule for integration is given by <span class="math display">\[\int_a^b f(x) \text{d}x \simeq \dfrac{h}{2}\left[f(x_1^*) + f(x_N^*) + 2\sum_{i = 2}^{N - 1} f(x_i^*)\right],\]</span> for <span class="math inline">\(N\)</span> integration nodes <span class="math inline">\(x_i^* = a + (i - 1)h\)</span> where <span class="math inline">\(h = (b - a) / (N - 1)\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Write a function, <code>integrate_trapezium(f, a, b, N)</code>, to implement the trapezium rule for an integral <span class="math inline">\(\int_a^b f(x)\text{d}x\)</span> with <span class="math inline">\(N\)</span> integration nodes.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="chapter-4-exercises.html#cb267-1" aria-hidden="true" tabindex="-1"></a>integrate_trapezium <span class="ot">&lt;-</span> <span class="cf">function</span>(f, a, b, N) {</span>
+<span id="cb267-2"><a href="chapter-4-exercises.html#cb267-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to approximate integral of f by trapezium rule over [a, b]</span></span>
+<span id="cb267-3"><a href="chapter-4-exercises.html#cb267-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># f is a function</span></span>
+<span id="cb267-4"><a href="chapter-4-exercises.html#cb267-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a and b are scalars</span></span>
+<span id="cb267-5"><a href="chapter-4-exercises.html#cb267-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># N is integer number of integration nodes</span></span>
+<span id="cb267-6"><a href="chapter-4-exercises.html#cb267-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns scalar</span></span>
+<span id="cb267-7"><a href="chapter-4-exercises.html#cb267-7" aria-hidden="true" tabindex="-1"></a>  nodes <span class="ot">&lt;-</span> <span class="fu">seq</span>(a, b, <span class="at">l =</span> N)</span>
+<span id="cb267-8"><a href="chapter-4-exercises.html#cb267-8" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> (N <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb267-9"><a href="chapter-4-exercises.html#cb267-9" aria-hidden="true" tabindex="-1"></a>  int <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes[<span class="dv">2</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>)]))</span>
+<span id="cb267-10"><a href="chapter-4-exercises.html#cb267-10" aria-hidden="true" tabindex="-1"></a>  int <span class="ot">&lt;-</span> int <span class="sc">+</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes[<span class="fu">c</span>(<span class="dv">1</span>, N)]))</span>
+<span id="cb267-11"><a href="chapter-4-exercises.html#cb267-11" aria-hidden="true" tabindex="-1"></a>  .<span class="dv">5</span> <span class="sc">*</span> h <span class="sc">*</span> int</span>
+<span id="cb267-12"><a href="chapter-4-exercises.html#cb267-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<hr /></li>
+<li><p>Then use <code>integrate_trapezium()</code> to approximate <span class="math inline">\(F(y \mid \alpha, \beta) = \int_0^y f(z \mid \alpha, \beta) \text{d} z\)</span> using <span class="math inline">\(N = 14\)</span>, where <span class="math inline">\(f(y \mid \alpha, \beta)\)</span> is the gamma pdf as given in Equation <a href="chapter-4-exercises.html#eq:gam1">(4.1)</a>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll start with a function to evaluate the Gamma(1, 2) pdf, <code>dgamma2(y)</code>.</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="chapter-4-exercises.html#cb268-1" aria-hidden="true" tabindex="-1"></a>dgamma2 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) <span class="fu">dgamma</span>(y, <span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<p>Then the trapezium rule approximation to <span class="math inline">\(F(1.5 \mid 1, 2)\)</span> is given below as <code>I_trapezium</code>.</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="chapter-4-exercises.html#cb269-1" aria-hidden="true" tabindex="-1"></a>I_trapezium <span class="ot">&lt;-</span> <span class="fu">integrate_trapezium</span>(dgamma2, <span class="dv">0</span>, <span class="fl">1.5</span>, <span class="dv">14</span>)</span>
+<span id="cb269-2"><a href="chapter-4-exercises.html#cb269-2" aria-hidden="true" tabindex="-1"></a>I_trapezium</span></code></pre></div>
+<pre><code>## [1] 0.9544261</code></pre>
+<hr /></li>
+<li><p>Compare your integral approximation by the trapezium rule to that of the midpoint rule by using <code>pgamma()</code> as the benchmark of ‘the truth’.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="chapter-4-exercises.html#cb271-1" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">midpoint =</span> <span class="fu">abs</span>((I_pgamma <span class="sc">-</span> I_midpoint) <span class="sc">/</span> I_pgamma),</span>
+<span id="cb271-2"><a href="chapter-4-exercises.html#cb271-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">trapezium =</span> <span class="fu">abs</span>((I_pgamma <span class="sc">-</span> I_trapezium) <span class="sc">/</span> I_pgamma))</span>
+<span id="cb271-3"><a href="chapter-4-exercises.html#cb271-3" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>##    midpoint   trapezium 
+## 0.001664724 0.004433936</code></pre>
+<p>We see that the relative absolute error of the trapezium rule is 0.44% and so is greater than that of the midpoint rule, given the same number of integration nodes.</p>
+<hr /></li>
+</ol></li>
+<li><p> Repeat Question 5 using Simpson’s rule and <span class="math inline">\(N = 14\)</span>, comparing your approximation to the actual integral <em>and</em> your midpoint rule approximation.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>For Simpson’s composite rule, the <span class="math inline">\(N\)</span> integration nodes are given by <span class="math inline">\(x_{1i} = a + h(2i - 1)/2\)</span> and <span class="math inline">\(x_{2i} = a + ih\)</span> where <span class="math inline">\(h = (b - a)/N\)</span>.</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="chapter-4-exercises.html#cb273-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb273-2"><a href="chapter-4-exercises.html#cb273-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
+<span id="cb273-3"><a href="chapter-4-exercises.html#cb273-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">140</span></span>
+<span id="cb273-4"><a href="chapter-4-exercises.html#cb273-4" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
+<span id="cb273-5"><a href="chapter-4-exercises.html#cb273-5" aria-hidden="true" tabindex="-1"></a>nodes1 <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">2</span><span class="sc">*</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>N) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb273-6"><a href="chapter-4-exercises.html#cb273-6" aria-hidden="true" tabindex="-1"></a>nodes2 <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb273-7"><a href="chapter-4-exercises.html#cb273-7" aria-hidden="true" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> <span class="fu">dgamma2</span>(a) <span class="sc">+</span> <span class="fu">dgamma2</span>(b)</span>
+<span id="cb273-8"><a href="chapter-4-exercises.html#cb273-8" aria-hidden="true" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> I_simpson<span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">dgamma2</span>(nodes1)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">dgamma2</span>(nodes2))</span>
+<span id="cb273-9"><a href="chapter-4-exercises.html#cb273-9" aria-hidden="true" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> h <span class="sc">*</span> I_simpson <span class="sc">/</span> <span class="dv">6</span></span>
+<span id="cb273-10"><a href="chapter-4-exercises.html#cb273-10" aria-hidden="true" tabindex="-1"></a>I_simpson</span></code></pre></div>
+<pre><code>## [1] 0.9502129</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="chapter-4-exercises.html#cb275-1" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((<span class="fu">c</span>(I_pgamma, I_midpoint) <span class="sc">-</span> I_simpson) <span class="sc">/</span> <span class="fu">c</span>(I_pgamma, I_midpoint))</span>
+<span id="cb275-2"><a href="chapter-4-exercises.html#cb275-2" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 7.321086e-11 1.667500e-03</code></pre>
+<hr /></li>
+<li><p> Repeat Question 6 using Simpson’s rule and <span class="math inline">\(N = 8\)</span>, comparing your approximation to the actual integral <em>and</em> your midpoint rule approximation.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="chapter-4-exercises.html#cb277-1" aria-hidden="true" tabindex="-1"></a>integrate_simpson <span class="ot">&lt;-</span> <span class="cf">function</span>(f, a, b, N) {</span>
+<span id="cb277-2"><a href="chapter-4-exercises.html#cb277-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to approximate integral of f by Simpson&#39;s rule over [a, b]</span></span>
+<span id="cb277-3"><a href="chapter-4-exercises.html#cb277-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># f is a function</span></span>
+<span id="cb277-4"><a href="chapter-4-exercises.html#cb277-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a and b are scalars</span></span>
+<span id="cb277-5"><a href="chapter-4-exercises.html#cb277-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># N is integer number of integration nodes</span></span>
+<span id="cb277-6"><a href="chapter-4-exercises.html#cb277-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns scalar</span></span>
+<span id="cb277-7"><a href="chapter-4-exercises.html#cb277-7" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
+<span id="cb277-8"><a href="chapter-4-exercises.html#cb277-8" aria-hidden="true" tabindex="-1"></a>  nodes1 <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>N) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb277-9"><a href="chapter-4-exercises.html#cb277-9" aria-hidden="true" tabindex="-1"></a>  nodes2 <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb277-10"><a href="chapter-4-exercises.html#cb277-10" aria-hidden="true" tabindex="-1"></a>  h <span class="sc">*</span> (<span class="fu">f</span>(a) <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes1)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes2)) <span class="sc">+</span> <span class="fu">f</span>(b)) <span class="sc">/</span> <span class="dv">6</span></span>
+<span id="cb277-11"><a href="chapter-4-exercises.html#cb277-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb277-12"><a href="chapter-4-exercises.html#cb277-12" aria-hidden="true" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> <span class="fu">integrate_simpson</span>(f, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">8</span>)</span>
+<span id="cb277-13"><a href="chapter-4-exercises.html#cb277-13" aria-hidden="true" tabindex="-1"></a>simpson</span></code></pre></div>
+<pre><code>## [1] 3.325447</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="chapter-4-exercises.html#cb279-1" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((<span class="fu">c</span>(true, midpoint) <span class="sc">-</span> simpson) <span class="sc">/</span> <span class="fu">c</span>(true, midpoint))</span>
+<span id="cb279-2"><a href="chapter-4-exercises.html#cb279-2" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 9.502376e-07 1.820118e-03</code></pre>
+<hr /></li>
+<li><p>Simpson’s composite 3/8 rule approximates an integral as <span class="math display">\[\int_a^b f(x) \text{d}x \simeq \dfrac{3h}{8} \left(f(a) + 3 \sum_{i=1}^{N/3} f(x_{3i - 2}^*) + 3 \sum_{i=1}^{N/3} f(x_{3i-1}^*) + 2\sum_{i = 1}^{N/3 - 1} f(x_{3i}^*) + f(b)\right),\]</span> for integration nodes <span class="math inline">\(x_i^* = a + ih\)</span>, <span class="math inline">\(i = 1, \ldots, N - 1\)</span>, with <span class="math inline">\(h = (b - a) / N\)</span> and where <span class="math inline">\(N\)</span> must be a multiple of three. Approximate <span class="math inline">\(I = \int_0^1 \text{e}^x \text{d}x\)</span> using Simpson’s 3/8 rule with <span class="math inline">\(N = 9\)</span> nodes and find the relative absolute error of your approximation.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="chapter-4-exercises.html#cb281-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(x)</span>
+<span id="cb281-2"><a href="chapter-4-exercises.html#cb281-2" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb281-3"><a href="chapter-4-exercises.html#cb281-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb281-4"><a href="chapter-4-exercises.html#cb281-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb281-5"><a href="chapter-4-exercises.html#cb281-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb281-6"><a href="chapter-4-exercises.html#cb281-6" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
+<span id="cb281-7"><a href="chapter-4-exercises.html#cb281-7" aria-hidden="true" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb281-8"><a href="chapter-4-exercises.html#cb281-8" aria-hidden="true" tabindex="-1"></a>id2 <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span>((N <span class="sc">/</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># multiply by two</span></span>
+<span id="cb281-9"><a href="chapter-4-exercises.html#cb281-9" aria-hidden="true" tabindex="-1"></a>id3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">/</span> <span class="dv">3</span>)) <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">3</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">/</span> <span class="dv">3</span>)) <span class="sc">-</span> <span class="dv">2</span>) <span class="co"># multiply by three</span></span>
+<span id="cb281-10"><a href="chapter-4-exercises.html#cb281-10" aria-hidden="true" tabindex="-1"></a>simpson38 <span class="ot">&lt;-</span> <span class="fu">f</span>(a) <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes[id3])) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes[id2])) <span class="sc">+</span> <span class="fu">f</span>(b)</span>
+<span id="cb281-11"><a href="chapter-4-exercises.html#cb281-11" aria-hidden="true" tabindex="-1"></a>(simpson38 <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> h <span class="sc">*</span> simpson38 <span class="sc">/</span> <span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## [1] 1.718285</code></pre>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="chapter-4-exercises.html#cb283-1" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> simpson38) <span class="sc">/</span> true)</span>
+<span id="cb283-2"><a href="chapter-4-exercises.html#cb283-2" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 1.899613e-06</code></pre>
+<hr /></li>
+<li><p>Repeat Question 5 using Gaussian quadrature with <span class="math inline">\(N = 7\)</span> integration nodes, comparing your approximation to the actual integral <em>and</em> your midpoint <em>and</em> Simpson’s rule approximations of questions 5 and 9, respectively.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="chapter-4-exercises.html#cb285-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb285-2"><a href="chapter-4-exercises.html#cb285-2" aria-hidden="true" tabindex="-1"></a>gq_nodes <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="fl">1.5</span>)</span>
+<span id="cb285-3"><a href="chapter-4-exercises.html#cb285-3" aria-hidden="true" tabindex="-1"></a>I_gq <span class="ot">&lt;-</span> <span class="fu">sum</span>(gq_nodes<span class="sc">$</span>w <span class="sc">*</span> <span class="fu">dgamma</span>(gq_nodes<span class="sc">$</span>x, <span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb285-4"><a href="chapter-4-exercises.html#cb285-4" aria-hidden="true" tabindex="-1"></a>I_gq</span></code></pre></div>
+<pre><code>## [1] 0.9502129</code></pre>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="chapter-4-exercises.html#cb287-1" aria-hidden="true" tabindex="-1"></a>I_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(I_pgamma, I_midpoint, I_simpson)</span>
+<span id="cb287-2"><a href="chapter-4-exercises.html#cb287-2" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((I_vec <span class="sc">-</span> I_gq) <span class="sc">/</span> I_vec)</span>
+<span id="cb287-3"><a href="chapter-4-exercises.html#cb287-3" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 2.281873e-13 1.667500e-03 7.343905e-11</code></pre>
+<hr /></li>
+<li><p> Approximate <span class="math display">\[I = \int_{-1}^1 \int_{-1}^1 \int_{-1}^1 x_1 x_2 x_3 \text{d}x_1\text{d}x_2\text{d}x_3\]</span> using the midpoint rule with <span class="math inline">\(N = 20\)</span> and evaluate the approximation’s relative absolute error.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>Let’s start by finding the true integral <span class="math display">\[I = \int_{-1}^1 \int_{-1}^1 \int_{-1}^1 x_1 x_2 x_3 \text{d}x_1\text{d}x_2\text{d}x_3 = \int_{-1}^1 \int_{-1}^1 \left[\dfrac{x_1^2}{2}\right]_{-1}^1 \text{d}x_2\text{d}x_3 = \int_{-1}^1 \int_{-1}^1 \left[\dfrac{1}{2} - \dfrac{1}{2}\right]_{-1}^1 \text{d}x_2\text{d}x_3 = 0.\]</span></p>
+<p>For the midpoint rule, we’ll first find the midpoints, which can be the same for each dimension in this case.</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="chapter-4-exercises.html#cb289-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb289-2"><a href="chapter-4-exercises.html#cb289-2" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="at">l =</span> N <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb289-3"><a href="chapter-4-exercises.html#cb289-3" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> edges[<span class="dv">2</span>] <span class="sc">-</span> edges[<span class="dv">1</span>]</span>
+<span id="cb289-4"><a href="chapter-4-exercises.html#cb289-4" aria-hidden="true" tabindex="-1"></a>mids <span class="ot">&lt;-</span> edges[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">-</span> .<span class="dv">5</span> <span class="sc">*</span> h</span></code></pre></div>
+<p>Then we’ll find all combinations of these, <code>x123</code>, and evaluate the integrand at them, <code>f123</code>.</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="chapter-4-exercises.html#cb290-1" aria-hidden="true" tabindex="-1"></a>x123 <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> mids, <span class="at">x2 =</span> mids, <span class="at">x3 =</span> mids)</span>
+<span id="cb290-2"><a href="chapter-4-exercises.html#cb290-2" aria-hidden="true" tabindex="-1"></a>f123 <span class="ot">&lt;-</span> <span class="fu">apply</span>(x123, <span class="dv">1</span>, prod)</span></code></pre></div>
+<p>We’ll call our midpoint approximation <code>midpoint</code>, which can be calculated with</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="chapter-4-exercises.html#cb291-1" aria-hidden="true" tabindex="-1"></a>midpoint <span class="ot">&lt;-</span> <span class="fu">sum</span>(h<span class="sc">^</span><span class="dv">3</span> <span class="sc">*</span> f123)</span>
+<span id="cb291-2"><a href="chapter-4-exercises.html#cb291-2" aria-hidden="true" tabindex="-1"></a>midpoint</span></code></pre></div>
+<pre><code>## [1] 3.375426e-19</code></pre>
+<p>The true integral is zero, and hence, in theory, the relative absolute error is <span class="math inline">\(\infty\)</span>. Instead we may want to simply consider the <em>absolute</em> error, which is very small.</p>
+<hr /></li>
+<li><p>Approximate the integral of Question 12 by applying Simpson’s rule with <span class="math inline">\(N = 20\)</span> to each dimension, instead of the midpoint rule.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>The following create the nodes and weights needed to apply Simpson’s rule.</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="chapter-4-exercises.html#cb293-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb293-2"><a href="chapter-4-exercises.html#cb293-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb293-3"><a href="chapter-4-exercises.html#cb293-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb293-4"><a href="chapter-4-exercises.html#cb293-4" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
+<span id="cb293-5"><a href="chapter-4-exercises.html#cb293-5" aria-hidden="true" tabindex="-1"></a>x1i <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb293-6"><a href="chapter-4-exercises.html#cb293-6" aria-hidden="true" tabindex="-1"></a>x2i <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb293-7"><a href="chapter-4-exercises.html#cb293-7" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">length</span>(x1i), <span class="fu">length</span>(x2i), <span class="dv">1</span>))</span>
+<span id="cb293-8"><a href="chapter-4-exercises.html#cb293-8" aria-hidden="true" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> <span class="fu">c</span>(a, x1i, x2i, b)</span>
+<span id="cb293-9"><a href="chapter-4-exercises.html#cb293-9" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> h <span class="sc">*</span> weights <span class="sc">/</span> <span class="dv">6</span></span>
+<span id="cb293-10"><a href="chapter-4-exercises.html#cb293-10" aria-hidden="true" tabindex="-1"></a>x123 <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> nodes, <span class="at">x2 =</span> nodes, <span class="at">x3 =</span> nodes)</span>
+<span id="cb293-11"><a href="chapter-4-exercises.html#cb293-11" aria-hidden="true" tabindex="-1"></a>f123 <span class="ot">&lt;-</span> <span class="fu">apply</span>(x123, <span class="dv">1</span>, prod)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb293-12"><a href="chapter-4-exercises.html#cb293-12" aria-hidden="true" tabindex="-1"></a>w123 <span class="ot">&lt;-</span> weights <span class="sc">%x%</span> weights <span class="sc">%x%</span> weights</span></code></pre></div>
+<p>We’ll call our Simpson’s rule approximation <code>simpson</code>, which can be calculated with</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="chapter-4-exercises.html#cb294-1" aria-hidden="true" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> <span class="fu">sum</span>(w123 <span class="sc">*</span> f123)</span>
+<span id="cb294-2"><a href="chapter-4-exercises.html#cb294-2" aria-hidden="true" tabindex="-1"></a>simpson</span></code></pre></div>
+<pre><code>## [1] 0.2962963</code></pre>
+<p>Then its relative absolute error, <code>rel_err</code>, is</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="chapter-4-exercises.html#cb296-1" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> simpson) <span class="sc">/</span> true)</span>
+<span id="cb296-2"><a href="chapter-4-exercises.html#cb296-2" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 0.8275625</code></pre>
+<p>which is very small.</p>
+<hr /></li>
+<li><p> Approximate the integral <span class="math display">\[I = \int_0^2 \int_{-\pi}^\pi \left[\sin(x_1) + x_2 + 1\right] \text{d}x_1 \text{d}x_2\]</span>
+using Gaussian quadrature with <span class="math inline">\(N = 9\)</span> integration nodes per dimension and estimate the relative absolute error of your approximation.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll start by calculating <span class="math inline">\(I\)</span>, the true integral,
+<span class="math display">\[\begin{align*}
+I &amp;= \int_0^2 \int_{-\pi}^\pi \left[\sin(x_1) + x_2 + 1\right] \text{d}x_1 \text{d}x_2\\
+&amp;= \int_0^2 \Big\{\big[- \cos(x_1) + x_1 x_2 + x_2\big]_{-\pi}^\pi\Big\} \text{d}x_2\\
+&amp;= \int_0^2 \big[ \left(1 + \pi x_2 + \pi\right) - \left(1 - \pi x_2 - \pi\right)\big] \text{d}x_2\\
+&amp;= \int_0^2 2\pi(x_2 + 1) \text{d}x_2 = 2\pi \left[\dfrac{x_2^2}{2} + x_2\right]_0^2 = 8\pi,
+\end{align*}\]</span></p>
+<p>and then store this as <code>true</code>.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="chapter-4-exercises.html#cb298-1" aria-hidden="true" tabindex="-1"></a>(true <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">*</span> pi)</span></code></pre></div>
+<pre><code>## [1] 25.13274</code></pre>
+<p>To calculate this is <code>R</code> we want to set our number of nodes, <code>N</code>, and write a function, <code>f()</code>, to evaluate the integrand.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="chapter-4-exercises.html#cb300-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb300-2"><a href="chapter-4-exercises.html#cb300-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, x2) <span class="fu">sin</span>(x1) <span class="sc">+</span> x2 <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<p>Then we want to set our integration nodes for <span class="math inline">\(x1\)</span>, <code>gq1</code>, and for <span class="math inline">\(x2\)</span>, <code>gq2</code>.</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="chapter-4-exercises.html#cb301-1" aria-hidden="true" tabindex="-1"></a>gq1 <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="sc">-</span>pi, pi)</span>
+<span id="cb301-2"><a href="chapter-4-exercises.html#cb301-2" aria-hidden="true" tabindex="-1"></a>gq2 <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="dv">2</span>)</span></code></pre></div>
+<p>Then we want to evaluate <code>f()</code> at each combination of our <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> integration nodes, which we’ll call <code>f12</code>.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="chapter-4-exercises.html#cb302-1" aria-hidden="true" tabindex="-1"></a>f12 <span class="ot">&lt;-</span> <span class="fu">outer</span>(gq1<span class="sc">$</span>x, gq2<span class="sc">$</span>x, f)</span></code></pre></div>
+<p>The weights corresponding to these nodes, <code>w12</code>, are</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="chapter-4-exercises.html#cb303-1" aria-hidden="true" tabindex="-1"></a>w12 <span class="ot">&lt;-</span> gq1<span class="sc">$</span>w <span class="sc">%o%</span> gq2<span class="sc">$</span>w</span></code></pre></div>
+<p>and then the integral approximation is</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="chapter-4-exercises.html#cb304-1" aria-hidden="true" tabindex="-1"></a>Ihat <span class="ot">&lt;-</span> <span class="fu">sum</span>(w12 <span class="sc">*</span> f12)</span>
+<span id="cb304-2"><a href="chapter-4-exercises.html#cb304-2" aria-hidden="true" tabindex="-1"></a>Ihat</span></code></pre></div>
+<pre><code>## [1] 25.13274</code></pre>
+<p>Its relative absolute error, <code>rel_err</code>, is</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="chapter-4-exercises.html#cb306-1" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> Ihat) <span class="sc">/</span> true)</span>
+<span id="cb306-2"><a href="chapter-4-exercises.html#cb306-2" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 2.82716e-16</code></pre>
+<p>and again is incredibly small.</p>
+<hr /></li>
+<li><p> Repeat examples <a href="#exm:twovar"><strong>??</strong></a> and <a href="#exm:twovargq"><strong>??</strong></a> by avoiding <code>for()</code> loops. [You might want to consider the functions <code>expand.grid()</code> or <code>outer()</code>.]</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll start with Example <a href="#exm:twovar"><strong>??</strong></a> and will use <code>expand.grid()</code>. Then we’ll set the dimension <code>d</code>, the number of integration nodes per dimension, <code>N</code>, the integration nodes, <code>x1</code> and <code>x2</code>, and calculate the true value of the integral, <code>true</code>, as in the Lecture Notes.</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="chapter-4-exercises.html#cb308-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb308-2"><a href="chapter-4-exercises.html#cb308-2" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> (<span class="fu">exp</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">^</span>d</span>
+<span id="cb308-3"><a href="chapter-4-exercises.html#cb308-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb308-4"><a href="chapter-4-exercises.html#cb308-4" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x2 <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span>N <span class="sc">-</span> .<span class="dv">5</span>) <span class="sc">/</span> N</span></code></pre></div>
+<p>Then we want to use <code>expand.grid()</code> to give us all combinations of the integration nodes for both dimensions, and we’ll quickly use <code>head()</code> to see what it’s done.</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="chapter-4-exercises.html#cb309-1" aria-hidden="true" tabindex="-1"></a>x12 <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> x1, <span class="at">x2 =</span> x2)</span>
+<span id="cb309-2"><a href="chapter-4-exercises.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x12)</span></code></pre></div>
+<pre><code>##     x1   x2
+## 1 0.05 0.05
+## 2 0.15 0.05
+## 3 0.25 0.05
+## 4 0.35 0.05
+## 5 0.45 0.05
+## 6 0.55 0.05</code></pre>
+<p>We’ll calculate the integration weights, <code>w</code>, as in the Lecture Notes,</p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="chapter-4-exercises.html#cb311-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(N<span class="sc">^</span>d)</span></code></pre></div>
+<p>and then approximate the integral, which we’ll call <code>midpoint</code>, by taking the first column of <code>x12</code> as the <span class="math inline">\(x_{1i}\)</span> nodes, and the second column as the <span class="math inline">\(x_{2j}\)</span> nodes, which gives</p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="chapter-4-exercises.html#cb312-1" aria-hidden="true" tabindex="-1"></a>midpoint <span class="ot">&lt;-</span> w <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">exp</span>(x12[, <span class="dv">1</span>] <span class="sc">+</span> x12[, <span class="dv">2</span>]))</span>
+<span id="cb312-2"><a href="chapter-4-exercises.html#cb312-2" aria-hidden="true" tabindex="-1"></a>midpoint</span></code></pre></div>
+<pre><code>## [1] 2.950033</code></pre>
+<p>and is the same as in the Lecture Notes.</p>
+<p>For Example <a href="#exm:twovargq"><strong>??</strong></a> we’ll use <code>outer()</code> instead, using <code>d</code> and <code>true</code> from above. Then we need to set the number of integration nodes, <code>N</code>, and find the nodes for each margin, i.e. <span class="math inline">\(x_{1i}\)</span> and <span class="math inline">\(x_{2j}\)</span> for <span class="math inline">\(i, j = 1, \ldots, N\)</span>, which we’ll store as <code>xw</code>.</p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="chapter-4-exercises.html#cb314-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb314-2"><a href="chapter-4-exercises.html#cb314-2" aria-hidden="true" tabindex="-1"></a>xw <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
+<p>Next we want to calculate <span class="math inline">\(\exp(x_{1i} + x_{2j})\)</span> for <span class="math inline">\(i, j = 1, \ldots, N\)</span>, which we’ll store as <code>f12</code>.</p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="chapter-4-exercises.html#cb315-1" aria-hidden="true" tabindex="-1"></a>f12 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">outer</span>(xw<span class="sc">$</span>x, xw<span class="sc">$</span>x, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>))</span>
+<span id="cb315-2"><a href="chapter-4-exercises.html#cb315-2" aria-hidden="true" tabindex="-1"></a>f12</span></code></pre></div>
+<pre><code>##          [,1]     [,2]     [,3]     [,4]
+## [1,] 1.148967 1.490991 2.094725 2.718282
+## [2,] 1.490991 1.934829 2.718282 3.527458
+## [3,] 2.094725 2.718282 3.818971 4.955800
+## [4,] 2.718282 3.527458 4.955800 6.431040</code></pre>
+<p>And then we want to calculate the integration weights, <span class="math inline">\(w_{ij} = w_{1i} w_{2j}\)</span>, for <span class="math inline">\(i, j = 1, \ldots, N\)</span>, where the <span class="math inline">\(w_{1i}\)</span>s and <span class="math inline">\(w_{2j}\)</span> can both be taken from <code>xw$w</code>, and will store these as <code>w12</code>, obtaining them through <code>outer()</code>.</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="chapter-4-exercises.html#cb317-1" aria-hidden="true" tabindex="-1"></a>w12 <span class="ot">&lt;-</span> <span class="fu">outer</span>(xw<span class="sc">$</span>w, xw<span class="sc">$</span>w)</span>
+<span id="cb317-2"><a href="chapter-4-exercises.html#cb317-2" aria-hidden="true" tabindex="-1"></a>w12</span></code></pre></div>
+<pre><code>##            [,1]       [,2]       [,3]       [,4]
+## [1,] 0.03025075 0.05671296 0.05671296 0.03025075
+## [2,] 0.05671296 0.10632333 0.10632333 0.05671296
+## [3,] 0.05671296 0.10632333 0.10632333 0.05671296
+## [4,] 0.03025075 0.05671296 0.05671296 0.03025075</code></pre>
+<p>which uses that <code>FUN = '*'</code> is <code>outer()</code>’s default. Then we’ll calculate the integral approximation, and store this as <code>gq</code></p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="chapter-4-exercises.html#cb319-1" aria-hidden="true" tabindex="-1"></a>gq <span class="ot">&lt;-</span> <span class="fu">sum</span>(w12 <span class="sc">*</span> f12)</span>
+<span id="cb319-2"><a href="chapter-4-exercises.html#cb319-2" aria-hidden="true" tabindex="-1"></a>gq</span></code></pre></div>
+<pre><code>## [1] 2.952492</code></pre>
+<p>which is the same approximation as in the Lecture Notes. [On this occasion <code>outer()</code> is perhaps a bit tidier, but is less easy to implement for <span class="math inline">\((d &gt; 2)\)</span>-dimensional integral approximations.]</p>
+<hr /></li>
+<li><p>Consider a random vector <span class="math inline">\(\mathbf{X} = (X_1, X_1)^{\text{T}}\)</span> from the standard bivariate normal distribution, which we write as <span class="math display">\[\mathbf{X} = \left(\begin{array}{c} X_1\\ X_2 \end{array}\right) \sim BVN\left(\left(\begin{array}{c} 0\\ 0 \end{array}\right), \left(\begin{array}{cc} 1 &amp; \rho\\ \rho &amp; 1 \end{array}\right)\right)\]</span> so that <span class="math inline">\(-1 \leq \rho \leq 1\)</span> is the correlation between <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. The standard bivariate normal pdf is given by <span class="math display">\[f(\mathbf{x} ; \rho) = \dfrac{1}{2 \pi \sqrt{1 - \rho^2}} \exp \left(-\dfrac{x_1^2 - 2 \rho x_1 x_2 + x_2^2}{2(1 - \rho^2)} \right)\]</span> but its cdf, which is given by <span class="math display">\[\text{Pr}(a_1 \leq x_1 \leq b_1, a_2 \leq x_2 \leq b_2; \rho) = \int_{a_1}^{b_1} \int_{a_2}^{b_2} \dfrac{1}{2 \pi} f(\mathbf{x} ; \rho) \text{d}x_1 \text{d} x_2,\]</span> doesn’t have closed form. Estimate <span class="math inline">\(\text{Pr}(-1 \leq x_1 \leq 1, -1 \leq x_2 \leq 1; 0.9)\)</span> using the midpoint rule with <span class="math inline">\(N=10\)</span> integration nodes per dimension, and then using Gaussian quadrature with <span class="math inline">\(N = 7\)</span> integration nodes per dimension.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll start with a function to evaluate <span class="math inline">\(f(\mathbf{x} ; \rho)\)</span>, which we’ll call <code>f_bvn()</code>.</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="chapter-4-exercises.html#cb321-1" aria-hidden="true" tabindex="-1"></a>f_bvn <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, x2, rho) {</span>
+<span id="cb321-2"><a href="chapter-4-exercises.html#cb321-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate bivaraiate Normal pdf</span></span>
+<span id="cb321-3"><a href="chapter-4-exercises.html#cb321-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># x1, x2 can be scalar, vector or matrix</span></span>
+<span id="cb321-4"><a href="chapter-4-exercises.html#cb321-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rho is a scalar</span></span>
+<span id="cb321-5"><a href="chapter-4-exercises.html#cb321-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns object in same format as x1</span></span>
+<span id="cb321-6"><a href="chapter-4-exercises.html#cb321-6" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> rho<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb321-7"><a href="chapter-4-exercises.html#cb321-7" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> x1<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> rho <span class="sc">*</span> x1 <span class="sc">*</span> x2 <span class="sc">+</span> x2<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb321-8"><a href="chapter-4-exercises.html#cb321-8" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> out <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> temp)</span>
+<span id="cb321-9"><a href="chapter-4-exercises.html#cb321-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="sc">-</span>out) <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> <span class="fu">sqrt</span>(temp))</span>
+<span id="cb321-10"><a href="chapter-4-exercises.html#cb321-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Then we’ll write a generic function to implement the two-dimensional midpoint rule, which we’ll call <code>integrate_bvn_midpoint()</code>, which is only useful for the case when we want the same integration nodes for each dimension.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="chapter-4-exercises.html#cb322-1" aria-hidden="true" tabindex="-1"></a>integrate_bvn_midpoint <span class="ot">&lt;-</span> <span class="cf">function</span>(N, a, b, f, ...) {</span>
+<span id="cb322-2"><a href="chapter-4-exercises.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate a cdf by midpoint rule</span></span>
+<span id="cb322-3"><a href="chapter-4-exercises.html#cb322-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># N is an integer giving the number of integration nodes per dimension</span></span>
+<span id="cb322-4"><a href="chapter-4-exercises.html#cb322-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a and b are scalars</span></span>
+<span id="cb322-5"><a href="chapter-4-exercises.html#cb322-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># f is the corresponding pdf</span></span>
+<span id="cb322-6"><a href="chapter-4-exercises.html#cb322-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns a scalar</span></span>
+<span id="cb322-7"><a href="chapter-4-exercises.html#cb322-7" aria-hidden="true" tabindex="-1"></a>  edges <span class="ot">&lt;-</span> <span class="fu">seq</span>(a, b, <span class="at">l =</span> N <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb322-8"><a href="chapter-4-exercises.html#cb322-8" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> edges[<span class="dv">2</span>] <span class="sc">-</span> edges[<span class="dv">1</span>]</span>
+<span id="cb322-9"><a href="chapter-4-exercises.html#cb322-9" aria-hidden="true" tabindex="-1"></a>  mids <span class="ot">&lt;-</span> edges[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">-</span> .<span class="dv">5</span> <span class="sc">*</span> h</span>
+<span id="cb322-10"><a href="chapter-4-exercises.html#cb322-10" aria-hidden="true" tabindex="-1"></a>  grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> mids, <span class="at">x2 =</span> mids)</span>
+<span id="cb322-11"><a href="chapter-4-exercises.html#cb322-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(h <span class="sc">*</span> h <span class="sc">*</span> <span class="fu">f</span>(grid<span class="sc">$</span>x1, grid<span class="sc">$</span>x2, ...))</span>
+<span id="cb322-12"><a href="chapter-4-exercises.html#cb322-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb322-13"><a href="chapter-4-exercises.html#cb322-13" aria-hidden="true" tabindex="-1"></a>I_bvn_midoint <span class="ot">&lt;-</span> <span class="fu">integrate_bvn_midpoint</span>(<span class="dv">10</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, f_bvn, <span class="at">rho =</span> .<span class="dv">9</span>)</span>
+<span id="cb322-14"><a href="chapter-4-exercises.html#cb322-14" aria-hidden="true" tabindex="-1"></a>I_bvn_midoint</span></code></pre></div>
+<pre><code>## [1] 0.5986239</code></pre>
+<p>Next we’ll repeat the process, writing a function <code>integrate_bvn_gq()</code> to approximate the integral by Gaussian quadrature.</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="chapter-4-exercises.html#cb324-1" aria-hidden="true" tabindex="-1"></a>integrate_bvn_gq <span class="ot">&lt;-</span> <span class="cf">function</span>(N, a, b, f, ...) {</span>
+<span id="cb324-2"><a href="chapter-4-exercises.html#cb324-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate a cdf by Gaussian quadrature</span></span>
+<span id="cb324-3"><a href="chapter-4-exercises.html#cb324-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># N is an integer giving the number of integration nodes per dimension</span></span>
+<span id="cb324-4"><a href="chapter-4-exercises.html#cb324-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a and b are scalars</span></span>
+<span id="cb324-5"><a href="chapter-4-exercises.html#cb324-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># f is the corresponding pdf</span></span>
+<span id="cb324-6"><a href="chapter-4-exercises.html#cb324-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns a scalar</span></span>
+<span id="cb324-7"><a href="chapter-4-exercises.html#cb324-7" aria-hidden="true" tabindex="-1"></a>  x1 <span class="ot">&lt;-</span> x2 <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, a, b)</span>
+<span id="cb324-8"><a href="chapter-4-exercises.html#cb324-8" aria-hidden="true" tabindex="-1"></a>  x_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> x1<span class="sc">$</span>x, <span class="at">x2 =</span> x2<span class="sc">$</span>x)</span>
+<span id="cb324-9"><a href="chapter-4-exercises.html#cb324-9" aria-hidden="true" tabindex="-1"></a>  w_vec <span class="ot">&lt;-</span> x1<span class="sc">$</span>w <span class="sc">%x%</span> x2<span class="sc">$</span>w </span>
+<span id="cb324-10"><a href="chapter-4-exercises.html#cb324-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(w_vec <span class="sc">*</span> <span class="fu">f</span>(x_grid<span class="sc">$</span>x1, x_grid<span class="sc">$</span>x2, ...))</span>
+<span id="cb324-11"><a href="chapter-4-exercises.html#cb324-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb324-12"><a href="chapter-4-exercises.html#cb324-12" aria-hidden="true" tabindex="-1"></a>I_bvn_gq <span class="ot">&lt;-</span> <span class="fu">integrate_bvn_gq</span>(<span class="dv">7</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, f_bvn, <span class="at">rho =</span> .<span class="dv">9</span>)</span>
+<span id="cb324-13"><a href="chapter-4-exercises.html#cb324-13" aria-hidden="true" tabindex="-1"></a>I_bvn_gq</span></code></pre></div>
+<pre><code>## [1] 0.5963602</code></pre>
+<p>Note that on this occasion, we don’t know the true integral, and so can’t calculate the relative absolute errors.</p>
+<hr /></li>
+<li><p>Repeat Example <a href="#exm:fivevar"><strong>??</strong></a> using the midpoint rule and <span class="math inline">\(N = 10\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>On this occasion, we can effectively merge code from Question <span class="math inline">\(\ref{nofor}\)</span> and Example 4.12.</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="chapter-4-exercises.html#cb326-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb326-2"><a href="chapter-4-exercises.html#cb326-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb326-3"><a href="chapter-4-exercises.html#cb326-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span>N <span class="sc">-</span> .<span class="dv">5</span>) <span class="sc">/</span> N</span>
+<span id="cb326-4"><a href="chapter-4-exercises.html#cb326-4" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>d, <span class="cf">function</span>(i) x)</span>
+<span id="cb326-5"><a href="chapter-4-exercises.html#cb326-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(xx)</span>
+<span id="cb326-6"><a href="chapter-4-exercises.html#cb326-6" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(N<span class="sc">^</span>d)</span>
+<span id="cb326-7"><a href="chapter-4-exercises.html#cb326-7" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">sum</span>(w <span class="sc">*</span> <span class="fu">exp</span>(<span class="fu">rowSums</span>(X)))</span>
+<span id="cb326-8"><a href="chapter-4-exercises.html#cb326-8" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> (<span class="fu">exp</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">^</span>d</span>
+<span id="cb326-9"><a href="chapter-4-exercises.html#cb326-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">true =</span> true, <span class="at">midpoint =</span> f, <span class="at">rel.err =</span> <span class="fu">abs</span>((true <span class="sc">-</span> f) <span class="sc">/</span> true))</span></code></pre></div>
+<pre><code>##         true     midpoint      rel.err 
+## 14.978626322 14.947455928  0.002080991</code></pre>
+<p>We’ve now got a relative absolute error about six orders of magnitude larger than for Gaussian quadrature in Example <a href="#exm:fivevar"><strong>??</strong></a>, and yet here we’ve had to evaluate the integrand 10^{5} times, as opposed to 1024 times in Example <a href="#exm:fivevar"><strong>??</strong></a>. Here we see that when dealing with high-dimensional integrals, we may want to carefully choose our integration scheme, especially if the integrand is an expensive function to evaluate.</p>
+<hr /></li>
+<li><p>Consider a single random variable <span class="math inline">\(Y \mid \mu \sim \text{N}(\mu, \sigma^2)\)</span>, where we can characterise our prior beliefs about <span class="math inline">\(\mu\)</span> as <span class="math inline">\(\mu \sim \text{N}(\alpha, \beta)\)</span>. The marginal distribution of <span class="math inline">\(y\)</span> is given by <span class="math display">\[f(y) = \int_{-\infty}^\infty f(y \mid \mu) f(\mu) \text{d}\mu, \]</span> and that the marginal distribution of <span class="math inline">\(Y\)</span> is <span class="math inline">\(Y \sim \text{N}(\alpha, \sigma^2 + \beta)\)</span> can be derived in various ways. Approximate <span class="math inline">\(f(y)\)</span> using Laplace’s method for <span class="math inline">\(\sigma = 1.5\)</span>, <span class="math inline">\(\alpha = 2\)</span> and <span class="math inline">\(\beta = 0.5\)</span>, and then compare the relative absolute error of your approximation to the true marginal pdf for <span class="math inline">\(y = -2, 0, 2, 4, 6\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>For the Laplace approximation, we take <span class="math inline">\(n = 1\)</span> and <span class="math inline">\(f()\)</span> from Equation <a href="#eq:laplace">(<strong>??</strong>)</a> as <span class="math inline">\(-\log \phi(y; \mu, \sigma^2) - \log \phi(\mu; \alpha, \beta)\)</span>, where we swap <span class="math inline">\(x\)</span> for <span class="math inline">\(\mu\)</span>. Its first derivative w.r.t. <span class="math inline">\(\mu\)</span> is <span class="math inline">\(-(y - \mu)/\sigma^2 + (\mu - \alpha)/\beta\)</span> and its second derivative w.r.t. <span class="math inline">\(\mu\)</span> is <span class="math inline">\(1/\sigma^2 + 1/\beta\)</span>. Setting the first derivative to zero gives <span class="math inline">\(\hat \mu = (y \beta + \alpha \sigma^2) / (\beta + \sigma^2)\)</span>. Our Laplace approximation then <span class="math display">\[\begin{align*} \hat f(y) &amp;\simeq \sqrt{\dfrac{2 \pi}{\frac{1}{\sigma^2} + \frac{1}{\beta}}} \text{exp}\left\{-\log \phi(y; \hat \mu, \sigma^2) - \log \phi(\hat \mu; \alpha, \beta)\right\}\\ &amp;= \sqrt{\dfrac{2 \pi}{\frac{1}{\sigma^2} + \frac{1}{\beta}}} \phi(y; \hat \mu, \sigma^2) \phi(\hat \mu; \alpha, \beta). \end{align*}\]</span></p>
+<p>We can evaluate this in <code>R</code> with the following. We’ll start by setting <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="chapter-4-exercises.html#cb328-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb328-2"><a href="chapter-4-exercises.html#cb328-2" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> .<span class="dv">5</span></span>
+<span id="cb328-3"><a href="chapter-4-exercises.html#cb328-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">1.5</span></span></code></pre></div>
+<p>Then we’ll create <code>fy()</code>, which evaluates the <em>true</em> marginal pdf, i.e. <span class="math inline">\(f(y)\)</span>, given <span class="math inline">\(y\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>,</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="chapter-4-exercises.html#cb329-1" aria-hidden="true" tabindex="-1"></a>fy <span class="ot">&lt;-</span> <span class="cf">function</span>(y, sigma, alpha, beta) {</span>
+<span id="cb329-2"><a href="chapter-4-exercises.html#cb329-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate Normal(alpha, beta = sigma^2) pdf</span></span>
+<span id="cb329-3"><a href="chapter-4-exercises.html#cb329-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is scalar, vector or matrix</span></span>
+<span id="cb329-4"><a href="chapter-4-exercises.html#cb329-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sigma, alpha and beta are scalars</span></span>
+<span id="cb329-5"><a href="chapter-4-exercises.html#cb329-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns objects in same format as y</span></span>
+<span id="cb329-6"><a href="chapter-4-exercises.html#cb329-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(y, alpha, <span class="fu">sqrt</span>(beta <span class="sc">+</span> sigma<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb329-7"><a href="chapter-4-exercises.html#cb329-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>evaluate this for the <span class="math inline">\(y\)</span> values specified, <code>y_vals</code>,</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="chapter-4-exercises.html#cb330-1" aria-hidden="true" tabindex="-1"></a>y_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">6</span>)</span></code></pre></div>
+<p>and store this as <code>f_true</code></p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="chapter-4-exercises.html#cb331-1" aria-hidden="true" tabindex="-1"></a>f_true <span class="ot">&lt;-</span> <span class="fu">fy</span>(y_vals, sigma, alpha, beta)</span></code></pre></div>
+<p>The following function calculates the Laplace approximation, by finding <span class="math inline">\(\hat \mu\)</span>, called <code>mu_hat</code>, and then substituting this into the approximation above.</p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="chapter-4-exercises.html#cb332-1" aria-hidden="true" tabindex="-1"></a>fla <span class="ot">&lt;-</span> <span class="cf">function</span>(y, sigma, alpha, beta) {</span>
+<span id="cb332-2"><a href="chapter-4-exercises.html#cb332-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to compute Laplace approximate for Normal</span></span>
+<span id="cb332-3"><a href="chapter-4-exercises.html#cb332-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># prior on mean  mu and Normal likelihood on data</span></span>
+<span id="cb332-4"><a href="chapter-4-exercises.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is scalar or vector</span></span>
+<span id="cb332-5"><a href="chapter-4-exercises.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sigma, alpha and beta are scalars</span></span>
+<span id="cb332-6"><a href="chapter-4-exercises.html#cb332-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns object of same format as y</span></span>
+<span id="cb332-7"><a href="chapter-4-exercises.html#cb332-7" aria-hidden="true" tabindex="-1"></a>  mu_hat <span class="ot">&lt;-</span> (y <span class="sc">*</span> beta <span class="sc">+</span> alpha <span class="sc">*</span> sigma<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (beta <span class="sc">+</span> sigma<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb332-8"><a href="chapter-4-exercises.html#cb332-8" aria-hidden="true" tabindex="-1"></a>  mult <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">/</span> <span class="fu">abs</span>(<span class="dv">1</span> <span class="sc">/</span> beta <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> sigma<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb332-9"><a href="chapter-4-exercises.html#cb332-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(mult) <span class="sc">*</span> <span class="fu">dnorm</span>(y, mu_hat, sigma) <span class="sc">*</span> <span class="fu">dnorm</span>(mu_hat, alpha, <span class="fu">sqrt</span>(beta))</span>
+<span id="cb332-10"><a href="chapter-4-exercises.html#cb332-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Then we use this to evaluate the approximation for the specified <span class="math inline">\(y\)</span> values, <code>f_la</code>.</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="chapter-4-exercises.html#cb333-1" aria-hidden="true" tabindex="-1"></a>f_la <span class="ot">&lt;-</span> <span class="fu">fla</span>(y_vals, sigma, alpha, beta)</span></code></pre></div>
+<p>We’ll look at these alongside each other</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="chapter-4-exercises.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">true =</span> f_true, <span class="at">laplace =</span> f_la)</span></code></pre></div>
+<pre><code>##               [,1]       [,2]      [,3]     [,4]      [,5]     [,6]      [,7]
+## true    0.01311721 0.04683602 0.1162501 0.200577 0.2405712 0.200577 0.1162501
+## laplace 0.01311721 0.04683602 0.1162501 0.200577 0.2405712 0.200577 0.1162501
+##               [,8]       [,9]
+## true    0.04683602 0.01311721
+## laplace 0.04683602 0.01311721</code></pre>
+<p>and then by calculating the relative absolute error, i.e.</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="chapter-4-exercises.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>((f_true <span class="sc">-</span> f_la) <span class="sc">/</span> f_true)</span></code></pre></div>
+<pre><code>## [1] 6.612393e-16 0.000000e+00 1.193788e-16 1.383787e-16 1.153736e-16
+## [6] 1.383787e-16 0.000000e+00 0.000000e+00 1.322479e-16</code></pre>
+<p>we see that the relative absolute error is effectively zero, once we allow for <code>R</code>’s machine tolerance. [In fact if we carry on with the algebra above by substituting in the expression for the Normal pdfs, i.e. <span class="math display">\[\begin{align*} I_n &amp;= \sqrt{\dfrac{2 \pi}{\frac{1}{\sigma^2} + \frac{1}{\beta}}} \left(\dfrac{1}{\sqrt{2 \pi \sigma^2}} \text{exp}\left\{-\dfrac{(y - \hat \mu)^2}{2 \sigma^2}\right\} \right) \left(\dfrac{1}{\sqrt{2 \pi \beta}} \text{exp}\left\{-\dfrac{(\hat \mu - \alpha)^2}{2 \beta}\right\} \right), \end{align*}\]</span> we eventually find that on this occasion the Laplace approximation is exact (which you’re welcome to confirm in your own time).]</p>
+<hr /></li>
+<li><p> The negative binomial distribution, denoted NegBin<span class="math inline">\((r, p)\)</span>, has probability mass function (pmf) <span class="math display">\[f(y) = \dfrac{\Gamma(y + r)}{y!\Gamma(r)} p^y (1 - p)^r.\]</span> If <span class="math inline">\(Y \mid \lambda \sim \text{Poisson}(\lambda)\)</span> and <span class="math inline">\(\lambda \sim \text{Gamma}(r, [1 - p]/p)\)</span>, then <span class="math inline">\(Y \sim \text{NegBin}(r, p)\)</span>, so that the marginal distribution of <span class="math inline">\(Y\)</span> is negative binomial, i.e. 
+<span class="math display" id="eq:negbin">\[\begin{equation}
+f(y) = \int_{-\infty}^\infty f(y \mid \lambda) f(\lambda) \text{d} \lambda
+\tag{4.2}
+\end{equation}\]</span> if <span class="math inline">\(f(y \mid \lambda)\)</span> is the <span class="math inline">\(\text{Poisson}(\lambda)\)</span> pmf and <span class="math inline">\(f(\lambda)\)</span> is the <span class="math inline">\(\text{Gamma}(\alpha, \beta)\)</span> pdf with <span class="math inline">\(\alpha = r\)</span> and <span class="math inline">\(\beta = (1 - p)/p\)</span>. Use Laplace’s method to approximate the marginal pmf, i.e. to approximate <span class="math inline">\(f(y)\)</span>, for <span class="math inline">\(y = 0, 1, \ldots, 20\)</span>, <span class="math inline">\(\alpha= 5\)</span> and <span class="math inline">\(\beta = 0.5\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>For Laplace’s method, we first note that
+<span class="math display">\[\begin{align*}
+f(y, \lambda)
+&amp;= f(y \mid \lambda) f(\lambda)\\
+&amp;= \text{e}^{-\lambda}\dfrac{\lambda^y}{y!} \times \dfrac {\lambda^{\alpha -1}\text{e}^{-\beta \lambda} \beta^\alpha}{\Gamma(\alpha)}
+= \text{e}^{-\lambda(1 + \beta)} \dfrac{\lambda^{y + \alpha - 1} \beta^\alpha}{y!\Gamma(\alpha)}
+\end{align*}\]</span>
+Then, considering only <span class="math inline">\(\lambda\)</span>,
+<span class="math display">\[
+\log f(y, \lambda) = -\lambda(\beta + 1) + (y + \alpha - 1) \log(\lambda) + \text{constant}
+\]</span>
+and so
+<span class="math display">\[
+\dfrac{\partial \log f(y, \lambda)}{\partial \lambda} = -(\beta + 1) + (y + \alpha - 1) / \lambda
+\]</span>
+which we set to zero at <span class="math inline">\(\tilde \lambda\)</span> so that <span class="math inline">\(\beta + 1 = (y + \alpha - 1) / \tilde{\lambda}\)</span>, i.e.
+<span class="math display">\[
+\tilde \lambda = \dfrac{y + \alpha - 1}{\beta + 1}.
+\]</span>
+Then
+<span class="math display">\[
+\dfrac{\partial^2 \log f(y, \lambda)}{\partial \lambda^2} = -(y + \alpha - 1) / \lambda^2.
+\]</span>
+Using the formula for Laplace’s method from the notes, we take <span class="math inline">\(-nf(x)\)</span> as <span class="math inline">\(\log f(y, \lambda)\)</span> so that
+<span class="math display">\[
+f(y) \simeq \text{e}^{\log f(y, \tilde \lambda)} \sqrt{\dfrac{2\pi}{nf&#39;&#39;(\tilde \lambda)}}
+\]</span>
+where <span class="math inline">\(f&#39;&#39;(\tilde \lambda) = -\partial^2 \log f(y, \lambda) / \partial \lambda^2\)</span>. Therefore
+<span class="math display">\[\begin{align*}
+f(y)
+&amp;\simeq \text{e}^{-\tilde \lambda(1 + \beta)} \dfrac{\tilde{\lambda}^{y + \alpha - 1} \beta^\alpha}{y!\Gamma(\alpha)} \sqrt{\dfrac{2\pi\tilde{\lambda}^2}{y + \alpha - 1}}\\
+&amp;= \text{e}^{-\tilde \lambda(1 + \beta)} \dfrac{\tilde{\lambda}^{y + \alpha} \beta^\alpha}{y!\Gamma(\alpha)} \sqrt{\dfrac{2\pi}{y + \alpha - 1}}.
+\end{align*}\]</span></p>
+<p>Next we’ll set the <span class="math inline">\(y\)</span> values and <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="chapter-4-exercises.html#cb338-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb338-2"><a href="chapter-4-exercises.html#cb338-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb338-3"><a href="chapter-4-exercises.html#cb338-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> .<span class="dv">5</span></span></code></pre></div>
+<p>The following function can then give the Laplace approximation to <span class="math inline">\(f(y)\)</span> for given <span class="math inline">\(y\)</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="chapter-4-exercises.html#cb339-1" aria-hidden="true" tabindex="-1"></a>fhat <span class="ot">&lt;-</span> <span class="cf">function</span>(y, alpha, beta) {</span>
+<span id="cb339-2"><a href="chapter-4-exercises.html#cb339-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to give Laplace approximation to marginal distribution</span></span>
+<span id="cb339-3"><a href="chapter-4-exercises.html#cb339-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y can be scalar or vector</span></span>
+<span id="cb339-4"><a href="chapter-4-exercises.html#cb339-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># alpha and beta are scalar</span></span>
+<span id="cb339-5"><a href="chapter-4-exercises.html#cb339-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns scalar if y scalar, and vector if y vector</span></span>
+<span id="cb339-6"><a href="chapter-4-exercises.html#cb339-6" aria-hidden="true" tabindex="-1"></a>  tlambda <span class="ot">&lt;-</span> (y <span class="sc">+</span> alpha <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> (beta <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb339-7"><a href="chapter-4-exercises.html#cb339-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dpois</span>(y, tlambda) <span class="sc">*</span> <span class="fu">dgamma</span>(tlambda, alpha, beta) <span class="sc">*</span> </span>
+<span id="cb339-8"><a href="chapter-4-exercises.html#cb339-8" aria-hidden="true" tabindex="-1"></a>    tlambda <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">/</span> (y <span class="sc">+</span> alpha <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb339-9"><a href="chapter-4-exercises.html#cb339-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Then we can evaluate this for the specific values of <span class="math inline">\(y\)</span>.</p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="chapter-4-exercises.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fhat</span>(y, alpha, beta)</span></code></pre></div>
+<pre><code>##  [1] 0.004030551 0.013490989 0.027056782 0.042171720 0.056312548 0.067653206
+##  [7] 0.075239786 0.078882315 0.078932092 0.076049269 0.071011807 0.064581799
+## [13] 0.057425971 0.050079002 0.042936547 0.036266361 0.030228594 0.024899075
+## [19] 0.020291794 0.016378531 0.013104802</code></pre>
+<p>It’s useful to plot this against the <span class="math inline">\(\text{NegBin}(\alpha, p)\)</span> pmf. First we’ll write a function <code>dnbinom2(y, r, p)</code> to evaluate this pmf</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="chapter-4-exercises.html#cb342-1" aria-hidden="true" tabindex="-1"></a>dnbinom2 <span class="ot">&lt;-</span> <span class="cf">function</span>(y, r, p) </span>
+<span id="cb342-2"><a href="chapter-4-exercises.html#cb342-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gamma</span>(y <span class="sc">+</span> r) <span class="sc">*</span> p<span class="sc">^</span>y <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p)<span class="sc">^</span>r <span class="sc">/</span> <span class="fu">factorial</span>(y) <span class="sc">/</span> <span class="fu">gamma</span>(r)</span></code></pre></div>
+<p>and then we’ll plot it against the Laplace approximation.</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="chapter-4-exercises.html#cb343-1" aria-hidden="true" tabindex="-1"></a>fy <span class="ot">&lt;-</span> <span class="fu">dnbinom2</span>(y, alpha, <span class="dv">1</span> <span class="sc">/</span> (beta <span class="sc">+</span> <span class="dv">1</span>))</span>
+<span id="cb343-2"><a href="chapter-4-exercises.html#cb343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y, fy, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fy)))</span>
+<span id="cb343-3"><a href="chapter-4-exercises.html#cb343-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(y, <span class="fu">fhat</span>(y, alpha, beta), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-158"></span>
+<img src="main_files/figure-html/unnamed-chunk-158-1.png" alt="Comparison of true negative binomial marginal pmf with its Laplace approximation." width="384" />
+<p class="caption">
+Figure 4.2: Comparison of true negative binomial marginal pmf with its Laplace approximation.
+</p>
+</div>
+<p>The plot shows agreement between the true marginal pmf and its Laplace approximation to be very good.</p>
+<hr /></li>
+<li><p>Recall the integral <span class="math display">\[I = \int_0^1 \big[1 + 2 \cos(2 x) + 2 \sin(2 x)\big] \text{d} x\]</span> from above. Use Monte Carlo integration to approximate <span class="math inline">\(I\)</span> with Monte Carlo samples of size <span class="math inline">\(N = 100\)</span>, 1000 and 10000 and calculate the relative absolute error of each of your approximations.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>For a given value of <span class="math inline">\(N\)</span>, we want to generate <span class="math inline">\(N\)</span> Uniform([0, 1]) random variates, evaluate the integrand at each, and take the mean as the approximation to <span class="math inline">\(I\)</span>. The following code approximates the integral as <code>I_hat</code> for for <span class="math inline">\(N = 100\)</span></p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="chapter-4-exercises.html#cb344-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb344-2"><a href="chapter-4-exercises.html#cb344-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb344-3"><a href="chapter-4-exercises.html#cb344-3" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> x) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> x)</span>
+<span id="cb344-4"><a href="chapter-4-exercises.html#cb344-4" aria-hidden="true" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> <span class="fu">mean</span>(fx)</span>
+<span id="cb344-5"><a href="chapter-4-exercises.html#cb344-5" aria-hidden="true" tabindex="-1"></a>I_hat</span></code></pre></div>
+<pre><code>## [1] 3.330527</code></pre>
+<p>and its relative absolute error, <code>rel_err</code>, is</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="chapter-4-exercises.html#cb346-1" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">sin</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">cos</span>(<span class="dv">2</span>)</span>
+<span id="cb346-2"><a href="chapter-4-exercises.html#cb346-2" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> I_hat) <span class="sc">/</span> true)</span>
+<span id="cb346-3"><a href="chapter-4-exercises.html#cb346-3" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 0.001528359</code></pre>
+<p>The following code then loops this over the <span class="math inline">\(N\)</span> values <span class="math inline">\(N = 100\)</span>, 1000 and 10000.</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="chapter-4-exercises.html#cb348-1" aria-hidden="true" tabindex="-1"></a>N_vals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)</span>
+<span id="cb348-2"><a href="chapter-4-exercises.html#cb348-2" aria-hidden="true" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> rel_err <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(N_vals))</span>
+<span id="cb348-3"><a href="chapter-4-exercises.html#cb348-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(N_vals)) {</span>
+<span id="cb348-4"><a href="chapter-4-exercises.html#cb348-4" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> N_vals[i]</span>
+<span id="cb348-5"><a href="chapter-4-exercises.html#cb348-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb348-6"><a href="chapter-4-exercises.html#cb348-6" aria-hidden="true" tabindex="-1"></a>  fx <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> x) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> x)</span>
+<span id="cb348-7"><a href="chapter-4-exercises.html#cb348-7" aria-hidden="true" tabindex="-1"></a>  I_hat[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(fx)</span>
+<span id="cb348-8"><a href="chapter-4-exercises.html#cb348-8" aria-hidden="true" tabindex="-1"></a>  rel_err[i] <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> I_hat[i]) <span class="sc">/</span> true)</span>
+<span id="cb348-9"><a href="chapter-4-exercises.html#cb348-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>which gives the integral approximations</p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="chapter-4-exercises.html#cb349-1" aria-hidden="true" tabindex="-1"></a>I_hat</span></code></pre></div>
+<pre><code>## [1] 3.316098 3.311553 3.325624</code></pre>
+<p>and corresponding relative absolute errors</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="chapter-4-exercises.html#cb351-1" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 2.810404e-03 4.177179e-03 5.404947e-05</code></pre>
+<p>We might expect that our relative absolute errors will decrease as <span class="math inline">\(N\)</span> increases. Probabilistically they will: but our approximations are subject to the variability in the random samples, and so sometimes a smaller Monte Carlo sample size may give a better approximation than a larger sample size. In general, though, we should rely on the probabilistic properties, and use the largest possible Monte Carlo sample size that is feasible.</p>
+<hr /></li>
+<li><p>If <span class="math inline">\(Y \sim \text{Uniform}([a, b])\)</span> then <span class="math display">\[E(Y) = \int_a^b \frac{u}{b - a} \text{d} u = \frac{1}{2}(a + b).\]</span> Use the mean of <span class="math inline">\(m = 1000\)</span> Monte Carlo replicates of Monte Carlo samples of size <span class="math inline">\(N = 500\)</span> to approximate the above integral, and hence to approximate <span class="math inline">\(E(Y)\)</span>, for <span class="math inline">\(a = -1\)</span> and <span class="math inline">\(b = 1\)</span>.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll start by setting the Monte Carlo sample size, <code>N</code>, and then the number of replicates, <code>m</code>.</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="chapter-4-exercises.html#cb353-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb353-2"><a href="chapter-4-exercises.html#cb353-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fl">1e3</span></span></code></pre></div>
+<p>For a given replicate we need to generate <span class="math inline">\(N\)</span> points from the Uniform[-1, 1] distribution, <span class="math inline">\(u_1^*, \ldots, u_N^*\)</span>, say, and then our approximation to the integral is given by <span class="math inline">\(N^{-1} \sum_{i = 1}^N u_i^* / 2\)</span>, as <span class="math inline">\(b - a = 2\)</span>.</p>
+<p>The following calculates this for a single replicate, where <span class="math inline">\(a =\)</span> <code>a</code> and <span class="math inline">\(b =\)</span> <code>b</code>,</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="chapter-4-exercises.html#cb354-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb354-2"><a href="chapter-4-exercises.html#cb354-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb354-3"><a href="chapter-4-exercises.html#cb354-3" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb354-4"><a href="chapter-4-exercises.html#cb354-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(u) <span class="sc">/</span> (b <span class="sc">-</span>a)</span></code></pre></div>
+<pre><code>## [1] -0.001125121</code></pre>
+<p>and then <code>replicate()</code> can perform the <span class="math inline">\(m\)</span> replicates</p>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="chapter-4-exercises.html#cb356-1" aria-hidden="true" tabindex="-1"></a>uu <span class="ot">&lt;-</span> <span class="fu">replicate</span>(m, <span class="fu">runif</span>(N, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb356-2"><a href="chapter-4-exercises.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(uu)</span></code></pre></div>
+<pre><code>## [1]  500 1000</code></pre>
+<p>which stored the sampled values in a <span class="math inline">\(N \times m\)</span> matrix <code>uu</code>. Then we can use <code>colMeans()</code> to calculate the mean of each sample, and <code>mean()</code> to take the mean over replicates.</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="chapter-4-exercises.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">colMeans</span>(uu) <span class="sc">/</span> (b <span class="sc">-</span> a))</span></code></pre></div>
+<pre><code>## [1] 0.0005700557</code></pre>
+<p>[Note that due to the independence of the samples, this is equivalent to</p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="chapter-4-exercises.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(uu) <span class="sc">/</span> (b <span class="sc">-</span> a)</span></code></pre></div>
+<pre><code>## [1] 0.0005700557</code></pre>
+<p>and so <span class="math inline">\(m\)</span> Monte Carlo samples of size <span class="math inline">\(N\)</span> is equivalent to one Monte Carlo sample of size <span class="math inline">\(mN\)</span>.]</p>
+<hr /></li>
+<li><p>Approximate the integral the earlier integral <span class="math display">\[I = \int_0^2 \int_{-\pi}^\pi \left[\sin(x_1) + x_2 + 1\right] \text{d}x_1\text{d}x_2 \]</span> using Monte Carlo with samples of size <span class="math inline">\(N = 100\)</span>, <span class="math inline">\(200\)</span> and <span class="math inline">\(400\)</span> and <span class="math inline">\(m = 1000\)</span> replicates for each. Calculate the mean and variance of your approximations for each value of <span class="math inline">\(N\)</span>, i.e. across replicates. What do you observe?</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll start with a single replicate for <span class="math inline">\(N = 100\)</span>, generating <span class="math inline">\(x_1\)</span> from the Uniform([<span class="math inline">\(-\pi, \pi\)</span>]) distribution and <span class="math inline">\(x_2\)</span> from the Uniform([0, 2]) distribution. Let <span class="math inline">\(x_{11}^*, \ldots, x_{1N}^*\)</span> and <span class="math inline">\(x_{21}^*, \ldots, x_{2N}^*\)</span> denote these respective samples. Then the integral approximation is given by <span class="math display">\[\hat I = \dfrac{4\pi}{N} \sum_{i = 1}^N \big[\sin(x_{1i}^*) + x_{2i}^* + 1\big]\]</span> as our domain for <span class="math inline">\((x_1, x_2)\)</span>, denoted by <span class="math inline">\(\mathcal{X}\)</span> in the Lecture Notes, is <span class="math inline">\([0, 2] \times [-\pi, \pi]\)</span>, and hence <span class="math inline">\(V(\mathcal{X}) = 4\pi\)</span>. The following then calculates this in <code>R</code>.</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="chapter-4-exercises.html#cb362-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb362-2"><a href="chapter-4-exercises.html#cb362-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="sc">-</span>pi, pi)</span>
+<span id="cb362-3"><a href="chapter-4-exercises.html#cb362-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb362-4"><a href="chapter-4-exercises.html#cb362-4" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, x2) <span class="fu">sin</span>(x1) <span class="sc">+</span> x2 <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb362-5"><a href="chapter-4-exercises.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">*</span> pi <span class="sc">*</span> <span class="fu">mean</span>(<span class="fu">f</span>(x1, x2))</span></code></pre></div>
+<pre><code>## [1] 26.53961</code></pre>
+<p>Now we can to replicate this <span class="math inline">\(m\)</span> times for the different <span class="math inline">\(N\)</span> values. For explicitness, we’ll use loops.</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="chapter-4-exercises.html#cb364-1" aria-hidden="true" tabindex="-1"></a>N_vals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">400</span>)</span>
+<span id="cb364-2"><a href="chapter-4-exercises.html#cb364-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb364-3"><a href="chapter-4-exercises.html#cb364-3" aria-hidden="true" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="fu">length</span>(N_vals), m)</span>
+<span id="cb364-4"><a href="chapter-4-exercises.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(N_vals)) {</span>
+<span id="cb364-5"><a href="chapter-4-exercises.html#cb364-5" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> N_vals[i]</span>
+<span id="cb364-6"><a href="chapter-4-exercises.html#cb364-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m) {</span>
+<span id="cb364-7"><a href="chapter-4-exercises.html#cb364-7" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="sc">-</span>pi, pi)</span>
+<span id="cb364-8"><a href="chapter-4-exercises.html#cb364-8" aria-hidden="true" tabindex="-1"></a>    x2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb364-9"><a href="chapter-4-exercises.html#cb364-9" aria-hidden="true" tabindex="-1"></a>    I_hat[i, j] <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="sc">*</span> pi <span class="sc">*</span> <span class="fu">mean</span>(<span class="fu">f</span>(x1, x2))</span>
+<span id="cb364-10"><a href="chapter-4-exercises.html#cb364-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb364-11"><a href="chapter-4-exercises.html#cb364-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The following give the mean and variance across replicates.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="chapter-4-exercises.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(I_hat)</span></code></pre></div>
+<pre><code>## [1] 25.06577 25.08629 25.16046</code></pre>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="chapter-4-exercises.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(I_hat, <span class="dv">1</span>, sd)</span></code></pre></div>
+<pre><code>## [1] 1.1376463 0.8392819 0.6005032</code></pre>
+<p>Our main observation here is that the variance decreases as <span class="math inline">\(N\)</span> increases, and roughly halves as <span class="math inline">\(N\)</span> doubles, which is consistent with the formula for <span class="math inline">\(\text{Var}(\hat I_{\mathcal{X}})\)</span> given in the Lecture Notes, i.e. being inversely proportional to <span class="math inline">\(N\)</span>.</p>
+<hr /></li>
+<li><p>Approximate <span class="math display">\[I = \int_{-1}^1 \int_{-1}^1 \int_{-1}^1 (x_1 x_2 x_3)^2 \text{d}x_1\text{d}x_2\text{d}x_3\]</span> using a Monte Carlo sample of size <span class="math inline">\(N=10^4\)</span> and evaluate the approximation’s relative absolute error.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>Let’s start by finding the true integral <span class="math display">\[I = \int_{-1}^1 \int_{-1}^1 \int_{-1}^1 (x_1 x_2 x_3)^2 \text{d}x_1\text{d}x_2\text{d}x_3 = \int_{-1}^1 \int_{-1}^1 \dfrac{2}{3}\text{d}x_2\text{d}x_3 = \ldots = \left(\dfrac{2}{3}\right)^3 = \dfrac{8}{27}.\]</span></p>
+<p>We’ll store this as <code>true</code>.</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="chapter-4-exercises.html#cb369-1" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">27</span></span></code></pre></div>
+<p>Then we want to generate three sets of <span class="math inline">\(N\)</span> draws from the Uniform([-1, 1]) distribution, representing <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span>, which we’ll store as <code>x123</code>.</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="chapter-4-exercises.html#cb370-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb370-2"><a href="chapter-4-exercises.html#cb370-2" aria-hidden="true" tabindex="-1"></a>x123 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">3</span> <span class="sc">*</span> N, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), N)</span></code></pre></div>
+<p>Our domain is <span class="math inline">\([-1, 1]^3\)</span> which has volume <span class="math inline">\(2^3 = 8\)</span>. Our approximation to the integral, <code>I_hat</code>, is</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="chapter-4-exercises.html#cb371-1" aria-hidden="true" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">*</span> <span class="fu">mean</span>(<span class="fu">apply</span>(x123<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, prod))</span>
+<span id="cb371-2"><a href="chapter-4-exercises.html#cb371-2" aria-hidden="true" tabindex="-1"></a>I_hat</span></code></pre></div>
+<pre><code>## [1] 0.2993306</code></pre>
+<p>which has a relative absolute error, <code>rel_err</code>, of</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="chapter-4-exercises.html#cb373-1" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> I_hat) <span class="sc">/</span> true)</span>
+<span id="cb373-2"><a href="chapter-4-exercises.html#cb373-2" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>## [1] 0.01024071</code></pre>
+<p>i.e. about 1%.</p>
+<hr /></li>
+<li><p>Approximate the negative binomial marginal distribution given in Equation <a href="chapter-4-exercises.html#eq:negbin">(4.2)</a> using Monte Carlo sampling with <span class="math inline">\(N = 10^3\)</span>, <span class="math inline">\(\alpha = 5\)</span>, <span class="math inline">\(\beta = 0.5\)</span> and for <span class="math inline">\(y = 0, 1, \ldots, 20\)</span>, and calculate the relative absolute error of your approximation.</p>
+<hr />
+<p><strong>Solution</strong></p>
+<p>We’ll start by storing <span class="math inline">\(N\)</span>, <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> and <span class="math inline">\(y = 0, 1, \ldots, 20\)</span>.</p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="chapter-4-exercises.html#cb375-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb375-2"><a href="chapter-4-exercises.html#cb375-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb375-3"><a href="chapter-4-exercises.html#cb375-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> .<span class="dv">5</span></span>
+<span id="cb375-4"><a href="chapter-4-exercises.html#cb375-4" aria-hidden="true" tabindex="-1"></a>y_vals <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span></span></code></pre></div>
+<p>Then we want to generate <span class="math inline">\(N\)</span> values for <span class="math inline">\(\lambda\)</span> from the <span class="math inline">\(\text{Gamma}(\alpha, \beta)\)</span> distribution, which we’ll call <code>lambda_samp</code>.</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="chapter-4-exercises.html#cb376-1" aria-hidden="true" tabindex="-1"></a>lambda_samp <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(N, alpha, beta)</span></code></pre></div>
+<p>Our approximation to the marginal distribution is obtained by evaluating the Poisson(<span class="math inline">\(\lambda\)</span>) distribution for the <span class="math inline">\(y\)</span> values specified at each sampled <span class="math inline">\(\lambda\)</span> value, which we’ll call <code>fy_samp</code>,</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="chapter-4-exercises.html#cb377-1" aria-hidden="true" tabindex="-1"></a>fy_samp <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lambda_samp, <span class="cf">function</span>(lambda) <span class="fu">dpois</span>(y_vals, lambda))</span></code></pre></div>
+<p>and then averaging over the samples, which we’ll call <code>fy_hat</code>.</p>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="chapter-4-exercises.html#cb378-1" aria-hidden="true" tabindex="-1"></a>fy_hat <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(fy_samp)</span>
+<span id="cb378-2"><a href="chapter-4-exercises.html#cb378-2" aria-hidden="true" tabindex="-1"></a>fy_hat</span></code></pre></div>
+<pre><code>##  [1] 0.003646912 0.012868946 0.026607133 0.042330466 0.057387922 0.069712704
+##  [7] 0.078056072 0.081994808 0.081816047 0.078298252 0.072440391 0.065222290
+## [13] 0.057453215 0.049716276 0.042382039 0.035655861 0.029631056 0.024332628
+## [19] 0.019746861 0.015838362 0.012558630</code></pre>
+<p>The relative absolute error, <code>rel_err</code>, relative to the true marginal pdf, <code>fy</code>, can be caluclated with</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="chapter-4-exercises.html#cb380-1" aria-hidden="true" tabindex="-1"></a>fy <span class="ot">&lt;-</span> <span class="fu">dnbinom2</span>(y_vals, alpha, <span class="dv">1</span> <span class="sc">/</span> (beta <span class="sc">+</span> <span class="dv">1</span>))</span>
+<span id="cb380-2"><a href="chapter-4-exercises.html#cb380-2" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((fy <span class="sc">-</span> fy_hat) <span class="sc">/</span> fy)</span>
+<span id="cb380-3"><a href="chapter-4-exercises.html#cb380-3" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<pre><code>##  [1] 0.113800441 0.061853809 0.030169988 0.008106467 0.008541485 0.020948770
+##  [7] 0.028824333 0.031614646 0.029365575 0.022995284 0.014064485 0.004323243
+## [13] 0.004722164 0.012097060 0.017473383 0.021136090 0.023842795 0.026619715
+## [19] 0.030533783 0.036477436 0.044998852</code></pre>
+<p>and is reasonably small for each <span class="math inline">\(y\)</span> value. Finally, as in question <span class="math inline">\(\ref{negbin}\)</span>, we’ll plot the approximation against the true marginal pdf</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="chapter-4-exercises.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y_vals, fy, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fy_hat)), <span class="at">xlab =</span> <span class="st">&#39;y&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;f(y)&#39;</span>)</span>
+<span id="cb382-2"><a href="chapter-4-exercises.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(y, fy_hat, <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-186"></span>
+<img src="main_files/figure-html/unnamed-chunk-186-1.png" alt="Comparison of true negative binomial marginal pmf with its Monte Carlo approximation." width="384" />
+<p class="caption">
+Figure 4.3: Comparison of true negative binomial marginal pmf with its Monte Carlo approximation.
+</p>
+</div>
+<p>and see that the approximation (in red) closely follows the true marginal pdf.</p>
+<hr /></li>
+</ol>
+
+
+
+
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-3-exercises.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
