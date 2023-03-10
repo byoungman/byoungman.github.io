@@ -212,3 +212,5 @@ stochastic-optimisation
 simulated-annealing
 simulated-annealing-in-r
 bibliographic-notes-3
+fig:unnamed-chunk-73
+fig:unnamed-chunk-76
