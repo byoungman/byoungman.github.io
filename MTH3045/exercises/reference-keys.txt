@@ -14,3 +14,5 @@ eq:negbin
 fig:unnamed-chunk-158
 fig:unnamed-chunk-186
 chapter-4-exercises
+fig:unnamed-chunk-160
+fig:unnamed-chunk-188
