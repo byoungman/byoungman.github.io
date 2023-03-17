@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="chapter-3-exercises.html"/>
-
+<link rel="next" href="chapter-5-exercises.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -134,6 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="chapter-2-exercises.html"><a href="chapter-2-exercises.html"><i class="fa fa-check"></i><b>2</b> Chapter 2 exercises</a></li>
 <li class="chapter" data-level="3" data-path="chapter-3-exercises.html"><a href="chapter-3-exercises.html"><i class="fa fa-check"></i><b>3</b> Chapter 3 exercises</a></li>
 <li class="chapter" data-level="4" data-path="chapter-4-exercises.html"><a href="chapter-4-exercises.html"><i class="fa fa-check"></i><b>4</b> Chapter 4 exercises</a></li>
+<li class="chapter" data-level="5" data-path="chapter-5-exercises.html"><a href="chapter-5-exercises.html"><i class="fa fa-check"></i><b>5</b> Chapter 5 exercises</a></li>
 </ul>
 
       </nav>
@@ -230,8 +231,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb234-8"><a href="chapter-4-exercises.html#cb234-8" aria-hidden="true" tabindex="-1"></a>x2_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x12_grid<span class="sc">$</span>x2, <span class="fu">length</span>(x1))</span>
 <span id="cb234-9"><a href="chapter-4-exercises.html#cb234-9" aria-hidden="true" tabindex="-1"></a>plot3D<span class="sc">::</span><span class="fu">surf3D</span>(x1_mat, x2_mat, f12, <span class="at">colvar =</span> f12, <span class="at">colkey =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb234-10"><a href="chapter-4-exercises.html#cb234-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">box =</span> <span class="cn">TRUE</span>, <span class="at">bty =</span> <span class="st">&quot;b&quot;</span>, <span class="at">phi =</span> <span class="dv">20</span>, <span class="at">theta =</span> <span class="dv">15</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-101"></span>
-<img src="main_files/figure-html/unnamed-chunk-101-1.png" alt="Rosenbrock's function as a contour plot (left) and surface plot (right)." width="960" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-102"></span>
+<img src="main_files/figure-html/unnamed-chunk-102-1.png" alt="Rosenbrock's function as a contour plot (left) and surface plot (right)." width="960" />
 <p class="caption">
 Figure 4.1: Rosenbrock’s function as a contour plot (left) and surface plot (right).
 </p>
@@ -936,8 +937,8 @@ f(y)
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="chapter-4-exercises.html#cb346-1" aria-hidden="true" tabindex="-1"></a>fy <span class="ot">&lt;-</span> <span class="fu">dnbinom2</span>(y, alpha, <span class="dv">1</span> <span class="sc">/</span> (beta <span class="sc">+</span> <span class="dv">1</span>))</span>
 <span id="cb346-2"><a href="chapter-4-exercises.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y, fy, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fy)))</span>
 <span id="cb346-3"><a href="chapter-4-exercises.html#cb346-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(y, <span class="fu">fhat</span>(y, alpha, beta), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-160"></span>
-<img src="main_files/figure-html/unnamed-chunk-160-1.png" alt="Comparison of true negative binomial marginal pmf with its Laplace approximation." width="384" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-161"></span>
+<img src="main_files/figure-html/unnamed-chunk-161-1.png" alt="Comparison of true negative binomial marginal pmf with its Laplace approximation." width="384" />
 <p class="caption">
 Figure 4.2: Comparison of true negative binomial marginal pmf with its Laplace approximation.
 </p>
@@ -1100,8 +1101,8 @@ Figure 4.2: Comparison of true negative binomial marginal pmf with its Laplace a
 <p>and is reasonably small for each <span class="math inline">\(y\)</span> value. Finally, as in question <span class="math inline">\(\ref{negbin}\)</span>, we’ll plot the approximation against the true marginal pdf</p>
 <div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="chapter-4-exercises.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y_vals, fy, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fy_hat)), <span class="at">xlab =</span> <span class="st">&#39;y&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;f(y)&#39;</span>)</span>
 <span id="cb385-2"><a href="chapter-4-exercises.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(y, fy_hat, <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-188"></span>
-<img src="main_files/figure-html/unnamed-chunk-188-1.png" alt="Comparison of true negative binomial marginal pmf with its Monte Carlo approximation." width="384" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-189"></span>
+<img src="main_files/figure-html/unnamed-chunk-189-1.png" alt="Comparison of true negative binomial marginal pmf with its Monte Carlo approximation." width="384" />
 <p class="caption">
 Figure 4.3: Comparison of true negative binomial marginal pmf with its Monte Carlo approximation.
 </p>
@@ -1110,20 +1111,14 @@ Figure 4.3: Comparison of true negative binomial marginal pmf with its Monte Car
 </details>
 <hr /></li>
 </ol>
-
-
-
-
-
-
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="chapter-3-exercises.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="chapter-3-exercises.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-5-exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

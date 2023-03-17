@@ -16,3 +16,7 @@ fig:unnamed-chunk-186
 chapter-4-exercises
 fig:unnamed-chunk-160
 fig:unnamed-chunk-188
+fig:unnamed-chunk-102
+fig:unnamed-chunk-161
+fig:unnamed-chunk-189
+chapter-5-exercises

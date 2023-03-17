@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Chapter 5 exercises | MTH3045: Statistical Computing: Exercises</title>
+  <meta name="description" content="5 Chapter 5 exercises | MTH3045: Statistical Computing: Exercises" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Chapter 5 exercises | MTH3045: Statistical Computing: Exercises" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Chapter 5 exercises | MTH3045: Statistical Computing: Exercises" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter-4-exercises.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Chapter 1 exercises</a></li>
+<li class="chapter" data-level="2" data-path="chapter-2-exercises.html"><a href="chapter-2-exercises.html"><i class="fa fa-check"></i><b>2</b> Chapter 2 exercises</a></li>
+<li class="chapter" data-level="3" data-path="chapter-3-exercises.html"><a href="chapter-3-exercises.html"><i class="fa fa-check"></i><b>3</b> Chapter 3 exercises</a></li>
+<li class="chapter" data-level="4" data-path="chapter-4-exercises.html"><a href="chapter-4-exercises.html"><i class="fa fa-check"></i><b>4</b> Chapter 4 exercises</a></li>
+<li class="chapter" data-level="5" data-path="chapter-5-exercises.html"><a href="chapter-5-exercises.html"><i class="fa fa-check"></i><b>5</b> Chapter 5 exercises</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MTH3045: Statistical Computing: Exercises</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter-5-exercises" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Chapter 5 exercises<a href="chapter-5-exercises.html#chapter-5-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol style="list-style-type: decimal">
+<li><p>Suppose that we want to generate random variables from a distribution with cdf
+<span class="math display">\[
+F(y) = \dfrac{2}{\pi} \arcsin(\sqrt{y}) \quad \text{for}~y \in [0, 1].
+\]</span>
+We can generate a single random variable, <span class="math inline">\(Y^*\)</span>, say, by generating a random Uniform([0, 1]) random variable, <span class="math inline">\(U^*\)</span>, say, and then finding <span class="math inline">\(Y^*\)</span> such that <span class="math inline">\(F(Y^*) = U^*\)</span>. Write a function in <code>R</code>, <code>rarcsine(n)</code>, that generates <span class="math inline">\(n\)</span> random variables with cdf <span class="math inline">\(F(y)\)</span> above using <code>R</code>’s <code>uniroot()</code> function, and then generate <span class="math inline">\(n = 10\)</span> variates. Note that <code>asin(y)</code> evaluates <span class="math inline">\(\arcsin(y)\)</span> in <code>R</code> for <span class="math inline">\(y =\)</span> <code>y</code>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll start by writing a function to evaluate <span class="math inline">\(F()\)</span>, called <code>F</code>.</p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="chapter-5-exercises.html#cb386-1" aria-hidden="true" tabindex="-1"></a>F <span class="ot">&lt;-</span> <span class="cf">function</span>(y) <span class="dv">2</span> <span class="sc">*</span> <span class="fu">asin</span>(<span class="fu">sqrt</span>(y)) <span class="sc">/</span> pi</span></code></pre></div>
+<p>Then we want the function for which we want the root, which we’ll call <code>F_root()</code>.</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="chapter-5-exercises.html#cb387-1" aria-hidden="true" tabindex="-1"></a>F_root <span class="ot">&lt;-</span> <span class="cf">function</span>(y, u) <span class="fu">F</span>(y) <span class="sc">-</span> u</span></code></pre></div>
+<p>Next we’ll use <code>uniroot()</code> to find <span class="math inline">\(y\)</span> such that <span class="math inline">\(F(y) = u\)</span>.</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="chapter-5-exercises.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uniroot</span>(F_root, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">u =</span> <span class="fu">runif</span>(<span class="dv">1</span>))<span class="sc">$</span>root</span></code></pre></div>
+<pre><code>## [1] 0.09332532</code></pre>
+<p>Putting this together into function <code>rarcsine(n)</code>, we get</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="chapter-5-exercises.html#cb390-1" aria-hidden="true" tabindex="-1"></a>qarcsin <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb390-2"><a href="chapter-5-exercises.html#cb390-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replicate</span>(n, <span class="fu">uniroot</span>(F_root, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">u =</span> <span class="fu">runif</span>(<span class="dv">1</span>))<span class="sc">$</span>root)</span>
+<span id="cb390-3"><a href="chapter-5-exercises.html#cb390-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>and so</p>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="chapter-5-exercises.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qarcsin</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.9034382 0.3821925 0.8172672 0.2686639 0.9919419 0.9232536 0.6268923
+##  [8] 0.8650127 0.1923155 0.8662630</code></pre>
+<p>gives <span class="math inline">\(n = 10\)</span> random variates.</p>
+</details>
+<hr /></li>
+<li><p> Consider that the independent sample <span class="math inline">\(\mathbf{y} = (y_1, \ldots, y_n)\)</span> is from the pdf
+<span class="math display">\[
+f(y) = 2\theta y\text{exp}\left\{-\theta y^2\right\} \quad \text{for}~y &gt; 0
+\]</span>
+with parameter <span class="math inline">\(\theta &gt; 0\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Show that the maximum likelihood estimate of <span class="math inline">\(\theta\)</span> is given by <span class="math inline">\(\hat \theta = n / (\sum_{i = 1}^n y_i^2)\)</span>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>The log-likelihood is
+<span class="math display">\[
+\log f(\mathbf{y} \mid \theta) = n \log (\theta) - \theta \sum_{i = 1}^n y_i^2 + \text{constant}
+\]</span>
+and so
+<span class="math display">\[
+\dfrac{\partial \log f(\mathbf{y} \mid \theta)}{\partial \theta} = \dfrac{n}{\theta} - \sum_{i = 1}^n y_i^2.
+\]</span>
+Setting <span class="math inline">\(\partial \log f(\mathbf{y} \mid \theta) / \partial \theta = 0\)</span> gives <span class="math inline">\(\hat \theta = n / \sum_{i = 1}^n y_i^2\)</span>.</p>
+</details>
+<hr /></li>
+<li><p> Given that <span class="math inline">\(y_1, \ldots, y_n\)</span> take the values
+<span class="math display">\[
+0.15, 0.24, 0.33, 0.43, 0.49, 0.57, 0.57, 0.63, 0.71, 0.93, 1.15, 1.22, 1.23, 1.23, 1.28
+\]</span>
+find <span class="math inline">\(\hat \theta\)</span>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We can calculate this in <code>R</code> with</p>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="chapter-5-exercises.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y &lt;- c(...) # read in y</span></span>
+<span id="cb393-2"><a href="chapter-5-exercises.html#cb393-2" aria-hidden="true" tabindex="-1"></a>theta_hat <span class="ot">&lt;-</span> <span class="fu">length</span>(y) <span class="sc">/</span> <span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<p>and so <span class="math inline">\(\hat \theta = 1.428\)</span>.</p>
+</details>
+<hr /></li>
+<li><p>Use <code>R</code>’s <code>optimize()</code> function to verify <span class="math inline">\(\hat \theta\)</span>, assuming <span class="math inline">\(\hat \theta \in [0.1, 4]\)</span>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We now need a function to evaluate the negative log-likelihood (ignoring the constant, because this doesn’t vary with <span class="math inline">\(\theta\)</span>), as we want to find <span class="math inline">\(\theta\)</span> that minimises this. We’ll call this function <code>nd0(theta, y)</code>.</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="chapter-5-exercises.html#cb394-1" aria-hidden="true" tabindex="-1"></a>nd0 <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, y) theta <span class="sc">*</span> <span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> n <span class="sc">*</span> <span class="fu">log</span>(theta)</span></code></pre></div>
+<p>Then we call <code>optimize()</code> accordingly</p>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="chapter-5-exercises.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">optimize</span>(nd0, <span class="fu">c</span>(.<span class="dv">1</span>, <span class="dv">4</span>), <span class="at">y =</span> y)</span></code></pre></div>
+<pre><code>## $minimum
+## [1] 1.427901
+## 
+## $objective
+## [1] 9.656731</code></pre>
+<p>and we see that element <code>minimum</code> in the list confirms <span class="math inline">\(\hat \theta\)</span>.</p>
+</details>
+<hr /></li>
+</ol></li>
+<li><p>Consider using Newton’s method to find <span class="math inline">\(\hat \theta\)</span> from Question 2.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find the second derivative of the log-likelihood w.r.t. <span class="math inline">\(\theta\)</span>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>The second derivative of the log-likelihood is
+<span class="math display">\[
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \theta)}{\partial \theta^2} = -\dfrac{n}{\theta^2}.
+\]</span></p>
+</details>
+<hr /></li>
+<li><p>To find maximum likelihood estimates using Newton’s method, we want to minimise the negative log-likelihood. Hence show that if we want to minimise <span class="math inline">\(-\log f(\mathbf{y} \mid \theta)\)</span> then a step of Newton’s method, given <span class="math inline">\(\theta\)</span>, is given by
+<span class="math display">\[
+\dfrac{\partial [-\log f(\mathbf{y} \mid \theta)] / \partial \theta}{\partial^2 [-\log f(\mathbf{y} \mid \theta)] / \partial \theta^2} = \dfrac{\sum_{i = 1}^n y_i^2 - n / \theta}{n / \theta^2}.
+\]</span></p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>The step is
+<span class="math display">\[
+\dfrac{\partial [-\log f(\mathbf{y} \mid \theta)] / \partial \theta}{\partial^2 [-\log f(\mathbf{y} \mid \theta)] / \partial \theta^2} = \dfrac{\sum_{i = 1}^n y_i^2 - n / \theta}{n / \theta^2}
+\]</span></p>
+<p>as required.</p>
+</details>
+<hr /></li>
+<li><p> Write functions in <code>R</code>, <code>nd1(theta, y)</code> and <code>nd2(theta, y)</code>, that return the first and second derivatives of <span class="math inline">\(-\log f(\mathbf{y} \mid \theta)\)</span> w.r.t. <span class="math inline">\(\theta\)</span> based on analytical expressions for the derivatives.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>Here we’ll ensure that <code>nd1()</code> and <code>nd2()</code> return a vector and matrix, respectively, for generality if we’re working with higher dimensions, but returning scalars is also fine here.</p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="chapter-5-exercises.html#cb397-1" aria-hidden="true" tabindex="-1"></a>nd1 <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, y) {</span>
+<span id="cb397-2"><a href="chapter-5-exercises.html#cb397-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate first derivative w.r.t. theta</span></span>
+<span id="cb397-3"><a href="chapter-5-exercises.html#cb397-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># theta is a scalar</span></span>
+<span id="cb397-4"><a href="chapter-5-exercises.html#cb397-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb397-5"><a href="chapter-5-exercises.html#cb397-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a 1-vector</span></span>
+<span id="cb397-6"><a href="chapter-5-exercises.html#cb397-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.vector</span>(<span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> n <span class="sc">/</span> theta)</span>
+<span id="cb397-7"><a href="chapter-5-exercises.html#cb397-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb397-8"><a href="chapter-5-exercises.html#cb397-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb397-9"><a href="chapter-5-exercises.html#cb397-9" aria-hidden="true" tabindex="-1"></a>nd2 <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, y) {</span>
+<span id="cb397-10"><a href="chapter-5-exercises.html#cb397-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate second derivative w.r.t. theta</span></span>
+<span id="cb397-11"><a href="chapter-5-exercises.html#cb397-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># theta is a scalar</span></span>
+<span id="cb397-12"><a href="chapter-5-exercises.html#cb397-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb397-13"><a href="chapter-5-exercises.html#cb397-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a 1x1 matrix</span></span>
+<span id="cb397-14"><a href="chapter-5-exercises.html#cb397-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(n <span class="sc">/</span> theta<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb397-15"><a href="chapter-5-exercises.html#cb397-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</details>
+<hr /></li>
+<li><p>Use your functions from Question 3(c) to find the first Newton step, given <span class="math inline">\(\theta_0 = 1\)</span> and the sample of data from Question 2(b).</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll load the data</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="chapter-5-exercises.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y &lt;- ...</span></span>
+<span id="cb398-2"><a href="chapter-5-exercises.html#cb398-2" aria-hidden="true" tabindex="-1"></a>theta_0 <span class="ot">&lt;-</span> <span class="dv">1</span></span></code></pre></div>
+<p>and then first step is</p>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="chapter-5-exercises.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">solve</span>(<span class="fu">nd2</span>(theta_0, y), <span class="fu">nd1</span>(theta_0, y))</span></code></pre></div>
+<pre><code>## [1] 0.29968</code></pre>
+</details>
+<hr /></li>
+<li><p>Perform four further steps of Newton’s method. After how many steps does Newton’s method agree with <span class="math inline">\(\hat \theta\)</span> from Question 2(b) to within three decimal places.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>The following code performs five iterations of Newton’s method in total, starting at <span class="math inline">\(\theta_0\)</span>.</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="chapter-5-exercises.html#cb401-1" aria-hidden="true" tabindex="-1"></a>iterations <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb401-2"><a href="chapter-5-exercises.html#cb401-2" aria-hidden="true" tabindex="-1"></a>theta_i <span class="ot">&lt;-</span> <span class="fu">numeric</span>(iterations <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb401-3"><a href="chapter-5-exercises.html#cb401-3" aria-hidden="true" tabindex="-1"></a>theta_i[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb401-4"><a href="chapter-5-exercises.html#cb401-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">:</span>iterations) {</span>
+<span id="cb401-5"><a href="chapter-5-exercises.html#cb401-5" aria-hidden="true" tabindex="-1"></a>  theta_i[i] <span class="ot">&lt;-</span> theta_i[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">-</span> <span class="fu">solve</span>(<span class="fu">nd2</span>(theta_i[i <span class="sc">-</span> <span class="dv">1</span>], y), <span class="fu">nd1</span>(theta_i[i <span class="sc">-</span> <span class="dv">1</span>], y))</span>
+<span id="cb401-6"><a href="chapter-5-exercises.html#cb401-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb401-7"><a href="chapter-5-exercises.html#cb401-7" aria-hidden="true" tabindex="-1"></a>theta_i</span></code></pre></div>
+<pre><code>## [1] 1.000000 1.299680 1.416402 1.427826 1.427919 1.427919</code></pre>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="chapter-5-exercises.html#cb403-1" aria-hidden="true" tabindex="-1"></a>theta_hat <span class="ot">&lt;-</span> n <span class="sc">/</span> <span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb403-2"><a href="chapter-5-exercises.html#cb403-2" aria-hidden="true" tabindex="-1"></a>theta_hat</span></code></pre></div>
+<pre><code>## [1] 1.427919</code></pre>
+<p>If we compare these to <span class="math inline">\(\hat \theta\)</span> by calculating the absolute difference we get</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="chapter-5-exercises.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(theta_i <span class="sc">-</span> theta_hat)</span></code></pre></div>
+<pre><code>## [1] 4.279187e-01 1.282387e-01 1.151687e-02 9.288927e-05 6.042653e-09
+## [6] 0.000000e+00</code></pre>
+<p>which is less than <span class="math inline">\(10^{-3}\)</span> by its fourth element, i.e. the third iteration of Newton’s method.</p>
+</details>
+<hr /></li>
+<li><p>Evaluate the Hessian of the negative log-likelihood at <span class="math inline">\(\hat \theta\)</span>. This should be positive definite if <span class="math inline">\(\hat \theta\)</span> is the maximum likelihood estimate, which can be assessed by all of its eigenvalues being positive. Check whether this is the case.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>The following calculates the Hessian and its eigenvalues</p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="chapter-5-exercises.html#cb407-1" aria-hidden="true" tabindex="-1"></a>H <span class="ot">&lt;-</span> <span class="fu">nd2</span>(theta_hat, y)</span>
+<span id="cb407-2"><a href="chapter-5-exercises.html#cb407-2" aria-hidden="true" tabindex="-1"></a>ev <span class="ot">&lt;-</span> <span class="fu">eigen</span>(H, <span class="at">symmetric =</span> <span class="cn">TRUE</span>, <span class="at">only.values =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>and we can then check whether they’re all positive</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="chapter-5-exercises.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(ev<span class="sc">$</span>values <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>which they are.</p>
+</details>
+<hr /></li>
+</ol></li>
+<li><p>Suppose that the sample of data
+<span class="math display">\[
+-7.7, -0.5, -0.1, 1.2, 1.3, 2.4, 3.7, 5.7, 6.2, 8.4, 13.9, 24.4
+\]</span>
+can be modelled as independent realisations from the pdf
+<span class="math display">\[
+f(y \mid \mu) = \dfrac{2}{\pi \left[(y - \mu)^2 + 4\right]},
+\]</span>
+where <span class="math inline">\(-\infty &lt; \mu &lt; \infty\)</span> is an unknown parameter.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p> Find the maximum likelihood estimate of <span class="math inline">\(\mu\)</span>, denoted <span class="math inline">\(\hat \mu\)</span>, using Newton’s method with a suitable numbers of iterations.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll start by finding the log-likelihood and its first and second derivatives w.r.t. <span class="math inline">\(\mu\)</span>. The log-likelihood is given by
+<span class="math display">\[
+\log f(\mathbf{y} \mid \mu) = n \log 2 - n \log \pi  - \sum_{i = 1}^n \log\left([y_i - \mu]^2 + 4\right)
+\]</span>
+and so
+<span class="math display">\[
+\dfrac{\partial \log f(\mathbf{y} \mid \mu)}{\partial \mu} = 2\sum_{i = 1}^n \dfrac{y_i - \mu}{(y_i - \mu)^2 + 4}
+\]</span>
+and therefore
+<span class="math display">\[
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \mu)}{\partial \mu^2} = 4 \sum_{i = 1}^n \left[\dfrac{y_i - \mu}{(y_i - \mu)^2 + 4}\right]^2 - 2 \sum_{i = 1}^n \dfrac{1}{(y_i - \mu)^2 + 4}.
+\]</span></p>
+<p>Then we’ll write functions in <code>R</code> to evaluate these, <code>d0(mu, y, mult = 1)</code>, <code>d1(mu, y, mult = 1)</code> and <code>d2(mu, y, mult = 1)</code>, respectively, where <code>mult</code> can be set to <code>-1</code> when we want to deal with the negative log-likelihood.</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="chapter-5-exercises.html#cb410-1" aria-hidden="true" tabindex="-1"></a>d0 <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, y, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb410-2"><a href="chapter-5-exercises.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># function to evaluate log-likelihood</span></span>
+<span id="cb410-3"><a href="chapter-5-exercises.html#cb410-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mu is a scalar</span></span>
+<span id="cb410-4"><a href="chapter-5-exercises.html#cb410-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb410-5"><a href="chapter-5-exercises.html#cb410-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb410-6"><a href="chapter-5-exercises.html#cb410-6" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb410-7"><a href="chapter-5-exercises.html#cb410-7" aria-hidden="true" tabindex="-1"></a>  mult <span class="sc">*</span> (n <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span>) <span class="sc">-</span> n <span class="sc">*</span> <span class="fu">log</span>(pi) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">log</span>((y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span>)))</span>
+<span id="cb410-8"><a href="chapter-5-exercises.html#cb410-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb410-9"><a href="chapter-5-exercises.html#cb410-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb410-10"><a href="chapter-5-exercises.html#cb410-10" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, y, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb410-11"><a href="chapter-5-exercises.html#cb410-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># function to evaluate first derivative of log-likelihood w.r.t. mu</span></span>
+<span id="cb410-12"><a href="chapter-5-exercises.html#cb410-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mu is a scalar</span></span>
+<span id="cb410-13"><a href="chapter-5-exercises.html#cb410-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb410-14"><a href="chapter-5-exercises.html#cb410-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb410-15"><a href="chapter-5-exercises.html#cb410-15" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb410-16"><a href="chapter-5-exercises.html#cb410-16" aria-hidden="true" tabindex="-1"></a>  mult <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>((y <span class="sc">-</span> mu) <span class="sc">/</span> ((y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span>)))</span>
+<span id="cb410-17"><a href="chapter-5-exercises.html#cb410-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb410-18"><a href="chapter-5-exercises.html#cb410-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb410-19"><a href="chapter-5-exercises.html#cb410-19" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, y, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb410-20"><a href="chapter-5-exercises.html#cb410-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># function to evaluate second derivative of log-likelihood w.r.t. mu</span></span>
+<span id="cb410-21"><a href="chapter-5-exercises.html#cb410-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mu is a scalar</span></span>
+<span id="cb410-22"><a href="chapter-5-exercises.html#cb410-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb410-23"><a href="chapter-5-exercises.html#cb410-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb410-24"><a href="chapter-5-exercises.html#cb410-24" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb410-25"><a href="chapter-5-exercises.html#cb410-25" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span>) <span class="sc">-</span> n <span class="sc">*</span> <span class="fu">log</span>(pi) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">log</span>((y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span>))</span>
+<span id="cb410-26"><a href="chapter-5-exercises.html#cb410-26" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="sc">*</span> mult <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(((y <span class="sc">-</span> mu) <span class="sc">/</span> ((y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span>))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> </span>
+<span id="cb410-27"><a href="chapter-5-exercises.html#cb410-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="dv">1</span> <span class="sc">/</span> ((y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span>)))</span>
+<span id="cb410-28"><a href="chapter-5-exercises.html#cb410-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Next we’ll perform our iterations of Newton’s method. We’ll deem a ‘suitable’ number of iterations to be when the parameter estimates for one iteration are within <span class="math inline">\(10^{-4}\)</span> of those of the previous iteration.</p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="chapter-5-exercises.html#cb411-1" aria-hidden="true" tabindex="-1"></a>theta_i <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># set theta_0</span></span>
+<span id="cb411-2"><a href="chapter-5-exercises.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(<span class="cn">TRUE</span>) {</span>
+<span id="cb411-3"><a href="chapter-5-exercises.html#cb411-3" aria-hidden="true" tabindex="-1"></a>  theta_last <span class="ot">&lt;-</span> theta_i[<span class="fu">length</span>(theta_i)]</span>
+<span id="cb411-4"><a href="chapter-5-exercises.html#cb411-4" aria-hidden="true" tabindex="-1"></a>  theta_next <span class="ot">&lt;-</span> theta_last <span class="sc">-</span> <span class="fu">solve</span>(<span class="fu">d2</span>(theta_last, y2, <span class="sc">-</span><span class="dv">1</span>), <span class="fu">d1</span>(theta_last, y2, <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb411-5"><a href="chapter-5-exercises.html#cb411-5" aria-hidden="true" tabindex="-1"></a>  theta_i <span class="ot">&lt;-</span> <span class="fu">c</span>(theta_i, theta_next)</span>
+<span id="cb411-6"><a href="chapter-5-exercises.html#cb411-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">abs</span>(theta_last <span class="sc">-</span> theta_next) <span class="sc">&lt;</span> <span class="fl">1e-4</span>)</span>
+<span id="cb411-7"><a href="chapter-5-exercises.html#cb411-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb411-8"><a href="chapter-5-exercises.html#cb411-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb411-9"><a href="chapter-5-exercises.html#cb411-9" aria-hidden="true" tabindex="-1"></a>theta_i</span></code></pre></div>
+<pre><code>## [1] 1.000000 2.099045 2.215480 2.219332 2.219336</code></pre>
+<p>We see that our 4th iteration has met our stopping criteria. Hence we have <span class="math inline">\(\hat \theta =\)</span> 2.2193, to four decimal places.</p>
+</details>
+<hr /></li>
+<li><p>Then use <code>optimize()</code> to verify your estimate of <span class="math inline">\(\mu\)</span> based on Newton’s method from Question 4(a).</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>For <code>optimize()</code> we can use the following call, and will assume <span class="math inline">\(\hat \theta \in [1, 3]\)</span>.</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="chapter-5-exercises.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">optimize</span>(d0, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">y =</span> y2, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## $minimum
+## [1] 2.219318
+## 
+## $objective
+## [1] 41.79389</code></pre>
+<p>Looking at the <code>minimum</code> element of the list that <code>optimize()</code> returns, we see agreement between its estimates of <span class="math inline">\(\theta\)</span> and that of Question 4(a).</p>
+</details>
+<hr /></li>
+</ol></li>
+<li><p> Consider a log-Normal model for the wind speeds of Example 5.5, so that <span class="math inline">\(Y \sim \text{log-Normal}(\mu, \sigma^2)\)</span> and hence
+<span class="math display">\[
+f_Y(y) = \dfrac{1}{y\sqrt {2\pi \sigma^2}}\exp \left\{-\dfrac{\left[\log(y) - \mu \right]^2}{2\sigma^2}\right\} \quad y &gt; 0
+\]</span>
+and for <span class="math inline">\(\sigma^2 &gt; 0\)</span>. The log-likelihood for an independent sample <span class="math inline">\(\mathbf{y} = (y_1, \ldots, y_n)\)</span> is given by
+<span class="math display">\[
+\log f(\mathbf{y} \mid \mu, \sigma^2) = -\dfrac{n}{2} \log(2 \pi) - \dfrac{n}{2} \log \sigma^2 - \sum_{i = 1}^n \log(y_i) - \dfrac{1}{2 \sigma^2} \sum_{i = 1}^n (\log y_i- \mu)^2
+\]</span>
+and its gradient operator is given by
+<span class="math display">\[
+\begin{pmatrix}
+\dfrac{\partial \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \mu}\\
+\dfrac{\partial \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \sigma^2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dfrac{1}{\sigma^2} \sum_{i = 1}^n (\log y_i - \mu)\\
+-\dfrac{n}{2 \sigma^2} + \dfrac{1}{2\sigma^4} \sum_{i = 1}^n (\log y_i - \mu)^2
+\end{pmatrix}.
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p> For the wind speed data,
+<span class="math display">\[
+\sum_{i = 1}^n \log y_i = -12.755, \quad \sum_{i = 1}^n (\log y_i)^2 = 155.675
+\]</span>
+and <span class="math inline">\(n = 31\)</span>. Write <span class="math inline">\(\log f(\mathbf{y} \mid \mu, \sigma^2)\)</span> in terms of the summary statistics <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span>, so that <span class="math inline">\(\log f(\mathbf{y} \mid \mu, \sigma^2)\)</span> can be evaluated without knowing <span class="math inline">\(y_1, \ldots, y_n\)</span>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p><span class="math display">\[
+\log f(\mathbf{y} \mid \mu, \sigma^2) = -\dfrac{n}{2} \log(2 \pi) - \dfrac{n}{2} \log \sigma^2 - s_1 - \dfrac{1}{2 \sigma^2} (s_2 - 2\mu s_1 + n \mu^2).
+\]</span></p>
+</details>
+<hr /></li>
+<li><p>Write a function in <code>R</code>, <code>ln(pars, s1, s2, n, mult = 1)</code>, that evaluates <span class="math inline">\(m \log f(\mathbf{y} \mid \mu, \sigma^2)\)</span>, where <code>pars</code> is a 2-vector such that <code>pars[1]</code> <span class="math inline">\(= \mu\)</span> and <code>pars[2]</code> <span class="math inline">\(= \sigma^2\)</span>, <code>s1</code> <span class="math inline">\(= s_1\)</span>, <code>s2</code> <span class="math inline">\(= s_2\)</span>, <code>n</code> <span class="math inline">\(= n\)</span> and <code>mult</code> <span class="math inline">\(= m\)</span>. Your function should ensure that <span class="math inline">\(\sigma^2 &gt; 0\)</span>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="chapter-5-exercises.html#cb415-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb415-2"><a href="chapter-5-exercises.html#cb415-2" aria-hidden="true" tabindex="-1"></a>sigsq <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb415-3"><a href="chapter-5-exercises.html#cb415-3" aria-hidden="true" tabindex="-1"></a>ln <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, s1, s2, n, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb415-4"><a href="chapter-5-exercises.html#cb415-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate log-Normal(mu, sig^2) log-likelihood</span></span>
+<span id="cb415-5"><a href="chapter-5-exercises.html#cb415-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pars is a 2-vector: pars[1] = mu, pars[2] = sig^2</span></span>
+<span id="cb415-6"><a href="chapter-5-exercises.html#cb415-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># s1 and s2 are scalars</span></span>
+<span id="cb415-7"><a href="chapter-5-exercises.html#cb415-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n is an integer</span></span>
+<span id="cb415-8"><a href="chapter-5-exercises.html#cb415-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mult is a scalar; defaults to 1</span></span>
+<span id="cb415-9"><a href="chapter-5-exercises.html#cb415-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb415-10"><a href="chapter-5-exercises.html#cb415-10" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
+<span id="cb415-11"><a href="chapter-5-exercises.html#cb415-11" aria-hidden="true" tabindex="-1"></a>  sigsq <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
+<span id="cb415-12"><a href="chapter-5-exercises.html#cb415-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sigsq <span class="sc">&lt;=</span> <span class="dv">0</span>)</span>
+<span id="cb415-13"><a href="chapter-5-exercises.html#cb415-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(mult <span class="sc">*</span> <span class="sc">-</span><span class="fl">1e8</span>)</span>
+<span id="cb415-14"><a href="chapter-5-exercises.html#cb415-14" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="sc">-</span>.<span class="dv">5</span> <span class="sc">*</span> n <span class="sc">*</span> (<span class="fu">log</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">+</span> <span class="fu">log</span>(sigsq))</span>
+<span id="cb415-15"><a href="chapter-5-exercises.html#cb415-15" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> out <span class="sc">-</span> .<span class="dv">5</span> <span class="sc">*</span> (s2 <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> mu <span class="sc">*</span> s1 <span class="sc">+</span> n <span class="sc">*</span> mu<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> sigsq</span>
+<span id="cb415-16"><a href="chapter-5-exercises.html#cb415-16" aria-hidden="true" tabindex="-1"></a>  mult <span class="sc">*</span> (out <span class="sc">-</span> s1)</span>
+<span id="cb415-17"><a href="chapter-5-exercises.html#cb415-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</details>
+<hr /></li>
+<li><p>Find
+<span class="math display">\[
+\begin{pmatrix}
+\dfrac{\log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \mu}\\
+\dfrac{\log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \sigma^2}
+\end{pmatrix}
+\]</span>
+in terms of <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p><span class="math display">\[
+\begin{pmatrix}
+\dfrac{\partial \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \mu}\\
+\dfrac{\partial \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \sigma^2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dfrac{1}{\sigma^2} (s_1 - n\mu^2)\\
+-\dfrac{n}{2 \sigma^2} + \dfrac{1}{2\sigma^4} (s_2 - 2 \mu s_1 + n\mu^2)
+\end{pmatrix}.
+\]</span></p>
+</details>
+<hr /></li>
+<li><p> Write a function in <code>R</code>, <code>ln_d1(pars, s1, s2, n, mult = 1)</code>, that evaluates the first derivative of <span class="math inline">\(m \log f(\mathbf{y} \mid \mu, \sigma^2)\)</span> w.r.t. <span class="math inline">\((\mu, \sigma^2)\)</span>, where <code>pars</code> is a 2-vector such that <code>pars[1]</code> <span class="math inline">\(= \mu\)</span> and <code>pars[2]</code> <span class="math inline">\(= \sigma^2\)</span>, <code>s1</code> <span class="math inline">\(= s_1\)</span>, <code>s2</code> <span class="math inline">\(= s_2\)</span>, <code>n</code> <span class="math inline">\(= n\)</span> and <code>mult</code> <span class="math inline">\(= m\)</span>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="chapter-5-exercises.html#cb416-1" aria-hidden="true" tabindex="-1"></a>ln_d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, s1, s2, n, <span class="at">mult=</span> <span class="dv">1</span>) {</span>
+<span id="cb416-2"><a href="chapter-5-exercises.html#cb416-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate first derivative of log-Normal(mu, sig^2)</span></span>
+<span id="cb416-3"><a href="chapter-5-exercises.html#cb416-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># log-likelihood w.r.t (\mu, \sigma^2)</span></span>
+<span id="cb416-4"><a href="chapter-5-exercises.html#cb416-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pars is a 2-vector: pars[1] = mu, pars[2] = sig^2</span></span>
+<span id="cb416-5"><a href="chapter-5-exercises.html#cb416-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># s1 and s2 are scalars</span></span>
+<span id="cb416-6"><a href="chapter-5-exercises.html#cb416-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n is an integer</span></span>
+<span id="cb416-7"><a href="chapter-5-exercises.html#cb416-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mult is a scalar; defaults to 1</span></span>
+<span id="cb416-8"><a href="chapter-5-exercises.html#cb416-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a 2-vector</span></span>
+<span id="cb416-9"><a href="chapter-5-exercises.html#cb416-9" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
+<span id="cb416-10"><a href="chapter-5-exercises.html#cb416-10" aria-hidden="true" tabindex="-1"></a>  sigsq <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
+<span id="cb416-11"><a href="chapter-5-exercises.html#cb416-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">2</span>)</span>
+<span id="cb416-12"><a href="chapter-5-exercises.html#cb416-12" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">1</span>] <span class="ot">&lt;-</span> (s1 <span class="sc">-</span> n <span class="sc">*</span> mu) <span class="sc">/</span> sigsq</span>
+<span id="cb416-13"><a href="chapter-5-exercises.html#cb416-13" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="sc">-</span>.<span class="dv">5</span> <span class="sc">*</span> n <span class="sc">/</span> sigsq <span class="sc">+</span> </span>
+<span id="cb416-14"><a href="chapter-5-exercises.html#cb416-14" aria-hidden="true" tabindex="-1"></a>    .<span class="dv">5</span> <span class="sc">*</span> (s2 <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> mu <span class="sc">*</span> s1 <span class="sc">+</span> n <span class="sc">*</span> mu<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (sigsq<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb416-15"><a href="chapter-5-exercises.html#cb416-15" aria-hidden="true" tabindex="-1"></a>  mult <span class="sc">*</span> out</span>
+<span id="cb416-16"><a href="chapter-5-exercises.html#cb416-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</details>
+<hr /></li>
+<li><p> Using values for <span class="math inline">\((\mu, \sigma^2)\)</span> of <span class="math inline">\((\mu_0, \sigma_0^2) = (1, 2)\)</span>, check your function <code>ln_d1()</code> by finite-differencing.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll use function <code>fd()</code> from the lecture notes.</p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="chapter-5-exercises.html#cb417-1" aria-hidden="true" tabindex="-1"></a>fd <span class="ot">&lt;-</span> <span class="cf">function</span>(x, f, <span class="at">delta =</span> <span class="fl">1e-6</span>, ...) {</span>
+<span id="cb417-2"><a href="chapter-5-exercises.html#cb417-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate derivative by finite-differencing</span></span>
+<span id="cb417-3"><a href="chapter-5-exercises.html#cb417-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># x is a p-vector</span></span>
+<span id="cb417-4"><a href="chapter-5-exercises.html#cb417-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fn is the function for which the derivative is being calculated</span></span>
+<span id="cb417-5"><a href="chapter-5-exercises.html#cb417-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># delta is the finite-differencing step, which defaults to 10^{-6}</span></span>
+<span id="cb417-6"><a href="chapter-5-exercises.html#cb417-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a vector of length x</span></span>
+<span id="cb417-7"><a href="chapter-5-exercises.html#cb417-7" aria-hidden="true" tabindex="-1"></a>  f0 <span class="ot">&lt;-</span> <span class="fu">f</span>(x, ...)</span>
+<span id="cb417-8"><a href="chapter-5-exercises.html#cb417-8" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb417-9"><a href="chapter-5-exercises.html#cb417-9" aria-hidden="true" tabindex="-1"></a>  f1 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(p)</span>
+<span id="cb417-10"><a href="chapter-5-exercises.html#cb417-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>p) {</span>
+<span id="cb417-11"><a href="chapter-5-exercises.html#cb417-11" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> x</span>
+<span id="cb417-12"><a href="chapter-5-exercises.html#cb417-12" aria-hidden="true" tabindex="-1"></a>    x1[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> delta</span>
+<span id="cb417-13"><a href="chapter-5-exercises.html#cb417-13" aria-hidden="true" tabindex="-1"></a>    f1[i] <span class="ot">&lt;-</span> <span class="fu">f</span>(x1, ...)</span>
+<span id="cb417-14"><a href="chapter-5-exercises.html#cb417-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb417-15"><a href="chapter-5-exercises.html#cb417-15" aria-hidden="true" tabindex="-1"></a>  (f1 <span class="sc">-</span> f0) <span class="sc">/</span> delta</span>
+<span id="cb417-16"><a href="chapter-5-exercises.html#cb417-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Then we’ll load <span class="math inline">\(\mu_0\)</span> and <span class="math inline">\(\sigma_0^2\)</span>.</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="chapter-5-exercises.html#cb418-1" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb418-2"><a href="chapter-5-exercises.html#cb418-2" aria-hidden="true" tabindex="-1"></a>sigsq0 <span class="ot">&lt;-</span> <span class="dv">2</span></span></code></pre></div>
+<p>Finally we’ll evaluate the gradient and its finite-differencing counterpart</p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="chapter-5-exercises.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln_d1</span>(<span class="fu">c</span>(mu0, sigsq0), s1, s2, n)</span></code></pre></div>
+<pre><code>## [1] -21.87750  18.77313</code></pre>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="chapter-5-exercises.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fd</span>(<span class="fu">c</span>(mu0, sigsq0), ln, <span class="at">s1 =</span> s1, <span class="at">s2 =</span> s2, <span class="at">n =</span> n)</span></code></pre></div>
+<pre><code>## [1] -21.87751  18.77311</code></pre>
+<p>which are both the same, so it looks as if our function to evaluate the gradient is returning the correct values. (We could check with more values of <span class="math inline">\((\mu, \sigma^2)\)</span> if we’re really keen, but one check is usually sufficient!)</p>
+</details>
+<hr /></li>
+<li><p>Using <span class="math inline">\((\mu_0, \sigma_0^2)\)</span> from Question 5(e) as starting values, use <code>optim()</code> together with <code>ln()</code> and <code>ln_d1()</code> to find the maximum likelihood estimates of <span class="math inline">\((\mu, \sigma^2)\)</span>, <span class="math inline">\((\hat \mu, \hat \sigma^2)\)</span>, via the BFGS method.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="chapter-5-exercises.html#cb423-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">12.755</span></span>
+<span id="cb423-2"><a href="chapter-5-exercises.html#cb423-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fl">155.675</span></span>
+<span id="cb423-3"><a href="chapter-5-exercises.html#cb423-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">31</span></span>
+<span id="cb423-4"><a href="chapter-5-exercises.html#cb423-4" aria-hidden="true" tabindex="-1"></a>hats <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(mu0, sigsq0), ln, ln_d1, <span class="at">s1 =</span> s1, <span class="at">s2 =</span> s2, <span class="at">n =</span> n, </span>
+<span id="cb423-5"><a href="chapter-5-exercises.html#cb423-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">method =</span> <span class="st">&#39;BFGS&#39;</span>)<span class="sc">$</span>par</span>
+<span id="cb423-6"><a href="chapter-5-exercises.html#cb423-6" aria-hidden="true" tabindex="-1"></a>      hats</span></code></pre></div>
+<pre><code>## [1] -0.4114503  4.8524782</code></pre>
+</details>
+<hr /></li>
+<li><p> Evaluate the first derivative of <span class="math inline">\(\log f(\mathbf{y} \mid \mu, \sigma^2)\)</span> at <span class="math inline">\((\hat \mu, \hat \sigma^2)\)</span> and comment on whether <span class="math inline">\((\hat \mu, \hat \sigma^2)\)</span> are likely to be maximum likelihood estimates.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>The first derivatives at <span class="math inline">\((\hat \mu, \hat \sigma^2)\)</span> are given by</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="chapter-5-exercises.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln_d1</span>(hats, s1, s2, n)</span></code></pre></div>
+<pre><code>## [1] -8.394066e-06  2.346390e-06</code></pre>
+<p>which are very closely to zero, indicating we’re likely to have found the maximum likelihood estimates.</p>
+</details>
+<hr /></li>
+</ol></li>
+<li><p>For the log-Normal wind speed model of Question 5(a), the Hessian matrix of second derivatives is given by
+<span class="math display">\[
+\nabla^2 \log f(\mathbf{y} \mid \mu, \sigma^2) =
+\begin{pmatrix}
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \mu^2} &amp; \dfrac{\partial^2 \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \mu \partial \sigma^2}\\
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \mu \partial \sigma^2} &amp; \dfrac{\partial^2 \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial (\sigma^2)^2}
+\end{pmatrix}
+\]</span>
+where
+<span class="math display">\[\begin{align*}
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \mu^2} &amp;= -\dfrac{n}{\sigma^2}\\
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial \mu \partial \sigma^2} &amp;=
+-\dfrac{1}{\sigma^4} \sum_{i = 1}^n (\log y_i - \mu)\\
+\dfrac{\partial^2 \log f(\mathbf{y} \mid \mu, \sigma^2)}{\partial (\sigma^2)^2} &amp;=
+\dfrac{n}{2 \sigma^4} - \dfrac{1}{\sigma^6} \sum_{i = 1}^n (\log y_i - \mu)^2.
+\end{align*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p> Write a function, <code>nl_d2(pars, s1, s2, n, mult = -1)</code>, that evaluates the Hessian matrix in terms of <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> given in Question 5(a) and assuming that same arguments as <code>nl_d1()</code> of Question 5(d).</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="chapter-5-exercises.html#cb427-1" aria-hidden="true" tabindex="-1"></a>ln_d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, s1, s2, n, <span class="at">mult=</span> <span class="dv">1</span>) {</span>
+<span id="cb427-2"><a href="chapter-5-exercises.html#cb427-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate second derivatives of log-Normal(mu, sig^2)</span></span>
+<span id="cb427-3"><a href="chapter-5-exercises.html#cb427-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># log-likelihood w.r.t (\mu, \sigma^2)</span></span>
+<span id="cb427-4"><a href="chapter-5-exercises.html#cb427-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pars is a 2-vector: pars[1] = mu, pars[2] = sig^2</span></span>
+<span id="cb427-5"><a href="chapter-5-exercises.html#cb427-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># s1 and s2 are scalars</span></span>
+<span id="cb427-6"><a href="chapter-5-exercises.html#cb427-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n is an integer</span></span>
+<span id="cb427-7"><a href="chapter-5-exercises.html#cb427-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mult is a scalar; defaults to 1</span></span>
+<span id="cb427-8"><a href="chapter-5-exercises.html#cb427-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a 2x2 matrix</span></span>
+<span id="cb427-9"><a href="chapter-5-exercises.html#cb427-9" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
+<span id="cb427-10"><a href="chapter-5-exercises.html#cb427-10" aria-hidden="true" tabindex="-1"></a>  sigsq <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
+<span id="cb427-11"><a href="chapter-5-exercises.html#cb427-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb427-12"><a href="chapter-5-exercises.html#cb427-12" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">1</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="sc">-</span> n <span class="sc">/</span> sigsq</span>
+<span id="cb427-13"><a href="chapter-5-exercises.html#cb427-13" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> out[<span class="dv">2</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="sc">-</span>(s1 <span class="sc">-</span> n <span class="sc">*</span> mu) <span class="sc">/</span> (sigsq<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb427-14"><a href="chapter-5-exercises.html#cb427-14" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">2</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> .<span class="dv">5</span> <span class="sc">*</span> n <span class="sc">/</span> sigsq<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> (s2 <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> mu <span class="sc">*</span> s1 <span class="sc">+</span> n <span class="sc">*</span> mu<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (sigsq<span class="sc">^</span><span class="dv">3</span>)</span>
+<span id="cb427-15"><a href="chapter-5-exercises.html#cb427-15" aria-hidden="true" tabindex="-1"></a>  mult <span class="sc">*</span> out</span>
+<span id="cb427-16"><a href="chapter-5-exercises.html#cb427-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</details>
+<hr /></li>
+<li><p> Using <code>nl()</code> and <code>nl_d1()</code> from Question 5(a) and <code>nl_d2()</code> from Question 6(a), find <span class="math inline">\((\hat \mu_2, \hat \sigma_2^2)\)</span>, the maximum likelihood estimates, using Newton’s method via <code>nlminb()</code> in <code>R</code>.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="chapter-5-exercises.html#cb428-1" aria-hidden="true" tabindex="-1"></a>hats2 <span class="ot">&lt;-</span> <span class="fu">nlminb</span>(<span class="fu">c</span>(mu0, sigsq0), ln, ln_d1, ln_d2, <span class="at">s1 =</span> s1, <span class="at">s2 =</span> s2, <span class="at">n =</span> n, </span>
+<span id="cb428-2"><a href="chapter-5-exercises.html#cb428-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)<span class="sc">$</span>par</span>
+<span id="cb428-3"><a href="chapter-5-exercises.html#cb428-3" aria-hidden="true" tabindex="-1"></a>hats2</span></code></pre></div>
+<pre><code>## [1] -0.4114516  4.8524818</code></pre>
+</details>
+<hr /></li>
+<li><p>Evaluate the first derivative of <span class="math inline">\(\log f(\mathbf{y} \mid \mu, \sigma^2)\)</span> at <span class="math inline">\((\hat \mu_2, \hat \sigma_2^2)\)</span> from Question 6(b) and comment on whether <span class="math inline">\((\hat \mu_2, \hat \sigma_2^2)\)</span> are likely to be maximum likelihood estimates.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We can proceed as in question <span class="math inline">\(\ref{wind12}\)</span>.</p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="chapter-5-exercises.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln_d1</span>(hats2, s1, s2, n)</span></code></pre></div>
+<pre><code>## [1] -1.098215e-15  5.506706e-14</code></pre>
+<p>which are still very closely to zero, indicating we’re likely to have found the maximum likelihood estimates.</p>
+</details>
+<hr /></li>
+<li><p>Evaluate the Hessian matrix of <span class="math inline">\(\log f(\mathbf{y} \mid \mu, \sigma^2)\)</span> at <span class="math inline">\((\hat \mu_2, \hat \sigma_2^2)\)</span> from Question 6(b) and comment on whether <span class="math inline">\((\hat \mu_2, \hat \sigma_2^2)\)</span> are likely to be maximum likelihood estimates.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll calculate the Hessian</p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="chapter-5-exercises.html#cb432-1" aria-hidden="true" tabindex="-1"></a>H <span class="ot">&lt;-</span> <span class="fu">ln_d2</span>(hats2, s1, s2, n)</span></code></pre></div>
+<p>and then, after it’s been negated, want all of its eigenvalues to be positive</p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="chapter-5-exercises.html#cb433-1" aria-hidden="true" tabindex="-1"></a>ev <span class="ot">&lt;-</span> <span class="fu">eigen</span>(<span class="sc">-</span>H, <span class="at">symmetric =</span> <span class="cn">TRUE</span>, <span class="at">only.value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb433-2"><a href="chapter-5-exercises.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(ev<span class="sc">$</span>values <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>which they are.</p>
+</details>
+<hr /></li>
+</ol></li>
+<li><p> Recall the wind speed data of Example 5.5. Consider these as independent realisations from the Gamma(<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>) distribution, i.e. with pdf
+<span class="math display">\[
+f_Y(y \mid \alpha, \beta) = \dfrac{y^{\alpha -1} e^{-\beta x}\beta^\alpha}{\Gamma(\alpha)}, \quad y &gt; 0,
+\]</span>
+for parameters <span class="math inline">\(\alpha, \beta &gt; 0\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p> Find the maximum likelihood estimates of <span class="math inline">\((\alpha, \beta)\)</span> using the BFGS method with <code>optim()</code> in <code>R</code> by supplying a function that evaluates the negative log-likelihood’s gradient vector w.r.t. <span class="math inline">\((\alpha, \beta)\)</span>. [Note that in <code>R</code> <code>lgamma(x)</code> evaluates <span class="math inline">\(\log \Gamma(x)\)</span> and <code>digamma(x)</code> evaluates <span class="math inline">\(\text{d} \log \Gamma(x) / \text{d}x\)</span> for <code>x</code> <span class="math inline">\(= x\)</span>, where <code>digamma()</code> relies on the so-called polygamma function.]</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll load the wind speed data as <code>y0</code>.</p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="chapter-5-exercises.html#cb435-1" aria-hidden="true" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.52</span>, <span class="fl">1.95</span>, <span class="fl">0.62</span>, <span class="fl">0.02</span>, <span class="fl">5.13</span>, <span class="fl">0.02</span>, <span class="fl">0.01</span>, <span class="fl">0.34</span>, <span class="fl">0.43</span>, <span class="fl">15.5</span>, </span>
+<span id="cb435-2"><a href="chapter-5-exercises.html#cb435-2" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4.99</span>, <span class="fl">6.01</span>, <span class="fl">0.28</span>, <span class="fl">1.83</span>, <span class="fl">0.14</span>, <span class="fl">0.97</span>, <span class="fl">0.22</span>, <span class="fl">0.02</span>, <span class="fl">1.87</span>, <span class="fl">0.13</span>, <span class="fl">0.01</span>,</span>
+<span id="cb435-3"><a href="chapter-5-exercises.html#cb435-3" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4.81</span>, <span class="fl">0.37</span>, <span class="fl">8.61</span>, <span class="fl">3.48</span>, <span class="fl">1.81</span>, <span class="fl">37.21</span>, <span class="fl">1.85</span>, <span class="fl">0.04</span>, <span class="fl">2.32</span>, <span class="fl">1.06</span>)</span></code></pre></div>
+<p>Then the following functions evaluate the negative log-likelihood and its gradient, respectively.</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="chapter-5-exercises.html#cb436-1" aria-hidden="true" tabindex="-1"></a>nldgamma <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, y) {</span>
+<span id="cb436-2"><a href="chapter-5-exercises.html#cb436-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate Gamma(alpha, beta) negative log-likelihood</span></span>
+<span id="cb436-3"><a href="chapter-5-exercises.html#cb436-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pars is a 2-vector</span></span>
+<span id="cb436-4"><a href="chapter-5-exercises.html#cb436-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb436-5"><a href="chapter-5-exercises.html#cb436-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb436-6"><a href="chapter-5-exercises.html#cb436-6" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
+<span id="cb436-7"><a href="chapter-5-exercises.html#cb436-7" aria-hidden="true" tabindex="-1"></a>  beta <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
+<span id="cb436-8"><a href="chapter-5-exercises.html#cb436-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">min</span>(<span class="fu">c</span>(alpha, beta)) <span class="sc">&lt;=</span> <span class="dv">0</span>)</span>
+<span id="cb436-9"><a href="chapter-5-exercises.html#cb436-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fl">1e8</span>)</span>
+<span id="cb436-10"><a href="chapter-5-exercises.html#cb436-10" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb436-11"><a href="chapter-5-exercises.html#cb436-11" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> n <span class="sc">*</span> alpha <span class="sc">*</span> <span class="fu">log</span>(beta) <span class="sc">+</span> n <span class="sc">*</span> <span class="fu">lgamma</span>(alpha) <span class="sc">-</span> (alpha <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(y)) <span class="sc">+</span></span>
+<span id="cb436-12"><a href="chapter-5-exercises.html#cb436-12" aria-hidden="true" tabindex="-1"></a>    beta <span class="sc">*</span> <span class="fu">sum</span>(y)</span>
+<span id="cb436-13"><a href="chapter-5-exercises.html#cb436-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb436-14"><a href="chapter-5-exercises.html#cb436-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb436-15"><a href="chapter-5-exercises.html#cb436-15" aria-hidden="true" tabindex="-1"></a>nldgamma_d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, y) {</span>
+<span id="cb436-16"><a href="chapter-5-exercises.html#cb436-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate first derivative of Gamma(alpha, beta) </span></span>
+<span id="cb436-17"><a href="chapter-5-exercises.html#cb436-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># negative log-likelihood w.r.t. (alpha, beta)</span></span>
+<span id="cb436-18"><a href="chapter-5-exercises.html#cb436-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pars is a 2-vector</span></span>
+<span id="cb436-19"><a href="chapter-5-exercises.html#cb436-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb436-20"><a href="chapter-5-exercises.html#cb436-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a 2-vector</span></span>
+<span id="cb436-21"><a href="chapter-5-exercises.html#cb436-21" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
+<span id="cb436-22"><a href="chapter-5-exercises.html#cb436-22" aria-hidden="true" tabindex="-1"></a>  beta <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
+<span id="cb436-23"><a href="chapter-5-exercises.html#cb436-23" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb436-24"><a href="chapter-5-exercises.html#cb436-24" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">2</span>)</span>
+<span id="cb436-25"><a href="chapter-5-exercises.html#cb436-25" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="sc">-</span> n <span class="sc">*</span> <span class="fu">log</span>(beta) <span class="sc">+</span> n <span class="sc">*</span> <span class="fu">digamma</span>(alpha) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">log</span>(y))</span>
+<span id="cb436-26"><a href="chapter-5-exercises.html#cb436-26" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="sc">-</span> n <span class="sc">*</span> alpha <span class="sc">/</span> beta <span class="sc">+</span> <span class="fu">sum</span>(y)</span>
+<span id="cb436-27"><a href="chapter-5-exercises.html#cb436-27" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb436-28"><a href="chapter-5-exercises.html#cb436-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>We’ll choose starting values for <span class="math inline">\((\alpha, \beta)\)</span> as <span class="math inline">\((\alpha_0, \beta_0) = (1, 1)\)</span> and store these as <code>pars0</code></p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="chapter-5-exercises.html#cb437-1" aria-hidden="true" tabindex="-1"></a>pars0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span></code></pre></div>
+<p>and then call <code>optim()</code> to implement the BFGS method</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="chapter-5-exercises.html#cb438-1" aria-hidden="true" tabindex="-1"></a>pars_bfgs <span class="ot">&lt;-</span> <span class="fu">optim</span>(pars0, nldgamma, nldgamma_d1, <span class="at">y =</span> y0, <span class="at">method =</span> <span class="st">&#39;BFGS&#39;</span>)<span class="sc">$</span>par</span>
+<span id="cb438-2"><a href="chapter-5-exercises.html#cb438-2" aria-hidden="true" tabindex="-1"></a>pars_bfgs</span></code></pre></div>
+<pre><code>## [1] 0.4017348 0.1179670</code></pre>
+<p>storing the results maximum likelihood estimates as <code>pars_bfgs</code>.</p>
+</details>
+<hr /></li>
+<li><p> Find the maximum likelihood estimates of <span class="math inline">\((\alpha, \beta)\)</span> using Newton’s method with <code>nlminb()</code> in <code>R</code> by supplying the function that evaluates the negative log-likelihood’s gradient vector w.r.t. <span class="math inline">\((\alpha, \beta)\)</span> created in Question <code>ref qgbfgs</code>, and by supplying a function that evaluates the negative log-likelihood’s Hessian matrix w.r.t. <span class="math inline">\((\alpha, \beta)\)</span>. [Note that in <code>R</code> <code>trigamma(x)</code> evaluates <span class="math inline">\(\text{d}^2 \log \Gamma(x) / \text{d}x^2\)</span> for <code>x</code> <span class="math inline">\(= x\)</span>.]</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We can re-use a few functions and objects from above, so next we’ll write a function to evaluate the second derivative of the log-likelihood w.r.t. <span class="math inline">\((\alpha, \beta)\)</span>.</p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="chapter-5-exercises.html#cb440-1" aria-hidden="true" tabindex="-1"></a>nldgamma_d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, y) {</span>
+<span id="cb440-2"><a href="chapter-5-exercises.html#cb440-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate second derivative of Gamma(alpha, beta) </span></span>
+<span id="cb440-3"><a href="chapter-5-exercises.html#cb440-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># negative log-likelihood w.r.t. (alpha, beta)</span></span>
+<span id="cb440-4"><a href="chapter-5-exercises.html#cb440-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pars is a 2-vector</span></span>
+<span id="cb440-5"><a href="chapter-5-exercises.html#cb440-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb440-6"><a href="chapter-5-exercises.html#cb440-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a 2x2 matrix</span></span>
+<span id="cb440-7"><a href="chapter-5-exercises.html#cb440-7" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
+<span id="cb440-8"><a href="chapter-5-exercises.html#cb440-8" aria-hidden="true" tabindex="-1"></a>  beta <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
+<span id="cb440-9"><a href="chapter-5-exercises.html#cb440-9" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb440-10"><a href="chapter-5-exercises.html#cb440-10" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb440-11"><a href="chapter-5-exercises.html#cb440-11" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">1</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="fu">trigamma</span>(alpha)</span>
+<span id="cb440-12"><a href="chapter-5-exercises.html#cb440-12" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> out[<span class="dv">2</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="sc">-</span> n <span class="sc">/</span> beta</span>
+<span id="cb440-13"><a href="chapter-5-exercises.html#cb440-13" aria-hidden="true" tabindex="-1"></a>  out[<span class="dv">2</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> n <span class="sc">*</span> beta<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb440-14"><a href="chapter-5-exercises.html#cb440-14" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb440-15"><a href="chapter-5-exercises.html#cb440-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>We supply this to <code>nlminb()</code> with <code>pars0</code> from above</p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="chapter-5-exercises.html#cb441-1" aria-hidden="true" tabindex="-1"></a>pars_newt <span class="ot">&lt;-</span> <span class="fu">nlminb</span>(pars0, nldgamma, nldgamma_d1, nldgamma_d2, <span class="at">y =</span> y0)<span class="sc">$</span>par</span>
+<span id="cb441-2"><a href="chapter-5-exercises.html#cb441-2" aria-hidden="true" tabindex="-1"></a>pars_newt</span></code></pre></div>
+<pre><code>## [1] 0.4017348 0.1179670</code></pre>
+<p>and store the maximum likelihood estimates as <code>pars_newt</code>.</p>
+</details>
+<hr /></li>
+<li><p>By considering the gradient at your estimates in Questions 7(a) and 7(b), verify that on both occasions the maximum likelihood estimates have been reached.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll evaluate the gradient of the negative log-likelihood at <code>pars_bfgs</code> and <code>pars_newt</code></p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="chapter-5-exercises.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nldgamma_d1</span>(pars_bfgs, y0)</span></code></pre></div>
+<pre><code>## [1] -1.200319e-06  8.312922e-06</code></pre>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="chapter-5-exercises.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nldgamma_d1</span>(pars_newt, y0)</span></code></pre></div>
+<pre><code>## [1]  1.999826e-06 -1.875220e-06</code></pre>
+<p>and find both are sufficiently close to the zero vector that we think we’ve reached the maximum likelihood estimates.</p>
+</details>
+<hr /></li>
+</ol></li>
+<li><p>Use the Nelder-Mead method to find the maximum likelihood estimates of <span class="math inline">\((\mu, \sigma^2)\)</span> for the log-Normal model, starting values and data of Question 5.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="chapter-5-exercises.html#cb447-1" aria-hidden="true" tabindex="-1"></a>hats3 <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(mu0, sigsq0), ln, <span class="at">s1 =</span> s1, <span class="at">s2 =</span> s2, <span class="at">n =</span> n, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)<span class="sc">$</span>par</span>
+<span id="cb447-2"><a href="chapter-5-exercises.html#cb447-2" aria-hidden="true" tabindex="-1"></a>hats3</span></code></pre></div>
+<pre><code>## [1] -0.4113588  4.8537235</code></pre>
+<p>As a quick aside we’ll have a look at the derivative of our estimates</p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="chapter-5-exercises.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln_d1</span>(hats3, s1, s2, n)</span></code></pre></div>
+<pre><code>## [1] -0.0005929934 -0.0008170016</code></pre>
+<p>which we see are still close to zero, but not as close as with the gradient-based optimisation methods. This is something to expect with the Nelder-Mead method because it doesn’t use gradients in its iterations, and doesn’t use gradient-based criteria to determine convergence, whereas the gradient-based methods do (amongst other criteria).</p>
+</details>
+<hr /></li>
+<li><p> Find the maximum likelihood estimates for the wind speed data of Example 5.5 based on the Gamma(<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>) model of Question 7 using the Nelder-Mead method.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll use the following call to <code>optim()</code></p>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="chapter-5-exercises.html#cb451-1" aria-hidden="true" tabindex="-1"></a>pars_nm <span class="ot">&lt;-</span> <span class="fu">optim</span>(pars0, nldgamma, <span class="at">y =</span> y0)<span class="sc">$</span>par</span>
+<span id="cb451-2"><a href="chapter-5-exercises.html#cb451-2" aria-hidden="true" tabindex="-1"></a>pars_nm</span></code></pre></div>
+<pre><code>## [1] 0.4017200 0.1179219</code></pre>
+<p>and see that we get similar estimates to question <span class="math inline">\(\ref{gmm}\)</span>.</p>
+</details>
+<hr /></li>
+<li><p>Use simulated annealing with <span class="math inline">\(N = 1000\)</span> iterations (i.e. <code>control = list(maxit = 1e3))</code>) to approximate the maximum likelihood estimates of <span class="math inline">\((\mu, \sigma^2)\)</span> for the wind speed data and log-Normal model of Question 5.</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="chapter-5-exercises.html#cb453-1" aria-hidden="true" tabindex="-1"></a>hats4 <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(mu0, sigsq0), ln, <span class="at">s1 =</span> s1, <span class="at">s2 =</span> s2, <span class="at">n =</span> n, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>, </span>
+<span id="cb453-2"><a href="chapter-5-exercises.html#cb453-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&#39;SANN&#39;</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">maxit =</span> <span class="fl">1e3</span>))</span>
+<span id="cb453-3"><a href="chapter-5-exercises.html#cb453-3" aria-hidden="true" tabindex="-1"></a>hats4</span></code></pre></div>
+<pre><code>## $par
+## [1] -0.394841  4.795629
+## 
+## $value
+## [1] 55.71617
+## 
+## $counts
+## function gradient 
+##     1000       NA 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL</code></pre>
+</details>
+<hr /></li>
+<li><p>Find the maximum likelihood estimates for the wind speed data of Example 5.5 based on the Gamma(<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>) model of Question 7 using simulated annealing with <span class="math inline">\(N = 10^4\)</span> iterations, and then evaluate the gradient w.r.t. (<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>) at the maximum likelihood estimates using your gradient function from Question 7(a).</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll use the following call to <code>optim()</code></p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="chapter-5-exercises.html#cb455-1" aria-hidden="true" tabindex="-1"></a>pars_sann <span class="ot">&lt;-</span> <span class="fu">optim</span>(pars0, nldgamma, <span class="at">y =</span> y0, <span class="at">method =</span> <span class="st">&#39;SANN&#39;</span>)<span class="sc">$</span>par</span>
+<span id="cb455-2"><a href="chapter-5-exercises.html#cb455-2" aria-hidden="true" tabindex="-1"></a>pars_sann</span></code></pre></div>
+<pre><code>## [1] 0.3995571 0.1175635</code></pre>
+<p>which recognises that <span class="math inline">\(N = 10^4\)</span> iterations is <code>optim()</code>’s default. We get similar estimates to questions 7 and 9. The following evaluates the gradient</p>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="chapter-5-exercises.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nldgamma_d1</span>(pars_sann, y0)</span></code></pre></div>
+<pre><code>## [1] -0.3835148  0.2118473</code></pre>
+<p>which we see is near zero, but nowhere near as near as for estimates we’ve seen previously. The nature of simulated annealing means we’re only going to get a final gradient incredibly close to zero by chance, or if we use <em>lots</em> of iterations <em>and</em> allow the temperature to decrease sufficiently. In practice, we’d probably not want to wait this long.</p>
+</details>
+<hr /></li>
+</ol>
+
+
+
+
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-4-exercises.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
