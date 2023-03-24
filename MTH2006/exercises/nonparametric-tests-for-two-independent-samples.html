@@ -191,91 +191,151 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="question-13" class="section level2 hasAnchor">
 <h2>Question 13<a href="nonparametric-tests-for-two-independent-samples.html#question-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p> (5.5.1) Use Welch’s <span class="math inline">\(t\)</span>-test to assess whether the mean heights of MTH2006 students are different between females and males. Perform the test by hand, and then confirm the result using <code>t.test()</code>. Use a 1% significance level and state any hypotheses that you use.</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- We're testing the hypotheses \begin{align*} H_0:& \text{ mean heights of females and males are the same,}\\ H_1: & \text{ mean heights of females and males are different.}\end{align*} We'll start by loading the data, storing the heights of females as `females` and males as `males`. -->
-<!-- Let $X$ denote the height of a female and $Y$ denote the height of a male. The sample variance for females is $s_X^2 = 55.846$ and for males is $s_Y^2 = 77.362$. From the lecture notes, we now need to calculate  -->
-<!-- \[  -->
-<!-- s_{XY} = \sqrt{\dfrac{s_X^2}{m} + \dfrac{s_Y^2}{n}} \simeq \sqrt{\dfrac{55.846}{22} + \dfrac{77.362}{32}} \simeq 2.226 -->
-<!-- \] and \begin{align*} -->
-<!-- \nu &= s_{XY}^4 / \left(\dfrac{(s_X^2 / m)^2}{m - 1} + \dfrac{(s_Y^2 / n)^2}{n - 1}\right) \simeq 2.226^4 / \left(\dfrac{(55.85 / 22)^2}{21} + \dfrac{(77.36 / 32)^2}{31}\right)\\ &\simeq 24.562 / \left(\dfrac{2.538^2}{21} + \dfrac{2.418^2}{31}\right) \simeq \dfrac{24.562}{0.307 + 0.189} \simeq \dfrac{24.562}{0.495} \simeq 49.582. -->
-<!-- \end{align*} -->
-<!-- Noting that the sample mean height for females is $\bar x = 165.32$ and for males is $\bar y = 177.84$, the observed test statistic is then $t_{obs} = (165.32 - 177.84) / 2.226 = -5.626,$ which we compare with the $t_{49.58}$ distribution. The $p$-value for the test is then $2 \text{Pr}(|T| > |t_{obs}|) = 2 \times 4.239\times 10^{-7} \simeq 0.$ And hence we reject $H_0$ in favour of the overwhelming evidence that the mean heights of MTH2006 females and males are different. -->
-<!-- This is confirmed by the output from `t.test()`, which gives the same observed test statistic, $t_{obs}$, and degrees of freedom, $\nu$, and hence the same $p$-value. -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’re testing the hypotheses <span class="math display">\[\begin{align*} H_0:&amp; \text{ mean heights of females and males are the same,}\\ H_1: &amp; \text{ mean heights of females and males are different.}\end{align*}\]</span> We’ll start by loading the data, storing the heights of females as <code>females</code> and males as <code>males</code>.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb66-1" aria-hidden="true" tabindex="-1"></a>bio <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://tinyurl.com/3vtk9max&quot;</span>)</span>
+<span id="cb66-2"><a href="nonparametric-tests-for-two-independent-samples.html#cb66-2" aria-hidden="true" tabindex="-1"></a>females <span class="ot">&lt;-</span> <span class="fu">subset</span>(bio, Sex <span class="sc">==</span> <span class="st">&quot;FEMALE&quot;</span>)<span class="sc">$</span>Height</span>
+<span id="cb66-3"><a href="nonparametric-tests-for-two-independent-samples.html#cb66-3" aria-hidden="true" tabindex="-1"></a>males <span class="ot">&lt;-</span> <span class="fu">subset</span>(bio, Sex <span class="sc">==</span> <span class="st">&quot;MALE&quot;</span>)<span class="sc">$</span>Height</span></code></pre></div>
+<p>Let <span class="math inline">\(X\)</span> denote the height of a female and <span class="math inline">\(Y\)</span> denote the height of a male. The sample variance for females is <span class="math inline">\(s_X^2 = 63.343\)</span> and for males is <span class="math inline">\(s_Y^2 = 56.663\)</span>. From the lecture notes, we now need to calculate</p>
+<p><span class="math display">\[
+s_{XY} = \sqrt{\dfrac{s_X^2}{m} + \dfrac{s_Y^2}{n}} \simeq \sqrt{\dfrac{63.343}{11} + \dfrac{56.663}{16}} \simeq 3.050
+\]</span> and <span class="math display">\[\begin{align*}
+\nu &amp;= s_{XY}^4 / \left(\dfrac{(s_X^2 / m)^2}{m - 1} + \dfrac{(s_Y^2 / n)^2}{n - 1}\right) \simeq 3.050^4 / \left(\dfrac{(63.34 / 11)^2}{10} + \dfrac{(56.66 / 16)^2}{15}\right)\\ &amp;\simeq 86.487 / \left(\dfrac{5.758^2}{10} + \dfrac{3.541^2}{15}\right) \simeq \dfrac{86.487}{3.316 + 0.836} \simeq \dfrac{86.487}{4.152} \simeq 20.830.
+\end{align*}\]</span></p>
+<p>Noting that the sample mean height for females is <span class="math inline">\(\bar x = 163.85\)</span> and for males is <span class="math inline">\(\bar y = 182.56\)</span>, the observed test statistic is then <span class="math inline">\(t_{obs} = (163.85 - 182.56) / 3.050 = -6.138,\)</span> which we compare with the <span class="math inline">\(t_{20.83}\)</span> distribution. The <span class="math inline">\(p\)</span>-value for the test is then <span class="math inline">\(2 \text{Pr}(|T| &gt; |t_{obs}|) = 2 \times 2.245\times 10^{-6} \simeq 0.\)</span> And hence we reject <span class="math inline">\(H_0\)</span> in favour of the overwhelming evidence that the mean heights of MTH2006 females and males are different.</p>
+<p>This is confirmed by the output from <code>t.test()</code>, which gives the same observed test statistic, <span class="math inline">\(t_{obs}\)</span>, and degrees of freedom, <span class="math inline">\(\nu\)</span>, and hence the same <span class="math inline">\(p\)</span>-value.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(females, males)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  females and males
+## t = -6.1376, df = 20.83, p-value = 4.489e-06
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -25.06211 -12.37198
+## sample estimates:
+## mean of x mean of y 
+##  163.8455  182.5625</code></pre>
+</details>
+<hr />
 </div>
 <div id="question-14" class="section level2 hasAnchor">
 <h2>Question 14<a href="nonparametric-tests-for-two-independent-samples.html#question-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>(5.5.2) Since 1900 there have been 14 eruptions of the Mauna Loa volcano in Hawaii, US, which occurred in <span class="math display">\[1903,~1907,~1914,~1916,~1919,~1926,~1933,~1935,~1940,~1942,~1949,~1950,~1975,~1984.\]</span></p>
 <p>Use the Kolmogorov-Smirnov test with <code>ks.test()</code> in <code>R</code> to assess at the 1% significance level whether these are uniformly distributed between 1900 and 2020. State the hypotheses that you use. (Recall that <code>punif(x, min = a, max = b)</code> evaluates the Unif<span class="math inline">\(([a, b])\)</span> cdf in <code>R</code>).</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- Let $\widehat F_n(y)$ denote the edf of eruption times. We'll use a two-sided test based on the hypotheses \begin{align*} H_0: & \widehat F_n(y) = F_{\textrm{unif}}(y; 1900, 2020),\\ H_1: & \widehat F_n(y) \neq F_{\textrm{unif}}(y; 1900, 2020), \end{align*} where $F_{\textrm{unif}}(y; a, b)$ denotes the Unif$([a,b])$ cdf. We'll start by loading the data. -->
-<!-- There are a few ways that we can implement this test in `R` using `ks.test()`. Here are two examples -->
-<!-- which both give identical results, i.e. the following output. -->
-<!-- The `R` output shows a test statistic of $D_n =$ 0.440, which gives a $p$-value of 0.0054. Hence at the 1\% significance level we reject $H_0$ that the volcano has erupted uniformly between 1900 and 2020 in favour of a different cdf.  -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>Let <span class="math inline">\(\widehat F_n(y)\)</span> denote the edf of eruption times. We’ll use a two-sided test based on the hypotheses <span class="math display">\[\begin{align*} H_0: &amp; \widehat F_n(y) = F_{\textrm{unif}}(y; 1900, 2020),\\ H_1: &amp; \widehat F_n(y) \neq F_{\textrm{unif}}(y; 1900, 2020), \end{align*}\]</span> where <span class="math inline">\(F_{\textrm{unif}}(y; a, b)\)</span> denotes the Unif<span class="math inline">\(([a,b])\)</span> cdf. We’ll start by loading the data.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb69-1" aria-hidden="true" tabindex="-1"></a>mauna <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1903</span>, <span class="dv">1907</span>, <span class="dv">1914</span>, <span class="dv">1916</span>, <span class="dv">1919</span>, <span class="dv">1926</span>, <span class="dv">1933</span>, <span class="dv">1935</span>, <span class="dv">1940</span>, <span class="dv">1942</span>,</span>
+<span id="cb69-2"><a href="nonparametric-tests-for-two-independent-samples.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1949</span>, <span class="dv">1950</span>, <span class="dv">1975</span>, <span class="dv">1984</span>)</span></code></pre></div>
+<p>There are a few ways that we can implement this test in <code>R</code> using <code>ks.test()</code>. Here are two examples</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(mauna, <span class="st">&quot;punif&quot;</span>, <span class="at">min =</span> <span class="dv">1900</span>, <span class="at">max =</span> <span class="dv">2020</span>)</span>
+<span id="cb70-2"><a href="nonparametric-tests-for-two-independent-samples.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(mauna, <span class="cf">function</span>(x) <span class="fu">punif</span>(x, <span class="at">min =</span> <span class="dv">1900</span>, <span class="at">max =</span> <span class="dv">2020</span>))</span></code></pre></div>
+<p>which both give identical results, i.e. the following output.</p>
+<pre><code>## 
+##  Exact one-sample Kolmogorov-Smirnov test
+## 
+## data:  mauna
+## D = 0.44048, p-value = 0.005438
+## alternative hypothesis: two-sided</code></pre>
+<p>The <code>R</code> output shows a test statistic of <span class="math inline">\(D_n =\)</span> 0.440, which gives a <span class="math inline">\(p\)</span>-value of 0.0054. Hence at the 1% significance level we reject <span class="math inline">\(H_0\)</span> that the volcano has erupted uniformly between 1900 and 2020 in favour of a different cdf.</p>
+</details>
+<hr />
 </div>
 <div id="question-15" class="section level2 hasAnchor">
 <h2>Question 15<a href="nonparametric-tests-for-two-independent-samples.html#question-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>(5.5.3) Consider the Kolmogorov-Smirnov (K-S) test for assessing the null hypothesis that the samples of female and male heights for MTH2006 students are drawn from the same distribution. Plot the edfs of female and male heights (preferably on one plot, for which <code>ggplot(..., aes(x = ..., color = ...)</code> might be useful). Use the edfs to estimate by eye the K-S test statistic, and comment on whether you expect this to support the null hypothesis. Then perform the K-S test in <code>R</code> using <code>ks.test()</code>, stating the hypotheses that you are testing.</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- The following plots edf estimates for female and male heights together (but there are various other ways). -->
-<!-- ```{r, fig.cap = "Separate plots of edfs of heights of MTH2006 students for females and males."} -->
-<!-- ggplot(bio, aes(x = Height, colour = Sex)) + stat_ecdf(geom = "point") -->
-<!-- ``` -->
-<!-- It's quite difficult to judge, but the edfs appear furthest apart at a height of $172$cm, for which $|\widehat F_{X, m}(y) - \widehat F_{Y, n}(y)| \simeq |0.9 - 0.1| = 0.8$, where $\widehat F_{X, m}(y)$ denotes the edf of female heights and $\widehat F_{Y, n}(y)$ denotes the edf of male heights. Hence we might expect to observe a K-S test statistic between 0.7 and 0.9 (and we're probably not able to be any more accurate than this by eye). Given that the K-S test statistic's maximum value is 1, and the sample sizes are reasonably large (22 females and 32 males), we might expect to see the null hypothesis rejected. We'll check this with `ks.test()`. -->
-<!-- The actual observed test statistic is $d_{n, \text{obs}}^{KS} \simeq 0.554$, and so our by-eye expectations were reasonable. The resulting $p$-value is negligibly different from zero, and hence there is very strong evidence to reject $H_0$ that the samples of female and male heights are drawn from the same distribution, and instead conclude that they're drawn from different distributions.  -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>The following plots edf estimates for female and male heights together (but there are various other ways).</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bio, <span class="fu">aes</span>(<span class="at">x =</span> Height, <span class="at">colour =</span> Sex)) <span class="sc">+</span> <span class="fu">stat_ecdf</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-58"></span>
+<img src="exercises_files/figure-html/unnamed-chunk-58-1.png" alt="Separate plots of edfs of heights of MTH2006 students for females and males." width="384" />
+<p class="caption">
+Figure 14: Separate plots of edfs of heights of MTH2006 students for females and males.
+</p>
+</div>
+<p>It’s quite difficult to judge, but the edfs appear furthest apart at a height of <span class="math inline">\(172\)</span>cm, for which <span class="math inline">\(|\widehat F_{X, m}(y) - \widehat F_{Y, n}(y)| \simeq |0.9 - 0.1| = 0.8\)</span>, where <span class="math inline">\(\widehat F_{X, m}(y)\)</span> denotes the edf of female heights and <span class="math inline">\(\widehat F_{Y, n}(y)\)</span> denotes the edf of male heights. Hence we might expect to observe a K-S test statistic between 0.7 and 0.9 (and we’re probably not able to be any more accurate than this by eye). Given that the K-S test statistic’s maximum value is 1, and the sample sizes are reasonably large (11 females and 16 males), we might expect to see the null hypothesis rejected. We’ll check this with <code>ks.test()</code>.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(bio<span class="sc">$</span>Height[bio<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">&quot;FEMALE&quot;</span>], bio<span class="sc">$</span>Height[bio<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">&quot;MALE&quot;</span>])</span></code></pre></div>
+<pre><code>## 
+##  Exact two-sample Kolmogorov-Smirnov test
+## 
+## data:  bio$Height[bio$Sex == &quot;FEMALE&quot;] and bio$Height[bio$Sex == &quot;MALE&quot;]
+## D = 0.84659, p-value = 1.956e-05
+## alternative hypothesis: two-sided</code></pre>
+<p>The actual observed test statistic is <span class="math inline">\(d_{n, \text{obs}}^{KS} \simeq 0.847\)</span>, and so our by-eye expectations were reasonable. The resulting <span class="math inline">\(p\)</span>-value is negligibly different from zero, and hence there is very strong evidence to reject <span class="math inline">\(H_0\)</span> that the samples of female and male heights are drawn from the same distribution, and instead conclude that they’re drawn from different distributions.</p>
+</details>
+<hr />
 </div>
 <div id="question-16" class="section level2 hasAnchor">
 <h2>Question 16<a href="nonparametric-tests-for-two-independent-samples.html#question-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>(5.5.4) Load the <code>kickstarter.csv</code> data, which give details on a sample of successful UK Kickstarter campaigns that requested funding under the categories of <code>Film &amp; Video</code> and <code>Music</code>. Amounts pledged for each campaign in USD are stored as <code>usd.pledged</code>. Use the Mann-Whitney <span class="math inline">\(U\)</span> test to assess whether more money tended to be pledged for one type of campaign than the other. State the hypotheses that you are testing.</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- The following loads the Kickstarter data in, and then stores the amounts pledged in USD for category `Film & Video` as `film` and for category `Music` as `music`. -->
-<!-- We're interested in a two-sided test, with hypotheses \begin{align*} H_0: & \text{ Pr}(X > Y) = \text{Pr}(Y > X),\\ H_1: & \text{ Pr}(X > Y) \neq \text{Pr}(Y > X), \end{align*} where $X$ and $Y$ denote amounts pledged for `Film & Video` and `Music`, respectively. A two-sided Mann-Whitney $U$ test can then be performed in `R` with -->
-<!-- which has a test statistic of $u_{\textrm{obs}} = 2055$ and a resulting $p$-value of 0.8009. Hence there is far too little evidence to suggest a difference in amounts pledged, based on a two-sided Mann-Whitney $U$ test.  -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>The following loads the Kickstarter data in, and then stores the amounts pledged in USD for category <code>Film &amp; Video</code> as <code>film</code> and for category <code>Music</code> as <code>music</code>.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb75-1" aria-hidden="true" tabindex="-1"></a>kickstart <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;kickstarter.csv&quot;</span>)</span>
+<span id="cb75-2"><a href="nonparametric-tests-for-two-independent-samples.html#cb75-2" aria-hidden="true" tabindex="-1"></a>film <span class="ot">&lt;-</span> <span class="fu">subset</span>(kickstart, category <span class="sc">==</span> <span class="st">&quot;Film &amp; Video&quot;</span>)<span class="sc">$</span>usd.pledged</span>
+<span id="cb75-3"><a href="nonparametric-tests-for-two-independent-samples.html#cb75-3" aria-hidden="true" tabindex="-1"></a>music <span class="ot">&lt;-</span> <span class="fu">subset</span>(kickstart, category <span class="sc">==</span> <span class="st">&quot;Music&quot;</span>)<span class="sc">$</span>usd.pledged</span></code></pre></div>
+<p>We’re interested in a two-sided test, with hypotheses <span class="math display">\[\begin{align*} H_0: &amp; \text{ Pr}(X &gt; Y) = \text{Pr}(Y &gt; X),\\ H_1: &amp; \text{ Pr}(X &gt; Y) \neq \text{Pr}(Y &gt; X), \end{align*}\]</span> where <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> denote amounts pledged for <code>Film &amp; Video</code> and <code>Music</code>, respectively. A two-sided Mann-Whitney <span class="math inline">\(U\)</span> test can then be performed in <code>R</code> with</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(film, music)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  film and music
+## W = 2055, p-value = 0.8009
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>which has a test statistic of <span class="math inline">\(u_{\textrm{obs}} = 2055\)</span> and a resulting <span class="math inline">\(p\)</span>-value of 0.8009. Hence there is far too little evidence to suggest a difference in amounts pledged, based on a two-sided Mann-Whitney <span class="math inline">\(U\)</span> test.</p>
+</details>
+<hr />
 </div>
 <div id="happy" class="section level2 hasAnchor">
 <h2>Question 17<a href="nonparametric-tests-for-two-independent-samples.html#happy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The World Happiness Report surveys global happiness. The file <code>happy.csv</code> contains happiness scores from various countries for the years 2016 (<code>score2016</code>) and 2019 (<code>score2019</code>). Use the Mann-Whitney <span class="math inline">\(U\)</span> test to assess whether people were happier in 2019 than in 2016.</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- Let's load the data. -->
-<!-- We're now interested in a one-sided test, with hypotheses \begin{align*} H_0: & \text{ Pr}(X > Y) = \text{Pr}(Y > X),\\ H_1: & \text{ Pr}(X > Y) < \text{Pr}(Y > X), \end{align*} where $X$ and $Y$ denote happiness scores in the years 2016 and 2019, respectively. We can perform the appropriate one-sided Mann-Whitney $U$ test in `R` with  -->
-<!-- noting that we use `alternative = "less"` because we're interested in whether $X < Y$. The resulting test statistic is $u_{\textrm{obs}} = 12014$ and $p$-value is 0.3865. There's insufficient evidence to reject $H_0$ at the 10% significance level (the highest we'd ever consider), i.e. that people in 2019 and 2016 were equally happy, as opposed to being happier in 2019. -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>Let’s load the data.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb78-1" aria-hidden="true" tabindex="-1"></a>happy <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;happy.csv&quot;</span>)</span></code></pre></div>
+<p>We’re now interested in a one-sided test, with hypotheses <span class="math display">\[\begin{align*} H_0: &amp; \text{ Pr}(X &gt; Y) = \text{Pr}(Y &gt; X),\\ H_1: &amp; \text{ Pr}(X &gt; Y) &lt; \text{Pr}(Y &gt; X), \end{align*}\]</span> where <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> denote happiness scores in the years 2016 and 2019, respectively. We can perform the appropriate one-sided Mann-Whitney <span class="math inline">\(U\)</span> test in <code>R</code> with</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="nonparametric-tests-for-two-independent-samples.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(happy<span class="sc">$</span>score2016, happy<span class="sc">$</span>score2019, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  happy$score2016 and happy$score2019
+## W = 12014, p-value = 0.3865
+## alternative hypothesis: true location shift is less than 0</code></pre>
+<p>noting that we use <code>alternative = "less"</code> because we’re interested in whether <span class="math inline">\(X &lt; Y\)</span>. The resulting test statistic is <span class="math inline">\(u_{\textrm{obs}} = 12014\)</span> and <span class="math inline">\(p\)</span>-value is 0.3865. There’s insufficient evidence to reject <span class="math inline">\(H_0\)</span> at the 10% significance level (the highest we’d ever consider), i.e. that people in 2019 and 2016 were equally happy, as opposed to being happier in 2019.</p>
+</details>
+<hr />
 </div>
 <div id="question-18" class="section level2 hasAnchor">
 <h2>Question 18<a href="nonparametric-tests-for-two-independent-samples.html#question-18" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p> Alongside each track on Spotify is a measure of its ‘energy’, a value between 0 and 1 that captures a song’s speed, loudness, and noisiness, where higher values are more energetic tracks. Let <span class="math inline">\(x_1, \ldots, x_{51}\)</span> denote the energies of the 51 most popular songs of 2010 and <span class="math inline">\(y_1, \ldots, y_{31}\)</span> the 31 most popular songs of 2019, where popularity is defined in terms of number of listens. Use the Mann-Whitney <span class="math inline">\(U\)</span> test – and state any hypotheses that you use – to assess whether the most popular songs in 2010 were more energetic than in 2019, given that <span class="math display">\[\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i &gt; y_j) = 1153,~~\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i = y_j) = 0~~~\text{and}~~~\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i &lt; y_j) = 428.\]</span></p>
+<p> Alongside each track on Spotify is a measure of its ‘energy’, a value between 0 and 1 that captures a song’s speed, loudness, and noisiness, where higher values are more energetic tracks. Let <span class="math inline">\(x_1, \ldots, x_{51}\)</span> denote the energies of the 51 most popular songs of 2010 and <span class="math inline">\(y_1, \ldots, y_{31}\)</span> the 31 most popular songs of 2019, where popularity is defined in terms of number of listens. Use the Mann-Whitney <span class="math inline">\(U\)</span> test – and state any hypotheses that you use – to assess whether the most popular songs in 2010 were more energetic than in 2019, given that <span class="math display">\[\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i &gt; y_j) = 1151,~~\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i = y_j) = 0~~~\text{and}~~~\sum_{i=1}^{51} \sum_{j=1}^{31} I(x_i &lt; y_j) = 430.\]</span></p>
 <p>[Note that the raw data used to give the above numbers can be found at .]</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- Let $X$ denote the energy of a song from 2010 and $Y$ the energy of a song from 2019. We're using the hypotheses \begin{align*} H_0: & \text{ Pr}(X > Y) = \text{Pr}(Y > X), \\ H_1: & \text{ Pr}(X > Y) > \text{Pr}(Y > X). \end{align*} -->
-<!-- From the information we're given, the observed Mann-Whitney $U$ test statistic is $u_{\textrm{obs}} = 1 \times 1153 + 0.5 \times 0 + 0 \times 428 = 1153$. The sample sizes ($m = 51$ and $n = 31$) are sufficiently large that we can use a normal approximation to the sampling distribution of the test statistic, which has mean $mn / 2 = 51 \times 31 / 2 = 790.5$ and variance $mn(m + n + 1) / 12 = 51 \times 31 \times (51 + 31 + 1) / 12 \simeq 10935.25$. Therefore $z_{\textrm{obs}} \simeq (1153 - 790.5) / \sqrt{10935.25} \simeq 3.4665$. For the one-sided test large values of $u_{\textrm{obs}}$ will cast doubt on $H_0$ and so, as the test's $p$-value is $1 - \Phi(3.4665) \simeq 0.000264$, we reject $H_0$ at the 1\% significance level in favour of concluding that the most popular songs were more energetic in 2010 than in 2019. -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>Let <span class="math inline">\(X\)</span> denote the energy of a song from 2010 and <span class="math inline">\(Y\)</span> the energy of a song from 2019. We’re using the hypotheses <span class="math display">\[\begin{align*} H_0: &amp; \text{ Pr}(X &gt; Y) = \text{Pr}(Y &gt; X), \\ H_1: &amp; \text{ Pr}(X &gt; Y) &gt; \text{Pr}(Y &gt; X). \end{align*}\]</span></p>
+<p>From the information we’re given, the observed Mann-Whitney <span class="math inline">\(U\)</span> test statistic is <span class="math inline">\(u_{\textrm{obs}} = 1 \times 1151 + 0.5 \times 0 + 0 \times 430 = 1151\)</span>. The sample sizes (<span class="math inline">\(m = 51\)</span> and <span class="math inline">\(n = 31\)</span>) are sufficiently large that we can use a normal approximation to the sampling distribution of the test statistic, which has mean <span class="math inline">\(mn / 2 = 51 \times 31 / 2 = 790.5\)</span> and variance <span class="math inline">\(mn(m + n + 1) / 12 = 51 \times 31 \times (51 + 31 + 1) / 12 \simeq 10935.25\)</span>. Therefore <span class="math inline">\(z_{\textrm{obs}} \simeq (1151 - 790.5) / \sqrt{10935.25} \simeq 3.4474\)</span>. For the one-sided test large values of <span class="math inline">\(u_{\textrm{obs}}\)</span> will cast doubt on <span class="math inline">\(H_0\)</span> and so, as the test’s <span class="math inline">\(p\)</span>-value is <span class="math inline">\(1 - \Phi(3.4474) \simeq 0.000283\)</span>, we reject <span class="math inline">\(H_0\)</span> at the 1% significance level in favour of concluding that the most popular songs were more energetic in 2010 than in 2019.</p>
+</details>
+<hr />
 </div>
 </div>
             </section>
