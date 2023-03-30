@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- Next we'll concatenate the vectors of female and male mandible lengths into vector `both`. -->
 <!-- For the randomisation test, we'll randomly select ten of the 20 mandible lengths, label these as "female", and repeat this 10000 times. So, we'll create a vector, `T_rand`, to store the test statistics calculated for each resample, and will use a `for` loop to perform the randomisations. -->
 <!-- The randomisation test's $p$-value is the then the proportion of resampled test statistics that are as extreme or more extreme than that observed. Given that we have a two-sided test, the $p$-value can be calculated with -->
-<!-- which gives a $p$-value of 0.003, and hence we reject $H_0$ at the 5% significance level, and conclude that *in this sample* there is evidence to favour a mean difference in mandible lengths between females and males, compared with no difference. -->
+<!-- which gives a $p$-value of 0.004, and hence we reject $H_0$ at the 5% significance level, and conclude that *in this sample* there is evidence to favour a mean difference in mandible lengths between females and males, compared with no difference. -->
 <!-- </details> -->
 <!-- *** -->
 </div>
@@ -323,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- Then our observed test statistic is -->
 <!-- i.e. $t_{\text{obs}} = 0.094$. We approximate the test statistic's sampling distribution by randomly pairing the years and annual flows, which we repeat 10000 times, storing each test statistic in `T_rand`.  -->
 <!-- Our $p$-value for the test is the proportion of sampled test statistics that are as or more extreme than that observed, i.e. with absolute values at least as large as $|t_{\text{obs}}|$. We can calculate this with -->
-<!-- which gives a $p$-value of $0.434$. Hence we don't reject $H_0$, i.e. don't reject that flows haven't monotonically increased or decreased between 1900 and 1970. -->
+<!-- which gives a $p$-value of $0.433$. Hence we don't reject $H_0$, i.e. don't reject that flows haven't monotonically increased or decreased between 1900 and 1970. -->
 <!-- We can plot the annual flows between 1900 and 1970 with -->
 <!-- ```{r, fig.cap = "Annual flows of river Nile between 1900 and 1970."} -->
 <!-- ggplot() + geom_line(aes(x = years_20C, y = Nile_20C)) + -->
@@ -354,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- We then note that there are $12! = 479001600$ ways in which we can reallocate the life expectancies to the incomes. It is impractical to use all of them, so we should prefer a randomisation test over a permutation test. For the randomisation test we'll use 10^{5} resamples, calculate the test statistic for each resample, and store them in `T_rand`.  -->
 <!-- If our observed test statistic is extreme relative to the sample that's representative of the null hypothesis then we'll reject the null hypothesis. We can quantify this through the test's $p$-value, which is the proportion of resample test statistics that are as or more extreme than the one we've observed, i.e. as large or larger test statistics. -->
 <!-- The test's $p$-value is 0.002. Hence we reject the null hypothesis at the 1% significance level in favour of life expectancies increasing monotonically with average income for the 12 most populated countries. -->
-<!-- [Note that had we considered hypotheses based on a *linear* relationship and used Pearson's correlation coefficient, our test would have had a $p$-value of 0.003, and so wouldn't have changed our conclusion.] -->
+<!-- [Note that had we considered hypotheses based on a *linear* relationship and used Pearson's correlation coefficient, our test would have had a $p$-value of 0.002, and so wouldn't have changed our conclusion.] -->
 <!-- </details> -->
 <!-- *** -->
 </div>
@@ -378,7 +378,7 @@ information in each field was measured.</p>
 <!-- $r_i$ & 3 & 5.5 & 11 & 2 & 5.5 & 12 & 4 & 8.5 & 8.5 & 1 & 7 & 10 -->
 <!-- \end{tabular} -->
 <!-- Then $t_{\text{obs}} = \min(3 + 5.5 + 11 + 2 + 5.5 + 12 + 4 + 8.5 + 8.5 + 7 + 10, 1)$ and so $t_{\text{obs}} = \min(77, 1) = 1$. The $p$-value for the test is therefore $\text{Pr}(|T| \geq |t_{\text{obs}}|) = 2 \text{Pr}(T \leq t_{\text{obs}})$, which we can evaluate in \texttt{R} with -->
-<!-- and gives an approximate $p$-value of 0.0020. As $p$-value $< 0.01$, there is strong evidence to reject $H_0$ in favour of perception times in one visual field being more rapid than the other.  -->
+<!-- and gives an approximate $p$-value of 0.0023. As $p$-value $< 0.01$, there is strong evidence to reject $H_0$ in favour of perception times in one visual field being more rapid than the other.  -->
 <!-- [Note that a normal approximation (which we'd usually do for $n \geq 20$) would have had mean $n(n + 1) / 4 = 39$ and variance $n(n + 1)(2n + 2) / 24 = 162.5$. This would have led to a test statistic of $z_{\text{obs}} = -2.981$, and in turn a $p$-value of $\text{Pr}(|Z| \geq |z_{\text{obs}}|) = 2 \text{Pr}(Z \leq z_{\text{obs}}) = 0.0029$, and hence the same conclusion as reached above.] -->
 <!-- </details> -->
 <!-- *** -->
