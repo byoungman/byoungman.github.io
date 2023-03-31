@@ -191,17 +191,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="question-19" class="section level2 hasAnchor">
 <h2>Question 19<a href="nonparametric-tests-for-two-dependent-samples.html#question-19" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p> (5.6.1) A lepidopterist wants to know whether the mean wingspans of female and male gatekeeper butterflies (Pyronia tithonus) differ. They catch 5 females with wingspans of 37, 39, 39, 41 and 43mm and 6 males with wingspans of 42, 42, 44, 46, 47 and 48mm. (All are released unharmed.) Use a permutation test with a 5% significance level to answer the lepidopterist’s question.</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- Let's load the data. -->
-<!-- Our test statistic should be the difference in sample means between females and males. -->
-<!-- We then combine the female and male wingspans, use every permutation of allocations to samples representing females and males, i.e. 462 permutations, and then calculate a test statistic for each permutation. -->
-<!-- The test statistics for the permutations represent the permutation null distribution. The test's $p$-value is the proportion of the permutation null distribution that is as extreme or more extreme than the observed test statistic, i.e. -->
-<!-- As the permutation test's $p$-value of 0.015 is below 0.05, we reject the null hypothesis at the 5% significance level, and conclude that *of those sampled* female and male gatekeeper butterflies do have different mean wingspans. -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>Let’s load the data.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb81-1" aria-hidden="true" tabindex="-1"></a>females <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">39</span>, <span class="dv">39</span>, <span class="dv">41</span> ,<span class="dv">43</span>)</span>
+<span id="cb81-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb81-2" aria-hidden="true" tabindex="-1"></a>males <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">42</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">47</span>, <span class="dv">48</span>)</span></code></pre></div>
+<p>Our test statistic should be the difference in sample means between females and males.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb82-1" aria-hidden="true" tabindex="-1"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">mean</span>(females) <span class="sc">-</span> <span class="fu">mean</span>(males)</span></code></pre></div>
+<p>We then combine the female and male wingspans, use every permutation of allocations to samples representing females and males, i.e. 462 permutations, and then calculate a test statistic for each permutation.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb83-1" aria-hidden="true" tabindex="-1"></a>both <span class="ot">&lt;-</span> <span class="fu">c</span>(females, males)</span>
+<span id="cb83-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb83-2" aria-hidden="true" tabindex="-1"></a>perms <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="fu">length</span>(both), <span class="fu">length</span>(females))</span>
+<span id="cb83-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb83-3" aria-hidden="true" tabindex="-1"></a>T_perm <span class="ot">&lt;-</span> <span class="fu">apply</span>(perms, <span class="dv">2</span>, <span class="cf">function</span>(i) <span class="fu">mean</span>(both[i]) <span class="sc">-</span> <span class="fu">mean</span>(both[<span class="sc">-</span>i]))</span></code></pre></div>
+<p>The test statistics for the permutations represent the permutation null distribution. The test’s <span class="math inline">\(p\)</span>-value is the proportion of the permutation null distribution that is as extreme or more extreme than the observed test statistic, i.e.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb84-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(T_perm) <span class="sc">&gt;=</span> <span class="fu">abs</span>(test_stat))</span></code></pre></div>
+<p>As the permutation test’s <span class="math inline">\(p\)</span>-value of 0.015 is below 0.05, we reject the null hypothesis at the 5% significance level, and conclude that <em>of those sampled</em> female and male gatekeeper butterflies do have different mean wingspans.</p>
+</details>
+<hr />
 </div>
 <div id="question-20" class="section level2 hasAnchor">
 <h2>Question 20<a href="nonparametric-tests-for-two-dependent-samples.html#question-20" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -278,85 +286,150 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Composition A is currently being used, but Composition B is cheaper. Use a permutation test based on the difference in mean wear between the compositions to assess whether composition B is less durable than composition A.</p>
-<p>[Hint: consider finding by inspection the combinations of compositions that give test statistics that are as or more extreme than that of the above data. Calculation in <code>R</code> is much trickier, do doable: if you take this route, modifying <code>expand.grid(c(-1, 1), c(-1, 1))</code> to have ten <code>c(-1, 1)</code> vectors might help.]</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- We first notice that variation in amounts of wear between boys is fairly large compared to that between the left and right feet of each boy. Hence we can and should treat our data as *paired*. Our hypotheses are that for the ten boys \begin{align*} H_0&:\text{there is no difference in mean wear between compositions A and B,}\\ H_1&:\text{composition B's mean wear is greater than composition A's.} \end{align*} So we are interested in a one-sided test.  -->
-<!-- We'll start by reading in our data and calculating their observed test statistic, which is the mean difference in wear. -->
-<!-- Our observed test statistic is then $t_{\text{obs}} = 0.41$. Under $H_0$, if we re-label the shoes of a given boy as compositions A and B at random, ensuring one of each, then we should be creating labels consistent with $H_0$. There are $2^{10} = 1024$ unique arrangements of the ten pairs that we can then create. Hence our test statistics under the permutation null distribution are given by \[T = \dfrac{\pm 0.8\pm0.6\pm0.3\pm0.1\pm1.1\pm0.2\pm0.3\pm0.5\pm0.5\pm0.3}{10}.\]  -->
-<!-- Large values of $T$ will cast doubt on $H_0$ given $H_1$. By inspection, we note that more extreme (i.e. larger) test statistics will arise in the permutation null distribution if compositions A and B are swapped for boys 4 or 6, or both. Hence in the permutation null distribution there are *three* test statistics that are larger than our observed test statistic and so $\text{Pr}(T > t_{\text{obs}}) = 3/1024$. If the compositions for boys 4 and 6 are both swapped, then we can swap those of boy 3, 7 or 10, and we get a test statistic equal to that we observed. So in the permutation null distribution there are *four* test statistics that are as large as our observed test statistic, as we must include the observed test statistic. Hence $\text{Pr}(T = t_{\text{obs}}) = 4/1024$ and so the test's $p$-value is $\text{Pr}(T \geq t_{\text{obs}}) = 7/1024 \simeq 0.007$. -->
-<!-- Alternatively, we could do this by brute force in `R`. We first need to calculate the 1024 test statistics in the permutation null distribution. Here's one option for doing this, which stores the test statistics in `T_perm`. -->
-<!-- Then we can calculate the $p$-value for the test, which is the proportion of test statistics as or more extreme than that observed. -->
-<!-- The test's $p$-value is 0.007, as before. We reject $H_0$ at the 1% significance level in favour of composition B having greater mean wear than composition A. -->
-<!-- </details> -->
-<!-- *** -->
+<p>[Hint: consider finding by inspection the combinations of compositions that give test statistics that are as or more extreme than that of the above data. Calculation in <code>R</code> is much trickier, but doable: if you take this route, modifying <code>expand.grid(c(-1, 1), c(-1, 1))</code> to have ten <code>c(-1, 1)</code> vectors might help.]</p>
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We first notice that variation in amounts of wear between boys is fairly large compared to that between the left and right feet of each boy. Hence we can and should treat our data as <em>paired</em>. Our hypotheses are that for the ten boys <span class="math display">\[\begin{align*} H_0&amp;:\text{there is no difference in mean wear between compositions A and B,}\\ H_1&amp;:\text{composition B&#39;s mean wear is greater than composition A&#39;s.} \end{align*}\]</span> So we are interested in a one-sided test.</p>
+<p>We’ll start by reading in our data and calculating their observed test statistic, which is the mean difference in wear.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb85-1" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.6</span>, <span class="fl">0.3</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>, <span class="sc">-</span><span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.3</span>)</span>
+<span id="cb85-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb85-2" aria-hidden="true" tabindex="-1"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(D), <span class="dv">2</span>)</span></code></pre></div>
+<p>Our observed test statistic is then <span class="math inline">\(t_{\text{obs}} = 0.41\)</span>. Under <span class="math inline">\(H_0\)</span>, if we re-label the shoes of a given boy as compositions A and B at random, ensuring one of each, then we should be creating labels consistent with <span class="math inline">\(H_0\)</span>. There are <span class="math inline">\(2^{10} = 1024\)</span> unique arrangements of the ten pairs that we can then create. Hence our test statistics under the permutation null distribution are given by <span class="math display">\[T = \dfrac{\pm 0.8\pm0.6\pm0.3\pm0.1\pm1.1\pm0.2\pm0.3\pm0.5\pm0.5\pm0.3}{10}.\]</span></p>
+<p>Large values of <span class="math inline">\(T\)</span> will cast doubt on <span class="math inline">\(H_0\)</span> given <span class="math inline">\(H_1\)</span>. By inspection, we note that more extreme (i.e. larger) test statistics will arise in the permutation null distribution if compositions A and B are swapped for boys 4 or 6, or both. Hence in the permutation null distribution there are <em>three</em> test statistics that are larger than our observed test statistic and so <span class="math inline">\(\text{Pr}(T &gt; t_{\text{obs}}) = 3/1024\)</span>. If the compositions for boys 4 and 6 are both swapped, then we can swap those of boy 3, 7 or 10, and we get a test statistic equal to that we observed. So in the permutation null distribution there are <em>four</em> test statistics that are as large as our observed test statistic, as we must include the observed test statistic. Hence <span class="math inline">\(\text{Pr}(T = t_{\text{obs}}) = 4/1024\)</span> and so the test’s <span class="math inline">\(p\)</span>-value is <span class="math inline">\(\text{Pr}(T \geq t_{\text{obs}}) = 7/1024 \simeq 0.007\)</span>.</p>
+<p>Alternatively, we could do this by brute force in <code>R</code>. We first need to calculate the 1024 test statistics in the permutation null distribution. Here’s one option for doing this, which stores the test statistics in <code>T_perm</code>.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb86-1" aria-hidden="true" tabindex="-1"></a>multiplier <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="co"># values to multiply each difference by</span></span>
+<span id="cb86-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb86-2" aria-hidden="true" tabindex="-1"></a>multipliers <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span>, multiplier) <span class="co"># which we replicate for each boy</span></span>
+<span id="cb86-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb86-3" aria-hidden="true" tabindex="-1"></a>multipliers <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(multipliers) <span class="co"># convert above matrix to a data frame</span></span>
+<span id="cb86-4"><a href="nonparametric-tests-for-two-dependent-samples.html#cb86-4" aria-hidden="true" tabindex="-1"></a>perms <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(multipliers) <span class="co"># expand.grid will give the 2^10 permutations</span></span>
+<span id="cb86-5"><a href="nonparametric-tests-for-two-dependent-samples.html#cb86-5" aria-hidden="true" tabindex="-1"></a>perms <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(perms) <span class="co"># covert perms to a matrix</span></span>
+<span id="cb86-6"><a href="nonparametric-tests-for-two-dependent-samples.html#cb86-6" aria-hidden="true" tabindex="-1"></a>T_perm <span class="ot">&lt;-</span> perms <span class="sc">%*%</span> <span class="fu">abs</span>(D) <span class="sc">/</span> <span class="dv">10</span> <span class="co"># one way to get permutation null distribution</span></span></code></pre></div>
+<p>Then we can calculate the <span class="math inline">\(p\)</span>-value for the test, which is the proportion of test statistics as or more extreme than that observed.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb87-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(T_perm <span class="sc">&gt;=</span> test_stat)</span></code></pre></div>
+<p>The test’s <span class="math inline">\(p\)</span>-value is 0.007, as before. We reject <span class="math inline">\(H_0\)</span> at the 1% significance level in favour of composition B having greater mean wear than composition A.</p>
+</details>
+<hr />
 </div>
 <div id="question-21" class="section level2 hasAnchor">
 <h2>Question 21<a href="nonparametric-tests-for-two-dependent-samples.html#question-21" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>(5.6.2) The following data are mandible lengths (mm) of ten male and ten female golden jackals (Canis aureus) in the collection at the British Natural History Museum. The two samples are independent.</p>
 <p>Use a randomisation test at the 5% significance level to assess whether or not there is evidence of a difference in mean mandible length between the females and males in this sample.</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- We'll start by stating our hypotheses, which are that between females and males and *within this sample* \begin{align*} H_0&:\text{there is no difference between mean mandible lengths,}\\ H_1&:\text{there is a difference between mean mandible lengths.} \end{align*} -->
-<!-- Then we'll load the data and calculate our observed test statistic, `test_stat`, -->
-<!-- which is $t_{\text{obs}} = -4.80$.  -->
-<!-- Next we'll concatenate the vectors of female and male mandible lengths into vector `both`. -->
-<!-- For the randomisation test, we'll randomly select ten of the 20 mandible lengths, label these as "female", and repeat this 10000 times. So, we'll create a vector, `T_rand`, to store the test statistics calculated for each resample, and will use a `for` loop to perform the randomisations. -->
-<!-- The randomisation test's $p$-value is the then the proportion of resampled test statistics that are as extreme or more extreme than that observed. Given that we have a two-sided test, the $p$-value can be calculated with -->
-<!-- which gives a $p$-value of 0.004, and hence we reject $H_0$ at the 5% significance level, and conclude that *in this sample* there is evidence to favour a mean difference in mandible lengths between females and males, compared with no difference. -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll start by stating our hypotheses, which are that between females and males and <em>within this sample</em> <span class="math display">\[\begin{align*} H_0&amp;:\text{there is no difference between mean mandible lengths,}\\ H_1&amp;:\text{there is a difference between mean mandible lengths.} \end{align*}\]</span></p>
+<p>Then we’ll load the data and calculate our observed test statistic, <code>test_stat</code>,</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb88-1" aria-hidden="true" tabindex="-1"></a>females <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">110</span>, <span class="dv">111</span>, <span class="dv">107</span>, <span class="dv">108</span>, <span class="dv">110</span>, <span class="dv">105</span>, <span class="dv">107</span>, <span class="dv">106</span>, <span class="dv">111</span>, <span class="dv">111</span>)</span>
+<span id="cb88-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb88-2" aria-hidden="true" tabindex="-1"></a>males <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">107</span>, <span class="dv">110</span>, <span class="dv">116</span>, <span class="dv">114</span>, <span class="dv">111</span>, <span class="dv">113</span>, <span class="dv">117</span>, <span class="dv">114</span>, <span class="dv">112</span>)</span>
+<span id="cb88-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb88-3" aria-hidden="true" tabindex="-1"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">mean</span>(females) <span class="sc">-</span> <span class="fu">mean</span>(males)</span></code></pre></div>
+<p>which is <span class="math inline">\(t_{\text{obs}} = -4.80\)</span>.</p>
+<p>Next we’ll concatenate the vectors of female and male mandible lengths into vector <code>both</code>.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb89-1" aria-hidden="true" tabindex="-1"></a>both <span class="ot">&lt;-</span> <span class="fu">c</span>(females, males)</span></code></pre></div>
+<p>For the randomisation test, we’ll randomly select ten of the 20 mandible lengths, label these as “female”, and repeat this 10000 times. So, we’ll create a vector, <code>T_rand</code>, to store the test statistics calculated for each resample, and will use a <code>for</code> loop to perform the randomisations.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb90-1" aria-hidden="true" tabindex="-1"></a>T_rand <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fl">1e5</span>)</span>
+<span id="cb90-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fl">1e5</span>) {</span>
+<span id="cb90-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">20</span>, <span class="dv">10</span>)</span>
+<span id="cb90-4"><a href="nonparametric-tests-for-two-dependent-samples.html#cb90-4" aria-hidden="true" tabindex="-1"></a>  T_rand[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(both[index]) <span class="sc">-</span> <span class="fu">mean</span>(both[<span class="sc">-</span>index])</span>
+<span id="cb90-5"><a href="nonparametric-tests-for-two-dependent-samples.html#cb90-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The randomisation test’s <span class="math inline">\(p\)</span>-value is the then the proportion of resampled test statistics that are as extreme or more extreme than that observed. Given that we have a two-sided test, the <span class="math inline">\(p\)</span>-value can be calculated with</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb91-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(T_rand) <span class="sc">&gt;=</span> <span class="fu">abs</span>(test_stat))</span></code></pre></div>
+<p>which gives a <span class="math inline">\(p\)</span>-value of 0.003, and hence we reject <span class="math inline">\(H_0\)</span> at the 5% significance level, and conclude that <em>in this sample</em> there is evidence to favour a mean difference in mandible lengths between females and males, compared with no difference.</p>
+</details>
+<hr />
 </div>
 <div id="question-22" class="section level2 hasAnchor">
 <h2>Question 22<a href="nonparametric-tests-for-two-dependent-samples.html#question-22" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The data <code>Nile</code>, which are built in to <code>R</code>, give annual flows of the river Nile, measured in <span class="math inline">\(10^8\text{m}^3\)</span>, at Aswan, Egypt, for each year from 1871 to 1970. Use a randomisation test to assess whether flows have changed monotonically between 1900 and 1970. State the hypotheses that you are testing. Plot the annual flows between 1900 and 1970, and comment on whether visual inspection supports the results of your hypothesis test. [Note that <code>Nile</code> is a time series object, i.e. of class <code>ts</code>, and you may want to coerce it be of class <code>numeric</code> with <code>as.numeric()</code>. Also note that, to study 1900 to 1970, you will need to somehow remove the first 30 annual flows.]</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- To assess whether flows have changed monotonically, we can consider whether there is a relationship between year and annual flow. Our hypotheses are -->
-<!-- \begin{align*} H_0&:\text{years and annual flows are not monotonically related,}\\ H_1&:\text{years and annual flows are momotonically related.} \end{align*} We'll use Spearman's rank correlation coefficient as our test statistic. We first need to extract the relevant data, i.e. the annual flows between 1900 and 1970 and their years. -->
-<!-- Then our observed test statistic is -->
-<!-- i.e. $t_{\text{obs}} = 0.094$. We approximate the test statistic's sampling distribution by randomly pairing the years and annual flows, which we repeat 10000 times, storing each test statistic in `T_rand`.  -->
-<!-- Our $p$-value for the test is the proportion of sampled test statistics that are as or more extreme than that observed, i.e. with absolute values at least as large as $|t_{\text{obs}}|$. We can calculate this with -->
-<!-- which gives a $p$-value of $0.433$. Hence we don't reject $H_0$, i.e. don't reject that flows haven't monotonically increased or decreased between 1900 and 1970. -->
-<!-- We can plot the annual flows between 1900 and 1970 with -->
-<!-- ```{r, fig.cap = "Annual flows of river Nile between 1900 and 1970."} -->
-<!-- ggplot() + geom_line(aes(x = years_20C, y = Nile_20C)) + -->
-<!--   xlab("Year") + ylab("Annual flow (10^8 m^3)") -->
-<!-- ``` -->
-<!-- which shows little visual evidence that flows have changed in a monotonic way over time. -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>To assess whether flows have changed monotonically, we can consider whether there is a relationship between year and annual flow. Our hypotheses are
+<span class="math display">\[\begin{align*} H_0&amp;:\text{years and annual flows are not monotonically related,}\\ H_1&amp;:\text{years and annual flows are momotonically related.} \end{align*}\]</span> We’ll use Spearman’s rank correlation coefficient as our test statistic. We first need to extract the relevant data, i.e. the annual flows between 1900 and 1970 and their years.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb92-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">1871</span><span class="sc">:</span><span class="dv">1970</span></span>
+<span id="cb92-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb92-2" aria-hidden="true" tabindex="-1"></a>years_20C <span class="ot">&lt;-</span> years[years <span class="sc">&gt;=</span> <span class="dv">1900</span>]</span>
+<span id="cb92-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb92-3" aria-hidden="true" tabindex="-1"></a>Nile_20C <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(Nile[years <span class="sc">&gt;=</span> <span class="dv">1900</span>])</span></code></pre></div>
+<p>Then our observed test statistic is</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb93-1" aria-hidden="true" tabindex="-1"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">cor</span>(years_20C, Nile_20C, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<p>i.e. <span class="math inline">\(t_{\text{obs}} = 0.094\)</span>. We approximate the test statistic’s sampling distribution by randomly pairing the years and annual flows, which we repeat 10000 times, storing each test statistic in <code>T_rand</code>.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb94-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb94-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb94-2" aria-hidden="true" tabindex="-1"></a>T_rand <span class="ot">&lt;-</span> <span class="fu">replicate</span>(N, <span class="fu">cor</span>(years_20C, <span class="fu">sample</span>(Nile_20C), <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>))</span></code></pre></div>
+<p>Our <span class="math inline">\(p\)</span>-value for the test is the proportion of sampled test statistics that are as or more extreme than that observed, i.e. with absolute values at least as large as <span class="math inline">\(|t_{\text{obs}}|\)</span>. We can calculate this with</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb95-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(T_rand) <span class="sc">&gt;=</span> <span class="fu">abs</span>(test_stat))</span></code></pre></div>
+<p>which gives a <span class="math inline">\(p\)</span>-value of <span class="math inline">\(0.435\)</span>. Hence we don’t reject <span class="math inline">\(H_0\)</span>, i.e. don’t reject that flows haven’t monotonically increased or decreased between 1900 and 1970.</p>
+<p>We can plot the annual flows between 1900 and 1970 with</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> years_20C, <span class="at">y =</span> Nile_20C)) <span class="sc">+</span></span>
+<span id="cb96-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Annual flow (10^8 m^3)&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-85"></span>
+<img src="exercises_files/figure-html/unnamed-chunk-85-1.png" alt="Annual flows of river Nile between 1900 and 1970." width="384" />
+<p class="caption">
+Figure 15: Annual flows of river Nile between 1900 and 1970.
+</p>
+</div>
+<p>which shows little visual evidence that flows have changed in a monotonic way over time.</p>
+</details>
+<hr />
 </div>
 <div id="question-23" class="section level2 hasAnchor">
 <h2>Question 23<a href="nonparametric-tests-for-two-dependent-samples.html#question-23" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>(5.6.1, 5.6.2, 5.6.3, 5.7.1) The <code>gapminder.csv</code> data from the Gapminder website give the populations, <code>population</code>, average incomes, <code>income</code> (US dollars), and life expectancies, <code>life</code>, for 184 countries, <code>country</code>. Use a permutation or randomisation test at the 5% significance level to assess whether wealthier people from the 12 most populated countries have longer life expectancies. State your hypotheses and test statistics.</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- We'll start by loading a taking a small look at the data. -->
-<!-- We then need to extract the 12 most populated countries. There are various ways of achieving this; here is one example -->
-<!-- which puts `population` in decreasing order, finds the top 12, extracts their corresponding rows from `gapminder` and then stores them as `gapminder2`. Let's start by plotting the life expectancies for these 12 countries against average incomes. -->
-<!-- ```{r, fig.cap = "Life expectancy against average income for 12 most populated countries."} -->
-<!-- ggplot(gapminder2, aes(x = income, y = life)) + geom_point() -->
-<!-- ``` -->
-<!-- There are signs of a relationship, but possibly not a linear one. Hence we'll consider whether there's a monotonic relationship in our hypotheses. -->
-<!-- Our hypotheses are that *for these 12 countries* \begin{align*} H_0&:\text{there is no monotonic relationship between income and life expectancy,}\\ H_1&:\text{income and life expectancy have an increasing monotonic relationship.} \end{align*} -->
-<!-- Because our hypotheses centre on an increasing monotonic relationship, we're interested in large values of Spearman's rank correlation coefficient as our test statistic. -->
-<!-- We'll start by calculating our observed test statistic, which we'll store as `test_stat` -->
-<!-- i.e. the sample's Spearman's rank correlation coefficient is 0.771.  -->
-<!-- We then note that there are $12! = 479001600$ ways in which we can reallocate the life expectancies to the incomes. It is impractical to use all of them, so we should prefer a randomisation test over a permutation test. For the randomisation test we'll use 10^{5} resamples, calculate the test statistic for each resample, and store them in `T_rand`.  -->
-<!-- If our observed test statistic is extreme relative to the sample that's representative of the null hypothesis then we'll reject the null hypothesis. We can quantify this through the test's $p$-value, which is the proportion of resample test statistics that are as or more extreme than the one we've observed, i.e. as large or larger test statistics. -->
-<!-- The test's $p$-value is 0.002. Hence we reject the null hypothesis at the 1% significance level in favour of life expectancies increasing monotonically with average income for the 12 most populated countries. -->
-<!-- [Note that had we considered hypotheses based on a *linear* relationship and used Pearson's correlation coefficient, our test would have had a $p$-value of 0.002, and so wouldn't have changed our conclusion.] -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We’ll start by loading a taking a small look at the data.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb97-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;gapminder.csv&quot;</span>)</span>
+<span id="cb97-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gapminder)</span></code></pre></div>
+<pre><code>##               country population income life
+## 1         Afghanistan   38900000   1800 64.4
+## 2             Albania    2880000  13200 78.6
+## 3             Algeria   43900000  14000 78.3
+## 4              Angola   32900000   5440 65.4
+## 5 Antigua and Barbuda      97900  25000 77.4
+## 6           Argentina   45200000  17100 77.1</code></pre>
+<p>We then need to extract the 12 most populated countries. There are various ways of achieving this; here is one example</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb99-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb99-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb99-2" aria-hidden="true" tabindex="-1"></a>gapminder2 <span class="ot">&lt;-</span> gapminder[<span class="fu">order</span>(gapminder<span class="sc">$</span>population, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span>top], ]</span>
+<span id="cb99-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gapminder2)</span></code></pre></div>
+<pre><code>##           country population income life
+## 35          China 1440000000  18100 77.7
+## 75          India 1380000000   7630 69.7
+## 176 United States  331000000  57500 78.6
+## 76      Indonesia  274000000  12500 72.1
+## 125      Pakistan  221000000   5020 67.3
+## 23         Brazil  213000000  14500 76.1</code></pre>
+<p>which puts <code>population</code> in decreasing order, finds the top 12, extracts their corresponding rows from <code>gapminder</code> and then stores them as <code>gapminder2</code>. Let’s start by plotting the life expectancies for these 12 countries against average incomes.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder2, <span class="fu">aes</span>(<span class="at">x =</span> income, <span class="at">y =</span> life)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-88"></span>
+<img src="exercises_files/figure-html/unnamed-chunk-88-1.png" alt="Life expectancy against average income for 12 most populated countries." width="384" />
+<p class="caption">
+Figure 16: Life expectancy against average income for 12 most populated countries.
+</p>
+</div>
+<p>There are signs of a relationship, but possibly not a linear one. Hence we’ll consider whether there’s a monotonic relationship in our hypotheses.</p>
+<p>Our hypotheses are that <em>for these 12 countries</em> <span class="math display">\[\begin{align*} H_0&amp;:\text{there is no monotonic relationship between income and life expectancy,}\\ H_1&amp;:\text{income and life expectancy have an increasing monotonic relationship.} \end{align*}\]</span></p>
+<p>Because our hypotheses centre on an increasing monotonic relationship, we’re interested in large values of Spearman’s rank correlation coefficient as our test statistic.</p>
+<p>We’ll start by calculating our observed test statistic, which we’ll store as <code>test_stat</code></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb102-1" aria-hidden="true" tabindex="-1"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">cor</span>(gapminder2<span class="sc">$</span>income, gapminder2<span class="sc">$</span>life, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<p>i.e. the sample’s Spearman’s rank correlation coefficient is 0.771.</p>
+<p>We then note that there are <span class="math inline">\(12! = 479001600\)</span> ways in which we can reallocate the life expectancies to the incomes. It is impractical to use all of them, so we should prefer a randomisation test over a permutation test. For the randomisation test we’ll use 10^{5} resamples, calculate the test statistic for each resample, and store them in <code>T_rand</code>.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb103-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb103-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb103-2" aria-hidden="true" tabindex="-1"></a>T_rand <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N)</span>
+<span id="cb103-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb103-4"><a href="nonparametric-tests-for-two-dependent-samples.html#cb103-4" aria-hidden="true" tabindex="-1"></a>  resample <span class="ot">&lt;-</span> <span class="fu">sample</span>(gapminder2<span class="sc">$</span>life)</span>
+<span id="cb103-5"><a href="nonparametric-tests-for-two-dependent-samples.html#cb103-5" aria-hidden="true" tabindex="-1"></a>  T_rand[i] <span class="ot">&lt;-</span> <span class="fu">cor</span>(gapminder2<span class="sc">$</span>income, resample, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
+<span id="cb103-6"><a href="nonparametric-tests-for-two-dependent-samples.html#cb103-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>If our observed test statistic is extreme relative to the sample that’s representative of the null hypothesis then we’ll reject the null hypothesis. We can quantify this through the test’s <span class="math inline">\(p\)</span>-value, which is the proportion of resample test statistics that are as or more extreme than the one we’ve observed, i.e. as large or larger test statistics.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb104-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(T_rand <span class="sc">&gt;=</span> test_stat)</span></code></pre></div>
+<p>The test’s <span class="math inline">\(p\)</span>-value is 0.002. Hence we reject the null hypothesis at the 1% significance level in favour of life expectancies increasing monotonically with average income for the 12 most populated countries.</p>
+<p>[Note that had we considered hypotheses based on a <em>linear</em> relationship and used Pearson’s correlation coefficient, our test would have had a <span class="math inline">\(p\)</span>-value of 0.003, and so wouldn’t have changed our conclusion.]</p>
+</details>
+<hr />
 </div>
 <div id="question-24" class="section level2 hasAnchor">
 <h2>Question 24<a href="nonparametric-tests-for-two-dependent-samples.html#question-24" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -365,55 +438,80 @@ more rapidly in the right (RVF) or left visual fields (LVF) of humans, or
 whether there was no difference. For each of 12 subjects the mean response times (ms) to digital
 information in each field was measured.</p>
 <p>Use the Wilcoxon signed rank test at the 1% significance level to assess whether there is a difference in perception times between the LVF and RVF. Perform the test by hand.</p>
-<!-- *** -->
-<!--   <details><summary> -->
-<!--   **Solution** -->
-<!--   </summary> -->
-<!--   Let $x_i$ and $y_i$ denote LVF and RVF perception times of subject $i$, $i = 1, \ldots, 12$, respectively. We suppose that differences in times $d_i = y_i - x_i$ are drawn from a symmetric pdf, $f_D(d - \mu)$, and test \begin{align*} H_0: \mu = 0, \\ H_0: \mu \neq 0,\end{align*} since we're interested in perception being more rapid in either visual field. It's then useful to add four rows to the table, which are $I(x_i > y_i)$, $I(y_i > x_i)$, $|y_i - x_i|$ and $r_i = \text{rank}(|y_i - x_i|)$. -->
-<!-- \begin{tabular}{c|rrrrrrrrrrrr} -->
-<!-- Subject & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline -->
-<!-- $I(x_i > y_i)$ & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1\\ -->
-<!-- $I(y_i > x_i)$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\ -->
-<!-- $|y_i - x_i|$ & 7 & 16 & 30 & 2 & 16 & 33 & 14 & 20 & 20 & 1 & 19 & 22\\ -->
-<!-- $r_i$ & 3 & 5.5 & 11 & 2 & 5.5 & 12 & 4 & 8.5 & 8.5 & 1 & 7 & 10 -->
-<!-- \end{tabular} -->
-<!-- Then $t_{\text{obs}} = \min(3 + 5.5 + 11 + 2 + 5.5 + 12 + 4 + 8.5 + 8.5 + 7 + 10, 1)$ and so $t_{\text{obs}} = \min(77, 1) = 1$. The $p$-value for the test is therefore $\text{Pr}(|T| \geq |t_{\text{obs}}|) = 2 \text{Pr}(T \leq t_{\text{obs}})$, which we can evaluate in \texttt{R} with -->
-<!-- and gives an approximate $p$-value of 0.0023. As $p$-value $< 0.01$, there is strong evidence to reject $H_0$ in favour of perception times in one visual field being more rapid than the other.  -->
-<!-- [Note that a normal approximation (which we'd usually do for $n \geq 20$) would have had mean $n(n + 1) / 4 = 39$ and variance $n(n + 1)(2n + 2) / 24 = 162.5$. This would have led to a test statistic of $z_{\text{obs}} = -2.981$, and in turn a $p$-value of $\text{Pr}(|Z| \geq |z_{\text{obs}}|) = 2 \text{Pr}(Z \leq z_{\text{obs}}) = 0.0029$, and hence the same conclusion as reached above.] -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>Let <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> denote LVF and RVF perception times of subject <span class="math inline">\(i\)</span>, <span class="math inline">\(i = 1, \ldots, 12\)</span>, respectively. We suppose that differences in times <span class="math inline">\(d_i = y_i - x_i\)</span> are drawn from a symmetric pdf, <span class="math inline">\(f_D(d - \mu)\)</span>, and test <span class="math display">\[\begin{align*} H_0: \mu = 0, \\ H_1: \mu \neq 0,\end{align*}\]</span> since we’re interested in perception being more rapid in either visual field. It’s then useful to add four rows to the table, which are <span class="math inline">\(I(x_i &gt; y_i)\)</span>, <span class="math inline">\(I(y_i &gt; x_i)\)</span>, <span class="math inline">\(|y_i - x_i|\)</span> and <span class="math inline">\(r_i = \text{rank}(|y_i - x_i|)\)</span>.</p>
+<p>Then <span class="math inline">\(t_{\text{obs}} = \min(3 + 5.5 + 11 + 2 + 5.5 + 12 + 4 + 8.5 + 8.5 + 7 + 10, 1)\)</span> and so <span class="math inline">\(t_{\text{obs}} = \min(77, 1) = 1\)</span>. The <span class="math inline">\(p\)</span>-value for the test is therefore <span class="math inline">\(\text{Pr}(|T| \geq |t_{\text{obs}}|) = 2 \text{Pr}(T \leq t_{\text{obs}})\)</span>, which we can evaluate in with</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb105-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">psignrank</span>(<span class="dv">1</span>, <span class="dv">12</span>)</span></code></pre></div>
+<p>and gives an approximate <span class="math inline">\(p\)</span>-value of 0.0024. As <span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt; 0.01\)</span>, there is strong evidence to reject <span class="math inline">\(H_0\)</span> in favour of perception times in one visual field being more rapid than the other.</p>
+<p>[Note that a normal approximation (which we’d usually do for <span class="math inline">\(n \geq 20\)</span>) would have had mean <span class="math inline">\(n(n + 1) / 4 = 39\)</span> and variance <span class="math inline">\(n(n + 1)(2n + 2) / 24 = 162.5\)</span>. This would have led to a test statistic of <span class="math inline">\(z_{\text{obs}} = -2.981\)</span>, and in turn a <span class="math inline">\(p\)</span>-value of <span class="math inline">\(\text{Pr}(|Z| \geq |z_{\text{obs}}|) = 2 \text{Pr}(Z \leq z_{\text{obs}}) = 0.0029\)</span>, and hence the same conclusion as reached above.]</p>
+</details>
+<hr />
 </div>
 <div id="question-25" class="section level2 hasAnchor">
 <h2>Question 25<a href="nonparametric-tests-for-two-dependent-samples.html#question-25" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Recall the happiness data of Question 17. We can consider the scores for 2016 and 2019 as <em>paired</em> scores for each country. For the <span class="math inline">\(n = 148\)</span> countries, let <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> denote the happiness scores in 2016 and 2019, respectively, for country <span class="math inline">\(i\)</span>, <span class="math inline">\(i = 1, \ldots, n\)</span>. Then let <span class="math inline">\(r_i\)</span> denote the rank of <span class="math inline">\(|y_i - x_i|\)</span>. Suppose that the differences <span class="math inline">\(y_i - x_i\)</span> are drawn from a symmetric pdf. Given that <span class="math display">\[ \sum_{i = 1}^n I(x_i &gt; y_i) r_i = 4329.5\hspace{.8cm}\text{and}\hspace{.8cm}\sum_{i = 1}^n I(y_i &gt; x_i) r_i = 6696.5,\]</span></p>
 <p>use the Wilcoxon signed rank test at the 5% significance level to assess whether happiness scores in 2019 were higher than in 2016. State the hypotheses that you are testing.</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- We assume that the differences in scores, $d$, for each country are drawn from the symmetric pdf $f_D(d - \mu)$ and test \begin{align*} H_0 : \mu = 0,\\  H_1 : \mu > 0.\end{align*} For the one-sided Wilcoxon signed rank test we use the observed test statistic $t_{\text{obs}, X} = 4329.5$. Our sample size, $n = 148$, is sufficiently large, i.e. $\geq 20$, that we can use a normal approximation to the sampling distribution of our test statistic under the null hypothesis. This normal distribution has mean $n(n + 1)/4 = 5513$  and variance $n(n + 1)(2n + 1)/24 \simeq 272893.5$. Hence our test statistic for the normal approximation is $z_{\text{obs}} \simeq (4329.5 - 5513) / \sqrt{272893.5} \simeq -2.266$. For the one-sided test, where $Z$ is a standard normal random variable, the $p$-value is $\text{Pr}(Z \leq z_{\text{obs}}) = \text{Pr}(Z \leq -2.266) \simeq 0.012$. Hence we reject $H_0$ in favour of happiness scores being greater in 2019 than in 2016 at the 5% level. -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>We assume that the differences in scores, <span class="math inline">\(d\)</span>, for each country are drawn from the symmetric pdf <span class="math inline">\(f_D(d - \mu)\)</span> and test <span class="math display">\[\begin{align*} H_0 : \mu = 0,\\  H_1 : \mu &gt; 0.\end{align*}\]</span> For the one-sided Wilcoxon signed rank test we use the observed test statistic <span class="math inline">\(t_{\text{obs}, X} = 4329.5\)</span>. Our sample size, <span class="math inline">\(n = 148\)</span>, is sufficiently large, i.e. <span class="math inline">\(\geq 20\)</span>, that we can use a normal approximation to the sampling distribution of our test statistic under the null hypothesis. This normal distribution has mean <span class="math inline">\(n(n + 1)/4 = 5513\)</span> and variance <span class="math inline">\(n(n + 1)(2n + 1)/24 \simeq 272893.5\)</span>. Hence our test statistic for the normal approximation is <span class="math inline">\(z_{\text{obs}} \simeq (4329.5 - 5513) / \sqrt{272893.5} \simeq -2.266\)</span>. For the one-sided test, where <span class="math inline">\(Z\)</span> is a standard normal random variable, the <span class="math inline">\(p\)</span>-value is <span class="math inline">\(\text{Pr}(Z \leq z_{\text{obs}}) = \text{Pr}(Z \leq -2.266) \simeq 0.012\)</span>. Hence we reject <span class="math inline">\(H_0\)</span> in favour of happiness scores being greater in 2019 than in 2016 at the 5% level.</p>
+</details>
+<hr />
 </div>
 <div id="question-26" class="section level2 hasAnchor">
 <h2>Question 26<a href="nonparametric-tests-for-two-dependent-samples.html#question-26" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p> The <code>sleep</code> data, which are built in to <code>R</code>, quantify the extra sleep of ten patients caused by two different soporific drugs, compared to a control setting. In the <code>sleep</code> data, the amount of extra sleep compared to control is identified by <code>extra</code>, patients are identified by variable <code>ID</code> and their drug given by <code>group</code> (which takes value <code>1</code> or <code>2</code>). Consider the Wilcoxon signed rank test for assessing whether sleep amount differs between drug given. State the hypotheses that you are testing, and any assumptions made. You may use <code>wilcox.test()</code> in <code>R</code> or perform calculations by hand (or both!).</p>
-<!-- *** -->
-<!-- <details><summary> -->
-<!-- **Solution** -->
-<!-- </summary> -->
-<!-- First, we note that for the Wilcoxon signed rank test to be appropriate, the differences need to be symmetrically distributed. We'll start by finding the differences. -->
-<!--                                    There are only ten differences, but a plot can still be informative. We'll use a rug plot. -->
-<!-- ```{r, fig.cap = "Plot of differences in extra sleep between patient groups (drug 2 - drug 1).", fig.height = 2} -->
-<!-- ggplot() + geom_rug(aes(x = d), length = unit(0.1, "npc"), size = 1) -->
-<!-- ``` -->
-<!-- When interpreting such a plot from such a small sample of data, we're looking for clear evidence of asymmetry, which there isn't. We can proceed with the Wilcoxon signed rank test. Our hypotheses are that differences in extra sleep amounts, $d$, are drawn from a symmetric pdf $f_D(d - \mu)$ with \begin{align*} H_0&:\mu = 0,\\ H_1&:\mu \neq 0. \end{align*} -->
-<!-- The following performs the two-sided Wilcoxon signed rank test in `R`. -->
-<!-- We see that the resulting observed test statistic is $t_{\text{obs}} = 0.000$, which gives a $p$-value of 0.009. Hence we reject $H_0$ in favour of $H_1$ at the 1% significance level, and conclude that there is evidence that amounts of extra sleep *do* differ between soporific drug given. Note the warnings that `R` flags, and so we should treat the $p$-value as approximate. -->
-<!-- The following performs the calculation by hand. -->
-<!-- The above calculations remove any zero differences to give a $p$-value, `p_value`, of 0.004. (Note that this differs slightly from `R`'s $p$-value with `wilcox.test()` because `R` makes an extra adjustment for ties in the ranks of the absolute differences, but the conclusion doesn't change here.) -->
-<!-- </details> -->
-<!-- *** -->
+<hr />
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p>First, we note that for the Wilcoxon signed rank test to be appropriate, the differences need to be symmetrically distributed. We’ll start by finding the differences.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb106-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">subset</span>(sleep, group <span class="sc">==</span> <span class="dv">1</span>)<span class="sc">$</span>extra</span>
+<span id="cb106-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb106-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">subset</span>(sleep, group <span class="sc">==</span> <span class="dv">2</span>)<span class="sc">$</span>extra</span>
+<span id="cb106-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb106-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> y <span class="sc">-</span> x</span></code></pre></div>
+<p>There are only ten differences, but a plot can still be informative. We’ll use a rug plot.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_rug</span>(<span class="fu">aes</span>(<span class="at">x =</span> d), <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;npc&quot;</span>), <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-96"></span>
+<img src="exercises_files/figure-html/unnamed-chunk-96-1.png" alt="Plot of differences in extra sleep between patient groups (drug 2 - drug 1)." width="384" />
+<p class="caption">
+Figure 17: Plot of differences in extra sleep between patient groups (drug 2 - drug 1).
+</p>
+</div>
+<p>When interpreting such a plot from such a small sample of data, we’re looking for clear evidence of asymmetry, which there isn’t. We can proceed with the Wilcoxon signed rank test. Our hypotheses are that differences in extra sleep amounts, <span class="math inline">\(d\)</span>, are drawn from a symmetric pdf <span class="math inline">\(f_D(d - \mu)\)</span> with <span class="math display">\[\begin{align*} H_0&amp;:\mu = 0,\\ H_1&amp;:\mu \neq 0. \end{align*}\]</span></p>
+<p>The following performs the two-sided Wilcoxon signed rank test in <code>R</code>.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(x, y, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning in wilcox.test.default(x, y, paired = TRUE): cannot compute exact
+## p-value with ties</code></pre>
+<pre><code>## Warning in wilcox.test.default(x, y, paired = TRUE): cannot compute exact
+## p-value with zeroes</code></pre>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  x and y
+## V = 0, p-value = 0.009091
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>We see that the resulting observed test statistic is <span class="math inline">\(t_{\text{obs}} = 0.000\)</span>, which gives a <span class="math inline">\(p\)</span>-value of 0.009. Hence we reject <span class="math inline">\(H_0\)</span> in favour of <span class="math inline">\(H_1\)</span> at the 1% significance level, and conclude that there is evidence that amounts of extra sleep <em>do</em> differ between soporific drug given. Note the warnings that <code>R</code> flags, and so we should treat the <span class="math inline">\(p\)</span>-value as approximate.</p>
+<p>The following performs the calculation by hand.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="nonparametric-tests-for-two-dependent-samples.html#cb113-1" aria-hidden="true" tabindex="-1"></a>keep <span class="ot">&lt;-</span> d <span class="sc">!=</span> <span class="dv">0</span> <span class="co"># find which differences are zero</span></span>
+<span id="cb113-2"><a href="nonparametric-tests-for-two-dependent-samples.html#cb113-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(keep) <span class="co"># set sample size as number of unequal sleep amounts</span></span>
+<span id="cb113-3"><a href="nonparametric-tests-for-two-dependent-samples.html#cb113-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d[keep] <span class="co"># keep only unequal differences</span></span>
+<span id="cb113-4"><a href="nonparametric-tests-for-two-dependent-samples.html#cb113-4" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rank</span>(<span class="fu">abs</span>(d)) <span class="co"># find ranks of absolute differences</span></span>
+<span id="cb113-5"><a href="nonparametric-tests-for-two-dependent-samples.html#cb113-5" aria-hidden="true" tabindex="-1"></a>tx <span class="ot">&lt;-</span> <span class="fu">sum</span>(r[d <span class="sc">&lt;</span> <span class="dv">0</span>]) <span class="co"># calculate T_X</span></span>
+<span id="cb113-6"><a href="nonparametric-tests-for-two-dependent-samples.html#cb113-6" aria-hidden="true" tabindex="-1"></a>ty <span class="ot">&lt;-</span> <span class="fu">sum</span>(r[d <span class="sc">&gt;</span> <span class="dv">0</span>]) <span class="co"># calculate T_Y</span></span>
+<span id="cb113-7"><a href="nonparametric-tests-for-two-dependent-samples.html#cb113-7" aria-hidden="true" tabindex="-1"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">min</span>(tx, ty) <span class="co"># calculate T = min(T_X, T_Y)</span></span>
+<span id="cb113-8"><a href="nonparametric-tests-for-two-dependent-samples.html#cb113-8" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">psignrank</span>(test_stat, n) <span class="co"># calculate 2*Pr(T &lt;= t_obs)</span></span></code></pre></div>
+<p>The above calculations remove any zero differences to give a <span class="math inline">\(p\)</span>-value, <code>p_value</code>, of 0.004. (Note that this differs slightly from <code>R</code>’s <span class="math inline">\(p\)</span>-value with <code>wilcox.test()</code> because <code>R</code> makes an extra adjustment for ties in the ranks of the absolute differences, but the conclusion doesn’t change here.)</p>
+</details>
+<hr />
 </div>
 </div>
             </section>
