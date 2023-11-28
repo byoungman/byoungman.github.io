@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ADD-TRESS WP2 2/8/23</title>
+  <title>WP2 update</title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -19,7 +19,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'ADD-TRESS WP2 2/8/23',
+                title: 'WP2 update',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -29,7 +29,7 @@
       // Author information
       presenters: [
             {
-        name:  'Ben Youngman' ,
+        name:  'WP2 members' ,
         company: '',
         gplus: '',
         twitter: '',
@@ -5682,35 +5682,14 @@ ul.task-list{list-style: none;}
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">2 Aug ’23</p>
+            <p style="margin-top: 6px; margin-left: -2px;">30 Nov ’23</p>
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Agenda</h2></hgroup><article  id="agenda">
+<slide class=""><hgroup><h2>WP2 in a nutshell</h2></hgroup><article  id="wp2-in-a-nutshell">
 
-<ol>
-<li>There isn’t really one</li>
-<li>Discuss downscaling data for JULES</li>
-<li>Discuss pest/pathogen risk factors for JULES output</li>
-</ol>
-
-</article></slide><slide class=""><hgroup><h2>JULES</h2></hgroup><article  id="jules">
-
-<h3>Forcing data</h3>
-
-<ul>
-<li>Radiation (downward SW and LW)</li>
-<li>Precipitation (rainfall and snowfall)</li>
-<li>Temperature (approx. 2 m above canopy height)</li>
-<li>Surface pressure</li>
-<li>Specific humidity</li>
-<li>Wind speed</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Flowchart</h2></hgroup><article  id="flowchart">
-
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-6812b305b83e48a84a69" style="width:720px;height:432px;"></div>
-<script type="application/json" data-for="htmlwidget-6812b305b83e48a84a69">{"x":{"diagram":"\ntitle WP2;\ngraph TD;\n    A[Climate data <br> e.g. UKCP18 12km <br> probably for just RCP 8.5]-->B[Downscaling model <br> based on microclima];\n    B-->D[Hi-res mean estimates of <br> climate data given lo-res data];\n    A-->C[Geostatistical model];\n    C-->E[Hi-res residual process];\n    D-->G[Physical/statistical model <br> for hi-res daily simulations];\n    E-->G;\n    F[Lo-res projections <br> with different RCPs]-->H;\n    I[Statistical model <br> for inter-RCP uncertainty]-->H;\n    G-->H[Hi-res JULES input <br> simulated for 80 years];\n    J[Discrepancy model] --> H;\n    H-->K[JULES output];\n    M[Simple generic infection model <br> for plant pathogens]-->L;\n    N[Data from <br> UK Plant Health Risk Register]-->M;\n    N-->O;\n    O[TDB pest model]-->L;\n    P[TBD extreme weather <br> risk model]-->L;\n    K-->L[Risk-adjusted JULES output <br> due to, e.g. <br> pest/pathogens, extreme weather];\n"},"evals":[],"jsHooks":[]}</script></article></slide>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4ff6ab3cb27d0694b0d6" style="width:720px;height:432px;"></div>
+<script type="application/json" data-for="htmlwidget-4ff6ab3cb27d0694b0d6">{"x":{"diagram":"\ngraph TD;\n    A[Climate data <br> e.g. UKCP18 12km <br> probably for just RCP 8.5]-->B[Downscaling model <br> based on microclima];\n    B-->D[Hi-res mean estimates of <br> climate data given lo-res data];\n    A-->C[Geostatistical model];\n    C-->E[Hi-res residual process];\n    D-->G[Physical/statistical model <br> for hi-res daily simulations];\n    E-->G;\n    F[Lo-res projections <br> with different RCPs]-->H;\n    I[Statistical model <br> for inter-RCP uncertainty]-->H;\n    G-->H[Hi-res JULES input <br> simulated for 80 years];\n    J[Discrepancy model] --> H;\n    H-->K[JULES output];\n    M[Simple generic infection model <br> for plant pathogens]-->L;\n    N[Data from <br> UK Plant Health Risk Register]-->M;\n    N-->O;\n    O[TDB pest model]-->L;\n    P[TBD extreme weather <br> risk model]-->L;\n    K-->L[Risk-adjusted JULES output <br> due to, e.g. <br> pest/pathogens, extreme weather];\n"},"evals":[],"jsHooks":[]}</script></article></slide>
 
 
   <slide class="backdrop"></slide>
