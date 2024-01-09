@@ -163,9 +163,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="chapter-3-exercises.html#cb101-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> p), n)</span>
-<span id="cb101-2"><a href="chapter-3-exercises.html#cb101-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> n), n)</span>
-<span id="cb101-3"><a href="chapter-3-exercises.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> B, <span class="fu">crossprod</span>(A, B))</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="chapter-3-exercises.html#cb101-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> p), n)</span>
+<span id="cb101-2"><a href="chapter-3-exercises.html#cb101-2" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> n), n)</span>
+<span id="cb101-3"><a href="chapter-3-exercises.html#cb101-3" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> B, <span class="fu">crossprod</span>(A, B))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </details>
 <hr /></li>
@@ -175,19 +175,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="chapter-3-exercises.html#cb103-1" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
-<span id="cb103-2"><a href="chapter-3-exercises.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>(A) <span class="sc">%*%</span> B,</span>
-<span id="cb103-3"><a href="chapter-3-exercises.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">crossprod</span>(A, B)</span>
-<span id="cb103-4"><a href="chapter-3-exercises.html#cb103-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="chapter-3-exercises.html#cb103-1" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
+<span id="cb103-2"><a href="chapter-3-exercises.html#cb103-2" tabindex="-1"></a>  <span class="fu">t</span>(A) <span class="sc">%*%</span> B,</span>
+<span id="cb103-3"><a href="chapter-3-exercises.html#cb103-3" tabindex="-1"></a>  <span class="fu">crossprod</span>(A, B)</span>
+<span id="cb103-4"><a href="chapter-3-exercises.html#cb103-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: milliseconds
-##             expr      min       lq     mean   median       uq       max neval
-##       t(A) %*% B 25.01682 27.64878 29.89909 28.47620 31.34298  75.16782   100
-##  crossprod(A, B) 22.84685 25.38421 28.51215 26.73809 28.94669 102.07641   100</code></pre>
+##             expr      min      lq      mean   median        uq      max neval
+##       t(A) %*% B 6.029416 6.56369 11.117247 7.914614 12.961463 57.93447   100
+##  crossprod(A, B) 3.708899 3.81617  8.219728 4.554064  9.412608 40.17542   100
+##  cld
+##    b
+##   a</code></pre>
 </details>
 <hr /></li>
 </ol></li>
 <li><p>Consider the calculation <span class="math inline">\(\mathbf{AD}\)</span> where <span class="math display">\[
-\mathbf{A} = \begin{pmatrix}0.25&amp;-1.65&amp;0.74&amp;1.07 \\-0.23&amp;0.84&amp;0.30&amp;-1.01 \\-0.47&amp;1.34&amp;-0.66&amp;0.01 \\1.02&amp;-0.16&amp;-0.67&amp;0.23 \\1.56&amp;1.04&amp;0.28&amp;0.00 \\0.26&amp;-1.47&amp;0.43&amp;-1.39 \\\end{pmatrix} \text{  and  }\mathbf{D} = \begin{pmatrix}1.07&amp;0.00&amp;0.00&amp;0.00 \\0.00&amp;-0.28&amp;0.00&amp;0.00 \\0.00&amp;0.00&amp;-0.96&amp;0.00 \\0.00&amp;0.00&amp;0.00&amp;-1.80 \\\end{pmatrix}.
+\mathbf{A} = \begin{pmatrix}0.77&amp;0.19&amp;-2.12&amp;-0.51 \\-0.89&amp;-0.35&amp;0.85&amp;0.05 \\-0.95&amp;-0.23&amp;-1.33&amp;-0.54 \\-0.38&amp;-0.41&amp;1.00&amp;0.32 \\-1.31&amp;1.94&amp;-0.55&amp;0.16 \\-0.46&amp;-0.06&amp;0.36&amp;-0.45 \\\end{pmatrix} \text{  and  }\mathbf{D} = \begin{pmatrix}-0.49&amp;0.00&amp;0.00&amp;0.00 \\0.00&amp;-0.30&amp;0.00&amp;0.00 \\0.00&amp;0.00&amp;-0.62&amp;0.00 \\0.00&amp;0.00&amp;0.00&amp;-0.41 \\\end{pmatrix}.
 \]</span> Write a function in <code>R</code> that takes a matrix <code>A</code> and a vector <code>d</code> as its arguments and computes <span class="math inline">\(\mathbf{AD}\)</span>, where <span class="math inline">\(\mathbf{A} =\)</span> <code>A</code> and <span class="math inline">\(\text{diag}(\mathbf{D}) =\)</span> <code>d</code>, and where <span class="math inline">\(\text{diag}(\mathbf{D})\)</span> denotes the vector comprising the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span>. Consider whether your function is performing redundant calculations and, if it is, try and avoid them.</p>
 <hr />
 <details>
@@ -195,50 +198,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Solution</strong>
 </summary>
 <p>We might start with</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="chapter-3-exercises.html#cb105-1" aria-hidden="true" tabindex="-1"></a>AD <span class="ot">&lt;-</span> <span class="cf">function</span>(A, d) {</span>
-<span id="cb105-2"><a href="chapter-3-exercises.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to compute A * D</span></span>
-<span id="cb105-3"><a href="chapter-3-exercises.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
-<span id="cb105-4"><a href="chapter-3-exercises.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="co"># D is a matrix with diagonal elements d</span></span>
-<span id="cb105-5"><a href="chapter-3-exercises.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a matrix</span></span>
-<span id="cb105-6"><a href="chapter-3-exercises.html#cb105-6" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(d)</span>
-<span id="cb105-7"><a href="chapter-3-exercises.html#cb105-7" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> D</span>
-<span id="cb105-8"><a href="chapter-3-exercises.html#cb105-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="chapter-3-exercises.html#cb105-1" tabindex="-1"></a>AD <span class="ot">&lt;-</span> <span class="cf">function</span>(A, d) {</span>
+<span id="cb105-2"><a href="chapter-3-exercises.html#cb105-2" tabindex="-1"></a><span class="co"># function to compute A * D</span></span>
+<span id="cb105-3"><a href="chapter-3-exercises.html#cb105-3" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
+<span id="cb105-4"><a href="chapter-3-exercises.html#cb105-4" tabindex="-1"></a><span class="co"># D is a matrix with diagonal elements d</span></span>
+<span id="cb105-5"><a href="chapter-3-exercises.html#cb105-5" tabindex="-1"></a><span class="co"># returns a matrix</span></span>
+<span id="cb105-6"><a href="chapter-3-exercises.html#cb105-6" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(d)</span>
+<span id="cb105-7"><a href="chapter-3-exercises.html#cb105-7" tabindex="-1"></a>A <span class="sc">%*%</span> D</span>
+<span id="cb105-8"><a href="chapter-3-exercises.html#cb105-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>but if we do this then we’re multiplying a lot of zeros unnecessarily. Instead, the following avoids this</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="chapter-3-exercises.html#cb106-1" aria-hidden="true" tabindex="-1"></a>AdiagD <span class="ot">&lt;-</span> <span class="cf">function</span>(A, d) {</span>
-<span id="cb106-2"><a href="chapter-3-exercises.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to compute A * D slightly more efficiently</span></span>
-<span id="cb106-3"><a href="chapter-3-exercises.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
-<span id="cb106-4"><a href="chapter-3-exercises.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="co"># D is a matrix with diagonal elements d</span></span>
-<span id="cb106-5"><a href="chapter-3-exercises.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a matrix</span></span>
-<span id="cb106-6"><a href="chapter-3-exercises.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">t</span>(A) <span class="sc">*</span> d)</span>
-<span id="cb106-7"><a href="chapter-3-exercises.html#cb106-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="chapter-3-exercises.html#cb106-1" tabindex="-1"></a>AdiagD <span class="ot">&lt;-</span> <span class="cf">function</span>(A, d) {</span>
+<span id="cb106-2"><a href="chapter-3-exercises.html#cb106-2" tabindex="-1"></a><span class="co"># function to compute A * D slightly more efficiently</span></span>
+<span id="cb106-3"><a href="chapter-3-exercises.html#cb106-3" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
+<span id="cb106-4"><a href="chapter-3-exercises.html#cb106-4" tabindex="-1"></a><span class="co"># D is a matrix with diagonal elements d</span></span>
+<span id="cb106-5"><a href="chapter-3-exercises.html#cb106-5" tabindex="-1"></a><span class="co"># returns a matrix</span></span>
+<span id="cb106-6"><a href="chapter-3-exercises.html#cb106-6" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">t</span>(A) <span class="sc">*</span> d)</span>
+<span id="cb106-7"><a href="chapter-3-exercises.html#cb106-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>and the following confirms that both give the same result</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chapter-3-exercises.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
-<pre><code>##         [,1]    [,2]    [,3]   [,4]
-## [1,]  0.2675  0.4620 -0.7104 -1.926
-## [2,] -0.2461 -0.2352 -0.2880  1.818
-## [3,] -0.5029 -0.3752  0.6336 -0.018
-## [4,]  1.0914  0.0448  0.6432 -0.414
-## [5,]  1.6692 -0.2912 -0.2688  0.000
-## [6,]  0.2782  0.4116 -0.4128  2.502</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chapter-3-exercises.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AdiagD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
-<pre><code>##         [,1]    [,2]    [,3]   [,4]
-## [1,]  0.2675  0.4620 -0.7104 -1.926
-## [2,] -0.2461 -0.2352 -0.2880  1.818
-## [3,] -0.5029 -0.3752  0.6336 -0.018
-## [4,]  1.0914  0.0448  0.6432 -0.414
-## [5,]  1.6692 -0.2912 -0.2688  0.000
-## [6,]  0.2782  0.4116 -0.4128  2.502</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chapter-3-exercises.html#cb107-1" tabindex="-1"></a><span class="fu">AD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
+<pre><code>##         [,1]   [,2]    [,3]    [,4]
+## [1,] -0.3773 -0.057  1.3144  0.2091
+## [2,]  0.4361  0.105 -0.5270 -0.0205
+## [3,]  0.4655  0.069  0.8246  0.2214
+## [4,]  0.1862  0.123 -0.6200 -0.1312
+## [5,]  0.6419 -0.582  0.3410 -0.0656
+## [6,]  0.2254  0.018 -0.2232  0.1845</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chapter-3-exercises.html#cb109-1" tabindex="-1"></a><span class="fu">AdiagD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
+<pre><code>##         [,1]   [,2]    [,3]    [,4]
+## [1,] -0.3773 -0.057  1.3144  0.2091
+## [2,]  0.4361  0.105 -0.5270 -0.0205
+## [3,]  0.4655  0.069  0.8246  0.2214
+## [4,]  0.1862  0.123 -0.6200 -0.1312
+## [5,]  0.6419 -0.582  0.3410 -0.0656
+## [6,]  0.2254  0.018 -0.2232  0.1845</code></pre>
 </details>
 <hr /></li>
 <li><p>The following function generates an arbitrary <span class="math inline">\(n \times n\)</span> positive definite matrix.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="chapter-3-exercises.html#cb111-1" aria-hidden="true" tabindex="-1"></a>pdmatrix <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb111-2"><a href="chapter-3-exercises.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to generate an arbitrary n x n positive definite matrix</span></span>
-<span id="cb111-3"><a href="chapter-3-exercises.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co"># n is an integer</span></span>
-<span id="cb111-4"><a href="chapter-3-exercises.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a matrix</span></span>
-<span id="cb111-5"><a href="chapter-3-exercises.html#cb111-5" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, n)</span>
-<span id="cb111-6"><a href="chapter-3-exercises.html#cb111-6" aria-hidden="true" tabindex="-1"></a>L[<span class="sc">!</span><span class="fu">lower.tri</span>(L)] <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>))</span>
-<span id="cb111-7"><a href="chapter-3-exercises.html#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tcrossprod</span>(L)</span>
-<span id="cb111-8"><a href="chapter-3-exercises.html#cb111-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="chapter-3-exercises.html#cb111-1" tabindex="-1"></a>pdmatrix <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb111-2"><a href="chapter-3-exercises.html#cb111-2" tabindex="-1"></a><span class="co"># function to generate an arbitrary n x n positive definite matrix</span></span>
+<span id="cb111-3"><a href="chapter-3-exercises.html#cb111-3" tabindex="-1"></a><span class="co"># n is an integer</span></span>
+<span id="cb111-4"><a href="chapter-3-exercises.html#cb111-4" tabindex="-1"></a><span class="co"># returns a matrix</span></span>
+<span id="cb111-5"><a href="chapter-3-exercises.html#cb111-5" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, n)</span>
+<span id="cb111-6"><a href="chapter-3-exercises.html#cb111-6" tabindex="-1"></a>L[<span class="sc">!</span><span class="fu">lower.tri</span>(L)] <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>))</span>
+<span id="cb111-7"><a href="chapter-3-exercises.html#cb111-7" tabindex="-1"></a><span class="fu">tcrossprod</span>(L)</span>
+<span id="cb111-8"><a href="chapter-3-exercises.html#cb111-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>By generating random <span class="math inline">\(n\)</span>-vectors of independent N(0, 1) random variates, <span class="math inline">\(\mathbf{x}_1, \ldots, \mathbf{x}_m,\)</span>, say, and random <span class="math inline">\(n \times n\)</span> positive definite matrices, <span class="math inline">\(\mathbf{A}_1, \ldots, \mathbf{A}_m\)</span>, say, confirm that <span class="math inline">\(\mathbf{x}_i^{\text{T}} \mathbf{A}_i \mathbf{x}_i &gt; 0\)</span> for <span class="math inline">\(i = 1, \ldots, m\)</span> with <span class="math inline">\(m = 100\)</span> and <span class="math inline">\(n = 10\)</span>.</p>
 <p>[Note that this can be considered a simulation-based example of trying to prove a result by considering a large number of simulations. Such an approach can be very valuable when an analytical approach is not possible.]</p>
 <hr />
@@ -247,17 +250,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Solution</strong>
 </summary>
 <p>There are a variety of ways we can tackle this. One of the tidier seems to be to use <code>all()</code> and <code>replicate()</code>.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="chapter-3-exercises.html#cb112-1" aria-hidden="true" tabindex="-1"></a>check_pd <span class="ot">&lt;-</span> <span class="cf">function</span>(A, x) {</span>
-<span id="cb112-2"><a href="chapter-3-exercises.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to check whether a matrix is positive definite</span></span>
-<span id="cb112-3"><a href="chapter-3-exercises.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
-<span id="cb112-4"><a href="chapter-3-exercises.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a logical</span></span>
-<span id="cb112-5"><a href="chapter-3-exercises.html#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x <span class="sc">*</span> (A <span class="sc">%*%</span> x)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb112-6"><a href="chapter-3-exercises.html#cb112-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb112-7"><a href="chapter-3-exercises.html#cb112-7" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fl">1e2</span></span>
-<span id="cb112-8"><a href="chapter-3-exercises.html#cb112-8" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb112-9"><a href="chapter-3-exercises.html#cb112-9" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">replicate</span>(<span class="fl">1e2</span>, </span>
-<span id="cb112-10"><a href="chapter-3-exercises.html#cb112-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">check_pd</span>(<span class="fu">pdmatrix</span>(n), <span class="fu">rnorm</span>(n))</span>
-<span id="cb112-11"><a href="chapter-3-exercises.html#cb112-11" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="chapter-3-exercises.html#cb112-1" tabindex="-1"></a>check_pd <span class="ot">&lt;-</span> <span class="cf">function</span>(A, x) {</span>
+<span id="cb112-2"><a href="chapter-3-exercises.html#cb112-2" tabindex="-1"></a><span class="co"># function to check whether a matrix is positive definite</span></span>
+<span id="cb112-3"><a href="chapter-3-exercises.html#cb112-3" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
+<span id="cb112-4"><a href="chapter-3-exercises.html#cb112-4" tabindex="-1"></a><span class="co"># returns a logical</span></span>
+<span id="cb112-5"><a href="chapter-3-exercises.html#cb112-5" tabindex="-1"></a><span class="fu">sum</span>(x <span class="sc">*</span> (A <span class="sc">%*%</span> x)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb112-6"><a href="chapter-3-exercises.html#cb112-6" tabindex="-1"></a>}</span>
+<span id="cb112-7"><a href="chapter-3-exercises.html#cb112-7" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fl">1e2</span></span>
+<span id="cb112-8"><a href="chapter-3-exercises.html#cb112-8" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb112-9"><a href="chapter-3-exercises.html#cb112-9" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">replicate</span>(<span class="fl">1e2</span>, </span>
+<span id="cb112-10"><a href="chapter-3-exercises.html#cb112-10" tabindex="-1"></a>  <span class="fu">check_pd</span>(<span class="fu">pdmatrix</span>(n), <span class="fu">rnorm</span>(n))</span>
+<span id="cb112-11"><a href="chapter-3-exercises.html#cb112-11" tabindex="-1"></a>))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </details>
 <hr /></li>
@@ -267,16 +270,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="chapter-3-exercises.html#cb114-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, prod<span class="sc">$</span>days, prod<span class="sc">$</span>temp)</span>
-<span id="cb114-2"><a href="chapter-3-exercises.html#cb114-2" aria-hidden="true" tabindex="-1"></a>XtX <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(X)</span>
-<span id="cb114-3"><a href="chapter-3-exercises.html#cb114-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> prod<span class="sc">$</span>output</span>
-<span id="cb114-4"><a href="chapter-3-exercises.html#cb114-4" aria-hidden="true" tabindex="-1"></a>Xty <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(X, y)</span>
-<span id="cb114-5"><a href="chapter-3-exercises.html#cb114-5" aria-hidden="true" tabindex="-1"></a>(betahat1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(XtX) <span class="sc">%*%</span> Xty)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="chapter-3-exercises.html#cb114-1" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, prod<span class="sc">$</span>days, prod<span class="sc">$</span>temp)</span>
+<span id="cb114-2"><a href="chapter-3-exercises.html#cb114-2" tabindex="-1"></a>XtX <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(X)</span>
+<span id="cb114-3"><a href="chapter-3-exercises.html#cb114-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> prod<span class="sc">$</span>output</span>
+<span id="cb114-4"><a href="chapter-3-exercises.html#cb114-4" tabindex="-1"></a>Xty <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(X, y)</span>
+<span id="cb114-5"><a href="chapter-3-exercises.html#cb114-5" tabindex="-1"></a>(betahat1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(XtX) <span class="sc">%*%</span> Xty)</span></code></pre></div>
 <pre><code>##             [,1]
 ## [1,]  9.12688541
 ## [2,]  0.20281539
 ## [3,] -0.07239294</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="chapter-3-exercises.html#cb116-1" aria-hidden="true" tabindex="-1"></a>(betahat2 <span class="ot">&lt;-</span> <span class="fu">solve</span>(XtX, Xty))</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="chapter-3-exercises.html#cb116-1" tabindex="-1"></a>(betahat2 <span class="ot">&lt;-</span> <span class="fu">solve</span>(XtX, Xty))</span></code></pre></div>
 <pre><code>##             [,1]
 ## [1,]  9.12688541
 ## [2,]  0.20281539
@@ -293,17 +296,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Solution</strong>
 </summary>
 <p>We’ll load <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{L}\)</span> as <code>A</code> and <code>L</code>, respectively.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="chapter-3-exercises.html#cb118-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">547.56</span>, <span class="fl">348.66</span>, <span class="fl">306.54</span>, <span class="fl">348.66</span>, <span class="fl">278.26</span>, <span class="fl">199.69</span>, <span class="fl">306.54</span>,</span>
-<span id="cb118-2"><a href="chapter-3-exercises.html#cb118-2" aria-hidden="true" tabindex="-1"></a>          <span class="fl">199.69</span>, <span class="fl">660.38</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb118-3"><a href="chapter-3-exercises.html#cb118-3" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">23.4</span>, <span class="fl">14.9</span>, <span class="fl">13.1</span>, <span class="dv">0</span>, <span class="fl">7.5</span>, <span class="fl">0.6</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">22.1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="chapter-3-exercises.html#cb118-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">547.56</span>, <span class="fl">348.66</span>, <span class="fl">306.54</span>, <span class="fl">348.66</span>, <span class="fl">278.26</span>, <span class="fl">199.69</span>, <span class="fl">306.54</span>,</span>
+<span id="cb118-2"><a href="chapter-3-exercises.html#cb118-2" tabindex="-1"></a>          <span class="fl">199.69</span>, <span class="fl">660.38</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb118-3"><a href="chapter-3-exercises.html#cb118-3" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">23.4</span>, <span class="fl">14.9</span>, <span class="fl">13.1</span>, <span class="dv">0</span>, <span class="fl">7.5</span>, <span class="fl">0.6</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">22.1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p>Then we need to show that <span class="math inline">\(\mathbf{L}\)</span> is lower-triangular</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="chapter-3-exercises.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(L[<span class="fu">upper.tri</span>(L)] <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="chapter-3-exercises.html#cb119-1" tabindex="-1"></a><span class="fu">all</span>(L[<span class="fu">upper.tri</span>(L)] <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it is, that all its diagonal elements are positive</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="chapter-3-exercises.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">diag</span>(L) <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="chapter-3-exercises.html#cb121-1" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">diag</span>(L) <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which they are, and that <span class="math inline">\(\mathbf{A} = \mathbf{LL}^{\text{T}}\)</span></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="chapter-3-exercises.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(A, <span class="fu">tcrossprod</span>(L))</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="chapter-3-exercises.html#cb123-1" tabindex="-1"></a><span class="fu">all.equal</span>(A, <span class="fu">tcrossprod</span>(L))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it does.</p>
 </details>
@@ -315,26 +318,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Solution</strong>
 </summary>
 <p>We’ll load <span class="math inline">\(\mathbf{A}\)</span></p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="chapter-3-exercises.html#cb125-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb125-2"><a href="chapter-3-exercises.html#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.797</span>, <span class="fl">0.839</span>, <span class="fl">0.547</span>),</span>
-<span id="cb125-3"><a href="chapter-3-exercises.html#cb125-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.839</span>, <span class="fl">3.004</span>, <span class="fl">0.855</span>),</span>
-<span id="cb125-4"><a href="chapter-3-exercises.html#cb125-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.547</span>, <span class="fl">0.855</span>, <span class="fl">3.934</span>)</span>
-<span id="cb125-5"><a href="chapter-3-exercises.html#cb125-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="chapter-3-exercises.html#cb125-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb125-2"><a href="chapter-3-exercises.html#cb125-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.797</span>, <span class="fl">0.839</span>, <span class="fl">0.547</span>),</span>
+<span id="cb125-3"><a href="chapter-3-exercises.html#cb125-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.839</span>, <span class="fl">3.004</span>, <span class="fl">0.855</span>),</span>
+<span id="cb125-4"><a href="chapter-3-exercises.html#cb125-4" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.547</span>, <span class="fl">0.855</span>, <span class="fl">3.934</span>)</span>
+<span id="cb125-5"><a href="chapter-3-exercises.html#cb125-5" tabindex="-1"></a>  )</span></code></pre></div>
 <p>and then we’ll find <span class="math inline">\(\mathbf{L}\)</span></p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="chapter-3-exercises.html#cb126-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(A))</span>
-<span id="cb126-2"><a href="chapter-3-exercises.html#cb126-2" aria-hidden="true" tabindex="-1"></a>L</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="chapter-3-exercises.html#cb126-1" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(A))</span>
+<span id="cb126-2"><a href="chapter-3-exercises.html#cb126-2" tabindex="-1"></a>L</span></code></pre></div>
 <pre><code>##           [,1]      [,2]     [,3]
 ## [1,] 0.8927486 0.0000000 0.000000
 ## [2,] 0.9397943 1.4562921 0.000000
 ## [3,] 0.6127145 0.1917022 1.876654</code></pre>
 <p>Then we’ll check that it’s lower-triangular</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="chapter-3-exercises.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(L[<span class="fu">upper.tri</span>(L)] <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="chapter-3-exercises.html#cb128-1" tabindex="-1"></a><span class="fu">all</span>(L[<span class="fu">upper.tri</span>(L)] <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it is, then we’ll check that its diagonal elements are positive</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="chapter-3-exercises.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">diag</span>(L) <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="chapter-3-exercises.html#cb130-1" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">diag</span>(L) <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which they are, and finally we’ll check that <span class="math inline">\(\mathbf{LL}^\text{T} = \mathbf{A}\)</span></p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="chapter-3-exercises.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(A, <span class="fu">tcrossprod</span>(L))</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="chapter-3-exercises.html#cb132-1" tabindex="-1"></a><span class="fu">all.equal</span>(A, <span class="fu">tcrossprod</span>(L))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it does. So we conclude that <span class="math inline">\(\mathbf{L}\)</span> is a lower-triangular Cholesky decomposition of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 </details>
@@ -346,21 +349,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Solution</strong>
 </summary>
 <p>The following is one option for <code>solve_chol()</code>.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="chapter-3-exercises.html#cb134-1" aria-hidden="true" tabindex="-1"></a>solve_chol <span class="ot">&lt;-</span> <span class="cf">function</span>(L, b) {</span>
-<span id="cb134-2"><a href="chapter-3-exercises.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to solve LL^Tx = b for x</span></span>
-<span id="cb134-3"><a href="chapter-3-exercises.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="co"># L is a lower-triangular matrix</span></span>
-<span id="cb134-4"><a href="chapter-3-exercises.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b is a vector of length nrow(L)</span></span>
-<span id="cb134-5"><a href="chapter-3-exercises.html#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="co"># return vector of same length as b</span></span>
-<span id="cb134-6"><a href="chapter-3-exercises.html#cb134-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(L, b)</span>
-<span id="cb134-7"><a href="chapter-3-exercises.html#cb134-7" aria-hidden="true" tabindex="-1"></a><span class="fu">backsolve</span>(<span class="fu">t</span>(L), y)</span>
-<span id="cb134-8"><a href="chapter-3-exercises.html#cb134-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="chapter-3-exercises.html#cb134-1" tabindex="-1"></a>solve_chol <span class="ot">&lt;-</span> <span class="cf">function</span>(L, b) {</span>
+<span id="cb134-2"><a href="chapter-3-exercises.html#cb134-2" tabindex="-1"></a><span class="co"># Function to solve LL^Tx = b for x</span></span>
+<span id="cb134-3"><a href="chapter-3-exercises.html#cb134-3" tabindex="-1"></a><span class="co"># L is a lower-triangular matrix</span></span>
+<span id="cb134-4"><a href="chapter-3-exercises.html#cb134-4" tabindex="-1"></a><span class="co"># b is a vector of length nrow(L)</span></span>
+<span id="cb134-5"><a href="chapter-3-exercises.html#cb134-5" tabindex="-1"></a><span class="co"># return vector of same length as b</span></span>
+<span id="cb134-6"><a href="chapter-3-exercises.html#cb134-6" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(L, b)</span>
+<span id="cb134-7"><a href="chapter-3-exercises.html#cb134-7" tabindex="-1"></a><span class="fu">backsolve</span>(<span class="fu">t</span>(L), y)</span>
+<span id="cb134-8"><a href="chapter-3-exercises.html#cb134-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>We’ll quickly check that we get the same result as <code>solve()</code> using the data from Example 3.2.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="chapter-3-exercises.html#cb135-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="fl">1.3</span>, <span class="fl">2.6</span>)</span>
-<span id="cb135-2"><a href="chapter-3-exercises.html#cb135-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb135-3"><a href="chapter-3-exercises.html#cb135-3" aria-hidden="true" tabindex="-1"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb135-4"><a href="chapter-3-exercises.html#cb135-4" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(Sigma, y <span class="sc">-</span> mu)</span>
-<span id="cb135-5"><a href="chapter-3-exercises.html#cb135-5" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(Sigma))</span>
-<span id="cb135-6"><a href="chapter-3-exercises.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(res1, <span class="fu">solve_chol</span>(L, y <span class="sc">-</span> mu))</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="chapter-3-exercises.html#cb135-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="fl">1.3</span>, <span class="fl">2.6</span>)</span>
+<span id="cb135-2"><a href="chapter-3-exercises.html#cb135-2" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb135-3"><a href="chapter-3-exercises.html#cb135-3" tabindex="-1"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb135-4"><a href="chapter-3-exercises.html#cb135-4" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(Sigma, y <span class="sc">-</span> mu)</span>
+<span id="cb135-5"><a href="chapter-3-exercises.html#cb135-5" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(Sigma))</span>
+<span id="cb135-6"><a href="chapter-3-exercises.html#cb135-6" tabindex="-1"></a><span class="fu">all.equal</span>(res1, <span class="fu">solve_chol</span>(L, y <span class="sc">-</span> mu))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Note above that we could use <code>backsolve(L, y, upper.tri = FALSE, transpose = TRUE)</code> instead of <code>backsolve(t(L), y)</code>, which avoids transposing <code>L</code>. Both give the same result, though.</p>
 </details>
@@ -373,24 +376,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </summary>
 <p>Let <span class="math inline">\(\mathbf{L}^{\text{T}} \mathbf{x} = \mathbf{y}\)</span>. To solve <span class="math inline">\(\mathbf{LL}^{\text{T}} \mathbf{x} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{x}\)</span>, we want to first solve <span class="math inline">\(\mathbf{Ly} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{y}\)</span>, and then <span class="math inline">\(\mathbf{L}^{\text{T}} \mathbf{x} = \mathbf{y}\)</span> for <span class="math inline">\(\mathbf{x}\)</span>. We can confirm this numerically in <code>R</code>.</p>
 <p>We already have <code>X</code> from Question <span class="math inline">\(\ref{cement}\)</span>, so we’ll re-use that <code>X</code>. We’ll set <span class="math inline">\(\mathbf{A} = \mathbf{X}^{\text{T}} \mathbf{X}\)</span>, and call this <code>A</code>. We’ll then use <code>chol()</code> to calculate its Cholesky decomposition in upper-triangular form, <code>U</code>, and lower-triangular form, <code>L</code>.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="chapter-3-exercises.html#cb137-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(X)</span>
-<span id="cb137-2"><a href="chapter-3-exercises.html#cb137-2" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">chol</span>(A)</span>
-<span id="cb137-3"><a href="chapter-3-exercises.html#cb137-3" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(U)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="chapter-3-exercises.html#cb137-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(X)</span>
+<span id="cb137-2"><a href="chapter-3-exercises.html#cb137-2" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">chol</span>(A)</span>
+<span id="cb137-3"><a href="chapter-3-exercises.html#cb137-3" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(U)</span></code></pre></div>
 <p>The following two commands then solve <span class="math inline">\(\mathbf{Ly} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{y}\)</span>, and then <span class="math inline">\(\mathbf{L}^{\text{T}} \mathbf{x} = \mathbf{y}\)</span> for <span class="math inline">\(\mathbf{x}\)</span></p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="chapter-3-exercises.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
-<span id="cb138-2"><a href="chapter-3-exercises.html#cb138-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">solve</span>(<span class="fu">t</span>(L), <span class="fu">solve</span>(L, Xty)),</span>
-<span id="cb138-3"><a href="chapter-3-exercises.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">backsolve</span>(<span class="fu">t</span>(L), <span class="fu">forwardsolve</span>(L, Xty))</span>
-<span id="cb138-4"><a href="chapter-3-exercises.html#cb138-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="chapter-3-exercises.html#cb138-1" tabindex="-1"></a><span class="fu">cbind</span>(</span>
+<span id="cb138-2"><a href="chapter-3-exercises.html#cb138-2" tabindex="-1"></a>  <span class="fu">solve</span>(<span class="fu">t</span>(L), <span class="fu">solve</span>(L, Xty)),</span>
+<span id="cb138-3"><a href="chapter-3-exercises.html#cb138-3" tabindex="-1"></a>  <span class="fu">backsolve</span>(<span class="fu">t</span>(L), <span class="fu">forwardsolve</span>(L, Xty))</span>
+<span id="cb138-4"><a href="chapter-3-exercises.html#cb138-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##             [,1]        [,2]
 ## [1,]  9.12688541  9.12688541
 ## [2,]  0.20281539  0.20281539
 ## [3,] -0.07239294 -0.07239294</code></pre>
 <p>although double use of <code>solve()</code> is inefficient compared to using <code>forwardsolve()</code> and then <code>backsolve()</code>.</p>
 <p>Alternatively, if we have <span class="math inline">\(\mathbf{A} = \mathbf{U}^{\text{T}} \mathbf{U}\)</span>, for upper-triangular <span class="math inline">\(\mathbf{U}\)</span>, then we have the following two options</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="chapter-3-exercises.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
-<span id="cb140-2"><a href="chapter-3-exercises.html#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">backsolve</span>(U, <span class="fu">forwardsolve</span>(<span class="fu">t</span>(U), Xty)),</span>
-<span id="cb140-3"><a href="chapter-3-exercises.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">backsolve</span>(U, <span class="fu">forwardsolve</span>(U, Xty, <span class="at">upper.tri =</span> <span class="cn">TRUE</span>, <span class="at">transpose =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb140-4"><a href="chapter-3-exercises.html#cb140-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="chapter-3-exercises.html#cb140-1" tabindex="-1"></a><span class="fu">cbind</span>(</span>
+<span id="cb140-2"><a href="chapter-3-exercises.html#cb140-2" tabindex="-1"></a>  <span class="fu">backsolve</span>(U, <span class="fu">forwardsolve</span>(<span class="fu">t</span>(U), Xty)),</span>
+<span id="cb140-3"><a href="chapter-3-exercises.html#cb140-3" tabindex="-1"></a>  <span class="fu">backsolve</span>(U, <span class="fu">forwardsolve</span>(U, Xty, <span class="at">upper.tri =</span> <span class="cn">TRUE</span>, <span class="at">transpose =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb140-4"><a href="chapter-3-exercises.html#cb140-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##             [,1]        [,2]
 ## [1,]  9.12688541  9.12688541
 ## [2,]  0.20281539  0.20281539
@@ -405,21 +408,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Solution</strong>
 </summary>
 <p>We’ll load <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\boldsymbol{\Lambda}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> as <code>A</code>, <code>Lambda</code> and <code>U</code>, respectively.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="chapter-3-exercises.html#cb142-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb142-2"><a href="chapter-3-exercises.html#cb142-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">3.4</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb142-3"><a href="chapter-3-exercises.html#cb142-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">152</span>, <span class="sc">-</span><span class="fl">2.064</span>),</span>
-<span id="cb142-4"><a href="chapter-3-exercises.html#cb142-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="fl">2.064</span>, <span class="sc">-</span><span class="fl">1.052</span>)</span>
-<span id="cb142-5"><a href="chapter-3-exercises.html#cb142-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb142-6"><a href="chapter-3-exercises.html#cb142-6" aria-hidden="true" tabindex="-1"></a>Lambda <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="fl">3.4</span>, <span class="sc">-</span><span class="fl">2.6</span>,  <span class="fl">1.7</span>))</span>
-<span id="cb142-7"><a href="chapter-3-exercises.html#cb142-7" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, .<span class="dv">6</span>, .<span class="dv">8</span>, <span class="dv">0</span>, <span class="sc">-</span>.<span class="dv">8</span>, .<span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="chapter-3-exercises.html#cb142-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb142-2"><a href="chapter-3-exercises.html#cb142-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">3.4</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb142-3"><a href="chapter-3-exercises.html#cb142-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">152</span>, <span class="sc">-</span><span class="fl">2.064</span>),</span>
+<span id="cb142-4"><a href="chapter-3-exercises.html#cb142-4" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="fl">2.064</span>, <span class="sc">-</span><span class="fl">1.052</span>)</span>
+<span id="cb142-5"><a href="chapter-3-exercises.html#cb142-5" tabindex="-1"></a>)</span>
+<span id="cb142-6"><a href="chapter-3-exercises.html#cb142-6" tabindex="-1"></a>Lambda <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="fl">3.4</span>, <span class="sc">-</span><span class="fl">2.6</span>,  <span class="fl">1.7</span>))</span>
+<span id="cb142-7"><a href="chapter-3-exercises.html#cb142-7" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, .<span class="dv">6</span>, .<span class="dv">8</span>, <span class="dv">0</span>, <span class="sc">-</span>.<span class="dv">8</span>, .<span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p>Then we need to show that <span class="math inline">\(\mathbf{U}\)</span> is orthogonal,</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="chapter-3-exercises.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), <span class="fu">diag</span>(<span class="fu">nrow</span>(U)))</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="chapter-3-exercises.html#cb143-1" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), <span class="fu">diag</span>(<span class="fu">nrow</span>(U)))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it is, that <span class="math inline">\(\boldsymbol{\Lambda}\)</span> is diagonal,</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="chapter-3-exercises.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(Lambda <span class="sc">-</span> <span class="fu">diag</span>(<span class="fu">diag</span>(Lambda)) <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="chapter-3-exercises.html#cb145-1" tabindex="-1"></a><span class="fu">all</span>(Lambda <span class="sc">-</span> <span class="fu">diag</span>(<span class="fu">diag</span>(Lambda)) <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>and that <span class="math inline">\(\mathbf{A} = \mathbf{U} \boldsymbol{\Lambda} \mathbf{U}^{\text{T}}\)</span></p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="chapter-3-exercises.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(A, U <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(Lambda, U))</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="chapter-3-exercises.html#cb147-1" tabindex="-1"></a><span class="fu">all.equal</span>(A, U <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(Lambda, U))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it does.</p>
 </details>
@@ -431,33 +434,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Solution</strong>
 </summary>
 <p>We’ll load <span class="math inline">\(\mathbf{A}\)</span></p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="chapter-3-exercises.html#cb149-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb149-2"><a href="chapter-3-exercises.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.797</span>, <span class="fl">0.839</span>, <span class="fl">0.547</span>),</span>
-<span id="cb149-3"><a href="chapter-3-exercises.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.839</span>, <span class="fl">3.004</span>, <span class="fl">0.855</span>),</span>
-<span id="cb149-4"><a href="chapter-3-exercises.html#cb149-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.547</span>, <span class="fl">0.855</span>, <span class="fl">3.934</span>)</span>
-<span id="cb149-5"><a href="chapter-3-exercises.html#cb149-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="chapter-3-exercises.html#cb149-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb149-2"><a href="chapter-3-exercises.html#cb149-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.797</span>, <span class="fl">0.839</span>, <span class="fl">0.547</span>),</span>
+<span id="cb149-3"><a href="chapter-3-exercises.html#cb149-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.839</span>, <span class="fl">3.004</span>, <span class="fl">0.855</span>),</span>
+<span id="cb149-4"><a href="chapter-3-exercises.html#cb149-4" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.547</span>, <span class="fl">0.855</span>, <span class="fl">3.934</span>)</span>
+<span id="cb149-5"><a href="chapter-3-exercises.html#cb149-5" tabindex="-1"></a>)</span></code></pre></div>
 <p>and then find <span class="math inline">\(\mathbf{U}\)</span> and <span class="math inline">\(\boldsymbol{\Lambda}\)</span></p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="chapter-3-exercises.html#cb150-1" aria-hidden="true" tabindex="-1"></a>eA <span class="ot">&lt;-</span> <span class="fu">eigen</span>(A, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb150-2"><a href="chapter-3-exercises.html#cb150-2" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> eA<span class="sc">$</span>vectors</span>
-<span id="cb150-3"><a href="chapter-3-exercises.html#cb150-3" aria-hidden="true" tabindex="-1"></a>U</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="chapter-3-exercises.html#cb150-1" tabindex="-1"></a>eA <span class="ot">&lt;-</span> <span class="fu">eigen</span>(A, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb150-2"><a href="chapter-3-exercises.html#cb150-2" tabindex="-1"></a>U <span class="ot">&lt;-</span> eA<span class="sc">$</span>vectors</span>
+<span id="cb150-3"><a href="chapter-3-exercises.html#cb150-3" tabindex="-1"></a>U</span></code></pre></div>
 <pre><code>##            [,1]       [,2]        [,3]
 ## [1,] -0.2317139 -0.1941590  0.95321085
 ## [2,] -0.5372074 -0.7913728 -0.29178287
 ## [3,] -0.8109975  0.5796821 -0.07906848</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="chapter-3-exercises.html#cb152-1" aria-hidden="true" tabindex="-1"></a>Lambda <span class="ot">&lt;-</span> <span class="fu">diag</span>(eA<span class="sc">$</span>values)</span>
-<span id="cb152-2"><a href="chapter-3-exercises.html#cb152-2" aria-hidden="true" tabindex="-1"></a>Lambda</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="chapter-3-exercises.html#cb152-1" tabindex="-1"></a>Lambda <span class="ot">&lt;-</span> <span class="fu">diag</span>(eA<span class="sc">$</span>values)</span>
+<span id="cb152-2"><a href="chapter-3-exercises.html#cb152-2" tabindex="-1"></a>Lambda</span></code></pre></div>
 <pre><code>##          [,1]     [,2]      [,3]
 ## [1,] 4.656641 0.000000 0.0000000
 ## [2,] 0.000000 2.583555 0.0000000
 ## [3,] 0.000000 0.000000 0.4948042</code></pre>
 <p>Then we need to show that <span class="math inline">\(\mathbf{U}\)</span> is orthogonal,</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="chapter-3-exercises.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), <span class="fu">diag</span>(<span class="fu">nrow</span>(U)))</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="chapter-3-exercises.html#cb154-1" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), <span class="fu">diag</span>(<span class="fu">nrow</span>(U)))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it is, that <span class="math inline">\(\boldsymbol{\Lambda}\)</span> is diagonal,</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="chapter-3-exercises.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(Lambda <span class="sc">-</span> <span class="fu">diag</span>(<span class="fu">diag</span>(Lambda)) <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="chapter-3-exercises.html#cb156-1" tabindex="-1"></a><span class="fu">all</span>(Lambda <span class="sc">-</span> <span class="fu">diag</span>(<span class="fu">diag</span>(Lambda)) <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it is, and that <span class="math inline">\(\mathbf{A} = \mathbf{U} \boldsymbol{\Lambda} \mathbf{U}^{\text{T}}\)</span></p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="chapter-3-exercises.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(A, U <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(Lambda, U))</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="chapter-3-exercises.html#cb158-1" tabindex="-1"></a><span class="fu">all.equal</span>(A, U <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(Lambda, U))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it does.</p>
 </details>
@@ -471,24 +474,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Solution</strong>
 </summary>
 <p>We’ll load <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{U}\)</span>, <span class="math inline">\(\mathbf{D}\)</span> and <span class="math inline">\(\mathbf{V}\)</span> as <code>A</code>, <code>U</code>, <code>D</code> and <code>V</code>, respectively.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="chapter-3-exercises.html#cb160-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.185</span>, <span class="fl">0.555</span>, <span class="fl">3.615</span>, <span class="fl">1.205</span>, <span class="fl">8.7</span>, <span class="sc">-</span><span class="fl">2.9</span>, <span class="fl">8.7</span>, <span class="sc">-</span><span class="fl">26.1</span>,</span>
-<span id="cb160-2"><a href="chapter-3-exercises.html#cb160-2" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fl">0.553</span>, <span class="sc">-</span><span class="fl">1.659</span>, <span class="sc">-</span><span class="fl">2.697</span>, <span class="sc">-</span><span class="fl">0.899</span>), <span class="dv">4</span>, <span class="dv">3</span>)</span>
-<span id="cb160-3"><a href="chapter-3-exercises.html#cb160-3" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">0.9</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.9</span>, <span class="fl">0.3</span>, <span class="sc">-</span><span class="fl">0.3</span>, <span class="sc">-</span><span class="fl">0.9</span>, </span>
-<span id="cb160-4"><a href="chapter-3-exercises.html#cb160-4" aria-hidden="true" tabindex="-1"></a>          <span class="fl">0.3</span>, <span class="fl">0.1</span>), <span class="dv">4</span>, <span class="dv">3</span>)</span>
-<span id="cb160-5"><a href="chapter-3-exercises.html#cb160-5" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">5</span>, <span class="dv">1</span>))</span>
-<span id="cb160-6"><a href="chapter-3-exercises.html#cb160-6" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="fl">0.76</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.65</span>, <span class="fl">0.65</span>, <span class="dv">0</span>, <span class="fl">0.76</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="chapter-3-exercises.html#cb160-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.185</span>, <span class="fl">0.555</span>, <span class="fl">3.615</span>, <span class="fl">1.205</span>, <span class="fl">8.7</span>, <span class="sc">-</span><span class="fl">2.9</span>, <span class="fl">8.7</span>, <span class="sc">-</span><span class="fl">26.1</span>,</span>
+<span id="cb160-2"><a href="chapter-3-exercises.html#cb160-2" tabindex="-1"></a>          <span class="sc">-</span><span class="fl">0.553</span>, <span class="sc">-</span><span class="fl">1.659</span>, <span class="sc">-</span><span class="fl">2.697</span>, <span class="sc">-</span><span class="fl">0.899</span>), <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb160-3"><a href="chapter-3-exercises.html#cb160-3" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">0.9</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.9</span>, <span class="fl">0.3</span>, <span class="sc">-</span><span class="fl">0.3</span>, <span class="sc">-</span><span class="fl">0.9</span>, </span>
+<span id="cb160-4"><a href="chapter-3-exercises.html#cb160-4" tabindex="-1"></a>          <span class="fl">0.3</span>, <span class="fl">0.1</span>), <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb160-5"><a href="chapter-3-exercises.html#cb160-5" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">5</span>, <span class="dv">1</span>))</span>
+<span id="cb160-6"><a href="chapter-3-exercises.html#cb160-6" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="fl">0.76</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.65</span>, <span class="fl">0.65</span>, <span class="dv">0</span>, <span class="fl">0.76</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p>We want to check that <span class="math inline">\(\mathbf{U}\)</span> and <span class="math inline">\(\mathbf{V}\)</span> are orthogonal</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="chapter-3-exercises.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), <span class="fu">diag</span>(<span class="fu">ncol</span>(U)))</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="chapter-3-exercises.html#cb161-1" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), <span class="fu">diag</span>(<span class="fu">ncol</span>(U)))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="chapter-3-exercises.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(V), <span class="fu">diag</span>(<span class="fu">nrow</span>(V)))</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="chapter-3-exercises.html#cb163-1" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(V), <span class="fu">diag</span>(<span class="fu">nrow</span>(V)))</span></code></pre></div>
 <pre><code>## [1] &quot;Mean relative difference: 9.999e-05&quot;</code></pre>
 <p>which they both are, that <span class="math inline">\(\mathbf{D}\)</span> is diagonal</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="chapter-3-exercises.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(D <span class="sc">-</span> <span class="fu">diag</span>(<span class="fu">diag</span>(D)) <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="chapter-3-exercises.html#cb165-1" tabindex="-1"></a><span class="fu">all</span>(D <span class="sc">-</span> <span class="fu">diag</span>(<span class="fu">diag</span>(D)) <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="chapter-3-exercises.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(V), <span class="fu">diag</span>(<span class="fu">nrow</span>(V)))</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="chapter-3-exercises.html#cb167-1" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(V), <span class="fu">diag</span>(<span class="fu">nrow</span>(V)))</span></code></pre></div>
 <pre><code>## [1] &quot;Mean relative difference: 9.999e-05&quot;</code></pre>
 <p>which it is, and finally that <span class="math inline">\(\mathbf{A} = \mathbf{UDV}^{\text{T}}\)</span></p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="chapter-3-exercises.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(A, U <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(D, V))</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="chapter-3-exercises.html#cb169-1" tabindex="-1"></a><span class="fu">all.equal</span>(A, U <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(D, V))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which is true.</p>
 </details>
@@ -501,18 +504,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </summary>
 <p>From Example 3.14, to generate a multivariate Normal random vector, <span class="math inline">\(\mathbf{Y}\)</span>, say, from the <span class="math inline">\(MVN_p({\boldsymbol \mu}, {\boldsymbol \Sigma})\)</span> distribution we need to compute <span class="math inline">\(\mathbf{Y} = \boldsymbol{\mu} + \mathbf{L} \mathbf{Z}\)</span>, where <span class="math inline">\(\boldsymbol{\Sigma} = \mathbf{L} \mathbf{L}^{\text{T}}\)</span> and <span class="math inline">\(\mathbf{Z} = (Z_1, \ldots, Z_p)^{\text{T}}\)</span>, where <span class="math inline">\(Z_i\)</span>, <span class="math inline">\(i = 1, \ldots, p\)</span>, are independent <span class="math inline">\(N(0, 1)\)</span> random variables. Given an eigen-decomposition of <span class="math inline">\({\boldsymbol \Sigma} = \mathbf{U} \boldsymbol{\Lambda} \mathbf{U}^{\text{T}}\)</span>, we can write this as <span class="math inline">\({\boldsymbol \Sigma} = \mathbf{U} \boldsymbol{\Lambda}^{1/2} \boldsymbol{\Lambda}^{1/2} \mathbf{U}^{\text{T}}\)</span>. As <span class="math inline">\(\boldsymbol{\Lambda}\)</span> is diagonal, <span class="math inline">\(\boldsymbol{\Lambda} = \boldsymbol{\Lambda}^{\text{T}}\)</span> and hence <span class="math inline">\(\boldsymbol{\Lambda}^{1/2} \mathbf{U}^{\text{T}} = (\mathbf{U} \boldsymbol{\Lambda}^{1/2})^{\text{T}}\)</span> and so <span class="math inline">\({\boldsymbol \Sigma} = \mathbf{LL}^{\text{T}}\)</span> if <span class="math inline">\(\mathbf{L} = \mathbf{U} \boldsymbol{\Lambda}^{1/2}\)</span>. Therefore we can generate <span class="math inline">\(MVN_p({\boldsymbol \mu}, {\boldsymbol \Sigma})\)</span> random variables with <span class="math inline">\(\mathbf{Y} = \boldsymbol{\mu} + \mathbf{U} \boldsymbol{\Lambda}^{\text{1/2}} \mathbf{Z}\)</span>.</p>
 <p>The following <code>R</code> function generates <code>n</code> multivariate Normal random vectors with mean <code>mu</code> and variance-covariance matrix <code>Sigma</code>.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chapter-3-exercises.html#cb171-1" aria-hidden="true" tabindex="-1"></a>rmvn_eigen <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mu, Sigma) {</span>
-<span id="cb171-2"><a href="chapter-3-exercises.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to generate MVN random vectors with</span></span>
-<span id="cb171-3"><a href="chapter-3-exercises.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="co"># n is a integer, giving the number of independent vectors to simulate</span></span>
-<span id="cb171-4"><a href="chapter-3-exercises.html#cb171-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mu is a p-vector of the MVN mean</span></span>
-<span id="cb171-5"><a href="chapter-3-exercises.html#cb171-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sigma is a p x p matrix of the MVN variance-covariance matrix</span></span>
-<span id="cb171-6"><a href="chapter-3-exercises.html#cb171-6" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a p times n matrix</span></span>
-<span id="cb171-7"><a href="chapter-3-exercises.html#cb171-7" aria-hidden="true" tabindex="-1"></a>eS <span class="ot">&lt;-</span> <span class="fu">eigen</span>(Sigma, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb171-8"><a href="chapter-3-exercises.html#cb171-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">nrow</span>(Sigma)</span>
-<span id="cb171-9"><a href="chapter-3-exercises.html#cb171-9" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(p <span class="sc">*</span> n), p)</span>
-<span id="cb171-10"><a href="chapter-3-exercises.html#cb171-10" aria-hidden="true" tabindex="-1"></a>mu <span class="sc">+</span> eS<span class="sc">$</span>vectors <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="fu">sqrt</span>(eS<span class="sc">$</span>values)) <span class="sc">%*%</span> Z</span>
-<span id="cb171-11"><a href="chapter-3-exercises.html#cb171-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb171-12"><a href="chapter-3-exercises.html#cb171-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rmvn_eigen</span>(<span class="dv">5</span>, mu, Sigma)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chapter-3-exercises.html#cb171-1" tabindex="-1"></a>rmvn_eigen <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mu, Sigma) {</span>
+<span id="cb171-2"><a href="chapter-3-exercises.html#cb171-2" tabindex="-1"></a><span class="co"># Function to generate MVN random vectors with</span></span>
+<span id="cb171-3"><a href="chapter-3-exercises.html#cb171-3" tabindex="-1"></a><span class="co"># n is a integer, giving the number of independent vectors to simulate</span></span>
+<span id="cb171-4"><a href="chapter-3-exercises.html#cb171-4" tabindex="-1"></a><span class="co"># mu is a p-vector of the MVN mean</span></span>
+<span id="cb171-5"><a href="chapter-3-exercises.html#cb171-5" tabindex="-1"></a><span class="co"># Sigma is a p x p matrix of the MVN variance-covariance matrix</span></span>
+<span id="cb171-6"><a href="chapter-3-exercises.html#cb171-6" tabindex="-1"></a><span class="co"># returns a p times n matrix</span></span>
+<span id="cb171-7"><a href="chapter-3-exercises.html#cb171-7" tabindex="-1"></a>eS <span class="ot">&lt;-</span> <span class="fu">eigen</span>(Sigma, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb171-8"><a href="chapter-3-exercises.html#cb171-8" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">nrow</span>(Sigma)</span>
+<span id="cb171-9"><a href="chapter-3-exercises.html#cb171-9" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(p <span class="sc">*</span> n), p)</span>
+<span id="cb171-10"><a href="chapter-3-exercises.html#cb171-10" tabindex="-1"></a>mu <span class="sc">+</span> eS<span class="sc">$</span>vectors <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="fu">sqrt</span>(eS<span class="sc">$</span>values)) <span class="sc">%*%</span> Z</span>
+<span id="cb171-11"><a href="chapter-3-exercises.html#cb171-11" tabindex="-1"></a>}</span>
+<span id="cb171-12"><a href="chapter-3-exercises.html#cb171-12" tabindex="-1"></a><span class="fu">rmvn_eigen</span>(<span class="dv">5</span>, mu, Sigma)</span></code></pre></div>
 <pre><code>##          [,1]     [,2]     [,3]       [,4]       [,5]
 ## [1,] 3.812779 1.328476 4.819841 -1.4787812 -0.6061167
 ## [2,] 5.302633 3.159313 3.723752 -0.1035905 -0.5120484
@@ -533,17 +536,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \mathbf{x} &amp;= \mathbf{U}^{-\text{T}}(\mathbf{U}^{\text{T}} \mathbf{b}) / \text{diag}(\boldsymbol{\Lambda}) \tag{3.4} \\
 \mathbf{x} &amp;= \mathbf{U} [(\mathbf{U}^{\text{T}} \mathbf{b}) / \text{diag}(\boldsymbol{\Lambda})] \tag{3.5} \end{align}\]</span> in which <a href="chapter-3-exercises.html#eq:man1">(3.1)</a> results from premultiplying by <span class="math inline">\(\mathbf{U}^{\text{-1}}\)</span>, <a href="chapter-3-exercises.html#eq:man2">(3.2)</a> from orthogonality of <span class="math inline">\(\mathbf{U}\)</span>, i.e. <span class="math inline">\(\mathbf{U}^{\text{T}} = \mathbf{U}^{-1}\)</span>, <a href="chapter-3-exercises.html#eq:man3">(3.3)</a> from elementwise division, given diagonal <span class="math inline">\(\boldsymbol{\Lambda}\)</span>, <a href="chapter-3-exercises.html#eq:man4">(3.4)</a> from premultiplying by <span class="math inline">\(\mathbf{U}^{-\text{T}}\)</span> and <a href="chapter-3-exercises.html#eq:man5">(3.5)</a> from orthogonality of <span class="math inline">\(\mathbf{U}\)</span>, again.</p>
 <p>Next we’ll load the data from Example 3.2</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="chapter-3-exercises.html#cb173-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="fl">1.3</span>, <span class="fl">2.6</span>)</span>
-<span id="cb173-2"><a href="chapter-3-exercises.html#cb173-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb173-3"><a href="chapter-3-exercises.html#cb173-3" aria-hidden="true" tabindex="-1"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb173-4"><a href="chapter-3-exercises.html#cb173-4" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(Sigma, y <span class="sc">-</span> mu)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="chapter-3-exercises.html#cb173-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="fl">1.3</span>, <span class="fl">2.6</span>)</span>
+<span id="cb173-2"><a href="chapter-3-exercises.html#cb173-2" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb173-3"><a href="chapter-3-exercises.html#cb173-3" tabindex="-1"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb173-4"><a href="chapter-3-exercises.html#cb173-4" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(Sigma, y <span class="sc">-</span> mu)</span></code></pre></div>
 <p>Then we’ll go through the calculations given above</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="chapter-3-exercises.html#cb174-1" aria-hidden="true" tabindex="-1"></a>eS <span class="ot">&lt;-</span> <span class="fu">eigen</span>(Sigma, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb174-2"><a href="chapter-3-exercises.html#cb174-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> eS<span class="sc">$</span>values</span>
-<span id="cb174-3"><a href="chapter-3-exercises.html#cb174-3" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> eS<span class="sc">$</span>vectors</span>
-<span id="cb174-4"><a href="chapter-3-exercises.html#cb174-4" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> U <span class="sc">%*%</span> (<span class="fu">crossprod</span>(U, y <span class="sc">-</span> mu) <span class="sc">/</span> lambda)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="chapter-3-exercises.html#cb174-1" tabindex="-1"></a>eS <span class="ot">&lt;-</span> <span class="fu">eigen</span>(Sigma, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb174-2"><a href="chapter-3-exercises.html#cb174-2" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> eS<span class="sc">$</span>values</span>
+<span id="cb174-3"><a href="chapter-3-exercises.html#cb174-3" tabindex="-1"></a>U <span class="ot">&lt;-</span> eS<span class="sc">$</span>vectors</span>
+<span id="cb174-4"><a href="chapter-3-exercises.html#cb174-4" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> U <span class="sc">%*%</span> (<span class="fu">crossprod</span>(U, y <span class="sc">-</span> mu) <span class="sc">/</span> lambda)</span></code></pre></div>
 <p>which we see gives the same result as <code>solve()</code>, once we use <code>as.vector()</code> to convert <code>res2</code> from a one-column matrix to a vector.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="chapter-3-exercises.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(res1, <span class="fu">as.vector</span>(res2))</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="chapter-3-exercises.html#cb175-1" tabindex="-1"></a><span class="fu">all.equal</span>(res1, <span class="fu">as.vector</span>(res2))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </details>
 <hr />
@@ -559,38 +562,38 @@ and then use this to solve <span class="math inline">\(\mathbf{H}_4\mathbf{x} = 
 <strong>Solution</strong>
 </summary>
 <p>We ultimately need to solve <span class="math inline">\(\mathbf{UDV}^{\text{T}} \mathbf{x} = \mathbf{b}\)</span>, where <span class="math inline">\(\mathbf{b} = (1, 1, 1, 1)^{\text{T}}\)</span>. Pre-multiplying by <span class="math inline">\(\mathbf{U}^{-1} = \mathbf{U}^{\text{T}}\)</span>, we then need to solve <span class="math inline">\(\mathbf{DV}^{\text{T}} \mathbf{x} = \mathbf{U}^{\text{T}} \mathbf{b}\)</span>, which is equivalent to solving <span class="math inline">\(\mathbf{V}^{\text{T}} \mathbf{x} = (\mathbf{U}^{\text{T}} \mathbf{b}) / \text{diag}(\mathbf{D})\)</span>. The following calculates the SVD of <span class="math inline">\(\mathbf{H}_4\)</span> and then computes <span class="math inline">\((\mathbf{U}^{\text{T}} \mathbf{b}) / \text{diag}(\mathbf{D})\)</span>.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="chapter-3-exercises.html#cb177-1" aria-hidden="true" tabindex="-1"></a>hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb177-2"><a href="chapter-3-exercises.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to evaluate n by n Hilbert matrix.</span></span>
-<span id="cb177-3"><a href="chapter-3-exercises.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="co"># n is an integer</span></span>
-<span id="cb177-4"><a href="chapter-3-exercises.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns n by n matrix.</span></span>
-<span id="cb177-5"><a href="chapter-3-exercises.html#cb177-5" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
-<span id="cb177-6"><a href="chapter-3-exercises.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="fu">outer</span>(ind, ind, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb177-7"><a href="chapter-3-exercises.html#cb177-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb177-8"><a href="chapter-3-exercises.html#cb177-8" aria-hidden="true" tabindex="-1"></a>H4 <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">4</span>)</span>
-<span id="cb177-9"><a href="chapter-3-exercises.html#cb177-9" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span>
-<span id="cb177-10"><a href="chapter-3-exercises.html#cb177-10" aria-hidden="true" tabindex="-1"></a>svdH <span class="ot">&lt;-</span> <span class="fu">svd</span>(H4)</span>
-<span id="cb177-11"><a href="chapter-3-exercises.html#cb177-11" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> svdH<span class="sc">$</span>v</span>
-<span id="cb177-12"><a href="chapter-3-exercises.html#cb177-12" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> svdH<span class="sc">$</span>u</span>
-<span id="cb177-13"><a href="chapter-3-exercises.html#cb177-13" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(U, b)</span>
-<span id="cb177-14"><a href="chapter-3-exercises.html#cb177-14" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> b2 <span class="sc">/</span> svdH<span class="sc">$</span>d</span>
-<span id="cb177-15"><a href="chapter-3-exercises.html#cb177-15" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="chapter-3-exercises.html#cb177-1" tabindex="-1"></a>hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb177-2"><a href="chapter-3-exercises.html#cb177-2" tabindex="-1"></a><span class="co"># Function to evaluate n by n Hilbert matrix.</span></span>
+<span id="cb177-3"><a href="chapter-3-exercises.html#cb177-3" tabindex="-1"></a><span class="co"># n is an integer</span></span>
+<span id="cb177-4"><a href="chapter-3-exercises.html#cb177-4" tabindex="-1"></a><span class="co"># Returns n by n matrix.</span></span>
+<span id="cb177-5"><a href="chapter-3-exercises.html#cb177-5" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb177-6"><a href="chapter-3-exercises.html#cb177-6" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="fu">outer</span>(ind, ind, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb177-7"><a href="chapter-3-exercises.html#cb177-7" tabindex="-1"></a>}</span>
+<span id="cb177-8"><a href="chapter-3-exercises.html#cb177-8" tabindex="-1"></a>H4 <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">4</span>)</span>
+<span id="cb177-9"><a href="chapter-3-exercises.html#cb177-9" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb177-10"><a href="chapter-3-exercises.html#cb177-10" tabindex="-1"></a>svdH <span class="ot">&lt;-</span> <span class="fu">svd</span>(H4)</span>
+<span id="cb177-11"><a href="chapter-3-exercises.html#cb177-11" tabindex="-1"></a>V <span class="ot">&lt;-</span> svdH<span class="sc">$</span>v</span>
+<span id="cb177-12"><a href="chapter-3-exercises.html#cb177-12" tabindex="-1"></a>U <span class="ot">&lt;-</span> svdH<span class="sc">$</span>u</span>
+<span id="cb177-13"><a href="chapter-3-exercises.html#cb177-13" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(U, b)</span>
+<span id="cb177-14"><a href="chapter-3-exercises.html#cb177-14" tabindex="-1"></a>z <span class="ot">&lt;-</span> b2 <span class="sc">/</span> svdH<span class="sc">$</span>d</span>
+<span id="cb177-15"><a href="chapter-3-exercises.html#cb177-15" tabindex="-1"></a>z</span></code></pre></div>
 <pre><code>##            [,1]
 ## [1,]  -1.212566
 ## [2,]  -4.801038
 ## [3,] -26.086677
 ## [4,] 234.330888</code></pre>
 <p>which is as given in the question, subject to rounding. Finally we want to solve <span class="math inline">\(\mathbf{V}^{\text{T}} \mathbf{x} = (\mathbf{U}^{\text{T}} \mathbf{b}) / \text{diag}(\mathbf{D})\)</span> for <span class="math inline">\(\mathbf{x}\)</span>, which we can do with either of the following</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="chapter-3-exercises.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
-<span id="cb179-2"><a href="chapter-3-exercises.html#cb179-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">solve</span>(<span class="fu">t</span>(V), z),</span>
-<span id="cb179-3"><a href="chapter-3-exercises.html#cb179-3" aria-hidden="true" tabindex="-1"></a>  V <span class="sc">%*%</span> z</span>
-<span id="cb179-4"><a href="chapter-3-exercises.html#cb179-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="chapter-3-exercises.html#cb179-1" tabindex="-1"></a><span class="fu">cbind</span>(</span>
+<span id="cb179-2"><a href="chapter-3-exercises.html#cb179-2" tabindex="-1"></a>  <span class="fu">solve</span>(<span class="fu">t</span>(V), z),</span>
+<span id="cb179-3"><a href="chapter-3-exercises.html#cb179-3" tabindex="-1"></a>  V <span class="sc">%*%</span> z</span>
+<span id="cb179-4"><a href="chapter-3-exercises.html#cb179-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   -4   -4
 ## [2,]   60   60
 ## [3,] -180 -180
 ## [4,]  140  140</code></pre>
 <p>and we see that the latter gives the same result as <code>solve()</code></p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="chapter-3-exercises.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">solve</span>(H4, b), <span class="fu">as.vector</span>(V <span class="sc">%*%</span> z))</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="chapter-3-exercises.html#cb181-1" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">solve</span>(H4, b), <span class="fu">as.vector</span>(V <span class="sc">%*%</span> z))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>once we ensure that both are vectors. Note that solving systems of linear equations via the SVD is only a sensible option <em>if</em> we already have the SVD. Otherwise, solving via other decompositions is more efficient.</p>
 </details>
@@ -603,19 +606,19 @@ and then use this to solve <span class="math inline">\(\mathbf{H}_4\mathbf{x} = 
 <strong>Solution</strong>
 </summary>
 <p>We’ll load <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> as <code>A</code>, <code>Q</code> and <code>R</code>, respectively.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="chapter-3-exercises.html#cb183-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.3374</span>, <span class="fl">0.889</span>, <span class="sc">-</span><span class="fl">1.0276</span>, <span class="fl">0.8896</span>, <span class="fl">6.0704</span>, <span class="sc">-</span><span class="fl">1.5452</span>,</span>
-<span id="cb183-2"><a href="chapter-3-exercises.html#cb183-2" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fl">1.0351</span>, <span class="sc">-</span><span class="fl">1.5468</span>, <span class="fl">4.7234</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb183-3"><a href="chapter-3-exercises.html#cb183-3" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.241</span>, <span class="sc">-</span><span class="fl">0.635</span>, <span class="fl">0.734</span>, <span class="fl">0.101</span>, <span class="sc">-</span><span class="fl">0.769</span>, <span class="sc">-</span><span class="fl">0.631</span>, <span class="fl">0.965</span>,</span>
-<span id="cb183-4"><a href="chapter-3-exercises.html#cb183-4" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fl">0.078</span>, <span class="fl">0.249</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb183-5"><a href="chapter-3-exercises.html#cb183-5" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">5.2</span>, <span class="sc">-</span><span class="fl">3.6</span>, <span class="dv">0</span>, <span class="fl">4.7</span>, <span class="sc">-</span><span class="fl">1.9</span>, <span class="fl">0.3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="chapter-3-exercises.html#cb183-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.3374</span>, <span class="fl">0.889</span>, <span class="sc">-</span><span class="fl">1.0276</span>, <span class="fl">0.8896</span>, <span class="fl">6.0704</span>, <span class="sc">-</span><span class="fl">1.5452</span>,</span>
+<span id="cb183-2"><a href="chapter-3-exercises.html#cb183-2" tabindex="-1"></a>          <span class="sc">-</span><span class="fl">1.0351</span>, <span class="sc">-</span><span class="fl">1.5468</span>, <span class="fl">4.7234</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb183-3"><a href="chapter-3-exercises.html#cb183-3" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.241</span>, <span class="sc">-</span><span class="fl">0.635</span>, <span class="fl">0.734</span>, <span class="fl">0.101</span>, <span class="sc">-</span><span class="fl">0.769</span>, <span class="sc">-</span><span class="fl">0.631</span>, <span class="fl">0.965</span>,</span>
+<span id="cb183-4"><a href="chapter-3-exercises.html#cb183-4" tabindex="-1"></a>          <span class="sc">-</span><span class="fl">0.078</span>, <span class="fl">0.249</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb183-5"><a href="chapter-3-exercises.html#cb183-5" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">5.2</span>, <span class="sc">-</span><span class="fl">3.6</span>, <span class="dv">0</span>, <span class="fl">4.7</span>, <span class="sc">-</span><span class="fl">1.9</span>, <span class="fl">0.3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p>We want to show that <span class="math inline">\(\mathbf{Q}\)</span> is orthogonal</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="chapter-3-exercises.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(Q), <span class="fu">diag</span>(<span class="fu">nrow</span>(Q)))</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="chapter-3-exercises.html#cb184-1" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(Q), <span class="fu">diag</span>(<span class="fu">nrow</span>(Q)))</span></code></pre></div>
 <pre><code>## [1] &quot;Mean relative difference: 0.001286839&quot;</code></pre>
 <p>which it is (after allowing for a bit of error), that <span class="math inline">\(\mathbf{R}\)</span> is upper-triangular</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="chapter-3-exercises.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(R[<span class="fu">lower.tri</span>(R)] <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="chapter-3-exercises.html#cb186-1" tabindex="-1"></a><span class="fu">all</span>(R[<span class="fu">lower.tri</span>(R)] <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it is, and that <span class="math inline">\(\mathbf{A} = \mathbf{QR}\)</span></p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="chapter-3-exercises.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(A, Q <span class="sc">%*%</span> R)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="chapter-3-exercises.html#cb188-1" tabindex="-1"></a><span class="fu">all.equal</span>(A, Q <span class="sc">%*%</span> R)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>which it does.</p>
 </details>
@@ -637,27 +640,27 @@ is the Cauchy determinant.</p>
 <strong>Solution</strong>
 </summary>
 <p>It will perhaps be tidier to write a function to calculate the Cauchy determinant</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="chapter-3-exercises.html#cb190-1" aria-hidden="true" tabindex="-1"></a>det_cauchy <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">log =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb190-2"><a href="chapter-3-exercises.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to calculate Cauchy determinant</span></span>
-<span id="cb190-3"><a href="chapter-3-exercises.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="co"># n in an integer</span></span>
-<span id="cb190-4"><a href="chapter-3-exercises.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="co"># log is a logical; defaults to FALSE</span></span>
-<span id="cb190-5"><a href="chapter-3-exercises.html#cb190-5" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
-<span id="cb190-6"><a href="chapter-3-exercises.html#cb190-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">lfactorial</span>(<span class="fu">seq_len</span>(n <span class="sc">-</span> <span class="dv">1</span>)))</span>
-<span id="cb190-7"><a href="chapter-3-exercises.html#cb190-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>log)</span>
-<span id="cb190-8"><a href="chapter-3-exercises.html#cb190-8" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
-<span id="cb190-9"><a href="chapter-3-exercises.html#cb190-9" aria-hidden="true" tabindex="-1"></a>out</span>
-<span id="cb190-10"><a href="chapter-3-exercises.html#cb190-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="chapter-3-exercises.html#cb190-1" tabindex="-1"></a>det_cauchy <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">log =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb190-2"><a href="chapter-3-exercises.html#cb190-2" tabindex="-1"></a><span class="co"># function to calculate Cauchy determinant</span></span>
+<span id="cb190-3"><a href="chapter-3-exercises.html#cb190-3" tabindex="-1"></a><span class="co"># n in an integer</span></span>
+<span id="cb190-4"><a href="chapter-3-exercises.html#cb190-4" tabindex="-1"></a><span class="co"># log is a logical; defaults to FALSE</span></span>
+<span id="cb190-5"><a href="chapter-3-exercises.html#cb190-5" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
+<span id="cb190-6"><a href="chapter-3-exercises.html#cb190-6" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">lfactorial</span>(<span class="fu">seq_len</span>(n <span class="sc">-</span> <span class="dv">1</span>)))</span>
+<span id="cb190-7"><a href="chapter-3-exercises.html#cb190-7" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>log)</span>
+<span id="cb190-8"><a href="chapter-3-exercises.html#cb190-8" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
+<span id="cb190-9"><a href="chapter-3-exercises.html#cb190-9" tabindex="-1"></a>out</span>
+<span id="cb190-10"><a href="chapter-3-exercises.html#cb190-10" tabindex="-1"></a>}</span></code></pre></div>
 <p>and then to use that to calculate the determinant of <span class="math inline">\(\mathbf{H}_n\)</span>.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="chapter-3-exercises.html#cb191-1" aria-hidden="true" tabindex="-1"></a>det_hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">log =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb191-2"><a href="chapter-3-exercises.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to calculate determinant of Hilbert matrix</span></span>
-<span id="cb191-3"><a href="chapter-3-exercises.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="co"># n in an integer</span></span>
-<span id="cb191-4"><a href="chapter-3-exercises.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="co"># log is a logical; defaults to FALSE</span></span>
-<span id="cb191-5"><a href="chapter-3-exercises.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
-<span id="cb191-6"><a href="chapter-3-exercises.html#cb191-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">det_cauchy</span>(n, <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">det_cauchy</span>(<span class="dv">2</span> <span class="sc">*</span> n, <span class="cn">TRUE</span>)</span>
-<span id="cb191-7"><a href="chapter-3-exercises.html#cb191-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>log)</span>
-<span id="cb191-8"><a href="chapter-3-exercises.html#cb191-8" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
-<span id="cb191-9"><a href="chapter-3-exercises.html#cb191-9" aria-hidden="true" tabindex="-1"></a>out</span>
-<span id="cb191-10"><a href="chapter-3-exercises.html#cb191-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="chapter-3-exercises.html#cb191-1" tabindex="-1"></a>det_hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">log =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb191-2"><a href="chapter-3-exercises.html#cb191-2" tabindex="-1"></a><span class="co"># function to calculate determinant of Hilbert matrix</span></span>
+<span id="cb191-3"><a href="chapter-3-exercises.html#cb191-3" tabindex="-1"></a><span class="co"># n in an integer</span></span>
+<span id="cb191-4"><a href="chapter-3-exercises.html#cb191-4" tabindex="-1"></a><span class="co"># log is a logical; defaults to FALSE</span></span>
+<span id="cb191-5"><a href="chapter-3-exercises.html#cb191-5" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
+<span id="cb191-6"><a href="chapter-3-exercises.html#cb191-6" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">det_cauchy</span>(n, <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">det_cauchy</span>(<span class="dv">2</span> <span class="sc">*</span> n, <span class="cn">TRUE</span>)</span>
+<span id="cb191-7"><a href="chapter-3-exercises.html#cb191-7" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>log)</span>
+<span id="cb191-8"><a href="chapter-3-exercises.html#cb191-8" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
+<span id="cb191-9"><a href="chapter-3-exercises.html#cb191-9" tabindex="-1"></a>out</span>
+<span id="cb191-10"><a href="chapter-3-exercises.html#cb191-10" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <hr /></li>
 <li><p>Calculate <span class="math inline">\(|\mathbf{H}_n|\)</span> and <span class="math inline">\(\log(|\mathbf{H}_n|)\)</span> through the QR decomposition of <span class="math inline">\(\mathbf{H}_n\)</span> for <span class="math inline">\(n = 5\)</span> and confirm that both give the same result as <code>det_hilbert()</code> above.</p>
@@ -667,32 +670,32 @@ is the Cauchy determinant.</p>
 <strong>Solution</strong>
 </summary>
 <p>We’ll start with a function <code>det_QR()</code>, which calculates the determinant of a matrix via its QR decomposition</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="chapter-3-exercises.html#cb192-1" aria-hidden="true" tabindex="-1"></a>det_QR <span class="ot">&lt;-</span> <span class="cf">function</span>(A) {</span>
-<span id="cb192-2"><a href="chapter-3-exercises.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to calculate determinant of a matrix via QR decomposition</span></span>
-<span id="cb192-3"><a href="chapter-3-exercises.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
-<span id="cb192-4"><a href="chapter-3-exercises.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
-<span id="cb192-5"><a href="chapter-3-exercises.html#cb192-5" aria-hidden="true" tabindex="-1"></a>qrA <span class="ot">&lt;-</span> <span class="fu">qr</span>(A)</span>
-<span id="cb192-6"><a href="chapter-3-exercises.html#cb192-6" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qrA)</span>
-<span id="cb192-7"><a href="chapter-3-exercises.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(R)))</span>
-<span id="cb192-8"><a href="chapter-3-exercises.html#cb192-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="chapter-3-exercises.html#cb192-1" tabindex="-1"></a>det_QR <span class="ot">&lt;-</span> <span class="cf">function</span>(A) {</span>
+<span id="cb192-2"><a href="chapter-3-exercises.html#cb192-2" tabindex="-1"></a><span class="co"># function to calculate determinant of a matrix via QR decomposition</span></span>
+<span id="cb192-3"><a href="chapter-3-exercises.html#cb192-3" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
+<span id="cb192-4"><a href="chapter-3-exercises.html#cb192-4" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
+<span id="cb192-5"><a href="chapter-3-exercises.html#cb192-5" tabindex="-1"></a>qrA <span class="ot">&lt;-</span> <span class="fu">qr</span>(A)</span>
+<span id="cb192-6"><a href="chapter-3-exercises.html#cb192-6" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qrA)</span>
+<span id="cb192-7"><a href="chapter-3-exercises.html#cb192-7" tabindex="-1"></a><span class="fu">prod</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(R)))</span>
+<span id="cb192-8"><a href="chapter-3-exercises.html#cb192-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>and we see that this gives the same answer as <code>det_hilbert()</code> for <span class="math inline">\(n = 5\)</span>.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="chapter-3-exercises.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det_QR</span>(<span class="fu">hilbert</span>(<span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="chapter-3-exercises.html#cb193-1" tabindex="-1"></a><span class="fu">det_QR</span>(<span class="fu">hilbert</span>(<span class="dv">5</span>))</span></code></pre></div>
 <pre><code>## [1] 3.749295e-12</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="chapter-3-exercises.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det_hilbert</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="chapter-3-exercises.html#cb195-1" tabindex="-1"></a><span class="fu">det_hilbert</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 3.749295e-12</code></pre>
 <p>Then we’ll write a function to calculate the logarithm of the determinant of a matrix through its QR decomposition.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="chapter-3-exercises.html#cb197-1" aria-hidden="true" tabindex="-1"></a>logdet_QR <span class="ot">&lt;-</span> <span class="cf">function</span>(A) {</span>
-<span id="cb197-2"><a href="chapter-3-exercises.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to calculate log determinant of a matrix via QR decomposition</span></span>
-<span id="cb197-3"><a href="chapter-3-exercises.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
-<span id="cb197-4"><a href="chapter-3-exercises.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
-<span id="cb197-5"><a href="chapter-3-exercises.html#cb197-5" aria-hidden="true" tabindex="-1"></a>qrA <span class="ot">&lt;-</span> <span class="fu">qr</span>(A)</span>
-<span id="cb197-6"><a href="chapter-3-exercises.html#cb197-6" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qrA)</span>
-<span id="cb197-7"><a href="chapter-3-exercises.html#cb197-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">log</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(R))))</span>
-<span id="cb197-8"><a href="chapter-3-exercises.html#cb197-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="chapter-3-exercises.html#cb197-1" tabindex="-1"></a>logdet_QR <span class="ot">&lt;-</span> <span class="cf">function</span>(A) {</span>
+<span id="cb197-2"><a href="chapter-3-exercises.html#cb197-2" tabindex="-1"></a><span class="co"># function to calculate log determinant of a matrix via QR decomposition</span></span>
+<span id="cb197-3"><a href="chapter-3-exercises.html#cb197-3" tabindex="-1"></a><span class="co"># A is a matrix</span></span>
+<span id="cb197-4"><a href="chapter-3-exercises.html#cb197-4" tabindex="-1"></a><span class="co"># returns a scalar</span></span>
+<span id="cb197-5"><a href="chapter-3-exercises.html#cb197-5" tabindex="-1"></a>qrA <span class="ot">&lt;-</span> <span class="fu">qr</span>(A)</span>
+<span id="cb197-6"><a href="chapter-3-exercises.html#cb197-6" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qrA)</span>
+<span id="cb197-7"><a href="chapter-3-exercises.html#cb197-7" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">log</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(R))))</span>
+<span id="cb197-8"><a href="chapter-3-exercises.html#cb197-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>which we also see gives the same answer as <code>det_hilbert()</code> with <code>log = TRUE</code>.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="chapter-3-exercises.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logdet_QR</span>(<span class="fu">hilbert</span>(<span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="chapter-3-exercises.html#cb198-1" tabindex="-1"></a><span class="fu">logdet_QR</span>(<span class="fu">hilbert</span>(<span class="dv">5</span>))</span></code></pre></div>
 <pre><code>## [1] -26.30945</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="chapter-3-exercises.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det_hilbert</span>(<span class="dv">5</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="chapter-3-exercises.html#cb200-1" tabindex="-1"></a><span class="fu">det_hilbert</span>(<span class="dv">5</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] -26.30945</code></pre>
 </details>
 <hr /></li>
@@ -704,20 +707,20 @@ is the Cauchy determinant.</p>
 <strong>Solution</strong>
 </summary>
 <p>If <span class="math inline">\(\mathbf{H}_4 = \mathbf{QR}\)</span> then <span class="math inline">\(\mathbf{H}_4^{-1} = (\mathbf{QR})^{-1} = \mathbf{R}^{-1} \mathbf{Q}^{-1} = \mathbf{R}^{-1} \mathbf{Q}^{\text{T}}\)</span>, since <span class="math inline">\(\mathbf{Q}\)</span> is orthogonal. Therefore we want to solve <span class="math inline">\(\mathbf{R} \mathbf{X} = \mathbf{Q}^{\text{T}}\)</span> for <span class="math inline">\(\mathbf{X}\)</span>. The following calculates the QR decomposition of <span class="math inline">\(\mathbf{H}_4\)</span> with <code>qr()</code> and then extracts <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> as <code>Q</code> and <code>R</code>, respectively.</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="chapter-3-exercises.html#cb202-1" aria-hidden="true" tabindex="-1"></a>H4 <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">4</span>)</span>
-<span id="cb202-2"><a href="chapter-3-exercises.html#cb202-2" aria-hidden="true" tabindex="-1"></a>qrH <span class="ot">&lt;-</span> <span class="fu">qr</span>(H4)</span>
-<span id="cb202-3"><a href="chapter-3-exercises.html#cb202-3" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="fu">qr.Q</span>(qrH)</span>
-<span id="cb202-4"><a href="chapter-3-exercises.html#cb202-4" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qrH)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="chapter-3-exercises.html#cb202-1" tabindex="-1"></a>H4 <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">4</span>)</span>
+<span id="cb202-2"><a href="chapter-3-exercises.html#cb202-2" tabindex="-1"></a>qrH <span class="ot">&lt;-</span> <span class="fu">qr</span>(H4)</span>
+<span id="cb202-3"><a href="chapter-3-exercises.html#cb202-3" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="fu">qr.Q</span>(qrH)</span>
+<span id="cb202-4"><a href="chapter-3-exercises.html#cb202-4" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qrH)</span></code></pre></div>
 <p>Then we want to solve <span class="math inline">\(\mathbf{R} \mathbf{X} = \mathbf{Q}^{\text{T}}\)</span> for <span class="math inline">\(\mathbf{X}\)</span>, which we do with <code>backsolve()</code>, since <span class="math inline">\(\mathbf{R}\)</span>, stored as <code>R</code>, is upper-triangular.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="chapter-3-exercises.html#cb203-1" aria-hidden="true" tabindex="-1"></a>X1 <span class="ot">&lt;-</span> <span class="fu">backsolve</span>(R, <span class="fu">t</span>(Q))</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="chapter-3-exercises.html#cb203-1" tabindex="-1"></a>X1 <span class="ot">&lt;-</span> <span class="fu">backsolve</span>(R, <span class="fu">t</span>(Q))</span></code></pre></div>
 <p>The following use <code>solve()</code> and <code>qr.solve()</code>. Note that if we already have the QR decomposition from <code>qr()</code>, then <code>qr.solve()</code> uses far fewer calculations to obtain the inverse.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="chapter-3-exercises.html#cb204-1" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">&lt;-</span> <span class="fu">solve</span>(H4)</span>
-<span id="cb204-2"><a href="chapter-3-exercises.html#cb204-2" aria-hidden="true" tabindex="-1"></a>X3 <span class="ot">&lt;-</span> <span class="fu">qr.solve</span>(qrH)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="chapter-3-exercises.html#cb204-1" tabindex="-1"></a>X2 <span class="ot">&lt;-</span> <span class="fu">solve</span>(H4)</span>
+<span id="cb204-2"><a href="chapter-3-exercises.html#cb204-2" tabindex="-1"></a>X3 <span class="ot">&lt;-</span> <span class="fu">qr.solve</span>(qrH)</span></code></pre></div>
 <p>We see that both give the same answer</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="chapter-3-exercises.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(X2, X3)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="chapter-3-exercises.html#cb205-1" tabindex="-1"></a><span class="fu">all.equal</span>(X2, X3)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>and also the same answer as with <code>backsolve()</code> above</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="chapter-3-exercises.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(X1, X2)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="chapter-3-exercises.html#cb207-1" tabindex="-1"></a><span class="fu">all.equal</span>(X1, X2)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </details>
 <hr /></li>
@@ -727,51 +730,51 @@ is the Cauchy determinant.</p>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="chapter-3-exercises.html#cb209-1" aria-hidden="true" tabindex="-1"></a>hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb209-2"><a href="chapter-3-exercises.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to evaluate n by n Hilbert matrix.</span></span>
-<span id="cb209-3"><a href="chapter-3-exercises.html#cb209-3" aria-hidden="true" tabindex="-1"></a><span class="co"># n is an integer</span></span>
-<span id="cb209-4"><a href="chapter-3-exercises.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns n by n matrix.</span></span>
-<span id="cb209-5"><a href="chapter-3-exercises.html#cb209-5" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
-<span id="cb209-6"><a href="chapter-3-exercises.html#cb209-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="fu">outer</span>(ind, ind, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb209-7"><a href="chapter-3-exercises.html#cb209-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="chapter-3-exercises.html#cb210-1" aria-hidden="true" tabindex="-1"></a>H100 <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="fl">1e2</span>) <span class="sc">+</span> <span class="fu">diag</span>(<span class="dv">1</span>, <span class="fl">1e2</span>)</span>
-<span id="cb210-2"><a href="chapter-3-exercises.html#cb210-2" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
-<span id="cb210-3"><a href="chapter-3-exercises.html#cb210-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chol</span>(H100),</span>
-<span id="cb210-4"><a href="chapter-3-exercises.html#cb210-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">eigen</span>(H100, <span class="at">symmetric =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb210-5"><a href="chapter-3-exercises.html#cb210-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">eigen</span>(H100),</span>
-<span id="cb210-6"><a href="chapter-3-exercises.html#cb210-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">svd</span>(H100),</span>
-<span id="cb210-7"><a href="chapter-3-exercises.html#cb210-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qr</span>(H100),</span>
-<span id="cb210-8"><a href="chapter-3-exercises.html#cb210-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fl">1e2</span></span>
-<span id="cb210-9"><a href="chapter-3-exercises.html#cb210-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="chapter-3-exercises.html#cb209-1" tabindex="-1"></a>hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb209-2"><a href="chapter-3-exercises.html#cb209-2" tabindex="-1"></a><span class="co"># Function to evaluate n by n Hilbert matrix.</span></span>
+<span id="cb209-3"><a href="chapter-3-exercises.html#cb209-3" tabindex="-1"></a><span class="co"># n is an integer</span></span>
+<span id="cb209-4"><a href="chapter-3-exercises.html#cb209-4" tabindex="-1"></a><span class="co"># Returns n by n matrix.</span></span>
+<span id="cb209-5"><a href="chapter-3-exercises.html#cb209-5" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb209-6"><a href="chapter-3-exercises.html#cb209-6" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="fu">outer</span>(ind, ind, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb209-7"><a href="chapter-3-exercises.html#cb209-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="chapter-3-exercises.html#cb210-1" tabindex="-1"></a>H100 <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="fl">1e2</span>) <span class="sc">+</span> <span class="fu">diag</span>(<span class="dv">1</span>, <span class="fl">1e2</span>)</span>
+<span id="cb210-2"><a href="chapter-3-exercises.html#cb210-2" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
+<span id="cb210-3"><a href="chapter-3-exercises.html#cb210-3" tabindex="-1"></a>  <span class="fu">chol</span>(H100),</span>
+<span id="cb210-4"><a href="chapter-3-exercises.html#cb210-4" tabindex="-1"></a>  <span class="fu">eigen</span>(H100, <span class="at">symmetric =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb210-5"><a href="chapter-3-exercises.html#cb210-5" tabindex="-1"></a>  <span class="fu">eigen</span>(H100),</span>
+<span id="cb210-6"><a href="chapter-3-exercises.html#cb210-6" tabindex="-1"></a>  <span class="fu">svd</span>(H100),</span>
+<span id="cb210-7"><a href="chapter-3-exercises.html#cb210-7" tabindex="-1"></a>  <span class="fu">qr</span>(H100),</span>
+<span id="cb210-8"><a href="chapter-3-exercises.html#cb210-8" tabindex="-1"></a>  <span class="at">times =</span> <span class="fl">1e2</span></span>
+<span id="cb210-9"><a href="chapter-3-exercises.html#cb210-9" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                           expr      min        lq      mean    median        uq
-##                     chol(H100)   66.809   84.2275  166.2587   92.1795  108.1305
-##  eigen(H100, symmetric = TRUE)  961.128 1249.9195 1657.7332 1375.6110 1557.2425
-##                    eigen(H100) 1326.503 1803.9120 2304.3965 1919.4595 2143.8665
-##                      svd(H100) 1228.792 1728.2755 2149.2000 1873.2510 2051.8125
-##                       qr(H100)  201.741  302.7470  423.6967  362.3305  429.8370
-##        max neval
-##   2455.016   100
-##   9464.479   100
-##  17990.564   100
-##  15323.668   100
-##   4043.018   100</code></pre>
+##                           expr      min       lq       mean    median       uq
+##                     chol(H100)   64.926   79.602   94.94768   84.6275  112.192
+##  eigen(H100, symmetric = TRUE) 1485.092 1538.125 1816.72086 1582.9575 1705.595
+##                    eigen(H100) 2054.786 2144.766 2410.85771 2179.0545 2326.622
+##                      svd(H100) 1509.452 1543.348 1853.86872 1573.0025 1744.238
+##                       qr(H100)  377.403  396.888  419.26616  421.0375  425.613
+##        max neval  cld
+##    184.625   100 a   
+##   6115.564   100   c 
+##   5580.821   100    d
+##  10016.095   100   c 
+##    482.713   100  b</code></pre>
 <p>If we consider median computation times, we see that the Cholesky decomposition is quickest, at nearly six times quicker than the QR decomposition, which is next quickest. The QR decomposition is then about just under three times quicker than the symmetric eigen-decomposition, which takes about the same amount of time as the singular value decomposition. The asymmetric eigen-decomposition is slowest, and demonstrates that <em>if</em> we know the matrix we want an eigen-decomposition of is symmetric, then we should pass this information to <code>R</code>.</p>
 <div class="remark">
 <p><span id="unlabeled-div-1" class="remark"><em>Remark</em>. </span>The following shows us that if we only want the eigenvalues of a symmetric matrix, then we can further save times by specifying <code>only.values = TRUE</code>.</p>
 </div>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="chapter-3-exercises.html#cb212-1" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
-<span id="cb212-2"><a href="chapter-3-exercises.html#cb212-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">eigen</span>(H100, <span class="at">symmetric =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb212-3"><a href="chapter-3-exercises.html#cb212-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">eigen</span>(H100, <span class="at">symmetric =</span> <span class="cn">TRUE</span>, <span class="at">only.values =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb212-4"><a href="chapter-3-exercises.html#cb212-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fl">1e2</span></span>
-<span id="cb212-5"><a href="chapter-3-exercises.html#cb212-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="chapter-3-exercises.html#cb212-1" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
+<span id="cb212-2"><a href="chapter-3-exercises.html#cb212-2" tabindex="-1"></a>  <span class="fu">eigen</span>(H100, <span class="at">symmetric =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb212-3"><a href="chapter-3-exercises.html#cb212-3" tabindex="-1"></a>  <span class="fu">eigen</span>(H100, <span class="at">symmetric =</span> <span class="cn">TRUE</span>, <span class="at">only.values =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb212-4"><a href="chapter-3-exercises.html#cb212-4" tabindex="-1"></a>  <span class="at">times =</span> <span class="fl">1e2</span></span>
+<span id="cb212-5"><a href="chapter-3-exercises.html#cb212-5" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                               expr      min        lq      mean
-##                      eigen(H100, symmetric = TRUE) 1212.621 1333.0995 1580.2325
-##  eigen(H100, symmetric = TRUE, only.values = TRUE)  539.388  621.2895  758.8781
-##     median        uq      max neval
-##  1424.1850 1545.2805 5091.164   100
-##   675.5365  750.6165 3469.992   100</code></pre>
+##                      eigen(H100, symmetric = TRUE) 1482.164 1508.9085 1639.9606
+##  eigen(H100, symmetric = TRUE, only.values = TRUE)  516.726  529.3105  659.1823
+##     median       uq      max neval cld
+##  1556.9975 1624.511 3728.571   100   b
+##   541.6935  616.381 4102.100   100  a</code></pre>
 </details>
 <hr /></li>
 <li><p>Given that <span class="math display">\[\mathbf{A} = \begin{pmatrix}1.23&amp;0.30&amp;2.58 \\0.30&amp;0.43&amp;1.92 \\2.58&amp;1.92&amp;10.33 \\\end{pmatrix},~\mathbf{A}^{-1} = \begin{pmatrix}6.9012&amp;16.9412&amp;-4.8724 \\16.9412&amp;55.2602&amp;-14.5022 \\-4.8724&amp;-14.5022&amp;4.0092 \\\end{pmatrix},\]</span> <span class="math display">\[\mathbf{B} = \begin{pmatrix}1.49&amp;0.40&amp;2.76 \\0.40&amp;0.53&amp;2.16 \\2.76&amp;2.16&amp;11.20 \\\end{pmatrix},\]</span> and that <span class="math inline">\(\mathbf{B} = \mathbf{A} + \mathbf{LL}^{\text{T}}\)</span>, where <span class="math inline">\(\mathbf{L}\)</span> is a lower-triangular matrix, find <span class="math inline">\(\mathbf{B}^{-1}\)</span> using Woodbury’s formula, i.e. using <span class="math display">\[(\mathbf{A} + \mathbf{UV}^{\text{T}})^{-1} = \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{I}_n + \mathbf{V}^{\text{T}} \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^{\text{T}} \mathbf{A}^{-1}. \]</span></p>
@@ -781,30 +784,30 @@ is the Cauchy determinant.</p>
 <strong>Solution</strong>
 </summary>
 <p>We note that we can write <span class="math inline">\(\mathbf{U} = \mathbf{V} = \mathbf{L}\)</span> and that <span class="math inline">\(\mathbf{LL}^{\text{T}} = \mathbf{B} - \mathbf{A}\)</span>, and so we can obtain <span class="math inline">\(\mathbf{L}\)</span> via the Cholesky decomposition of <span class="math inline">\(\mathbf{B} - \mathbf{A}\)</span>. We’ll load <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{A}^{-1}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> below as <code>A</code>, <code>iA</code> and <code>B</code>, and then compute the lower-triangular Cholesky decomposition of <span class="math inline">\(\mathbf{B} - \mathbf{A}\)</span> and store this as <code>L</code>.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="chapter-3-exercises.html#cb214-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb214-2"><a href="chapter-3-exercises.html#cb214-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">1.23</span>, <span class="fl">0.3</span>, <span class="fl">2.58</span>, <span class="fl">0.3</span>, <span class="fl">0.43</span>, <span class="fl">1.92</span>, <span class="fl">2.58</span>, <span class="fl">1.92</span>, <span class="fl">10.33</span>),</span>
-<span id="cb214-3"><a href="chapter-3-exercises.html#cb214-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb214-4"><a href="chapter-3-exercises.html#cb214-4" aria-hidden="true" tabindex="-1"></a>iA <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb214-5"><a href="chapter-3-exercises.html#cb214-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">6.9012</span>, <span class="fl">16.9412</span>, <span class="sc">-</span><span class="fl">4.8724</span>, <span class="fl">16.9412</span>, <span class="fl">55.2602</span>, <span class="sc">-</span><span class="fl">14.5022</span>,</span>
-<span id="cb214-6"><a href="chapter-3-exercises.html#cb214-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fl">4.8724</span>, <span class="sc">-</span><span class="fl">14.5022</span>, <span class="fl">4.0092</span>),</span>
-<span id="cb214-7"><a href="chapter-3-exercises.html#cb214-7" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb214-8"><a href="chapter-3-exercises.html#cb214-8" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb214-9"><a href="chapter-3-exercises.html#cb214-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">1.49</span>, <span class="fl">0.4</span>, <span class="fl">2.76</span>, <span class="fl">0.4</span>, <span class="fl">0.53</span>, <span class="fl">2.16</span>, <span class="fl">2.76</span>, <span class="fl">2.16</span>, <span class="fl">11.2</span>),</span>
-<span id="cb214-10"><a href="chapter-3-exercises.html#cb214-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb214-11"><a href="chapter-3-exercises.html#cb214-11" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(B <span class="sc">-</span> A))</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="chapter-3-exercises.html#cb214-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb214-2"><a href="chapter-3-exercises.html#cb214-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">1.23</span>, <span class="fl">0.3</span>, <span class="fl">2.58</span>, <span class="fl">0.3</span>, <span class="fl">0.43</span>, <span class="fl">1.92</span>, <span class="fl">2.58</span>, <span class="fl">1.92</span>, <span class="fl">10.33</span>),</span>
+<span id="cb214-3"><a href="chapter-3-exercises.html#cb214-3" tabindex="-1"></a>  <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb214-4"><a href="chapter-3-exercises.html#cb214-4" tabindex="-1"></a>iA <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb214-5"><a href="chapter-3-exercises.html#cb214-5" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">6.9012</span>, <span class="fl">16.9412</span>, <span class="sc">-</span><span class="fl">4.8724</span>, <span class="fl">16.9412</span>, <span class="fl">55.2602</span>, <span class="sc">-</span><span class="fl">14.5022</span>,</span>
+<span id="cb214-6"><a href="chapter-3-exercises.html#cb214-6" tabindex="-1"></a>    <span class="sc">-</span><span class="fl">4.8724</span>, <span class="sc">-</span><span class="fl">14.5022</span>, <span class="fl">4.0092</span>),</span>
+<span id="cb214-7"><a href="chapter-3-exercises.html#cb214-7" tabindex="-1"></a>  <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb214-8"><a href="chapter-3-exercises.html#cb214-8" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb214-9"><a href="chapter-3-exercises.html#cb214-9" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">1.49</span>, <span class="fl">0.4</span>, <span class="fl">2.76</span>, <span class="fl">0.4</span>, <span class="fl">0.53</span>, <span class="fl">2.16</span>, <span class="fl">2.76</span>, <span class="fl">2.16</span>, <span class="fl">11.2</span>),</span>
+<span id="cb214-10"><a href="chapter-3-exercises.html#cb214-10" tabindex="-1"></a>  <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb214-11"><a href="chapter-3-exercises.html#cb214-11" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(B <span class="sc">-</span> A))</span></code></pre></div>
 <p>Then we’ll write a function to implement Woodbury’s formula,</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="chapter-3-exercises.html#cb215-1" aria-hidden="true" tabindex="-1"></a>woodbury <span class="ot">&lt;-</span> <span class="cf">function</span>(iA, U, V) {</span>
-<span id="cb215-2"><a href="chapter-3-exercises.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to implement Woodbury&#39;s formula</span></span>
-<span id="cb215-3"><a href="chapter-3-exercises.html#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="co"># iA, U and V are matrices</span></span>
-<span id="cb215-4"><a href="chapter-3-exercises.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a matrix</span></span>
-<span id="cb215-5"><a href="chapter-3-exercises.html#cb215-5" aria-hidden="true" tabindex="-1"></a>I_n <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">nrow</span>(iA))</span>
-<span id="cb215-6"><a href="chapter-3-exercises.html#cb215-6" aria-hidden="true" tabindex="-1"></a>iAU <span class="ot">&lt;-</span> iA <span class="sc">%*%</span> U</span>
-<span id="cb215-7"><a href="chapter-3-exercises.html#cb215-7" aria-hidden="true" tabindex="-1"></a>iA <span class="sc">-</span> iAU <span class="sc">%*%</span> <span class="fu">solve</span>(I_n <span class="sc">+</span> <span class="fu">crossprod</span>(V, iAU), <span class="fu">crossprod</span>(V, iA))</span>
-<span id="cb215-8"><a href="chapter-3-exercises.html#cb215-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="chapter-3-exercises.html#cb215-1" tabindex="-1"></a>woodbury <span class="ot">&lt;-</span> <span class="cf">function</span>(iA, U, V) {</span>
+<span id="cb215-2"><a href="chapter-3-exercises.html#cb215-2" tabindex="-1"></a><span class="co"># function to implement Woodbury&#39;s formula</span></span>
+<span id="cb215-3"><a href="chapter-3-exercises.html#cb215-3" tabindex="-1"></a><span class="co"># iA, U and V are matrices</span></span>
+<span id="cb215-4"><a href="chapter-3-exercises.html#cb215-4" tabindex="-1"></a><span class="co"># returns a matrix</span></span>
+<span id="cb215-5"><a href="chapter-3-exercises.html#cb215-5" tabindex="-1"></a>I_n <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">nrow</span>(iA))</span>
+<span id="cb215-6"><a href="chapter-3-exercises.html#cb215-6" tabindex="-1"></a>iAU <span class="ot">&lt;-</span> iA <span class="sc">%*%</span> U</span>
+<span id="cb215-7"><a href="chapter-3-exercises.html#cb215-7" tabindex="-1"></a>iA <span class="sc">-</span> iAU <span class="sc">%*%</span> <span class="fu">solve</span>(I_n <span class="sc">+</span> <span class="fu">crossprod</span>(V, iAU), <span class="fu">crossprod</span>(V, iA))</span>
+<span id="cb215-8"><a href="chapter-3-exercises.html#cb215-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>and then use this to find <span class="math inline">\(\mathbf{B}^{-1}\)</span>, which we’ll call <code>iB</code>,</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="chapter-3-exercises.html#cb216-1" aria-hidden="true" tabindex="-1"></a>iB <span class="ot">&lt;-</span> <span class="fu">woodbury</span>(iA, L, L)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="chapter-3-exercises.html#cb216-1" tabindex="-1"></a>iB <span class="ot">&lt;-</span> <span class="fu">woodbury</span>(iA, L, L)</span></code></pre></div>
 <p>and see that, subject to rounding, this is equal to <span class="math inline">\(\mathbf{B}^{-1}\)</span></p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="chapter-3-exercises.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(iB, <span class="fu">solve</span>(B))</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="chapter-3-exercises.html#cb217-1" tabindex="-1"></a><span class="fu">all.equal</span>(iB, <span class="fu">solve</span>(B))</span></code></pre></div>
 <pre><code>## [1] &quot;Mean relative difference: 9.113679e-06&quot;</code></pre>
 </details>
 <hr /></li>
@@ -824,14 +827,14 @@ is the Cauchy determinant.</p>
 <p><span class="math display">\[\sigma^{-2} (\mathbf{A} + \mathbf{u} \mathbf{v}^{\text{T}})^{-1} = \sigma^{-1} \left[ \mathbf{A}^{-1} - \dfrac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^{\text{T}} \mathbf{A}^{-1}}{1 + \mathbf{v}^{\text{T}}\mathbf{A}^{-1}\mathbf{u}} \right]
 \]</span></p>
 <p>which can be calculated in <code>R</code> with</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="chapter-3-exercises.html#cb219-1" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb219-2"><a href="chapter-3-exercises.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">2.78</span>, <span class="sc">-</span><span class="fl">0.0112</span>, <span class="sc">-</span><span class="fl">0.106</span>, </span>
-<span id="cb219-3"><a href="chapter-3-exercises.html#cb219-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fl">0.0112</span>, <span class="fl">0.000146</span>, <span class="fl">0.000175</span>,</span>
-<span id="cb219-4"><a href="chapter-3-exercises.html#cb219-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fl">0.106</span>, <span class="fl">0.000175</span>, <span class="fl">0.00479</span>), </span>
-<span id="cb219-5"><a href="chapter-3-exercises.html#cb219-5" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb219-6"><a href="chapter-3-exercises.html#cb219-6" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">20</span>, <span class="dv">14</span>)</span>
-<span id="cb219-7"><a href="chapter-3-exercises.html#cb219-7" aria-hidden="true" tabindex="-1"></a>V2 <span class="ot">&lt;-</span> V <span class="sc">-</span> (V <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(u) <span class="sc">%*%</span> V) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">crossprod</span>(u, V <span class="sc">%*%</span> u))[<span class="dv">1</span>, <span class="dv">1</span>]</span>
-<span id="cb219-8"><a href="chapter-3-exercises.html#cb219-8" aria-hidden="true" tabindex="-1"></a>V2</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="chapter-3-exercises.html#cb219-1" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb219-2"><a href="chapter-3-exercises.html#cb219-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">2.78</span>, <span class="sc">-</span><span class="fl">0.0112</span>, <span class="sc">-</span><span class="fl">0.106</span>, </span>
+<span id="cb219-3"><a href="chapter-3-exercises.html#cb219-3" tabindex="-1"></a>    <span class="sc">-</span><span class="fl">0.0112</span>, <span class="fl">0.000146</span>, <span class="fl">0.000175</span>,</span>
+<span id="cb219-4"><a href="chapter-3-exercises.html#cb219-4" tabindex="-1"></a>    <span class="sc">-</span><span class="fl">0.106</span>, <span class="fl">0.000175</span>, <span class="fl">0.00479</span>), </span>
+<span id="cb219-5"><a href="chapter-3-exercises.html#cb219-5" tabindex="-1"></a>  <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb219-6"><a href="chapter-3-exercises.html#cb219-6" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">20</span>, <span class="dv">14</span>)</span>
+<span id="cb219-7"><a href="chapter-3-exercises.html#cb219-7" tabindex="-1"></a>V2 <span class="ot">&lt;-</span> V <span class="sc">-</span> (V <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(u) <span class="sc">%*%</span> V) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">crossprod</span>(u, V <span class="sc">%*%</span> u))[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb219-8"><a href="chapter-3-exercises.html#cb219-8" tabindex="-1"></a>V2</span></code></pre></div>
 <pre><code>##              [,1]          [,2]          [,3]
 ## [1,]  1.992477728 -6.917113e-03 -7.996475e-02
 ## [2,] -0.006917113  1.227078e-04  3.340903e-05
