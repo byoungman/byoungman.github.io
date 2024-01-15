@@ -355,7 +355,7 @@ University Press. <a href="https://www.maths.ed.ac.uk/~swood34/core-statistics.p
 </div>
 <div id="assessment" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> Assessment<a href="index.html#assessment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Assessment for MTH3045 will comprise two pieces of coursework (worth 30% and 40% of the total module mark, respectively) and an online practical exam (worth 30% of the total module mark). Your coursework must be your on work.</p>
+<p>Assessment for MTH3045 will comprise one piece of coursework (worth 50% of the module’s total module mark) and an online practical exam (worth 50% of the module’s total module mark). Your coursework must be your on work.</p>
 </div>
 <div id="motivating-example" class="section level2 hasAnchor" number="1.7">
 <h2><span class="header-section-number">1.7</span> Motivating example<a href="index.html#motivating-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -366,11 +366,11 @@ University Press. <a href="https://www.maths.ed.ac.uk/~swood34/core-statistics.p
 <span id="cb2-4"><a href="index.html#cb2-4" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
 <span id="cb2-5"><a href="index.html#cb2-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z1 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> B <span class="sc">%*%</span> y)</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.608   0.976   0.174</code></pre>
-<p>We’re interested in the total time, <code>elapsed</code>, which is 0.174 seconds. However, the next line gives exactly the same answer</p>
+##   1.759   1.259   0.210</code></pre>
+<p>We’re interested in the total time, <code>elapsed</code>, which is 0.21 seconds. However, the next line gives exactly the same answer</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z2 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> (B <span class="sc">%*%</span> y))</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.177   0.120   0.019</code></pre>
+##   0.099   0.209   0.021</code></pre>
 <p>which we can check with <code>all.equal()</code></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(z1, z2)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
