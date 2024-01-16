@@ -310,7 +310,7 @@ Laver 817; ext. 2314</div></em></p>
 <li>Thursday 11.35 – 12.25. Old Library 134</li>
 <li>Friday 13.35 – 14.25.
 <ul>
-<li>Forum Exploration Lab 1 (weeks 1,2,4,5,8,9,11)</li>
+<li>Forum Exploration Lab 1 (weeks 1,2,4,5,6,8,9,11)</li>
 <li>Streatham Court 0.93 (weeks 3,7,10)</li>
 </ul></li>
 </ul>
@@ -366,11 +366,11 @@ University Press. <a href="https://www.maths.ed.ac.uk/~swood34/core-statistics.p
 <span id="cb2-4"><a href="index.html#cb2-4" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
 <span id="cb2-5"><a href="index.html#cb2-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z1 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> B <span class="sc">%*%</span> y)</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.759   1.259   0.210</code></pre>
-<p>We’re interested in the total time, <code>elapsed</code>, which is 0.21 seconds. However, the next line gives exactly the same answer</p>
+##   1.624   1.383   0.203</code></pre>
+<p>We’re interested in the total time, <code>elapsed</code>, which is 0.203 seconds. However, the next line gives exactly the same answer</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z2 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> (B <span class="sc">%*%</span> y))</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.099   0.209   0.021</code></pre>
+##   0.158   0.147   0.020</code></pre>
 <p>which we can check with <code>all.equal()</code></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(z1, z2)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
