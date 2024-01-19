@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chapter-1.html"/>
+<link rel="prev" href="chapter-1-1.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -143,9 +143,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-i"><i class="fa fa-check"></i>Challenges I</a></li>
 <li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-ii"><i class="fa fa-check"></i>Challenges II</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#week-2-lecture-1"><i class="fa fa-check"></i>Week 2 lecture 1</a>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-1-1.html"><a href="chapter-1-1.html"><i class="fa fa-check"></i>Chapter 1</a>
 <ul>
-<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-i-1"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-1-1.html"><a href="chapter-1-1.html#week-1-lecture-1-1"><i class="fa fa-check"></i>Week 1 lecture 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-2-1.html"><a href="chapter-2-1.html"><i class="fa fa-check"></i>Chapter 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-2-1.html"><a href="chapter-2-1.html#week-1-lecture-2-1"><i class="fa fa-check"></i>Week 1 lecture 2</a></li>
+<li class="chapter" data-level="" data-path="chapter-2-1.html"><a href="chapter-2-1.html#week-1-lecture-3-1"><i class="fa fa-check"></i>Week 1 lecture 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-2-1.html"><a href="chapter-2-1.html#challenges-i-1"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-2-1.html"><a href="chapter-2-1.html#challenges-ii-1"><i class="fa fa-check"></i>Challenges II</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -165,10 +174,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter-2" class="section level1 hasAnchor">
-<h1>Chapter 2<a href="chapter-2.html#chapter-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="week-1-lecture-2" class="section level2 hasAnchor">
-<h2>Week 1 lecture 2<a href="chapter-2.html#week-1-lecture-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="chapter-2-1" class="section level1 hasAnchor">
+<h1>Chapter 2<a href="chapter-2-1.html#chapter-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="week-1-lecture-2-1" class="section level2 hasAnchor">
+<h2>Week 1 lecture 2<a href="chapter-2-1.html#week-1-lecture-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Consider 101 as a base 2, 3, 4, or 5 representation. What does it represent in base 10?</li>
 </ol>
@@ -176,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="chapter-2.html#cb6-1" tabindex="-1"></a><span class="co"># bookwork</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chapter-2-1.html#cb18-1" tabindex="-1"></a><span class="co"># bookwork</span></span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Repeat the calculation above using <code>R</code>. [Hint: consider forming a vector for <span class="math inline">\((a_0, a_1, a_2)^\text{T}\)</span> and another for <span class="math inline">\((B^0, B^1, B^2)\)</span>]</li>
@@ -185,17 +194,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chapter-2.html#cb7-1" tabindex="-1"></a>conv2dec <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
-<span id="cb7-2"><a href="chapter-2.html#cb7-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(x, <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
-<span id="cb7-3"><a href="chapter-2.html#cb7-3" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span><span class="dv">0</span></span>
-<span id="cb7-4"><a href="chapter-2.html#cb7-4" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
-<span id="cb7-5"><a href="chapter-2.html#cb7-5" tabindex="-1"></a>}</span>
-<span id="cb7-6"><a href="chapter-2.html#cb7-6" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="chapter-2.html#cb7-7" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&#39;101&#39;</span></span>
-<span id="cb7-8"><a href="chapter-2.html#cb7-8" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">2</span>)</span>
-<span id="cb7-9"><a href="chapter-2.html#cb7-9" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">3</span>)</span>
-<span id="cb7-10"><a href="chapter-2.html#cb7-10" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">4</span>)</span>
-<span id="cb7-11"><a href="chapter-2.html#cb7-11" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chapter-2-1.html#cb19-1" tabindex="-1"></a>conv2dec <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
+<span id="cb19-2"><a href="chapter-2-1.html#cb19-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(x, <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb19-3"><a href="chapter-2-1.html#cb19-3" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span><span class="dv">0</span></span>
+<span id="cb19-4"><a href="chapter-2-1.html#cb19-4" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
+<span id="cb19-5"><a href="chapter-2-1.html#cb19-5" tabindex="-1"></a>}</span>
+<span id="cb19-6"><a href="chapter-2-1.html#cb19-6" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="chapter-2-1.html#cb19-7" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&#39;101&#39;</span></span>
+<span id="cb19-8"><a href="chapter-2-1.html#cb19-8" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">2</span>)</span>
+<span id="cb19-9"><a href="chapter-2-1.html#cb19-9" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">3</span>)</span>
+<span id="cb19-10"><a href="chapter-2-1.html#cb19-10" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">4</span>)</span>
+<span id="cb19-11"><a href="chapter-2-1.html#cb19-11" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">5</span>)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Repeat the above for 101.101</li>
@@ -204,26 +213,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="chapter-2.html#cb8-1" tabindex="-1"></a>conv2dec2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
-<span id="cb8-2"><a href="chapter-2.html#cb8-2" tabindex="-1"></a>a0 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x, <span class="st">&#39;[.]&#39;</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb8-3"><a href="chapter-2.html#cb8-3" tabindex="-1"></a>a_left <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">1</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
-<span id="cb8-4"><a href="chapter-2.html#cb8-4" tabindex="-1"></a>a_right <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">2</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
-<span id="cb8-5"><a href="chapter-2.html#cb8-5" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a_left, a_right)</span>
-<span id="cb8-6"><a href="chapter-2.html#cb8-6" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a_left) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span>(<span class="sc">-</span><span class="fu">length</span>(a_right))</span>
-<span id="cb8-7"><a href="chapter-2.html#cb8-7" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
-<span id="cb8-8"><a href="chapter-2.html#cb8-8" tabindex="-1"></a>}</span>
-<span id="cb8-9"><a href="chapter-2.html#cb8-9" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="chapter-2.html#cb8-10" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="st">&#39;101.101&#39;</span></span>
-<span id="cb8-11"><a href="chapter-2.html#cb8-11" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">2</span>)</span>
-<span id="cb8-12"><a href="chapter-2.html#cb8-12" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">3</span>)</span>
-<span id="cb8-13"><a href="chapter-2.html#cb8-13" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">4</span>)</span>
-<span id="cb8-14"><a href="chapter-2.html#cb8-14" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chapter-2-1.html#cb20-1" tabindex="-1"></a>conv2dec2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
+<span id="cb20-2"><a href="chapter-2-1.html#cb20-2" tabindex="-1"></a>a0 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x, <span class="st">&#39;[.]&#39;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb20-3"><a href="chapter-2-1.html#cb20-3" tabindex="-1"></a>a_left <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">1</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb20-4"><a href="chapter-2-1.html#cb20-4" tabindex="-1"></a>a_right <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">2</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb20-5"><a href="chapter-2-1.html#cb20-5" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a_left, a_right)</span>
+<span id="cb20-6"><a href="chapter-2-1.html#cb20-6" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a_left) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span>(<span class="sc">-</span><span class="fu">length</span>(a_right))</span>
+<span id="cb20-7"><a href="chapter-2-1.html#cb20-7" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
+<span id="cb20-8"><a href="chapter-2-1.html#cb20-8" tabindex="-1"></a>}</span>
+<span id="cb20-9"><a href="chapter-2-1.html#cb20-9" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="chapter-2-1.html#cb20-10" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="st">&#39;101.101&#39;</span></span>
+<span id="cb20-11"><a href="chapter-2-1.html#cb20-11" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">2</span>)</span>
+<span id="cb20-12"><a href="chapter-2-1.html#cb20-12" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">3</span>)</span>
+<span id="cb20-13"><a href="chapter-2-1.html#cb20-13" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">4</span>)</span>
+<span id="cb20-14"><a href="chapter-2-1.html#cb20-14" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">5</span>)</span></code></pre></div>
 </details>
 </div>
-<div id="week-1-lecture-3" class="section level2 hasAnchor">
-<h2>Week 1 lecture 3<a href="chapter-2.html#week-1-lecture-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="challenges-i" class="section level3 hasAnchor">
-<h3>Challenges I<a href="chapter-2.html#challenges-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="week-1-lecture-3-1" class="section level2 hasAnchor">
+<h2>Week 1 lecture 3<a href="chapter-2-1.html#week-1-lecture-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-i-1" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-2-1.html#challenges-i-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Find the <em>largest</em> value of <span class="math inline">\(E\)</span> that can be represented with single-precision arithmetic, given <span class="math inline">\(E = \sum_{i = 1}^8 b_{i + 1} 2^{8 - i}\)</span> (i.e., find <span class="math inline">\(E\)</span> when <span class="math inline">\(b_2 = b_3 = \ldots = b_9 = 1\)</span>)</li>
 </ol>
@@ -231,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chapter-2.html#cb9-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="chapter-2-1.html#cb21-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the <em>smallest</em> value of <span class="math inline">\(F\)</span> that can be represented with single-precision arithmetic, given <span class="math inline">\(F = \sum_{i = 1}^{23} b_{i + 9} 2^{-i}\)</span></li>
@@ -240,11 +249,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="chapter-2.html#cb10-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">23</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chapter-2-1.html#cb22-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">23</span>)</span></code></pre></div>
 </details>
 </div>
-<div id="challenges-ii" class="section level3 hasAnchor">
-<h3>Challenges II<a href="chapter-2.html#challenges-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="challenges-ii-1" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-2-1.html#challenges-ii-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Find the <em>largest</em> value of <span class="math inline">\(E\)</span> that can be represented with double-precision arithmetic, given <span class="math inline">\(E = \sum_{i = 1}^{11} b_{i + 1} 2^{11 - i}\)</span></li>
 </ol>
@@ -252,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chapter-2.html#cb11-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chapter-2-1.html#cb23-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the <em>smallest</em> value of <span class="math inline">\(F\)</span> that can be represented with double-precision arithmetic, given <span class="math inline">\(F = \sum_{i = 1}^{52} b_{i + 9} 2^{-i}\)</span></li>
@@ -261,28 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="chapter-2.html#cb12-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">52</span>)</span></code></pre></div>
-</details>
-</div>
-</div>
-<div id="week-2-lecture-1" class="section level2 hasAnchor">
-<h2>Week 2 lecture 1<a href="chapter-2.html#week-2-lecture-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="challenges-i-1" class="section level3 hasAnchor">
-<h3>Challenges I<a href="chapter-2.html#challenges-i-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Find to the nearest order of magnitude the smallest number that <code>R</code> can represent.</li>
-</ul>
-<p>[Hint: the following code</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chapter-2.html#cb13-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
-<span id="cb13-2"><a href="chapter-2.html#cb13-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb13-3"><a href="chapter-2.html#cb13-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> .<span class="dv">1</span> <span class="sc">*</span> a</span>
-<span id="cb13-4"><a href="chapter-2.html#cb13-4" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
-<span id="cb13-5"><a href="chapter-2.html#cb13-5" tabindex="-1"></a>}</span></code></pre></div>
-<p>reduces <code>a</code> by a factor a 10, starting from 0.1, ten times.]</p>
-<details>
-<summary>
-<strong>Solution</strong>
-</summary>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chapter-2-1.html#cb24-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">52</span>)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -292,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="chapter-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-1-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
