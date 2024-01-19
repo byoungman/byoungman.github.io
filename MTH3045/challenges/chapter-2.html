@@ -173,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="chapter-2.html#cb6-1" tabindex="-1"></a><span class="co"># bookwork</span></span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Repeat the calculation above using <code>R</code>. [Hint: consider forming a vector for <span class="math inline">\((a_0, a_1, a_2)^\text{T}\)</span> and another for <span class="math inline">\((B^0, B^1, B^2)\)</span>]</li>
@@ -181,6 +182,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chapter-2.html#cb7-1" tabindex="-1"></a>conv2dec <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
+<span id="cb7-2"><a href="chapter-2.html#cb7-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(x, <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb7-3"><a href="chapter-2.html#cb7-3" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span><span class="dv">0</span></span>
+<span id="cb7-4"><a href="chapter-2.html#cb7-4" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
+<span id="cb7-5"><a href="chapter-2.html#cb7-5" tabindex="-1"></a>}</span>
+<span id="cb7-6"><a href="chapter-2.html#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="chapter-2.html#cb7-7" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&#39;101&#39;</span></span>
+<span id="cb7-8"><a href="chapter-2.html#cb7-8" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">2</span>)</span>
+<span id="cb7-9"><a href="chapter-2.html#cb7-9" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">3</span>)</span>
+<span id="cb7-10"><a href="chapter-2.html#cb7-10" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">4</span>)</span>
+<span id="cb7-11"><a href="chapter-2.html#cb7-11" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">5</span>)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Repeat the above for 101.101</li>
@@ -189,6 +201,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="chapter-2.html#cb8-1" tabindex="-1"></a>conv2dec2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
+<span id="cb8-2"><a href="chapter-2.html#cb8-2" tabindex="-1"></a>a0 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x, <span class="st">&#39;[.]&#39;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb8-3"><a href="chapter-2.html#cb8-3" tabindex="-1"></a>a_left <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">1</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb8-4"><a href="chapter-2.html#cb8-4" tabindex="-1"></a>a_right <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">2</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb8-5"><a href="chapter-2.html#cb8-5" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a_left, a_right)</span>
+<span id="cb8-6"><a href="chapter-2.html#cb8-6" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a_left) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span>(<span class="sc">-</span><span class="fu">length</span>(a_right))</span>
+<span id="cb8-7"><a href="chapter-2.html#cb8-7" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
+<span id="cb8-8"><a href="chapter-2.html#cb8-8" tabindex="-1"></a>}</span>
+<span id="cb8-9"><a href="chapter-2.html#cb8-9" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="chapter-2.html#cb8-10" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="st">&#39;101.101&#39;</span></span>
+<span id="cb8-11"><a href="chapter-2.html#cb8-11" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">2</span>)</span>
+<span id="cb8-12"><a href="chapter-2.html#cb8-12" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">3</span>)</span>
+<span id="cb8-13"><a href="chapter-2.html#cb8-13" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">4</span>)</span>
+<span id="cb8-14"><a href="chapter-2.html#cb8-14" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">5</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="week-1-lecture-3" class="section level2 hasAnchor">
@@ -202,33 +228,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chapter-2.html#cb9-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
-<li>Find the <em>smallest</em> value of <span class="math inline">\(F\)</span> that can be represented with single-precision arithmetic, <span class="math inline">\(F = \sum_{i = 1}^{23} b_{i + 9} 2^{-i}\)</span></li>
+<li>Find the <em>smallest</em> value of <span class="math inline">\(F\)</span> that can be represented with single-precision arithmetic, given <span class="math inline">\(F = \sum_{i = 1}^{23} b_{i + 9} 2^{-i}\)</span></li>
 </ol>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="chapter-2.html#cb10-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">23</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii" class="section level3 hasAnchor">
 <h3>Challenges II<a href="chapter-2.html#challenges-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Find the <em>largest</em> value of <span class="math inline">\(E\)</span> that can be represented with double-precision arithmetic, <span class="math inline">\(E = \sum_{i = 1}^{11} b_{i + 1} 2^{11 - i}\)</span></li>
+<li>Find the <em>largest</em> value of <span class="math inline">\(E\)</span> that can be represented with double-precision arithmetic, given <span class="math inline">\(E = \sum_{i = 1}^{11} b_{i + 1} 2^{11 - i}\)</span></li>
 </ol>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chapter-2.html#cb11-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
-<li>Find the <em>smallest</em> value of <span class="math inline">\(F\)</span> that can be represented with double-precision arithmetic, <span class="math inline">\(F = \sum_{i = 1}^{52} b_{i + 9} 2^{-i}\)</span></li>
+<li>Find the <em>smallest</em> value of <span class="math inline">\(F\)</span> that can be represented with double-precision arithmetic, given <span class="math inline">\(F = \sum_{i = 1}^{52} b_{i + 9} 2^{-i}\)</span></li>
 </ol>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="chapter-2.html#cb12-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">52</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-iii" class="section level3 hasAnchor">
@@ -237,16 +267,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Find to the nearest order of magnitude the smallest number that <code>R</code> can represent.</li>
 </ul>
 <p>[Hint: the following code</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chapter-2.html#cb3-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
-<span id="cb3-2"><a href="chapter-2.html#cb3-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb3-3"><a href="chapter-2.html#cb3-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> .<span class="dv">1</span> <span class="sc">*</span> a</span>
-<span id="cb3-4"><a href="chapter-2.html#cb3-4" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
-<span id="cb3-5"><a href="chapter-2.html#cb3-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chapter-2.html#cb13-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
+<span id="cb13-2"><a href="chapter-2.html#cb13-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb13-3"><a href="chapter-2.html#cb13-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> .<span class="dv">1</span> <span class="sc">*</span> a</span>
+<span id="cb13-4"><a href="chapter-2.html#cb13-4" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
+<span id="cb13-5"><a href="chapter-2.html#cb13-5" tabindex="-1"></a>}</span></code></pre></div>
 <p>reduces <code>a</code> by a factor a 10, starting from 0.1, ten times.]</p>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="chapter-2.html#cb14-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
+<span id="cb14-2"><a href="chapter-2.html#cb14-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">330</span>) {</span>
+<span id="cb14-3"><a href="chapter-2.html#cb14-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> .<span class="dv">1</span> <span class="sc">*</span> a</span>
+<span id="cb14-4"><a href="chapter-2.html#cb14-4" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
+<span id="cb14-5"><a href="chapter-2.html#cb14-5" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 </div>
 </div>
