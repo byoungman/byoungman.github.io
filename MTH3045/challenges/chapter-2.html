@@ -159,6 +159,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-i-3"><i class="fa fa-check"></i>Challenges I</a></li>
 <li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-ii-3"><i class="fa fa-check"></i>Challenges II</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#week-3-lecture-1"><i class="fa fa-check"></i>Week 3 lecture 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-i-4"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-ii-4"><i class="fa fa-check"></i>Challenges II</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#week-3-lecture-2"><i class="fa fa-check"></i>Week 3 lecture 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-i-5"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#week-3-lecture-3"><i class="fa fa-check"></i>Week 3 lecture 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-i-6"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -520,6 +533,167 @@ Y_1, \ldots, Y_N \text{ with  } N - 1 \sim \text{Poisson}(2)\text{ and }Y_i \sim
 <span id="cb33-4"><a href="chapter-2.html#cb33-4" tabindex="-1"></a>}</span>
 <span id="cb33-5"><a href="chapter-2.html#cb33-5" tabindex="-1"></a>x</span></code></pre></div>
 </details>
+</div>
+</div>
+<div id="week-3-lecture-1" class="section level2 hasAnchor">
+<h2>Week 3 lecture 1<a href="chapter-2.html#week-3-lecture-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-i-4" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-2.html#challenges-i-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider computing the rolling mean of a vector <span class="math inline">\((y_1, \ldots, y_n)^\text{T}\)</span>. Let’s suppose it’s a seven-day rolling mean, as often used to convey Covid-19 data, so that
+<span class="math display">\[
+z_i = \dfrac{1}{7} \sum_{j = 1}^7 y_{i + j - 4}, \text{ for } i = 4, 5, \ldots, n - 3.
+\]</span>
+Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</span> comprising Gamma(2, 3) random variate, and then compute its rolling mean. Your result should contain <code>NA</code>s where the rolling mean cannot be computed, i.e., <span class="math inline">\(i = 1, 2, 3, n - 2, n - 1, n\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>The function <code>filter()</code> can do this in a vectorised way. Obtain the same result using <code>filter()</code>. [Hint: the examples for <code>filter()</code> may help illustrate how its arguments work.]</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Familiarise yourself with the functions <code>any()</code> and <code>all()</code>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+<div id="challenges-ii-4" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-2.html#challenges-ii-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Create the following function</li>
+</ol>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chapter-2.html#cb34-1" tabindex="-1"></a>browser_test <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb34-2"><a href="chapter-2.html#cb34-2" tabindex="-1"></a>  x1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb34-3"><a href="chapter-2.html#cb34-3" tabindex="-1"></a>  x2 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb34-4"><a href="chapter-2.html#cb34-4" tabindex="-1"></a>  x3 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb34-5"><a href="chapter-2.html#cb34-5" tabindex="-1"></a>  x4 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb34-6"><a href="chapter-2.html#cb34-6" tabindex="-1"></a>  x5 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb34-7"><a href="chapter-2.html#cb34-7" tabindex="-1"></a>  x6 <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb34-8"><a href="chapter-2.html#cb34-8" tabindex="-1"></a>  <span class="fu">browser</span>()</span>
+<span id="cb34-9"><a href="chapter-2.html#cb34-9" tabindex="-1"></a>  x7 <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb34-10"><a href="chapter-2.html#cb34-10" tabindex="-1"></a>  x8 <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
+<span id="cb34-11"><a href="chapter-2.html#cb34-11" tabindex="-1"></a>  <span class="fu">c</span>(x1, x2, x3, x4, x5, x6, x7, x8)</span>
+<span id="cb34-12"><a href="chapter-2.html#cb34-12" tabindex="-1"></a>}</span></code></pre></div>
+<p>and then run <code>browser_test(-1)</code>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Then type <code>x1</code>, <code>x2</code>, <code>x3</code>, <code>x4</code>, <code>x5</code> and <code>x6</code>.</p></li>
+<li><p>What happens if you type <code>x7</code>?</p></li>
+<li><p>What happens if you hit <code>Enter</code> twice and then type <code>x7</code>?</p></li>
+<li><p>What happens if you hit <code>Enter</code> again?</p></li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<p>To exit <code>browser()</code> mode type and execute <code>Q</code>.</p>
+</div>
+</div>
+<div id="week-3-lecture-2" class="section level2 hasAnchor">
+<h2>Week 3 lecture 2<a href="chapter-2.html#week-3-lecture-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-i-5" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-2.html#challenges-i-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Confirm that the following give the same answer, and then benchmark which is quicker.</li>
+</ol>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="chapter-2.html#cb35-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb35-2"><a href="chapter-2.html#cb35-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb35-3"><a href="chapter-2.html#cb35-3" tabindex="-1"></a><span class="fu">sort</span>(y)[<span class="dv">1</span>]</span>
+<span id="cb35-4"><a href="chapter-2.html#cb35-4" tabindex="-1"></a><span class="fu">min</span>(y)</span></code></pre></div>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Complete the function based on a <code>for()</code> loop so that it computes <span class="math inline">\(s = \sum_{i = 1}^n a_i b_i\)</span>, for <span class="math inline">\(i =1, \ldots, n\)</span>, given vectors <span class="math inline">\(\mathbf{a} =\)</span> <code>a</code> and <span class="math inline">\(\mathbf{b} =\)</span> <code>b</code>.</li>
+</ol>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chapter-2.html#cb36-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb36-2"><a href="chapter-2.html#cb36-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n) <span class="co"># using n above</span></span>
+<span id="cb36-3"><a href="chapter-2.html#cb36-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb36-4"><a href="chapter-2.html#cb36-4" tabindex="-1"></a>ab <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb36-5"><a href="chapter-2.html#cb36-5" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb36-6"><a href="chapter-2.html#cb36-6" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb36-7"><a href="chapter-2.html#cb36-7" tabindex="-1"></a>  ... <span class="co"># insert one line of code here</span></span>
+<span id="cb36-8"><a href="chapter-2.html#cb36-8" tabindex="-1"></a>s</span>
+<span id="cb36-9"><a href="chapter-2.html#cb36-9" tabindex="-1"></a>}</span></code></pre></div>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Then propose a vectorised alternative, and benchmark whether it’s better.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+</div>
+<div id="week-3-lecture-3" class="section level2 hasAnchor">
+<h2>Week 3 lecture 3<a href="chapter-2.html#week-3-lecture-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-i-6" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-2.html#challenges-i-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Confirm that the following function generates a symmetric matrix for any square matrix <code>X</code>.</li>
+</ol>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="chapter-2.html#cb37-1" tabindex="-1"></a>make_sym <span class="ot">&lt;-</span> <span class="cf">function</span>(X) {</span>
+<span id="cb37-2"><a href="chapter-2.html#cb37-2" tabindex="-1"></a>  .<span class="dv">5</span> <span class="sc">*</span> (X <span class="sc">+</span> <span class="fu">t</span>(X))</span>
+<span id="cb37-3"><a href="chapter-2.html#cb37-3" tabindex="-1"></a>}</span></code></pre></div>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>In <code>R</code>, the function <code>stop()</code> can be used to stop a function when an error occurs. So</li>
+</ol>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chapter-2.html#cb38-1" tabindex="-1"></a><span class="cf">if</span> (condition)</span>
+<span id="cb38-2"><a href="chapter-2.html#cb38-2" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">&#39;some error message&#39;</span>)</span></code></pre></div>
+<p>Modify <code>make_sym()</code> so that it tests whether <code>X</code> is square, and returns an appropriate error if it isn’t.</p>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Confirm that <code>crossprod(A, B)</code> and <code>t(A) %*% B</code> give the same result and then benchmark the two commands for <span class="math inline">\(1000 \times 200\)</span> and <span class="math inline">\(1000 \times 100\)</span> matrices <code>A</code> and <code>B</code>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<!-- 4. Confirm that $\mathbf{x}_i^{\text{T}} \mathbf{Ax}_i > 0$ for -->
+<!-- \[ -->
+<!-- \mathbf{A} = \begin{pmatrix*}[r]0.91&0.32&0.62 \\0.32&0.31&0.15 \\0.62&0.15&0.47 \\\end{pmatrix*} -->
+<!-- \] -->
+<!-- and -->
+<!-- \[ -->
+<!-- \mathbf{x}_1 = \begin{pmatrix*}[r]-0.12 \\0.51 \\0.22 \\\end{pmatrix*},~\mathbf{x}_2 = \begin{pmatrix*}[r]-0.32 \\-1.07 \\-1.36 \\\end{pmatrix*}~\text{and}~\mathbf{x}_3 = \begin{pmatrix*}[r]-0.97 \\-0.16 \\-0.36 \\\end{pmatrix*}. -->
+<!-- \] -->
+<!-- <details><summary>**Solution**</summary> -->
+<!-- ```{r, eval = FALSE, echo = week > w0} -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 5. If $\mathbf{x}_i$ is stored in `R` as `x_i`, how can all $\mathbf{x}_i$ be simultaneously checked by forming `X = cbind(x_1, x_2, x_3)`? -->
+<!-- <details><summary>**Solution**</summary> -->
+<!-- ```{r, eval = FALSE, echo = week > w0} -->
+<!-- ``` -->
+<!-- </details> -->
 </div>
 </div>
 </div>
