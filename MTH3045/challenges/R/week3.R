@@ -149,24 +149,42 @@ microbenchmark::microbenchmark(
 
 # Q4
 
-<!-- 4. Confirm that $\mathbf{x}_i^{\text{T}} \mathbf{Ax}_i > 0$ for -->
-<!-- \[ -->
-<!-- \mathbf{A} = `r write_matex(A)` -->
-<!-- \] -->
-<!-- and -->
-<!-- \[ -->
-<!-- \mathbf{x}_1 = `r write_matex(x_1)`,~\mathbf{x}_2 = `r write_matex(x_2)`~\text{and}~\mathbf{x}_3 = `r write_matex(x_3)`. -->
-<!-- \] -->
+A <- rbind(c(0.91, 0.32, 0.62),
+           c(0.32, 0.31, 0.15),
+           c(0.62, 0.15, 0.47))
+x_1 <- c(-0.12, 0.51, 0.22)
+x_2 <- c(-0.32, -1.07, -1.36)
+x_3 <- c(-0.97, -0.16, -0.36)
 
-<!-- <details><summary>**Solution**</summary> -->
-<!-- ```{r, eval = FALSE, echo = week > w0} -->
-<!-- ``` -->
-<!-- </details> -->
+t(x_1) %*% A %*% x_1 > 0
+t(x_2) %*% A %*% x_2 > 0
+t(x_3) %*% A %*% x_3 > 0
 
-<!-- 5. If $\mathbf{x}_i$ is stored in `R` as `x_i`, how can all $\mathbf{x}_i$ be simultaneously checked by forming `X = cbind(x_1, x_2, x_3)`? -->
+# Q5
 
-<!-- <details><summary>**Solution**</summary> -->
-<!-- ```{r, eval = FALSE, echo = week > w0} -->
-<!-- ``` -->
-<!-- </details> -->
+X <- cbind(x_1, x_2, x_3)
+colSums(X * (A %*% X))
 
+## Challenges II
+
+# Q1
+
+dmvn1 <- function(y, mu, Sigma, log = TRUE) {
+  # Function to evaluate multivariate Normal pdf
+  # at y given mean mu and variance-covariance
+  # matrix Sigma.
+  # Returns 1x1 matrix, on log scale, if log == TRUE.
+  p <- length(y)
+  res <- y - mu
+  out <- - 0.5 * determinant(Sigma)$modulus - 0.5 * p * log(2 * pi) -
+    0.5 * t(res) %*% solve(Sigma) %*% res
+  if (!log) 
+    out <- exp(out)
+  attributes(out) <- NULL
+  out
+}
+
+y <- c(.7, 1.3, 2.6)
+mu <- 1:3
+Sigma <- matrix(c(4, 2, 1, 2, 3, 2, 1, 2, 2), 3, 3)
+dmvn1(y, mu, Sigma)
