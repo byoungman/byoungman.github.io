@@ -171,6 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#week-3-lecture-3"><i class="fa fa-check"></i>Week 3 lecture 3</a>
 <ul>
 <li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-i-6"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#challenges-ii-5"><i class="fa fa-check"></i>Challenges II</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -677,23 +678,39 @@ Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</s
 <strong>Solution</strong>
 </summary>
 </details>
-<!-- 4. Confirm that $\mathbf{x}_i^{\text{T}} \mathbf{Ax}_i > 0$ for -->
-<!-- \[ -->
-<!-- \mathbf{A} = \begin{pmatrix*}[r]0.91&0.32&0.62 \\0.32&0.31&0.15 \\0.62&0.15&0.47 \\\end{pmatrix*} -->
-<!-- \] -->
-<!-- and -->
-<!-- \[ -->
-<!-- \mathbf{x}_1 = \begin{pmatrix*}[r]-0.12 \\0.51 \\0.22 \\\end{pmatrix*},~\mathbf{x}_2 = \begin{pmatrix*}[r]-0.32 \\-1.07 \\-1.36 \\\end{pmatrix*}~\text{and}~\mathbf{x}_3 = \begin{pmatrix*}[r]-0.97 \\-0.16 \\-0.36 \\\end{pmatrix*}. -->
-<!-- \] -->
-<!-- <details><summary>**Solution**</summary> -->
-<!-- ```{r, eval = FALSE, echo = week > w0} -->
-<!-- ``` -->
-<!-- </details> -->
-<!-- 5. If $\mathbf{x}_i$ is stored in `R` as `x_i`, how can all $\mathbf{x}_i$ be simultaneously checked by forming `X = cbind(x_1, x_2, x_3)`? -->
-<!-- <details><summary>**Solution**</summary> -->
-<!-- ```{r, eval = FALSE, echo = week > w0} -->
-<!-- ``` -->
-<!-- </details> -->
+<ol start="4" style="list-style-type: decimal">
+<li>Confirm that <span class="math inline">\(\mathbf{x}_i^{\text{T}} \mathbf{Ax}_i &gt; 0\)</span> for</li>
+</ol>
+<p><span class="math display">\[
+\mathbf{A} = \left(\begin{array}{ccc} 0.91 &amp; 0.32 &amp; 0.62\\ 0.32 &amp; 0.31 &amp; 0.15\\ 0.62 &amp; 0.15 &amp; 0.47 \end{array}\right),~
+\mathbf{x}_1 = \left(\begin{array}{r} -0.12\\ 0.51\\ 0.22 \end{array}\right),~
+\mathbf{x}_2 = \left(\begin{array}{r} -0.32\\ -1.07\\ -1.36 \end{array}\right),~
+\mathbf{x}_3 = \left(\begin{array}{r} -0.97\\ -0.16\\ -0.36 \end{array}\right).
+\]</span></p>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="5" style="list-style-type: decimal">
+<li>If <span class="math inline">\(\mathbf{x}_i\)</span> is stored in <code>R</code> as <code>x_i</code>, how can all <span class="math inline">\(\mathbf{x}_i\)</span> be simultaneously checked by forming <code>X = cbind(x_1, x_2, x_3)</code>?</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+<div id="challenges-ii-5" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-2.html#challenges-ii-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>The function <code>dmvn1()</code> is a bit irritating because it returns a <span class="math inline">\(1 \times 1\)</span> matrix and has a <code>logarithm</code> attribute. Modify the function so that it returns a scalar, and has no attributes. [Consider using <code>as.vector()</code>.]</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
 </div>
 </div>
 </div>
