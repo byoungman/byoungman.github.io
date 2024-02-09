@@ -165,7 +165,7 @@ t(x_3) %*% A %*% x_3 > 0
 X <- cbind(x_1, x_2, x_3)
 colSums(X * (A %*% X))
 
-## Challenges II
+### Challenges II
 
 # Q1
 

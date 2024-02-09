@@ -312,6 +312,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="chapter-3.html#cb51-1" tabindex="-1"></a>dmvn1 <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, Sigma, <span class="at">log =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb51-2"><a href="chapter-3.html#cb51-2" tabindex="-1"></a>  <span class="co"># Function to evaluate multivariate Normal pdf</span></span>
+<span id="cb51-3"><a href="chapter-3.html#cb51-3" tabindex="-1"></a>  <span class="co"># at y given mean mu and variance-covariance</span></span>
+<span id="cb51-4"><a href="chapter-3.html#cb51-4" tabindex="-1"></a>  <span class="co"># matrix Sigma.</span></span>
+<span id="cb51-5"><a href="chapter-3.html#cb51-5" tabindex="-1"></a>  <span class="co"># Returns 1x1 matrix, on log scale, if log == TRUE.</span></span>
+<span id="cb51-6"><a href="chapter-3.html#cb51-6" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb51-7"><a href="chapter-3.html#cb51-7" tabindex="-1"></a>  res <span class="ot">&lt;-</span> y <span class="sc">-</span> mu</span>
+<span id="cb51-8"><a href="chapter-3.html#cb51-8" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">determinant</span>(Sigma)<span class="sc">$</span>modulus <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> p <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">-</span></span>
+<span id="cb51-9"><a href="chapter-3.html#cb51-9" tabindex="-1"></a>             <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">t</span>(res) <span class="sc">%*%</span> <span class="fu">solve</span>(Sigma) <span class="sc">%*%</span> res</span>
+<span id="cb51-10"><a href="chapter-3.html#cb51-10" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>log) </span>
+<span id="cb51-11"><a href="chapter-3.html#cb51-11" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">exp</span>(out)</span>
+<span id="cb51-12"><a href="chapter-3.html#cb51-12" tabindex="-1"></a>  <span class="fu">attributes</span>(out) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb51-13"><a href="chapter-3.html#cb51-13" tabindex="-1"></a>  out</span>
+<span id="cb51-14"><a href="chapter-3.html#cb51-14" tabindex="-1"></a>}</span>
+<span id="cb51-15"><a href="chapter-3.html#cb51-15" tabindex="-1"></a></span>
+<span id="cb51-16"><a href="chapter-3.html#cb51-16" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="fl">1.3</span>, <span class="fl">2.6</span>)</span>
+<span id="cb51-17"><a href="chapter-3.html#cb51-17" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb51-18"><a href="chapter-3.html#cb51-18" tabindex="-1"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb51-19"><a href="chapter-3.html#cb51-19" tabindex="-1"></a><span class="fu">dmvn1</span>(y, mu, Sigma)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-5" class="section level3 hasAnchor">
@@ -334,6 +353,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{array}\right).
 \]</span></li>
 </ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="chapter-3.html#cb52-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb52-2"><a href="chapter-3.html#cb52-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="dv">4</span>),</span>
+<span id="cb52-3"><a href="chapter-3.html#cb52-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="sc">-</span><span class="dv">10</span>, <span class="dv">6</span>),</span>
+<span id="cb52-4"><a href="chapter-3.html#cb52-4" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">4</span>),</span>
+<span id="cb52-5"><a href="chapter-3.html#cb52-5" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb52-6"><a href="chapter-3.html#cb52-6" tabindex="-1"></a>)</span>
+<span id="cb52-7"><a href="chapter-3.html#cb52-7" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb52-8"><a href="chapter-3.html#cb52-8" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">23</span><span class="sc">/</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">22</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">11</span><span class="sc">/</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>)</span>
+<span id="cb52-9"><a href="chapter-3.html#cb52-9" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="chapter-3.html#cb52-10" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">solve</span>(A, b), x)</span></code></pre></div>
+</details>
 </div>
 </div>
 <div id="week-4-lecture-2" class="section level2 hasAnchor">
@@ -377,6 +411,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="chapter-3.html#cb53-1" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(L, z)</span>
+<span id="cb53-2"><a href="chapter-3.html#cb53-2" tabindex="-1"></a>x1</span>
+<span id="cb53-3"><a href="chapter-3.html#cb53-3" tabindex="-1"></a><span class="fu">solve</span>(L, z)</span>
+<span id="cb53-4"><a href="chapter-3.html#cb53-4" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="chapter-3.html#cb53-5" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">backsolve</span>(U, z)</span>
+<span id="cb53-6"><a href="chapter-3.html#cb53-6" tabindex="-1"></a>x2</span>
+<span id="cb53-7"><a href="chapter-3.html#cb53-7" tabindex="-1"></a><span class="fu">solve</span>(U, z)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-6" class="section level3 hasAnchor">
@@ -384,13 +425,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Use the following function to generate a <span class="math inline">\(5 \times 5\)</span> symmetric and positive definite matrix.</li>
 </ol>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="chapter-3.html#cb51-1" tabindex="-1"></a>rsympdmat <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb51-2"><a href="chapter-3.html#cb51-2" tabindex="-1"></a><span class="co"># function to generate symmetric positive definite matrix</span></span>
-<span id="cb51-3"><a href="chapter-3.html#cb51-3" tabindex="-1"></a><span class="co"># of dimension n x n</span></span>
-<span id="cb51-4"><a href="chapter-3.html#cb51-4" tabindex="-1"></a><span class="co"># n is an integer</span></span>
-<span id="cb51-5"><a href="chapter-3.html#cb51-5" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> n), n)</span>
-<span id="cb51-6"><a href="chapter-3.html#cb51-6" tabindex="-1"></a><span class="fu">crossprod</span>(A, <span class="fu">diag</span>(<span class="fu">abs</span>(<span class="fu">rnorm</span>(n))) <span class="sc">%*%</span> A)</span>
-<span id="cb51-7"><a href="chapter-3.html#cb51-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="chapter-3.html#cb54-1" tabindex="-1"></a>rsympdmat <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb54-2"><a href="chapter-3.html#cb54-2" tabindex="-1"></a><span class="co"># function to generate symmetric positive definite matrix</span></span>
+<span id="cb54-3"><a href="chapter-3.html#cb54-3" tabindex="-1"></a><span class="co"># of dimension n x n</span></span>
+<span id="cb54-4"><a href="chapter-3.html#cb54-4" tabindex="-1"></a><span class="co"># n is an integer</span></span>
+<span id="cb54-5"><a href="chapter-3.html#cb54-5" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> n), n)</span>
+<span id="cb54-6"><a href="chapter-3.html#cb54-6" tabindex="-1"></a><span class="fu">crossprod</span>(A, <span class="fu">diag</span>(<span class="fu">abs</span>(<span class="fu">rnorm</span>(n))) <span class="sc">%*%</span> A)</span>
+<span id="cb54-7"><a href="chapter-3.html#cb54-7" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Calculate its Cholesky decomposition and confirm that it is a Cholesky decomposition, i.e. that its cross product or transposed cross product give the required result</li>
 <li>Invert it through its Cholesky decomposition, and confirm your result with <code>solve()</code></li>
@@ -400,19 +441,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="chapter-3.html#cb55-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rsympdmat</span>(<span class="dv">5</span>)</span>
+<span id="cb55-2"><a href="chapter-3.html#cb55-2" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">chol</span>(A)</span>
+<span id="cb55-3"><a href="chapter-3.html#cb55-3" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), A)</span>
+<span id="cb55-4"><a href="chapter-3.html#cb55-4" tabindex="-1"></a><span class="fu">all</span>(U[<span class="fu">lower.tri</span>(U)] <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb55-5"><a href="chapter-3.html#cb55-5" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">diag</span>(U) <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb55-6"><a href="chapter-3.html#cb55-6" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="chapter-3.html#cb55-7" tabindex="-1"></a><span class="co"># Inverse of A</span></span>
+<span id="cb55-8"><a href="chapter-3.html#cb55-8" tabindex="-1"></a>iA <span class="ot">&lt;-</span> <span class="fu">solve</span>(A)</span>
+<span id="cb55-9"><a href="chapter-3.html#cb55-9" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">chol2inv</span>(U), iA)</span>
+<span id="cb55-10"><a href="chapter-3.html#cb55-10" tabindex="-1"></a></span>
+<span id="cb55-11"><a href="chapter-3.html#cb55-11" tabindex="-1"></a><span class="co"># log determinant of A</span></span>
+<span id="cb55-12"><a href="chapter-3.html#cb55-12" tabindex="-1"></a><span class="fu">determinant</span>(A)</span>
+<span id="cb55-13"><a href="chapter-3.html#cb55-13" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(<span class="fu">diag</span>(U)))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>The Cholesky decomposition exists for <em>any</em> symmetric positive definite matrix. Generate an arbitrary <span class="math inline">\(4 \times 4\)</span> matrix, use <code>make_sym()</code> to make it symmetric and then consider how <code>chol()</code> can check whether it’s positive definite.</li>
 </ol>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="chapter-3.html#cb52-1" tabindex="-1"></a>make_sym <span class="ot">&lt;-</span> <span class="cf">function</span>(X) {</span>
-<span id="cb52-2"><a href="chapter-3.html#cb52-2" tabindex="-1"></a>  <span class="co"># function to generate a symmetric matrix</span></span>
-<span id="cb52-3"><a href="chapter-3.html#cb52-3" tabindex="-1"></a>  <span class="co"># X is a square matrix</span></span>
-<span id="cb52-4"><a href="chapter-3.html#cb52-4" tabindex="-1"></a>  .<span class="dv">5</span> <span class="sc">*</span> (X <span class="sc">+</span> <span class="fu">t</span>(X))</span>
-<span id="cb52-5"><a href="chapter-3.html#cb52-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="chapter-3.html#cb56-1" tabindex="-1"></a>make_sym <span class="ot">&lt;-</span> <span class="cf">function</span>(X) {</span>
+<span id="cb56-2"><a href="chapter-3.html#cb56-2" tabindex="-1"></a>  <span class="co"># function to generate a symmetric matrix</span></span>
+<span id="cb56-3"><a href="chapter-3.html#cb56-3" tabindex="-1"></a>  <span class="co"># X is a square matrix</span></span>
+<span id="cb56-4"><a href="chapter-3.html#cb56-4" tabindex="-1"></a>  .<span class="dv">5</span> <span class="sc">*</span> (X <span class="sc">+</span> <span class="fu">t</span>(X))</span>
+<span id="cb56-5"><a href="chapter-3.html#cb56-5" tabindex="-1"></a>}</span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="chapter-3.html#cb57-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">16</span>), <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb57-2"><a href="chapter-3.html#cb57-2" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="chapter-3.html#cb57-3" tabindex="-1"></a>make_sym <span class="ot">&lt;-</span> <span class="cf">function</span>(X) {</span>
+<span id="cb57-4"><a href="chapter-3.html#cb57-4" tabindex="-1"></a>  <span class="co"># function to generate a symmetric matrix</span></span>
+<span id="cb57-5"><a href="chapter-3.html#cb57-5" tabindex="-1"></a>  <span class="co"># X is a square matrix</span></span>
+<span id="cb57-6"><a href="chapter-3.html#cb57-6" tabindex="-1"></a>  .<span class="dv">5</span> <span class="sc">*</span> (X <span class="sc">+</span> <span class="fu">t</span>(X))</span>
+<span id="cb57-7"><a href="chapter-3.html#cb57-7" tabindex="-1"></a>}</span>
+<span id="cb57-8"><a href="chapter-3.html#cb57-8" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="chapter-3.html#cb57-9" tabindex="-1"></a>A_sym <span class="ot">&lt;-</span> <span class="fu">make_sym</span>(A)</span>
+<span id="cb57-10"><a href="chapter-3.html#cb57-10" tabindex="-1"></a><span class="fu">chol</span>(A_sym)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -433,16 +497,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span>
 and the following function can be used to form the Hilbert matrix</li>
 </ol>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="chapter-3.html#cb53-1" tabindex="-1"></a>hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb53-2"><a href="chapter-3.html#cb53-2" tabindex="-1"></a>  <span class="co"># Function to evaluate n by n Hilbert matrix.</span></span>
-<span id="cb53-3"><a href="chapter-3.html#cb53-3" tabindex="-1"></a>  <span class="co"># Returns n by n matrix.</span></span>
-<span id="cb53-4"><a href="chapter-3.html#cb53-4" tabindex="-1"></a>  ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
-<span id="cb53-5"><a href="chapter-3.html#cb53-5" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">/</span> (<span class="fu">outer</span>(ind, ind, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb53-6"><a href="chapter-3.html#cb53-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="chapter-3.html#cb58-1" tabindex="-1"></a>hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb58-2"><a href="chapter-3.html#cb58-2" tabindex="-1"></a>  <span class="co"># Function to evaluate n by n Hilbert matrix.</span></span>
+<span id="cb58-3"><a href="chapter-3.html#cb58-3" tabindex="-1"></a>  <span class="co"># Returns n by n matrix.</span></span>
+<span id="cb58-4"><a href="chapter-3.html#cb58-4" tabindex="-1"></a>  ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb58-5"><a href="chapter-3.html#cb58-5" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">/</span> (<span class="fu">outer</span>(ind, ind, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb58-6"><a href="chapter-3.html#cb58-6" tabindex="-1"></a>}</span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="chapter-3.html#cb59-1" tabindex="-1"></a>H4 <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">4</span>)</span>
+<span id="cb59-2"><a href="chapter-3.html#cb59-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="fl">3.19</span>, <span class="fl">3.26</span>, <span class="fl">1.93</span>)</span>
+<span id="cb59-3"><a href="chapter-3.html#cb59-3" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="chapter-3.html#cb59-4" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(H4, b)</span>
+<span id="cb59-5"><a href="chapter-3.html#cb59-5" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">chol</span>(H4)</span>
+<span id="cb59-6"><a href="chapter-3.html#cb59-6" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(U, </span>
+<span id="cb59-7"><a href="chapter-3.html#cb59-7" tabindex="-1"></a>  <span class="fu">backsolve</span>(U, b, <span class="at">transpose =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb59-8"><a href="chapter-3.html#cb59-8" tabindex="-1"></a>  <span class="at">upper.tri =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb59-9"><a href="chapter-3.html#cb59-9" tabindex="-1"></a></span>
+<span id="cb59-10"><a href="chapter-3.html#cb59-10" tabindex="-1"></a><span class="fu">all.equal</span>(x1, x2)</span></code></pre></div>
 </details>
 </div>
 </div>
