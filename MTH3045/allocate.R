@@ -23,6 +23,6 @@ allocation <- function(x) {
   yz <- as.integer(alloc3[alloc3[, 1] == x, 5:6])
   cat(paste('You candidate number is ', x, '.', sep = ''))
   cat(paste('\nFor Question 1(a) use j = ', ijk[1], ', k = ', ijk[2], ', l = ', ijk[3], '.', sep = ''))
-  cat(paste('\nFor Question 2(a) use b[', yz[1], '].', sep = ''))
+  cat(paste('\nFor Question 2(a) and 2(c) use b[', yz[1], '].', sep = ''))
   cat(paste('\nFor Question 2(c) use f[', yz[2], '].', sep = ''))
 }
