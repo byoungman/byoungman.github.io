@@ -189,6 +189,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-i-9"><i class="fa fa-check"></i>Challenges I</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#week-5-lecture-1"><i class="fa fa-check"></i>Week 5 lecture 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-i-10"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-ii-7"><i class="fa fa-check"></i>Challenges II</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-iii-1"><i class="fa fa-check"></i>Challenges III</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#week-5-lecture-2"><i class="fa fa-check"></i>Week 5 lecture 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-1"><i class="fa fa-check"></i>Challenges 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#week-5-lecture-3"><i class="fa fa-check"></i>Week 5 lecture 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-i-11"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-ii-8"><i class="fa fa-check"></i>Challenges II</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -517,6 +532,194 @@ and the following function can be used to form the Hilbert matrix</li>
 <span id="cb59-8"><a href="chapter-3.html#cb59-8" tabindex="-1"></a>  <span class="at">upper.tri =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb59-9"><a href="chapter-3.html#cb59-9" tabindex="-1"></a></span>
 <span id="cb59-10"><a href="chapter-3.html#cb59-10" tabindex="-1"></a><span class="fu">all.equal</span>(x1, x2)</span></code></pre></div>
+</details>
+</div>
+</div>
+<div id="week-5-lecture-1" class="section level2 hasAnchor">
+<h2>Week 5 lecture 1<a href="chapter-3.html#week-5-lecture-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-i-10" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-3.html#challenges-i-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Compute the eigen-decomposition of <span class="math inline">\(\boldsymbol{\Sigma}\)</span> from Example 3.2, i.e.</li>
+</ol>
+<p><span class="math display">\[
+\boldsymbol{\Sigma} = \begin{pmatrix}4&amp;2&amp;1 \\2&amp;3&amp;2 \\1&amp;2&amp;2 \\\end{pmatrix}.
+\]</span></p>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Show that its eigenvectors are orthogonal.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Find <span class="math inline">\(|\boldsymbol{\Sigma}|\)</span> and <span class="math inline">\(\log(|\boldsymbol{\Sigma}|)\)</span>, avoiding first calculating <span class="math inline">\(|\boldsymbol{\Sigma}|\)</span> for the latter.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+<div id="challenges-ii-7" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-3.html#challenges-ii-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Write two functions, <code>matpow1(A, k)</code> and <code>matpow2(A, k)</code>, that compute <span class="math inline">\(\mathbf{A}^k\)</span> for a positive integer <span class="math inline">\(k\)</span> and a symmetric matrix <span class="math inline">\(\mathbf{A}\)</span>, where <code>matpow1()</code> uses a <code>for()</code> loop and <code>matpow2()</code> uses the eigen-decomposition of <span class="math inline">\(\mathbf{A}\)</span>.</li>
+</ol>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="chapter-3.html#cb60-1" tabindex="-1"></a>matpow1 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
+<span id="cb60-2"><a href="chapter-3.html#cb60-2" tabindex="-1"></a>  <span class="co"># function to calculate matrix power of symmetric matrix A</span></span>
+<span id="cb60-3"><a href="chapter-3.html#cb60-3" tabindex="-1"></a>  <span class="co"># based on a for loop</span></span>
+<span id="cb60-4"><a href="chapter-3.html#cb60-4" tabindex="-1"></a>  <span class="co"># k is an integer</span></span>
+<span id="cb60-5"><a href="chapter-3.html#cb60-5" tabindex="-1"></a>  <span class="co"># return matrix of same dimension as A</span></span>
+<span id="cb60-6"><a href="chapter-3.html#cb60-6" tabindex="-1"></a>  <span class="sc">**</span> insert code here <span class="sc">**</span></span>
+<span id="cb60-7"><a href="chapter-3.html#cb60-7" tabindex="-1"></a>}</span>
+<span id="cb60-8"><a href="chapter-3.html#cb60-8" tabindex="-1"></a></span>
+<span id="cb60-9"><a href="chapter-3.html#cb60-9" tabindex="-1"></a>matpow2 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
+<span id="cb60-10"><a href="chapter-3.html#cb60-10" tabindex="-1"></a>  <span class="co"># as above, but based on the eigen-decomposition of A</span></span>
+<span id="cb60-11"><a href="chapter-3.html#cb60-11" tabindex="-1"></a>  <span class="sc">**</span> insert code here <span class="sc">**</span></span>
+<span id="cb60-12"><a href="chapter-3.html#cb60-12" tabindex="-1"></a>}</span></code></pre></div>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+<div id="challenges-iii-1" class="section level3 hasAnchor">
+<h3>Challenges III<a href="chapter-3.html#challenges-iii-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider the following code to generate 100 replicates of three-dimensional data, the <span class="math inline">\(100 \times 3\)</span> matrix <code>Y</code>.</li>
+</ol>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="chapter-3.html#cb61-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb61-2"><a href="chapter-3.html#cb61-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e2</span></span>
+<span id="cb61-3"><a href="chapter-3.html#cb61-3" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">chol</span>(<span class="fu">toeplitz</span>(.<span class="dv">9</span> <span class="sc">^</span> (<span class="dv">1</span><span class="sc">:</span>p <span class="sc">-</span> <span class="dv">1</span>)))</span>
+<span id="cb61-4"><a href="chapter-3.html#cb61-4" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">crossprod</span>(C, <span class="fu">matrix</span>(<span class="fu">rnorm</span>(p <span class="sc">*</span> n), p)))</span></code></pre></div>
+<p>Find the three principal components of the <span class="math inline">\(3 \times 3\)</span> correlation matrix of <code>Y</code> and confirm these with <code>prcomp()</code>.</p>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+</div>
+<div id="week-5-lecture-2" class="section level2 hasAnchor">
+<h2>Week 5 lecture 2<a href="chapter-3.html#week-5-lecture-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-1" class="section level3 hasAnchor">
+<h3>Challenges 1<a href="chapter-3.html#challenges-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider Example 3.22 from the lecture notes. Use the SVD of <span class="math inline">\(\boldsymbol{\Sigma}\)</span> to solve <span class="math inline">\(\boldsymbol{\Sigma} \mathbf{z} = \mathbf{y} - \boldsymbol{\mu}\)</span> for <span class="math inline">\(\mathbf{z}\)</span>, where</li>
+</ol>
+<p><span class="math display">\[
+{\bf y} =
+\left(
+\begin{array}{c}
+0.7\\
+1.3\\
+2.6
+\end{array}
+\right),~~
+\boldsymbol{\mu} =
+\left(
+\begin{array}{c}
+1\\
+2\\
+3
+\end{array}
+\right)~~\text{and}~~
+\boldsymbol{\Sigma} =
+\left(
+\begin{array}{rrr}
+4 &amp; 2 &amp; 1\\
+2 &amp; 3 &amp; 2\\
+1 &amp; 2 &amp; 2\\
+\end{array}
+\right).
+\]</span></p>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+</div>
+<div id="week-5-lecture-3" class="section level2 hasAnchor">
+<h2>Week 5 lecture 3<a href="chapter-3.html#week-5-lecture-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-i-11" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-3.html#challenges-i-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Compute the QR decomposition of <span class="math inline">\(\mathbf{H}_4\)</span>, the <span class="math inline">\(4 \times 4\)</span> Hilbert matrix, in the form <span class="math inline">\(\mathbf{QR} = \mathbf{H}_4\)</span> by finding <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol style="list-style-type: decimal">
+<li>Use the QR decomposition to find <span class="math inline">\(|\text{det}(\mathbf{H}_4)|\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol style="list-style-type: decimal">
+<li>Use the QR decomposition to solve <span class="math inline">\(\mathbf{H}_4 \mathbf{x} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{x}\)</span> where
+<span class="math display">\[
+\mathbf{b} = \begin{pmatrix}0.04 \\3.19 \\3.26 \\1.93 \\\end{pmatrix}.
+\]</span></li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+<div id="challenges-ii-8" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-3.html#challenges-ii-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Generate an arbitrary <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> comprising positive values for <span class="math inline">\(m = 5\)</span> and <span class="math inline">\(n = 3\)</span>. Then use function <code>qr()</code> in <code>R</code> to find <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> of its QR decomposition. Confirm that <span class="math inline">\(\mathbf{QR} = \mathbf{A}\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Investigate what <code>R</code> has actually given with <code>qr()</code>, given Theorem 3.3.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Calculate the SVD of your matrix <span class="math inline">\(\mathbf{A}\)</span> from Question 1, and confirm that the absolute value of the product of the diagonal entries of <span class="math inline">\(\mathbf{R}\)</span> matches the product of the singular values of its SVD.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li>Compute <span class="math inline">\(\mathbf{A}^{\text{T}}\mathbf{A}\)</span> and confirm that <span class="math inline">\(\mathbf{R}^{\text{T}}\mathbf{R} = \mathbf{A}^{\text{T}}\mathbf{A}\)</span>, so that <span class="math inline">\(\mathbf{R}\)</span> is a upper-triangular Cholesky decomposition of <span class="math inline">\(\mathbf{A}^{\text{T}}\mathbf{A}\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="5" style="list-style-type: decimal">
+<li>Compute the Cholesky decomposition <span class="math inline">\(\mathbf{LL}^{\text{T}} = \mathbf{A}^{\text{T}}\mathbf{A}\)</span>. What do you notice about the values of <span class="math inline">\(\mathbf{R}\)</span> and <span class="math inline">\(\mathbf{L}^{\text{T}}\)</span>?</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
 </details>
 </div>
 </div>
