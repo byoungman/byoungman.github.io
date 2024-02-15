@@ -193,7 +193,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-i-10"><i class="fa fa-check"></i>Challenges I</a></li>
 <li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-ii-7"><i class="fa fa-check"></i>Challenges II</a></li>
-<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-iii-1"><i class="fa fa-check"></i>Challenges III</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#week-5-lecture-2"><i class="fa fa-check"></i>Week 5 lecture 2</a>
 <ul>
@@ -590,22 +589,30 @@ and the following function can be used to form the Hilbert matrix</li>
 <strong>Solution</strong>
 </summary>
 </details>
-</div>
-<div id="challenges-iii-1" class="section level3 hasAnchor">
-<h3>Challenges III<a href="chapter-3.html#challenges-iii-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li>Consider the following code to generate 100 replicates of three-dimensional data, the <span class="math inline">\(100 \times 3\)</span> matrix <code>Y</code>.</li>
-</ol>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="chapter-3.html#cb61-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb61-2"><a href="chapter-3.html#cb61-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e2</span></span>
-<span id="cb61-3"><a href="chapter-3.html#cb61-3" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">chol</span>(<span class="fu">toeplitz</span>(.<span class="dv">9</span> <span class="sc">^</span> (<span class="dv">1</span><span class="sc">:</span>p <span class="sc">-</span> <span class="dv">1</span>)))</span>
-<span id="cb61-4"><a href="chapter-3.html#cb61-4" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">crossprod</span>(C, <span class="fu">matrix</span>(<span class="fu">rnorm</span>(p <span class="sc">*</span> n), p)))</span></code></pre></div>
-<p>Find the three principal components of the <span class="math inline">\(3 \times 3\)</span> correlation matrix of <code>Y</code> and confirm these with <code>prcomp()</code>.</p>
-<details>
-<summary>
-<strong>Solution</strong>
-</summary>
-</details>
+<!-- ### Challenges III -->
+<!-- 1. Consider the following code to generate 100 replicates of three-dimensional data, the $100 \times 3$ matrix `Y`. -->
+<!-- ```{r} -->
+<!-- p <- 3 -->
+<!-- n <- 1e2 -->
+<!-- C <- chol(toeplitz(.9 ^ (1:p - 1))) -->
+<!-- Y <- t(crossprod(C, matrix(rnorm(p * n), p))) -->
+<!-- ``` -->
+<!-- Find the three principal components of the $3 \times 3$ correlation matrix of `Y` and confirm these with `prcomp()`. -->
+<!-- <details><summary>**Solution**</summary> -->
+<!-- ```{r, eval = FALSE, echo = week > w0} -->
+<!-- corY <- cor(Y) -->
+<!-- eA <- eigen(corY) -->
+<!-- A <- eA$vectors -->
+<!-- # principal components -->
+<!-- pcs <- Y %*% A -->
+<!-- colnames(pcs) <- paste('PC', 1:4, sep = '') -->
+<!-- head(pcs) -->
+<!-- # prcomp() -->
+<!-- pr_fit <- prcomp(Y, center = TRUE, scale = TRUE) -->
+<!-- summary(pr_fit) -->
+<!-- plot(pr_fit) -->
+<!-- ``` -->
+<!-- </details> -->
 </div>
 </div>
 <div id="week-5-lecture-2" class="section level2 hasAnchor">
