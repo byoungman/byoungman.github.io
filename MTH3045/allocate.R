@@ -17,7 +17,7 @@ allocation <- function(x) {
                         "f_3", "f_4", "f_1", "f_3", "f_2", "f_1", "f_2", "f_3", "f_4", 
                         "f_2", "f_3", "f_4"), dim = c(44L, 3L), dimnames = list(NULL, 
                                                                                 c("id", "Q2a and Q3", "Q2c")))
-  yz <- as.integer(alloc3[alloc3[, 1] == x, 2:3])
+  yz <- as.integer(alloc3[alloc3[, 1] == as,character(x), 2:3])
   cat(paste('You candidate number is ', sprintf('%06d', x), '.', sep = ''))
   cat(paste('\nFor Question 2(a) and 3 use ', yz[1], '].', sep = ''))
   cat(paste('\nFor Question 2(c) use ', yz[2], '].', sep = ''))
