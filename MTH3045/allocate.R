@@ -9,9 +9,9 @@ allocation <- function(x) {
                         2, 1, 3, 1, 1, 3, 2, 3, 1, 1, 1, 1, 2, 3, 1, 3, 2, 3, 4, 2, 1, 
                         2, 1, 3, 3, 2, 3, 3, 2, 2, 4, 4, 4, 1, 4, 4, 3, 1, 3, 2, 3, 2, 
                         2, 2, 3, 1, 2, 3, 4, 1, 3, 2, 1, 2, 3, 4, 2, 3, 4), dim = c(44L, 
-                                                                                    3L), dimnames = list(NULL, c("id", "Q2a", "Q2c")))
+                                                                                    3L), dimnames = list(NULL, c("id", "Q2a, Q3", "Q2c")))
   yz <- as.integer(alloc3[alloc3[, 1] == x, 2:3])
   cat(paste('You candidate number is ', sprintf('%06d', x), '.', sep = ''))
-  cat(paste('\nFor Question 2(a) use b[', yz[1], '].', sep = ''))
+  cat(paste('\nFor Question 2(a) and 3 use b[', yz[1], '].', sep = ''))
   cat(paste('\nFor Question 2(c) use f[', yz[2], '].', sep = ''))
 }
