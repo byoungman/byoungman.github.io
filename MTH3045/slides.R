@@ -36,8 +36,23 @@ dmvn3 <- function(y, mu, Sigma, log = TRUE) {
   res <- y - mu
   L <- t(chol(Sigma))
   out <- - sum(log(diag(L))) - 0.5 * p * log(2 * pi) -
-    0.5 * sum(forwardsolve(L, res)ˆ2)
+    0.5 * sum(forwardsolve(L, res)^2)
   if (!log)
     out <- exp(out)
   out
+}
+
+fd <- function(x, f, delta = 1e-6, ...) {
+  # Function to evaluate derivative w.r.t. vector by finite-differencing
+  # x is a p-vector
+  # fn is the function for which the derivative is being calculated
+  # delta is the finite-differencing step, which defaults to 10ˆ{-6}
+  # returns a vector of length x
+  f0 <- f(x, ...)
+  p <- length(x)
+  f1 <- numeric(p)
+  for (i in 1:p) {
+    ei <- replace(numeric(p), i, 1)
+    f1[i] <- f(x + delta * ei, ...)
+  }
 }
