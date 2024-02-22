@@ -208,6 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-i-13"><i class="fa fa-check"></i>Challenges I</a></li>
 <li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-ii-10"><i class="fa fa-check"></i>Challenges II</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-iii-1"><i class="fa fa-check"></i>Challenges III</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html"><i class="fa fa-check"></i>Chapter 4</a>
@@ -956,6 +957,24 @@ and <span class="math inline">\(\mathbf{H}_8\)</span> is the <span class="math i
 <summary>
 <strong>Solution</strong>
 </summary>
+</details>
+</div>
+<div id="challenges-iii-1" class="section level3 hasAnchor">
+<h3>Challenges III<a href="chapter-3.html#challenges-iii-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider the <span class="math inline">\(MVN_p(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span> likelihood’s Mahalanobis distance, i.e.
+<span class="math display">\[
+g(\mathbf{y}) = (\mathbf{y} - \boldsymbol{\mu})^{\text{T}}\boldsymbol{\Sigma}^{-1}(\mathbf{y} - \boldsymbol{\mu}).
+\]</span>
+Find <span class="math inline">\(\dfrac{\partial g(\mathbf{y}) }{\partial \mathbf{y}}\)</span> and <span class="math inline">\(\dfrac{\partial^2 g(\mathbf{y})}{\partial \mathbf{y} \partial \mathbf{y}^{\text{T}}}\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p><span class="math display">\[
+\dfrac{\partial g(\mathbf{y}) }{\partial \mathbf{y}} = 2 \boldsymbol{\Sigma}^{-1}(\mathbf{y} - \boldsymbol{\mu}),~~\dfrac{\partial^2 g(\mathbf{y}) }{\partial \mathbf{y}^2} = 2 \boldsymbol{\Sigma}^{-1}.
+\]</span></p>
 </details>
 </div>
 </div>

@@ -16,6 +16,10 @@ all.equal(Q %*% R, A)
 
 # no code given
 
+### q3
+
+
+
 ### q4
 
 svdA <- svd(A)
