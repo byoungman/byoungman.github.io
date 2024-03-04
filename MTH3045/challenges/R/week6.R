@@ -131,7 +131,7 @@ loglik_d2(2, y0)
 (loglik(2 + 1e-6, y0) - loglik(2, y0)) / 1e-6
 loglik_d1(2, y0)
 
-# lecture 3
+# Week 6 lecture 3
 
 ## Challenges I
 
@@ -153,9 +153,38 @@ I0 <- sqrt(2 * pi) * (pnorm(2) - .5)
 rel_err <- abs((I0 - I_hat) / I0)
 100 * rel_err
 
+## Challenges II
 
+### Q1
 
+f <- function(x) exp(-x^2/2)
+N <- 10
+a <- 0
+b <- 2
+h <- (b - a) / N
+simpson <- f(a) + f(b)
+x1i <- a + h * (2 * (1:N) - 1) / 2
+simpson <- simpson + 4 * sum(f(x1i))
+x2i <- a + h * (1:(N - 1))
+simpson <- simpson + 2 * sum(f(x2i))
+simpson <- h * simpson / 6
 
+### Q2
 
+true <- sqrt(2 * pi) * (pnorm(b) - .5)
+rel_err <- abs((true - simpson) / true)
+rel_err
 
+## Challenges III
 
+### Q1
+
+f <- function(x) exp(-x^2/2)
+N <- 7
+gq <- pracma::gaussLegendre(N, 0, 2)
+I_hat <- sum(gq$w * f(gq$x))
+
+### Q2
+
+true <- sqrt(2 * pi) * (pnorm(2) - .5)
+rel_err <- abs((true - I_hat) / true)
