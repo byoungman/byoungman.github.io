@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 | MTH3045: Statistical Computing: Challenges</title>
   <meta name="description" content="Chapter 2 | MTH3045: Statistical Computing: Challenges" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 | MTH3045: Statistical Computing: Challenges" />
   <meta property="og:type" content="book" />
@@ -118,6 +118,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -235,6 +239,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-8-lecture-3"><i class="fa fa-check"></i>Week 8 lecture 3</a>
 <ul>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenge-i"><i class="fa fa-check"></i>Challenge I</a></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenge-ii"><i class="fa fa-check"></i>Challenge II</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-1"><i class="fa fa-check"></i>Week 9 lecture 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-18"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-2"><i class="fa fa-check"></i>Week 9 lecture 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-19"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-ii-14"><i class="fa fa-check"></i>Challenges II</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-3"><i class="fa fa-check"></i>Week 9 lecture 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-20"><i class="fa fa-check"></i>Challenges I</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -265,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="chapter-2.html#cb6-1" tabindex="-1"></a><span class="co"># bookwork</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="chapter-2.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bookwork</span></span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Repeat the calculation above using <code>R</code>. [Hint: consider forming a vector for <span class="math inline">\((a_0, a_1, a_2)^\text{T}\)</span> and another for <span class="math inline">\((B^0, B^1, B^2)\)</span>]</li>
@@ -274,17 +292,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chapter-2.html#cb7-1" tabindex="-1"></a>conv2dec <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
-<span id="cb7-2"><a href="chapter-2.html#cb7-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(x, <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
-<span id="cb7-3"><a href="chapter-2.html#cb7-3" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span><span class="dv">0</span></span>
-<span id="cb7-4"><a href="chapter-2.html#cb7-4" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
-<span id="cb7-5"><a href="chapter-2.html#cb7-5" tabindex="-1"></a>}</span>
-<span id="cb7-6"><a href="chapter-2.html#cb7-6" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="chapter-2.html#cb7-7" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&#39;101&#39;</span></span>
-<span id="cb7-8"><a href="chapter-2.html#cb7-8" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">2</span>)</span>
-<span id="cb7-9"><a href="chapter-2.html#cb7-9" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">3</span>)</span>
-<span id="cb7-10"><a href="chapter-2.html#cb7-10" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">4</span>)</span>
-<span id="cb7-11"><a href="chapter-2.html#cb7-11" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chapter-2.html#cb7-1" aria-hidden="true" tabindex="-1"></a>conv2dec <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
+<span id="cb7-2"><a href="chapter-2.html#cb7-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(x, <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb7-3"><a href="chapter-2.html#cb7-3" aria-hidden="true" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span><span class="dv">0</span></span>
+<span id="cb7-4"><a href="chapter-2.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
+<span id="cb7-5"><a href="chapter-2.html#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-6"><a href="chapter-2.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="chapter-2.html#cb7-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&#39;101&#39;</span></span>
+<span id="cb7-8"><a href="chapter-2.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">2</span>)</span>
+<span id="cb7-9"><a href="chapter-2.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">3</span>)</span>
+<span id="cb7-10"><a href="chapter-2.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">4</span>)</span>
+<span id="cb7-11"><a href="chapter-2.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">conv2dec</span>(x, <span class="dv">5</span>)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Repeat the above for 101.101</li>
@@ -293,20 +311,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="chapter-2.html#cb8-1" tabindex="-1"></a>conv2dec2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
-<span id="cb8-2"><a href="chapter-2.html#cb8-2" tabindex="-1"></a>a0 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x, <span class="st">&#39;[.]&#39;</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb8-3"><a href="chapter-2.html#cb8-3" tabindex="-1"></a>a_left <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">1</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
-<span id="cb8-4"><a href="chapter-2.html#cb8-4" tabindex="-1"></a>a_right <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">2</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
-<span id="cb8-5"><a href="chapter-2.html#cb8-5" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a_left, a_right)</span>
-<span id="cb8-6"><a href="chapter-2.html#cb8-6" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a_left) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span>(<span class="sc">-</span><span class="fu">length</span>(a_right))</span>
-<span id="cb8-7"><a href="chapter-2.html#cb8-7" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
-<span id="cb8-8"><a href="chapter-2.html#cb8-8" tabindex="-1"></a>}</span>
-<span id="cb8-9"><a href="chapter-2.html#cb8-9" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="chapter-2.html#cb8-10" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="st">&#39;101.101&#39;</span></span>
-<span id="cb8-11"><a href="chapter-2.html#cb8-11" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">2</span>)</span>
-<span id="cb8-12"><a href="chapter-2.html#cb8-12" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">3</span>)</span>
-<span id="cb8-13"><a href="chapter-2.html#cb8-13" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">4</span>)</span>
-<span id="cb8-14"><a href="chapter-2.html#cb8-14" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="chapter-2.html#cb8-1" aria-hidden="true" tabindex="-1"></a>conv2dec2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, B) {</span>
+<span id="cb8-2"><a href="chapter-2.html#cb8-2" aria-hidden="true" tabindex="-1"></a>a0 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x, <span class="st">&#39;[.]&#39;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb8-3"><a href="chapter-2.html#cb8-3" aria-hidden="true" tabindex="-1"></a>a_left <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">1</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb8-4"><a href="chapter-2.html#cb8-4" aria-hidden="true" tabindex="-1"></a>a_right <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">strsplit</span>(a0[<span class="dv">2</span>], <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb8-5"><a href="chapter-2.html#cb8-5" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a_left, a_right)</span>
+<span id="cb8-6"><a href="chapter-2.html#cb8-6" aria-hidden="true" tabindex="-1"></a>pows <span class="ot">&lt;-</span> (<span class="fu">length</span>(a_left) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">:</span>(<span class="sc">-</span><span class="fu">length</span>(a_right))</span>
+<span id="cb8-7"><a href="chapter-2.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> B<span class="sc">^</span>pows)</span>
+<span id="cb8-8"><a href="chapter-2.html#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-9"><a href="chapter-2.html#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="chapter-2.html#cb8-10" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="st">&#39;101.101&#39;</span></span>
+<span id="cb8-11"><a href="chapter-2.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">2</span>)</span>
+<span id="cb8-12"><a href="chapter-2.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">3</span>)</span>
+<span id="cb8-13"><a href="chapter-2.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">4</span>)</span>
+<span id="cb8-14"><a href="chapter-2.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">conv2dec2</span>(x2, <span class="dv">5</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="week-1-lecture-3" class="section level2 hasAnchor">
@@ -320,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chapter-2.html#cb9-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chapter-2.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the <em>smallest</em> value of <span class="math inline">\(F\)</span> that can be represented with single-precision arithmetic, given <span class="math inline">\(F = \sum_{i = 1}^{23} b_{i + 9} 2^{-i}\)</span></li>
@@ -329,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="chapter-2.html#cb10-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">23</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="chapter-2.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">23</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii" class="section level3 hasAnchor">
@@ -341,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chapter-2.html#cb11-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chapter-2.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span><span class="sc">^</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the <em>smallest</em> value of <span class="math inline">\(F\)</span> that can be represented with double-precision arithmetic, given <span class="math inline">\(F = \sum_{i = 1}^{52} b_{i + 9} 2^{-i}\)</span></li>
@@ -350,7 +368,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="chapter-2.html#cb12-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">52</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="chapter-2.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">52</span>)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -362,21 +380,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Find to the nearest order of magnitude the smallest number that <code>R</code> can represent.</li>
 </ul>
 <p>[Hint: the following code</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chapter-2.html#cb13-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
-<span id="cb13-2"><a href="chapter-2.html#cb13-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb13-3"><a href="chapter-2.html#cb13-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> .<span class="dv">1</span> <span class="sc">*</span> a</span>
-<span id="cb13-4"><a href="chapter-2.html#cb13-4" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
-<span id="cb13-5"><a href="chapter-2.html#cb13-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chapter-2.html#cb13-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
+<span id="cb13-2"><a href="chapter-2.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb13-3"><a href="chapter-2.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> .<span class="dv">1</span> <span class="sc">*</span> a</span>
+<span id="cb13-4"><a href="chapter-2.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
+<span id="cb13-5"><a href="chapter-2.html#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>reduces <code>a</code> by a factor a 10, starting from 0.1, ten times.]</p>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="chapter-2.html#cb14-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
-<span id="cb14-2"><a href="chapter-2.html#cb14-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">330</span>) {</span>
-<span id="cb14-3"><a href="chapter-2.html#cb14-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> .<span class="dv">1</span> <span class="sc">*</span> a</span>
-<span id="cb14-4"><a href="chapter-2.html#cb14-4" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
-<span id="cb14-5"><a href="chapter-2.html#cb14-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="chapter-2.html#cb14-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
+<span id="cb14-2"><a href="chapter-2.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">330</span>) {</span>
+<span id="cb14-3"><a href="chapter-2.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> .<span class="dv">1</span> <span class="sc">*</span> a</span>
+<span id="cb14-4"><a href="chapter-2.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
+<span id="cb14-5"><a href="chapter-2.html#cb14-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-1" class="section level3 hasAnchor">
@@ -384,34 +402,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Consider</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chapter-2.html#cb15-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chapter-2.html#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span></code></pre></div>
 <p>Use the help files for functions <code>%%</code> and <code>%/%</code> together with <code>x</code> above to deduce what both operators do.</p>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chapter-2.html#cb16-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
-<span id="cb16-2"><a href="chapter-2.html#cb16-2" tabindex="-1"></a><span class="co"># %% 3 divides by three and then gives the remainder</span></span>
-<span id="cb16-3"><a href="chapter-2.html#cb16-3" tabindex="-1"></a>x <span class="sc">%%</span> <span class="dv">3</span></span>
-<span id="cb16-4"><a href="chapter-2.html#cb16-4" tabindex="-1"></a><span class="co"># %/% 3 divides by three and then gives the integer part</span></span>
-<span id="cb16-5"><a href="chapter-2.html#cb16-5" tabindex="-1"></a>x <span class="sc">%/%</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chapter-2.html#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
+<span id="cb16-2"><a href="chapter-2.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># %% 3 divides by three and then gives the remainder</span></span>
+<span id="cb16-3"><a href="chapter-2.html#cb16-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%%</span> <span class="dv">3</span></span>
+<span id="cb16-4"><a href="chapter-2.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># %/% 3 divides by three and then gives the integer part</span></span>
+<span id="cb16-5"><a href="chapter-2.html#cb16-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%/%</span> <span class="dv">3</span></span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Consider the function <code>range()</code> and the vector</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chapter-2.html#cb17-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">Inf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chapter-2.html#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">Inf</span>)</span></code></pre></div>
 <p>Use its help file to ascertain the difference between the following three calls.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chapter-2.html#cb18-1" tabindex="-1"></a><span class="fu">range</span>(x) </span>
-<span id="cb18-2"><a href="chapter-2.html#cb18-2" tabindex="-1"></a><span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-3"><a href="chapter-2.html#cb18-3" tabindex="-1"></a><span class="fu">range</span>(x, <span class="at">finite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chapter-2.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x) </span>
+<span id="cb18-2"><a href="chapter-2.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-3"><a href="chapter-2.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x, <span class="at">finite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chapter-2.html#cb19-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">Inf</span>)</span>
-<span id="cb19-2"><a href="chapter-2.html#cb19-2" tabindex="-1"></a><span class="fu">range</span>(x)                 <span class="co"># gives NA because x includes NA</span></span>
-<span id="cb19-3"><a href="chapter-2.html#cb19-3" tabindex="-1"></a><span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   <span class="co"># recognises that Inf is big and ignores the NA</span></span>
-<span id="cb19-4"><a href="chapter-2.html#cb19-4" tabindex="-1"></a><span class="fu">range</span>(x, <span class="at">finite =</span> <span class="cn">TRUE</span>)  <span class="co"># ignores the NA and Inf, i.e. anything non-finite</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chapter-2.html#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">Inf</span>)</span>
+<span id="cb19-2"><a href="chapter-2.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)                 <span class="co"># gives NA because x includes NA</span></span>
+<span id="cb19-3"><a href="chapter-2.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   <span class="co"># recognises that Inf is big and ignores the NA</span></span>
+<span id="cb19-4"><a href="chapter-2.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x, <span class="at">finite =</span> <span class="cn">TRUE</span>)  <span class="co"># ignores the NA and Inf, i.e. anything non-finite</span></span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Consider the help file for function <code>mean()</code>. What does its argument <code>trim</code> do? Generate a small sample of data and use this to confirm that it does what you expect.</li>
@@ -420,9 +438,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chapter-2.html#cb20-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb20-2"><a href="chapter-2.html#cb20-2" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
-<span id="cb20-3"><a href="chapter-2.html#cb20-3" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">trim =</span> .<span class="dv">1</span>) <span class="co"># calculate the mean from the middle 90% of the data</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chapter-2.html#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb20-2"><a href="chapter-2.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb20-3"><a href="chapter-2.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">trim =</span> .<span class="dv">1</span>) <span class="co"># calculate the mean from the middle 90% of the data</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -433,25 +451,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Compute the following to understand how <code>R</code> prioritises different symbols and operators</li>
 </ol>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="chapter-2.html#cb21-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb21-2"><a href="chapter-2.html#cb21-2" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb21-3"><a href="chapter-2.html#cb21-3" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="chapter-2.html#cb21-4" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span>
-<span id="cb21-5"><a href="chapter-2.html#cb21-5" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>)<span class="sc">^</span><span class="dv">3</span></span>
-<span id="cb21-6"><a href="chapter-2.html#cb21-6" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="chapter-2.html#cb21-7" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span></span>
-<span id="cb21-8"><a href="chapter-2.html#cb21-8" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="chapter-2.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb21-2"><a href="chapter-2.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb21-3"><a href="chapter-2.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="chapter-2.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb21-5"><a href="chapter-2.html#cb21-5" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>)<span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb21-6"><a href="chapter-2.html#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="chapter-2.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span></span>
+<span id="cb21-8"><a href="chapter-2.html#cb21-8" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chapter-2.html#cb22-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb22-2"><a href="chapter-2.html#cb22-2" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb22-3"><a href="chapter-2.html#cb22-3" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="chapter-2.html#cb22-4" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span>
-<span id="cb22-5"><a href="chapter-2.html#cb22-5" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="chapter-2.html#cb22-6" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="dv">3</span></span>
-<span id="cb22-7"><a href="chapter-2.html#cb22-7" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>)<span class="sc">*</span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chapter-2.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb22-2"><a href="chapter-2.html#cb22-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb22-3"><a href="chapter-2.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="chapter-2.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb22-5"><a href="chapter-2.html#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="chapter-2.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="dv">3</span></span>
+<span id="cb22-7"><a href="chapter-2.html#cb22-7" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>)<span class="sc">*</span><span class="dv">3</span></span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculate <span class="math inline">\(\mathbf{Ba}\)</span> and <span class="math inline">\(\mathbf{cB}\)</span> where
@@ -465,14 +483,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chapter-2.html#cb23-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb23-2"><a href="chapter-2.html#cb23-2" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb23-3"><a href="chapter-2.html#cb23-3" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>), <span class="dv">1</span>)</span>
-<span id="cb23-4"><a href="chapter-2.html#cb23-4" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="chapter-2.html#cb23-5" tabindex="-1"></a>B <span class="sc">%*%</span> a     <span class="co"># Ba</span></span>
-<span id="cb23-6"><a href="chapter-2.html#cb23-6" tabindex="-1"></a>c <span class="sc">%*%</span> B     <span class="co"># cB</span></span>
-<span id="cb23-7"><a href="chapter-2.html#cb23-7" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">t</span>(a)   <span class="co"># creates c as the tranpose of a</span></span>
-<span id="cb23-8"><a href="chapter-2.html#cb23-8" tabindex="-1"></a><span class="fu">t</span>(a) <span class="sc">%*%</span> B  <span class="co"># avoids creating c</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chapter-2.html#cb23-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb23-2"><a href="chapter-2.html#cb23-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb23-3"><a href="chapter-2.html#cb23-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>), <span class="dv">1</span>)</span>
+<span id="cb23-4"><a href="chapter-2.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="chapter-2.html#cb23-5" aria-hidden="true" tabindex="-1"></a>B <span class="sc">%*%</span> a     <span class="co"># Ba</span></span>
+<span id="cb23-6"><a href="chapter-2.html#cb23-6" aria-hidden="true" tabindex="-1"></a>c <span class="sc">%*%</span> B     <span class="co"># cB</span></span>
+<span id="cb23-7"><a href="chapter-2.html#cb23-7" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">t</span>(a)   <span class="co"># creates c as the tranpose of a</span></span>
+<span id="cb23-8"><a href="chapter-2.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(a) <span class="sc">%*%</span> B  <span class="co"># avoids creating c</span></span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Form a <code>list</code> in which the first element is a <span class="math inline">\(3 \times 6 \times 2\)</span> array, the second is a 4-vector, and the third is a <span class="math inline">\(4 \times 3\)</span> matrix, each of which are filled with random Uniform([-1, 1]) variates.</li>
@@ -481,12 +499,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chapter-2.html#cb24-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb24-2"><a href="chapter-2.html#cb24-2" tabindex="-1"></a>  <span class="fu">array</span>(<span class="fu">runif</span>(<span class="dv">36</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>)),</span>
-<span id="cb24-3"><a href="chapter-2.html#cb24-3" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb24-4"><a href="chapter-2.html#cb24-4" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">12</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">4</span>, <span class="dv">3</span>)</span>
-<span id="cb24-5"><a href="chapter-2.html#cb24-5" tabindex="-1"></a>)</span>
-<span id="cb24-6"><a href="chapter-2.html#cb24-6" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chapter-2.html#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb24-2"><a href="chapter-2.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">array</span>(<span class="fu">runif</span>(<span class="dv">36</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>)),</span>
+<span id="cb24-3"><a href="chapter-2.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb24-4"><a href="chapter-2.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">12</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb24-5"><a href="chapter-2.html#cb24-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-6"><a href="chapter-2.html#cb24-6" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-2" class="section level3 hasAnchor">
@@ -498,13 +516,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chapter-2.html#cb25-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="dv">10</span>, <span class="dv">20</span>)</span>
-<span id="cb25-2"><a href="chapter-2.html#cb25-2" tabindex="-1"></a><span class="fu">apply</span>(x, <span class="dv">1</span>, median)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chapter-2.html#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="dv">10</span>, <span class="dv">20</span>)</span>
+<span id="cb25-2"><a href="chapter-2.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x, <span class="dv">1</span>, median)</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Complete the following</li>
 </ol>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chapter-2.html#cb26-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="cf">function</span>(i) ...)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chapter-2.html#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="cf">function</span>(i) ...)</span></code></pre></div>
 <p>to a form a four-element <code>list</code> in which each element comprises a vector of variates generated according to
 <span class="math display">\[
 Y_1, \ldots, Y_N \text{ with  } N - 1 \sim \text{Poisson}(2)\text{ and }Y_i \sim N(3, 2^2),~i = 1, \ldots, N
@@ -513,8 +531,8 @@ Y_1, \ldots, Y_N \text{ with  } N - 1 \sim \text{Poisson}(2)\text{ and }Y_i \sim
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="chapter-2.html#cb27-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="cf">function</span>(i) <span class="fu">rnorm</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">rpois</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">2</span>))</span>
-<span id="cb27-2"><a href="chapter-2.html#cb27-2" tabindex="-1"></a><span class="fu">lapply</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">rpois</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="cf">function</span>(x) <span class="fu">rnorm</span>(x, <span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="chapter-2.html#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="cf">function</span>(i) <span class="fu">rnorm</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">rpois</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb27-2"><a href="chapter-2.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">rpois</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="cf">function</span>(x) <span class="fu">rnorm</span>(x, <span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Find the length of each vector in the <code>list</code>.</li>
@@ -523,7 +541,7 @@ Y_1, \ldots, Y_N \text{ with  } N - 1 \sim \text{Poisson}(2)\text{ and }Y_i \sim
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chapter-2.html#cb28-1" tabindex="-1"></a><span class="fu">sapply</span>(x, length)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chapter-2.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x, length)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-iii" class="section level3 hasAnchor">
@@ -531,17 +549,17 @@ Y_1, \ldots, Y_N \text{ with  } N - 1 \sim \text{Poisson}(2)\text{ and }Y_i \sim
 <ol start="4" style="list-style-type: decimal">
 <li>Consider the following <code>list</code></li>
 </ol>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="chapter-2.html#cb29-1" tabindex="-1"></a>lst2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>), <span class="fu">list</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="chapter-2.html#cb29-1" aria-hidden="true" tabindex="-1"></a>lst2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>), <span class="fu">list</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>))</span></code></pre></div>
 <p>What’s the difference between the following?</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chapter-2.html#cb30-1" tabindex="-1"></a><span class="fu">unlist</span>(lst2)</span>
-<span id="cb30-2"><a href="chapter-2.html#cb30-2" tabindex="-1"></a><span class="fu">unlist</span>(lst2, <span class="at">recursive =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chapter-2.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(lst2)</span>
+<span id="cb30-2"><a href="chapter-2.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(lst2, <span class="at">recursive =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="chapter-2.html#cb31-1" tabindex="-1"></a><span class="co"># THe first returns a list of vectors.</span></span>
-<span id="cb31-2"><a href="chapter-2.html#cb31-2" tabindex="-1"></a><span class="co"># The second returns a vector, i.e. drops the structure</span></span>
-<span id="cb31-3"><a href="chapter-2.html#cb31-3" tabindex="-1"></a><span class="co"># of what&#39;s in each element of the list.</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="chapter-2.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># THe first returns a list of vectors.</span></span>
+<span id="cb31-2"><a href="chapter-2.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The second returns a vector, i.e. drops the structure</span></span>
+<span id="cb31-3"><a href="chapter-2.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># of what&#39;s in each element of the list.</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -568,18 +586,18 @@ Y_1, \ldots, Y_N \text{ with  } N - 1 \sim \text{Poisson}(2)\text{ and }Y_i \sim
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chapter-2.html#cb32-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb32-2"><a href="chapter-2.html#cb32-2" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="chapter-2.html#cb32-3" tabindex="-1"></a><span class="co"># as a loop</span></span>
-<span id="cb32-4"><a href="chapter-2.html#cb32-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
-<span id="cb32-5"><a href="chapter-2.html#cb32-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb32-6"><a href="chapter-2.html#cb32-6" tabindex="-1"></a>  x[i] <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">05</span>, .<span class="dv">05</span>, .<span class="dv">2</span>, .<span class="dv">2</span>, .<span class="dv">4</span>))</span>
-<span id="cb32-7"><a href="chapter-2.html#cb32-7" tabindex="-1"></a>}</span>
-<span id="cb32-8"><a href="chapter-2.html#cb32-8" tabindex="-1"></a>x</span>
-<span id="cb32-9"><a href="chapter-2.html#cb32-9" tabindex="-1"></a></span>
-<span id="cb32-10"><a href="chapter-2.html#cb32-10" tabindex="-1"></a><span class="co"># more tidily with sample()</span></span>
-<span id="cb32-11"><a href="chapter-2.html#cb32-11" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, n, <span class="at">prob =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">05</span>, .<span class="dv">05</span>, .<span class="dv">2</span>, .<span class="dv">2</span>, .<span class="dv">4</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-12"><a href="chapter-2.html#cb32-12" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chapter-2.html#cb32-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb32-2"><a href="chapter-2.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="chapter-2.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as a loop</span></span>
+<span id="cb32-4"><a href="chapter-2.html#cb32-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb32-5"><a href="chapter-2.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb32-6"><a href="chapter-2.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  x[i] <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">05</span>, .<span class="dv">05</span>, .<span class="dv">2</span>, .<span class="dv">2</span>, .<span class="dv">4</span>))</span>
+<span id="cb32-7"><a href="chapter-2.html#cb32-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-8"><a href="chapter-2.html#cb32-8" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb32-9"><a href="chapter-2.html#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="chapter-2.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># more tidily with sample()</span></span>
+<span id="cb32-11"><a href="chapter-2.html#cb32-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, n, <span class="at">prob =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">05</span>, .<span class="dv">05</span>, .<span class="dv">2</span>, .<span class="dv">2</span>, .<span class="dv">4</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-12"><a href="chapter-2.html#cb32-12" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-3" class="section level3 hasAnchor">
@@ -591,11 +609,11 @@ Y_1, \ldots, Y_N \text{ with  } N - 1 \sim \text{Poisson}(2)\text{ and }Y_i \sim
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="chapter-2.html#cb33-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="dv">0</span>)</span>
-<span id="cb33-2"><a href="chapter-2.html#cb33-2" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">sum</span>(x <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
-<span id="cb33-3"><a href="chapter-2.html#cb33-3" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">05</span>, .<span class="dv">05</span>, .<span class="dv">2</span>, .<span class="dv">2</span>, .<span class="dv">4</span>)))</span>
-<span id="cb33-4"><a href="chapter-2.html#cb33-4" tabindex="-1"></a>}</span>
-<span id="cb33-5"><a href="chapter-2.html#cb33-5" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="chapter-2.html#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="dv">0</span>)</span>
+<span id="cb33-2"><a href="chapter-2.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">sum</span>(x <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
+<span id="cb33-3"><a href="chapter-2.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">05</span>, .<span class="dv">05</span>, .<span class="dv">2</span>, .<span class="dv">2</span>, .<span class="dv">4</span>)))</span>
+<span id="cb33-4"><a href="chapter-2.html#cb33-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-5"><a href="chapter-2.html#cb33-5" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -614,11 +632,11 @@ Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</s
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chapter-2.html#cb34-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">35</span></span>
-<span id="cb34-2"><a href="chapter-2.html#cb34-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb34-3"><a href="chapter-2.html#cb34-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
-<span id="cb34-4"><a href="chapter-2.html#cb34-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">4</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">3</span>)) z[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(y[i <span class="sc">+</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)])</span>
-<span id="cb34-5"><a href="chapter-2.html#cb34-5" tabindex="-1"></a><span class="fu">matplot</span>(<span class="fu">seq_len</span>(n), <span class="fu">cbind</span>(y, z))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chapter-2.html#cb34-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">35</span></span>
+<span id="cb34-2"><a href="chapter-2.html#cb34-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb34-3"><a href="chapter-2.html#cb34-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb34-4"><a href="chapter-2.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">4</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">3</span>)) z[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(y[i <span class="sc">+</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)])</span>
+<span id="cb34-5"><a href="chapter-2.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(<span class="fu">seq_len</span>(n), <span class="fu">cbind</span>(y, z))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>The function <code>filter()</code> can do this in a vectorised way. Obtain the same result using <code>filter()</code>. [Hint: the examples for <code>filter()</code> may help illustrate how its arguments work.]</li>
@@ -627,12 +645,12 @@ Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</s
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="chapter-2.html#cb35-1" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(y, <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>, <span class="dv">7</span>))</span>
-<span id="cb35-2"><a href="chapter-2.html#cb35-2" tabindex="-1"></a><span class="fu">all.equal</span>(z, z2)</span>
-<span id="cb35-3"><a href="chapter-2.html#cb35-3" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="chapter-2.html#cb35-4" tabindex="-1"></a>z3 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(z2)</span>
-<span id="cb35-5"><a href="chapter-2.html#cb35-5" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="chapter-2.html#cb35-6" tabindex="-1"></a><span class="fu">all.equal</span>(z, z3)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="chapter-2.html#cb35-1" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(y, <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>, <span class="dv">7</span>))</span>
+<span id="cb35-2"><a href="chapter-2.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(z, z2)</span>
+<span id="cb35-3"><a href="chapter-2.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="chapter-2.html#cb35-4" aria-hidden="true" tabindex="-1"></a>z3 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(z2)</span>
+<span id="cb35-5"><a href="chapter-2.html#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="chapter-2.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(z, z3)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Familiarise yourself with the functions <code>any()</code> and <code>all()</code>.</li>
@@ -641,8 +659,8 @@ Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</s
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chapter-2.html#cb36-1" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">runif</span>(<span class="dv">10</span>) <span class="sc">&gt;</span> .<span class="dv">5</span>)</span>
-<span id="cb36-2"><a href="chapter-2.html#cb36-2" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">runif</span>(<span class="dv">10</span>) <span class="sc">&gt;</span> .<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chapter-2.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">runif</span>(<span class="dv">10</span>) <span class="sc">&gt;</span> .<span class="dv">5</span>)</span>
+<span id="cb36-2"><a href="chapter-2.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">runif</span>(<span class="dv">10</span>) <span class="sc">&gt;</span> .<span class="dv">5</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-4" class="section level3 hasAnchor">
@@ -650,18 +668,18 @@ Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</s
 <ol style="list-style-type: decimal">
 <li>Create the following function</li>
 </ol>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="chapter-2.html#cb37-1" tabindex="-1"></a>browser_test <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb37-2"><a href="chapter-2.html#cb37-2" tabindex="-1"></a>  x1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb37-3"><a href="chapter-2.html#cb37-3" tabindex="-1"></a>  x2 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb37-4"><a href="chapter-2.html#cb37-4" tabindex="-1"></a>  x3 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb37-5"><a href="chapter-2.html#cb37-5" tabindex="-1"></a>  x4 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb37-6"><a href="chapter-2.html#cb37-6" tabindex="-1"></a>  x5 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb37-7"><a href="chapter-2.html#cb37-7" tabindex="-1"></a>  x6 <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb37-8"><a href="chapter-2.html#cb37-8" tabindex="-1"></a>  <span class="fu">browser</span>()</span>
-<span id="cb37-9"><a href="chapter-2.html#cb37-9" tabindex="-1"></a>  x7 <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb37-10"><a href="chapter-2.html#cb37-10" tabindex="-1"></a>  x8 <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
-<span id="cb37-11"><a href="chapter-2.html#cb37-11" tabindex="-1"></a>  <span class="fu">c</span>(x1, x2, x3, x4, x5, x6, x7, x8)</span>
-<span id="cb37-12"><a href="chapter-2.html#cb37-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="chapter-2.html#cb37-1" aria-hidden="true" tabindex="-1"></a>browser_test <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb37-2"><a href="chapter-2.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  x1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb37-3"><a href="chapter-2.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  x2 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb37-4"><a href="chapter-2.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  x3 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb37-5"><a href="chapter-2.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  x4 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb37-6"><a href="chapter-2.html#cb37-6" aria-hidden="true" tabindex="-1"></a>  x5 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb37-7"><a href="chapter-2.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  x6 <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb37-8"><a href="chapter-2.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">browser</span>()</span>
+<span id="cb37-9"><a href="chapter-2.html#cb37-9" aria-hidden="true" tabindex="-1"></a>  x7 <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb37-10"><a href="chapter-2.html#cb37-10" aria-hidden="true" tabindex="-1"></a>  x8 <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
+<span id="cb37-11"><a href="chapter-2.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(x1, x2, x3, x4, x5, x6, x7, x8)</span>
+<span id="cb37-12"><a href="chapter-2.html#cb37-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>and then run <code>browser_test(-1)</code>.</p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Then type <code>x1</code>, <code>x2</code>, <code>x3</code>, <code>x4</code>, <code>x5</code> and <code>x6</code>.</p></li>
@@ -673,7 +691,7 @@ Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</s
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chapter-2.html#cb38-1" tabindex="-1"></a><span class="co"># No sketch solutions for Q2-5 given.</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chapter-2.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No sketch solutions for Q2-5 given.</span></span></code></pre></div>
 </details>
 <p>To exit <code>browser()</code> mode type and execute <code>Q</code>.</p>
 </div>
@@ -685,54 +703,54 @@ Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</s
 <ol style="list-style-type: decimal">
 <li>Confirm that the following give the same answer, and then benchmark which is quicker.</li>
 </ol>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="chapter-2.html#cb39-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
-<span id="cb39-2"><a href="chapter-2.html#cb39-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
-<span id="cb39-3"><a href="chapter-2.html#cb39-3" tabindex="-1"></a><span class="fu">sort</span>(y)[<span class="dv">1</span>]</span>
-<span id="cb39-4"><a href="chapter-2.html#cb39-4" tabindex="-1"></a><span class="fu">min</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="chapter-2.html#cb39-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb39-2"><a href="chapter-2.html#cb39-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb39-3"><a href="chapter-2.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y)[<span class="dv">1</span>]</span>
+<span id="cb39-4"><a href="chapter-2.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(y)</span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chapter-2.html#cb40-1" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
-<span id="cb40-2"><a href="chapter-2.html#cb40-2" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="chapter-2.html#cb40-3" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb40-4"><a href="chapter-2.html#cb40-4" tabindex="-1"></a>  <span class="fu">apply</span>(A, <span class="dv">1</span>, sum),</span>
-<span id="cb40-5"><a href="chapter-2.html#cb40-5" tabindex="-1"></a>  <span class="fu">rowSums</span>(A)</span>
-<span id="cb40-6"><a href="chapter-2.html#cb40-6" tabindex="-1"></a>)</span>
-<span id="cb40-7"><a href="chapter-2.html#cb40-7" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="chapter-2.html#cb40-8" tabindex="-1"></a><span class="co"># minima</span></span>
-<span id="cb40-9"><a href="chapter-2.html#cb40-9" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
-<span id="cb40-10"><a href="chapter-2.html#cb40-10" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fl">1e3</span>)</span>
-<span id="cb40-11"><a href="chapter-2.html#cb40-11" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb40-12"><a href="chapter-2.html#cb40-12" tabindex="-1"></a>  <span class="fu">sort</span>(y)[<span class="dv">1</span>],</span>
-<span id="cb40-13"><a href="chapter-2.html#cb40-13" tabindex="-1"></a>  <span class="fu">min</span>(y)</span>
-<span id="cb40-14"><a href="chapter-2.html#cb40-14" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chapter-2.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
+<span id="cb40-2"><a href="chapter-2.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="chapter-2.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb40-4"><a href="chapter-2.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(A, <span class="dv">1</span>, sum),</span>
+<span id="cb40-5"><a href="chapter-2.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(A)</span>
+<span id="cb40-6"><a href="chapter-2.html#cb40-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-7"><a href="chapter-2.html#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="chapter-2.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># minima</span></span>
+<span id="cb40-9"><a href="chapter-2.html#cb40-9" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb40-10"><a href="chapter-2.html#cb40-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fl">1e3</span>)</span>
+<span id="cb40-11"><a href="chapter-2.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb40-12"><a href="chapter-2.html#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort</span>(y)[<span class="dv">1</span>],</span>
+<span id="cb40-13"><a href="chapter-2.html#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">min</span>(y)</span>
+<span id="cb40-14"><a href="chapter-2.html#cb40-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Complete the function based on a <code>for()</code> loop so that it computes <span class="math inline">\(s = \sum_{i = 1}^n a_i b_i\)</span>, for <span class="math inline">\(i =1, \ldots, n\)</span>, given vectors <span class="math inline">\(\mathbf{a} =\)</span> <code>a</code> and <span class="math inline">\(\mathbf{b} =\)</span> <code>b</code>.</li>
 </ol>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="chapter-2.html#cb41-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
-<span id="cb41-2"><a href="chapter-2.html#cb41-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n) <span class="co"># using n above</span></span>
-<span id="cb41-3"><a href="chapter-2.html#cb41-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb41-4"><a href="chapter-2.html#cb41-4" tabindex="-1"></a>ab <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
-<span id="cb41-5"><a href="chapter-2.html#cb41-5" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb41-6"><a href="chapter-2.html#cb41-6" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n)</span>
-<span id="cb41-7"><a href="chapter-2.html#cb41-7" tabindex="-1"></a>  ... <span class="co"># insert one line of code here</span></span>
-<span id="cb41-8"><a href="chapter-2.html#cb41-8" tabindex="-1"></a>s</span>
-<span id="cb41-9"><a href="chapter-2.html#cb41-9" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="chapter-2.html#cb41-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb41-2"><a href="chapter-2.html#cb41-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n) <span class="co"># using n above</span></span>
+<span id="cb41-3"><a href="chapter-2.html#cb41-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb41-4"><a href="chapter-2.html#cb41-4" aria-hidden="true" tabindex="-1"></a>ab <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb41-5"><a href="chapter-2.html#cb41-5" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb41-6"><a href="chapter-2.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb41-7"><a href="chapter-2.html#cb41-7" aria-hidden="true" tabindex="-1"></a>  ... <span class="co"># insert one line of code here</span></span>
+<span id="cb41-8"><a href="chapter-2.html#cb41-8" aria-hidden="true" tabindex="-1"></a>s</span>
+<span id="cb41-9"><a href="chapter-2.html#cb41-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chapter-2.html#cb42-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb42-2"><a href="chapter-2.html#cb42-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb42-3"><a href="chapter-2.html#cb42-3" tabindex="-1"></a>ab <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
-<span id="cb42-4"><a href="chapter-2.html#cb42-4" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb42-5"><a href="chapter-2.html#cb42-5" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(a))</span>
-<span id="cb42-6"><a href="chapter-2.html#cb42-6" tabindex="-1"></a>    s <span class="ot">&lt;-</span> s <span class="sc">+</span> a[i] <span class="sc">*</span> b[i]</span>
-<span id="cb42-7"><a href="chapter-2.html#cb42-7" tabindex="-1"></a>  s</span>
-<span id="cb42-8"><a href="chapter-2.html#cb42-8" tabindex="-1"></a>}</span>
-<span id="cb42-9"><a href="chapter-2.html#cb42-9" tabindex="-1"></a><span class="fu">ab</span>(a, b)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chapter-2.html#cb42-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb42-2"><a href="chapter-2.html#cb42-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb42-3"><a href="chapter-2.html#cb42-3" aria-hidden="true" tabindex="-1"></a>ab <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb42-4"><a href="chapter-2.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb42-5"><a href="chapter-2.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(a))</span>
+<span id="cb42-6"><a href="chapter-2.html#cb42-6" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">&lt;-</span> s <span class="sc">+</span> a[i] <span class="sc">*</span> b[i]</span>
+<span id="cb42-7"><a href="chapter-2.html#cb42-7" aria-hidden="true" tabindex="-1"></a>  s</span>
+<span id="cb42-8"><a href="chapter-2.html#cb42-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-9"><a href="chapter-2.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ab</span>(a, b)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Then propose a vectorised alternative, and benchmark whether it’s better.</li>
@@ -741,11 +759,11 @@ Generate a vector of length <code>n</code> <span class="math inline">\(= 35\)</s
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="chapter-2.html#cb43-1" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> b)</span>
-<span id="cb43-2"><a href="chapter-2.html#cb43-2" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb43-3"><a href="chapter-2.html#cb43-3" tabindex="-1"></a>  <span class="fu">ab</span>(a, b),</span>
-<span id="cb43-4"><a href="chapter-2.html#cb43-4" tabindex="-1"></a>  <span class="fu">sum</span>(a <span class="sc">*</span> b)</span>
-<span id="cb43-5"><a href="chapter-2.html#cb43-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="chapter-2.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(a <span class="sc">*</span> b)</span>
+<span id="cb43-2"><a href="chapter-2.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb43-3"><a href="chapter-2.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ab</span>(a, b),</span>
+<span id="cb43-4"><a href="chapter-2.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(a <span class="sc">*</span> b)</span>
+<span id="cb43-5"><a href="chapter-2.html#cb43-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </details>
 </div>
 </div>
