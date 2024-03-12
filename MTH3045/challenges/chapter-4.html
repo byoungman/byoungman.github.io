@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 | MTH3045: Statistical Computing: Challenges</title>
   <meta name="description" content="Chapter 4 | MTH3045: Statistical Computing: Challenges" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 | MTH3045: Statistical Computing: Challenges" />
   <meta property="og:type" content="book" />
@@ -118,10 +118,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
 
 </head>
 
@@ -244,11 +240,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-1"><i class="fa fa-check"></i>Week 9 lecture 1</a>
 <ul>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-18"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-ii-14"><i class="fa fa-check"></i>Challenges II</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-2"><i class="fa fa-check"></i>Week 9 lecture 2</a>
 <ul>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-19"><i class="fa fa-check"></i>Challenges I</a></li>
-<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-ii-14"><i class="fa fa-check"></i>Challenges II</a></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-ii-15"><i class="fa fa-check"></i>Challenges II</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-3"><i class="fa fa-check"></i>Week 9 lecture 3</a>
 <ul>
@@ -285,13 +282,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="chapter-4.html#cb85-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
-<span id="cb85-2"><a href="chapter-4.html#cb85-2" aria-hidden="true" tabindex="-1"></a>deriv0 <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb85-3"><a href="chapter-4.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, deriv0, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>)</span>
-<span id="cb85-4"><a href="chapter-4.html#cb85-4" aria-hidden="true" tabindex="-1"></a>delta1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)</span>
-<span id="cb85-5"><a href="chapter-4.html#cb85-5" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb85-6"><a href="chapter-4.html#cb85-6" aria-hidden="true" tabindex="-1"></a>deriv1 <span class="ot">&lt;-</span> (<span class="fu">f</span>(x <span class="sc">+</span> delta1) <span class="sc">-</span> <span class="fu">f</span>(x)) <span class="sc">/</span> delta1</span>
-<span id="cb85-7"><a href="chapter-4.html#cb85-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, deriv1, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="chapter-4.html#cb85-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
+<span id="cb85-2"><a href="chapter-4.html#cb85-2" tabindex="-1"></a>deriv0 <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb85-3"><a href="chapter-4.html#cb85-3" tabindex="-1"></a><span class="fu">plot</span>(x, deriv0, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>)</span>
+<span id="cb85-4"><a href="chapter-4.html#cb85-4" tabindex="-1"></a>delta1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)</span>
+<span id="cb85-5"><a href="chapter-4.html#cb85-5" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb85-6"><a href="chapter-4.html#cb85-6" tabindex="-1"></a>deriv1 <span class="ot">&lt;-</span> (<span class="fu">f</span>(x <span class="sc">+</span> delta1) <span class="sc">-</span> <span class="fu">f</span>(x)) <span class="sc">/</span> delta1</span>
+<span id="cb85-7"><a href="chapter-4.html#cb85-7" tabindex="-1"></a><span class="fu">lines</span>(x, deriv1, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-11" class="section level3 hasAnchor">
@@ -311,14 +308,14 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="chapter-4.html#cb86-1" aria-hidden="true" tabindex="-1"></a>loglik <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
-<span id="cb86-2"><a href="chapter-4.html#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># function to evaluate exponential log-likelihood</span></span>
-<span id="cb86-3"><a href="chapter-4.html#cb86-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
-<span id="cb86-4"><a href="chapter-4.html#cb86-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
-<span id="cb86-5"><a href="chapter-4.html#cb86-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
-<span id="cb86-6"><a href="chapter-4.html#cb86-6" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb86-7"><a href="chapter-4.html#cb86-7" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">*</span> <span class="fu">log</span>(lambda) <span class="sc">-</span> lambda <span class="sc">*</span> <span class="fu">sum</span>(y)</span>
-<span id="cb86-8"><a href="chapter-4.html#cb86-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="chapter-4.html#cb86-1" tabindex="-1"></a>loglik <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
+<span id="cb86-2"><a href="chapter-4.html#cb86-2" tabindex="-1"></a>  <span class="co"># function to evaluate exponential log-likelihood</span></span>
+<span id="cb86-3"><a href="chapter-4.html#cb86-3" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
+<span id="cb86-4"><a href="chapter-4.html#cb86-4" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb86-5"><a href="chapter-4.html#cb86-5" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb86-6"><a href="chapter-4.html#cb86-6" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb86-7"><a href="chapter-4.html#cb86-7" tabindex="-1"></a>  n <span class="sc">*</span> <span class="fu">log</span>(lambda) <span class="sc">-</span> lambda <span class="sc">*</span> <span class="fu">sum</span>(y)</span>
+<span id="cb86-8"><a href="chapter-4.html#cb86-8" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Use <code>rexp(10)</code> to generate a sample of ten values from the Exp(1) distribution, and then use <code>loglik(lambda, y)</code> to evaluate <span class="math inline">\(\log f(\mathbf{y} \mid 2)\)</span> for the sample.</li>
@@ -327,8 +324,8 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="chapter-4.html#cb87-1" aria-hidden="true" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10</span>, <span class="dv">1</span>)</span>
-<span id="cb87-2"><a href="chapter-4.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">loglik</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="chapter-4.html#cb87-1" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb87-2"><a href="chapter-4.html#cb87-2" tabindex="-1"></a><span class="fu">loglik</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Then write functions to evaluate the gradient and Hessian matrix of the log-likelihood.</li>
@@ -337,25 +334,25 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="chapter-4.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gradient, i.e. first derivative</span></span>
-<span id="cb88-2"><a href="chapter-4.html#cb88-2" aria-hidden="true" tabindex="-1"></a>loglik_d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
-<span id="cb88-3"><a href="chapter-4.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># function to evaluate gradient of exponential log-likelihood w.r.t. lambda</span></span>
-<span id="cb88-4"><a href="chapter-4.html#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
-<span id="cb88-5"><a href="chapter-4.html#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
-<span id="cb88-6"><a href="chapter-4.html#cb88-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
-<span id="cb88-7"><a href="chapter-4.html#cb88-7" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb88-8"><a href="chapter-4.html#cb88-8" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">/</span> lambda <span class="sc">-</span> <span class="fu">sum</span>(y)</span>
-<span id="cb88-9"><a href="chapter-4.html#cb88-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb88-10"><a href="chapter-4.html#cb88-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-11"><a href="chapter-4.html#cb88-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Hessian, i.e. second derivative</span></span>
-<span id="cb88-12"><a href="chapter-4.html#cb88-12" aria-hidden="true" tabindex="-1"></a>loglik_d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
-<span id="cb88-13"><a href="chapter-4.html#cb88-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># function to evaluate Hessian of exponential log-likelihood w.r.t. lambda</span></span>
-<span id="cb88-14"><a href="chapter-4.html#cb88-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
-<span id="cb88-15"><a href="chapter-4.html#cb88-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
-<span id="cb88-16"><a href="chapter-4.html#cb88-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a 1 x 1 matrix</span></span>
-<span id="cb88-17"><a href="chapter-4.html#cb88-17" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb88-18"><a href="chapter-4.html#cb88-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="sc">-</span> n <span class="sc">/</span> lambda<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb88-19"><a href="chapter-4.html#cb88-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="chapter-4.html#cb88-1" tabindex="-1"></a><span class="co"># gradient, i.e. first derivative</span></span>
+<span id="cb88-2"><a href="chapter-4.html#cb88-2" tabindex="-1"></a>loglik_d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
+<span id="cb88-3"><a href="chapter-4.html#cb88-3" tabindex="-1"></a>  <span class="co"># function to evaluate gradient of exponential log-likelihood w.r.t. lambda</span></span>
+<span id="cb88-4"><a href="chapter-4.html#cb88-4" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
+<span id="cb88-5"><a href="chapter-4.html#cb88-5" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb88-6"><a href="chapter-4.html#cb88-6" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb88-7"><a href="chapter-4.html#cb88-7" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb88-8"><a href="chapter-4.html#cb88-8" tabindex="-1"></a>  n <span class="sc">/</span> lambda <span class="sc">-</span> <span class="fu">sum</span>(y)</span>
+<span id="cb88-9"><a href="chapter-4.html#cb88-9" tabindex="-1"></a>}</span>
+<span id="cb88-10"><a href="chapter-4.html#cb88-10" tabindex="-1"></a></span>
+<span id="cb88-11"><a href="chapter-4.html#cb88-11" tabindex="-1"></a><span class="co"># Hessian, i.e. second derivative</span></span>
+<span id="cb88-12"><a href="chapter-4.html#cb88-12" tabindex="-1"></a>loglik_d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
+<span id="cb88-13"><a href="chapter-4.html#cb88-13" tabindex="-1"></a>  <span class="co"># function to evaluate Hessian of exponential log-likelihood w.r.t. lambda</span></span>
+<span id="cb88-14"><a href="chapter-4.html#cb88-14" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
+<span id="cb88-15"><a href="chapter-4.html#cb88-15" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb88-16"><a href="chapter-4.html#cb88-16" tabindex="-1"></a>  <span class="co"># returns a 1 x 1 matrix</span></span>
+<span id="cb88-17"><a href="chapter-4.html#cb88-17" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb88-18"><a href="chapter-4.html#cb88-18" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="sc">-</span> n <span class="sc">/</span> lambda<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb88-19"><a href="chapter-4.html#cb88-19" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <ol start="4" style="list-style-type: decimal">
 <li>Evaluate the gradient and Hessian for the sample generated above with <span class="math inline">\(\lambda = 2\)</span>.</li>
@@ -364,8 +361,8 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="chapter-4.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loglik_d1</span>(<span class="dv">2</span>, y0)</span>
-<span id="cb89-2"><a href="chapter-4.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">loglik_d2</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="chapter-4.html#cb89-1" tabindex="-1"></a><span class="fu">loglik_d1</span>(<span class="dv">2</span>, y0)</span>
+<span id="cb89-2"><a href="chapter-4.html#cb89-2" tabindex="-1"></a><span class="fu">loglik_d2</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
 </details>
 <ol start="5" style="list-style-type: decimal">
 <li>Check your gradient calculation against an approximation based on finite-differencing.</li>
@@ -374,8 +371,8 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="chapter-4.html#cb90-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">loglik</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="fl">1e-6</span>, y0) <span class="sc">-</span> <span class="fu">loglik</span>(<span class="dv">2</span>, y0)) <span class="sc">/</span> <span class="fl">1e-6</span></span>
-<span id="cb90-2"><a href="chapter-4.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">loglik_d1</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="chapter-4.html#cb90-1" tabindex="-1"></a>(<span class="fu">loglik</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="fl">1e-6</span>, y0) <span class="sc">-</span> <span class="fu">loglik</span>(<span class="dv">2</span>, y0)) <span class="sc">/</span> <span class="fl">1e-6</span></span>
+<span id="cb90-2"><a href="chapter-4.html#cb90-2" tabindex="-1"></a><span class="fu">loglik_d1</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -394,15 +391,15 @@ with <span class="math inline">\(N = 10\)</span> integration nodes.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="chapter-4.html#cb91-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb91-2"><a href="chapter-4.html#cb91-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb91-3"><a href="chapter-4.html#cb91-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb91-4"><a href="chapter-4.html#cb91-4" aria-hidden="true" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(a, b, <span class="at">length =</span> N <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb91-5"><a href="chapter-4.html#cb91-5" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> bins[<span class="dv">2</span>] <span class="sc">-</span> bins[<span class="dv">1</span>]</span>
-<span id="cb91-6"><a href="chapter-4.html#cb91-6" aria-hidden="true" tabindex="-1"></a>mids <span class="ot">&lt;-</span> bins[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">-</span> .<span class="dv">5</span> <span class="sc">*</span> h</span>
-<span id="cb91-7"><a href="chapter-4.html#cb91-7" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb91-8"><a href="chapter-4.html#cb91-8" aria-hidden="true" tabindex="-1"></a>f_mids <span class="ot">&lt;-</span> <span class="fu">f</span>(mids)</span>
-<span id="cb91-9"><a href="chapter-4.html#cb91-9" aria-hidden="true" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> h <span class="sc">*</span> <span class="fu">sum</span>(f_mids)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="chapter-4.html#cb91-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb91-2"><a href="chapter-4.html#cb91-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb91-3"><a href="chapter-4.html#cb91-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb91-4"><a href="chapter-4.html#cb91-4" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(a, b, <span class="at">length =</span> N <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb91-5"><a href="chapter-4.html#cb91-5" tabindex="-1"></a>h <span class="ot">&lt;-</span> bins[<span class="dv">2</span>] <span class="sc">-</span> bins[<span class="dv">1</span>]</span>
+<span id="cb91-6"><a href="chapter-4.html#cb91-6" tabindex="-1"></a>mids <span class="ot">&lt;-</span> bins[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">-</span> .<span class="dv">5</span> <span class="sc">*</span> h</span>
+<span id="cb91-7"><a href="chapter-4.html#cb91-7" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb91-8"><a href="chapter-4.html#cb91-8" tabindex="-1"></a>f_mids <span class="ot">&lt;-</span> <span class="fu">f</span>(mids)</span>
+<span id="cb91-9"><a href="chapter-4.html#cb91-9" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> h <span class="sc">*</span> <span class="fu">sum</span>(f_mids)</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the relative absolute error of your estimate. [Hint: notice the resemblance of the integrand to the Normal(0, 1) distribution’s pdf.]</li>
@@ -411,9 +408,9 @@ with <span class="math inline">\(N = 10\)</span> integration nodes.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chapter-4.html#cb92-1" aria-hidden="true" tabindex="-1"></a>I0 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">*</span> (<span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> .<span class="dv">5</span>)</span>
-<span id="cb92-2"><a href="chapter-4.html#cb92-2" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((I0 <span class="sc">-</span> I_hat) <span class="sc">/</span> I0)</span>
-<span id="cb92-3"><a href="chapter-4.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> rel_err</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chapter-4.html#cb92-1" tabindex="-1"></a>I0 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">*</span> (<span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> .<span class="dv">5</span>)</span>
+<span id="cb92-2"><a href="chapter-4.html#cb92-2" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((I0 <span class="sc">-</span> I_hat) <span class="sc">/</span> I0)</span>
+<span id="cb92-3"><a href="chapter-4.html#cb92-3" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> rel_err</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -432,21 +429,21 @@ with <span class="math inline">\(N = 10\)</span> and find the relative absolute 
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="chapter-4.html#cb93-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb93-2"><a href="chapter-4.html#cb93-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb93-3"><a href="chapter-4.html#cb93-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb93-4"><a href="chapter-4.html#cb93-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb93-5"><a href="chapter-4.html#cb93-5" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
-<span id="cb93-6"><a href="chapter-4.html#cb93-6" aria-hidden="true" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> <span class="fu">f</span>(a) <span class="sc">+</span> <span class="fu">f</span>(b)</span>
-<span id="cb93-7"><a href="chapter-4.html#cb93-7" aria-hidden="true" tabindex="-1"></a>x1i <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb93-8"><a href="chapter-4.html#cb93-8" aria-hidden="true" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> simpson <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(x1i))</span>
-<span id="cb93-9"><a href="chapter-4.html#cb93-9" aria-hidden="true" tabindex="-1"></a>x2i <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb93-10"><a href="chapter-4.html#cb93-10" aria-hidden="true" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> simpson <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(x2i))</span>
-<span id="cb93-11"><a href="chapter-4.html#cb93-11" aria-hidden="true" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> h <span class="sc">*</span> simpson <span class="sc">/</span> <span class="dv">6</span></span>
-<span id="cb93-12"><a href="chapter-4.html#cb93-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-13"><a href="chapter-4.html#cb93-13" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">*</span> (<span class="fu">pnorm</span>(b) <span class="sc">-</span> .<span class="dv">5</span>)</span>
-<span id="cb93-14"><a href="chapter-4.html#cb93-14" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> simpson) <span class="sc">/</span> true)</span>
-<span id="cb93-15"><a href="chapter-4.html#cb93-15" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="chapter-4.html#cb93-1" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb93-2"><a href="chapter-4.html#cb93-2" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb93-3"><a href="chapter-4.html#cb93-3" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb93-4"><a href="chapter-4.html#cb93-4" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb93-5"><a href="chapter-4.html#cb93-5" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
+<span id="cb93-6"><a href="chapter-4.html#cb93-6" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> <span class="fu">f</span>(a) <span class="sc">+</span> <span class="fu">f</span>(b)</span>
+<span id="cb93-7"><a href="chapter-4.html#cb93-7" tabindex="-1"></a>x1i <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb93-8"><a href="chapter-4.html#cb93-8" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> simpson <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(x1i))</span>
+<span id="cb93-9"><a href="chapter-4.html#cb93-9" tabindex="-1"></a>x2i <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb93-10"><a href="chapter-4.html#cb93-10" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> simpson <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(x2i))</span>
+<span id="cb93-11"><a href="chapter-4.html#cb93-11" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> h <span class="sc">*</span> simpson <span class="sc">/</span> <span class="dv">6</span></span>
+<span id="cb93-12"><a href="chapter-4.html#cb93-12" tabindex="-1"></a></span>
+<span id="cb93-13"><a href="chapter-4.html#cb93-13" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">*</span> (<span class="fu">pnorm</span>(b) <span class="sc">-</span> .<span class="dv">5</span>)</span>
+<span id="cb93-14"><a href="chapter-4.html#cb93-14" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> simpson) <span class="sc">/</span> true)</span>
+<span id="cb93-15"><a href="chapter-4.html#cb93-15" tabindex="-1"></a>rel_err</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-12" class="section level3 hasAnchor">
@@ -462,10 +459,10 @@ with <span class="math inline">\(N = 7\)</span> integration nodes.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="chapter-4.html#cb94-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb94-2"><a href="chapter-4.html#cb94-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb94-3"><a href="chapter-4.html#cb94-3" aria-hidden="true" tabindex="-1"></a>gq <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb94-4"><a href="chapter-4.html#cb94-4" aria-hidden="true" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(gq<span class="sc">$</span>w <span class="sc">*</span> <span class="fu">f</span>(gq<span class="sc">$</span>x))</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="chapter-4.html#cb94-1" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb94-2"><a href="chapter-4.html#cb94-2" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb94-3"><a href="chapter-4.html#cb94-3" tabindex="-1"></a>gq <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb94-4"><a href="chapter-4.html#cb94-4" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(gq<span class="sc">$</span>w <span class="sc">*</span> <span class="fu">f</span>(gq<span class="sc">$</span>x))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculate the relative absolute error of your approximation.</li>
@@ -474,8 +471,8 @@ with <span class="math inline">\(N = 7\)</span> integration nodes.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="chapter-4.html#cb95-1" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">*</span> (<span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> .<span class="dv">5</span>)</span>
-<span id="cb95-2"><a href="chapter-4.html#cb95-2" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> I_hat) <span class="sc">/</span> true)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="chapter-4.html#cb95-1" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">*</span> (<span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> .<span class="dv">5</span>)</span>
+<span id="cb95-2"><a href="chapter-4.html#cb95-2" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> I_hat) <span class="sc">/</span> true)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -497,15 +494,15 @@ and where <span class="math inline">\(\lambda &gt; 0\)</span>. Estimate <span cl
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="chapter-4.html#cb96-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb96-2"><a href="chapter-4.html#cb96-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x2 <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span>N <span class="sc">-</span> .<span class="dv">5</span>) <span class="sc">/</span> N</span>
-<span id="cb96-3"><a href="chapter-4.html#cb96-3" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>N</span>
-<span id="cb96-4"><a href="chapter-4.html#cb96-4" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> h<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb96-5"><a href="chapter-4.html#cb96-5" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb96-6"><a href="chapter-4.html#cb96-6" aria-hidden="true" tabindex="-1"></a>midpoint <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb96-7"><a href="chapter-4.html#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
-<span id="cb96-8"><a href="chapter-4.html#cb96-8" aria-hidden="true" tabindex="-1"></a>  midpoint <span class="ot">&lt;-</span> midpoint <span class="sc">+</span> w <span class="sc">*</span> lambda<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>lambda<span class="sc">*</span>(x1[i] <span class="sc">+</span> x2[j]))</span>
-<span id="cb96-9"><a href="chapter-4.html#cb96-9" aria-hidden="true" tabindex="-1"></a>midpoint  </span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="chapter-4.html#cb96-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb96-2"><a href="chapter-4.html#cb96-2" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x2 <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span>N <span class="sc">-</span> .<span class="dv">5</span>) <span class="sc">/</span> N</span>
+<span id="cb96-3"><a href="chapter-4.html#cb96-3" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>N</span>
+<span id="cb96-4"><a href="chapter-4.html#cb96-4" tabindex="-1"></a>w <span class="ot">&lt;-</span> h<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb96-5"><a href="chapter-4.html#cb96-5" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb96-6"><a href="chapter-4.html#cb96-6" tabindex="-1"></a>midpoint <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb96-7"><a href="chapter-4.html#cb96-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
+<span id="cb96-8"><a href="chapter-4.html#cb96-8" tabindex="-1"></a>  midpoint <span class="ot">&lt;-</span> midpoint <span class="sc">+</span> w <span class="sc">*</span> lambda<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>lambda<span class="sc">*</span>(x1[i] <span class="sc">+</span> x2[j]))</span>
+<span id="cb96-9"><a href="chapter-4.html#cb96-9" tabindex="-1"></a>midpoint  </span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the relative absolute error of your approximation.</li>
@@ -514,8 +511,8 @@ and where <span class="math inline">\(\lambda &gt; 0\)</span>. Estimate <span cl
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="chapter-4.html#cb97-1" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">pexp</span>(<span class="dv">1</span>, lambda)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb97-2"><a href="chapter-4.html#cb97-2" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> midpoint) <span class="sc">/</span> true)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="chapter-4.html#cb97-1" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">pexp</span>(<span class="dv">1</span>, lambda)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb97-2"><a href="chapter-4.html#cb97-2" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> midpoint) <span class="sc">/</span> true)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-13" class="section level3 hasAnchor">
@@ -527,15 +524,15 @@ and where <span class="math inline">\(\lambda &gt; 0\)</span>. Estimate <span cl
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="chapter-4.html#cb98-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb98-2"><a href="chapter-4.html#cb98-2" aria-hidden="true" tabindex="-1"></a>xw1 <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb98-3"><a href="chapter-4.html#cb98-3" aria-hidden="true" tabindex="-1"></a>xw2 <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb98-4"><a href="chapter-4.html#cb98-4" aria-hidden="true" tabindex="-1"></a>gq <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb98-5"><a href="chapter-4.html#cb98-5" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, x2, <span class="at">lambda =</span> <span class="dv">2</span>)</span>
-<span id="cb98-6"><a href="chapter-4.html#cb98-6" aria-hidden="true" tabindex="-1"></a>  lambda<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>lambda <span class="sc">*</span> (x1 <span class="sc">+</span> x2)) </span>
-<span id="cb98-7"><a href="chapter-4.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) </span>
-<span id="cb98-8"><a href="chapter-4.html#cb98-8" aria-hidden="true" tabindex="-1"></a>  gq <span class="ot">&lt;-</span> gq <span class="sc">+</span> xw1<span class="sc">$</span>w[i] <span class="sc">*</span> xw2<span class="sc">$</span>w[j] <span class="sc">*</span> <span class="fu">f</span>(xw1<span class="sc">$</span>x[i], xw2<span class="sc">$</span>x[j])</span>
-<span id="cb98-9"><a href="chapter-4.html#cb98-9" aria-hidden="true" tabindex="-1"></a>gq</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="chapter-4.html#cb98-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb98-2"><a href="chapter-4.html#cb98-2" tabindex="-1"></a>xw1 <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb98-3"><a href="chapter-4.html#cb98-3" tabindex="-1"></a>xw2 <span class="ot">&lt;-</span> pracma<span class="sc">::</span><span class="fu">gaussLegendre</span>(N, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb98-4"><a href="chapter-4.html#cb98-4" tabindex="-1"></a>gq <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb98-5"><a href="chapter-4.html#cb98-5" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, x2, <span class="at">lambda =</span> <span class="dv">2</span>)</span>
+<span id="cb98-6"><a href="chapter-4.html#cb98-6" tabindex="-1"></a>  lambda<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>lambda <span class="sc">*</span> (x1 <span class="sc">+</span> x2)) </span>
+<span id="cb98-7"><a href="chapter-4.html#cb98-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) </span>
+<span id="cb98-8"><a href="chapter-4.html#cb98-8" tabindex="-1"></a>  gq <span class="ot">&lt;-</span> gq <span class="sc">+</span> xw1<span class="sc">$</span>w[i] <span class="sc">*</span> xw2<span class="sc">$</span>w[j] <span class="sc">*</span> <span class="fu">f</span>(xw1<span class="sc">$</span>x[i], xw2<span class="sc">$</span>x[j])</span>
+<span id="cb98-9"><a href="chapter-4.html#cb98-9" tabindex="-1"></a>gq</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the relative absolute error of your approximation.</li>
@@ -544,8 +541,8 @@ and where <span class="math inline">\(\lambda &gt; 0\)</span>. Estimate <span cl
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="chapter-4.html#cb99-1" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">pexp</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">*</span> <span class="fu">pexp</span>(<span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb99-2"><a href="chapter-4.html#cb99-2" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> gq) <span class="sc">/</span> true)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="chapter-4.html#cb99-1" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="fu">pexp</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">*</span> <span class="fu">pexp</span>(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb99-2"><a href="chapter-4.html#cb99-2" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> gq) <span class="sc">/</span> true)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -564,20 +561,20 @@ and estimate its relative absolute error.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chapter-4.html#cb100-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb100-2"><a href="chapter-4.html#cb100-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb100-3"><a href="chapter-4.html#cb100-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb100-4"><a href="chapter-4.html#cb100-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb100-5"><a href="chapter-4.html#cb100-5" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
-<span id="cb100-6"><a href="chapter-4.html#cb100-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N <span class="sc">-</span> .<span class="dv">5</span>)</span>
-<span id="cb100-7"><a href="chapter-4.html#cb100-7" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>d, <span class="cf">function</span>(i) x)</span>
-<span id="cb100-8"><a href="chapter-4.html#cb100-8" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(xx)</span>
-<span id="cb100-9"><a href="chapter-4.html#cb100-9" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> h<span class="sc">^</span>d</span>
-<span id="cb100-10"><a href="chapter-4.html#cb100-10" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="dv">1</span> <span class="sc">+</span> (X <span class="sc">-</span> <span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, prod)</span>
-<span id="cb100-11"><a href="chapter-4.html#cb100-11" aria-hidden="true" tabindex="-1"></a>midpoint <span class="ot">&lt;-</span> w <span class="sc">*</span> <span class="fu">sum</span>(f)</span>
-<span id="cb100-12"><a href="chapter-4.html#cb100-12" aria-hidden="true" tabindex="-1"></a>true <span class="ot">&lt;-</span> (<span class="dv">8</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span>d</span>
-<span id="cb100-13"><a href="chapter-4.html#cb100-13" aria-hidden="true" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> midpoint) <span class="sc">/</span> true)</span>
-<span id="cb100-14"><a href="chapter-4.html#cb100-14" aria-hidden="true" tabindex="-1"></a>rel_err</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chapter-4.html#cb100-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb100-2"><a href="chapter-4.html#cb100-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb100-3"><a href="chapter-4.html#cb100-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb100-4"><a href="chapter-4.html#cb100-4" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb100-5"><a href="chapter-4.html#cb100-5" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
+<span id="cb100-6"><a href="chapter-4.html#cb100-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N <span class="sc">-</span> .<span class="dv">5</span>)</span>
+<span id="cb100-7"><a href="chapter-4.html#cb100-7" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>d, <span class="cf">function</span>(i) x)</span>
+<span id="cb100-8"><a href="chapter-4.html#cb100-8" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(xx)</span>
+<span id="cb100-9"><a href="chapter-4.html#cb100-9" tabindex="-1"></a>w <span class="ot">&lt;-</span> h<span class="sc">^</span>d</span>
+<span id="cb100-10"><a href="chapter-4.html#cb100-10" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="dv">1</span> <span class="sc">+</span> (X <span class="sc">-</span> <span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, prod)</span>
+<span id="cb100-11"><a href="chapter-4.html#cb100-11" tabindex="-1"></a>midpoint <span class="ot">&lt;-</span> w <span class="sc">*</span> <span class="fu">sum</span>(f)</span>
+<span id="cb100-12"><a href="chapter-4.html#cb100-12" tabindex="-1"></a>true <span class="ot">&lt;-</span> (<span class="dv">8</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span>d</span>
+<span id="cb100-13"><a href="chapter-4.html#cb100-13" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> midpoint) <span class="sc">/</span> true)</span>
+<span id="cb100-14"><a href="chapter-4.html#cb100-14" tabindex="-1"></a>rel_err</span></code></pre></div>
 </details>
 </div>
 <div id="challenge-ii" class="section level3 hasAnchor">
@@ -632,6 +629,21 @@ and then calculate the relative absolute error of your approximation.</li>
 </summary>
 </details>
 </div>
+<div id="challenges-ii-14" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-4.html#challenges-ii-14" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Approximate
+<span class="math display">\[
+I = \int_1^3 \ldots \int_1^3 \prod_{i = 1}^4 \left\{1 + (x_i - 2)^2\right\} \text{d}x_1 \ldots \text{d}x_4
+\]</span>
+using Monte Carlo sampling and a Monte Carlo sample size of <span class="math inline">\(N = 10^4\)</span> and estimate the relative absolute error of your approximation.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
 </div>
 <div id="week-9-lecture-2" class="section level2 hasAnchor">
 <h2>Week 9 lecture 2<a href="chapter-4.html#week-9-lecture-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -650,8 +662,8 @@ using Monte Carlo sampling and a Monte Carlo sample size of <span class="math in
 </summary>
 </details>
 </div>
-<div id="challenges-ii-14" class="section level3 hasAnchor">
-<h3>Challenges II<a href="chapter-4.html#challenges-ii-14" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="challenges-ii-15" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-4.html#challenges-ii-15" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Consider a random variable <span class="math inline">\(Y\)</span> with pdf
 <span class="math display">\[
