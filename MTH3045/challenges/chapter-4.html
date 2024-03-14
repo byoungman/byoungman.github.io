@@ -245,7 +245,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-2"><i class="fa fa-check"></i>Week 9 lecture 2</a>
 <ul>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-19"><i class="fa fa-check"></i>Challenges I</a></li>
-<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-ii-15"><i class="fa fa-check"></i>Challenges II</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-3"><i class="fa fa-check"></i>Week 9 lecture 3</a>
 <ul>
@@ -600,9 +599,9 @@ f(y) = \int_0^\infty f(y \mid \lambda) f(\lambda) \text{d} \lambda.
 <ul>
 <li><p>We first notice that, given Equation (4.4), we take <span class="math inline">\(f()\)</span> to be <span class="math inline">\(-\log f(y, \lambda)\)</span> and <span class="math inline">\(x\)</span> to be <span class="math inline">\(\lambda\)</span>, as that’s what we’re integrating out.</p></li>
 <li><p>Then we get <span class="math inline">\(f(y, \lambda) = f(y \mid \lambda) f(\lambda) = \lambda \text{e}^{-\lambda y} \times 4 \lambda \text{e}^{-2 \lambda} = 4 \lambda^2 \text{e}^{-\lambda(2 + y)}\)</span></p></li>
-<li><p>So <span class="math inline">\(-\log f(y, \lambda) = -2 \log \lambda + \lambda(2 + y) - \log 2\)</span></p></li>
-<li><p>Then <span class="math inline">\(-\dfrac{\partial \log f(y, \lambda)}{\partial \lambda} = -\dfrac{2}{\lambda} + (2 + y)\)</span>, which is minimised at <span class="math inline">\(\hat \lambda = 2 / (2 + y)\)</span></p></li>
-<li><p>Also <span class="math inline">\(-\dfrac{\partial^2 \log f(y, \lambda)}{\partial \lambda^2} = 2 / \lambda^2\)</span> and <span class="math inline">\(2 / \hat \lambda^2 = 2 / (4 / (2 + y)^2) = (2 + y)^2 / 2\)</span></p></li>
+<li><p>So <span class="math inline">\(-\log f(y, \lambda) = -2 \log \lambda + \lambda(2 + y) - \log 4\)</span></p></li>
+<li><p>Then <span class="math inline">\(-\dfrac{\partial \log f(y, \lambda)}{\partial \lambda} = -\dfrac{2}{\lambda} + (2 + y)\)</span>, which is minimised at <span class="math inline">\(\tilde \lambda = 2 / (2 + y)\)</span></p></li>
+<li><p>Also <span class="math inline">\(-\dfrac{\partial^2 \log f(y, \lambda)}{\partial \lambda^2} = 2 / \lambda^2\)</span> and <span class="math inline">\(2 / \tilde \lambda^2 = 2 / (4 / (2 + y)^2) = (2 + y)^2 / 2\)</span></p></li>
 <li><p>So, if <span class="math inline">\(g&#39;&#39;(\lambda)\)</span> denotes <span class="math inline">\(-\partial^2 \log f(y, \lambda) / \partial \lambda^2\)</span>, then
 <span class="math display">\[\begin{align*}
 I_n &amp;= f(y, \tilde \lambda) \sqrt{\dfrac{2 \pi}{g&#39;&#39;(\tilde \lambda)}}\\
@@ -649,21 +648,6 @@ using Monte Carlo sampling and a Monte Carlo sample size of <span class="math in
 <h2>Week 9 lecture 2<a href="chapter-4.html#week-9-lecture-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="challenges-i-19" class="section level3 hasAnchor">
 <h3>Challenges I<a href="chapter-4.html#challenges-i-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li>Approximate
-<span class="math display">\[
-I = \int_1^3 \ldots \int_1^3 \prod_{i = 1}^4 \left\{1 + (x_i - 2)^2\right\} \text{d}x_1 \ldots \text{d}x_4
-\]</span>
-using Monte Carlo sampling and a Monte Carlo sample size of <span class="math inline">\(N = 10^4\)</span> and estimate the relative absolute error of your approximation.</li>
-</ol>
-<details>
-<summary>
-<strong>Solution</strong>
-</summary>
-</details>
-</div>
-<div id="challenges-ii-15" class="section level3 hasAnchor">
-<h3>Challenges II<a href="chapter-4.html#challenges-ii-15" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Consider a random variable <span class="math inline">\(Y\)</span> with pdf
 <span class="math display">\[
