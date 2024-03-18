@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="chapter-3.html"/>
-
+<link rel="next" href="chapter-5.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -246,13 +246,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-18"><i class="fa fa-check"></i>Challenges I</a></li>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-ii-14"><i class="fa fa-check"></i>Challenges II</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-2"><i class="fa fa-check"></i>Week 9 lecture 2</a>
-<ul>
-<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-19"><i class="fa fa-check"></i>Challenges I</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-3"><i class="fa fa-check"></i>Week 9 lecture 3</a>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html"><i class="fa fa-check"></i>Chapter 5</a>
 <ul>
-<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-20"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-9-lecture-2"><i class="fa fa-check"></i>Week 9 lecture 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-19"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-9-lecture-3"><i class="fa fa-check"></i>Week 9 lecture 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-20"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-10-lecture-1"><i class="fa fa-check"></i>Week 10 lecture 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-21"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-10-lecture-2"><i class="fa fa-check"></i>Week 10 lecture 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-22"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-10-lecture-3"><i class="fa fa-check"></i>Week 10 lecture 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-23"><i class="fa fa-check"></i>Challenges I</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -661,108 +676,14 @@ using Monte Carlo sampling and a Monte Carlo sample size of <span class="math in
 </details>
 </div>
 </div>
-<div id="week-9-lecture-2" class="section level2 hasAnchor">
-<h2>Week 9 lecture 2<a href="chapter-4.html#week-9-lecture-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="challenges-i-19" class="section level3 hasAnchor">
-<h3>Challenges I<a href="chapter-4.html#challenges-i-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li>Consider a random variable <span class="math inline">\(Y\)</span> with pdf
-<span class="math display">\[
-f(y \mid \theta) = \dfrac{\Gamma(2\theta) [y(1 - y)]^{\theta - 1}}{[\Gamma(\theta)]^2} \quad 0 \leq y \leq 1
-\]</span>
-and for <span class="math inline">\(\theta &gt; 0\)</span>. The log-likelihood for an independent sample, <span class="math inline">\(y_1, \ldots, y_n\)</span>, is then given by
-<span class="math display">\[
-\log f(\mathbf{y} \mid \theta) = n\big[\log\big(\Gamma(2\theta)\big) - 2\log\big(\Gamma(\theta)\big)\big] + (\theta - 1) \sum_{i = 1}^n \left\{\log y_i + \log(1 - y_i)\right\}.
-\]</span>
-Write a function, <code>negloglik(theta, y)</code> to evaluate the <em>negative</em> of the log-likelihood above, and then for the data
-<span class="math display">\[
-0.16, 0.35, 0.37, 0.46, 0.67, 0.69, 0.79, 0.8, 0.91, 0.92
-\]</span>
-find the maximum likelihood estimate <span class="math inline">\(\hat \theta\)</span> using <code>optimize()</code>, assuming that <span class="math inline">\(1 \leq \hat \theta \leq 3\)</span>. [Recall that <code>lgamma(x)</code> evaluates <span class="math inline">\(\log\big(\Gamma(x)\big)\)</span> in <code>R</code> if <span class="math inline">\(x =\)</span> <code>x</code>.]</li>
-</ol>
-<details>
-<summary>
-<strong>Solution</strong>
-</summary>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="chapter-4.html#cb103-1" aria-hidden="true" tabindex="-1"></a>negloglik <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, y) {</span>
-<span id="cb103-2"><a href="chapter-4.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate negative log-likelihood</span></span>
-<span id="cb103-3"><a href="chapter-4.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># theta is a scalar</span></span>
-<span id="cb103-4"><a href="chapter-4.html#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
-<span id="cb103-5"><a href="chapter-4.html#cb103-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
-<span id="cb103-6"><a href="chapter-4.html#cb103-6" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb103-7"><a href="chapter-4.html#cb103-7" aria-hidden="true" tabindex="-1"></a>  loglik <span class="ot">&lt;-</span> n <span class="sc">*</span> (<span class="fu">lgamma</span>(<span class="dv">2</span> <span class="sc">*</span> theta) <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">lgamma</span>(theta))</span>
-<span id="cb103-8"><a href="chapter-4.html#cb103-8" aria-hidden="true" tabindex="-1"></a>  loglik <span class="ot">&lt;-</span> loglik <span class="sc">+</span> (theta <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(y) <span class="sc">+</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> y))</span>
-<span id="cb103-9"><a href="chapter-4.html#cb103-9" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span>loglik</span>
-<span id="cb103-10"><a href="chapter-4.html#cb103-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb103-11"><a href="chapter-4.html#cb103-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-12"><a href="chapter-4.html#cb103-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">16</span>, .<span class="dv">35</span>, .<span class="dv">37</span>, .<span class="dv">46</span>, .<span class="dv">67</span>, .<span class="dv">69</span>, .<span class="dv">79</span>, .<span class="dv">8</span>, .<span class="dv">91</span>, .<span class="dv">92</span>)</span>
-<span id="cb103-13"><a href="chapter-4.html#cb103-13" aria-hidden="true" tabindex="-1"></a><span class="fu">negloglik</span>(<span class="dv">2</span>, y)</span>
-<span id="cb103-14"><a href="chapter-4.html#cb103-14" aria-hidden="true" tabindex="-1"></a><span class="fu">optimize</span>(negloglik, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">y =</span> y)</span></code></pre></div>
-</details>
-</div>
-</div>
-<div id="week-9-lecture-3" class="section level2 hasAnchor">
-<h2>Week 9 lecture 3<a href="chapter-4.html#week-9-lecture-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="challenges-i-20" class="section level3 hasAnchor">
-<h3>Challenges I<a href="chapter-4.html#challenges-i-20" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li>Consider modelling the sample <span class="math inline">\(y_1, \ldots, y_n\)</span> independent as Exp(<span class="math inline">\(\lambda\)</span>) random variables. Given that their log likelihood is
-<span class="math display">\[
-\log f(\mathbf{y} \mid \lambda) = n \log \lambda - \lambda \sum_{i = 1}^n y_i
-\]</span>
-and then that
-<span class="math display">\[
-\dfrac{\partial \log f(\mathbf{y} \mid \lambda)}{\partial \lambda} = \dfrac{n}{\lambda} - \sum_{i = 1}^n y_i \quad \text{and} \quad \dfrac{\partial^2 \log f(\mathbf{y} \mid \lambda)}{\partial \lambda^2} = -\dfrac{n}{\lambda^2}
-\]</span>
-write functions called <code>nd1(lambda, y)</code> and <code>nd2(lambda, y)</code> that evaluate the first and second derivatives of the <em>negative</em> log-likelihood, i.e. of <span class="math inline">\(-\log f(\mathbf{y} \mid \lambda)\)</span>.</li>
-</ol>
-<details>
-<summary>
-<strong>Solution</strong>
-</summary>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="chapter-4.html#cb104-1" aria-hidden="true" tabindex="-1"></a>nd1 <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
-<span id="cb104-2"><a href="chapter-4.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate first derivative of exponential</span></span>
-<span id="cb104-3"><a href="chapter-4.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># negative log-likelihood w.r.t. lambda</span></span>
-<span id="cb104-4"><a href="chapter-4.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
-<span id="cb104-5"><a href="chapter-4.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
-<span id="cb104-6"><a href="chapter-4.html#cb104-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
-<span id="cb104-7"><a href="chapter-4.html#cb104-7" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb104-8"><a href="chapter-4.html#cb104-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(y) <span class="sc">-</span> n <span class="sc">/</span> lambda</span>
-<span id="cb104-9"><a href="chapter-4.html#cb104-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb104-10"><a href="chapter-4.html#cb104-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-11"><a href="chapter-4.html#cb104-11" aria-hidden="true" tabindex="-1"></a>nd2 <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
-<span id="cb104-12"><a href="chapter-4.html#cb104-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to evaluate second derivative of exponential</span></span>
-<span id="cb104-13"><a href="chapter-4.html#cb104-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># negative log-likelihood w.r.t. lambda</span></span>
-<span id="cb104-14"><a href="chapter-4.html#cb104-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
-<span id="cb104-15"><a href="chapter-4.html#cb104-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
-<span id="cb104-16"><a href="chapter-4.html#cb104-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
-<span id="cb104-17"><a href="chapter-4.html#cb104-17" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb104-18"><a href="chapter-4.html#cb104-18" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">/</span> lambda<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb104-19"><a href="chapter-4.html#cb104-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-</details>
-<ol start="2" style="list-style-type: decimal">
-<li>Find the first Newton step given a starting value of <span class="math inline">\(\lambda_0 = 1\)</span> and the sample
-<span class="math display">\[
-0.2, 0.5, 0.6, 1.0, 1.8, 2.5
-\]</span></li>
-</ol>
-<details>
-<summary>
-<strong>Solution</strong>
-</summary>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="chapter-4.html#cb105-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">1.0</span>, <span class="fl">1.8</span>, <span class="fl">2.5</span>)</span>
-<span id="cb105-2"><a href="chapter-4.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">nd1</span>(<span class="dv">1</span>, y) <span class="sc">/</span> <span class="fu">nd2</span>(<span class="dv">1</span>, y)</span></code></pre></div>
-</details>
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="chapter-3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="chapter-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
