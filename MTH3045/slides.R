@@ -56,3 +56,62 @@ fd <- function(x, f, delta = 1e-6, ...) {
     f1[i] <- f(x + delta * ei, ...)
   }
 }
+
+# Weibull log-likelihood
+
+# Week 10 lecture 1
+
+y0 <- c(3.52, 1.95, 0.62, 0.02, 5.13, 0.02, 0.01, 0.34, 0.43, 15.5, 
+        4.99, 6.01, 0.28, 1.83, 0.14, 0.97, 0.22, 0.02, 1.87, 0.13, 0.01, 
+        4.81, 0.37, 8.61, 3.48, 1.81, 37.21, 1.85, 0.04, 2.32, 1.06)
+
+weib_d1 <- function(pars, y, mult = 1) {
+  # Function to evaluate first derivative of Weibull log-likelihood
+  # pars is a vector
+  # y can be scalar or vector
+  # mult is a scalar defaulting to 1; so -1 returns neg. gradient
+  # returns a vector
+  n <- length(y)
+  z1 <- y / pars[1]
+  z2 <- z1^pars[2]
+  out <- numeric(2)
+  out[1] <- (sum(z2) - n) * pars[2] / pars[1] # derivative w.r.t. lambda
+  out[2] <- n * (1 / pars[2] - log(pars[1])) + 
+    sum(log(y)) - sum(z2 * log(z1)) # w.r.t k
+  mult * out
+}
+
+weib_d2 <- function(pars, y, mult = 1) {
+  # Function to evaluate second derivative of Weibull log-likelihood
+  # pars is a vector
+  # y can be scalar or vector
+  # mult is a scalar defaulting to 1; so -1 returns neg. Hessian
+  # returns a matrix
+  n <- length(y)
+  z1 <- y / pars[1]
+  z2 <- z1^pars[2]
+  z3 <- sum(z2)
+  z4 <- log(z1)
+  out <- matrix(0, 2, 2)
+  out[1, 1] <- (pars[2] / pars[1]^2) * (n - (1 + pars[2]) * z3) # w.r.t. (lambda^2)
+  out[1, 2] <- out[2, 1] <- (1 / pars[1]) * ((z3 - n) + 
+                                               pars[2] * sum(z2 * z4)) # w.r.t. (lambda, k)
+  out[2, 2] <- -n/pars[2]^2 - sum(z2 * z4^2) # w.r.t. k^2
+  mult * out
+}
+
+weib_d0 <- function(pars, y, mult = 1) {
+  # Function to evaluate Weibull log-likelihood
+  # pars is a vector
+  # y can be scalar or vector
+  # mult is a scalar defaulting to 1; so -1 returns neg. log likelihood
+  # returns a scalar
+  n <- length(y)
+  if (min(pars) <= 0) {
+    out <- -1e8
+  } else {
+    out <- n * (log(pars[2]) - pars[2] * log(pars[1])) + 
+      (pars[2] - 1) * sum(log(y)) - sum((y / pars[1])^pars[2])
+  }
+  mult * out
+}
