@@ -129,3 +129,19 @@ line_search <- function(theta, p, f, alpha0 = 1, rho = .5, ...) {
   alpha <- alpha0 / rho
   alpha
 }
+
+iH1 <- function(x0, x1, g0, g1, iH0) {
+  # Function to update Hessian matrix
+  # x0 and x1 are p-vectors of second to last and last estimates, respectively
+  # g0 and g1 are p-vectors of second to last and last gradients, respectively
+  # iH0 is previous estimate of p x p Hessian matrix
+  # returns a p x p matrix
+  s0 <- x1 - x0
+  y0 <- g1 - g0
+  denom <- sum(y0 * s0)
+  I <- diag(rep(1, 2))
+  pre <- I - tcrossprod(s0, y0) / denom
+  post <- I - tcrossprod(y0, s0) / denom
+  last <- tcrossprod(s0) / denom
+  pre %*% iH0 %*% post + last
+}
