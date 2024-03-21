@@ -64,6 +64,8 @@ fd <- function(x, f, delta = 1e-6, ...) {
 y0 <- c(3.52, 1.95, 0.62, 0.02, 5.13, 0.02, 0.01, 0.34, 0.43, 15.5, 
         4.99, 6.01, 0.28, 1.83, 0.14, 0.97, 0.22, 0.02, 1.87, 0.13, 0.01, 
         4.81, 0.37, 8.61, 3.48, 1.81, 37.21, 1.85, 0.04, 2.32, 1.06)
+        
+lk0 <- c(1.6, .6)
 
 weib_d1 <- function(pars, y, mult = 1) {
   # Function to evaluate first derivative of Weibull log-likelihood
