@@ -115,3 +115,17 @@ weib_d0 <- function(pars, y, mult = 1) {
   }
   mult * out
 }
+
+line_search <- function(theta, p, f, alpha0 = 1, rho = .5, ...) {
+  best <- f(theta, ...)
+  cond <- TRUE
+  while (cond & alpha0 > .Machine$double.eps) {
+    prop <- f(theta + alpha0 * p, ...)
+    cond <- prop >= best
+    if (!cond)
+      best <- prop
+    alpha0 <- alpha0 * rho
+  }
+  alpha <- alpha0 / rho
+  alpha
+}
