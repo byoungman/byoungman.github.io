@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Statistical computing in R | MTH3045: Statistical Computing</title>
   <meta name="description" content="2 Statistical computing in R | MTH3045: Statistical Computing" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Statistical computing in R | MTH3045: Statistical Computing" />
   <meta property="og:type" content="book" />
@@ -117,6 +117,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -711,16 +715,16 @@ We should anticipate that any subsequent flop introduces an additional fractiona
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="ch2.html#cb97-1" tabindex="-1"></a><span class="sc">&gt;</span> lst2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">rnorm</span>(<span class="dv">4</span>), <span class="fu">runif</span>(<span class="dv">6</span>))</span>
 <span id="cb97-2"><a href="ch2.html#cb97-2" tabindex="-1"></a><span class="sc">&gt;</span> lst2</span></code></pre></div>
 <pre><code>## [[1]]
-## [1]  0.4013046  0.1944080  0.8592796 -0.9542328
+## [1]  0.08620297 -1.09997327 -0.87014544 -0.23640274
 ## 
 ## [[2]]
-## [1] 0.4491797 0.7646925 0.3861319 0.3344052 0.9272777 0.3625667</code></pre>
+## [1] 0.02884399 0.17646998 0.11401395 0.10914341 0.75166492 0.58782490</code></pre>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="ch2.html#cb99-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sapply</span>(lst2, sort)</span></code></pre></div>
 <pre><code>## [[1]]
-## [1] -0.9542328  0.1944080  0.4013046  0.8592796
+## [1] -1.09997327 -0.87014544 -0.23640274  0.08620297
 ## 
 ## [[2]]
-## [1] 0.3344052 0.3625667 0.3861319 0.4491797 0.7646925 0.9272777</code></pre>
+## [1] 0.02884399 0.10914341 0.11401395 0.17646998 0.58782490 0.75166492</code></pre>
 <p>which still returns a <code>list</code>. Such a <code>list</code> is sometimes called a <em>ragged array</em>.</p>
 <p>There are also useful functions <code>tapply()</code> and <code>mapply()</code>, which you may want to explore in your spare time. And if you like them, then take a look a <code>Map()</code> and <code>Reduce()</code>!</p>
 </div>
@@ -751,9 +755,9 @@ We should anticipate that any subsequent flop introduces an additional fractiona
 <span id="cb103-5"><a href="ch2.html#cb103-5" tabindex="-1"></a><span class="sc">+</span>   x <span class="ot">&lt;-</span> <span class="st">&#39;tail&#39;</span></span>
 <span id="cb103-6"><a href="ch2.html#cb103-6" tabindex="-1"></a><span class="sc">+</span> }</span>
 <span id="cb103-7"><a href="ch2.html#cb103-7" tabindex="-1"></a><span class="sc">&gt;</span> x</span></code></pre></div>
-<pre><code>## [1] &quot;tail&quot;</code></pre>
+<pre><code>## [1] &quot;head&quot;</code></pre>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="ch2.html#cb105-1" tabindex="-1"></a><span class="sc">&gt;</span> u</span></code></pre></div>
-<pre><code>## [1] 0.03424159</code></pre>
+<pre><code>## [1] 0.7957399</code></pre>
 <p>We could then combine the <code>for()</code> and <code>if()</code> control flows to mimic repeated coin tosses. The following gives ten:</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="ch2.html#cb107-1" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb107-2"><a href="ch2.html#cb107-2" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">character</span>(n)</span>
@@ -766,12 +770,12 @@ We should anticipate that any subsequent flop introduces an additional fractiona
 <span id="cb107-9"><a href="ch2.html#cb107-9" tabindex="-1"></a><span class="sc">+</span>   }</span>
 <span id="cb107-10"><a href="ch2.html#cb107-10" tabindex="-1"></a><span class="sc">+</span> }</span>
 <span id="cb107-11"><a href="ch2.html#cb107-11" tabindex="-1"></a><span class="sc">&gt;</span> x</span></code></pre></div>
-<pre><code>##  [1] &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;head&quot; &quot;tail&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot;</code></pre>
+<pre><code>##  [1] &quot;head&quot; &quot;head&quot; &quot;head&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot; &quot;tail&quot;</code></pre>
 <p>The function <code>ifelse()</code> can tidy up <code>if ... else ...</code> calls. Equivalently to above we could use <code>ifelse(runif(1) &gt; 0.5, 'head', 'tail')</code>, so that the first argument is the <code>if</code> condition, the second is what’s returned if it’s <code>TRUE</code> and the third is what’s returned if it’s <code>FALSE</code>. Note that <code>for()</code> loops can be a bit untidy, especially if what’s inside the loops is just a line of code. Then <code>replicate()</code> can be useful. Now that we know <code>ifelse()</code>, we could have just used either of the following</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="ch2.html#cb109-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">ifelse</span>(<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">&#39;head&#39;</span>, <span class="st">&#39;tail&#39;</span>))</span></code></pre></div>
-<pre><code>##  [1] &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot; &quot;head&quot; &quot;tail&quot;</code></pre>
+<pre><code>##  [1] &quot;head&quot; &quot;head&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot; &quot;head&quot; &quot;head&quot; &quot;head&quot;</code></pre>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="ch2.html#cb111-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ifelse</span>(<span class="fu">runif</span>(<span class="dv">10</span>) <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">&#39;head&#39;</span>, <span class="st">&#39;tail&#39;</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;head&quot; &quot;head&quot; &quot;tail&quot; &quot;head&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot;</code></pre>
+<pre><code>##  [1] &quot;head&quot; &quot;head&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;head&quot;</code></pre>
 <p>which is equivalent to the above, once the randomness of the call is taken into account.</p>
 <p>In the above, we fixed how many coin tosses we wanted, but we might want to stop when we’ve reached a given number of heads (or tails). For such a random stopping condition, we can use the <code>while()</code> control flow. The following stops when we reach four heads.</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="ch2.html#cb113-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">character</span>(<span class="dv">0</span>)</span>
@@ -784,7 +788,8 @@ We should anticipate that any subsequent flop introduces an additional fractiona
 <span id="cb113-8"><a href="ch2.html#cb113-8" tabindex="-1"></a><span class="sc">+</span>   }</span>
 <span id="cb113-9"><a href="ch2.html#cb113-9" tabindex="-1"></a><span class="sc">+</span> }</span>
 <span id="cb113-10"><a href="ch2.html#cb113-10" tabindex="-1"></a><span class="sc">&gt;</span> x</span></code></pre></div>
-<pre><code>## [1] &quot;tail&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;head&quot; &quot;head&quot;</code></pre>
+<pre><code>##  [1] &quot;head&quot; &quot;head&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot; &quot;tail&quot;
+## [11] &quot;head&quot; &quot;head&quot;</code></pre>
 <p>Note that above <code>x</code> started as a zero-length vector, and grew at each iteration. This is useful if we don’t know how long <code>x</code> needs to be. If we do, it’s better to set the vector’s length at the start.</p>
 <p><code>R</code> also has the function <code>repeat()</code> for repeating a set of code. Somewhere this will need a stopping condition that invokes the <code>break</code> command; otherwise the code will be repeated forever!</p>
 <!-- ### Object-oriented programming -->
@@ -813,8 +818,8 @@ We should anticipate that any subsequent flop introduces an additional fractiona
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="ch2.html#cb119-1" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb119-2"><a href="ch2.html#cb119-2" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
 <span id="cb119-3"><a href="ch2.html#cb119-3" tabindex="-1"></a><span class="sc">&gt;</span> x</span></code></pre></div>
-<pre><code>##  [1] 0.70195016 0.26158031 0.32150841 0.43997462 0.04981115 0.20305448
-##  [7] 0.62779942 0.90433314 0.97744946 0.53480592</code></pre>
+<pre><code>##  [1] 0.94148445 0.74205384 0.55559483 0.96662105 0.87184009 0.11169906
+##  [7] 0.07648976 0.87772977 0.71078221 0.38377181</code></pre>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="ch2.html#cb121-1" tabindex="-1"></a><span class="sc">&gt;</span> intervals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
 <span id="cb121-2"><a href="ch2.html#cb121-2" tabindex="-1"></a><span class="sc">&gt;</span> m <span class="ot">&lt;-</span> <span class="fu">length</span>(intervals) <span class="sc">-</span> <span class="dv">1</span></span>
 <span id="cb121-3"><a href="ch2.html#cb121-3" tabindex="-1"></a><span class="sc">&gt;</span> which_interval <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
@@ -826,10 +831,10 @@ We should anticipate that any subsequent flop introduces an additional fractiona
 <span id="cb121-9"><a href="ch2.html#cb121-9" tabindex="-1"></a><span class="sc">+</span>   }</span>
 <span id="cb121-10"><a href="ch2.html#cb121-10" tabindex="-1"></a><span class="sc">+</span> }</span>
 <span id="cb121-11"><a href="ch2.html#cb121-11" tabindex="-1"></a><span class="sc">&gt;</span> which_interval</span></code></pre></div>
-<pre><code>##  [1]  8  3  4  5  1  3  7 10 10  6</code></pre>
+<pre><code>##  [1] 10  8  6 10  9  2  1  9  8  4</code></pre>
 <p>As you might imagine, we’re probably not the first person to want to perform such a calculation, and <code>R</code> thinks this too. Hence we can simply use its vectorised <code>findInterval()</code> function to perform the equivalent calculation to that above.</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="ch2.html#cb123-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">findInterval</span>(x, intervals)</span></code></pre></div>
-<pre><code>##  [1]  8  3  4  5  1  3  7 10 10  6</code></pre>
+<pre><code>##  [1] 10  8  6 10  9  2  1  9  8  4</code></pre>
 <p>A related function is <code>cut()</code>, which you may want to explore in your own time.</p>
 <!-- \texttt{Exercise on `diff()`.} -->
 </div>
@@ -988,7 +993,7 @@ Put simply, big data is larger, more complex data sets, especially from new data
 <p>The following tells us how long it takes to execute.</p>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="ch2.html#cb139-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(a_sum <span class="ot">&lt;-</span> <span class="fu">apply</span>(A, <span class="dv">1</span>, sum))</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.052   0.016   0.068</code></pre>
+##   0.056   0.012   0.067</code></pre>
 <p>This gives us three timings. The last, <code>elapsed</code>, tells use how long our code has taken to execute in seconds. Then <code>user</code> and <code>system</code> partition this total time into so-called ‘user time’ and ‘system time’. Their definitions are operating system dependent, but this information from the <code>R</code> help file for <code>proc.time()</code> gives as idea. “The ‘user time’ is the CPU time charged for the execution of user instructions of the calling process. The ‘system time’ is the CPU time charged for execution by the system on behalf of the calling process.” We’ll just consider <code>elapsed</code> time for MTH3045.</p>
 <p>For benchmarking in <code>R</code> we’ll consider the <code>microbenchmark::microbenchmark()</code>. Note that this notation refers to function <code>microbenchmark()</code> within the <code>microbenchmark</code> package. If we have the <code>microbenchmark</code> installed, we can either issue <code>microbenchmark::microbenchmark()</code> to use the function or load the package, i.e. <code>library(microbenchmark)</code>, and then just use <code>microbenchmark()</code>. I’ll initially use the <code>::</code> notation to introduce any functions in <code>R</code> that aren’t loaded by default when <code>R</code> starts.</p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="ch2.html#cb141-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(microbenchmark)</span>
@@ -1058,9 +1063,9 @@ Put simply, big data is larger, more complex data sets, especially from new data
 <span id="cb145-8"><a href="ch2.html#cb145-8" tabindex="-1"></a><span class="sc">+</span> )</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##         expr   min      lq     mean  median      uq     max neval cld
-##     sum_R(x) 23957 24994.5 44832.81 25730.0 26227.0 1921380   100   b
-##  sum_Rcpp(x)  1450  1594.0  7624.77  1666.5  1754.0  579110   100  ab
-##       sum(x)   792   835.5   897.53   863.0   897.5    2266   100  a</code></pre>
+##     sum_R(x) 24541 25212.0 44344.32 26034.5 26343.0 1861841   100   b
+##  sum_Rcpp(x)  1494  1636.5  7782.36  1716.5  1840.5  588028   100  ab
+##       sum(x)   800   837.0   886.80   854.5   880.0    1992   100  a</code></pre>
 <p>We see that <code>sum_Rcpp()</code> is typically at least an order of magnitude faster than <code>sum_R()</code>. However, it’s still slower than <code>sum()</code>, because it’s one of <code>R</code>’s functions that’s heavily optimised for efficiency. It’s great that we have such efficiency at our disposal.</p>
 </div>
 <div id="bibliographic-notes" class="section level2 hasAnchor" number="2.7">

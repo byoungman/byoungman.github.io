@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Optimisation | MTH3045: Statistical Computing</title>
   <meta name="description" content="5 Optimisation | MTH3045: Statistical Computing" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Optimisation | MTH3045: Statistical Computing" />
   <meta property="og:type" content="book" />
@@ -117,6 +117,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -706,7 +710,7 @@ which means that <span class="math inline">\(\boldsymbol{\Delta} = - \nabla f(\b
 <span id="cb375-6"><a href="optimisation.html#cb375-6" tabindex="-1"></a><span class="sc">+</span>   xx2[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>)</span>
 <span id="cb375-7"><a href="optimisation.html#cb375-7" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(iterations <span class="sc">+</span> <span class="dv">1</span>)) {</span>
 <span id="cb375-8"><a href="optimisation.html#cb375-8" tabindex="-1"></a><span class="sc">+</span>     gi <span class="ot">&lt;-</span> <span class="fu">weib_d1</span>(xx2[i <span class="sc">-</span> <span class="dv">1</span>, ], y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb375-9"><a href="optimisation.html#cb375-9" tabindex="-1"></a><span class="sc">+</span>     gi <span class="ot">&lt;-</span> gi <span class="sc">/</span> <span class="fu">crossprod</span>(gi)[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb375-9"><a href="optimisation.html#cb375-9" tabindex="-1"></a><span class="sc">+</span>     gi <span class="ot">&lt;-</span> gi <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(gi<span class="sc">^</span><span class="dv">2</span>))</span>
 <span id="cb375-10"><a href="optimisation.html#cb375-10" tabindex="-1"></a><span class="sc">+</span>     xx2[i, ] <span class="ot">&lt;-</span> xx2[i <span class="sc">-</span> <span class="dv">1</span>,] <span class="sc">-</span> alpha_seq[j] <span class="sc">*</span> gi</span>
 <span id="cb375-11"><a href="optimisation.html#cb375-11" tabindex="-1"></a><span class="sc">+</span>   }</span>
 <span id="cb375-12"><a href="optimisation.html#cb375-12" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">print</span>(<span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">&#39;alpha&#39;</span>, alpha_seq[j], <span class="at">sep =</span> <span class="st">&#39; = &#39;</span>), <span class="fu">tail</span>(xx2, <span class="dv">5</span>)))</span>
@@ -715,23 +719,23 @@ which means that <span class="math inline">\(\boldsymbol{\Delta} = - \nabla f(\b
 ## [1] &quot;alpha = 0.5&quot;
 ## 
 ## [[2]]
-##           lambda           k
-## iter 26 2.010166 -0.03896600
-## iter 27 2.010166 -0.03960079
-## iter 28 2.010166 -0.04024614
-## iter 29 2.010166 -0.04090225
-## iter 30 2.010166 -0.04156929
+##           lambda         k
+## iter 26 1.999630 0.6151115
+## iter 27 2.012121 0.1152676
+## iter 28 2.011794 0.6152675
+## iter 29 2.022999 0.1153930
+## iter 30 2.022671 0.6153929
 ## 
 ## [[1]]
 ## [1] &quot;alpha = 0.1&quot;
 ## 
 ## [[2]]
 ##           lambda         k
-## iter 26 1.771195 0.5611662
-## iter 27 1.772881 0.5440336
-## iter 28 1.780112 0.5015718
-## iter 29 1.780158 0.5164447
-## iter 30 1.781202 0.5447801</code></pre>
+## iter 26 1.776830 0.6045666
+## iter 27 1.784328 0.5048482
+## iter 28 1.784878 0.6048466
+## iter 29 1.792177 0.5051134
+## iter 30 1.792433 0.6051131</code></pre>
 <p>Above we give the final five iterations for each value of <span class="math inline">\(\alpha\)</span>, and see that convergence to <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span> has not been achieved after 30 iterations for <span class="math inline">\(\alpha = 0.5\)</span> and for <span class="math inline">\(\alpha = 0.1\)</span>, whereas Newton’s method had essentially converged after four or five iterations. Worse still, if we allowed more iterations, we’d see that both eventually diverge away from <span class="math inline">\(\hat \lambda\)</span> and <span class="math inline">\(\hat k\)</span>, as opposed to converging. The undesirable course of these iterations can be seen in the following plot.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grad1"></span>
 <img src="main_files/figure-html/grad1-1.png" alt="Iterations of the gradient descent algorithm with $\alpha = 0.5$ and $\alpha = 0.1$." width="80%" />
@@ -779,17 +783,17 @@ Figure 5.3: Iterations of the gradient descent algorithm with <span class="math 
 <span id="cb378-4"><a href="optimisation.html#cb378-4" tabindex="-1"></a><span class="sc">&gt;</span> xx2[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>)</span>
 <span id="cb378-5"><a href="optimisation.html#cb378-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(iterations <span class="sc">+</span> <span class="dv">1</span>)) {</span>
 <span id="cb378-6"><a href="optimisation.html#cb378-6" tabindex="-1"></a><span class="sc">+</span>   gi <span class="ot">&lt;-</span> <span class="fu">weib_d1</span>(xx2[i <span class="sc">-</span> <span class="dv">1</span>, ], y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb378-7"><a href="optimisation.html#cb378-7" tabindex="-1"></a><span class="sc">+</span>   gi <span class="ot">&lt;-</span> gi <span class="sc">/</span> <span class="fu">crossprod</span>(gi)[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb378-7"><a href="optimisation.html#cb378-7" tabindex="-1"></a><span class="sc">+</span>   gi <span class="ot">&lt;-</span> gi <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(gi<span class="sc">^</span><span class="dv">2</span>))</span>
 <span id="cb378-8"><a href="optimisation.html#cb378-8" tabindex="-1"></a><span class="sc">+</span>   alpha_i <span class="ot">&lt;-</span> <span class="fu">line_search</span>(xx2[i <span class="sc">-</span> <span class="dv">1</span>, ], <span class="sc">-</span>gi, weib_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
 <span id="cb378-9"><a href="optimisation.html#cb378-9" tabindex="-1"></a><span class="sc">+</span>   xx2[i, ] <span class="ot">&lt;-</span> xx2[i <span class="sc">-</span> <span class="dv">1</span>,] <span class="sc">-</span> alpha_i <span class="sc">*</span> gi</span>
 <span id="cb378-10"><a href="optimisation.html#cb378-10" tabindex="-1"></a><span class="sc">+</span> }</span>
 <span id="cb378-11"><a href="optimisation.html#cb378-11" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tail</span>(xx2, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##            lambda         k
-## iter 196 1.888392 0.5374135
-## iter 197 1.888417 0.5374937
-## iter 198 1.888463 0.5374345
-## iter 199 1.888489 0.5374891
-## iter 200 1.888556 0.5374245</code></pre>
+## iter 196 1.889535 0.5376306
+## iter 197 1.889556 0.5373873
+## iter 198 1.889559 0.5376314
+## iter 199 1.889579 0.5373881
+## iter 200 1.889581 0.5376323</code></pre>
 <p>We see that line search does at least bring us convergence of the parameter estimates, but that it’s also very slow, as the following plot shows.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grad3"></span>
 <img src="main_files/figure-html/grad3-1.png" alt="200 iterations of the gradient descent algorithm using line search." width="80%" />
@@ -868,8 +872,8 @@ where <span class="math inline">\(\mathbf{s}_i = \boldsymbol{\theta}_{i} - \bold
 ## iter 5 1.890167 0.5374986</code></pre>
 <p>and we see that we need two more iterations than Newton’s method to reach convergence to three decimal places.</p>
 <p>Finally, we’ll plot the course of the iterations</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
-<img src="main_files/figure-html/unnamed-chunk-73-1.png" alt="Five iterations of the MFGS quasi-Newton method." width="80%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-300"></span>
+<img src="main_files/figure-html/unnamed-chunk-300-1.png" alt="Five iterations of the MFGS quasi-Newton method." width="80%" />
 <p class="caption">
 Figure 5.5: Five iterations of the MFGS quasi-Newton method.
 </p>
@@ -1169,8 +1173,8 @@ for some <em>temperature</em> <span class="math inline">\(T\)</span>. We note th
 <span id="cb395-12"><a href="optimisation.html#cb395-12" tabindex="-1"></a><span class="sc">+</span> }</span>
 <span id="cb395-13"><a href="optimisation.html#cb395-13" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(T_vals),</span>
 <span id="cb395-14"><a href="optimisation.html#cb395-14" tabindex="-1"></a><span class="sc">+</span>        <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">&quot;t_0 =&quot;</span>, T_vals), <span class="at">bg =</span> <span class="st">&#39;white&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
-<img src="main_files/figure-html/unnamed-chunk-76-1.png" alt="Iterations of simulated annealing for different temperatures." width="80%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-303"></span>
+<img src="main_files/figure-html/unnamed-chunk-303-1.png" alt="Iterations of simulated annealing for different temperatures." width="80%" />
 <p class="caption">
 Figure 5.6: Iterations of simulated annealing for different temperatures.
 </p>
