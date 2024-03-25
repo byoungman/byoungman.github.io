@@ -110,7 +110,7 @@ sum(dnorm(y, 1, 1, log = TRUE))
 # Q2
 
 negloglik <- function(mu, y) {
- # Function to evaluate derivative negative log-likelihood
+ # Function to evaluate N(mu, 1) negative log-likelihood
   # mu is a scalar
   # y is a vector
   # returns a scalar
