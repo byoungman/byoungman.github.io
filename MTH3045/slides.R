@@ -147,3 +147,62 @@ iH1 <- function(x0, x1, g0, g1, iH0) {
   last <- tcrossprod(s0) / denom
   pre %*% iH0 %*% post + last
 }
+
+# simulated annealing
+
+update_T <- function(i, t0 = 10, t1 = 10) {
+  # Function to update simulated annealing temperature
+  # i is an integer giving the current iteration
+  # t0 is a scalar giving the initial temperature
+  # t1 is a integer giving how many iterations of each temperature to use
+  # returns a scalar
+  t0 / log(((i - 1) %/% t1) * t1 + exp(1))
+}
+
+q_fn <- function(x) {
+  # Function to generate Gaussian proposals with standard deviation 0.1
+  # x is the Gaussian mean as either a scalar or vector
+  # returns a scalar or vector, as x
+  rnorm(length(x), x, .1)
+}
+
+sa <- function(p0, h, N, q, T1, ...) {
+  # Function to perform simulated annealing
+  # p0 p-vector of initial parameters
+  # h() function to be minimised
+  # N number of iterations
+  # q proposal function
+  # T1 initial temperature
+  # ... arguments to pass to h()
+  # returns p x N matrix of parameter estimates at each iteration
+  out <- matrix(0, N, length(p0)) # matrix to store estimates at each iteration
+  out[1, ] <- p0 # fill first row with initial parameter estimates
+  for (i in 2:N) { # N iterations
+    T <- update_T(i, T1) # update temperature
+    U <- runif(1) # generate U
+    out[i, ] <- out[i - 1,] # carry over last parameter estimate, by default
+    proposal <- q(out[i - 1,]) # generate proposal
+    if (min(proposal) >= 0) { # ensure proposal valid
+      h0 <- h(out[i - 1, ], ...) # evaluate h for current theta
+      h1 <- h(proposal, ...) # evaluate h for proposed theta
+      alpha <- min(exp(- (h1 - h0) / T), 1) # calculate M-H ratio
+      if (alpha >= U) # accept if ratio sufficiently high
+        out[i, ] <- proposal # swap last with proposal
+    }
+  }
+  out # return all parameter estimates
+}
+
+# T_vals <- c(10, 1, .1)
+# # loop over values, and plot
+# for (j in 1:length(T_vals)) {
+#   T1 <- T_vals[j]
+#   sa_result <- sa(c(1.6, 0.6), weib_d0, 1e3, q_fn, T1, y = y0, mult = -1)
+#   if (j == 1) {
+#     plot(sa_result, col = j, pch = 20, xlab = 'lambda', ylab = 'k')
+#   } else {
+#     points(sa_result, col = j, pch = 20)
+#   }
+# }
+# legend('bottomright', pch = 20, col = 1:length(T_vals),
+#        legend = paste("t_0 =", T_vals), bg = 'white')
