@@ -49,6 +49,8 @@ negloglik_d1(c(1.5, 1.5), y)
 
 ### Q3
 
+
+
 fit_bfgs <- optim(c(1.5, 1.5), negloglik, negloglik_d1, y = y, method = 'BFGS')
 mles <- fit_bfgs$par
 
