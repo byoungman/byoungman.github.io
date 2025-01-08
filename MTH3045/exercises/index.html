@@ -176,48 +176,48 @@ Note than <code>sum()</code> may be used.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chapter-1-exercises.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb2-2"><a href="chapter-1-exercises.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">1</span>, <span class="dv">3</span>)</span>
-<span id="cb2-3"><a href="chapter-1-exercises.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb2-4"><a href="chapter-1-exercises.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># mean</span></span>
-<span id="cb2-5"><a href="chapter-1-exercises.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> mean2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb2-6"><a href="chapter-1-exercises.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate mean of a vector</span></span>
-<span id="cb2-7"><a href="chapter-1-exercises.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
-<span id="cb2-8"><a href="chapter-1-exercises.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
-<span id="cb2-9"><a href="chapter-1-exercises.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
-<span id="cb2-10"><a href="chapter-1-exercises.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
-<span id="cb2-11"><a href="chapter-1-exercises.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb2-12"><a href="chapter-1-exercises.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">mean2</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chapter-1-exercises.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb1-2"><a href="chapter-1-exercises.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb1-3"><a href="chapter-1-exercises.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb1-4"><a href="chapter-1-exercises.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># mean</span></span>
+<span id="cb1-5"><a href="chapter-1-exercises.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> mean2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-6"><a href="chapter-1-exercises.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate mean of a vector</span></span>
+<span id="cb1-7"><a href="chapter-1-exercises.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
+<span id="cb1-8"><a href="chapter-1-exercises.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb1-9"><a href="chapter-1-exercises.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
+<span id="cb1-10"><a href="chapter-1-exercises.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb1-11"><a href="chapter-1-exercises.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb1-12"><a href="chapter-1-exercises.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">mean2</span>(y)</span></code></pre></div>
 <pre><code>## [1] 0.75986</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="chapter-1-exercises.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># check it works</span></span>
-<span id="cb4-2"><a href="chapter-1-exercises.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">all.equal</span>(<span class="fu">mean</span>(y), <span class="fu">mean2</span>(y))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chapter-1-exercises.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># check it works</span></span>
+<span id="cb3-2"><a href="chapter-1-exercises.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">all.equal</span>(<span class="fu">mean</span>(y), <span class="fu">mean2</span>(y))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="chapter-1-exercises.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># variance </span></span>
-<span id="cb6-2"><a href="chapter-1-exercises.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> var2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb6-3"><a href="chapter-1-exercises.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate variance of a vector</span></span>
-<span id="cb6-4"><a href="chapter-1-exercises.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
-<span id="cb6-5"><a href="chapter-1-exercises.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
-<span id="cb6-6"><a href="chapter-1-exercises.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   xbar <span class="ot">&lt;-</span> <span class="fu">mean2</span>(x)</span>
-<span id="cb6-7"><a href="chapter-1-exercises.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">sum</span>((x <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-8"><a href="chapter-1-exercises.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
-<span id="cb6-9"><a href="chapter-1-exercises.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb6-10"><a href="chapter-1-exercises.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">var2</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chapter-1-exercises.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># variance </span></span>
+<span id="cb5-2"><a href="chapter-1-exercises.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> var2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb5-3"><a href="chapter-1-exercises.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate variance of a vector</span></span>
+<span id="cb5-4"><a href="chapter-1-exercises.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
+<span id="cb5-5"><a href="chapter-1-exercises.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb5-6"><a href="chapter-1-exercises.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   xbar <span class="ot">&lt;-</span> <span class="fu">mean2</span>(x)</span>
+<span id="cb5-7"><a href="chapter-1-exercises.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">sum</span>((x <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-8"><a href="chapter-1-exercises.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb5-9"><a href="chapter-1-exercises.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb5-10"><a href="chapter-1-exercises.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">var2</span>(y)</span></code></pre></div>
 <pre><code>## [1] 8.09811</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="chapter-1-exercises.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># check it works</span></span>
-<span id="cb8-2"><a href="chapter-1-exercises.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">all.equal</span>(<span class="fu">var</span>(y), <span class="fu">var2</span>(y))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chapter-1-exercises.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># check it works</span></span>
+<span id="cb7-2"><a href="chapter-1-exercises.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">all.equal</span>(<span class="fu">var</span>(y), <span class="fu">var2</span>(y))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="chapter-1-exercises.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># standard deviation</span></span>
-<span id="cb10-2"><a href="chapter-1-exercises.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> sd2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb10-3"><a href="chapter-1-exercises.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate standard deviation of a vector</span></span>
-<span id="cb10-4"><a href="chapter-1-exercises.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
-<span id="cb10-5"><a href="chapter-1-exercises.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
-<span id="cb10-6"><a href="chapter-1-exercises.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">sqrt</span>(<span class="fu">var2</span>(x))</span>
-<span id="cb10-7"><a href="chapter-1-exercises.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
-<span id="cb10-8"><a href="chapter-1-exercises.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb10-9"><a href="chapter-1-exercises.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">sd2</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chapter-1-exercises.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># standard deviation</span></span>
+<span id="cb9-2"><a href="chapter-1-exercises.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> sd2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb9-3"><a href="chapter-1-exercises.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate standard deviation of a vector</span></span>
+<span id="cb9-4"><a href="chapter-1-exercises.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
+<span id="cb9-5"><a href="chapter-1-exercises.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb9-6"><a href="chapter-1-exercises.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">sqrt</span>(<span class="fu">var2</span>(x))</span>
+<span id="cb9-7"><a href="chapter-1-exercises.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb9-8"><a href="chapter-1-exercises.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb9-9"><a href="chapter-1-exercises.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">sd2</span>(y)</span></code></pre></div>
 <pre><code>## [1] 2.845718</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="chapter-1-exercises.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># check it works</span></span>
-<span id="cb12-2"><a href="chapter-1-exercises.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">all.equal</span>(<span class="fu">sd</span>(y), <span class="fu">sd2</span>(y))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chapter-1-exercises.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># check it works</span></span>
+<span id="cb11-2"><a href="chapter-1-exercises.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">all.equal</span>(<span class="fu">sd</span>(y), <span class="fu">sd2</span>(y))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Note that above for <code>mean2()</code> we’ve not used a <code>for</code> loop. A <code>for</code> loop can be used, but usually if on cna be avoided, then it should. Then for <code>var2()</code> we’ve re-used <code>mean2()</code> and for <code>sd2()</code> we’ve re-used <code>var2()</code>. It’s often a good idea to re-use functions. In this case, we break the function <code>sd2()</code> into various smaller functions, which can often be good practice, as whether the final function is correct can be assessed by whether the simpler functions it comprises are correct.</p>
 </details>
@@ -225,22 +225,22 @@ Note than <code>sum()</code> may be used.</li>
 <ol start="2" style="list-style-type: decimal">
 <li>Consider computing <span class="math inline">\(\text{Pr}(Z \geq z) = 1 - \Phi(z)\)</span> where <span class="math inline">\(Z \sim \text{Normal}(0, 1)\)</span>, or, for short, <span class="math inline">\(Z \sim N(0, 1)\)</span>. For <span class="math inline">\(z = 0, 0.5, 1, 1.5, 2, \ldots\)</span> compute this in <code>R</code> in three different ways using the following three commands</li>
 </ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="chapter-1-exercises.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb14-2"><a href="chapter-1-exercises.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z)</span>
-<span id="cb14-3"><a href="chapter-1-exercises.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="sc">-</span>z)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chapter-1-exercises.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-2"><a href="chapter-1-exercises.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z)</span>
+<span id="cb13-3"><a href="chapter-1-exercises.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="sc">-</span>z)</span></code></pre></div>
 <p>and find the lowest value of <span class="math inline">\(z\)</span> for which the three don’t give the same answer.</p>
 <hr />
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chapter-1-exercises.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="at">by =</span> .<span class="dv">5</span>)</span>
-<span id="cb15-2"><a href="chapter-1-exercises.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(</span>
-<span id="cb15-3"><a href="chapter-1-exercises.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   z,</span>
-<span id="cb15-4"><a href="chapter-1-exercises.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb15-5"><a href="chapter-1-exercises.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z),</span>
-<span id="cb15-6"><a href="chapter-1-exercises.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">pnorm</span>(<span class="sc">-</span>z)</span>
-<span id="cb15-7"><a href="chapter-1-exercises.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="chapter-1-exercises.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="at">by =</span> .<span class="dv">5</span>)</span>
+<span id="cb14-2"><a href="chapter-1-exercises.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(</span>
+<span id="cb14-3"><a href="chapter-1-exercises.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   z,</span>
+<span id="cb14-4"><a href="chapter-1-exercises.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb14-5"><a href="chapter-1-exercises.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z),</span>
+<span id="cb14-6"><a href="chapter-1-exercises.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">pnorm</span>(<span class="sc">-</span>z)</span>
+<span id="cb14-7"><a href="chapter-1-exercises.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> )</span></code></pre></div>
 <pre><code>##         z                                       
 ##  [1,] 0.0 5.000000e-01 5.000000e-01 5.000000e-01
 ##  [2,] 0.5 3.085375e-01 3.085375e-01 3.085375e-01
@@ -263,36 +263,36 @@ Note than <code>sum()</code> may be used.</li>
 <ol start="3" style="list-style-type: decimal">
 <li>The formula <span class="math inline">\(\text{Var}(Y) = \text{E}(Y^2) - [\text{E}(Y)]^2\)</span> is sometimes called the ‘short-cut’ variance formula, i.e. a short-cut for <span class="math inline">\(\text{Var}(Y) = \text{E}[Y - \text{E}(Y)]^2\)</span>. Compare computing the <em>biased</em> version of <span class="math inline">\(\text{Var}(Y)\)</span> using the two formulae above for the samples <code>y1</code> and <code>y2</code> below.</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chapter-1-exercises.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb17-2"><a href="chapter-1-exercises.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y2 <span class="ot">&lt;-</span> y1 <span class="sc">+</span> <span class="fl">1e9</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chapter-1-exercises.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb16-2"><a href="chapter-1-exercises.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y2 <span class="ot">&lt;-</span> y1 <span class="sc">+</span> <span class="fl">1e9</span></span></code></pre></div>
 <hr />
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
 <p>We’ll start with a function to calculate the short-cut formula</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chapter-1-exercises.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> bvar1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb18-2"><a href="chapter-1-exercises.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate short-cut variance</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chapter-1-exercises.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> bvar1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb17-2"><a href="chapter-1-exercises.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate short-cut variance</span></span>
+<span id="cb17-3"><a href="chapter-1-exercises.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
+<span id="cb17-4"><a href="chapter-1-exercises.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
+<span id="cb17-5"><a href="chapter-1-exercises.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mean</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">mean</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb17-6"><a href="chapter-1-exercises.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>and the we’ll write a function to calculate the other formula.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chapter-1-exercises.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> bvar2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb18-2"><a href="chapter-1-exercises.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate variance</span></span>
 <span id="cb18-3"><a href="chapter-1-exercises.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
 <span id="cb18-4"><a href="chapter-1-exercises.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
-<span id="cb18-5"><a href="chapter-1-exercises.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mean</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">mean</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb18-5"><a href="chapter-1-exercises.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mean</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb18-6"><a href="chapter-1-exercises.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
-<p>and the we’ll write a function to calculate the other formula.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chapter-1-exercises.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> bvar2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb19-2"><a href="chapter-1-exercises.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># function to calculate variance</span></span>
-<span id="cb19-3"><a href="chapter-1-exercises.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># x is a vector</span></span>
-<span id="cb19-4"><a href="chapter-1-exercises.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># returns a scalar</span></span>
-<span id="cb19-5"><a href="chapter-1-exercises.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mean</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb19-6"><a href="chapter-1-exercises.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
 <p>For <code>y1</code> we have</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chapter-1-exercises.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">bvar1</span>(y1)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chapter-1-exercises.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">bvar1</span>(y1)</span></code></pre></div>
 <pre><code>## [1] 8.25</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chapter-1-exercises.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">bvar2</span>(y1)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="chapter-1-exercises.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">bvar2</span>(y1)</span></code></pre></div>
 <pre><code>## [1] 8.25</code></pre>
 <p>and so both formulae give the same answer, but for <code>y2</code> we have</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chapter-1-exercises.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">bvar1</span>(y2)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chapter-1-exercises.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">bvar1</span>(y2)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chapter-1-exercises.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">bvar2</span>(y2)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chapter-1-exercises.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">bvar2</span>(y2)</span></code></pre></div>
 <pre><code>## [1] 8.25</code></pre>
 <p>and see that they don’t. The short-cut formula is clearly wrong, bcause the variance of a sample doesn’t change if we add a constant, which is the only difference between <code>y1</code> and <code>y2</code>. (We’ll learn about the cause of this in Chapter 2.)</p>
 </details>
