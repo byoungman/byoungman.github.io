@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>MTH3045: Statistical Computing</title>
+  <meta name="description" content="MTH3045: Statistical Computing" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="MTH3045: Statistical Computing" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="MTH3045: Statistical Computing" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="ch2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#module-outline"><i class="fa fa-check"></i><b>1.1</b> Module outline</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#lectures-practical-classes"><i class="fa fa-check"></i><b>1.2</b> Lectures / practical classes</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#office-hours"><i class="fa fa-check"></i><b>1.3</b> Office hours</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#resources"><i class="fa fa-check"></i><b>1.4</b> Resources</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#assessment"><i class="fa fa-check"></i><b>1.6</b> Assessment</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#motivating-example"><i class="fa fa-check"></i><b>1.7</b> Motivating example</a></li>
+<li class="chapter" data-level="1.8" data-path="introduction.html"><a href="introduction.html#exploratory-and-refresher-exercises"><i class="fa fa-check"></i><b>1.8</b> Exploratory and refresher exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Statistical computing in <code>R</code></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2.html"><a href="ch2.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="ch2.html"><a href="ch2.html#mathematics-by-computer"><i class="fa fa-check"></i><b>2.2</b> Mathematics by computer</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="ch2.html"><a href="ch2.html#positional-number-systems"><i class="fa fa-check"></i><b>2.2.1</b> Positional number systems</a></li>
+<li class="chapter" data-level="2.2.2" data-path="ch2.html"><a href="ch2.html#a-historical-aside-on-exact-representations-of-integers"><i class="fa fa-check"></i><b>2.2.2</b> A historical aside on exact representations of integers</a></li>
+<li class="chapter" data-level="2.2.3" data-path="ch2.html"><a href="ch2.html#floating-point-representation"><i class="fa fa-check"></i><b>2.2.3</b> Floating point representation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="ch2.html"><a href="ch2.html#single-precision-arithmetic"><i class="fa fa-check"></i><b>2.2.4</b> Single-precision arithmetic</a></li>
+<li class="chapter" data-level="2.2.5" data-path="ch2.html"><a href="ch2.html#double-precision-arithmetic"><i class="fa fa-check"></i><b>2.2.5</b> Double-precision arithmetic</a></li>
+<li class="chapter" data-level="2.2.6" data-path="ch2.html"><a href="ch2.html#flops-floating-point-operations"><i class="fa fa-check"></i><b>2.2.6</b> Flops: floating point operations</a></li>
+<li class="chapter" data-level="2.2.7" data-path="ch2.html"><a href="ch2.html#some-useful-terminology"><i class="fa fa-check"></i><b>2.2.7</b> Some useful terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="ch2.html"><a href="ch2.html#the-history-of-r"><i class="fa fa-check"></i><b>2.3</b> The history of <code>R</code></a></li>
+<li class="chapter" data-level="2.4" data-path="ch2.html"><a href="ch2.html#why-r"><i class="fa fa-check"></i><b>2.4</b> Why <code>R</code>?</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="ch2.html"><a href="ch2.html#basics"><i class="fa fa-check"></i><b>2.4.1</b> Basics</a></li>
+<li class="chapter" data-level="2.4.2" data-path="ch2.html"><a href="ch2.html#data-structures"><i class="fa fa-check"></i><b>2.4.2</b> Data structures</a></li>
+<li class="chapter" data-level="2.4.3" data-path="ch2.html"><a href="ch2.html#some-useful-r-functions"><i class="fa fa-check"></i><b>2.4.3</b> Some useful <code>R</code> functions</a></li>
+<li class="chapter" data-level="2.4.4" data-path="ch2.html"><a href="ch2.html#control-structures"><i class="fa fa-check"></i><b>2.4.4</b> Control structures</a></li>
+<li class="chapter" data-level="2.4.5" data-path="ch2.html"><a href="ch2.html#vectorisation"><i class="fa fa-check"></i><b>2.4.5</b> Vectorisation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="ch2.html"><a href="ch2.html#good-practice"><i class="fa fa-check"></i><b>2.5</b> Good practice</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2.html"><a href="ch2.html#useful-tips-to-remember-when-coding"><i class="fa fa-check"></i><b>2.5.1</b> Useful tips to remember when coding</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2.html"><a href="ch2.html#debugging"><i class="fa fa-check"></i><b>2.5.2</b> Debugging</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2.html"><a href="ch2.html#profiling-and-benchmarking"><i class="fa fa-check"></i><b>2.5.3</b> Profiling and benchmarking</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="ch2.html"><a href="ch2.html#compiled-code-with-rcpp"><i class="fa fa-check"></i><b>2.6</b> Compiled code with <code>Rcpp</code></a></li>
+<li class="chapter" data-level="2.7" data-path="ch2.html"><a href="ch2.html#bibliographic-notes"><i class="fa fa-check"></i><b>2.7</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html"><i class="fa fa-check"></i><b>3</b> Matrix-based computing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#motivation"><i class="fa fa-check"></i><b>3.1</b> Motivation</a></li>
+<li class="chapter" data-level="3.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#matrix-properties"><i class="fa fa-check"></i><b>3.2.1</b> Matrix properties</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#special-matrices"><i class="fa fa-check"></i><b>3.3</b> Special matrices</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#diagonal-band-diagonal-and-triangular-matrices"><i class="fa fa-check"></i><b>3.3.1</b> Diagonal, band-diagonal and triangular matrices</a></li>
+<li class="chapter" data-level="3.3.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#block-matrices"><i class="fa fa-check"></i><b>3.3.2</b> Block matrices</a></li>
+<li class="chapter" data-level="3.3.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sparse-matrices"><i class="fa fa-check"></i><b>3.3.3</b> Sparse matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#systems-of-linear-equations"><i class="fa fa-check"></i><b>3.4</b> Systems of linear equations</a></li>
+<li class="chapter" data-level="3.5" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#matrix-decompositions"><i class="fa fa-check"></i><b>3.5</b> Matrix decompositions</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#cholesky-decomposition"><i class="fa fa-check"></i><b>3.5.1</b> Cholesky decomposition</a></li>
+<li class="chapter" data-level="3.5.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#eigen-decomposition"><i class="fa fa-check"></i><b>3.5.2</b> Eigen-decomposition</a></li>
+<li class="chapter" data-level="3.5.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#singular-value-decomposition"><i class="fa fa-check"></i><b>3.5.3</b> Singular value decomposition</a></li>
+<li class="chapter" data-level="3.5.4" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#qr-decomposition"><i class="fa fa-check"></i><b>3.5.4</b> QR decomposition</a></li>
+<li class="chapter" data-level="3.5.5" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#computational-costs-of-matrix-decompostions"><i class="fa fa-check"></i><b>3.5.5</b> Computational costs of matrix decompostions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-formula-woodbury-matrix-identity"><i class="fa fa-check"></i><b>3.6</b> Sherman-Morrison formula / Woodbury matrix identity</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#woodburys-formula"><i class="fa fa-check"></i><b>3.6.1</b> Woodbury’s formula</a></li>
+<li class="chapter" data-level="3.6.2" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-woodbury-formula"><i class="fa fa-check"></i><b>3.6.2</b> Sherman-Morrison-Woodbury formula</a></li>
+<li class="chapter" data-level="3.6.3" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#sherman-morrison-formula"><i class="fa fa-check"></i><b>3.6.3</b> Sherman-Morrison formula</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="matrix-based-computing.html"><a href="matrix-based-computing.html#bibliographic-notes-1"><i class="fa fa-check"></i><b>3.7</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="numerical-calculus.html"><a href="numerical-calculus.html"><i class="fa fa-check"></i><b>4</b> Numerical Calculus</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#motivation-1"><i class="fa fa-check"></i><b>4.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#numerical-differentiation"><i class="fa fa-check"></i><b>4.2</b> Numerical Differentiation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#differentiation-definitions"><i class="fa fa-check"></i><b>4.2.1</b> Differentiation definitions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#differentiation-rules"><i class="fa fa-check"></i><b>4.2.2</b> Differentiation rules</a></li>
+<li class="chapter" data-level="4.2.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#finite-differencing"><i class="fa fa-check"></i><b>4.2.3</b> Finite-differencing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#quadrature"><i class="fa fa-check"></i><b>4.3</b> Quadrature</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#midpoint-rule"><i class="fa fa-check"></i><b>4.3.1</b> Midpoint rule</a></li>
+<li class="chapter" data-level="4.3.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#simpsons-rule"><i class="fa fa-check"></i><b>4.3.2</b> Simpson’s rule</a></li>
+<li class="chapter" data-level="4.3.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#gaussian-quadrature"><i class="fa fa-check"></i><b>4.3.3</b> Gaussian quadrature</a></li>
+<li class="chapter" data-level="4.3.4" data-path="numerical-calculus.html"><a href="numerical-calculus.html#one-dimensional-numerical-integration-in-r"><i class="fa fa-check"></i><b>4.3.4</b> One-dimensional numerical integration in <code>R</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="numerical-calculus.html"><a href="numerical-calculus.html#multi-dimensional-quadrature"><i class="fa fa-check"></i><b>4.3.5</b> Multi-dimensional quadrature</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="numerical-calculus.html"><a href="numerical-calculus.html#laplaces-method"><i class="fa fa-check"></i><b>4.4</b> Laplace’s method</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="numerical-calculus.html"><a href="numerical-calculus.html#an-aside-on-taylor-series-in-one-dimension"><i class="fa fa-check"></i><b>4.4.1</b> An aside on Taylor series in one dimension</a></li>
+<li class="chapter" data-level="4.4.2" data-path="numerical-calculus.html"><a href="numerical-calculus.html#definition-1"><i class="fa fa-check"></i><b>4.4.2</b> Definition</a></li>
+<li class="chapter" data-level="4.4.3" data-path="numerical-calculus.html"><a href="numerical-calculus.html#laplaces-method-for-multiple-dimensions"><i class="fa fa-check"></i><b>4.4.3</b> Laplace’s method for multiple dimensions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="numerical-calculus.html"><a href="numerical-calculus.html#monte-carlo-integration"><i class="fa fa-check"></i><b>4.5</b> Monte Carlo integration</a></li>
+<li class="chapter" data-level="4.6" data-path="numerical-calculus.html"><a href="numerical-calculus.html#bibliographic-notes-2"><i class="fa fa-check"></i><b>4.6</b> Bibliographic notes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="optimisation.html"><a href="optimisation.html"><i class="fa fa-check"></i><b>5</b> Optimisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="optimisation.html"><a href="optimisation.html#root-finding"><i class="fa fa-check"></i><b>5.1</b> Root finding</a></li>
+<li class="chapter" data-level="5.2" data-path="optimisation.html"><a href="optimisation.html#one-dimensional-optimisation-in-r"><i class="fa fa-check"></i><b>5.2</b> One-dimensional optimisation in <code>R</code></a></li>
+<li class="chapter" data-level="5.3" data-path="optimisation.html"><a href="optimisation.html#newtons-method-in-one-dimension"><i class="fa fa-check"></i><b>5.3</b> Newton’s method in one-dimension</a></li>
+<li class="chapter" data-level="5.4" data-path="optimisation.html"><a href="optimisation.html#newtons-multi-dimensional-method"><i class="fa fa-check"></i><b>5.4</b> Newton’s multi-dimensional method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="optimisation.html"><a href="optimisation.html#taylors-theorem-multivariate"><i class="fa fa-check"></i><b>5.4.1</b> Taylor’s theorem (multivariate)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="optimisation.html"><a href="optimisation.html#newtons-method-in-r"><i class="fa fa-check"></i><b>5.4.2</b> Newton’s method in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="optimisation.html"><a href="optimisation.html#gradient-descent"><i class="fa fa-check"></i><b>5.4.3</b> Gradient descent</a></li>
+<li class="chapter" data-level="5.4.4" data-path="optimisation.html"><a href="optimisation.html#line-search"><i class="fa fa-check"></i><b>5.4.4</b> Line search</a></li>
+<li class="chapter" data-level="5.4.5" data-path="optimisation.html"><a href="optimisation.html#quasi-newton-methods"><i class="fa fa-check"></i><b>5.4.5</b> Quasi-Newton methods</a></li>
+<li class="chapter" data-level="5.4.6" data-path="optimisation.html"><a href="optimisation.html#quasi-newton-methods-in-r"><i class="fa fa-check"></i><b>5.4.6</b> Quasi-Newton methods in <code>R</code></a></li>
+<li class="chapter" data-level="5.4.7" data-path="optimisation.html"><a href="optimisation.html#sec:nelder"><i class="fa fa-check"></i><b>5.4.7</b> Nelder-Mead polytope method</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="optimisation.html"><a href="optimisation.html#global-optimisation"><i class="fa fa-check"></i><b>5.5</b> Global optimisation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="optimisation.html"><a href="optimisation.html#stochastic-optimisation"><i class="fa fa-check"></i><b>5.5.1</b> Stochastic optimisation</a></li>
+<li class="chapter" data-level="5.5.2" data-path="optimisation.html"><a href="optimisation.html#simulated-annealing"><i class="fa fa-check"></i><b>5.5.2</b> Simulated annealing</a></li>
+<li class="chapter" data-level="5.5.3" data-path="optimisation.html"><a href="optimisation.html#simulated-annealing-in-r"><i class="fa fa-check"></i><b>5.5.3</b> Simulated annealing in <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="optimisation.html"><a href="optimisation.html#bibliographic-notes-3"><i class="fa fa-check"></i><b>5.6</b> Bibliographic notes</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MTH3045: Statistical Computing</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">MTH3045: Statistical Computing</h1>
+<p class="author"><em><div class="line-block">Dr. Ben Youngman<br />
+<a href="mailto:b.youngman@exeter.ac.uk" class="email">b.youngman@exeter.ac.uk</a><br />
+Laver 817; ext. 2314</div></em></p>
+<p class="date"><em>13/01/2025</em></p>
+</div>
+<div id="introduction" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="module-outline" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Module outline<a href="introduction.html#module-outline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>MTH3045, Statistical Computing, is designed to introduce you to some important, advanced topics that, when considered during calculations, can improve using computers to fit statistical models to data. This can allow us to use more data, or to fit a model more quickly and/or more reliably, for example.</p>
+</div>
+<div id="lectures-practical-classes" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Lectures / practical classes<a href="introduction.html#lectures-practical-classes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In-person lectures will be held at the following times:</p>
+<ul>
+<li>Monday 09.35 – 10.25. Babbage (Innovation Center 1)</li>
+<li>Tuesday 12.35 – 13.25. Babbage (Innovation Center 1)</li>
+<li>Friday 15.35 – 16.25. Babbage (Innovation Center 1)</li>
+</ul>
+<p>The first lecture takes place on Monday 13th January 2025. Lectures will typically involve a mix of me presenting a few slides being to introduce a method to you and then you engaging in hands-on programming so that you experience and confirm understanding of what’s been introduced. To engage with MTH3045 you should be attending lectures in person.</p>
+<p>Week 7 will be a reading week for you for MTH3045. During week 7 there will be no MTH3045 lectures.</p>
+</div>
+<div id="office-hours" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Office hours<a href="introduction.html#office-hours" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>I will hold office hours each week on Fridays at 14.00 - 15.00 in my office, Laver 817, or you can schedule an appointment to meet me online during that hour.</p>
+</div>
+<div id="resources" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Resources<a href="introduction.html#resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>All material that will be examined for MTH3045 can be found in the lecture notes and exercises provided. A complete set of lecture notes and exercises with solutions can be found in pdf format on the module’s ELE page</p>
+<p><a href="https://ele.exeter.ac.uk/course/view.php?id=20155" class="uri">https://ele.exeter.ac.uk/course/view.php?id=20155</a></p>
+<p>There is also an identical web-based version of the lecture notes available at</p>
+<p><a href="https://byoungman.github.io/MTH3045/" class="uri">https://byoungman.github.io/MTH3045/</a></p>
+<p>and a web-based version of the exercises available at</p>
+<p><a href="https://byoungman.github.io/MTH3045/exercises" class="uri">https://byoungman.github.io/MTH3045/exercises</a></p>
+<p>Note that you might find the web-based versions easier for your study.</p>
+<p>During lectures various challenges will be set. These can be found with skeleton solutions at</p>
+<p><a href="https://byoungman.github.io/MTH3045/challenges" class="uri">https://byoungman.github.io/MTH3045/challenges</a></p>
+<p>However, sometimes you may find it useful to get a different perspective on things. If so, you may want to consult the following books. Specific parts of these books useful for given topics will be highlighted throughout the lecture notes.</p>
+<ul>
+<li>Banerjee, S. and A. Roy (2014). <em>Linear Algebra and Matrix Analysis for Statistics</em>. Chapman &amp; Hall/CRC Texts in Statistical Science. Taylor &amp; Francis.</li>
+<li>Eddelbuettel, D. (2013). <em>Seamless R and C++ Integration with Rcpp</em>. Use R! Springer New York.</li>
+<li>Gillespie, C. and R. Lovelace (2016). <em>Efficient R Programming: A Practical Guide to Smarter Programming</em>. O’Reilly Media. <a href="https://csgillespie.github.io/efficientR/" class="uri">https://csgillespie.github.io/efficientR/</a>.</li>
+<li>Monahan, J. F. (2011). <em>Numerical Methods of Statistics (2 ed.)</em>. Cambridge University Press.</li>
+<li>Nocedal, J. and S. Wright (2006). <em>Numerical Optimization (2 ed.)</em>. Springer Series in Operations Research and Financial Engineering. Springer New York.</li>
+<li>Petersen, K. B. and M. S. Pedersen (2012). <em>The Matrix Cookbook</em>. <a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf" class="uri">https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf</a></li>
+<li>Press, W., S. Teukolsky, W. Vetterling, and B. Flannery (2007). <em>Numerical Recipes: The Art of Scientific Computing (3 ed.)</em>. Cambridge University Press.</li>
+<li>W. N. Venables, D. M. S. and the R Core Team (2021). <em>An Introduction to R (4.1.0 ed.)</em>.
+<a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</a>.</li>
+<li>Wickham, H. (2019). Advanced R (2 ed.). Chapman &amp; Hall/CRC the R series. CRC Press/Taylor
+&amp; Francis Group. <a href="https://adv-r.hadley.nz/" class="uri">https://adv-r.hadley.nz/</a>.</li>
+<li>Wood, S. N. (2015). Core Statistics. Institute of Mathematical Statistics Textbooks. Cambridge
+University Press. <a href="https://www.maths.ed.ac.uk/~swood34/core-statistics.pdf" class="uri">https://www.maths.ed.ac.uk/~swood34/core-statistics.pdf</a>.</li>
+</ul>
+</div>
+<div id="acknowledgements" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Acknowledgements<a href="introduction.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Much information used to form these notes came from the above resources. However, Simon Wood’s APTS notes and Charles Geyer’s Statistics 3701 notes have also proved incredibly useful for providing some additional information.</p>
+</div>
+<div id="assessment" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Assessment<a href="introduction.html#assessment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Assessment for MTH3045 will comprise one piece of coursework (worth 50% of the module’s total module mark) and an online practical exam (worth 50% of the module’s total module mark). Your coursework must be your on work.</p>
+</div>
+<div id="motivating-example" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Motivating example<a href="introduction.html#motivating-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose that we want to find <span class="math inline">\(\bf z\)</span>, where <span class="math inline">\(\mathbf{z} = \mathbf{ABy}\)</span>. Let’s try this in <code>R</code>. We can use <code>system.time()</code> to measure how long a command takes to execute. We’ll use <span class="math inline">\(3000 \times 3000\)</span> matrices, <code>A</code> and <code>B</code>, for <span class="math inline">\(\bf A\)</span> and <span class="math inline">\(\bf B\)</span>, respectively, which we’ll fill with arbitrary (here Normal(0, 1), henceforth <span class="math inline">\(N(0, 1)\)</span>) variates, and fill the <span class="math inline">\(n\)</span>-vector <span class="math inline">\(\bf y\)</span>, called <code>y</code>, similarly.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fl">3e3</span></span>
+<span id="cb2-2"><a href="introduction.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> n), n, n)</span>
+<span id="cb2-3"><a href="introduction.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> n), n, n)</span>
+<span id="cb2-4"><a href="introduction.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb2-5"><a href="introduction.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z1 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> B <span class="sc">%*%</span> y)</span></code></pre></div>
+<pre><code>##    user  system elapsed 
+##  12.580   2.831   2.195</code></pre>
+<p>We’re interested in the total time, <code>elapsed</code>, which is 2.195 seconds. However, the next line gives exactly the same answer</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(z2 <span class="ot">&lt;-</span> A <span class="sc">%*%</span> (B <span class="sc">%*%</span> y))</span></code></pre></div>
+<pre><code>##    user  system elapsed 
+##   0.048   0.046   0.018</code></pre>
+<p>which we can check with <code>all.equal()</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">all.equal</span>(z1, z2)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>yet is about 120 times faster. The point of this example is that, if we understand some of the basics behind computations that we need when fitting statistical models, we can make our fitting much more efficient. Improving efficiency can, for given computational cost, allow us to fit models to more data, for example, from which we should hope to draw more reliable inferences.</p>
+<p>What’s happened above? In first approach <code>R</code> has essentially calculated <span class="math inline">\(\mathbf{C} = \mathbf{AB}\)</span>, say, and then <span class="math inline">\(\mathbf{Cy}\)</span>, i.e. multiplied two <span class="math inline">\(n \times n\)</span> matrices, and then an <span class="math inline">\(n \times n\)</span> matrix by an <span class="math inline">\(n\)</span>-vector. In the second approach, however, <code>R</code> has essentially calculated <span class="math inline">\(\mathbf{x} = \mathbf{By}\)</span> and then <span class="math inline">\(\mathbf{z} = \mathbf{Ax}\)</span>, say, i.e. two multiplications of <span class="math inline">\(n \times n\)</span> matrices and <span class="math inline">\(n\)</span>-vectors. By considering the <span class="math inline">\(n\)</span>-vector as an <span class="math inline">\(n \times 1\)</span> matrix, we should expect multiplying together two <span class="math inline">\(n \times n\)</span> matrices to require roughly a factor of <span class="math inline">\(n\)</span> times more calculations than multiplying an <span class="math inline">\(n \times n\)</span> matrix by an <span class="math inline">\(n\)</span>-vector. This is a trivial, but illuminating, example, worth bearing in mind when writing matrix-based code.</p>
+</div>
+<div id="exploratory-and-refresher-exercises" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> Exploratory and refresher exercises<a href="introduction.html#exploratory-and-refresher-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Generate a sample of <span class="math inline">\(n = 20\)</span> <span class="math inline">\(N(1, 3^2)\)</span> random variates, and without using <code>mean()</code>, <code>var()</code> or <code>sd()</code> write <code>R</code> functions to calculate the sample mean, <span class="math inline">\(\bar x\)</span>, sample variance, <span class="math inline">\(s^2\)</span>, and sample standard deviation, <span class="math inline">\(s\)</span>, where <span class="math display">\[
+\bar x = \dfrac{1}{n} \sum_{i = 1}^n x_i \text{  and  } s^2 = \dfrac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar x)^2.
+\]</span>
+Note than <code>sum()</code> may be used.</p></li>
+<li><p>Consider computing <span class="math inline">\(\text{Pr}(Z \geq z) = 1 - \Phi(z)\)</span> where <span class="math inline">\(Z \sim \text{Normal}(0, 1)\)</span>, or, for short, <span class="math inline">\(Z \sim N(0, 1)\)</span>. For <span class="math inline">\(z = 0, 0.5, 1, 1.5, 2, \ldots\)</span> compute this in <code>R</code> in three different ways using the following three commands</p></li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-2"><a href="introduction.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z)</span>
+<span id="cb8-3"><a href="introduction.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="sc">-</span>z)</span></code></pre></div>
+<p>and find the lowest value of <span class="math inline">\(z\)</span> for which the three don’t give the same answer.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>The formula <span class="math inline">\(\text{Var}(Y) = \text{E}(Y^2) - [\text{E}(Y)]^2\)</span> is sometimes called the ‘short-cut’ variance formula, i.e. a short-cut for <span class="math inline">\(\text{Var}(Y) = \text{E}[Y - \text{E}(Y)]^2\)</span>. Compare computing <span class="math inline">\(\text{Var}(Y)\)</span> using the two formulae above for the samples <code>y1</code> and <code>y2</code> below.</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb9-2"><a href="introduction.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y2 <span class="ot">&lt;-</span> y1 <span class="sc">+</span> <span class="fl">1e9</span></span></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="ch2.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
