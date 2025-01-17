@@ -1,5 +1,24 @@
 # functions and data for lectures
 
+bit2decimal <- function(x, e, dp = 20) {
+  # function to convert bits to decimal form
+  # x: the bits as a character string, with appropriate spaces
+  # e: the excess
+  # dp: the decimal places to report the answer to
+  bl <- strsplit(x, ' ')[[1]] # split x into S, E and F components by spaces
+  # and then into a list of three character vectors, each element one bit
+  bl <- lapply(bl, function(z) as.integer(strsplit(z, '')[[1]]))
+  names(bl) <- c('S', 'E', 'F') # give names, to simplify next few lines
+  S <- (-1)^bl$S # calculate sign, S
+  E <- sum(bl$E * 2^c((length(bl$E) - 1):0)) # ditto for exponent, E
+  F <- sum(bl$F * 2^(-c(1:length(bl$F)))) # and ditto to fraction, F
+  z <- S * 2^(E - e) * (1 + F) # calculate z
+  out <- format(z, nsmall = dp) # use format() for specific dp
+  # add (S, E, F) as attributes, for reference
+  attr(out, '(S,E,F)') <- c(S = S, E = E, F = F) 
+  out
+}
+
 hilbert <- function(n) {
   # Function to evaluate n by n Hilbert matrix.
   # n is an integer
