@@ -263,65 +263,65 @@ Note than <code>sum()</code> may be used.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chapter-1.html#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-2"><a href="chapter-1.html#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">1</span>, <span class="dv">3</span>)</span>
-<span id="cb1-3"><a href="chapter-1.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="chapter-1.html#cb1-4" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
-<span id="cb1-5"><a href="chapter-1.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean2</span>(y)</span>
-<span id="cb1-6"><a href="chapter-1.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span>
-<span id="cb1-7"><a href="chapter-1.html#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="chapter-1.html#cb1-8" aria-hidden="true" tabindex="-1"></a>var2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean2</span>(x))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb1-9"><a href="chapter-1.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">var2</span>(y)</span>
-<span id="cb1-10"><a href="chapter-1.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(y)</span>
-<span id="cb1-11"><a href="chapter-1.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="chapter-1.html#cb1-12" aria-hidden="true" tabindex="-1"></a>sd2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>(<span class="fu">var2</span>(x))</span>
-<span id="cb1-13"><a href="chapter-1.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sd2</span>(y)</span>
-<span id="cb1-14"><a href="chapter-1.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chapter-1.html#cb1-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb1-2"><a href="chapter-1.html#cb1-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb1-3"><a href="chapter-1.html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="chapter-1.html#cb1-4" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
+<span id="cb1-5"><a href="chapter-1.html#cb1-5" tabindex="-1"></a><span class="fu">mean2</span>(y)</span>
+<span id="cb1-6"><a href="chapter-1.html#cb1-6" tabindex="-1"></a><span class="fu">mean</span>(y)</span>
+<span id="cb1-7"><a href="chapter-1.html#cb1-7" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="chapter-1.html#cb1-8" tabindex="-1"></a>var2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean2</span>(x))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb1-9"><a href="chapter-1.html#cb1-9" tabindex="-1"></a><span class="fu">var2</span>(y)</span>
+<span id="cb1-10"><a href="chapter-1.html#cb1-10" tabindex="-1"></a><span class="fu">var</span>(y)</span>
+<span id="cb1-11"><a href="chapter-1.html#cb1-11" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="chapter-1.html#cb1-12" tabindex="-1"></a>sd2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>(<span class="fu">var2</span>(x))</span>
+<span id="cb1-13"><a href="chapter-1.html#cb1-13" tabindex="-1"></a><span class="fu">sd2</span>(y)</span>
+<span id="cb1-14"><a href="chapter-1.html#cb1-14" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Consider computing <span class="math inline">\(\text{Pr}(Z \geq z) = 1 - \Phi(z)\)</span> where <span class="math inline">\(Z \sim \text{Normal}(0, 1)\)</span>, or, for short, <span class="math inline">\(Z \sim N(0, 1)\)</span>. For <span class="math inline">\(z = 0, 0.5, 1, 1.5, 2, \ldots\)</span> compute this in <code>R</code> in three different ways using the following three commands</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chapter-1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-2"><a href="chapter-1.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z)</span>
-<span id="cb2-3"><a href="chapter-1.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span>z)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chapter-1.html#cb2-1" tabindex="-1"></a><span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-2"><a href="chapter-1.html#cb2-2" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z)</span>
+<span id="cb2-3"><a href="chapter-1.html#cb2-3" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span>z)</span></code></pre></div>
 <p>and find the lowest value of <span class="math inline">\(z\)</span> for which the three don’t give the same answer.</p>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chapter-1.html#cb3-1" aria-hidden="true" tabindex="-1"></a>pnorms <span class="ot">&lt;-</span> <span class="cf">function</span>(z) {</span>
-<span id="cb3-2"><a href="chapter-1.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
-<span id="cb3-3"><a href="chapter-1.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb3-4"><a href="chapter-1.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z),</span>
-<span id="cb3-5"><a href="chapter-1.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span>z)</span>
-<span id="cb3-6"><a href="chapter-1.html#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-7"><a href="chapter-1.html#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-8"><a href="chapter-1.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="chapter-1.html#cb3-9" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> .<span class="dv">5</span>)</span>
-<span id="cb3-10"><a href="chapter-1.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorms</span>(vals)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chapter-1.html#cb3-1" tabindex="-1"></a>pnorms <span class="ot">&lt;-</span> <span class="cf">function</span>(z) {</span>
+<span id="cb3-2"><a href="chapter-1.html#cb3-2" tabindex="-1"></a><span class="fu">cbind</span>(</span>
+<span id="cb3-3"><a href="chapter-1.html#cb3-3" tabindex="-1"></a><span class="fu">pnorm</span>(z, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb3-4"><a href="chapter-1.html#cb3-4" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z),</span>
+<span id="cb3-5"><a href="chapter-1.html#cb3-5" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span>z)</span>
+<span id="cb3-6"><a href="chapter-1.html#cb3-6" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="chapter-1.html#cb3-7" tabindex="-1"></a>}</span>
+<span id="cb3-8"><a href="chapter-1.html#cb3-8" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="chapter-1.html#cb3-9" tabindex="-1"></a>vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> .<span class="dv">5</span>)</span>
+<span id="cb3-10"><a href="chapter-1.html#cb3-10" tabindex="-1"></a><span class="fu">pnorms</span>(vals)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>The formula <span class="math inline">\(\text{Var}(Y) = \text{E}(Y^2) - [\text{E}(Y)]^2\)</span> is sometimes called the ‘short-cut’ variance formula, i.e. a short-cut for <span class="math inline">\(\text{Var}(Y) = \text{E}[Y - \text{E}(Y)]^2\)</span>. Compare computing the <em>biased</em> version of <span class="math inline">\(\text{Var}(Y)\)</span> using the two formulae above for the samples <code>y1</code> and <code>y2</code> below.</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="chapter-1.html#cb4-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb4-2"><a href="chapter-1.html#cb4-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> y1 <span class="sc">+</span> <span class="fl">1e9</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="chapter-1.html#cb4-1" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb4-2"><a href="chapter-1.html#cb4-2" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> y1 <span class="sc">+</span> <span class="fl">1e9</span></span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chapter-1.html#cb5-1" aria-hidden="true" tabindex="-1"></a>bvar1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb5-2"><a href="chapter-1.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">mean</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb5-3"><a href="chapter-1.html#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-4"><a href="chapter-1.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="chapter-1.html#cb5-5" aria-hidden="true" tabindex="-1"></a>bvar2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb5-6"><a href="chapter-1.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb5-7"><a href="chapter-1.html#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-8"><a href="chapter-1.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="chapter-1.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">bvar1</span>(y1)</span>
-<span id="cb5-10"><a href="chapter-1.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">bvar2</span>(y1)</span>
-<span id="cb5-11"><a href="chapter-1.html#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="chapter-1.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">bvar1</span>(y2)</span>
-<span id="cb5-13"><a href="chapter-1.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">bvar2</span>(y2)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chapter-1.html#cb5-1" tabindex="-1"></a>bvar1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb5-2"><a href="chapter-1.html#cb5-2" tabindex="-1"></a>  <span class="fu">mean</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">mean</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb5-3"><a href="chapter-1.html#cb5-3" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a href="chapter-1.html#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="chapter-1.html#cb5-5" tabindex="-1"></a>bvar2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb5-6"><a href="chapter-1.html#cb5-6" tabindex="-1"></a>  <span class="fu">mean</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb5-7"><a href="chapter-1.html#cb5-7" tabindex="-1"></a>}</span>
+<span id="cb5-8"><a href="chapter-1.html#cb5-8" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="chapter-1.html#cb5-9" tabindex="-1"></a><span class="fu">bvar1</span>(y1)</span>
+<span id="cb5-10"><a href="chapter-1.html#cb5-10" tabindex="-1"></a><span class="fu">bvar2</span>(y1)</span>
+<span id="cb5-11"><a href="chapter-1.html#cb5-11" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="chapter-1.html#cb5-12" tabindex="-1"></a><span class="fu">bvar1</span>(y2)</span>
+<span id="cb5-13"><a href="chapter-1.html#cb5-13" tabindex="-1"></a><span class="fu">bvar2</span>(y2)</span></code></pre></div>
 </details>
 </div>
 </div>
