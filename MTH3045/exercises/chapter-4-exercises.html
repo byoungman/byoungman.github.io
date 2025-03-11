@@ -233,8 +233,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb255-8"><a href="chapter-4-exercises.html#cb255-8" tabindex="-1"></a>x2_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x12_grid<span class="sc">$</span>x2, <span class="fu">length</span>(x1))</span>
 <span id="cb255-9"><a href="chapter-4-exercises.html#cb255-9" tabindex="-1"></a>plot3D<span class="sc">::</span><span class="fu">surf3D</span>(x1_mat, x2_mat, f12, <span class="at">colvar =</span> f12, <span class="at">colkey =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb255-10"><a href="chapter-4-exercises.html#cb255-10" tabindex="-1"></a>  <span class="at">box =</span> <span class="cn">TRUE</span>, <span class="at">bty =</span> <span class="st">&quot;b&quot;</span>, <span class="at">phi =</span> <span class="dv">20</span>, <span class="at">theta =</span> <span class="dv">15</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-247"></span>
-<img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-247-1.png" alt="Rosenbrock's function as a contour plot (left) and surface plot (right)." width="960" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-245"></span>
+<img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-245-1.png" alt="Rosenbrock's function as a contour plot (left) and surface plot (right)." width="960" />
 <p class="caption">
 Figure 4.1: Rosenbrock’s function as a contour plot (left) and surface plot (right).
 </p>
@@ -928,8 +928,8 @@ f(y)
 <div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="chapter-4-exercises.html#cb366-1" tabindex="-1"></a>fy <span class="ot">&lt;-</span> <span class="fu">dnbinom2</span>(y, alpha, <span class="dv">1</span> <span class="sc">/</span> (beta <span class="sc">+</span> <span class="dv">1</span>))</span>
 <span id="cb366-2"><a href="chapter-4-exercises.html#cb366-2" tabindex="-1"></a><span class="fu">plot</span>(y, fy, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fy)))</span>
 <span id="cb366-3"><a href="chapter-4-exercises.html#cb366-3" tabindex="-1"></a><span class="fu">lines</span>(y, <span class="fu">fhat</span>(y, alpha, beta), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-306"></span>
-<img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-306-1.png" alt="Comparison of true negative binomial marginal pmf with its Laplace approximation." width="384" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-304"></span>
+<img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-304-1.png" alt="Comparison of true negative binomial marginal pmf with its Laplace approximation." width="384" />
 <p class="caption">
 Figure 4.2: Comparison of true negative binomial marginal pmf with its Laplace approximation.
 </p>
@@ -1178,8 +1178,8 @@ Figure 4.3: To do.
 <p>and is reasonably small for each <span class="math inline">\(y\)</span> value. Finally, as in question <span class="math inline">\(\ref{negbin}\)</span>, we’ll plot the approximation against the true marginal pdf</p>
 <div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="chapter-4-exercises.html#cb413-1" tabindex="-1"></a><span class="fu">plot</span>(y_vals, fy, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fy_hat)), <span class="at">xlab =</span> <span class="st">&#39;y&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;f(y)&#39;</span>)</span>
 <span id="cb413-2"><a href="chapter-4-exercises.html#cb413-2" tabindex="-1"></a><span class="fu">lines</span>(y, fy_hat, <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-334"></span>
-<img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-334-1.png" alt="Comparison of true negative binomial marginal pmf with its Monte Carlo approximation." width="384" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-332"></span>
+<img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-332-1.png" alt="Comparison of true negative binomial marginal pmf with its Monte Carlo approximation." width="384" />
 <p class="caption">
 Figure 4.4: Comparison of true negative binomial marginal pmf with its Monte Carlo approximation.
 </p>

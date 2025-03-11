@@ -188,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr /></li>
 </ol></li>
 <li><p>Consider the calculation <span class="math inline">\(\mathbf{AD}\)</span> where <span class="math display">\[
-\mathbf{A} = \begin{pmatrix}-1.28&amp;-0.54&amp;0.29&amp;-0.20 \\0.72&amp;0.60&amp;-1.02&amp;0.23 \\0.93&amp;0.25&amp;-0.13&amp;0.66 \\-0.35&amp;-2.00&amp;1.63&amp;0.69 \\1.25&amp;0.49&amp;0.92&amp;-0.49 \\-0.27&amp;-0.15&amp;-0.92&amp;1.26 \\\end{pmatrix} \text{  and  }\mathbf{D} = \begin{pmatrix}0.67&amp;0.00&amp;0.00&amp;0.00 \\0.00&amp;-0.80&amp;0.00&amp;0.00 \\0.00&amp;0.00&amp;0.29&amp;0.00 \\0.00&amp;0.00&amp;0.00&amp;-1.81 \\\end{pmatrix}.
+\mathbf{A} = \begin{pmatrix}2.43&amp;-0.37&amp;0.75&amp;-0.16 \\-1.31&amp;0.23&amp;1.15&amp;-0.41 \\-0.40&amp;-0.50&amp;-1.62&amp;-0.98 \\1.59&amp;-1.16&amp;-1.83&amp;-0.34 \\-1.37&amp;-1.45&amp;-1.20&amp;2.05 \\-0.27&amp;-0.87&amp;0.79&amp;1.02 \\\end{pmatrix} \text{  and  }\mathbf{D} = \begin{pmatrix}1.18&amp;0.00&amp;0.00&amp;0.00 \\0.00&amp;0.85&amp;0.00&amp;0.00 \\0.00&amp;0.00&amp;0.80&amp;0.00 \\0.00&amp;0.00&amp;0.00&amp;-0.40 \\\end{pmatrix}.
 \]</span> Write a function in <code>R</code> that takes a matrix <code>A</code> and a vector <code>d</code> as its arguments and computes <span class="math inline">\(\mathbf{AD}\)</span>, where <span class="math inline">\(\mathbf{A} =\)</span> <code>A</code> and <span class="math inline">\(\text{diag}(\mathbf{D}) =\)</span> <code>d</code>, and where <span class="math inline">\(\text{diag}(\mathbf{D})\)</span> denotes the vector comprising the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span>. Consider whether your function is performing redundant calculations and, if it is, try and avoid them.</p>
 <hr />
 <details>
@@ -214,21 +214,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb106-7"><a href="chapter-3-exercises.html#cb106-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>and the following confirms that both give the same result</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chapter-3-exercises.html#cb107-1" tabindex="-1"></a><span class="fu">AD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
-<pre><code>##         [,1]   [,2]    [,3]    [,4]
-## [1,] -0.8576  0.432  0.0841  0.3620
-## [2,]  0.4824 -0.480 -0.2958 -0.4163
-## [3,]  0.6231 -0.200 -0.0377 -1.1946
-## [4,] -0.2345  1.600  0.4727 -1.2489
-## [5,]  0.8375 -0.392  0.2668  0.8869
-## [6,] -0.1809  0.120 -0.2668 -2.2806</code></pre>
+<pre><code>##         [,1]    [,2]   [,3]   [,4]
+## [1,]  2.8674 -0.3145  0.600  0.064
+## [2,] -1.5458  0.1955  0.920  0.164
+## [3,] -0.4720 -0.4250 -1.296  0.392
+## [4,]  1.8762 -0.9860 -1.464  0.136
+## [5,] -1.6166 -1.2325 -0.960 -0.820
+## [6,] -0.3186 -0.7395  0.632 -0.408</code></pre>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chapter-3-exercises.html#cb109-1" tabindex="-1"></a><span class="fu">AdiagD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
-<pre><code>##         [,1]   [,2]    [,3]    [,4]
-## [1,] -0.8576  0.432  0.0841  0.3620
-## [2,]  0.4824 -0.480 -0.2958 -0.4163
-## [3,]  0.6231 -0.200 -0.0377 -1.1946
-## [4,] -0.2345  1.600  0.4727 -1.2489
-## [5,]  0.8375 -0.392  0.2668  0.8869
-## [6,] -0.1809  0.120 -0.2668 -2.2806</code></pre>
+<pre><code>##         [,1]    [,2]   [,3]   [,4]
+## [1,]  2.8674 -0.3145  0.600  0.064
+## [2,] -1.5458  0.1955  0.920  0.164
+## [3,] -0.4720 -0.4250 -1.296  0.392
+## [4,]  1.8762 -0.9860 -1.464  0.136
+## [5,] -1.6166 -1.2325 -0.960 -0.820
+## [6,] -0.3186 -0.7395  0.632 -0.408</code></pre>
 </details>
 <hr /></li>
 <li><p>The following function generates an arbitrary <span class="math inline">\(n \times n\)</span> positive definite matrix.</p>
@@ -922,16 +922,16 @@ Y \mid x \sim N(m(x), \sigma^2)
 m(x) = \beta_0 + \sum_{i = 1}^p \beta_i x^i
 \]</span></p>
 <p>for <span class="math inline">\((p + 1)\)</span>-vector of regression coefficients <span class="math inline">\(\boldsymbol{\beta} = (\beta_0, \beta_1, \dots, \beta_p)^\textsf{T}\)</span>.</p>
-<p>Now consider <span class="math inline">\(Y_i\)</span>, denote the global surface temperature anomaly for year <span class="math inline">\(i\)</span>, where <span class="math inline">\(i = 1880, 1881, \ldots, 2024\)</span>, and let <span class="math inline">\(x_i = i = 1950\)</span>. We cna load these data in <code>R</code> with</p>
+<p>Now let <span class="math inline">\(Y_i\)</span>, where <span class="math inline">\(i = 1, 2, \ldots, 145\)</span>, denote the global surface temperature anomaly for years <span class="math inline">\(1880, 1881, \ldots, 2024\)</span>. Then let <span class="math inline">\(x_i = i - 70\)</span>. We can load these data in <code>R</code> with</p>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="chapter-3-exercises.html#cb235-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;https://byoungman.github.io/MTH3045/hockey.csv&#39;</span>)</span></code></pre></div>
-<p>For <span class="math inline">\(p = 3\)</span>, estimate <span class="math inline">\(E(Y_i \mid x_i)\)</span> for <span class="math inline">\(i = 1, \ldots, 2024\)</span> using maximum likelihood.</p>
+<p>For <span class="math inline">\(p = 3\)</span>, estimate <span class="math inline">\(E(Y_i \mid x_i)\)</span> for <span class="math inline">\(i = 1, \ldots, 145\)</span> using maximum likelihood.</p>
 <hr />
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
 <p>Note that we can write <span class="math inline">\(E(Y \mid x) = \mathbf{x}^\textsf{T} \boldsymbol{\beta}\)</span>, where <span class="math inline">\(\mathbf{x}^\textsf{T} = c(1, x, x^2, \ldots, x^p)\)</span>. Then our maximum likelihood estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\hat{\boldsymbol{\beta}} = (\mathbf{X}^\textsf{T} \mathbf{X})^{-1} \mathbf{X}^\textsf{T} \mathbf{y}\)</span>, where <span class="math inline">\(\mathbf{X}\)</span> has <span class="math inline">\(i\)</span>th row <span class="math inline">\(\mathbf{x}_i^\textsf{T} = (1, x_i, x_i^2, x_i^3)\)</span>. We can form this with</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="chapter-3-exercises.html#cb236-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> data<span class="sc">$</span>year <span class="sc">-</span> <span class="dv">1950</span></span>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="chapter-3-exercises.html#cb236-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(data<span class="sc">$</span>year) <span class="sc">-</span> <span class="dv">70</span></span>
 <span id="cb236-2"><a href="chapter-3-exercises.html#cb236-2" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, x, x<span class="sc">^</span><span class="dv">2</span>, x<span class="sc">^</span><span class="dv">3</span>)</span></code></pre></div>
 <p>and then read in the response data with</p>
 <div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="chapter-3-exercises.html#cb237-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> data<span class="sc">$</span>temperature</span></code></pre></div>
@@ -941,14 +941,17 @@ m(x) = \beta_0 + \sum_{i = 1}^p \beta_i x^i
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="chapter-3-exercises.html#cb239-1" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> X <span class="sc">%*%</span> beta_hat</span></code></pre></div>
 <p>(Aside: these are the data seen in the <a href="https://en.wikipedia.org/wiki/Hockey_stick_graph_(global_temperature)">so-called hockey stick graph</a>.</p>
 <div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="chapter-3-exercises.html#cb240-1" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>year, data<span class="sc">$</span>temperature, </span>
-<span id="cb240-2"><a href="chapter-3-exercises.html#cb240-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Year&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Global surface temperature anomaly&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span>
-<span id="cb240-3"><a href="chapter-3-exercises.html#cb240-3" tabindex="-1"></a><span class="fu">lines</span>(data<span class="sc">$</span>year, y_hat, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
-<span id="cb240-4"><a href="chapter-3-exercises.html#cb240-4" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;Data&#39;</span>, <span class="st">&#39;Polynomial fit&#39;</span>),</span>
-<span id="cb240-5"><a href="chapter-3-exercises.html#cb240-5" tabindex="-1"></a>    <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
-<p><img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<span id="cb240-2"><a href="chapter-3-exercises.html#cb240-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Year&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Global surface temperature anomaly&#39;</span>, </span>
+<span id="cb240-3"><a href="chapter-3-exercises.html#cb240-3" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Global surface temperature anomaly by year&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span>
+<span id="cb240-4"><a href="chapter-3-exercises.html#cb240-4" tabindex="-1"></a><span class="fu">lines</span>(data<span class="sc">$</span>year, y_hat, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb240-5"><a href="chapter-3-exercises.html#cb240-5" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;Data&#39;</span>, <span class="st">&#39;Polynomial fit&#39;</span>),</span>
+<span id="cb240-6"><a href="chapter-3-exercises.html#cb240-6" tabindex="-1"></a>    <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
+<p><img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <p>Sometimes, the data are plotted as blues and reds</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="chapter-3-exercises.html#cb241-1" tabindex="-1"></a><span class="fu">image</span>(<span class="fu">matrix</span>(data<span class="sc">$</span>temperature, <span class="at">ncol =</span> <span class="dv">1</span>), <span class="at">col =</span> <span class="fu">hcl.colors</span>(<span class="dv">11</span>, <span class="st">&#39;Blue-Red 3&#39;</span>))</span></code></pre></div>
-<p><img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="chapter-3-exercises.html#cb241-1" tabindex="-1"></a><span class="fu">image</span>(<span class="at">x =</span> data<span class="sc">$</span>year, <span class="at">z =</span> <span class="fu">matrix</span>(data<span class="sc">$</span>temperature, <span class="at">ncol =</span> <span class="dv">1</span>), </span>
+<span id="cb241-2"><a href="chapter-3-exercises.html#cb241-2" tabindex="-1"></a>      <span class="at">col =</span> <span class="fu">hcl.colors</span>(<span class="dv">11</span>, <span class="st">&#39;Blue-Red 3&#39;</span>), <span class="at">xlab =</span> <span class="st">&#39;Year&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;&#39;</span>,</span>
+<span id="cb241-3"><a href="chapter-3-exercises.html#cb241-3" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&#39;Color-based global surface temperature anomaly by year&#39;</span>)</span></code></pre></div>
+<p><img src="MTH3045_Exercises_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
 <p>as in the plot above.)</p>
 </details>
 <hr /></li>
