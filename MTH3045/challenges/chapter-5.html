@@ -253,6 +253,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-18"><i class="fa fa-check"></i>Challenges I</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-10-lecture-1"><i class="fa fa-check"></i>Week 10 lecture 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-19"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-20"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-21"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#extra-example"><i class="fa fa-check"></i>Extra example</a></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-22"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -362,10 +370,205 @@ write functions called <code>nd1(lambda, y)</code> and <code>nd2(lambda, y)</cod
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="chapter-5.html#cb104-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">1.0</span>, <span class="fl">1.8</span>, <span class="fl">2.5</span>)</span>
 <span id="cb104-2"><a href="chapter-5.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">nd1</span>(<span class="dv">1</span>, y) <span class="sc">/</span> <span class="fu">nd2</span>(<span class="dv">1</span>, y)</span></code></pre></div>
 </details>
-<!-- ```{r child = 'week10.Rmd', eval = week >= 10, echo = week >= 10} -->
+</div>
+</div>
+<div id="week-10-lecture-1" class="section level2 hasAnchor">
+<h2>Week 10 lecture 1<a href="chapter-5.html#week-10-lecture-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-i-19" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-5.html#challenges-i-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider modelling the sample <span class="math inline">\(y_1, \ldots, y_n\)</span> independent as Exp(<span class="math inline">\(\lambda\)</span>) random variables. Given that their log likelihood is
+<span class="math display">\[
+\log f(\mathbf{y} \mid \lambda) = n \log \lambda - \lambda \sum_{i = 1}^n y_i,
+\]</span>
+write a function called <code>nd0(lambda, y)</code> that evaluates the <em>negative</em> log-likelihood, i.e. <span class="math inline">\(-\log f(\mathbf{y} \mid \lambda)\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Use <code>nlminb()</code> with <code>nd0()</code>, <code>nd1()</code> and <code>nd2()</code> to find <span class="math inline">\(\hat \lambda\)</span>, the maximum likelihood estimate, given independent sample
+<span class="math display">\[
+0.2, 0.5, 0.6, 1.0, 1.8, 2.5
+\]</span>
+and a starting value of <span class="math inline">\(\lambda_0 = 1\)</span>. [Note that you will need to ensure that <code>nd2()</code> returns a matrix, albeit a trivial <span class="math inline">\(1 \times 1\)</span> one. Using <code>as.matrix()</code> is probably easiest.]</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<!-- 3. Confirm your result with `optimize()` and `optim(..., method = 'Brent)`. -->
+<!-- <details><summary>**Solution**</summary> -->
+<!-- ```{r, eval = FALSE, echo = week > w0} -->
+<!-- optimize(nd0, c(.5, 1.5), y = y) -->
+<!-- optim(1, nd0, lower = .5, upper = 1.5, method = 'Brent', y = y) -->
 <!-- ``` -->
-<!-- ```{r child = 'week11.Rmd', eval = week >= 11, echo = week >= 11} -->
+<!-- </details> -->
+<ol start="3" style="list-style-type: decimal">
+<li>Experiment with different starting values <span class="math inline">\(\lambda_0\)</span> in order to investigate the sensitivity of Newton’s method to starting values (on this occasion)</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<!-- ## Week 10 lecture 2 -->
+</div>
+<div id="challenges-i-20" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-5.html#challenges-i-20" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider modelling the sample <span class="math inline">\(y_1, \ldots, y_n\)</span> independent as Exp(<span class="math inline">\(\text{e}^\tau\)</span>) random variables. Given that their log likelihood is
+<span class="math display">\[
+\log f(\mathbf{y} \mid \tau) = n \tau - \text{e}^\tau \sum_{i = 1}^n y_i,
+\]</span>
+use <code>nlminb()</code> by supplying the negative log-likelihood and its first and second derivatives w.r.t. <span class="math inline">\(\tau\)</span> to find <span class="math inline">\(\hat \tau\)</span>, its maximum likelihood estimate, given independent sample
+<span class="math display">\[
+0.2, 0.5, 0.6, 1.0, 1.8, 2.5
+\]</span>
+and a starting value of <span class="math inline">\(\tau_0 = 1\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<!-- 2. Confirm the result with `optimize()`. -->
+<!-- <details><summary>**Solution**</summary> -->
+<!-- ```{r, eval = FALSE, echo = week > w0} -->
+<!-- optimize(nd0_tau, c(-1, 1), y = y0) -->
 <!-- ``` -->
+<!-- </details> -->
+<!-- ## Week 10 lecture 3 -->
+</div>
+<div id="challenges-i-21" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-5.html#challenges-i-21" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider the sample <span class="math inline">\(y_1, \ldots, y_n\)</span> given by
+<span class="math display">\[
+1.8, 2.1, 2.3, 2.4, 2.5, 2.7, 3.1, 4.3, 4.3, 4.4
+\]</span>
+as <span class="math inline">\(n = 200\)</span> independent realisations from the Normal(<span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma^2\)</span>) with <span class="math inline">\(\mu\)</span> unknown and <span class="math inline">\(\sigma^2 = 1\)</span>, i.e. with pdf
+<span class="math display">\[
+f(y \mid \mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}} \text{e}^{-(y - \mu)^2/2\sigma^2}.
+\]</span>
+Suppose that <span class="math inline">\(\sigma^2 = 1\)</span>. Find <span class="math inline">\(\log f(\mathbf{y} \mid \mu = 1, \sigma^2 = 1) = \sum_{i = 1}^n \log f(y_i \mid \mu = 1, \sigma^2 = 1)\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Write a function in <code>R</code>, <code>negloglik(mu, y)</code>, that evaluates <span class="math inline">\(-\log f(\mathbf{y} \mid \mu, \sigma^2 = 1)\)</span> for <code>mu</code> <span class="math inline">\(= \mu\)</span> and <code>y</code> <span class="math inline">\(=y\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Find <span class="math inline">\(-\partial \log f(\mathbf{y} \mid \mu, \sigma^2 = 1) / \partial \mu\)</span> and write a function in <code>R</code>, <code>negloglik_d1(mu, y)</code>, that evaluates <span class="math inline">\(-\partial \log f(\mathbf{y} \mid \mu, \sigma^2 = 1) / \partial \mu\)</span> for <code>mu</code> <span class="math inline">\(= \mu\)</span> and <code>y</code> <span class="math inline">\(=y\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li>Use <code>optim()</code> in <code>R</code> to find <span class="math inline">\(\hat \mu\)</span>, the maximum likelihood estimate of <span class="math inline">\(\mu\)</span>, using the BFGS method. You should supply <code>negloglik_d1(mu, y)</code> to evaluate the first derivative w.r.t. <span class="math inline">\(\mu\)</span>, and use <span class="math inline">\(\mu_0 = 1\)</span> as a starting value.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="5" style="list-style-type: decimal">
+<li>Evaluate <span class="math inline">\(-\partial \log f(\mathbf{y} \mid \mu, \sigma^2 = 1) / \partial \mu\)</span> at <span class="math inline">\(\hat \mu\)</span> to verify that <span class="math inline">\(\hat \mu\)</span> is the m.l.e.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<!-- ## Week 11 lecture 1 -->
+</div>
+<div id="extra-example" class="section level3 hasAnchor">
+<h3>Extra example<a href="chapter-5.html#extra-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider the sample <span class="math inline">\(y_1, \ldots, y_n\)</span> given by
+<span class="math display">\[
+1.8, 2.1, 2.3, 2.4, 2.5, 2.7, 3.1, 4.3, 4.3, 4.4
+\]</span>
+as <span class="math inline">\(n = 10\)</span> independent realisations from the Normal(<span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma^2\)</span>) with <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> unknown, i.e. with pdf
+<span class="math display">\[
+f(y \mid \mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}} \text{e}^{-(y - \mu)^2/2\sigma^2}.
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Write a function in <code>R</code>, <code>negloglik(pars, y)</code>, that evaluates <span class="math inline">\(-\log f(\mathbf{y} \mid \mu, \sigma^2)\)</span> for <code>pars[1]</code> <span class="math inline">\(= \mu\)</span>, <code>pars[2]</code> <span class="math inline">\(= \sigma\)</span> and <code>y</code> <span class="math inline">\(=y\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Find <span class="math inline">\(-\nabla \log f(\mathbf{y} \mid \mu, \sigma)\)</span>, i.e. the 2-vector comprising <span class="math inline">\(-\partial \log f(\mathbf{y} \mid \mu, \sigma) / \partial \mu\)</span> and <span class="math inline">\(-\partial \log f(\mathbf{y} \mid \mu, \sigma) / \partial \sigma\)</span>, and then write a function in <code>R</code> that evaluates <span class="math inline">\(-\nabla \log f(\mathbf{y} \mid \mu, \sigma)\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Use the BFGS method with <code>optim()</code> in <code>R</code> to find <span class="math inline">\(\hat \mu\)</span> and <span class="math inline">\(\hat \sigma\)</span>, the maximum likelihood estimates of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Use <span class="math inline">\(\mu_0 = 1.5\)</span> and <span class="math inline">\(\sigma_0 = 1.5\)</span> as starting values.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li>Use the <span class="math inline">\(-\nabla \log f(\mathbf{y} \mid \mu, \sigma)\)</span> evaluated at <span class="math inline">\(\hat \mu\)</span> and <span class="math inline">\(\hat \sigma\)</span> to verify that the m.l.e.s have been found.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+<div id="challenges-i-22" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-5.html#challenges-i-22" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider the alternative parameterisation of the Weibull pdf in terms of parameters <span class="math inline">\((\log \lambda, \log k)\)</span> given by
+<span class="math display">\[
+f(y \mid \tilde \lambda, \tilde k) =
+\frac{\exp(\tilde k)}{\exp(\tilde \lambda)}\left(\frac{y}{\exp(\tilde \lambda)}\right)^{\exp(\tilde k)-1}e^{-(y/\exp(\tilde \lambda))^{\exp(\tilde k)}} \quad y &gt; 0,
+\]</span>
+where <span class="math inline">\(-\infty &lt; \tilde \lambda, \tilde k &lt; \infty\)</span>. Write a function in <code>R</code>, <code>weib2_d0(pars, y, mult = 1)</code>, that evaluates the scaled log-likelihood of the model, i.e. <span class="math inline">\(m \log f(\mathbf{y} \mid \tilde \lambda, \tilde k)\)</span>, where <code>pars</code> is a 2-vector such that <code>pars[1]</code> <span class="math inline">\(= \tilde \lambda\)</span> and <code>pars[2]</code> <span class="math inline">\(= \tilde k\)</span>, <code>y</code> is the data <span class="math inline">\(\mathbf{y}\)</span> and <code>mult</code> <span class="math inline">\(= m\)</span> is a multiplier as for <code>weib_d0()</code>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Find the maximum likelihood estimates of <span class="math inline">\((\tilde \lambda, \tilde k)\)</span> using the Nelder-Mead method, starting at <span class="math inline">\((\tilde \lambda_0, \tilde k_0) = \big(\log(1.6), \log(0.6)\big)\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Confirm that these are related to those of the original parameterisation through the logarithm.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
 </div>
 </div>
 </div>
