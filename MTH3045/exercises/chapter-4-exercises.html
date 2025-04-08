@@ -172,9 +172,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Then the following calculates the true derivative for the stated <span class="math inline">\(x\)</span> values as <code>true</code> and calculates its difference from the finite-difference approximations.</p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="chapter-4-exercises.html#cb243-1" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> x)</span>
 <span id="cb243-2"><a href="chapter-4-exercises.html#cb243-2" tabindex="-1"></a>fd <span class="sc">-</span> true</span></code></pre></div>
-<pre><code>##  [1] 2.706593e-07 3.306135e-07 4.038067e-07 4.932252e-07 6.023919e-07 7.357217e-07 8.986189e-07 1.097651e-06
-##  [9] 1.340685e-06 1.637477e-06 2.000013e-06 2.442704e-06 2.983658e-06 3.644212e-06 4.450992e-06 5.436657e-06
-## [17] 6.640438e-06 8.110137e-06 9.906360e-06 1.210034e-05 1.477673e-05</code></pre>
+<pre><code>##  [1] 2.706593e-07 3.306135e-07 4.038067e-07 4.932252e-07 6.023919e-07
+##  [6] 7.357217e-07 8.986189e-07 1.097651e-06 1.340685e-06 1.637477e-06
+## [11] 2.000013e-06 2.442704e-06 2.983658e-06 3.644212e-06 4.450992e-06
+## [16] 5.436657e-06 6.640438e-06 8.110137e-06 9.906360e-06 1.210034e-05
+## [21] 1.477673e-05</code></pre>
 <p>Looking at the range of the differences</p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="chapter-4-exercises.html#cb245-1" tabindex="-1"></a><span class="fu">range</span>(fd <span class="sc">-</span> true)</span></code></pre></div>
 <pre><code>## [1] 2.706593e-07 1.477673e-05</code></pre>
@@ -849,13 +851,16 @@ I &amp;= \int_0^2 \int_{-\pi}^\pi \left[\sin(x_1) + x_2 + 1\right] \text{d}x_1 \
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="chapter-4-exercises.html#cb356-1" tabindex="-1"></a>f_la <span class="ot">&lt;-</span> <span class="fu">fla</span>(y_vals, sigma, alpha, beta)</span></code></pre></div>
 <p>We’ll look at these alongside each other</p>
 <div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="chapter-4-exercises.html#cb357-1" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">true =</span> f_true, <span class="at">laplace =</span> f_la)</span></code></pre></div>
-<pre><code>##               [,1]       [,2]      [,3]     [,4]      [,5]     [,6]      [,7]       [,8]       [,9]
-## true    0.01311721 0.04683602 0.1162501 0.200577 0.2405712 0.200577 0.1162501 0.04683602 0.01311721
-## laplace 0.01311721 0.04683602 0.1162501 0.200577 0.2405712 0.200577 0.1162501 0.04683602 0.01311721</code></pre>
+<pre><code>##               [,1]       [,2]      [,3]     [,4]      [,5]     [,6]      [,7]
+## true    0.01311721 0.04683602 0.1162501 0.200577 0.2405712 0.200577 0.1162501
+## laplace 0.01311721 0.04683602 0.1162501 0.200577 0.2405712 0.200577 0.1162501
+##               [,8]       [,9]
+## true    0.04683602 0.01311721
+## laplace 0.04683602 0.01311721</code></pre>
 <p>and then by calculating the relative absolute error, i.e.</p>
 <div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="chapter-4-exercises.html#cb359-1" tabindex="-1"></a><span class="fu">abs</span>((f_true <span class="sc">-</span> f_la) <span class="sc">/</span> f_true)</span></code></pre></div>
-<pre><code>## [1] 6.612393e-16 0.000000e+00 1.193788e-16 1.383787e-16 1.153736e-16 1.383787e-16 0.000000e+00 0.000000e+00
-## [9] 1.322479e-16</code></pre>
+<pre><code>## [1] 6.612393e-16 0.000000e+00 1.193788e-16 1.383787e-16 1.153736e-16
+## [6] 1.383787e-16 0.000000e+00 0.000000e+00 1.322479e-16</code></pre>
 <p>we see that the relative absolute error is effectively zero, once we allow for <code>R</code>’s machine tolerance. [In fact if we carry on with the algebra above by substituting in the expression for the Normal pdfs, i.e. <span class="math display">\[\begin{align*} I_n &amp;= \sqrt{\dfrac{2 \pi}{\frac{1}{\sigma^2} + \frac{1}{\beta}}} \left(\dfrac{1}{\sqrt{2 \pi \sigma^2}} \text{exp}\left\{-\dfrac{(y - \hat \mu)^2}{2 \sigma^2}\right\} \right) \left(\dfrac{1}{\sqrt{2 \pi \beta}} \text{exp}\left\{-\dfrac{(\hat \mu - \alpha)^2}{2 \beta}\right\} \right), \end{align*}\]</span> we eventually find that on this occasion the Laplace approximation is exact (which you’re welcome to confirm in your own time).]</p>
 </details>
 <hr /></li>
@@ -918,9 +923,10 @@ f(y)
 <span id="cb362-9"><a href="chapter-4-exercises.html#cb362-9" tabindex="-1"></a>}</span></code></pre></div>
 <p>Then we can evaluate this for the specific values of <span class="math inline">\(y\)</span>.</p>
 <div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="chapter-4-exercises.html#cb363-1" tabindex="-1"></a><span class="fu">fhat</span>(y, alpha, beta)</span></code></pre></div>
-<pre><code>##  [1] 0.004030551 0.013490989 0.027056782 0.042171720 0.056312548 0.067653206 0.075239786 0.078882315
-##  [9] 0.078932092 0.076049269 0.071011807 0.064581799 0.057425971 0.050079002 0.042936547 0.036266361
-## [17] 0.030228594 0.024899075 0.020291794 0.016378531 0.013104802</code></pre>
+<pre><code>##  [1] 0.004030551 0.013490989 0.027056782 0.042171720 0.056312548 0.067653206
+##  [7] 0.075239786 0.078882315 0.078932092 0.076049269 0.071011807 0.064581799
+## [13] 0.057425971 0.050079002 0.042936547 0.036266361 0.030228594 0.024899075
+## [19] 0.020291794 0.016378531 0.013104802</code></pre>
 <p>It’s useful to plot this against the <span class="math inline">\(\text{NegBin}(\alpha, p)\)</span> pmf. First we’ll write a function <code>dnbinom2(y, r, p)</code> to evaluate this pmf</p>
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="chapter-4-exercises.html#cb365-1" tabindex="-1"></a>dnbinom2 <span class="ot">&lt;-</span> <span class="cf">function</span>(y, r, p) </span>
 <span id="cb365-2"><a href="chapter-4-exercises.html#cb365-2" tabindex="-1"></a>  <span class="fu">gamma</span>(y <span class="sc">+</span> r) <span class="sc">*</span> p<span class="sc">^</span>y <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p)<span class="sc">^</span>r <span class="sc">/</span> <span class="fu">factorial</span>(y) <span class="sc">/</span> <span class="fu">gamma</span>(r)</span></code></pre></div>
@@ -1011,8 +1017,9 @@ can be evaluated in <code>R</code> with</p>
 <p>Finally, we can evaluate the Laplace approximation at the specified values with</p>
 <div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="chapter-4-exercises.html#cb372-1" tabindex="-1"></a>y_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">by =</span> .<span class="dv">5</span>)</span>
 <span id="cb372-2"><a href="chapter-4-exercises.html#cb372-2" tabindex="-1"></a><span class="fu">la</span>(y_vals)</span></code></pre></div>
-<pre><code>##  [1] 0.008649151 0.021233632 0.049663850 0.106991453 0.201798613 0.310870633 0.363236260 0.310870633
-##  [9] 0.201798613 0.106991453 0.049663850 0.021233632 0.008649151</code></pre>
+<pre><code>##  [1] 0.008649151 0.021233632 0.049663850 0.106991453 0.201798613 0.310870633
+##  [7] 0.363236260 0.310870633 0.201798613 0.106991453 0.049663850 0.021233632
+## [13] 0.008649151</code></pre>
 <p>A slightly useful code check is to plot the Laplace approximation against the joint pdf for a specified value of <span class="math inline">\(\omega\)</span>, which in this case will be <span class="math inline">\(\omega = 1\)</span>, i.e.</p>
 <div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="chapter-4-exercises.html#cb374-1" tabindex="-1"></a>y_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">by =</span> .<span class="dv">5</span>)</span>
 <span id="cb374-2"><a href="chapter-4-exercises.html#cb374-2" tabindex="-1"></a><span class="fu">matplot</span>(y_vals, <span class="fu">cbind</span>(<span class="fu">dnorm</span>(y_vals, <span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">la</span>(y_vals)), <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span></code></pre></div>
@@ -1165,16 +1172,18 @@ Figure 4.3: To do.
 <p>and then averaging over the samples, which we’ll call <code>fy_hat</code>.</p>
 <div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="chapter-4-exercises.html#cb409-1" tabindex="-1"></a>fy_hat <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(fy_samp)</span>
 <span id="cb409-2"><a href="chapter-4-exercises.html#cb409-2" tabindex="-1"></a>fy_hat</span></code></pre></div>
-<pre><code>##  [1] 0.003646912 0.012868946 0.026607133 0.042330466 0.057387922 0.069712704 0.078056072 0.081994808
-##  [9] 0.081816047 0.078298252 0.072440391 0.065222290 0.057453215 0.049716276 0.042382039 0.035655861
-## [17] 0.029631056 0.024332628 0.019746861 0.015838362 0.012558630</code></pre>
+<pre><code>##  [1] 0.003646912 0.012868946 0.026607133 0.042330466 0.057387922 0.069712704
+##  [7] 0.078056072 0.081994808 0.081816047 0.078298252 0.072440391 0.065222290
+## [13] 0.057453215 0.049716276 0.042382039 0.035655861 0.029631056 0.024332628
+## [19] 0.019746861 0.015838362 0.012558630</code></pre>
 <p>The relative absolute error, <code>rel_err</code>, relative to the true marginal pdf, <code>fy</code>, can be caluclated with</p>
 <div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="chapter-4-exercises.html#cb411-1" tabindex="-1"></a>fy <span class="ot">&lt;-</span> <span class="fu">dnbinom2</span>(y_vals, alpha, <span class="dv">1</span> <span class="sc">/</span> (beta <span class="sc">+</span> <span class="dv">1</span>))</span>
 <span id="cb411-2"><a href="chapter-4-exercises.html#cb411-2" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((fy <span class="sc">-</span> fy_hat) <span class="sc">/</span> fy)</span>
 <span id="cb411-3"><a href="chapter-4-exercises.html#cb411-3" tabindex="-1"></a>rel_err</span></code></pre></div>
-<pre><code>##  [1] 0.113800441 0.061853809 0.030169988 0.008106467 0.008541485 0.020948770 0.028824333 0.031614646
-##  [9] 0.029365575 0.022995284 0.014064485 0.004323243 0.004722164 0.012097060 0.017473383 0.021136090
-## [17] 0.023842795 0.026619715 0.030533783 0.036477436 0.044998852</code></pre>
+<pre><code>##  [1] 0.113800441 0.061853809 0.030169988 0.008106467 0.008541485 0.020948770
+##  [7] 0.028824333 0.031614646 0.029365575 0.022995284 0.014064485 0.004323243
+## [13] 0.004722164 0.012097060 0.017473383 0.021136090 0.023842795 0.026619715
+## [19] 0.030533783 0.036477436 0.044998852</code></pre>
 <p>and is reasonably small for each <span class="math inline">\(y\)</span> value. Finally, as in question <span class="math inline">\(\ref{negbin}\)</span>, we’ll plot the approximation against the true marginal pdf</p>
 <div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="chapter-4-exercises.html#cb413-1" tabindex="-1"></a><span class="fu">plot</span>(y_vals, fy, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fy_hat)), <span class="at">xlab =</span> <span class="st">&#39;y&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;f(y)&#39;</span>)</span>
 <span id="cb413-2"><a href="chapter-4-exercises.html#cb413-2" tabindex="-1"></a><span class="fu">lines</span>(y, fy_hat, <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
@@ -1199,8 +1208,9 @@ Figure 4.4: Comparison of true negative binomial marginal pmf with its Monte Car
 <span id="cb415-3"><a href="chapter-4-exercises.html#cb415-3" tabindex="-1"></a>y_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">by =</span> .<span class="dv">5</span>)</span>
 <span id="cb415-4"><a href="chapter-4-exercises.html#cb415-4" tabindex="-1"></a>fy <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y_vals, <span class="cf">function</span>(y) <span class="fu">mean</span>(<span class="fu">dnorm</span>(y, <span class="dv">0</span>, omegas)))</span>
 <span id="cb415-5"><a href="chapter-4-exercises.html#cb415-5" tabindex="-1"></a>fy</span></code></pre></div>
-<pre><code>##  [1] 0.01797765 0.03123875 0.05602439 0.10343296 0.19313821 0.34219194 0.45626573 0.34219194 0.19313821
-## [10] 0.10343296 0.05602439 0.03123875 0.01797765</code></pre>
+<pre><code>##  [1] 0.01797765 0.03123875 0.05602439 0.10343296 0.19313821 0.34219194
+##  [7] 0.45626573 0.34219194 0.19313821 0.10343296 0.05602439 0.03123875
+## [13] 0.01797765</code></pre>
 <p>A quick plot confirms what we saw in Question 20.</p>
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="chapter-4-exercises.html#cb417-1" tabindex="-1"></a><span class="fu">matplot</span>(y_vals, <span class="fu">cbind</span>(<span class="fu">dnorm</span>(y_vals, <span class="dv">0</span>, <span class="dv">1</span>), fy), </span>
 <span id="cb417-2"><a href="chapter-4-exercises.html#cb417-2" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&#39;y&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;pdf&#39;</span>, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span>
@@ -1235,39 +1245,39 @@ Figure 4.5: Comparison of N(0, 1) pdf to Laplace approximation of marginal pdf.
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": false,
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": false,
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

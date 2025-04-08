@@ -188,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr /></li>
 </ol></li>
 <li><p>Consider the calculation <span class="math inline">\(\mathbf{AD}\)</span> where <span class="math display">\[
-\mathbf{A} = \begin{pmatrix}2.43&amp;-0.37&amp;0.75&amp;-0.16 \\-1.31&amp;0.23&amp;1.15&amp;-0.41 \\-0.40&amp;-0.50&amp;-1.62&amp;-0.98 \\1.59&amp;-1.16&amp;-1.83&amp;-0.34 \\-1.37&amp;-1.45&amp;-1.20&amp;2.05 \\-0.27&amp;-0.87&amp;0.79&amp;1.02 \\\end{pmatrix} \text{  and  }\mathbf{D} = \begin{pmatrix}1.18&amp;0.00&amp;0.00&amp;0.00 \\0.00&amp;0.85&amp;0.00&amp;0.00 \\0.00&amp;0.00&amp;0.80&amp;0.00 \\0.00&amp;0.00&amp;0.00&amp;-0.40 \\\end{pmatrix}.
+\mathbf{A} = \begin{pmatrix}2.30&amp;2.44&amp;0.61&amp;0.96 \\-0.81&amp;0.95&amp;0.25&amp;-1.19 \\-0.87&amp;-0.38&amp;-0.76&amp;-0.65 \\-0.21&amp;0.51&amp;0.20&amp;0.12 \\1.75&amp;0.98&amp;-0.17&amp;-0.18 \\0.06&amp;-1.90&amp;-0.10&amp;1.40 \\\end{pmatrix} \text{  and  }\mathbf{D} = \begin{pmatrix}-1.51&amp;0.00&amp;0.00&amp;0.00 \\0.00&amp;-0.63&amp;0.00&amp;0.00 \\0.00&amp;0.00&amp;-0.47&amp;0.00 \\0.00&amp;0.00&amp;0.00&amp;0.21 \\\end{pmatrix}.
 \]</span> Write a function in <code>R</code> that takes a matrix <code>A</code> and a vector <code>d</code> as its arguments and computes <span class="math inline">\(\mathbf{AD}\)</span>, where <span class="math inline">\(\mathbf{A} =\)</span> <code>A</code> and <span class="math inline">\(\text{diag}(\mathbf{D}) =\)</span> <code>d</code>, and where <span class="math inline">\(\text{diag}(\mathbf{D})\)</span> denotes the vector comprising the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span>. Consider whether your function is performing redundant calculations and, if it is, try and avoid them.</p>
 <hr />
 <details>
@@ -214,21 +214,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb106-7"><a href="chapter-3-exercises.html#cb106-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>and the following confirms that both give the same result</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chapter-3-exercises.html#cb107-1" tabindex="-1"></a><span class="fu">AD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
-<pre><code>##         [,1]    [,2]   [,3]   [,4]
-## [1,]  2.8674 -0.3145  0.600  0.064
-## [2,] -1.5458  0.1955  0.920  0.164
-## [3,] -0.4720 -0.4250 -1.296  0.392
-## [4,]  1.8762 -0.9860 -1.464  0.136
-## [5,] -1.6166 -1.2325 -0.960 -0.820
-## [6,] -0.3186 -0.7395  0.632 -0.408</code></pre>
+<pre><code>##         [,1]    [,2]    [,3]    [,4]
+## [1,] -3.4730 -1.5372 -0.2867  0.2016
+## [2,]  1.2231 -0.5985 -0.1175 -0.2499
+## [3,]  1.3137  0.2394  0.3572 -0.1365
+## [4,]  0.3171 -0.3213 -0.0940  0.0252
+## [5,] -2.6425 -0.6174  0.0799 -0.0378
+## [6,] -0.0906  1.1970  0.0470  0.2940</code></pre>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chapter-3-exercises.html#cb109-1" tabindex="-1"></a><span class="fu">AdiagD</span>(A, <span class="fu">diag</span>(D))</span></code></pre></div>
-<pre><code>##         [,1]    [,2]   [,3]   [,4]
-## [1,]  2.8674 -0.3145  0.600  0.064
-## [2,] -1.5458  0.1955  0.920  0.164
-## [3,] -0.4720 -0.4250 -1.296  0.392
-## [4,]  1.8762 -0.9860 -1.464  0.136
-## [5,] -1.6166 -1.2325 -0.960 -0.820
-## [6,] -0.3186 -0.7395  0.632 -0.408</code></pre>
+<pre><code>##         [,1]    [,2]    [,3]    [,4]
+## [1,] -3.4730 -1.5372 -0.2867  0.2016
+## [2,]  1.2231 -0.5985 -0.1175 -0.2499
+## [3,]  1.3137  0.2394  0.3572 -0.1365
+## [4,]  0.3171 -0.3213 -0.0940  0.0252
+## [5,] -2.6425 -0.6174  0.0799 -0.0378
+## [6,] -0.0906  1.1970  0.0470  0.2940</code></pre>
 </details>
 <hr /></li>
 <li><p>The following function generates an arbitrary <span class="math inline">\(n \times n\)</span> positive definite matrix.</p>
@@ -371,28 +371,28 @@ in <code>R</code> and then use these to form
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="chapter-3-exercises.html#cb134-1" tabindex="-1"></a>(A11 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="chapter-3-exercises.html#cb134-1" tabindex="-1"></a>(A11 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2]
-## [1,]    1    3
-## [2,]    2    4</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="chapter-3-exercises.html#cb136-1" tabindex="-1"></a>(A12 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+## [1,]    1    2
+## [2,]    3    4</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="chapter-3-exercises.html#cb136-1" tabindex="-1"></a>(A12 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2]
-## [1,]    5    7
-## [2,]    6    8</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="chapter-3-exercises.html#cb138-1" tabindex="-1"></a>(A21 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">12</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+## [1,]    5    6
+## [2,]    7    8</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="chapter-3-exercises.html#cb138-1" tabindex="-1"></a>(A21 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">12</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2]
-## [1,]    9   11
-## [2,]   10   12</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="chapter-3-exercises.html#cb140-1" tabindex="-1"></a>(A22 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">16</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+## [1,]    9   10
+## [2,]   11   12</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="chapter-3-exercises.html#cb140-1" tabindex="-1"></a>(A22 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">16</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2]
-## [1,]   13   15
-## [2,]   14   16</code></pre>
+## [1,]   13   14
+## [2,]   15   16</code></pre>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="chapter-3-exercises.html#cb142-1" tabindex="-1"></a>(A <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">cbind</span>(A11, A12), <span class="fu">cbind</span>(A21, A22)))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    3    5    7
-## [2,]    2    4    6    8
-## [3,]    9   11   13   15
-## [4,]   10   12   14   16</code></pre>
+## [1,]    1    2    5    6
+## [2,]    3    4    7    8
+## [3,]    9   10   13   14
+## [4,]   11   12   15   16</code></pre>
 </details>
 <hr /></li>
 <li><p>Using <span class="math inline">\(\mathbf{A}_{11}\)</span> and <span class="math inline">\(\mathbf{A}_{12}\)</span> from Question 7, compute <span class="math inline">\(\mathbf{A}_{11} \otimes \mathbf{A}_{12}\)</span> in <code>R</code>.</p>
@@ -1001,39 +1001,39 @@ m(x) = \beta_0 + \sum_{i = 1}^p \beta_i x^i
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": false,
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": false,
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
