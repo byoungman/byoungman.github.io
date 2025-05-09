@@ -1059,7 +1059,7 @@ Figure 4.3: To do.
 <p>We might expect that our relative absolute errors will decrease as <span class="math inline">\(N\)</span> increases. Probabilistically they will: but our approximations are subject to the variability in the random samples, and so sometimes a smaller Monte Carlo sample size may give a better approximation than a larger sample size. In general, though, we should rely on the probabilistic properties, and use the largest possible Monte Carlo sample size that is feasible.</p>
 </details>
 <hr /></li>
-<li><p>If <span class="math inline">\(Y \sim \text{Uniform}([a, b])\)</span> then <span class="math display">\[E(Y) = \int_a^b \frac{u}{b - a} \text{d} u = \frac{1}{2}(a + b).\]</span> Use the mean of <span class="math inline">\(m = 1000\)</span> Monte Carlo replicates of Monte Carlo samples of size <span class="math inline">\(N = 500\)</span> to approximate the above integral, and hence to approximate <span class="math inline">\(E(Y)\)</span>, for <span class="math inline">\(a = -1\)</span> and <span class="math inline">\(b = 1\)</span>.</p>
+<li><p>If <span class="math inline">\(Y \sim \text{Uniform}([a, b])\)</span> then <span class="math display">\[E(Y) = \int_a^b \frac{u}{b - a} \text{d} u = \frac{1}{2}(a + b).\]</span> Use the mean of <span class="math inline">\(m = 1000\)</span> Monte Carlo replicates of Monte Carlo samples of size <span class="math inline">\(N = 500\)</span> to approximate the above integral, and hence to approximate <span class="math inline">\(E(Y)\)</span>, for <span class="math inline">\(a = 0\)</span> and <span class="math inline">\(b = 2\)</span>.</p>
 <hr />
 <details>
 <summary>
@@ -1070,21 +1070,22 @@ Figure 4.3: To do.
 <span id="cb384-2"><a href="chapter-4-exercises.html#cb384-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fl">1e3</span></span></code></pre></div>
 <p>For a given replicate we need to generate <span class="math inline">\(N\)</span> points from the Uniform[-1, 1] distribution, <span class="math inline">\(u_1^*, \ldots, u_N^*\)</span>, say, and then our approximation to the integral is given by <span class="math inline">\(N^{-1} \sum_{i = 1}^N u_i^* / 2\)</span>, as <span class="math inline">\(b - a = 2\)</span>.</p>
 <p>The following calculates this for a single replicate, where <span class="math inline">\(a =\)</span> <code>a</code> and <span class="math inline">\(b =\)</span> <code>b</code>,</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="chapter-4-exercises.html#cb385-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb385-2"><a href="chapter-4-exercises.html#cb385-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb385-3"><a href="chapter-4-exercises.html#cb385-3" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb385-4"><a href="chapter-4-exercises.html#cb385-4" tabindex="-1"></a><span class="fu">mean</span>(u) <span class="sc">/</span> (b <span class="sc">-</span>a)</span></code></pre></div>
-<pre><code>## [1] -0.001125121</code></pre>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="chapter-4-exercises.html#cb385-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb385-2"><a href="chapter-4-exercises.html#cb385-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb385-3"><a href="chapter-4-exercises.html#cb385-3" tabindex="-1"></a>V <span class="ot">&lt;-</span> b <span class="sc">-</span> a</span>
+<span id="cb385-4"><a href="chapter-4-exercises.html#cb385-4" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, a, b)</span>
+<span id="cb385-5"><a href="chapter-4-exercises.html#cb385-5" tabindex="-1"></a>V <span class="sc">*</span> <span class="fu">mean</span>(u) <span class="sc">/</span> (b <span class="sc">-</span> a)</span></code></pre></div>
+<pre><code>## [1] 0.9977498</code></pre>
 <p>and then <code>replicate()</code> can perform the <span class="math inline">\(m\)</span> replicates</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="chapter-4-exercises.html#cb387-1" tabindex="-1"></a>uu <span class="ot">&lt;-</span> <span class="fu">replicate</span>(m, <span class="fu">runif</span>(N, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="chapter-4-exercises.html#cb387-1" tabindex="-1"></a>uu <span class="ot">&lt;-</span> <span class="fu">replicate</span>(m, <span class="fu">runif</span>(N, a, b))</span>
 <span id="cb387-2"><a href="chapter-4-exercises.html#cb387-2" tabindex="-1"></a><span class="fu">dim</span>(uu)</span></code></pre></div>
 <pre><code>## [1]  500 1000</code></pre>
 <p>which stored the sampled values in a <span class="math inline">\(N \times m\)</span> matrix <code>uu</code>. Then we can use <code>colMeans()</code> to calculate the mean of each sample, and <code>mean()</code> to take the mean over replicates.</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="chapter-4-exercises.html#cb389-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">colMeans</span>(uu) <span class="sc">/</span> (b <span class="sc">-</span> a))</span></code></pre></div>
-<pre><code>## [1] 0.0005700557</code></pre>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="chapter-4-exercises.html#cb389-1" tabindex="-1"></a><span class="fu">mean</span>(V <span class="sc">*</span> <span class="fu">colMeans</span>(uu) <span class="sc">/</span> (b <span class="sc">-</span> a))</span></code></pre></div>
+<pre><code>## [1] 1.00114</code></pre>
 <p>[Note that due to the independence of the samples, this is equivalent to</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="chapter-4-exercises.html#cb391-1" tabindex="-1"></a><span class="fu">mean</span>(uu) <span class="sc">/</span> (b <span class="sc">-</span> a)</span></code></pre></div>
-<pre><code>## [1] 0.0005700557</code></pre>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="chapter-4-exercises.html#cb391-1" tabindex="-1"></a>V <span class="sc">*</span> <span class="fu">mean</span>(uu) <span class="sc">/</span> (b <span class="sc">-</span> a)</span></code></pre></div>
+<pre><code>## [1] 1.00114</code></pre>
 <p>and so <span class="math inline">\(m\)</span> Monte Carlo samples of size <span class="math inline">\(N\)</span> is equivalent to one Monte Carlo sample of size <span class="math inline">\(mN\)</span>.]</p>
 </details>
 <hr /></li>
