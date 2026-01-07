@@ -22,6 +22,7 @@
 
 
 
+<meta name="date" content="2026-12-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -173,8 +174,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Then the following calculates the true derivative for the stated <span class="math inline">\(x\)</span> values as <code>true</code> and calculates its difference from the finite-difference approximations.</p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="chapter-4-exercises.html#cb243-1" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> x)</span>
 <span id="cb243-2"><a href="chapter-4-exercises.html#cb243-2" tabindex="-1"></a>fd <span class="sc">-</span> true</span></code></pre></div>
-<pre><code>##  [1] 2.706593e-07 3.306135e-07 4.038067e-07 4.932252e-07 6.023919e-07 7.357217e-07 8.986189e-07 1.097651e-06 1.340685e-06 1.637477e-06 2.000013e-06 2.442704e-06 2.983658e-06
-## [14] 3.644212e-06 4.450992e-06 5.436657e-06 6.640438e-06 8.110137e-06 9.906360e-06 1.210034e-05 1.477673e-05</code></pre>
+<pre><code>##  [1] 2.706593e-07 3.306135e-07 4.038067e-07 4.932252e-07 6.023919e-07 7.357217e-07 8.986189e-07 1.097651e-06 1.340685e-06 1.637477e-06 2.000013e-06 2.442704e-06
+## [13] 2.983658e-06 3.644212e-06 4.450992e-06 5.436657e-06 6.640438e-06 8.110137e-06 9.906360e-06 1.210034e-05 1.477673e-05</code></pre>
 <p>Looking at the range of the differences</p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="chapter-4-exercises.html#cb245-1" tabindex="-1"></a><span class="fu">range</span>(fd <span class="sc">-</span> true)</span></code></pre></div>
 <pre><code>## [1] 2.706593e-07 1.477673e-05</code></pre>
@@ -520,16 +521,17 @@ with <span class="math inline">\(\alpha,\beta &gt; 0\)</span>. The gamma distrib
 <span id="cb294-2"><a href="chapter-4-exercises.html#cb294-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
 <span id="cb294-3"><a href="chapter-4-exercises.html#cb294-3" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">140</span></span>
 <span id="cb294-4"><a href="chapter-4-exercises.html#cb294-4" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
-<span id="cb294-5"><a href="chapter-4-exercises.html#cb294-5" tabindex="-1"></a>nodes1 <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">2</span><span class="sc">*</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>N) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb294-6"><a href="chapter-4-exercises.html#cb294-6" tabindex="-1"></a>nodes2 <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb294-7"><a href="chapter-4-exercises.html#cb294-7" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> <span class="fu">dgamma2</span>(a) <span class="sc">+</span> <span class="fu">dgamma2</span>(b)</span>
-<span id="cb294-8"><a href="chapter-4-exercises.html#cb294-8" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> I_simpson<span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">dgamma2</span>(nodes1)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">dgamma2</span>(nodes2))</span>
-<span id="cb294-9"><a href="chapter-4-exercises.html#cb294-9" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> h <span class="sc">*</span> I_simpson <span class="sc">/</span> <span class="dv">6</span></span>
-<span id="cb294-10"><a href="chapter-4-exercises.html#cb294-10" tabindex="-1"></a>I_simpson</span></code></pre></div>
+<span id="cb294-5"><a href="chapter-4-exercises.html#cb294-5" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb294-6"><a href="chapter-4-exercises.html#cb294-6" tabindex="-1"></a>nodes1 <span class="ot">&lt;-</span> nodes[<span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>(N<span class="sc">/</span><span class="dv">2</span>)) <span class="sc">-</span> <span class="dv">1</span>]</span>
+<span id="cb294-7"><a href="chapter-4-exercises.html#cb294-7" tabindex="-1"></a>nodes2 <span class="ot">&lt;-</span> nodes[<span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>((N <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">-</span> <span class="dv">1</span>))]</span>
+<span id="cb294-8"><a href="chapter-4-exercises.html#cb294-8" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> <span class="fu">dgamma2</span>(a) <span class="sc">+</span> <span class="fu">dgamma2</span>(b)</span>
+<span id="cb294-9"><a href="chapter-4-exercises.html#cb294-9" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> I_simpson<span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">dgamma2</span>(nodes1)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">dgamma2</span>(nodes2))</span>
+<span id="cb294-10"><a href="chapter-4-exercises.html#cb294-10" tabindex="-1"></a>I_simpson <span class="ot">&lt;-</span> h <span class="sc">*</span> I_simpson <span class="sc">/</span> <span class="dv">3</span></span>
+<span id="cb294-11"><a href="chapter-4-exercises.html#cb294-11" tabindex="-1"></a>I_simpson</span></code></pre></div>
 <pre><code>## [1] 0.9502129</code></pre>
 <div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="chapter-4-exercises.html#cb296-1" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((<span class="fu">c</span>(I_pgamma, I_midpoint) <span class="sc">-</span> I_simpson) <span class="sc">/</span> <span class="fu">c</span>(I_pgamma, I_midpoint))</span>
 <span id="cb296-2"><a href="chapter-4-exercises.html#cb296-2" tabindex="-1"></a>rel_err</span></code></pre></div>
-<pre><code>## [1] 7.321086e-11 1.667500e-03</code></pre>
+<pre><code>## [1] 1.171323e-09 1.667501e-03</code></pre>
 </details>
 <hr /></li>
 <li><p> Repeat Question 6 using Simpson’s rule and <span class="math inline">\(N = 8\)</span>, comparing your approximation to the actual integral <em>and</em> your midpoint rule approximation.</p>
@@ -545,16 +547,17 @@ with <span class="math inline">\(\alpha,\beta &gt; 0\)</span>. The gamma distrib
 <span id="cb298-5"><a href="chapter-4-exercises.html#cb298-5" tabindex="-1"></a>  <span class="co"># N is integer number of integration nodes</span></span>
 <span id="cb298-6"><a href="chapter-4-exercises.html#cb298-6" tabindex="-1"></a>  <span class="co"># returns scalar</span></span>
 <span id="cb298-7"><a href="chapter-4-exercises.html#cb298-7" tabindex="-1"></a>  h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
-<span id="cb298-8"><a href="chapter-4-exercises.html#cb298-8" tabindex="-1"></a>  nodes1 <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>N) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb298-9"><a href="chapter-4-exercises.html#cb298-9" tabindex="-1"></a>  nodes2 <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb298-10"><a href="chapter-4-exercises.html#cb298-10" tabindex="-1"></a>  h <span class="sc">*</span> (<span class="fu">f</span>(a) <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes1)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes2)) <span class="sc">+</span> <span class="fu">f</span>(b)) <span class="sc">/</span> <span class="dv">6</span></span>
-<span id="cb298-11"><a href="chapter-4-exercises.html#cb298-11" tabindex="-1"></a>}</span>
-<span id="cb298-12"><a href="chapter-4-exercises.html#cb298-12" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> <span class="fu">integrate_simpson</span>(f, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">8</span>)</span>
-<span id="cb298-13"><a href="chapter-4-exercises.html#cb298-13" tabindex="-1"></a>simpson</span></code></pre></div>
-<pre><code>## [1] 3.325447</code></pre>
+<span id="cb298-8"><a href="chapter-4-exercises.html#cb298-8" tabindex="-1"></a>  nodes <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb298-9"><a href="chapter-4-exercises.html#cb298-9" tabindex="-1"></a>  nodes1 <span class="ot">&lt;-</span> nodes[<span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>(N<span class="sc">/</span><span class="dv">2</span>)) <span class="sc">-</span> <span class="dv">1</span>]</span>
+<span id="cb298-10"><a href="chapter-4-exercises.html#cb298-10" tabindex="-1"></a>  nodes2 <span class="ot">&lt;-</span> nodes[<span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>((N <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">-</span> <span class="dv">1</span>))]</span>
+<span id="cb298-11"><a href="chapter-4-exercises.html#cb298-11" tabindex="-1"></a>  h <span class="sc">*</span> (<span class="fu">f</span>(a) <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes1)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">f</span>(nodes2)) <span class="sc">+</span> <span class="fu">f</span>(b)) <span class="sc">/</span> <span class="dv">3</span></span>
+<span id="cb298-12"><a href="chapter-4-exercises.html#cb298-12" tabindex="-1"></a>}</span>
+<span id="cb298-13"><a href="chapter-4-exercises.html#cb298-13" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> <span class="fu">integrate_simpson</span>(f, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">8</span>)</span>
+<span id="cb298-14"><a href="chapter-4-exercises.html#cb298-14" tabindex="-1"></a>simpson</span></code></pre></div>
+<pre><code>## [1] 3.325495</code></pre>
 <div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="chapter-4-exercises.html#cb300-1" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((<span class="fu">c</span>(true, midpoint) <span class="sc">-</span> simpson) <span class="sc">/</span> <span class="fu">c</span>(true, midpoint))</span>
 <span id="cb300-2"><a href="chapter-4-exercises.html#cb300-2" tabindex="-1"></a>rel_err</span></code></pre></div>
-<pre><code>## [1] 9.502376e-07 1.820118e-03</code></pre>
+<pre><code>## [1] 1.528919e-05 1.805805e-03</code></pre>
 </details>
 <hr /></li>
 <li><p>Simpson’s composite 3/8 rule approximates an integral as <span class="math display">\[\int_a^b f(x) \text{d}x \simeq \dfrac{3h}{8} \left(f(a) + 3 \sum_{i=1}^{N/3} f(x_{3i - 2}^*) + 3 \sum_{i=1}^{N/3} f(x_{3i-1}^*) + 2\sum_{i = 1}^{N/3 - 1} f(x_{3i}^*) + f(b)\right),\]</span> for integration nodes <span class="math inline">\(x_i^* = a + ih\)</span>, <span class="math inline">\(i = 1, \ldots, N - 1\)</span>, with <span class="math inline">\(h = (b - a) / N\)</span> and where <span class="math inline">\(N\)</span> must be a multiple of three. Approximate <span class="math inline">\(I = \int_0^1 \text{e}^x \text{d}x\)</span> using Simpson’s 3/8 rule with <span class="math inline">\(N = 9\)</span> nodes and find the relative absolute error of your approximation.</p>
@@ -594,7 +597,7 @@ with <span class="math inline">\(\alpha,\beta &gt; 0\)</span>. The gamma distrib
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="chapter-4-exercises.html#cb308-1" tabindex="-1"></a>I_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(I_pgamma, I_midpoint, I_simpson)</span>
 <span id="cb308-2"><a href="chapter-4-exercises.html#cb308-2" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((I_vec <span class="sc">-</span> I_gq) <span class="sc">/</span> I_vec)</span>
 <span id="cb308-3"><a href="chapter-4-exercises.html#cb308-3" tabindex="-1"></a>rel_err</span></code></pre></div>
-<pre><code>## [1] 2.281873e-13 1.667500e-03 7.343905e-11</code></pre>
+<pre><code>## [1] 2.281873e-13 1.667500e-03 1.171551e-09</code></pre>
 </details>
 <hr /></li>
 <li><p> Approximate <span class="math display">\[I = \int_{-1}^1 \int_{-1}^1 \int_{-1}^1 (x_1 x_2 x_3)^2 \text{d}x_1\text{d}x_2\text{d}x_3\]</span> using the midpoint rule with <span class="math inline">\(N = 20\)</span> and evaluate the approximation’s relative absolute error.</p>
@@ -635,14 +638,15 @@ with <span class="math inline">\(\alpha,\beta &gt; 0\)</span>. The gamma distrib
 <span id="cb317-2"><a href="chapter-4-exercises.html#cb317-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
 <span id="cb317-3"><a href="chapter-4-exercises.html#cb317-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb317-4"><a href="chapter-4-exercises.html#cb317-4" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
-<span id="cb317-5"><a href="chapter-4-exercises.html#cb317-5" tabindex="-1"></a>x1i <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb317-6"><a href="chapter-4-exercises.html#cb317-6" tabindex="-1"></a>x2i <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb317-7"><a href="chapter-4-exercises.html#cb317-7" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">length</span>(x1i), <span class="fu">length</span>(x2i), <span class="dv">1</span>))</span>
-<span id="cb317-8"><a href="chapter-4-exercises.html#cb317-8" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> <span class="fu">c</span>(a, x1i, x2i, b)</span>
-<span id="cb317-9"><a href="chapter-4-exercises.html#cb317-9" tabindex="-1"></a>weights <span class="ot">&lt;-</span> h <span class="sc">*</span> weights <span class="sc">/</span> <span class="dv">6</span></span>
-<span id="cb317-10"><a href="chapter-4-exercises.html#cb317-10" tabindex="-1"></a>x123 <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> nodes, <span class="at">x2 =</span> nodes, <span class="at">x3 =</span> nodes)</span>
-<span id="cb317-11"><a href="chapter-4-exercises.html#cb317-11" tabindex="-1"></a>f123 <span class="ot">&lt;-</span> <span class="fu">apply</span>(x123, <span class="dv">1</span>, prod)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb317-12"><a href="chapter-4-exercises.html#cb317-12" tabindex="-1"></a>w123 <span class="ot">&lt;-</span> weights <span class="sc">%x%</span> weights <span class="sc">%x%</span> weights</span></code></pre></div>
+<span id="cb317-5"><a href="chapter-4-exercises.html#cb317-5" tabindex="-1"></a>xi <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>(N <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb317-6"><a href="chapter-4-exercises.html#cb317-6" tabindex="-1"></a>x1i <span class="ot">&lt;-</span> xi[<span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>(N<span class="sc">/</span><span class="dv">2</span>)) <span class="sc">-</span> <span class="dv">1</span>]</span>
+<span id="cb317-7"><a href="chapter-4-exercises.html#cb317-7" tabindex="-1"></a>x2i <span class="ot">&lt;-</span> xi[<span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>(N<span class="sc">/</span><span class="dv">2</span>) <span class="sc">-</span> <span class="dv">1</span>)]</span>
+<span id="cb317-8"><a href="chapter-4-exercises.html#cb317-8" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">length</span>(x1i), <span class="fu">length</span>(x2i), <span class="dv">1</span>))</span>
+<span id="cb317-9"><a href="chapter-4-exercises.html#cb317-9" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> <span class="fu">c</span>(a, x1i, x2i, b)</span>
+<span id="cb317-10"><a href="chapter-4-exercises.html#cb317-10" tabindex="-1"></a>weights <span class="ot">&lt;-</span> h <span class="sc">*</span> weights <span class="sc">/</span> <span class="dv">3</span></span>
+<span id="cb317-11"><a href="chapter-4-exercises.html#cb317-11" tabindex="-1"></a>x123 <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> nodes, <span class="at">x2 =</span> nodes, <span class="at">x3 =</span> nodes)</span>
+<span id="cb317-12"><a href="chapter-4-exercises.html#cb317-12" tabindex="-1"></a>f123 <span class="ot">&lt;-</span> <span class="fu">apply</span>(x123, <span class="dv">1</span>, prod)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb317-13"><a href="chapter-4-exercises.html#cb317-13" tabindex="-1"></a>w123 <span class="ot">&lt;-</span> weights <span class="sc">%x%</span> weights <span class="sc">%x%</span> weights</span></code></pre></div>
 <p>We’ll call our Simpson’s rule approximation <code>simpson</code>, which can be calculated with</p>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="chapter-4-exercises.html#cb318-1" tabindex="-1"></a>simpson <span class="ot">&lt;-</span> <span class="fu">sum</span>(w123 <span class="sc">*</span> f123)</span>
 <span id="cb318-2"><a href="chapter-4-exercises.html#cb318-2" tabindex="-1"></a>simpson</span></code></pre></div>
