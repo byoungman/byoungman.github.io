@@ -84,7 +84,7 @@ ab <- function(a, b) {
   s
 }
 ab(a, b)
-
+g
 # Q3
 
 sum(a * b)
