@@ -1,0 +1,64 @@
+---
+title: "Week 4 lecture 2 challenges"
+author: "Ben Youngman"
+date: "2026-02-05"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Challenges II
+
+## Question 1
+
+We can use the following function to generate a $n \times n$ symmetric positive matrix, where $n =$ `n`.
+
+```{r rsympdmat}
+rsympdmat <- function(n) {
+# function to generate symmetric positive definite matrix
+# of dimension n x n
+# n is an integer
+A <- matrix(rnorm(n * n), n)
+crossprod(A, diag(abs(rnorm(n))) %*% A)
+}
+```
+
+The following forms a $5 \times 5$ matrix, which we'll call `A`, and then calculates its Cholesky decomposition in the upper triangular form $\mathbf{A} = \mathbf{U}^\top \mathbf{U}$.
+
+```{r chol1}
+A <- rsympdmat(5)
+U <- chol(A)
+```
+
+The following then confirms that $\mathbf{A} = \mathbf{U}^\top \mathbf{U}$.
+
+```{r chol2}
+all.equal(A, crossprod(U))
+```
+
+We can use `chol2inv()` to invert $\mathbf{A}$ via its Cholesky decomposition
+
+```{r inv1}
+iA <- chol2inv(U)
+```
+
+which can be checked with `solve()` as follows.
+
+```{r inv2}
+all.equal(iA, solve(A))
+```
+
+The following calculates the logarithm of its determinant, given that $\log \text{det} \mathbf{A} = 2 \sum_{i = 1}^5 \log U_{ii}$,
+
+```{r ldet1}
+ldet1 <- 2 * sum(log(diag(U)))
+```
+
+which is the same as using `determinant()`
+
+```{r ldet2}
+ldet2 <- as.vector(determinant(A)$modulus)
+all.equal(ldet1, ldet2)
+```
