@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="chapter-2.html"/>
-
+<link rel="next" href="chapter-4.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -209,6 +209,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-i-12"><i class="fa fa-check"></i>Challenges I</a></li>
 <li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-ii-9"><i class="fa fa-check"></i>Challenges II</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#week-6-lecture-1"><i class="fa fa-check"></i>Week 6 lecture 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-i-13"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-ii-10"><i class="fa fa-check"></i>Challenges II</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#challenges-iii-1"><i class="fa fa-check"></i>Challenges III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html"><i class="fa fa-check"></i>Chapter 4</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-6-lecture-2"><i class="fa fa-check"></i>Week 6 lecture 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-14"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-ii-11"><i class="fa fa-check"></i>Challenges II</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-6-lecture-3"><i class="fa fa-check"></i>Week 6 lecture 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-15"><i class="fa fa-check"></i>Challenges I</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -556,6 +574,9 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="chapter-3.html#cb60-1" tabindex="-1"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb60-2"><a href="chapter-3.html#cb60-2" tabindex="-1"></a>eS <span class="ot">&lt;-</span> <span class="fu">eigen</span>(Sigma, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb60-3"><a href="chapter-3.html#cb60-3" tabindex="-1"></a>eS</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Show that its eigenvectors are orthogonal.</li>
@@ -564,6 +585,8 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="chapter-3.html#cb61-1" tabindex="-1"></a>U <span class="ot">&lt;-</span> eS<span class="sc">$</span>vectors</span>
+<span id="cb61-2"><a href="chapter-3.html#cb61-2" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(U), <span class="fu">diag</span>(<span class="dv">3</span>))</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Find <span class="math inline">\(|\boldsymbol{\Sigma}|\)</span> and <span class="math inline">\(\log(|\boldsymbol{\Sigma}|)\)</span>, avoiding first calculating <span class="math inline">\(|\boldsymbol{\Sigma}|\)</span> for the latter.</li>
@@ -572,6 +595,12 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="chapter-3.html#cb62-1" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> eS<span class="sc">$</span>values</span>
+<span id="cb62-2"><a href="chapter-3.html#cb62-2" tabindex="-1"></a>detS <span class="ot">&lt;-</span> <span class="fu">prod</span>(lambda)</span>
+<span id="cb62-3"><a href="chapter-3.html#cb62-3" tabindex="-1"></a><span class="fu">all.equal</span>(detS, <span class="fu">det</span>(Sigma))</span>
+<span id="cb62-4"><a href="chapter-3.html#cb62-4" tabindex="-1"></a><span class="fu">log</span>(detS)</span>
+<span id="cb62-5"><a href="chapter-3.html#cb62-5" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">log</span>(lambda))</span>
+<span id="cb62-6"><a href="chapter-3.html#cb62-6" tabindex="-1"></a><span class="fu">determinant</span>(Sigma)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-7" class="section level3 hasAnchor">
@@ -579,22 +608,63 @@ and the following function can be used to form the Hilbert matrix</li>
 <ol style="list-style-type: decimal">
 <li>Write two functions, <code>matpow1(A, k)</code> and <code>matpow2(A, k)</code>, that compute <span class="math inline">\(\mathbf{A}^k\)</span> for a positive integer <span class="math inline">\(k\)</span> and a symmetric matrix <span class="math inline">\(\mathbf{A}\)</span>, where <code>matpow1()</code> uses a <code>for()</code> loop and <code>matpow2()</code> uses the eigen-decomposition of <span class="math inline">\(\mathbf{A}\)</span>.</li>
 </ol>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="chapter-3.html#cb60-1" tabindex="-1"></a>matpow1 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
-<span id="cb60-2"><a href="chapter-3.html#cb60-2" tabindex="-1"></a>  <span class="co"># function to calculate matrix power of symmetric matrix A</span></span>
-<span id="cb60-3"><a href="chapter-3.html#cb60-3" tabindex="-1"></a>  <span class="co"># based on a for loop</span></span>
-<span id="cb60-4"><a href="chapter-3.html#cb60-4" tabindex="-1"></a>  <span class="co"># k is an integer</span></span>
-<span id="cb60-5"><a href="chapter-3.html#cb60-5" tabindex="-1"></a>  <span class="co"># return matrix of same dimension as A</span></span>
-<span id="cb60-6"><a href="chapter-3.html#cb60-6" tabindex="-1"></a>  <span class="sc">**</span> insert code here <span class="sc">**</span></span>
-<span id="cb60-7"><a href="chapter-3.html#cb60-7" tabindex="-1"></a>}</span>
-<span id="cb60-8"><a href="chapter-3.html#cb60-8" tabindex="-1"></a></span>
-<span id="cb60-9"><a href="chapter-3.html#cb60-9" tabindex="-1"></a>matpow2 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
-<span id="cb60-10"><a href="chapter-3.html#cb60-10" tabindex="-1"></a>  <span class="co"># as above, but based on the eigen-decomposition of A</span></span>
-<span id="cb60-11"><a href="chapter-3.html#cb60-11" tabindex="-1"></a>  <span class="sc">**</span> insert code here <span class="sc">**</span></span>
-<span id="cb60-12"><a href="chapter-3.html#cb60-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="chapter-3.html#cb63-1" tabindex="-1"></a>matpow1 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
+<span id="cb63-2"><a href="chapter-3.html#cb63-2" tabindex="-1"></a>  <span class="co"># function to calculate matrix power of symmetric matrix A</span></span>
+<span id="cb63-3"><a href="chapter-3.html#cb63-3" tabindex="-1"></a>  <span class="co"># based on a for loop</span></span>
+<span id="cb63-4"><a href="chapter-3.html#cb63-4" tabindex="-1"></a>  <span class="co"># k is an integer</span></span>
+<span id="cb63-5"><a href="chapter-3.html#cb63-5" tabindex="-1"></a>  <span class="co"># return matrix of same dimension as A</span></span>
+<span id="cb63-6"><a href="chapter-3.html#cb63-6" tabindex="-1"></a>  <span class="sc">**</span> insert code here <span class="sc">**</span></span>
+<span id="cb63-7"><a href="chapter-3.html#cb63-7" tabindex="-1"></a>}</span>
+<span id="cb63-8"><a href="chapter-3.html#cb63-8" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="chapter-3.html#cb63-9" tabindex="-1"></a>matpow2 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
+<span id="cb63-10"><a href="chapter-3.html#cb63-10" tabindex="-1"></a>  <span class="co"># as above, but based on the eigen-decomposition of A</span></span>
+<span id="cb63-11"><a href="chapter-3.html#cb63-11" tabindex="-1"></a>  <span class="sc">**</span> insert code here <span class="sc">**</span></span>
+<span id="cb63-12"><a href="chapter-3.html#cb63-12" tabindex="-1"></a>}</span></code></pre></div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="chapter-3.html#cb64-1" tabindex="-1"></a><span class="co"># one loop-based approach</span></span>
+<span id="cb64-2"><a href="chapter-3.html#cb64-2" tabindex="-1"></a>matpow1 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
+<span id="cb64-3"><a href="chapter-3.html#cb64-3" tabindex="-1"></a>  <span class="co"># function to calculate matrix power of symmetric matrix A</span></span>
+<span id="cb64-4"><a href="chapter-3.html#cb64-4" tabindex="-1"></a>  <span class="co"># based on a for loop</span></span>
+<span id="cb64-5"><a href="chapter-3.html#cb64-5" tabindex="-1"></a>  <span class="co"># k is an integer</span></span>
+<span id="cb64-6"><a href="chapter-3.html#cb64-6" tabindex="-1"></a>  <span class="co"># return matrix of same dimension as A</span></span>
+<span id="cb64-7"><a href="chapter-3.html#cb64-7" tabindex="-1"></a>  Ak <span class="ot">&lt;-</span> A</span>
+<span id="cb64-8"><a href="chapter-3.html#cb64-8" tabindex="-1"></a>  <span class="cf">if</span> (k <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb64-9"><a href="chapter-3.html#cb64-9" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>k) {</span>
+<span id="cb64-10"><a href="chapter-3.html#cb64-10" tabindex="-1"></a>      Ak <span class="ot">&lt;-</span> Ak <span class="sc">%*%</span> A</span>
+<span id="cb64-11"><a href="chapter-3.html#cb64-11" tabindex="-1"></a>    }</span>
+<span id="cb64-12"><a href="chapter-3.html#cb64-12" tabindex="-1"></a>  }</span>
+<span id="cb64-13"><a href="chapter-3.html#cb64-13" tabindex="-1"></a>  Ak</span>
+<span id="cb64-14"><a href="chapter-3.html#cb64-14" tabindex="-1"></a>}</span>
+<span id="cb64-15"><a href="chapter-3.html#cb64-15" tabindex="-1"></a></span>
+<span id="cb64-16"><a href="chapter-3.html#cb64-16" tabindex="-1"></a><span class="co"># an alternative loop-based approach</span></span>
+<span id="cb64-17"><a href="chapter-3.html#cb64-17" tabindex="-1"></a>matpow1 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
+<span id="cb64-18"><a href="chapter-3.html#cb64-18" tabindex="-1"></a>  <span class="co"># function to calculate matrix power of symmetric matrix A</span></span>
+<span id="cb64-19"><a href="chapter-3.html#cb64-19" tabindex="-1"></a>  <span class="co"># based on a for loop</span></span>
+<span id="cb64-20"><a href="chapter-3.html#cb64-20" tabindex="-1"></a>  <span class="co"># k is an integer</span></span>
+<span id="cb64-21"><a href="chapter-3.html#cb64-21" tabindex="-1"></a>  <span class="co"># return matrix of same dimension as A</span></span>
+<span id="cb64-22"><a href="chapter-3.html#cb64-22" tabindex="-1"></a>  Ak <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">nrow</span>(A))</span>
+<span id="cb64-23"><a href="chapter-3.html#cb64-23" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb64-24"><a href="chapter-3.html#cb64-24" tabindex="-1"></a>      Ak <span class="ot">&lt;-</span> Ak <span class="sc">%*%</span> A</span>
+<span id="cb64-25"><a href="chapter-3.html#cb64-25" tabindex="-1"></a>  }</span>
+<span id="cb64-26"><a href="chapter-3.html#cb64-26" tabindex="-1"></a>  Ak</span>
+<span id="cb64-27"><a href="chapter-3.html#cb64-27" tabindex="-1"></a>}</span>
+<span id="cb64-28"><a href="chapter-3.html#cb64-28" tabindex="-1"></a></span>
+<span id="cb64-29"><a href="chapter-3.html#cb64-29" tabindex="-1"></a>H <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">4</span>)</span>
+<span id="cb64-30"><a href="chapter-3.html#cb64-30" tabindex="-1"></a>Hpow5 <span class="ot">&lt;-</span> <span class="fu">matpow1</span>(H, <span class="dv">5</span>)</span>
+<span id="cb64-31"><a href="chapter-3.html#cb64-31" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">matpow1</span>(H, <span class="dv">5</span>), Hpow5)</span>
+<span id="cb64-32"><a href="chapter-3.html#cb64-32" tabindex="-1"></a></span>
+<span id="cb64-33"><a href="chapter-3.html#cb64-33" tabindex="-1"></a>matpow2 <span class="ot">&lt;-</span> <span class="cf">function</span>(A, k) {</span>
+<span id="cb64-34"><a href="chapter-3.html#cb64-34" tabindex="-1"></a>  <span class="co"># as above, but based on the eigen-decomposition of A</span></span>
+<span id="cb64-35"><a href="chapter-3.html#cb64-35" tabindex="-1"></a>  eA <span class="ot">&lt;-</span> <span class="fu">eigen</span>(A, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-36"><a href="chapter-3.html#cb64-36" tabindex="-1"></a>  U <span class="ot">&lt;-</span> eA<span class="sc">$</span>vectors</span>
+<span id="cb64-37"><a href="chapter-3.html#cb64-37" tabindex="-1"></a>  lambda <span class="ot">&lt;-</span> eA<span class="sc">$</span>values</span>
+<span id="cb64-38"><a href="chapter-3.html#cb64-38" tabindex="-1"></a>  U <span class="sc">%*%</span> <span class="fu">tcrossprod</span>(<span class="fu">diag</span>(lambda<span class="sc">^</span>k), U)</span>
+<span id="cb64-39"><a href="chapter-3.html#cb64-39" tabindex="-1"></a>}</span>
+<span id="cb64-40"><a href="chapter-3.html#cb64-40" tabindex="-1"></a></span>
+<span id="cb64-41"><a href="chapter-3.html#cb64-41" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">matpow2</span>(H, <span class="dv">5</span>), Hpow5)</span></code></pre></div>
 </details>
 <!-- ### Challenges III -->
 <!-- 1. Consider the following code to generate 100 replicates of three-dimensional data, the $100 \times 3$ matrix `Y`. -->
@@ -659,6 +729,17 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="chapter-3.html#cb65-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="fl">1.3</span>, <span class="fl">2.6</span>)</span>
+<span id="cb65-2"><a href="chapter-3.html#cb65-2" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb65-3"><a href="chapter-3.html#cb65-3" tabindex="-1"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb65-4"><a href="chapter-3.html#cb65-4" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="chapter-3.html#cb65-5" tabindex="-1"></a>S.svd <span class="ot">&lt;-</span> <span class="fu">svd</span>(Sigma)</span>
+<span id="cb65-6"><a href="chapter-3.html#cb65-6" tabindex="-1"></a>S.d <span class="ot">&lt;-</span> S.svd<span class="sc">$</span>d</span>
+<span id="cb65-7"><a href="chapter-3.html#cb65-7" tabindex="-1"></a>S.V <span class="ot">&lt;-</span> S.svd<span class="sc">$</span>v</span>
+<span id="cb65-8"><a href="chapter-3.html#cb65-8" tabindex="-1"></a></span>
+<span id="cb65-9"><a href="chapter-3.html#cb65-9" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(S.V, y <span class="sc">-</span> mu)</span>
+<span id="cb65-10"><a href="chapter-3.html#cb65-10" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> b2 <span class="sc">/</span> S.d</span>
+<span id="cb65-11"><a href="chapter-3.html#cb65-11" tabindex="-1"></a>z <span class="ot">&lt;-</span> S.V <span class="sc">%*%</span> x2</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-8" class="section level3 hasAnchor">
@@ -670,6 +751,13 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="chapter-3.html#cb66-1" tabindex="-1"></a>H <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">7</span>)</span>
+<span id="cb66-2"><a href="chapter-3.html#cb66-2" tabindex="-1"></a>svdH <span class="ot">&lt;-</span> <span class="fu">svd</span>(H)</span>
+<span id="cb66-3"><a href="chapter-3.html#cb66-3" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb66-4"><a href="chapter-3.html#cb66-4" tabindex="-1"></a>U_r <span class="ot">&lt;-</span> svdH<span class="sc">$</span>u[, <span class="dv">1</span><span class="sc">:</span>r]</span>
+<span id="cb66-5"><a href="chapter-3.html#cb66-5" tabindex="-1"></a>V_r <span class="ot">&lt;-</span> svdH<span class="sc">$</span>v[, <span class="dv">1</span><span class="sc">:</span>r]</span>
+<span id="cb66-6"><a href="chapter-3.html#cb66-6" tabindex="-1"></a>D_r <span class="ot">&lt;-</span> svdH<span class="sc">$</span>d[<span class="dv">1</span><span class="sc">:</span>r]</span>
+<span id="cb66-7"><a href="chapter-3.html#cb66-7" tabindex="-1"></a>H_r <span class="ot">&lt;-</span> U_r <span class="sc">%*%</span> (D_r <span class="sc">*</span> <span class="fu">t</span>(V_r))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Compare the rank-5 representation to <span class="math inline">\(\mathbf{H}_7\)</span>.</li>
@@ -678,6 +766,8 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="chapter-3.html#cb67-1" tabindex="-1"></a><span class="fu">range</span>(H <span class="sc">-</span> H_r)</span>
+<span id="cb67-2"><a href="chapter-3.html#cb67-2" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(H, H_r))</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -692,6 +782,18 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="chapter-3.html#cb68-1" tabindex="-1"></a>hilbert <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb68-2"><a href="chapter-3.html#cb68-2" tabindex="-1"></a>  <span class="co"># Function to evaluate n by n Hilbert matrix.</span></span>
+<span id="cb68-3"><a href="chapter-3.html#cb68-3" tabindex="-1"></a>  <span class="co"># Returns n by n matrix.</span></span>
+<span id="cb68-4"><a href="chapter-3.html#cb68-4" tabindex="-1"></a>  ind <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb68-5"><a href="chapter-3.html#cb68-5" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">/</span> (<span class="fu">outer</span>(ind, ind, <span class="at">FUN =</span> <span class="st">&#39;+&#39;</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb68-6"><a href="chapter-3.html#cb68-6" tabindex="-1"></a>}</span>
+<span id="cb68-7"><a href="chapter-3.html#cb68-7" tabindex="-1"></a>H4 <span class="ot">&lt;-</span> <span class="fu">hilbert</span>(<span class="dv">4</span>)</span>
+<span id="cb68-8"><a href="chapter-3.html#cb68-8" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="chapter-3.html#cb68-9" tabindex="-1"></a>qrH4 <span class="ot">&lt;-</span> <span class="fu">qr</span>(H4)</span>
+<span id="cb68-10"><a href="chapter-3.html#cb68-10" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="fu">qr.Q</span>(qrH4)</span>
+<span id="cb68-11"><a href="chapter-3.html#cb68-11" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qrH4)</span>
+<span id="cb68-12"><a href="chapter-3.html#cb68-12" tabindex="-1"></a><span class="fu">all.equal</span>(Q <span class="sc">%*%</span> R, H4)</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Use the QR decomposition to find <span class="math inline">\(|\text{det}(\mathbf{H}_4)|\)</span>.</li>
@@ -700,6 +802,8 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="chapter-3.html#cb69-1" tabindex="-1"></a><span class="fu">prod</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(R)))</span>
+<span id="cb69-2"><a href="chapter-3.html#cb69-2" tabindex="-1"></a><span class="fu">det</span>(H4)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Use the QR decomposition to solve <span class="math inline">\(\mathbf{H}_4 \mathbf{x} = \mathbf{b}\)</span> for <span class="math inline">\(\mathbf{x}\)</span> where
@@ -711,10 +815,74 @@ and the following function can be used to form the Hilbert matrix</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="chapter-3.html#cb70-1" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="fl">3.19</span>, <span class="fl">3.26</span>, <span class="fl">1.93</span>)</span>
+<span id="cb70-2"><a href="chapter-3.html#cb70-2" tabindex="-1"></a><span class="fu">backsolve</span>(R, <span class="fu">crossprod</span>(Q, b))</span>
+<span id="cb70-3"><a href="chapter-3.html#cb70-3" tabindex="-1"></a><span class="fu">qr.solve</span>(H4, b)</span>
+<span id="cb70-4"><a href="chapter-3.html#cb70-4" tabindex="-1"></a><span class="fu">qr.solve</span>(qrH4, b)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-9" class="section level3 hasAnchor">
 <h3>Challenges II<a href="chapter-3.html#challenges-ii-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Generate an arbitrary <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> comprising positive values for <span class="math inline">\(m = 5\)</span> and <span class="math inline">\(n = 3\)</span>. Then use function <code>qr()</code> in <code>R</code> to find <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> of its QR decomposition. Confirm that <span class="math inline">\(\mathbf{QR} = \mathbf{A}\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="chapter-3.html#cb71-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb71-2"><a href="chapter-3.html#cb71-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb71-3"><a href="chapter-3.html#cb71-3" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rexp</span>(m <span class="sc">*</span> n), m , n)</span>
+<span id="cb71-4"><a href="chapter-3.html#cb71-4" tabindex="-1"></a>qrA <span class="ot">&lt;-</span> <span class="fu">qr</span>(A)</span>
+<span id="cb71-5"><a href="chapter-3.html#cb71-5" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="fu">qr.Q</span>(qrA)</span>
+<span id="cb71-6"><a href="chapter-3.html#cb71-6" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">qr.R</span>(qrA)</span>
+<span id="cb71-7"><a href="chapter-3.html#cb71-7" tabindex="-1"></a><span class="fu">all.equal</span>(Q <span class="sc">%*%</span> R, A)</span></code></pre></div>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Investigate what <code>R</code> has actually given with <code>qr()</code>, given Theorem 3.3.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="chapter-3.html#cb72-1" tabindex="-1"></a><span class="co"># No sketch solution given</span></span></code></pre></div>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Calculate the SVD of your matrix <span class="math inline">\(\mathbf{A}\)</span> from Question 1, and confirm that the absolute value of the product of the diagonal entries of <span class="math inline">\(\mathbf{R}\)</span> matches the product of the singular values of its SVD.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="chapter-3.html#cb73-1" tabindex="-1"></a>svdA <span class="ot">&lt;-</span> <span class="fu">svd</span>(A)</span>
+<span id="cb73-2"><a href="chapter-3.html#cb73-2" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">prod</span>(svdA<span class="sc">$</span>d), <span class="fu">abs</span>(<span class="fu">prod</span>(<span class="fu">diag</span>(R))))</span></code></pre></div>
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li>Compute <span class="math inline">\(\mathbf{A}^{\text{T}}\mathbf{A}\)</span> and confirm that <span class="math inline">\(\mathbf{R}^{\text{T}}\mathbf{R} = \mathbf{A}^{\text{T}}\mathbf{A}\)</span>, so that <span class="math inline">\(\mathbf{R}\)</span> is a upper-triangular Cholesky decomposition of <span class="math inline">\(\mathbf{A}^{\text{T}}\mathbf{A}\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="chapter-3.html#cb74-1" tabindex="-1"></a>crossA <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(A)</span>
+<span id="cb74-2"><a href="chapter-3.html#cb74-2" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">crossprod</span>(R), crossA)</span></code></pre></div>
+</details>
+<ol start="5" style="list-style-type: decimal">
+<li>Compute the Cholesky decomposition <span class="math inline">\(\mathbf{LL}^{\text{T}} = \mathbf{A}^{\text{T}}\mathbf{A}\)</span>. What do you notice about the values of <span class="math inline">\(\mathbf{R}\)</span> and <span class="math inline">\(\mathbf{L}^{\text{T}}\)</span>?</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="chapter-3.html#cb75-1" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">chol</span>(crossA))</span>
+<span id="cb75-2"><a href="chapter-3.html#cb75-2" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">abs</span>(R), <span class="fu">t</span>(L))</span></code></pre></div>
+</details>
+</div>
+</div>
+<div id="week-6-lecture-1" class="section level2 hasAnchor">
+<h2>Week 6 lecture 1<a href="chapter-3.html#week-6-lecture-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenges-i-13" class="section level3 hasAnchor">
+<h3>Challenges I<a href="chapter-3.html#challenges-i-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Generate an arbitrary <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> comprising positive values for <span class="math inline">\(m = 5\)</span> and <span class="math inline">\(n = 3\)</span>. Then use function <code>qr()</code> in <code>R</code> to find <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> of its QR decomposition. Confirm that <span class="math inline">\(\mathbf{QR} = \mathbf{A}\)</span>.</li>
 </ol>
@@ -756,6 +924,66 @@ and the following function can be used to form the Hilbert matrix</li>
 </summary>
 </details>
 </div>
+<div id="challenges-ii-10" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-3.html#challenges-ii-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Use Woodbury’s formula to compute <span class="math inline">\(\mathbf{B}^{-1}\)</span> where <span class="math inline">\(\mathbf{B} = \mathbf{H}_8 + \mathbf{UU}^\text{T}\)</span> where
+<span class="math display">\[
+\mathbf{U} = \begin{pmatrix}4.7&amp;10.6 \\3.2&amp;22.5 \\0.2&amp;14.1 \\1.1&amp;11.5 \\5.0&amp;3.3 \\8.3&amp;12.9 \\1.1&amp;9.0 \\5.6&amp;3.9 \\\end{pmatrix}
+\]</span>
+and <span class="math inline">\(\mathbf{H}_8\)</span> is the <span class="math inline">\(8 \times 8\)</span> Hilbert matrix.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Confirm that Woodbury’s formula gives the same result as directly inverting <span class="math inline">\(\mathbf{B}\)</span> with <code>solve()</code> (or equivalent).</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Use the Sherman-Morrison-Woodbury formula to compute <span class="math inline">\(\mathbf{D}^{-1}\)</span> where <span class="math inline">\(\mathbf{D} = \mathbf{A} + \mathbf{UCU}^\text{T}\)</span> with <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> as in Question 1 and
+<span class="math display">\[
+\mathbf{C} = \begin{pmatrix}3.9&amp;-1.7 \\-1.7&amp;2.9 \\\end{pmatrix}
+\]</span></li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li>Confirm that the Sherman-Morrison-Woodbury formula gives the same result as directly inverting <span class="math inline">\(\mathbf{D}\)</span></li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+</details>
+</div>
+<div id="challenges-iii-1" class="section level3 hasAnchor">
+<h3>Challenges III<a href="chapter-3.html#challenges-iii-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Consider the <span class="math inline">\(MVN_p(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span> likelihood’s squared Mahalanobis distance, i.e.
+<span class="math display">\[
+g(\mathbf{y}) = (\mathbf{y} - \boldsymbol{\mu})^{\text{T}}\boldsymbol{\Sigma}^{-1}(\mathbf{y} - \boldsymbol{\mu}).
+\]</span>
+Find <span class="math inline">\(\dfrac{\partial g(\mathbf{y}) }{\partial \mathbf{y}}\)</span> and <span class="math inline">\(\dfrac{\partial^2 g(\mathbf{y})}{\partial \mathbf{y} \partial \mathbf{y}^{\text{T}}}\)</span>.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<p><span class="math display">\[
+\dfrac{\partial g(\mathbf{y}) }{\partial \mathbf{y}} = 2 \boldsymbol{\Sigma}^{-1}(\mathbf{y} - \boldsymbol{\mu}),~~\dfrac{\partial^2 g(\mathbf{y}) }{\partial \mathbf{y}^2} = 2 \boldsymbol{\Sigma}^{-1}.
+\]</span></p>
+</details>
+</div>
 </div>
 </div>
             </section>
@@ -763,8 +991,8 @@ and the following function can be used to form the Hilbert matrix</li>
           </div>
         </div>
       </div>
-<a href="chapter-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="chapter-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
