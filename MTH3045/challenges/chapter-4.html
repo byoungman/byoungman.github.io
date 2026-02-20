@@ -259,6 +259,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="chapter-4.html#cb85-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
+<span id="cb85-2"><a href="chapter-4.html#cb85-2" tabindex="-1"></a>deriv0 <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb85-3"><a href="chapter-4.html#cb85-3" tabindex="-1"></a><span class="fu">plot</span>(x, deriv0, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>)</span>
+<span id="cb85-4"><a href="chapter-4.html#cb85-4" tabindex="-1"></a>delta1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)</span>
+<span id="cb85-5"><a href="chapter-4.html#cb85-5" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb85-6"><a href="chapter-4.html#cb85-6" tabindex="-1"></a>deriv1 <span class="ot">&lt;-</span> (<span class="fu">f</span>(x <span class="sc">+</span> delta1) <span class="sc">-</span> <span class="fu">f</span>(x)) <span class="sc">/</span> delta1</span>
+<span id="cb85-7"><a href="chapter-4.html#cb85-7" tabindex="-1"></a><span class="fu">lines</span>(x, deriv1, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-11" class="section level3 hasAnchor">
@@ -278,6 +285,14 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="chapter-4.html#cb86-1" tabindex="-1"></a>loglik <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
+<span id="cb86-2"><a href="chapter-4.html#cb86-2" tabindex="-1"></a>  <span class="co"># function to evaluate exponential log-likelihood</span></span>
+<span id="cb86-3"><a href="chapter-4.html#cb86-3" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
+<span id="cb86-4"><a href="chapter-4.html#cb86-4" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb86-5"><a href="chapter-4.html#cb86-5" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb86-6"><a href="chapter-4.html#cb86-6" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb86-7"><a href="chapter-4.html#cb86-7" tabindex="-1"></a>  n <span class="sc">*</span> <span class="fu">log</span>(lambda) <span class="sc">-</span> lambda <span class="sc">*</span> <span class="fu">sum</span>(y)</span>
+<span id="cb86-8"><a href="chapter-4.html#cb86-8" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Use <code>rexp(10)</code> to generate a sample of ten values from the Exp(1) distribution, and then use <code>loglik(lambda, y)</code> to evaluate <span class="math inline">\(\log f(\mathbf{y} \mid 2)\)</span> for the sample.</li>
@@ -286,14 +301,35 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="chapter-4.html#cb87-1" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb87-2"><a href="chapter-4.html#cb87-2" tabindex="-1"></a><span class="fu">loglik</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
-<li>Then write functions to evaluate the gradient and Hessian matrix of the log-likelihood.</li>
+<li>Then write functions to evaluate the gradient and Hessian matrix of the log-likelihood for derivatives w.r.t. <span class="math inline">\(\lambda\)</span>.</li>
 </ol>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="chapter-4.html#cb88-1" tabindex="-1"></a><span class="co"># gradient, i.e. first derivative</span></span>
+<span id="cb88-2"><a href="chapter-4.html#cb88-2" tabindex="-1"></a>loglik_d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
+<span id="cb88-3"><a href="chapter-4.html#cb88-3" tabindex="-1"></a>  <span class="co"># function to evaluate gradient of exponential log-likelihood w.r.t. lambda</span></span>
+<span id="cb88-4"><a href="chapter-4.html#cb88-4" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
+<span id="cb88-5"><a href="chapter-4.html#cb88-5" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb88-6"><a href="chapter-4.html#cb88-6" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb88-7"><a href="chapter-4.html#cb88-7" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb88-8"><a href="chapter-4.html#cb88-8" tabindex="-1"></a>  n <span class="sc">/</span> lambda <span class="sc">-</span> <span class="fu">sum</span>(y)</span>
+<span id="cb88-9"><a href="chapter-4.html#cb88-9" tabindex="-1"></a>}</span>
+<span id="cb88-10"><a href="chapter-4.html#cb88-10" tabindex="-1"></a></span>
+<span id="cb88-11"><a href="chapter-4.html#cb88-11" tabindex="-1"></a><span class="co"># Hessian, i.e. second derivative</span></span>
+<span id="cb88-12"><a href="chapter-4.html#cb88-12" tabindex="-1"></a>loglik_d2 <span class="ot">&lt;-</span> <span class="cf">function</span>(lambda, y) {</span>
+<span id="cb88-13"><a href="chapter-4.html#cb88-13" tabindex="-1"></a>  <span class="co"># function to evaluate Hessian of exponential log-likelihood w.r.t. lambda</span></span>
+<span id="cb88-14"><a href="chapter-4.html#cb88-14" tabindex="-1"></a>  <span class="co"># lambda is a scalar</span></span>
+<span id="cb88-15"><a href="chapter-4.html#cb88-15" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb88-16"><a href="chapter-4.html#cb88-16" tabindex="-1"></a>  <span class="co"># returns a 1 x 1 matrix</span></span>
+<span id="cb88-17"><a href="chapter-4.html#cb88-17" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb88-18"><a href="chapter-4.html#cb88-18" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="sc">-</span> n <span class="sc">/</span> lambda<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb88-19"><a href="chapter-4.html#cb88-19" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <ol start="4" style="list-style-type: decimal">
 <li>Evaluate the gradient and Hessian for the sample generated above with <span class="math inline">\(\lambda = 2\)</span>.</li>
@@ -302,6 +338,8 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="chapter-4.html#cb89-1" tabindex="-1"></a><span class="fu">loglik_d1</span>(<span class="dv">2</span>, y0)</span>
+<span id="cb89-2"><a href="chapter-4.html#cb89-2" tabindex="-1"></a><span class="fu">loglik_d2</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
 </details>
 <ol start="5" style="list-style-type: decimal">
 <li>Check your gradient calculation against an approximation based on finite-differencing.</li>
@@ -310,6 +348,8 @@ for <span class="math inline">\(y, \lambda &gt; 0\)</span>. Its log-likelihood, 
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="chapter-4.html#cb90-1" tabindex="-1"></a>(<span class="fu">loglik</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="fl">1e-6</span>, y0) <span class="sc">-</span> <span class="fu">loglik</span>(<span class="dv">2</span>, y0)) <span class="sc">/</span> <span class="fl">1e-6</span></span>
+<span id="cb90-2"><a href="chapter-4.html#cb90-2" tabindex="-1"></a><span class="fu">loglik_d1</span>(<span class="dv">2</span>, y0)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -328,6 +368,15 @@ with <span class="math inline">\(N = 10\)</span> integration nodes.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="chapter-4.html#cb91-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb91-2"><a href="chapter-4.html#cb91-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb91-3"><a href="chapter-4.html#cb91-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb91-4"><a href="chapter-4.html#cb91-4" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(a, b, <span class="at">length =</span> N <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb91-5"><a href="chapter-4.html#cb91-5" tabindex="-1"></a>h <span class="ot">&lt;-</span> bins[<span class="dv">2</span>] <span class="sc">-</span> bins[<span class="dv">1</span>]</span>
+<span id="cb91-6"><a href="chapter-4.html#cb91-6" tabindex="-1"></a>mids <span class="ot">&lt;-</span> bins[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">-</span> .<span class="dv">5</span> <span class="sc">*</span> h</span>
+<span id="cb91-7"><a href="chapter-4.html#cb91-7" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb91-8"><a href="chapter-4.html#cb91-8" tabindex="-1"></a>f_mids <span class="ot">&lt;-</span> <span class="fu">f</span>(mids)</span>
+<span id="cb91-9"><a href="chapter-4.html#cb91-9" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> h <span class="sc">*</span> <span class="fu">sum</span>(f_mids)</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the relative absolute error of your estimate. [Hint: notice the resemblance of the integrand to the Normal(0, 1) distribution’s pdf.]</li>
@@ -336,6 +385,9 @@ with <span class="math inline">\(N = 10\)</span> integration nodes.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chapter-4.html#cb92-1" tabindex="-1"></a>I0 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">*</span> (<span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> .<span class="dv">5</span>)</span>
+<span id="cb92-2"><a href="chapter-4.html#cb92-2" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((I0 <span class="sc">-</span> I_hat) <span class="sc">/</span> I0)</span>
+<span id="cb92-3"><a href="chapter-4.html#cb92-3" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> rel_err</span></code></pre></div>
 </details>
 </div>
 </div>
