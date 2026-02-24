@@ -2,7 +2,7 @@
 
 ## lecture 1
 
-### q1
+### Q1
 
 m <- 5
 n <- 3
@@ -12,20 +12,16 @@ Q <- qr.Q(qrA)
 R <- qr.R(qrA)
 all.equal(Q %*% R, A)
 
-### q2
+### Q2
 
 # no code given
 
-### q3
-
-
-
-### q4
+### Q3
 
 svdA <- svd(A)
 all.equal(prod(svdA$d), abs(prod(diag(R))))
 
-### q4
+### Q4
 
 crossA <- crossprod(A)
 all.equal(crossprod(R), crossA)
