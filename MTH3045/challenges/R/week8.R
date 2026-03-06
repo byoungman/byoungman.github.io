@@ -10,11 +10,14 @@ a <- 0
 b <- 2
 h <- (b - a) / N
 simpson <- f(a) + f(b)
-x1i <- a + h * (2 * (1:N) - 1) / 2
+xi <- a + h * (1:(N - 1))
+index1 <- 2 * c(1:(N/2)) - 1
+x1i <- xi[index1]
 simpson <- simpson + 4 * sum(f(x1i))
-x2i <- a + h * (1:(N - 1))
+index2 <- 2 * c(1:(N/2) - 1)
+x2i <- xi[index2]
 simpson <- simpson + 2 * sum(f(x2i))
-simpson <- h * simpson / 6
+simpson <- h * simpson / 3
 
 # Q2
 
