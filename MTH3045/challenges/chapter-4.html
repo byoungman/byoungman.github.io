@@ -244,19 +244,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-1"><i class="fa fa-check"></i>Week 9 lecture 1</a>
 <ul>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenge-i"><i class="fa fa-check"></i>Challenge I</a></li>
-<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenge-ii"><i class="fa fa-check"></i>Challenge II</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#week-9-lecture-2"><i class="fa fa-check"></i>Week 9 lecture 2</a>
 <ul>
-<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-i-19"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenge-i-1"><i class="fa fa-check"></i>Challenge I</a></li>
 <li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-ii-13"><i class="fa fa-check"></i>Challenges II</a></li>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#challenges-iii-2"><i class="fa fa-check"></i>Challenges III</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html"><i class="fa fa-check"></i>Chapter 5</a>
 <ul>
-<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-9-lecture-3"><i class="fa fa-check"></i>Week 9 lecture 3</a>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-10-lecture-1"><i class="fa fa-check"></i>Week 10 lecture 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-19"><i class="fa fa-check"></i>Challenges I</a></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-ii-14"><i class="fa fa-check"></i>Challenges II</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-10-lecture-2"><i class="fa fa-check"></i>Week 10 lecture 2</a>
 <ul>
 <li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-20"><i class="fa fa-check"></i>Challenges I</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#week-10-lecture-3"><i class="fa fa-check"></i>Week 10 lecture 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#challenges-i-21"><i class="fa fa-check"></i>Challenges I</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -574,10 +583,27 @@ and estimate its relative absolute error.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chapter-4.html#cb100-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb100-2"><a href="chapter-4.html#cb100-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb100-3"><a href="chapter-4.html#cb100-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb100-4"><a href="chapter-4.html#cb100-4" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb100-5"><a href="chapter-4.html#cb100-5" tabindex="-1"></a>h <span class="ot">&lt;-</span> (b <span class="sc">-</span> a) <span class="sc">/</span> N</span>
+<span id="cb100-6"><a href="chapter-4.html#cb100-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> a <span class="sc">+</span> h <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N <span class="sc">-</span> .<span class="dv">5</span>)</span>
+<span id="cb100-7"><a href="chapter-4.html#cb100-7" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>d, <span class="cf">function</span>(i) x)</span>
+<span id="cb100-8"><a href="chapter-4.html#cb100-8" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(xx)</span>
+<span id="cb100-9"><a href="chapter-4.html#cb100-9" tabindex="-1"></a>w <span class="ot">&lt;-</span> h<span class="sc">^</span>d</span>
+<span id="cb100-10"><a href="chapter-4.html#cb100-10" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="dv">1</span> <span class="sc">+</span> (X <span class="sc">-</span> <span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, prod)</span>
+<span id="cb100-11"><a href="chapter-4.html#cb100-11" tabindex="-1"></a>midpoint <span class="ot">&lt;-</span> w <span class="sc">*</span> <span class="fu">sum</span>(f)</span>
+<span id="cb100-12"><a href="chapter-4.html#cb100-12" tabindex="-1"></a>true <span class="ot">&lt;-</span> (<span class="dv">8</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span>d</span>
+<span id="cb100-13"><a href="chapter-4.html#cb100-13" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> midpoint) <span class="sc">/</span> true)</span>
+<span id="cb100-14"><a href="chapter-4.html#cb100-14" tabindex="-1"></a>rel_err</span></code></pre></div>
 </details>
 </div>
-<div id="challenge-ii" class="section level3 hasAnchor">
-<h3>Challenge II<a href="chapter-4.html#challenge-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="week-9-lecture-2" class="section level2 hasAnchor">
+<h2>Week 9 lecture 2<a href="chapter-4.html#week-9-lecture-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="challenge-i-1" class="section level3 hasAnchor">
+<h3>Challenge I<a href="chapter-4.html#challenge-i-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Consider <span class="math inline">\(Y \sim \text{Exp}(\lambda)\)</span>, so that its pdf is
 <span class="math display">\[
@@ -610,11 +636,8 @@ I_n &amp;= f(y, \tilde \lambda) \sqrt{\dfrac{2 \pi}{g&#39;&#39;(\tilde \lambda)}
 </ul>
 </details>
 </div>
-</div>
-<div id="week-9-lecture-2" class="section level2 hasAnchor">
-<h2>Week 9 lecture 2<a href="chapter-4.html#week-9-lecture-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="challenges-i-19" class="section level3 hasAnchor">
-<h3>Challenges I<a href="chapter-4.html#challenges-i-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="challenges-ii-13" class="section level3 hasAnchor">
+<h3>Challenges II<a href="chapter-4.html#challenges-ii-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Use Monte Carlo integration with <span class="math inline">\(N = 10^3\)</span> Monte Carlo samples to approximate
 <span class="math display">\[
@@ -626,10 +649,14 @@ and then calculate the relative absolute error of your approximation.</li>
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="chapter-4.html#cb101-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb101-2"><a href="chapter-4.html#cb101-2" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb101-3"><a href="chapter-4.html#cb101-3" tabindex="-1"></a>mc <span class="ot">&lt;-</span> V <span class="sc">*</span> <span class="fu">mean</span>(<span class="fu">runif</span>(N, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb101-4"><a href="chapter-4.html#cb101-4" tabindex="-1"></a>true <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span></span></code></pre></div>
 </details>
 </div>
-<div id="challenges-ii-13" class="section level3 hasAnchor">
-<h3>Challenges II<a href="chapter-4.html#challenges-ii-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="challenges-iii-2" class="section level3 hasAnchor">
+<h3>Challenges III<a href="chapter-4.html#challenges-iii-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Approximate
 <span class="math display">\[
@@ -641,6 +668,15 @@ using Monte Carlo sampling and a Monte Carlo sample size of <span class="math in
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="chapter-4.html#cb102-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">4</span></span>
+<span id="cb102-2"><a href="chapter-4.html#cb102-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb102-3"><a href="chapter-4.html#cb102-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(N <span class="sc">*</span> d, <span class="dv">1</span>, <span class="dv">3</span>), N)</span>
+<span id="cb102-4"><a href="chapter-4.html#cb102-4" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">^</span>d</span>
+<span id="cb102-5"><a href="chapter-4.html#cb102-5" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> V <span class="sc">*</span> <span class="fu">mean</span>(<span class="fu">apply</span>(<span class="dv">1</span> <span class="sc">+</span> (x <span class="sc">-</span> <span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>, prod))</span>
+<span id="cb102-6"><a href="chapter-4.html#cb102-6" tabindex="-1"></a>I_hat2 <span class="ot">&lt;-</span> V <span class="sc">*</span> <span class="fu">mean</span>(<span class="fu">exp</span>(<span class="fu">rowSums</span>(<span class="fu">log1p</span>((x <span class="sc">-</span> <span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>))))</span>
+<span id="cb102-7"><a href="chapter-4.html#cb102-7" tabindex="-1"></a>true <span class="ot">&lt;-</span> (<span class="dv">8</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span>d</span>
+<span id="cb102-8"><a href="chapter-4.html#cb102-8" tabindex="-1"></a>rel_err <span class="ot">&lt;-</span> <span class="fu">abs</span>((true <span class="sc">-</span> I_hat) <span class="sc">/</span> true)</span>
+<span id="cb102-9"><a href="chapter-4.html#cb102-9" tabindex="-1"></a>rel_err</span></code></pre></div>
 </details>
 </div>
 </div>
