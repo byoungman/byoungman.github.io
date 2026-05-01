@@ -730,6 +730,17 @@ using <code>nd1_tau(tau, y)</code>, which was previously written to evaluate the
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="chapter-5.html#cb110-1" tabindex="-1"></a>nd1_tau <span class="ot">&lt;-</span> <span class="cf">function</span>(tau, y) {</span>
+<span id="cb110-2"><a href="chapter-5.html#cb110-2" tabindex="-1"></a>  <span class="co"># function to 1st deriv. w.r.t. to tau</span></span>
+<span id="cb110-3"><a href="chapter-5.html#cb110-3" tabindex="-1"></a>  <span class="co"># of Exp(exp(tau)) neg. log lik.</span></span>
+<span id="cb110-4"><a href="chapter-5.html#cb110-4" tabindex="-1"></a>  <span class="co"># tau is a scalar</span></span>
+<span id="cb110-5"><a href="chapter-5.html#cb110-5" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb110-6"><a href="chapter-5.html#cb110-6" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb110-7"><a href="chapter-5.html#cb110-7" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb110-8"><a href="chapter-5.html#cb110-8" tabindex="-1"></a>  <span class="sc">-</span> n <span class="sc">+</span> <span class="fu">exp</span>(tau) <span class="sc">*</span> <span class="fu">sum</span>(y)</span>
+<span id="cb110-9"><a href="chapter-5.html#cb110-9" tabindex="-1"></a>}</span>
+<span id="cb110-10"><a href="chapter-5.html#cb110-10" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">2</span>, .<span class="dv">5</span>, .<span class="dv">6</span>, <span class="dv">1</span>, <span class="fl">1.8</span>, <span class="fl">2.5</span>)</span>
+<span id="cb110-11"><a href="chapter-5.html#cb110-11" tabindex="-1"></a><span class="fu">uniroot</span>(nd1_tau, <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="at">y =</span> y0)<span class="sc">$</span>root</span></code></pre></div>
 </details>
 </div>
 <div id="challenges-ii-14" class="section level3 hasAnchor">
@@ -749,6 +760,8 @@ Suppose that <span class="math inline">\(\sigma^2 = 1\)</span>. Find <span class
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="chapter-5.html#cb111-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.8</span>, <span class="fl">2.1</span>, <span class="fl">2.3</span>, <span class="fl">2.4</span>, <span class="fl">2.5</span>, <span class="fl">2.7</span>, <span class="fl">3.1</span>, <span class="fl">4.3</span>, <span class="fl">4.3</span>, <span class="fl">4.4</span>)</span>
+<span id="cb111-2"><a href="chapter-5.html#cb111-2" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dnorm</span>(y, <span class="dv">1</span>, <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Write a function in <code>R</code>, <code>negloglik(mu, y)</code>, that evaluates <span class="math inline">\(-\log f(\mathbf{y} \mid \mu, \sigma^2 = 1)\)</span> for <code>mu</code> <span class="math inline">\(= \mu\)</span> and <code>y</code> <span class="math inline">\(=y\)</span>.</li>
@@ -757,6 +770,16 @@ Suppose that <span class="math inline">\(\sigma^2 = 1\)</span>. Find <span class
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="chapter-5.html#cb112-1" tabindex="-1"></a>negloglik <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, y) {</span>
+<span id="cb112-2"><a href="chapter-5.html#cb112-2" tabindex="-1"></a> <span class="co"># Function to evaluate derivative negative log-likelihood</span></span>
+<span id="cb112-3"><a href="chapter-5.html#cb112-3" tabindex="-1"></a>  <span class="co"># mu is a scalar</span></span>
+<span id="cb112-4"><a href="chapter-5.html#cb112-4" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb112-5"><a href="chapter-5.html#cb112-5" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb112-6"><a href="chapter-5.html#cb112-6" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb112-7"><a href="chapter-5.html#cb112-7" tabindex="-1"></a>  n <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>((y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb112-8"><a href="chapter-5.html#cb112-8" tabindex="-1"></a>}</span>
+<span id="cb112-9"><a href="chapter-5.html#cb112-9" tabindex="-1"></a></span>
+<span id="cb112-10"><a href="chapter-5.html#cb112-10" tabindex="-1"></a><span class="fu">negloglik</span>(<span class="dv">1</span>, y)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Find <span class="math inline">\(-\partial \log f(\mathbf{y} \mid \mu, \sigma^2 = 1) / \partial \mu\)</span> and write a function in <code>R</code>, <code>negloglik_d1(mu, y)</code>, that evaluates <span class="math inline">\(-\partial \log f(\mathbf{y} \mid \mu, \sigma^2 = 1) / \partial \mu\)</span> for <code>mu</code> <span class="math inline">\(= \mu\)</span> and <code>y</code> <span class="math inline">\(=y\)</span>.</li>
@@ -765,6 +788,16 @@ Suppose that <span class="math inline">\(\sigma^2 = 1\)</span>. Find <span class
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="chapter-5.html#cb113-1" tabindex="-1"></a>negloglik_d1 <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, y) {</span>
+<span id="cb113-2"><a href="chapter-5.html#cb113-2" tabindex="-1"></a>  <span class="co"># Function to evaluate derivative of </span></span>
+<span id="cb113-3"><a href="chapter-5.html#cb113-3" tabindex="-1"></a>  <span class="co"># negative log-likelihood w.r.t. mu</span></span>
+<span id="cb113-4"><a href="chapter-5.html#cb113-4" tabindex="-1"></a>  <span class="co"># mu is a scalar</span></span>
+<span id="cb113-5"><a href="chapter-5.html#cb113-5" tabindex="-1"></a>  <span class="co"># y is a vector</span></span>
+<span id="cb113-6"><a href="chapter-5.html#cb113-6" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb113-7"><a href="chapter-5.html#cb113-7" tabindex="-1"></a>  <span class="sc">-</span><span class="fu">sum</span>(y <span class="sc">-</span> mu)</span>
+<span id="cb113-8"><a href="chapter-5.html#cb113-8" tabindex="-1"></a>}</span>
+<span id="cb113-9"><a href="chapter-5.html#cb113-9" tabindex="-1"></a></span>
+<span id="cb113-10"><a href="chapter-5.html#cb113-10" tabindex="-1"></a><span class="fu">negloglik_d1</span>(<span class="dv">1</span>, y)</span></code></pre></div>
 </details>
 <ol start="4" style="list-style-type: decimal">
 <li>Use <code>optim()</code> in <code>R</code> to find <span class="math inline">\(\hat \mu\)</span>, the maximum likelihood estimate of <span class="math inline">\(\mu\)</span>, using the BFGS method. You should supply <code>negloglik_d1(mu, y)</code> to evaluate the first derivative w.r.t. <span class="math inline">\(\mu\)</span>, and use <span class="math inline">\(\mu_0 = 1\)</span> as a starting value.</li>
@@ -773,6 +806,8 @@ Suppose that <span class="math inline">\(\sigma^2 = 1\)</span>. Find <span class
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="chapter-5.html#cb114-1" tabindex="-1"></a>fit_bfgs <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="dv">1</span>, negloglik, negloglik_d1, <span class="at">y =</span> y, <span class="at">method =</span> <span class="st">&#39;BFGS&#39;</span>)</span>
+<span id="cb114-2"><a href="chapter-5.html#cb114-2" tabindex="-1"></a>mu_hat <span class="ot">&lt;-</span> fit_bfgs<span class="sc">$</span>par</span></code></pre></div>
 </details>
 <ol start="5" style="list-style-type: decimal">
 <li>Evaluate <span class="math inline">\(-\partial \log f(\mathbf{y} \mid \mu, \sigma^2 = 1) / \partial \mu\)</span> at <span class="math inline">\(\hat \mu\)</span> to verify that <span class="math inline">\(\hat \mu\)</span> is the m.l.e.</li>
@@ -781,6 +816,8 @@ Suppose that <span class="math inline">\(\sigma^2 = 1\)</span>. Find <span class
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="chapter-5.html#cb115-1" tabindex="-1"></a><span class="fu">negloglik_d1</span>(mu_hat, y)</span>
+<span id="cb115-2"><a href="chapter-5.html#cb115-2" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -800,6 +837,20 @@ where <span class="math inline">\(-\infty &lt; \tilde \lambda, \tilde k &lt; \in
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="chapter-5.html#cb116-1" tabindex="-1"></a>weib2_d0 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, y, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb116-2"><a href="chapter-5.html#cb116-2" tabindex="-1"></a>  <span class="co"># Function to evaluate re-parameterised Weibull log-likelihood</span></span>
+<span id="cb116-3"><a href="chapter-5.html#cb116-3" tabindex="-1"></a>  <span class="co"># pars is a vector</span></span>
+<span id="cb116-4"><a href="chapter-5.html#cb116-4" tabindex="-1"></a>  <span class="co"># pars[1] is $\tilde \lambda$</span></span>
+<span id="cb116-5"><a href="chapter-5.html#cb116-5" tabindex="-1"></a>  <span class="co"># pars[2] is $\tilde k$</span></span>
+<span id="cb116-6"><a href="chapter-5.html#cb116-6" tabindex="-1"></a>  <span class="co"># y can be scalar or vector</span></span>
+<span id="cb116-7"><a href="chapter-5.html#cb116-7" tabindex="-1"></a>  <span class="co"># mult is a scalar defaulting to 1; so -1 returns neg. log likelihood</span></span>
+<span id="cb116-8"><a href="chapter-5.html#cb116-8" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb116-9"><a href="chapter-5.html#cb116-9" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb116-10"><a href="chapter-5.html#cb116-10" tabindex="-1"></a>  epars <span class="ot">&lt;-</span> <span class="fu">exp</span>(pars)</span>
+<span id="cb116-11"><a href="chapter-5.html#cb116-11" tabindex="-1"></a>  out <span class="ot">&lt;-</span> n <span class="sc">*</span> (pars[<span class="dv">2</span>] <span class="sc">-</span> epars[<span class="dv">2</span>] <span class="sc">*</span> pars[<span class="dv">1</span>]) <span class="sc">+</span></span>
+<span id="cb116-12"><a href="chapter-5.html#cb116-12" tabindex="-1"></a>    (epars[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(y)) <span class="sc">-</span> <span class="fu">sum</span>((y <span class="sc">/</span> epars[<span class="dv">1</span>])<span class="sc">^</span>epars[<span class="dv">2</span>])</span>
+<span id="cb116-13"><a href="chapter-5.html#cb116-13" tabindex="-1"></a>  mult <span class="sc">*</span> out</span>
+<span id="cb116-14"><a href="chapter-5.html#cb116-14" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the maximum likelihood estimates of <span class="math inline">\((\tilde \lambda, \tilde k)\)</span> using the Nelder-Mead method, starting at <span class="math inline">\((\tilde \lambda_0, \tilde k_0) = \big(\log(1.6), \log(0.6)\big)\)</span>.</li>
@@ -808,6 +859,8 @@ where <span class="math inline">\(-\infty &lt; \tilde \lambda, \tilde k &lt; \in
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="chapter-5.html#cb117-1" tabindex="-1"></a>fit_nm2 <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">log</span>(<span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.6</span>)), weib2_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb117-2"><a href="chapter-5.html#cb117-2" tabindex="-1"></a>fit_nm2<span class="sc">$</span>par</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Confirm that these are related to those of the original parameterisation through the logarithm.</li>
@@ -816,6 +869,8 @@ where <span class="math inline">\(-\infty &lt; \tilde \lambda, \tilde k &lt; \in
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="chapter-5.html#cb118-1" tabindex="-1"></a>fit_nm<span class="sc">$</span>par</span>
+<span id="cb118-2"><a href="chapter-5.html#cb118-2" tabindex="-1"></a><span class="fu">exp</span>(fit_nm2<span class="sc">$</span>par)</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -838,6 +893,27 @@ where <span class="math inline">\(-\infty &lt; \tilde \lambda, \tilde k &lt; \in
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="chapter-5.html#cb119-1" tabindex="-1"></a>weib2_d0 <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, y, <span class="at">mult =</span> <span class="dv">1</span>) {</span>
+<span id="cb119-2"><a href="chapter-5.html#cb119-2" tabindex="-1"></a>  <span class="co"># Function to evaluate re-parameterised Weibull log-likelihood</span></span>
+<span id="cb119-3"><a href="chapter-5.html#cb119-3" tabindex="-1"></a>  <span class="co"># pars is a vector</span></span>
+<span id="cb119-4"><a href="chapter-5.html#cb119-4" tabindex="-1"></a>  <span class="co"># pars[1] is $\tilde \lambda$</span></span>
+<span id="cb119-5"><a href="chapter-5.html#cb119-5" tabindex="-1"></a>  <span class="co"># pars[2] is $\tilde k$</span></span>
+<span id="cb119-6"><a href="chapter-5.html#cb119-6" tabindex="-1"></a>  <span class="co"># y can be scalar or vector</span></span>
+<span id="cb119-7"><a href="chapter-5.html#cb119-7" tabindex="-1"></a>  <span class="co"># mult is a scalar defaulting to 1; so -1 returns neg. log likelihood</span></span>
+<span id="cb119-8"><a href="chapter-5.html#cb119-8" tabindex="-1"></a>  <span class="co"># returns a scalar</span></span>
+<span id="cb119-9"><a href="chapter-5.html#cb119-9" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb119-10"><a href="chapter-5.html#cb119-10" tabindex="-1"></a>  epars <span class="ot">&lt;-</span> <span class="fu">exp</span>(pars)</span>
+<span id="cb119-11"><a href="chapter-5.html#cb119-11" tabindex="-1"></a>  out <span class="ot">&lt;-</span> n <span class="sc">*</span> (pars[<span class="dv">2</span>] <span class="sc">-</span> epars[<span class="dv">2</span>] <span class="sc">*</span> pars[<span class="dv">1</span>]) <span class="sc">+</span> </span>
+<span id="cb119-12"><a href="chapter-5.html#cb119-12" tabindex="-1"></a>    (epars[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(y)) <span class="sc">-</span> <span class="fu">sum</span>((y <span class="sc">/</span> epars[<span class="dv">1</span>])<span class="sc">^</span>epars[<span class="dv">2</span>])</span>
+<span id="cb119-13"><a href="chapter-5.html#cb119-13" tabindex="-1"></a>  mult <span class="sc">*</span> out</span>
+<span id="cb119-14"><a href="chapter-5.html#cb119-14" tabindex="-1"></a>}</span>
+<span id="cb119-15"><a href="chapter-5.html#cb119-15" tabindex="-1"></a></span>
+<span id="cb119-16"><a href="chapter-5.html#cb119-16" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.52</span>, <span class="fl">1.95</span>, <span class="fl">0.62</span>, <span class="fl">0.02</span>, <span class="fl">5.13</span>, <span class="fl">0.02</span>, <span class="fl">0.01</span>, <span class="fl">0.34</span>, <span class="fl">0.43</span>, <span class="fl">15.5</span>, </span>
+<span id="cb119-17"><a href="chapter-5.html#cb119-17" tabindex="-1"></a>        <span class="fl">4.99</span>, <span class="fl">6.01</span>, <span class="fl">0.28</span>, <span class="fl">1.83</span>, <span class="fl">0.14</span>, <span class="fl">0.97</span>, <span class="fl">0.22</span>, <span class="fl">0.02</span>, <span class="fl">1.87</span>, <span class="fl">0.13</span>, <span class="fl">0.01</span>, </span>
+<span id="cb119-18"><a href="chapter-5.html#cb119-18" tabindex="-1"></a>        <span class="fl">4.81</span>, <span class="fl">0.37</span>, <span class="fl">8.61</span>, <span class="fl">3.48</span>, <span class="fl">1.81</span>, <span class="fl">37.21</span>, <span class="fl">1.85</span>, <span class="fl">0.04</span>, <span class="fl">2.32</span>, <span class="fl">1.06</span>)</span>
+<span id="cb119-19"><a href="chapter-5.html#cb119-19" tabindex="-1"></a></span>
+<span id="cb119-20"><a href="chapter-5.html#cb119-20" tabindex="-1"></a><span class="fu">optim</span>(<span class="fu">c</span>(<span class="fu">log</span>(<span class="fl">1.6</span>), <span class="fu">log</span>(<span class="fl">0.6</span>)), weib2_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">method =</span> <span class="st">&#39;SANN&#39;</span>,</span>
+<span id="cb119-21"><a href="chapter-5.html#cb119-21" tabindex="-1"></a>      <span class="at">control =</span> <span class="fu">list</span>(<span class="at">maxit =</span> <span class="fl">1e3</span>, <span class="at">temp =</span> <span class="dv">10</span>))</span></code></pre></div>
 </details>
 <ol start="2" style="list-style-type: decimal">
 <li>Repeat the above optimisation 20 times, and comment on how the resulting parameter estimates vary.</li>
@@ -846,6 +922,11 @@ where <span class="math inline">\(-\infty &lt; \tilde \lambda, \tilde k &lt; \in
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="chapter-5.html#cb120-1" tabindex="-1"></a>pars1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">20</span>,</span>
+<span id="cb120-2"><a href="chapter-5.html#cb120-2" tabindex="-1"></a>                   <span class="fu">optim</span>(<span class="fu">c</span>(<span class="fu">log</span>(<span class="fl">1.6</span>), <span class="fu">log</span>(<span class="fl">0.6</span>)), weib2_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">method =</span> <span class="st">&#39;SANN&#39;</span>,</span>
+<span id="cb120-3"><a href="chapter-5.html#cb120-3" tabindex="-1"></a>      <span class="at">control =</span> <span class="fu">list</span>(<span class="at">maxit =</span> <span class="fl">1e3</span>, <span class="at">temp =</span> <span class="dv">10</span>))<span class="sc">$</span>par)</span>
+<span id="cb120-4"><a href="chapter-5.html#cb120-4" tabindex="-1"></a></span>
+<span id="cb120-5"><a href="chapter-5.html#cb120-5" tabindex="-1"></a><span class="fu">apply</span>(pars1, <span class="dv">1</span>, sd)</span></code></pre></div>
 </details>
 <ol start="3" style="list-style-type: decimal">
 <li>Change <span class="math inline">\(T\)</span> to <span class="math inline">\(T = 0.1\)</span> and then repeat Question 2.</li>
@@ -854,6 +935,11 @@ where <span class="math inline">\(-\infty &lt; \tilde \lambda, \tilde k &lt; \in
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="chapter-5.html#cb121-1" tabindex="-1"></a>pars2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">20</span>,</span>
+<span id="cb121-2"><a href="chapter-5.html#cb121-2" tabindex="-1"></a>                   <span class="fu">optim</span>(<span class="fu">c</span>(<span class="fu">log</span>(<span class="fl">1.6</span>), <span class="fu">log</span>(<span class="fl">0.6</span>)), weib2_d0, <span class="at">y =</span> y0, <span class="at">mult =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">method =</span> <span class="st">&#39;SANN&#39;</span>,</span>
+<span id="cb121-3"><a href="chapter-5.html#cb121-3" tabindex="-1"></a>                         <span class="at">control =</span> <span class="fu">list</span>(<span class="at">maxit =</span> <span class="fl">1e3</span>, <span class="at">temp =</span> <span class="fl">0.1</span>))<span class="sc">$</span>par)</span>
+<span id="cb121-4"><a href="chapter-5.html#cb121-4" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="chapter-5.html#cb121-5" tabindex="-1"></a><span class="fu">apply</span>(pars2, <span class="dv">1</span>, sd)</span></code></pre></div>
 </details>
 <ol start="4" style="list-style-type: decimal">
 <li>Comment on what you observe between Question 2 and Question 3.</li>
@@ -862,6 +948,8 @@ where <span class="math inline">\(-\infty &lt; \tilde \lambda, \tilde k &lt; \in
 <summary>
 <strong>Solution</strong>
 </summary>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="chapter-5.html#cb122-1" tabindex="-1"></a><span class="fu">rbind</span>(<span class="fu">apply</span>(pars1, <span class="dv">1</span>, sd),</span>
+<span id="cb122-2"><a href="chapter-5.html#cb122-2" tabindex="-1"></a>      <span class="fu">apply</span>(pars2, <span class="dv">1</span>, sd))</span></code></pre></div>
 </details>
 <!-- ## Week 11 lecture 3 -->
 <!-- ### Challenges I -->
