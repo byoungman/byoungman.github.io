@@ -170,7 +170,7 @@ list(p = p_evgam, cov = cov_evgam)
 }
 
 fit_evgmrfs <- function(data, wts, p0, W, q99) {
-m_evgmrf <- lapply(wts, function(wt) evgmrf(data, W = W, weights = wt, model = c('icar', 'icar', 'icar', inits = 'same', outer = 'bfgs'))
+m_evgmrf <- lapply(wts, function(wt) evgmrf(data, W = W, weights = wt, model = c('icar', 'icar', NA), inits = 'same', outer = 'bfgs'))
 s_evgmrf <- lapply(m_evgmrf, simulate, nsim = 1e3, prob = p0)
 p_evgmrf <- sapply(m_evgmrf, function(x) predict(x, prob = p0)[[1]])
 cov_evgmrf <- sapply(s_evgmrf, function(x) apply(x, 1, quantile, .05) < q99 & apply(x, 1, quantile, .95) > q99)
