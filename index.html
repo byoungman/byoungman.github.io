@@ -370,7 +370,7 @@ models for natural hazard occurrence. Environmetrics 28 (4), e2444. <a href="htt
 	
 <h1 class="title toc-ignore">software</h1>
 
-<li><a href="evgmrf_github_v02.html"><span style="font-size: 1.2em; font-weight: bold;">evgmrf</span></a></li>
+<li><a href="evgmrf_github_v01.html"><span style="font-size: 1.2em; font-weight: bold;">evgmrf</span></a></li>
 <p>This is an R package for estimating extreme value distributions with parameters that vary according to Gaussian Markov random fields. Clicking the link above will show some examples of what it has to offer. The package is available on <a href="https://cran.r-project.org/">CRAN</a> at <a href="https://cran.r-project.org/package=evgmrf">https://cran.r-project.org/package=evgmrf</a>.
 <li><a href="deform.html"><span style="font-size: 1.2em; font-weight: bold;">deform</span></a></li>
 <p>I have just created the deform R package for nonstationary Gaussian processes models for spatial data. The package uses spatial deformations or dimension expansions to bring a space where processes can be modelled as isotropic. The package is available on <a href="https://cran.r-project.org/">CRAN</a> at <a href="https://cran.r-project.org/package=deform">https://cran.r-project.org/package=deform</a>.</p>
@@ -683,6 +683,9 @@ section.footer{ background:none; box-shadow:none; padding:0 8px; }
 h1.title{ font-size:26px !important; border-bottom:0; padding-bottom:0; margin-bottom:16px; }
 section[data-key="software"] .item{ background:#f1f5f4; }
 @media (max-width:900px){ section.blk{ padding:24px 20px; } }
+.avatar{ width:150px; height:150px; padding:4px; background:linear-gradient(135deg,#0d9488,#4338ca); }
+.avatar img{ display:block; width:100%; height:100%; border-radius:50%; object-fit:cover; background:#fff; border:3px solid #fff; box-sizing:border-box; }
+@media (max-width:900px){ .avatar{ width:88px; height:88px; padding:3px; } .avatar img{ border-width:2px; } }
 </style>
 <script>
 window.afterRestructure = function(main){
@@ -693,7 +696,7 @@ window.afterRestructure = function(main){
   var brand = (document.querySelector('.navbar-brand')||{}).textContent || '';
   var initials = brand.trim().split(/\s+/).map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
   var side = document.createElement('aside'); side.className = 'side';
-  side.innerHTML = '<div class="avatar">'+initials+'</div><div class="name">'+(lines[0]||'')+'</div><div class="role">'+(lines[1]||'')+'</div><div class="addr">'+lines.slice(2).join('<br>')+'</div>';
+  side.innerHTML = '<div class="avatar"><img src="images/portrait.webp" alt="Portrait of '+brand.trim()+'" width="480" height="480"></div><div class="name">'+(lines[0]||'')+'</div><div class="role">'+(lines[1]||'')+'</div><div class="addr">'+lines.slice(2).join('<br>')+'</div>';
   var nav = document.createElement('nav');
   main.querySelectorAll('section.blk:not(.footer)').forEach(function(s){
     if(s === contact) return;
